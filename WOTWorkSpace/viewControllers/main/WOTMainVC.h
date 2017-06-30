@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SDCycleScrollView.h"
+#import "ZYQSphereView.h"
 @interface WOTMainVC : UIViewController
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
+
+@property (weak, nonatomic) IBOutlet UIView *ballView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
+
+
 
 @end
