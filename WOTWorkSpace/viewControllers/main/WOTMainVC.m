@@ -8,12 +8,12 @@
 
 #import "WOTMainVC.h"
 #import "header.h"
-#import "WOTMainScrollViewCell.h"
-#import "WOTMain3DCircleCell.h"
+#import "NewPagedFlowView.h"
+#import "PGIndexBannerSubiew.h"
 #import "ZYQSphereView.h"
-@interface WOTMainVC ()<UIScrollViewDelegate>
+@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
-
+@property(nonatomic,strong)NewPagedFlowView *pageFlowView;
 @end
 
 @implementation WOTMainVC
@@ -23,10 +23,8 @@
     [self load3DBallView];
     [self loadAutoScrollView];
     [self configScrollView];
-//    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMainScrollViewCell" bundle:nil] forCellReuseIdentifier:@"WOTMainScrollViewCellID"];
-//    
-//    
-//    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMain3DCircleCell" bundle:nil] forCellReuseIdentifier:@"WOTMain3DCircleCellID"];
+    [self loadSpaceView];
+
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +32,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+#pragma mark --懒加载
+- (NSMutableArray *)imageArray {
+    if (_imageArray == nil) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
+
 
 -(void)load3DBallView{
     _sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(15, 0, self.ballView.frame.size.width, self.ballView.frame.size.height)];
@@ -86,6 +95,9 @@
     
 }
 
+-(void)viewWillLayoutSubviews{
+     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+100);
+}
 
 -(void)subVClick:(UIButton*)sender{
     NSLog(@"%@",sender.titleLabel.text);
@@ -105,15 +117,21 @@
         }];
     }];
 }
-
+-(void)loadSpaceView{
+    for (int index = 0; index < 5; index++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d",index]];
+        [self.imageArray addObject:image];
+    }
+    
+    [self setupUI];
+}
 -(void)configScrollView{
     self.scrollVIew.delegate = self;
-    UIView *spaceView = [[UIView alloc]initWithFrame:CGRectMake(0, self.autoScrollView.frame.size.height+10+self.ballView.frame.size.height, self.view.frame.size.width,1000)];
-    spaceView.backgroundColor = [UIColor redColor];
-    [self.scrollVIew addSubview:spaceView];
-    
-//    self.scrollVIew. = YES;
-    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+10+self.ballView.frame.size.height+spaceView.frame.size.height+1000);
+    self.scrollVIew.showsHorizontalScrollIndicator = NO;
+    self.scrollVIew.showsVerticalScrollIndicator = NO;
+    self.scrollVIew.backgroundColor = MainColor;
+ 
+  
     
 }
 
@@ -122,59 +140,76 @@
     
 }
 
+- (void)setupUI {
+    
+    
+    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_WIDTH * 9 / 20)];
+    _pageFlowView.delegate = self;
+    _pageFlowView.dataSource = self;
+    _pageFlowView.minimumPageAlpha = 0.1;
+    _pageFlowView.isCarousel = NO;
+    _pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
+    _pageFlowView.isOpenAutoScroll = YES;
+    
+    //初始化pageControl
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 32, SCREEN_WIDTH, 8)];
+    _pageFlowView.pageControl = pageControl;
+    [_pageFlowView addSubview:pageControl];
+    
+   
+    [self.spaceView addSubview:_pageFlowView];
+    
+    [_pageFlowView reloadData];
+    
 
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
-//}
-//
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return 5;
-//}
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    switch (indexPath.row) {
-//        case 0:
-//            return 180;
-//        case 1:
-//            return 250;
-//        case 2:
-//            return 200;
-//        case 3:
-//            return 200;
-//        case 4:
-//            return 200;
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    return 0;
-//}
-//
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    UITableViewCell *commoncell;
-//    if (indexPath.row == 0) {
-//        WOTMainScrollViewCell *scrollcell = [tableView dequeueReusableCellWithIdentifier:@"WOTMainScrollViewCellID" forIndexPath:indexPath];
-//        commoncell = scrollcell;
-//    } else if (indexPath.row == 1){
-//        WOTMain3DCircleCell *main3D = [tableView dequeueReusableCellWithIdentifier:@"WOTMain3DCircleCellID" forIndexPath:indexPath];
-//        commoncell = main3D;
-//    } else if (indexPath.row == 2){
-//        WOTMain3DCircleCell *main3D = [tableView dequeueReusableCellWithIdentifier:@"WOTMain3DCircleCellID" forIndexPath:indexPath];
-//        commoncell = main3D;
-//    }else if (indexPath.row == 3){
-//        WOTMain3DCircleCell *main3D = [tableView dequeueReusableCellWithIdentifier:@"WOTMain3DCircleCellID" forIndexPath:indexPath];
-//        commoncell = main3D;
-//    }
-//    else if (indexPath.row == 4){
-//        WOTMain3DCircleCell *main3D = [tableView dequeueReusableCellWithIdentifier:@"WOTMain3DCircleCellID" forIndexPath:indexPath];
-//        commoncell = main3D;
-//    }
-//    
-//    
-//   
-//    return commoncell;
-//}
+    
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark NewPagedFlowView Delegate
+- (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
+    return CGSizeMake(SCREEN_WIDTH - 60, (SCREEN_WIDTH - 60) * 9 / 16);
+}
+- (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
+    
+    NSLog(@"点击了第%ld张图",(long)subIndex + 1);
+    
+
+}
+
+#pragma mark NewPagedFlowView Datasource
+- (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
+    
+    return self.imageArray.count;
+    
+}
+
+- (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
+    PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
+    if (!bannerView) {
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 9 / 16)];
+        bannerView.tag = index;
+        bannerView.layer.cornerRadius = 4;
+        bannerView.layer.masksToBounds = YES;
+    }
+    //在这里下载网络图片
+    //  [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:hostUrlsImg,imageDict[@"img"]]] placeholderImage:[UIImage imageNamed:@""]];
+    bannerView.mainImageView.image = self.imageArray[index];
+    
+    return bannerView;
+}
+
+- (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
+    
+    NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
+}
+
+
+
 /*
 #pragma mark - Navigation
 

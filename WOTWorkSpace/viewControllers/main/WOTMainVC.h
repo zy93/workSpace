@@ -15,7 +15,13 @@
 @property (weak, nonatomic) IBOutlet UIView *ballView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
+@property (nonatomic, strong) NSMutableArray *imageArray;
 
+@property (weak, nonatomic) IBOutlet UIView *spaceView;
+@property (weak, nonatomic) IBOutlet UIView *activityView;
+
+@property (weak, nonatomic) IBOutlet UIView *informationView;
+@property (weak, nonatomic) IBOutlet UIView *workspaceView;
 
 
 @end
