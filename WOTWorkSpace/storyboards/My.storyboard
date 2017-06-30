@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My EnterpriseVC-->
+        <scene sceneID="1P7-KT-i0v">
+            <objects>
+                <viewController storyboardIdentifier="WORTMyEnterpriseVCID" id="jm1-ru-KQV" customClass="WORTMyEnterpriseVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lbu-in-jRd"/>
+                        <viewControllerLayoutGuide type="bottom" id="0HK-FG-7qt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cWM-Zc-bG7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsL-TY-SjN">
+                                <rect key="frame" x="0.0" y="64" width="187" height="58"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="cz6-gg-Yel"/>
+                                </constraints>
+                                <state key="normal" title="加入企业"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmK-2I-zMa">
+                                <rect key="frame" x="188" y="64" width="187" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IKD-A1-c6f"/>
+                                </constraints>
+                                <state key="normal" title="创建企业">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-nD-QwH">
+                                <rect key="frame" x="187" y="74" width="1" height="35"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ksG-j4-gCC"/>
+                                    <constraint firstAttribute="width" constant="1" id="ysj-0G-nRt"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G6s-2t-8JZ">
+                                <rect key="frame" x="0.0" y="122" width="375" height="545"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jm1-ru-KQV" id="Yr2-CQ-nrB"/>
+                                    <outlet property="delegate" destination="jm1-ru-KQV" id="dXz-6f-1F4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G6s-2t-8JZ" firstAttribute="top" secondItem="TsL-TY-SjN" secondAttribute="bottom" id="0FR-9R-cdg"/>
+                            <constraint firstItem="TsL-TY-SjN" firstAttribute="top" secondItem="cWM-Zc-bG7" secondAttribute="top" constant="64" id="4d6-1W-kQH"/>
+                            <constraint firstItem="SA0-nD-QwH" firstAttribute="top" secondItem="cWM-Zc-bG7" secondAttribute="top" constant="74" id="8n1-au-AuF"/>
+                            <constraint firstItem="SA0-nD-QwH" firstAttribute="leading" secondItem="TsL-TY-SjN" secondAttribute="trailing" id="SfQ-mn-izo"/>
+                            <constraint firstItem="SA0-nD-QwH" firstAttribute="centerX" secondItem="cWM-Zc-bG7" secondAttribute="centerX" id="UJa-g6-uuU"/>
+                            <constraint firstItem="TsL-TY-SjN" firstAttribute="leading" secondItem="cWM-Zc-bG7" secondAttribute="leading" id="ZhL-4e-Cy5"/>
+                            <constraint firstItem="0HK-FG-7qt" firstAttribute="top" secondItem="G6s-2t-8JZ" secondAttribute="bottom" id="cjn-II-m1X"/>
+                            <constraint firstItem="GmK-2I-zMa" firstAttribute="leading" secondItem="SA0-nD-QwH" secondAttribute="trailing" id="h79-cp-bYa"/>
+                            <constraint firstItem="GmK-2I-zMa" firstAttribute="top" secondItem="cWM-Zc-bG7" secondAttribute="top" constant="64" id="h7H-sy-bHF"/>
+                            <constraint firstAttribute="trailing" secondItem="GmK-2I-zMa" secondAttribute="trailing" id="h9z-vU-nWN"/>
+                            <constraint firstItem="G6s-2t-8JZ" firstAttribute="leading" secondItem="cWM-Zc-bG7" secondAttribute="leading" id="xUU-Wx-vVt"/>
+                            <constraint firstAttribute="trailing" secondItem="G6s-2t-8JZ" secondAttribute="trailing" id="yqu-Nj-Jiu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableVIew" destination="G6s-2t-8JZ" id="o8T-t4-d0V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KET-yA-yqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95.200000000000003" y="-222.63868065967017"/>
+        </scene>
+    </scenes>
+</document>
