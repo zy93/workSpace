@@ -61,12 +61,10 @@
 		E88A54431F03794800AD3F57 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54411F03794800AD3F57 /* XXPageTabView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
 		E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */; };
-		E8954A771F05F9150036A057 /* WOTMainScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8954A751F05F9150036A057 /* WOTMainScrollViewCell.m */; };
-		E8954A781F05F9150036A057 /* WOTMainScrollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8954A761F05F9150036A057 /* WOTMainScrollViewCell.xib */; };
 		E8D89D7B1F06021B00FFFFDE /* PFGoldenSectionSpiral.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D741F06021B00FFFFDE /* PFGoldenSectionSpiral.m */; };
 		E8D89D7C1F06021B00FFFFDE /* ZYQSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D7A1F06021B00FFFFDE /* ZYQSphereView.m */; };
-		E8D89D801F0602FE00FFFFDE /* WOTMain3DCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D7E1F0602FE00FFFFDE /* WOTMain3DCircleCell.m */; };
-		E8D89D811F0602FF00FFFFDE /* WOTMain3DCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8D89D7F1F0602FE00FFFFDE /* WOTMain3DCircleCell.xib */; };
+		E8D89D881F0637A700FFFFDE /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */; };
+		E8D89D891F0637A700FFFFDE /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D871F0637A700FFFFDE /* PGIndexBannerSubiew.m */; };
 		E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF721F033D3E0015535D /* UIViewController+Extension.m */; };
 		E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF7D1F0344EC0015535D /* WOTPageMenuParentVC.m */; };
 		E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF8E1F035A990015535D /* WOTOrderLIstVC.m */; };
@@ -201,9 +199,6 @@
 		E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTConfigThemeUitls.m; sourceTree = "<group>"; };
 		E88A54471F03A64B00AD3F57 /* WOTAllOrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAllOrderListVC.h; sourceTree = "<group>"; };
 		E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAllOrderListVC.m; sourceTree = "<group>"; };
-		E8954A741F05F9150036A057 /* WOTMainScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMainScrollViewCell.h; sourceTree = "<group>"; };
-		E8954A751F05F9150036A057 /* WOTMainScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMainScrollViewCell.m; sourceTree = "<group>"; };
-		E8954A761F05F9150036A057 /* WOTMainScrollViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTMainScrollViewCell.xib; sourceTree = "<group>"; };
 		E8D89D721F06021B00FFFFDE /* PFAxisDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAxisDirection.h; sourceTree = "<group>"; };
 		E8D89D731F06021B00FFFFDE /* PFGoldenSectionSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGoldenSectionSpiral.h; sourceTree = "<group>"; };
 		E8D89D741F06021B00FFFFDE /* PFGoldenSectionSpiral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGoldenSectionSpiral.m; sourceTree = "<group>"; };
@@ -213,10 +208,11 @@
 		E8D89D781F06021B00FFFFDE /* PFRadian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFRadian.h; sourceTree = "<group>"; };
 		E8D89D791F06021B00FFFFDE /* ZYQSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQSphereView.h; sourceTree = "<group>"; };
 		E8D89D7A1F06021B00FFFFDE /* ZYQSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQSphereView.m; sourceTree = "<group>"; };
-		E8D89D7D1F0602FE00FFFFDE /* WOTMain3DCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMain3DCircleCell.h; sourceTree = "<group>"; };
-		E8D89D7E1F0602FE00FFFFDE /* WOTMain3DCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMain3DCircleCell.m; sourceTree = "<group>"; };
-		E8D89D7F1F0602FE00FFFFDE /* WOTMain3DCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTMain3DCircleCell.xib; sourceTree = "<group>"; };
 		E8D89D821F06136000FFFFDE /* WOTWorkSpace_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkSpace_Prefix.pch; sourceTree = "<group>"; };
+		E8D89D841F0637A700FFFFDE /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
+		E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
+		E8D89D861F0637A700FFFFDE /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
+		E8D89D871F0637A700FFFFDE /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		E8EACF711F033D3E0015535D /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		E8EACF721F033D3E0015535D /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		E8EACF7C1F0344EC0015535D /* WOTPageMenuParentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPageMenuParentVC.h; sourceTree = "<group>"; };
@@ -585,12 +581,6 @@
 		E8693AE71F04B1E600772BC1 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				E8954A741F05F9150036A057 /* WOTMainScrollViewCell.h */,
-				E8954A751F05F9150036A057 /* WOTMainScrollViewCell.m */,
-				E8954A761F05F9150036A057 /* WOTMainScrollViewCell.xib */,
-				E8D89D7D1F0602FE00FFFFDE /* WOTMain3DCircleCell.h */,
-				E8D89D7E1F0602FE00FFFFDE /* WOTMain3DCircleCell.m */,
-				E8D89D7F1F0602FE00FFFFDE /* WOTMain3DCircleCell.xib */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -659,9 +649,21 @@
 			path = SphereView;
 			sourceTree = "<group>";
 		};
+		E8D89D831F0637A700FFFFDE /* pagedFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				E8D89D841F0637A700FFFFDE /* NewPagedFlowView.h */,
+				E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */,
+				E8D89D861F0637A700FFFFDE /* PGIndexBannerSubiew.h */,
+				E8D89D871F0637A700FFFFDE /* PGIndexBannerSubiew.m */,
+			);
+			path = pagedFlowView;
+			sourceTree = "<group>";
+		};
 		E8EACF741F0344A50015535D /* library */ = {
 			isa = PBXGroup;
 			children = (
+				E8D89D831F0637A700FFFFDE /* pagedFlowView */,
 				E8D89D711F06021B00FFFFDE /* SphereView */,
 				E88A543D1F03794800AD3F57 /* XXPageTab */,
 			);
@@ -812,13 +814,11 @@
 			files = (
 				E85A859A1F0201F30016FCA1 /* LaunchScreen.storyboard in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
-				E8D89D811F0602FF00FFFFDE /* WOTMain3DCircleCell.xib in Resources */,
 				E8693B111F04F92C00772BC1 /* spaceMain.storyboard in Resources */,
 				E8693B0C1F04F47700772BC1 /* My.storyboard in Resources */,
 				E8693AFD1F04B1E600772BC1 /* WOTOrderCell.xib in Resources */,
 				E8693AFF1F04B1E600772BC1 /* WOTSettingCell.xib in Resources */,
 				E85A85921F0201F30016FCA1 /* Main.storyboard in Resources */,
-				E8954A781F05F9150036A057 /* WOTMainScrollViewCell.xib in Resources */,
 				E8693AFB1F04B1E600772BC1 /* WOTMyOrderCell.xib in Resources */,
 				E8693B041F04B24200772BC1 /* WOTMyEnterPriseCell.xib in Resources */,
 			);
@@ -983,7 +983,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8D89D801F0602FE00FFFFDE /* WOTMain3DCircleCell.m in Sources */,
 				E8D89D7C1F06021B00FFFFDE /* ZYQSphereView.m in Sources */,
 				E8EACF931F035A990015535D /* WOTSettingVC.m in Sources */,
 				E88A54431F03794800AD3F57 /* XXPageTabView.m in Sources */,
@@ -992,7 +991,6 @@
 				E8693AE11F04A96200772BC1 /* WOTStationOrder.m in Sources */,
 				E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */,
 				E8693AF81F04B1E600772BC1 /* WOTMyCell.m in Sources */,
-				E8954A771F05F9150036A057 /* WOTMainScrollViewCell.m in Sources */,
 				E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */,
 				E85A858C1F0201F30016FCA1 /* AppDelegate.m in Sources */,
 				E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */,
@@ -1028,9 +1026,11 @@
 				E85A85891F0201F30016FCA1 /* main.m in Sources */,
 				E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */,
 				E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */,
+				E8D89D881F0637A700FFFFDE /* NewPagedFlowView.m in Sources */,
 				E85A85F41F0202460016FCA1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				E85A85F61F0202460016FCA1 /* MBProgressHUD.m in Sources */,
 				E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */,
+				E8D89D891F0637A700FFFFDE /* PGIndexBannerSubiew.m in Sources */,
 				E8693AFA1F04B1E600772BC1 /* WOTMyOrderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

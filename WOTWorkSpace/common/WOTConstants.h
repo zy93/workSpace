@@ -13,7 +13,7 @@
 
 
 
-#define MainColor [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
+#define MainColor [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
 
 #define NavigationBGColor [UIColor colorWithRed:53.0/255.0 green:128.0/255.0 blue:81.0/255.0 alpha:1.0];
 
@@ -23,7 +23,8 @@
 
 #define White [UIColor whiteColor];
 #define Black [UIColor blackColor];
-
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 //----------------------颜色类---------------------------
 // rgb颜色转换（16进制->10进制）
