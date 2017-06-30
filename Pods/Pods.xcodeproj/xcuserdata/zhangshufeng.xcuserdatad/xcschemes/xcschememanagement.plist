@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-WOTWorkSpace.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WOTWorkSpaceTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WOTWorkSpaceUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDCycleScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1688F4DED035C966748473F0547EF618</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>268B5E430541BBA1476EFE4B48507BB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D5E4D977CA698B0B0C3F6360528C3D9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5806A28C227F61785140883F2CDEBFF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C6D3C8404FD9A2740F0BC98A0B65459</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
