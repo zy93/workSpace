@@ -1,14 +1,14 @@
 //
-//  ServiceProvidersApplicationCell.m
+//  WOTServiceProvidersApplicationCell.m
 //  WOTWorkSpace
 //
 //  Created by 张雨 on 2017/6/30.
 //  Copyright © 2017年 张姝枫. All rights reserved.
 //
 
-#import "ServiceProvidersApplicationCell.h"
+#import "WOTServiceProvidersApplyCell.h"
 
-@implementation ServiceProvidersApplicationCell
+@implementation WOTServiceProvidersApplyCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
