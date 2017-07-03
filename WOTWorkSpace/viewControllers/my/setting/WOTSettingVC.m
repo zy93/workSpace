@@ -31,7 +31,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:NO];
+}
 -(void)loadSubViews{
     self.tableView = [[UITableView alloc]init];
     self.tableView.backgroundColor = CLEARCOLOR;
@@ -90,7 +92,12 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return  15;
+    if (section == 0){
+        return 0;
+    } else {
+        return  15;
+    }
+  
 }
 
 

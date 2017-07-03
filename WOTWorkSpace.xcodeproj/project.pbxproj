@@ -10,6 +10,8 @@
 		0DA2DEE8BB52DB960AA913FE /* libPods-WOTWorkSpaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */; };
 		59BB1AF86E21AC99D91DDCE6 /* libPods-WOTWorkSpace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */; };
 		97D06A114DB42F1134696656 /* libPods-WOTWorkSpaceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC264D6C897C120A10B700D /* libPods-WOTWorkSpaceUITests.a */; };
+		E82D5FB21F07DDCA003EF0AE /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E82D5FB11F07DDCA003EF0AE /* UIView+Extension.m */; };
+		E82D5FB51F07DECE003EF0AE /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E82D5FB41F07DECE003EF0AE /* UIImage+Extension.m */; };
 		E85A85891F0201F30016FCA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85881F0201F30016FCA1 /* main.m */; };
 		E85A858C1F0201F30016FCA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A858B1F0201F30016FCA1 /* AppDelegate.m */; };
 		E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A858E1F0201F30016FCA1 /* ViewController.m */; };
@@ -65,6 +67,8 @@
 		E8D89D7C1F06021B00FFFFDE /* ZYQSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D7A1F06021B00FFFFDE /* ZYQSphereView.m */; };
 		E8D89D881F0637A700FFFFDE /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */; };
 		E8D89D891F0637A700FFFFDE /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D871F0637A700FFFFDE /* PGIndexBannerSubiew.m */; };
+		E8D89D8D1F06481D00FFFFDE /* WOTMyuserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D8B1F06481D00FFFFDE /* WOTMyuserCell.m */; };
+		E8D89D8E1F06481D00FFFFDE /* WOTMyuserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8D89D8C1F06481D00FFFFDE /* WOTMyuserCell.xib */; };
 		E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF721F033D3E0015535D /* UIViewController+Extension.m */; };
 		E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF7D1F0344EC0015535D /* WOTPageMenuParentVC.m */; };
 		E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF8E1F035A990015535D /* WOTOrderLIstVC.m */; };
@@ -97,6 +101,10 @@
 		AFD7419E0440D789E522F1B2 /* Pods-WOTWorkSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.release.xcconfig"; sourceTree = "<group>"; };
 		D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E82D5FB01F07DDCA003EF0AE /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		E82D5FB11F07DDCA003EF0AE /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		E82D5FB31F07DECE003EF0AE /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		E82D5FB41F07DECE003EF0AE /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		E85A85841F0201F30016FCA1 /* WOTWorkSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTWorkSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85A85881F0201F30016FCA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E85A858A1F0201F30016FCA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -213,6 +221,9 @@
 		E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
 		E8D89D861F0637A700FFFFDE /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		E8D89D871F0637A700FFFFDE /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
+		E8D89D8A1F06481D00FFFFDE /* WOTMyuserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyuserCell.h; sourceTree = "<group>"; };
+		E8D89D8B1F06481D00FFFFDE /* WOTMyuserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyuserCell.m; sourceTree = "<group>"; };
+		E8D89D8C1F06481D00FFFFDE /* WOTMyuserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTMyuserCell.xib; sourceTree = "<group>"; };
 		E8EACF711F033D3E0015535D /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		E8EACF721F033D3E0015535D /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		E8EACF7C1F0344EC0015535D /* WOTPageMenuParentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPageMenuParentVC.h; sourceTree = "<group>"; };
@@ -552,6 +563,10 @@
 				E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */,
 				E8693ADC1F049C6300772BC1 /* UItableView+Extension.h */,
 				E8693ADD1F049C6300772BC1 /* UItableView+Extension.m */,
+				E82D5FB01F07DDCA003EF0AE /* UIView+Extension.h */,
+				E82D5FB11F07DDCA003EF0AE /* UIView+Extension.m */,
+				E82D5FB31F07DECE003EF0AE /* UIImage+Extension.h */,
+				E82D5FB41F07DECE003EF0AE /* UIImage+Extension.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -604,6 +619,9 @@
 				E8693B001F04B24200772BC1 /* WOTMyEnterPriseCell.h */,
 				E8693B011F04B24200772BC1 /* WOTMyEnterPriseCell.m */,
 				E8693B021F04B24200772BC1 /* WOTMyEnterPriseCell.xib */,
+				E8D89D8A1F06481D00FFFFDE /* WOTMyuserCell.h */,
+				E8D89D8B1F06481D00FFFFDE /* WOTMyuserCell.m */,
+				E8D89D8C1F06481D00FFFFDE /* WOTMyuserCell.xib */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -819,6 +837,7 @@
 				E8693AFD1F04B1E600772BC1 /* WOTOrderCell.xib in Resources */,
 				E8693AFF1F04B1E600772BC1 /* WOTSettingCell.xib in Resources */,
 				E85A85921F0201F30016FCA1 /* Main.storyboard in Resources */,
+				E8D89D8E1F06481D00FFFFDE /* WOTMyuserCell.xib in Resources */,
 				E8693AFB1F04B1E600772BC1 /* WOTMyOrderCell.xib in Resources */,
 				E8693B041F04B24200772BC1 /* WOTMyEnterPriseCell.xib in Resources */,
 			);
@@ -1008,6 +1027,7 @@
 				E8EACF961F035ABA0015535D /* WOTOrderLIstBaseVC.m in Sources */,
 				E85A85F21F0202460016FCA1 /* MASViewConstraint.m in Sources */,
 				E88A54421F03794800AD3F57 /* XXPageTabItemLable.m in Sources */,
+				E8D89D8D1F06481D00FFFFDE /* WOTMyuserCell.m in Sources */,
 				E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */,
 				E8693B1D1F05143800772BC1 /* WOTServiceNaviController.m in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
@@ -1021,6 +1041,7 @@
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
 				E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */,
+				E82D5FB21F07DDCA003EF0AE /* UIView+Extension.m in Sources */,
 				E8693ADE1F049C6300772BC1 /* UItableView+Extension.m in Sources */,
 				E8693B1A1F05100800772BC1 /* WOTSocialcontactNaviController.m in Sources */,
 				E85A85891F0201F30016FCA1 /* main.m in Sources */,
@@ -1028,6 +1049,7 @@
 				E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */,
 				E8D89D881F0637A700FFFFDE /* NewPagedFlowView.m in Sources */,
 				E85A85F41F0202460016FCA1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				E82D5FB51F07DECE003EF0AE /* UIImage+Extension.m in Sources */,
 				E85A85F61F0202460016FCA1 /* MBProgressHUD.m in Sources */,
 				E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */,
 				E8D89D891F0637A700FFFFDE /* PGIndexBannerSubiew.m in Sources */,

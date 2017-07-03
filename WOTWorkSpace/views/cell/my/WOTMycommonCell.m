@@ -25,20 +25,17 @@
     _nameLabel = [[UILabel alloc]init];
     _nameLabel.font = [UIFont systemFontOfSize:15];
     _nextImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backAcssory"]];
+    _cellImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"enterprise"]];
     _lineview = [[UIView alloc]init];
     _lineview.backgroundColor = LineBGColor;
     [self.contentView addSubview:_lineview];
     [self.contentView addSubview:_nameLabel];
     [self.contentView addSubview:_nextImageView];
+    [self.contentView addSubview:_cellImage];
     
 }
 -(void)layoutSubviews{
-    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *maker){
-        
-        maker.left.mas_equalTo(self.contentView.mas_left).offset(10);
-        maker.centerY.mas_equalTo(self.contentView);
-    }];
-    
+  
     
     [_nextImageView mas_makeConstraints:^(MASConstraintMaker *maker){
         
@@ -54,6 +51,22 @@
         maker.bottom.mas_equalTo(self.contentView);
         maker.left.mas_equalTo(self.contentView);
         maker.right.mas_equalTo(self.contentView);
+    }];
+    
+    
+    [_cellImage mas_makeConstraints:^(MASConstraintMaker *maker){
+        
+        maker.height.mas_equalTo(25);
+        maker.width.mas_equalTo(25);
+        maker.left.mas_equalTo(self.contentView).offset(20);
+        maker.centerY.mas_equalTo(self.contentView.mas_centerY);
+    }];
+    
+    
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *maker){
+        
+        maker.left.mas_equalTo(self.cellImage.mas_right).offset(10);
+        maker.centerY.mas_equalTo(self.contentView);
     }];
     
     

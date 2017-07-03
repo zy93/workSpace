@@ -8,12 +8,11 @@
 
 #import "WOTMyVC.h"
 #import "header.h"
-
-#import "WOTMyCell.h"
+#import "WOTMyuserCell.h"
 #import "WOTMycommonCell.h"
 #import "WOTMyOrderCell.h"
 
-@interface WOTMyVC ()<UITableViewDataSource,UITableViewDelegate,WOTOrderCellDelegate>
+@interface WOTMyVC ()<UITableViewDataSource,UITableViewDelegate,WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @end
 
@@ -22,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = White;
-    [self configNaviItem];
+   
     [self loadSubViews];
     
     // Do any additional setup after loading the view.
@@ -39,15 +38,16 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerClass:[WOTMyCell class] forCellReuseIdentifier:@"myCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
      [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
-    self.navigationItem.title = @"我";
+    
     
     [self.view addSubview:_tableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
+    [self.navigationController.navigationBar setHidden:YES];
     
 }
 -(void)viewWillLayoutSubviews{
@@ -79,13 +79,13 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
-            return 100;
+            return 240;
             break;
         case 1:
-            return 100;
+            return 125;
             break;
         case 2:
-            return 80;
+            return 50;
             break;
         default:
             break;
@@ -95,7 +95,11 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return  15;
+    if (section == 0){
+        return 0;
+    } else {
+        return 10;
+    }
 }
 
 
@@ -104,10 +108,14 @@
     UITableViewCell *commoncell;
     
     if (indexPath.section == 0) {
-        WOTMyCell *mycell = [_tableView dequeueReusableCellWithIdentifier:@"myCellID" forIndexPath:indexPath];
-        mycell.selectionStyle = UITableViewCellSelectionStyleNone;
-        mycell.accountName.text = @"xxx";
-        mycell.signature.text = @"如果你不能简洁的表达你的想法，只能说明你不够了解他";
+        WOTMyuserCell *mycell = [_tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
+        mycell.userName.text = @"张小宝";
+        mycell.constellation.text = @"狮子座";
+        mycell.signature.text = @"如果你不能很好的表达你的想法，说明你还不够了解啊";
+        mycell.headerImage.image = [UIImage imageNamed:@"defaultHeaderVIew"];
+        mycell.bgImage.image = [UIImage imageNamed:@"mybgimage"];
+        mycell.mycelldelegate = self;
+    
         commoncell = mycell;
     } else if (indexPath.section == 1){
         WOTMyOrderCell *ordercell = [tableView dequeueReusableCellWithIdentifier:@"myorderCellID" forIndexPath:indexPath];
@@ -116,7 +124,9 @@
     } else {
         WOTMycommonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycommonCellID" forIndexPath:indexPath];
         NSArray *titlearray = [NSArray arrayWithObjects:@"我的企业",@"我的活动",@"我的历史",nil];
+        NSArray *imageNameArray = [NSArray arrayWithObjects:@"enterprise",@"activities",@"history",nil];
         cell.nameLabel.text = titlearray[indexPath.row];
+        cell.cellImage.image = [UIImage imageNamed:imageNameArray[indexPath.row]];
         commoncell = cell;
     }
     
@@ -145,19 +155,7 @@
             break;
     }
 }
--(void)configNaviItem{
-    UIButton *settingbtn = [[UIButton alloc]init];
-    [settingbtn setFrame:CGRectMake(0,0,25,25)];
-    [settingbtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
-    [settingbtn addTarget:self action:@selector(popToSettingVC) forControlEvents: UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:settingbtn];
-    
-}
--(void)popToSettingVC{
-    _settingvc = [[WOTSettingVC alloc]init];
 
-    [self.navigationController pushViewController:_settingvc animated:YES];
-};
 
 /**订单celldelegate*/
 -(void)showAllOrderList{
@@ -176,6 +174,12 @@
     mettingroom_ordervc.vctype = WOTPageMenuVCTypeMetting;
     [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
 
+}
+
+-(void)showSettingVC{
+    _settingvc = [[WOTSettingVC alloc]init];
+    
+    [self.navigationController pushViewController:_settingvc animated:YES];
 }
 /*
 #pragma mark - Navigation

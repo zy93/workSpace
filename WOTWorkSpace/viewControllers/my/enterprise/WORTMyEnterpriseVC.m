@@ -27,7 +27,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:NO];
+}
 -(void)configNavi{
     [self configNaviBackItem];
     self.navigationItem.title = @"我的企业";
