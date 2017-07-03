@@ -39,11 +39,17 @@
     _signature.font = [UIFont systemFontOfSize:15];
     _nextImageView = [[UIImageView alloc]init];
     _nextImageView.image = [UIImage imageNamed:@"backAcssory"];
+    
+    _settingBtn = [[UIButton alloc]init];
+    
+    [_settingBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+    [_settingBtn addTarget:self action:@selector(popToSettingVC) forControlEvents: UIControlEventTouchUpInside];
+    
     [self.contentView addSubview:_headerImageView];
     [self.contentView addSubview:_accountName];
     [self.contentView addSubview:_signature];
     [self.contentView addSubview:_nextImageView];
-    
+    [self.contentView addSubview:_settingBtn];
 }
 
 -(void)layoutSubviews{
@@ -73,5 +79,17 @@
         maker.width.mas_equalTo(20);
     }];
     
+    [_nextImageView mas_makeConstraints:^(MASConstraintMaker *maker){
+        
+        maker.trailingMargin.mas_equalTo(self.contentView).offset(-8);
+        maker.centerY.mas_equalTo(self.contentView);
+        maker.height.mas_equalTo(15);
+        maker.width.mas_equalTo(20);
+    }];
+    
+    
+    
 }
+
+
 @end

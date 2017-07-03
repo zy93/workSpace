@@ -38,6 +38,8 @@
 #import "UIViewController+Extension.h"
 #import "UItableView+Extension.h"
 #import "WOTConfigThemeUitls.h"
+#import "UIView+Extension.h"
+#import "UIImage+Extension.h"
 
 
 //contents

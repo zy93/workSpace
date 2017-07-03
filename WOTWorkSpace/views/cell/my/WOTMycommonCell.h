@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UIImageView *nextImageView;
 @property(nonatomic,strong)UIView *lineview;
+@property(nonatomic,strong)UIImageView *cellImage;
 @end

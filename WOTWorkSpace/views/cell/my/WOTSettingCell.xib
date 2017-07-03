@@ -48,7 +48,7 @@
                         <rect key="frame" x="0.0" y="8" width="320" height="38"/>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <state key="normal" title="退出">
-                            <color key="titleColor" red="1" green="0.59548141748649486" blue="0.067882865854429375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="titleColor" red="0.8606715202331543" green="0.0" blue="0.18043883144855499" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                         <connections>
                             <action selector="signOutAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VPv-o2-eHL"/>
