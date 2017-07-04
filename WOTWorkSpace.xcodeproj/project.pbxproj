@@ -277,41 +277,6 @@
 		E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTConfigThemeUitls.m; sourceTree = "<group>"; };
 		E88A54471F03A64B00AD3F57 /* WOTAllOrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAllOrderListVC.h; sourceTree = "<group>"; };
 		E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAllOrderListVC.m; sourceTree = "<group>"; };
-		E88A7F411F09D28800A670E7 /* WOTPersionalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPersionalInformation.h; sourceTree = "<group>"; };
-		E88A7F421F09D28800A670E7 /* WOTPersionalInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPersionalInformation.m; sourceTree = "<group>"; };
-		E88A7F441F09D73700A670E7 /* WOTPersionalInformationCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPersionalInformationCommonCell.h; sourceTree = "<group>"; };
-		E88A7F451F09D73700A670E7 /* WOTPersionalInformationCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPersionalInformationCommonCell.m; sourceTree = "<group>"; };
-		E88A7F461F09D73700A670E7 /* WOTPersionalInformationCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTPersionalInformationCommonCell.xib; sourceTree = "<group>"; };
-		E88A7F491F09DD5500A670E7 /* WOTPersionalInformationTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPersionalInformationTagCell.h; sourceTree = "<group>"; };
-		E88A7F4A1F09DD5500A670E7 /* WOTPersionalInformationTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPersionalInformationTagCell.m; sourceTree = "<group>"; };
-		E88A7F4B1F09DD5500A670E7 /* WOTPersionalInformationTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTPersionalInformationTagCell.xib; sourceTree = "<group>"; };
-		E88A7F4E1F09E7CD00A670E7 /* WOTworkSpaceLIstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpaceLIstVC.h; sourceTree = "<group>"; };
-		E88A7F4F1F09E7CD00A670E7 /* WOTworkSpaceLIstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpaceLIstVC.m; sourceTree = "<group>"; };
-		E88A7F511F09E7E400A670E7 /* WOTworkSpaceDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpaceDetailVC.h; sourceTree = "<group>"; };
-		E88A7F521F09E7E400A670E7 /* WOTworkSpaceDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpaceDetailVC.m; sourceTree = "<group>"; };
-		E88A7F541F09EB6000A670E7 /* WOTworkSpaceSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpaceSearchCell.h; sourceTree = "<group>"; };
-		E88A7F551F09EB6000A670E7 /* WOTworkSpaceSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpaceSearchCell.m; sourceTree = "<group>"; };
-		E88A7F561F09EB6000A670E7 /* WOTworkSpaceSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTworkSpaceSearchCell.xib; sourceTree = "<group>"; };
-		E88A7F591F09EC9800A670E7 /* WOTworkSpaceScrollVIewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpaceScrollVIewCell.h; sourceTree = "<group>"; };
-		E88A7F5A1F09EC9800A670E7 /* WOTworkSpaceScrollVIewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpaceScrollVIewCell.m; sourceTree = "<group>"; };
-		E88A7F5C1F09ECE900A670E7 /* WOTworkSpacenearCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpacenearCell.h; sourceTree = "<group>"; };
-		E88A7F5D1F09ECE900A670E7 /* WOTworkSpacenearCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpacenearCell.m; sourceTree = "<group>"; };
-		E88A7F5F1F09ED2000A670E7 /* WOTworkSpaceCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTworkSpaceCommonCell.h; sourceTree = "<group>"; };
-		E88A7F601F09ED2000A670E7 /* WOTworkSpaceCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTworkSpaceCommonCell.m; sourceTree = "<group>"; };
-		E88A7F611F09ED2000A670E7 /* WOTworkSpaceCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTworkSpaceCommonCell.xib; sourceTree = "<group>"; };
-		E88A7F641F0A091000A670E7 /* WOTImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTImageCollectionViewCell.h; sourceTree = "<group>"; };
-		E88A7F651F0A091000A670E7 /* WOTImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTImageCollectionViewCell.m; sourceTree = "<group>"; };
-		E88A7F661F0A091000A670E7 /* WOTImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		E88A7F691F0A15E300A670E7 /* WOTMainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMainNavigationController.h; sourceTree = "<group>"; };
-		E88A7F6A1F0A15E300A670E7 /* WOTMainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMainNavigationController.m; sourceTree = "<group>"; };
-		E88A7F6C1F0A226900A670E7 /* WOTSpaceCityScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSpaceCityScrollView.h; sourceTree = "<group>"; };
-		E88A7F6D1F0A226900A670E7 /* WOTSpaceCityScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceCityScrollView.m; sourceTree = "<group>"; };
-		E88A7F6F1F0A22B700A670E7 /* WOTSpaceCityScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTSpaceCityScrollView.xib; sourceTree = "<group>"; };
-		E88A7F711F0A243800A670E7 /* WOTSpaceCityCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSpaceCityCollectionCell.h; sourceTree = "<group>"; };
-		E88A7F721F0A243800A670E7 /* WOTSpaceCityCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceCityCollectionCell.m; sourceTree = "<group>"; };
-		E88A7F731F0A243800A670E7 /* WOTSpaceCityCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTSpaceCityCollectionCell.xib; sourceTree = "<group>"; };
-		E88A7F761F0A37CC00A670E7 /* WOTSingtleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSingtleton.h; sourceTree = "<group>"; };
-		E88A7F771F0A37CC00A670E7 /* WOTSingtleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSingtleton.m; sourceTree = "<group>"; };
 		E8D89D721F06021B00FFFFDE /* PFAxisDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAxisDirection.h; sourceTree = "<group>"; };
 		E8D89D731F06021B00FFFFDE /* PFGoldenSectionSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGoldenSectionSpiral.h; sourceTree = "<group>"; };
 		E8D89D741F06021B00FFFFDE /* PFGoldenSectionSpiral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGoldenSectionSpiral.m; sourceTree = "<group>"; };
@@ -475,6 +440,7 @@
 				E85A85BE1F0202450016FCA1 /* header.h */,
 				E85A86011F0206730016FCA1 /* WOTConstants.h */,
 				E8EACF8B1F034C9E0015535D /* WOTEnums.h */,
+				2AF78CE11F09F8F900F7B56D /* ServiceCategory.plist */,
 				E88A7F761F0A37CC00A670E7 /* WOTSingtleton.h */,
 				E88A7F771F0A37CC00A670E7 /* WOTSingtleton.m */,
 			);
@@ -1014,6 +980,7 @@
 				E88A7F631F09ED2000A670E7 /* WOTworkSpaceCommonCell.xib in Resources */,
 				E88A7F481F09D73700A670E7 /* WOTPersionalInformationCommonCell.xib in Resources */,
 				E8693AFF1F04B1E600772BC1 /* WOTSettingCell.xib in Resources */,
+				2AF83EE81F05FB92000AE733 /* Service.storyboard in Resources */,
 				E88A7F681F0A091000A670E7 /* WOTImageCollectionViewCell.xib in Resources */,
 				E85A85921F0201F30016FCA1 /* Main.storyboard in Resources */,
 				E8D89D8E1F06481D00FFFFDE /* WOTMyuserCell.xib in Resources */,
@@ -1229,6 +1196,7 @@
 				E8693B1D1F05143800772BC1 /* WOTServiceNaviController.m in Sources */,
 				E88A7F571F09EB6000A670E7 /* WOTworkSpaceSearchCell.m in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
+				2AF78CFA1F0A424300F7B56D /* WOTVisitorsAppointmentCell.m in Sources */,
 				E88A7F741F0A243800A670E7 /* WOTSpaceCityCollectionCell.m in Sources */,
 				E8693AF91F04B1E600772BC1 /* WOTMycommonCell.m in Sources */,
 				E85A85F71F0202460016FCA1 /* MBProgressHUD+Add.m in Sources */,
