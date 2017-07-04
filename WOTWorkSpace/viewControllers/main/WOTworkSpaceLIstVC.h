@@ -10,4 +10,6 @@
 
 @interface WOTworkSpaceLIstVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableVIew;
+
 @end

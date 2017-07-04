@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTworkSpaceCommonCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *workSpaceName;
+
+@property (weak, nonatomic) IBOutlet UILabel *workSpaceLocation;
+@property (weak, nonatomic) IBOutlet UILabel *stationNum;
+
+@property (weak, nonatomic) IBOutlet UIImageView *workSpaceImage;
+
 
 @end

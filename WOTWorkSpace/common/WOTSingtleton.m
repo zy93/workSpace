@@ -9,5 +9,19 @@
 #import "WOTSingtleton.h"
 
 @implementation WOTSingtleton
++(instancetype)shared{
+    static WOTSingtleton *instance;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        instance = [[self alloc]init];
+    });
+    return  instance;
+}
 
+- (NSMutableArray *)_spaceCityArray {
+    if (_spaceCityArray == nil) {
+        _spaceCityArray = [NSMutableArray array];
+    }
+    return _spaceCityArray;
+}
 @end

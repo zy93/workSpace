@@ -7,11 +7,18 @@
 //
 
 #import "WOTworkSpaceScrollVIewCell.h"
+#import "WOTImageCollectionViewCell.h"
+@interface WOTworkSpaceScrollVIewCell()<UICollectionViewDataSource,UICollectionViewDelegate>
 
+@end
 @implementation WOTworkSpaceScrollVIewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    
+    [_collectionView registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
     // Initialization code
 }
 
@@ -19,6 +26,61 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+
+
+#pragma mark -CollectionView datasource
+//section
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+//item个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [WOTSingtleton shared].spaceCityArray.count;
+    
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //重用cell
+    WOTImageCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
+   
+    cell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
+    return cell;
+    
+}
+
+//定义每个UICollectionViewCell 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(self.collectionView.frame.size.width/3.5, self.collectionView.frame.size.height-40);
+}
+//定义每个Section 的 margin
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10, 10, 10, 10);//分别为上、左、下、右
+}
+
+//每个item之间的间距
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 100;
+//}
+//选择了某个cell
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor greenColor]];
+}
+//取消选择了某个cell
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor redColor]];
 }
 
 @end

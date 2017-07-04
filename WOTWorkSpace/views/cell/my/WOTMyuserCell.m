@@ -27,5 +27,10 @@
         [_mycelldelegate showSettingVC];
     }
 }
+- (IBAction)goToPersionalInformationVC:(id)sender {
+    if (_mycelldelegate) {
+        [_mycelldelegate showPersonalInformationVC];
+    }
+}
 
 @end

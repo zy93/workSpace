@@ -10,4 +10,6 @@
 
 @interface WOTSpaceCityCollectionCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *cityName;
+
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTworkSpaceScrollVIewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

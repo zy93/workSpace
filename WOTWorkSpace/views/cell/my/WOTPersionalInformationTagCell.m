@@ -12,9 +12,32 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+   
     // Initialization code
 }
 
+-(void)loadtagsBtn{
+    CGFloat leading = 20;
+    CGFloat top  = 0;
+    
+    for (NSString *title in _tagLabelArray) {
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:15];
+        label.frame = CGRectMake(leading, top,[title widthWithFont:[UIFont systemFontOfSize:15]]+15, 30);
+        label.text = title;
+        label.textAlignment = NSTextAlignmentCenter;
+        [label setRadiuWithCorners:UIRectCornerAllCorners radiu:6];
+        label.layer.borderColor = [UIColor blueColor].CGColor;
+        label.layer.borderWidth = 1;
+        [self.tagsVIew addSubview:label];
+        leading += label.frame.size.width+10;
+        
+        if (leading>=SCREEN_WIDTH) {
+             top += label.frame.size.height;
+        }
+       
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

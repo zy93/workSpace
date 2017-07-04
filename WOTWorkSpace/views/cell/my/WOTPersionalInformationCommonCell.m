@@ -7,11 +7,12 @@
 //
 
 #import "WOTPersionalInformationCommonCell.h"
-
+#import "UIView+Extension.h"
 @implementation WOTPersionalInformationCommonCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [_valueImage setRadiuWithCorners:UIRectCornerAllCorners radiu:_valueImage.frame.size.width/2];
     // Initialization code
 }
 

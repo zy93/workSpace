@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface WOTSingtleton : NSObject
-
++(instancetype)shared;
+@property(nonatomic,strong)NSMutableArray *spaceCityArray;
 @end

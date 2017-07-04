@@ -65,12 +65,22 @@
                             <constraint firstAttribute="height" constant="20" id="hff-pD-rIL"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-Ch-7As">
+                        <rect key="frame" x="0.0" y="43" width="434" height="218.5"/>
+                        <connections>
+                            <action selector="goToPersionalInformationVC:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AAd-8Y-yZz"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="k1k-Rh-2hu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="0VV-Vd-N3I"/>
                     <constraint firstAttribute="trailingMargin" secondItem="y66-8c-YCX" secondAttribute="trailing" constant="60" id="6MD-Oi-2EN"/>
+                    <constraint firstAttribute="bottom" secondItem="ogY-Ch-7As" secondAttribute="bottom" id="F6R-gd-Zav"/>
                     <constraint firstItem="Ivb-Z9-PCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Fyp-EP-4jI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="k1k-Rh-2hu" secondAttribute="trailing" constant="10" id="Hme-pd-YrP"/>
+                    <constraint firstAttribute="trailing" secondItem="ogY-Ch-7As" secondAttribute="trailing" id="IIK-qi-N94"/>
+                    <constraint firstItem="ogY-Ch-7As" firstAttribute="top" secondItem="k1k-Rh-2hu" secondAttribute="bottom" id="NA8-Js-amd"/>
+                    <constraint firstItem="ogY-Ch-7As" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ngu-I6-XPL"/>
                     <constraint firstItem="CU5-w4-RND" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qo9-0I-Rpc"/>
                     <constraint firstItem="hC7-wQ-kfb" firstAttribute="centerY" secondItem="5jx-6D-PkN" secondAttribute="centerY" id="Qt5-ou-Nn2"/>
                     <constraint firstItem="5jx-6D-PkN" firstAttribute="leading" secondItem="hC7-wQ-kfb" secondAttribute="trailing" constant="20" id="SHQ-de-l1c"/>

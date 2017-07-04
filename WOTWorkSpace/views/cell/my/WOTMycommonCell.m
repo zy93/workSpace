@@ -7,7 +7,7 @@
 //
 
 #import "WOTMycommonCell.h"
-#import "header.h"
+
 #import "WOTConstants.h"
 @implementation WOTMycommonCell
 

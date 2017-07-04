@@ -7,13 +7,14 @@
 //
 
 #import "WOTMyVC.h"
-#import "header.h"
+
 #import "WOTMyuserCell.h"
 #import "WOTMycommonCell.h"
 #import "WOTMyOrderCell.h"
 
 @interface WOTMyVC ()<UITableViewDataSource,UITableViewDelegate,WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
+@property(nonatomic,strong)WOTPersionalInformation *persionalVC;
 @end
 
 @implementation WOTMyVC
@@ -180,6 +181,13 @@
     _settingvc = [[WOTSettingVC alloc]init];
     
     [self.navigationController pushViewController:_settingvc animated:YES];
+}
+-(void)showPersonalInformationVC
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
+    
+    _persionalVC = [storyboard instantiateViewControllerWithIdentifier:@"WOTPersionalInformationID"];
+    [self.navigationController pushViewController:_persionalVC animated:YES];
 }
 /*
 #pragma mark - Navigation

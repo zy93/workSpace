@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WOTMainNavigationController : UINavigationController
+@interface WOTMainNavigationController : WOTBaseNavigationController
 
 @end

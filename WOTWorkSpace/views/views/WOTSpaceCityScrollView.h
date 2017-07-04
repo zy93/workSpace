@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTSpaceCityScrollView : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionVIew;
+
 
 @end

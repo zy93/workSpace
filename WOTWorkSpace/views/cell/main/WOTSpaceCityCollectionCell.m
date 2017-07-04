@@ -12,7 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [_cityName setDefaultRadiuWithCorners:UIRectCornerAllCorners];
     // Initialization code
+}
+- (IBAction)changeCity:(id)sender {
 }
 
 @end

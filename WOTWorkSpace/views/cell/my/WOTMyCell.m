@@ -7,7 +7,7 @@
 //
 
 #import "WOTMyCell.h"
-#import "header.h"
+
 @implementation WOTMyCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
