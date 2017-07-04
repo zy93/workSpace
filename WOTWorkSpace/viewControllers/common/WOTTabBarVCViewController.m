@@ -41,7 +41,7 @@
     WOTSocialcontactNaviController *socialnav = [[WOTSocialcontactNaviController alloc]initWithRootViewController:socialvc];
     socialnav.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"社交" image:[UIImage imageNamed:@"socialcontact"] selectedImage:[UIImage imageNamed:@"socialcontact_select"]];
     
-    WOTServiceVC *servicevc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTMainVCID"];
+    WOTServiceVC *servicevc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTServiceVC"];
     servicevc.navigationItem.title = @"众创空间移动客户端";
     WOTServiceNaviController *servicnav = [[WOTServiceNaviController alloc]initWithRootViewController:servicevc];
     servicnav.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"服务" image:[UIImage imageNamed:@"service"] selectedImage:[UIImage imageNamed:@"service_select"]];

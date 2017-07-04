@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,8 +62,8 @@
                             <constraint firstItem="SA0-nD-QwH" firstAttribute="top" secondItem="cWM-Zc-bG7" secondAttribute="top" constant="74" id="8n1-au-AuF"/>
                             <constraint firstItem="SA0-nD-QwH" firstAttribute="leading" secondItem="TsL-TY-SjN" secondAttribute="trailing" id="SfQ-mn-izo"/>
                             <constraint firstItem="SA0-nD-QwH" firstAttribute="centerX" secondItem="cWM-Zc-bG7" secondAttribute="centerX" id="UJa-g6-uuU"/>
+                            <constraint firstItem="0HK-FG-7qt" firstAttribute="top" secondItem="G6s-2t-8JZ" secondAttribute="bottom" id="Uzh-wn-zw4"/>
                             <constraint firstItem="TsL-TY-SjN" firstAttribute="leading" secondItem="cWM-Zc-bG7" secondAttribute="leading" id="ZhL-4e-Cy5"/>
-                            <constraint firstItem="0HK-FG-7qt" firstAttribute="top" secondItem="G6s-2t-8JZ" secondAttribute="bottom" id="cjn-II-m1X"/>
                             <constraint firstItem="GmK-2I-zMa" firstAttribute="leading" secondItem="SA0-nD-QwH" secondAttribute="trailing" id="h79-cp-bYa"/>
                             <constraint firstItem="GmK-2I-zMa" firstAttribute="top" secondItem="cWM-Zc-bG7" secondAttribute="top" constant="64" id="h7H-sy-bHF"/>
                             <constraint firstAttribute="trailing" secondItem="GmK-2I-zMa" secondAttribute="trailing" id="h9z-vU-nWN"/>
