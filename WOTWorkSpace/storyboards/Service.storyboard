@@ -71,47 +71,59 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGo-0d-bQt">
-                                                            <rect key="frame" x="104" y="15.5" width="84" height="74.5"/>
+                                                            <rect key="frame" x="104" y="15.5" width="83.5" height="74.5"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <inset key="titleEdgeInsets" minX="-35" minY="30" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="投融资" image="investment_icon">
+                                                            <state key="normal" title="人力资源" image="HR_icon">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="clickGetServiceBtn:" destination="bq2-t6-AwD" eventType="touchUpInside" id="MqZ-me-xKn"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oto-ye-4yK">
-                                                            <rect key="frame" x="188" y="15.5" width="83.5" height="74.5"/>
+                                                            <rect key="frame" x="187.5" y="15" width="84" height="74.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <inset key="titleEdgeInsets" minX="-35" minY="30" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="投融资" image="investment_icon">
+                                                            <state key="normal" title="法律" image="law_icon">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="clickGetServiceBtn:" destination="bq2-t6-AwD" eventType="touchUpInside" id="IpF-WN-GWi"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88Q-nM-hD2">
                                                             <rect key="frame" x="271.5" y="15.5" width="83.5" height="74.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <inset key="titleEdgeInsets" minX="-35" minY="30" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="投融资" image="investment_icon">
+                                                            <state key="normal" title="IT" image="IT_icon">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="clickGetServiceBtn:" destination="bq2-t6-AwD" eventType="touchUpInside" id="1gs-v4-sKX"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLt-lk-uLd">
                                                             <rect key="frame" x="20" y="15" width="84" height="74.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <inset key="titleEdgeInsets" minX="-35" minY="30" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="投融资" image="investment_icon">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="clickGetServiceBtn:" destination="bq2-t6-AwD" eventType="touchUpInside" id="Lg8-Iz-TMZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -133,6 +145,40 @@
                                                         <constraint firstItem="Oto-ye-4yK" firstAttribute="centerY" secondItem="TLt-lk-uLd" secondAttribute="centerY" id="w67-Gm-i1r"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTServiceCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTServiceCell" id="nTL-3z-NbT" customClass="WOTServiceCell">
+                                                <rect key="frame" x="0.0" y="177" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nTL-3z-NbT" id="vCT-HP-9nN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visitors_icon" translatesAutoresizingMaskIntoConstraints="NO" id="keQ-ue-udx">
+                                                            <rect key="frame" x="20" y="11.5" width="19" height="21"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backAcssory" translatesAutoresizingMaskIntoConstraints="NO" id="WI7-AA-aPs">
+                                                            <rect key="frame" x="348" y="15.5" width="7" height="13"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-sD-sdp">
+                                                            <rect key="frame" x="54" y="11.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="WI7-AA-aPs" secondAttribute="trailing" constant="20" id="CQQ-on-l5s"/>
+                                                        <constraint firstItem="9Wv-sD-sdp" firstAttribute="centerY" secondItem="vCT-HP-9nN" secondAttribute="centerY" id="O75-15-WFg"/>
+                                                        <constraint firstItem="WI7-AA-aPs" firstAttribute="centerY" secondItem="vCT-HP-9nN" secondAttribute="centerY" id="iFC-LG-snp"/>
+                                                        <constraint firstItem="9Wv-sD-sdp" firstAttribute="leading" secondItem="keQ-ue-udx" secondAttribute="trailing" constant="15" id="m4b-Rt-PY7"/>
+                                                        <constraint firstItem="keQ-ue-udx" firstAttribute="leading" secondItem="vCT-HP-9nN" secondAttribute="leading" constant="20" id="pUK-ez-uHt"/>
+                                                        <constraint firstItem="keQ-ue-udx" firstAttribute="centerY" secondItem="vCT-HP-9nN" secondAttribute="centerY" id="xrD-bl-7XB"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="iconImg" destination="keQ-ue-udx" id="XDo-xj-LMh"/>
+                                                    <outlet property="titleLab" destination="9Wv-sD-sdp" id="f70-9a-bxa"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -202,31 +248,58 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yf-CT-dTZ">
-                                                    <rect key="frame" x="15" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-zS-xlO">
-                                                    <rect key="frame" x="297" y="0.0" width="8" height="43.5"/>
+                                                    <rect key="frame" x="347" y="0.0" width="8" height="43.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_icon" translatesAutoresizingMaskIntoConstraints="NO" id="PVg-pa-RdF">
+                                                    <rect key="frame" x="330" y="12" width="25" height="20"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="8yf-CT-dTZ" firstAttribute="leading" secondItem="0Yj-gr-VhB" secondAttribute="leading" constant="15" id="1f1-qI-Mrj"/>
+                                                <constraint firstItem="8yf-CT-dTZ" firstAttribute="leading" secondItem="0Yj-gr-VhB" secondAttribute="leading" constant="20" id="1f1-qI-Mrj"/>
+                                                <constraint firstAttribute="trailing" secondItem="PVg-pa-RdF" secondAttribute="trailing" constant="20" id="7BF-Ww-h1C"/>
                                                 <constraint firstAttribute="bottom" secondItem="qMX-zS-xlO" secondAttribute="bottom" id="AaI-d0-Iwz"/>
                                                 <constraint firstItem="8yf-CT-dTZ" firstAttribute="centerY" secondItem="0Yj-gr-VhB" secondAttribute="centerY" id="eKd-yW-6Xb"/>
-                                                <constraint firstAttribute="trailing" secondItem="qMX-zS-xlO" secondAttribute="trailing" constant="15" id="pxt-3X-ZdU"/>
+                                                <constraint firstItem="PVg-pa-RdF" firstAttribute="centerY" secondItem="0Yj-gr-VhB" secondAttribute="centerY" id="eoZ-TM-nzI"/>
+                                                <constraint firstAttribute="trailing" secondItem="qMX-zS-xlO" secondAttribute="trailing" constant="20" id="pxt-3X-ZdU"/>
                                                 <constraint firstItem="qMX-zS-xlO" firstAttribute="centerY" secondItem="0Yj-gr-VhB" secondAttribute="centerY" id="qBg-Nq-G1f"/>
                                                 <constraint firstItem="qMX-zS-xlO" firstAttribute="top" secondItem="0Yj-gr-VhB" secondAttribute="top" id="rrT-gI-JBb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentText" destination="qMX-zS-xlO" id="ke6-XN-DkQ"/>
+                                            <outlet property="iconImg" destination="PVg-pa-RdF" id="2jr-p4-Mi4"/>
                                             <outlet property="titleLab" destination="8yf-CT-dTZ" id="fhQ-l2-B1p"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTSubmitRegisterServiceCell" rowHeight="50" id="OuY-qY-z51" customClass="WOTSubmitRegisterServiceCell">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OuY-qY-z51" id="aZj-wo-29l">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2m-n3-Uur">
+                                                    <rect key="frame" x="170" y="14.5" width="35" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.56502646207809448" blue="0.01527885440737009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="V2m-n3-Uur" firstAttribute="centerX" secondItem="aZj-wo-29l" secondAttribute="centerX" id="0zn-2d-lIg"/>
+                                                <constraint firstItem="V2m-n3-Uur" firstAttribute="centerY" secondItem="aZj-wo-29l" secondAttribute="centerY" id="nDU-bF-ETU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -249,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vvO-82-JZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="104"/>
+            <point key="canvasLocation" x="757.60000000000002" y="103.89805097451276"/>
         </scene>
         <!--Service Providers CategoryVC-->
         <scene sceneID="S1W-9y-pw3">
@@ -676,7 +749,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="HR_icon" width="36" height="45"/>
+        <image name="IT_icon" width="43" height="31"/>
         <image name="backAcssory" width="7" height="13"/>
+        <image name="camera_icon" width="25" height="20"/>
         <image name="investment_icon" width="36" height="35"/>
+        <image name="law_icon" width="46" height="39"/>
+        <image name="visitors_icon" width="19" height="21"/>
     </resources>
 </document>

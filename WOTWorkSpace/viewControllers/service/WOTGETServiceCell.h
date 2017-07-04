@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WOTGETServiceCellDelegate <NSObject>
+
+-(void)optionService:(NSString *)serviceName;
+
+@end
+
+
 @interface WOTGETServiceCell : UITableViewCell
+
+@property (nonatomic, strong) id <WOTGETServiceCellDelegate> mDelegate;
 
 @end

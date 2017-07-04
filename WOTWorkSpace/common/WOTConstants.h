@@ -9,7 +9,19 @@
 #ifndef WOTConstants_h
 #define WOTConstants_h
 
+//----------------------设备类---------------------------
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
 
+#define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)//获取屏幕 宽度
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)//获取屏幕 高度
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 
 
@@ -23,8 +35,6 @@
 
 #define White [UIColor whiteColor];
 #define Black [UIColor blackColor];
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 //----------------------颜色类---------------------------
 // rgb颜色转换（16进制->10进制）
@@ -44,9 +54,6 @@
 #define CLEARCOLOR [UIColor clearColor]
 
 
-//获取屏幕 宽度、高度
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
-#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 
 #endif /* WOTConstants_h */

@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
