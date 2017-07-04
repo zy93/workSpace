@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
 
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 
@@ -102,7 +104,12 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-//    self.scrollviewHeight.constant = CGRectGetHeight(self.autoScrollView.frame)+self.tableView.contentSize.height;
+    int coun = -2; //前两个不算.
+    for (NSArray * arr in tableList) {
+        coun+=arr.count;
+    }
+    self.tableHeight.constant = 105+20+45+(coun * 50);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetHeight(self.autoScrollView.frame)+ self.tableHeight.constant);
 }
 
 #pragma mark  - action
