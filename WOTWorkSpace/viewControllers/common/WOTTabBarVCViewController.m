@@ -31,11 +31,11 @@
     
     WOTMainVC *mainvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTMainVCID"];
     WOTMainNavigationController *mainnav = [[WOTMainNavigationController alloc]initWithRootViewController:mainvc];
-    mainnav.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"main"] selectedImage:[UIImage imageNamed:@"main_select"]];
+    mainvc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"main"] selectedImage:[UIImage imageNamed:@"main_select"]];
    
    
     
-    WOTSocialcontact *socialvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTMainVCID"];
+    WOTSocialcontact *socialvc = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSocialcontactID"];
     socialvc.navigationItem.title = @"众创空间移动客户端";
     
     WOTSocialcontactNaviController *socialnav = [[WOTSocialcontactNaviController alloc]initWithRootViewController:socialvc];

@@ -205,10 +205,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6Ga-9d-eZb" secondAttribute="trailing" id="0xa-gT-JCc"/>
-                            <constraint firstItem="A1h-ML-8c3" firstAttribute="top" secondItem="6Ga-9d-eZb" secondAttribute="bottom" id="U1G-8n-tLV"/>
-                            <constraint firstItem="6Ga-9d-eZb" firstAttribute="leading" secondItem="s7Q-Ig-ajf" secondAttribute="leading" id="WQI-Zw-8Pl"/>
-                            <constraint firstItem="6Ga-9d-eZb" firstAttribute="top" secondItem="s7Q-Ig-ajf" secondAttribute="top" id="Ys1-HQ-5Fl"/>
+                            <constraint firstItem="A1h-ML-8c3" firstAttribute="top" secondItem="6Ga-9d-eZb" secondAttribute="bottom" id="Fvv-g6-nzh"/>
+                            <constraint firstItem="6Ga-9d-eZb" firstAttribute="leading" secondItem="s7Q-Ig-ajf" secondAttribute="leading" id="Hzh-qc-ck5"/>
+                            <constraint firstItem="6Ga-9d-eZb" firstAttribute="top" secondItem="s7Q-Ig-ajf" secondAttribute="top" id="L5S-Wt-P0q"/>
+                            <constraint firstAttribute="trailing" secondItem="6Ga-9d-eZb" secondAttribute="trailing" id="V3O-Gj-fBq"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -243,7 +243,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTworkSpaceScrollVIewCellID" rowHeight="119" id="aCZ-5d-jmM" customClass="WOTworkSpaceScrollVIewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTworkSpaceScrollVIewCellID" rowHeight="119" id="aCZ-5d-jmM" customClass="WOTworkSpaceScrollVIewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aCZ-5d-jmM" id="ynG-1l-e6J">
@@ -292,7 +292,7 @@
                                             <outlet property="collectionView" destination="ZhX-uQ-TWx" id="tz9-0a-YE4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTworkSpacenearCellID" rowHeight="113" id="AqZ-Ku-8jp" customClass="WOTworkSpacenearCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTworkSpacenearCellID" rowHeight="113" id="AqZ-Ku-8jp" customClass="WOTworkSpacenearCell">
                                         <rect key="frame" x="0.0" y="147" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AqZ-Ku-8jp" id="Hvj-rs-KL6">
@@ -583,7 +583,7 @@
     <resources>
         <image name="Yosemite01" width="898" height="598"/>
         <image name="Yosemite02" width="3400" height="1280"/>
-        <image name="backAcssory" width="16" height="16"/>
+        <image name="backAcssory" width="7" height="13"/>
         <image name="ballBg" width="378" height="421"/>
         <image name="mapdefault" width="348" height="110"/>
     </resources>

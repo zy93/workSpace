@@ -18,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self loadTabView];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

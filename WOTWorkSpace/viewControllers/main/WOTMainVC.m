@@ -16,6 +16,7 @@
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 @end
 
@@ -27,7 +28,8 @@
     [self loadAutoScrollView];
     [self configScrollView];
     [self loadSpaceView];
-
+    
+  
     // Do any additional setup after loading the view.
 }
 
@@ -37,7 +39,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:YES];
+//    [self.navigationController.navigationBar setHidden:YES];
      [self.tabBarController.tabBar setHidden:NO];
 }
 
@@ -77,6 +79,8 @@
     [_sphereView timerStart];
     
 }
+
+
 -(void)loadAutoScrollView{
     NSArray *imagesURLStrings = @[
                                   @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
@@ -102,9 +106,13 @@
 }
 
 -(void)viewWillLayoutSubviews{
-     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+60);
+    self.scrollVIew.contentOffset = CGPointMake(0, 10);
+     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+80);
+    
+ 
 }
 
+//3D球点击事件
 -(void)subVClick:(UIButton*)sender{
     NSLog(@"%@",sender.titleLabel.text);
     
@@ -133,19 +141,21 @@
 }
 -(void)configScrollView{
     self.scrollVIew.delegate = self;
-    self.scrollVIew.showsHorizontalScrollIndicator = NO;
-    self.scrollVIew.showsVerticalScrollIndicator = NO;
+    self.scrollVIew.showsHorizontalScrollIndicator = YES;
+    self.scrollVIew.showsVerticalScrollIndicator = YES;
     self.scrollVIew.backgroundColor = MainColor;
     
   
     
 }
 
-//MARK: scrollview delegate
+//MARK: main scrollview delegate
 -(void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{
     
 }
 
+
+//page view UI
 - (void)setupUI {
     
     

@@ -2,11 +2,9 @@
 platform :ios, '9.0'
 
 pod 'SDCycleScrollView','~> 1.64'
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.5.beta'
 target 'WOTWorkSpace' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
 
-  # Pods for WOTWorkSpace
 
   target 'WOTWorkSpaceTests' do
     inherit! :search_paths
