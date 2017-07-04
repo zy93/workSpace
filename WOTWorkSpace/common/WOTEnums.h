@@ -15,4 +15,13 @@ typedef NS_ENUM(NSInteger, WOTPageMenuVCType) {
     WOTPageMenuVCTypeStation,
 };
 
+
+typedef NS_ENUM(NSInteger, WOT3DBallVCType) {
+    WOTEnterprise,
+    WOTOthers,
+
+};
+
+
+
 #endif /* WOTEnums_h */

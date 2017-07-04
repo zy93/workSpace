@@ -13,10 +13,12 @@
 #import "ZYQSphereView.h"
 #import "WOTworkSpaceLIstVC.h"
 #import "WOTworkSpaceDetailVC.h"
+#import "WOTEnterpriseLIstVC.h"
+#import "WOTEnumUtils.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
+
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 @end
 
@@ -28,7 +30,7 @@
     [self loadAutoScrollView];
     [self configScrollView];
     [self loadSpaceView];
-    
+
   
     // Do any additional setup after loading the view.
 }
@@ -39,9 +41,27 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-//    [self.navigationController.navigationBar setHidden:YES];
-     [self.tabBarController.tabBar setHidden:NO];
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:YES];
 }
+
+//必须在页面出现以后，重新设置scrollview 的contengsize
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
+    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+70);
+    
+}
+
+-(void)configScrollView{
+    self.scrollVIew.delegate = self;
+    self.scrollVIew.showsHorizontalScrollIndicator = NO;
+    self.scrollVIew.showsVerticalScrollIndicator = NO;
+    self.scrollVIew.backgroundColor = MainColor;
+    
+
+}
+
 
 #pragma mark --懒加载
 - (NSMutableArray *)imageArray {
@@ -54,14 +74,14 @@
 
 -(void)load3DBallView{
     _sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(15, 0, self.ballView.frame.size.width, self.ballView.frame.size.height)];
-    NSArray *ballTitle = @[@"资讯",@"友邻",@"订工位",@"订会议室",@"开门",@"活动",@"预定场地",@"企业介绍",@"访客",@"精选",@"一键报修",@"意见反馈",@"集市",@"",@"",@"",@"",@"",@""];
+    
     NSMutableArray *views = [[NSMutableArray alloc] init];
-    for (int i = 0; i < ballTitle.count; i++) {
+    for (int i = 0; i < [WOTSingtleton shared].ballTitle.count; i++) {
         UIButton *subV = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80,80)];
         
         [subV setBackgroundColor:UIColorFromRGB(0x86d3ff)];
         subV.alpha = 0.5;
-        [subV setTitle:[NSString stringWithFormat:@"%@",ballTitle[i]] forState:UIControlStateNormal];
+        [subV setTitle:[NSString stringWithFormat:@"%@",[WOTSingtleton shared].ballTitle[i]] forState:UIControlStateNormal];
         [subV setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         subV.layer.masksToBounds=YES;
         subV.layer.cornerRadius=subV.frame.size.width/2;
@@ -105,12 +125,8 @@
     
 }
 
--(void)viewWillLayoutSubviews{
-    self.scrollVIew.contentOffset = CGPointMake(0, 10);
-     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+80);
-    
- 
-}
+
+
 
 //3D球点击事件
 -(void)subVClick:(UIButton*)sender{
@@ -130,6 +146,16 @@
             }
         }];
     }];
+    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:sender.titleLabel.text];
+    switch (balltype) {
+        case WOTEnterprise:
+            
+            break;
+        case WOTOthers:
+            
+        default:
+            break;
+    }
 }
 -(void)loadSpaceView{
     for (int index = 0; index < 5; index++) {
@@ -139,15 +165,7 @@
     
     [self setupUI];
 }
--(void)configScrollView{
-    self.scrollVIew.delegate = self;
-    self.scrollVIew.showsHorizontalScrollIndicator = YES;
-    self.scrollVIew.showsVerticalScrollIndicator = YES;
-    self.scrollVIew.backgroundColor = MainColor;
-    
-  
-    
-}
+
 
 //MARK: main scrollview delegate
 -(void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view{

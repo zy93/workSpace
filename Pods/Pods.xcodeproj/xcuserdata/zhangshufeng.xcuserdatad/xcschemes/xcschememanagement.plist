@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WOTWorkSpace.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2302E330C1F010175717480742C6347C</key>
+		<key>53E7E9D15B3EFBCB998E237DE5EA8695</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9AEE741C5EA3F4DA44197FB298EE8AE4</key>
+		<key>591F91CC821C28EFBD52AE787BDA2CC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B39D1CA5512AF8BA07D7BA9A79834483</key>
+		<key>9E033EDB5EC0819481B0546434FA577B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E8E352E1F542EFF23791347ABF4C6712</key>
+		<key>BC0C6D294DA79D16E854A81E6379D285</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF49C8A3A5B6F6CB2FE0E28EEC63766B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCCAFAF92F41F7ED1FEC01AEC4034279</key>
 		<dict>
 			<key>primary</key>
 			<true/>

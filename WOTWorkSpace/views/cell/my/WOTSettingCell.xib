@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvw-Bu-9Fr">
-                        <rect key="frame" x="10" y="17.5" width="42" height="20.5"/>
+                        <rect key="frame" x="20" y="17.5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.3922436535358429" green="0.39223459362983704" blue="0.3922363817691803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bp6-O8-A1N">
@@ -32,7 +32,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tb3-2y-sve">
                         <rect key="frame" x="0.0" y="54" width="320" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="T1o-1i-ANH"/>
                         </constraints>
@@ -68,7 +68,7 @@
                     <constraint firstItem="8SH-C4-fJa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nfe-Ue-gFl"/>
                     <constraint firstAttribute="bottom" secondItem="Tb3-2y-sve" secondAttribute="bottom" id="pNk-xI-8FR"/>
                     <constraint firstItem="f27-4A-uuf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qU3-oI-obu"/>
-                    <constraint firstItem="lvw-Bu-9Fr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vaF-lo-HoV"/>
+                    <constraint firstItem="lvw-Bu-9Fr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vaF-lo-HoV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

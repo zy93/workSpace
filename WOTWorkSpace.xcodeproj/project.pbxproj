@@ -51,6 +51,9 @@
 		E85032FD1F0B62CE00E79257 /* WOTworkSpaceSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85032F31F0B62CE00E79257 /* WOTworkSpaceSearchCell.xib */; };
 		E85033011F0B62EF00E79257 /* WOTSpaceCityScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E85032FF1F0B62EF00E79257 /* WOTSpaceCityScrollView.m */; };
 		E85033021F0B62EF00E79257 /* WOTSpaceCityScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85033001F0B62EF00E79257 /* WOTSpaceCityScrollView.xib */; };
+		E85033051F0B819A00E79257 /* WOTEnterpriseLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E85033041F0B819A00E79257 /* WOTEnterpriseLIstVC.m */; };
+		E85033081F0B8B2900E79257 /* WOTEnterpirse.m in Sources */ = {isa = PBXBuildFile; fileRef = E85033071F0B8B2900E79257 /* WOTEnterpirse.m */; };
+		E850330B1F0B922000E79257 /* WOTEnumUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E850330A1F0B922000E79257 /* WOTEnumUtils.m */; };
 		E8588CE91F0B27F900951105 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = E8588CE61F0B27F900951105 /* NSString+Category.m */; };
 		E8588CEA1F0B27F900951105 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = E8588CE81F0B27F900951105 /* NSString+URL.m */; };
 		E85A85891F0201F30016FCA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85881F0201F30016FCA1 /* main.m */; };
@@ -235,6 +238,12 @@
 		E85032FE1F0B62EF00E79257 /* WOTSpaceCityScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSpaceCityScrollView.h; sourceTree = "<group>"; };
 		E85032FF1F0B62EF00E79257 /* WOTSpaceCityScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceCityScrollView.m; sourceTree = "<group>"; };
 		E85033001F0B62EF00E79257 /* WOTSpaceCityScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTSpaceCityScrollView.xib; sourceTree = "<group>"; };
+		E85033031F0B819A00E79257 /* WOTEnterpriseLIstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseLIstVC.h; sourceTree = "<group>"; };
+		E85033041F0B819A00E79257 /* WOTEnterpriseLIstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseLIstVC.m; sourceTree = "<group>"; };
+		E85033061F0B8B2900E79257 /* WOTEnterpirse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpirse.h; sourceTree = "<group>"; };
+		E85033071F0B8B2900E79257 /* WOTEnterpirse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpirse.m; sourceTree = "<group>"; };
+		E85033091F0B922000E79257 /* WOTEnumUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnumUtils.h; sourceTree = "<group>"; };
+		E850330A1F0B922000E79257 /* WOTEnumUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnumUtils.m; sourceTree = "<group>"; };
 		E8588CE51F0B27F900951105 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
 		E8588CE61F0B27F900951105 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
 		E8588CE71F0B27F900951105 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
@@ -583,6 +592,8 @@
 			children = (
 				E8693ADF1F04A96200772BC1 /* WOTStationOrder.h */,
 				E8693AE01F04A96200772BC1 /* WOTStationOrder.m */,
+				E85033061F0B8B2900E79257 /* WOTEnterpirse.h */,
+				E85033071F0B8B2900E79257 /* WOTEnterpirse.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -634,6 +645,8 @@
 				E85032CE1F0B476900E79257 /* WOTworkSpaceLIstVC.m */,
 				E8693B0D1F04F90E00772BC1 /* WOTMainVC.h */,
 				E8693B0E1F04F90E00772BC1 /* WOTMainVC.m */,
+				E85033031F0B819A00E79257 /* WOTEnterpriseLIstVC.h */,
+				E85033041F0B819A00E79257 /* WOTEnterpriseLIstVC.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -733,6 +746,8 @@
 				E82D5FB11F07DDCA003EF0AE /* UIView+Extension.m */,
 				E82D5FB31F07DECE003EF0AE /* UIImage+Extension.h */,
 				E82D5FB41F07DECE003EF0AE /* UIImage+Extension.m */,
+				E85033091F0B922000E79257 /* WOTEnumUtils.h */,
+				E850330A1F0B922000E79257 /* WOTEnumUtils.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -1228,6 +1243,7 @@
 			files = (
 				E8D89D7C1F06021B00FFFFDE /* ZYQSphereView.m in Sources */,
 				2AF78D001F0A61FF00F7B56D /* WOTGETServiceCell.m in Sources */,
+				E85033051F0B819A00E79257 /* WOTEnterpriseLIstVC.m in Sources */,
 				2AF78CDD1F09EA1100F7B56D /* WOTRegisterServiceProvidersVC.m in Sources */,
 				E8EACF931F035A990015535D /* WOTSettingVC.m in Sources */,
 				E88A54431F03794800AD3F57 /* XXPageTabView.m in Sources */,
@@ -1235,6 +1251,7 @@
 				E85A85EF1F0202460016FCA1 /* MASConstraintMaker.m in Sources */,
 				E88A7F6B1F0A15E300A670E7 /* (null) in Sources */,
 				E85032E01F0B5A9600E79257 /* WOTPersionalInformationTagCell.m in Sources */,
+				E85033081F0B8B2900E79257 /* WOTEnterpirse.m in Sources */,
 				E85A85F81F0202460016FCA1 /* MBProgressHUDUtil.m in Sources */,
 				E8693AE11F04A96200772BC1 /* WOTStationOrder.m in Sources */,
 				2AF78CF71F0A3EFA00F7B56D /* WOTFeedbackVC.m in Sources */,
@@ -1253,6 +1270,7 @@
 				E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */,
 				E88A7F621F09ED2000A670E7 /* (null) in Sources */,
 				E8693AFC1F04B1E600772BC1 /* WOTOrderCell.m in Sources */,
+				E850330B1F0B922000E79257 /* WOTEnumUtils.m in Sources */,
 				E88A7F471F09D73700A670E7 /* (null) in Sources */,
 				E85A861B1F0252F20016FCA1 /* WOTBaseNavigationController.m in Sources */,
 				2AF78CE81F0A0E3100F7B56D /* WOTServiceProvidersCategoryCell.m in Sources */,
