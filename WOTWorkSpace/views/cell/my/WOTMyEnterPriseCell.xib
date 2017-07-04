@@ -26,10 +26,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backAcssory" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-Nm-PsV">
-                        <rect key="frame" x="295" y="27.5" width="15" height="18"/>
+                        <rect key="frame" x="303" y="30" width="7" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="Daw-81-0Wf"/>
-                            <constraint firstAttribute="height" constant="18" id="bw7-oW-NBA"/>
+                            <constraint firstAttribute="width" constant="7" id="Daw-81-0Wf"/>
+                            <constraint firstAttribute="height" constant="13" id="bw7-oW-NBA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京易联港科技发展有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXm-Hi-NwR">
@@ -75,7 +75,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="backAcssory" width="16" height="16"/>
-        <image name="defaultHeaderVIew" width="20" height="15"/>
+        <image name="backAcssory" width="7" height="13"/>
+        <image name="defaultHeaderVIew" width="50" height="50"/>
     </resources>
 </document>

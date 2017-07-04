@@ -13,7 +13,7 @@
 @required
 
 -(void)showSettingVC;
-
+-(void)showPersonalInformationVC;
 @end
 @interface WOTMyuserCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *userName;

@@ -7,7 +7,7 @@
 //
 
 #import "WOTMyCell.h"
-#import "header.h"
+
 @implementation WOTMyCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -83,8 +83,8 @@
         
         maker.trailingMargin.mas_equalTo(self.contentView).offset(-8);
         maker.centerY.mas_equalTo(self.contentView);
-        maker.height.mas_equalTo(15);
-        maker.width.mas_equalTo(20);
+        maker.height.mas_equalTo(7);
+        maker.width.mas_equalTo(13);
     }];
     
     

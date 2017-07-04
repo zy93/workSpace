@@ -7,7 +7,7 @@
 //
 
 #import "WOTTabBarVCViewController.h"
-#import "header.h"
+
 @interface WOTTabBarVCViewController ()
 
 @end
@@ -30,7 +30,8 @@
     NSMutableArray *vcarray = [[NSMutableArray alloc]init];
     
     WOTMainVC *mainvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTMainVCID"];
-    mainvc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"main"] selectedImage:[UIImage imageNamed:@"main_select"]];
+    WOTMainNavigationController *mainnav = [[WOTMainNavigationController alloc]initWithRootViewController:mainvc];
+    mainnav.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"main"] selectedImage:[UIImage imageNamed:@"main_select"]];
    
    
     
@@ -50,7 +51,7 @@
     
     
    
-    [vcarray addObject:mainvc];
+    [vcarray addObject:mainnav];
     [vcarray addObject:socialnav];
     [vcarray addObject:servicnav];
     [vcarray addObject:myvc];

@@ -61,10 +61,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backAcssory" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Ne-ORW">
-                        <rect key="frame" x="326" y="51" width="15" height="18"/>
+                        <rect key="frame" x="329" y="53.5" width="7" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="Lpn-cw-wgN"/>
-                            <constraint firstAttribute="height" constant="18" id="lBN-D4-8IA"/>
+                            <constraint firstAttribute="width" constant="7" id="Lpn-cw-wgN"/>
+                            <constraint firstAttribute="height" constant="13" id="lBN-D4-8IA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ7-Hu-I7w">
@@ -83,7 +83,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="fHw-Rh-uwe" firstAttribute="centerY" secondItem="1GO-7j-3Jr" secondAttribute="centerY" id="5m0-6l-QER"/>
-                    <constraint firstAttribute="trailing" secondItem="eYi-Ne-ORW" secondAttribute="trailing" constant="10" id="6hz-F0-PTc"/>
+                    <constraint firstAttribute="trailing" secondItem="eYi-Ne-ORW" secondAttribute="trailing" constant="15" id="6hz-F0-PTc"/>
                     <constraint firstItem="8yW-Lp-etE" firstAttribute="centerX" secondItem="1GO-7j-3Jr" secondAttribute="centerX" id="HEo-pc-9Rp"/>
                     <constraint firstItem="8S2-ne-0wB" firstAttribute="leading" secondItem="8yW-Lp-etE" secondAttribute="trailing" constant="10" id="Hmb-xl-mVm"/>
                     <constraint firstItem="fHw-Rh-uwe" firstAttribute="leading" secondItem="1GO-7j-3Jr" secondAttribute="trailing" constant="10" id="IpW-00-AvF"/>
@@ -119,6 +119,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="backAcssory" width="16" height="16"/>
+        <image name="backAcssory" width="7" height="13"/>
     </resources>
 </document>

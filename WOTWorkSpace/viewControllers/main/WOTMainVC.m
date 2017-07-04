@@ -7,13 +7,16 @@
 //
 
 #import "WOTMainVC.h"
-#import "header.h"
+
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
 #import "ZYQSphereView.h"
-@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource>
+#import "WOTworkSpaceLIstVC.h"
+#import "WOTworkSpaceDetailVC.h"
+@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
+@property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 @end
 
 @implementation WOTMainVC
@@ -33,7 +36,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:YES];
+     [self.tabBarController.tabBar setHidden:NO];
+}
 
 #pragma mark --懒加载
 - (NSMutableArray *)imageArray {
@@ -96,7 +102,7 @@
 }
 
 -(void)viewWillLayoutSubviews{
-     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+100);
+     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+60);
 }
 
 -(void)subVClick:(UIButton*)sender{
@@ -130,7 +136,7 @@
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
     self.scrollVIew.backgroundColor = MainColor;
- 
+    
   
     
 }
@@ -177,6 +183,8 @@
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
     
     NSLog(@"点击了第%ld张图",(long)subIndex + 1);
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVCID"];
+    [self.navigationController pushViewController:detailvc animated:YES];
     
 
 }
@@ -208,8 +216,19 @@
     NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
 }
 
+- (IBAction)showWorkSpaceVC:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
+    _spacevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTworkSpaceLIstVCID"];
+    [self.navigationController pushViewController:_spacevc animated:YES];
+    
+    
+    
+}
 
-
+//MARK:SDCycleScrollView   Delegate
+-(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
+}
 /*
 #pragma mark - Navigation
 

@@ -6,8 +6,7 @@
 //  Copyright © 2017年 张姝枫. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "header.h"
+
 @interface WOTSocialcontactNaviController : WOTBaseNavigationController
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "WOTSettingVC.h"
-#import "header.h"
+
 
 #import "WOTSettingCell.h"
 
