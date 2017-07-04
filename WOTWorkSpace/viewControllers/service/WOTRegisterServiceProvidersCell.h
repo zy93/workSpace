@@ -11,5 +11,6 @@
 @interface WOTRegisterServiceProvidersCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UITextField *contentText;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImg;
 
 @end

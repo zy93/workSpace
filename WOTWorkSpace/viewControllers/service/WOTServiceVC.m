@@ -10,10 +10,12 @@
 #import "WOTRegisterServiceProvidersVC.h"
 #import "WOTServiceProvidersApplyCell.h"
 #import "WOTGETServiceCell.h"
+#import "WOTServiceCell.h"
 
-@interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate>
+@interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
+    NSMutableArray *tableIconList;
 
 }
 
@@ -65,6 +67,7 @@
 {
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
     NSArray *section2 = @[@"访客预约", @"问题报修", @"一键开门", @"发布需求", @"意见反馈"];
+    tableIconList = [@[@"visitors_icon", @"maintenance_apply_icon", @"openDoor_icon", @"get_service_icon", @"feedback_icon"] mutableCopy];
     NSArray *section3 = @[@"灯光", @"空调"];
     tableList = [@[section1, section2, section3] mutableCopy];
     
@@ -117,6 +120,12 @@
     
 }
 
+#pragma mark - cell delegate
+-(void)optionService:(NSString *)serviceName
+{
+    [self pushVCByVCName:@"WOTGETServiceViewController"];
+}
+
 #pragma mark - Table delegate & dataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -147,26 +156,36 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0 && indexPath.row==1) {
-        WOTGETServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTGETServiceCell"];
-        if (cell == nil) {
-            cell = [[WOTGETServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTGETServiceCell"];
-        }
-//        NSArray *sectionArr = tableList[indexPath.section];
-//        
-//        [cell.titleLab setText:sectionArr[indexPath.row]];
+    if (indexPath.section==0 ) {
+        
+        if (indexPath.row==0) {
+            WOTServiceProvidersApplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTServiceProvidersApplyCell"];
+            if (cell == nil) {
+                cell = [[WOTServiceProvidersApplyCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTServiceProvidersApplyCell"];
+            }
+            NSArray *sectionArr = tableList[indexPath.section];
+            
+            [cell.titleLab setText:sectionArr[indexPath.row]];
+            return cell;
 
-        return cell;
+        }
+        else {
+            WOTGETServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTGETServiceCell"];
+            if (cell == nil) {
+                cell = [[WOTGETServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTGETServiceCell"];
+            }
+            return cell;
+        }
 
     }
     else {
-        WOTServiceProvidersApplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTServiceProvidersApplyCell"];
+        WOTServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTServiceCell"];
         if (cell == nil) {
-            cell = [[WOTServiceProvidersApplyCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTServiceProvidersApplyCell"];
+            cell = [[WOTServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTServiceCell"];
         }
         NSArray *sectionArr = tableList[indexPath.section];
-        
         [cell.titleLab setText:sectionArr[indexPath.row]];
+        [cell.iconImg setImage:[UIImage imageNamed:tableIconList[indexPath.row]]];
         return cell;
 
     }

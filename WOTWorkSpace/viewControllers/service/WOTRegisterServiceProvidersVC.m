@@ -9,6 +9,7 @@
 #import "WOTRegisterServiceProvidersVC.h"
 #import "WOTServiceProvidersCategoryVC.h"
 #import "WOTRegisterServiceProvidersCell.h"
+#import "WOTSubmitRegisterServiceCell.h"
 
 @interface WOTRegisterServiceProvidersVC () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -44,8 +45,11 @@
 }
 
 -(void)addData{
-    tableList = [@[@"企业logo", @"企业名称", @"经营范围", @"联系人", @"联系方式", @"服务商类别", @"服务社区"] mutableCopy];
+    NSArray *tableList1 = @[@"企业logo：", @"企业名称：", @"经营范围：", @"联系人：", @"联系方式：", @"服务商类别：", @"服务社区："] ;
+    NSArray *tableList2 = @[@"提交"];
+    tableList = [@[tableList1, tableList2] mutableCopy];
     tableSubtitleList = [@[@"请选择企业logo", @"请输入企业名称", @"请输入经营范围", @"请输入联系人", @"请输入联系方式", @"选择服务商类别", @"选择服务社区"] mutableCopy];
+    self.table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.table reloadData];
 }
 
@@ -59,39 +63,83 @@
 #pragma mark - table delgate & data source
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return tableList.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return tableList.count;
+    NSArray *arr = tableList[section];
+    return arr.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 10;
+    }
+    else {
+        return 0;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WOTRegisterServiceProvidersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTRegisterServiceProvidersCell"];
-    if (cell == nil) {
-        cell = [[WOTRegisterServiceProvidersCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTRegisterServiceProvidersCell"];
+    if (indexPath.section == 0) {
+        WOTRegisterServiceProvidersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTRegisterServiceProvidersCell"];
+        if (cell == nil) {
+            cell = [[WOTRegisterServiceProvidersCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTRegisterServiceProvidersCell"];
+        }
+        NSArray *arr = tableList[indexPath.section];
+        [cell.titleLab setText:arr[indexPath.row]];
+        [cell.contentText setPlaceholder:tableSubtitleList[indexPath.row]];
+        if (indexPath.row == 0) {
+            cell.contentText.enabled = NO;
+            [cell.contentText setHidden:YES];
+            [cell.iconImg setHidden:NO];
+        }
+        else if (indexPath.row==5 || indexPath.row == 6) {
+            cell.contentText.enabled = NO;
+            [cell.contentText setHidden:NO];
+            [cell.iconImg setHidden:YES];
+            
+        }
+        else
+        {
+            cell.contentText.enabled = YES;
+            [cell.contentText setHidden:NO];
+            [cell.iconImg setHidden:YES];
+            
+        }
+        return cell;
     }
-    [cell.titleLab setText:tableList[indexPath.row]];
-    [cell.contentText setPlaceholder:tableSubtitleList[indexPath.row]];
-    if (indexPath.row==5 || indexPath.row == 6) {
-        cell.contentText.enabled = NO;
+    else {
+        WOTSubmitRegisterServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTSubmitRegisterServiceCell"];
+        if (cell == nil) {
+            cell = [[WOTSubmitRegisterServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTSubmitRegisterServiceCell"];
+        }
+        
+        return cell;
     }
-    else
-    {
-        cell.contentText.enabled = YES;
-    }
-    return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row==5 || indexPath.row==6) {
-        [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
+    if (indexPath.section == 0) {
+        if (indexPath.row==5 || indexPath.row==6) {
+            [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
+        }
     }
+    else {
+        //提交
+    }
+    
 }
 
 /*
