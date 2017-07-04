@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
 
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 
@@ -68,7 +70,7 @@
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
     NSArray *section2 = @[@"访客预约", @"问题报修", @"一键开门", @"发布需求", @"意见反馈"];
     tableIconList = [@[@"visitors_icon", @"maintenance_apply_icon", @"openDoor_icon", @"get_service_icon", @"feedback_icon"] mutableCopy];
-    NSArray *section3 = @[@"灯光", @"空调"];
+    NSArray *section3 = @[@"灯光", @"空调",@"灯光", @"空调"];
     tableList = [@[section1, section2, section3] mutableCopy];
     
     [self.table reloadData];
@@ -102,7 +104,12 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-//    self.scrollviewHeight.constant = CGRectGetHeight(self.autoScrollView.frame)+self.tableView.contentSize.height;
+    int coun = -2; //前两个不算.
+    for (NSArray * arr in tableList) {
+        coun+=arr.count;
+    }
+    self.tableHeight.constant = 105+20+45+(coun * 50);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetHeight(self.autoScrollView.frame)+ self.tableHeight.constant);
 }
 
 #pragma mark  - action
