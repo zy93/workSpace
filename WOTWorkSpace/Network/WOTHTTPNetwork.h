@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
 typedef void(^response)(id bean);
 
 @interface WOTHTTPNetwork : NSObject
 
 
-+(void)userLoginWithPhone:(NSString *)phone password:(NSString *)pwd response:(response)response;
++(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
 
 @end
