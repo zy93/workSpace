@@ -24,6 +24,7 @@
  
     _nameLabel = [[UILabel alloc]init];
     _nameLabel.font = [UIFont systemFontOfSize:15];
+    _nameLabel.textColor = HighTextColor;
     _nextImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backAcssory"]];
     _cellImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"enterprise"]];
     _lineview = [[UIView alloc]init];

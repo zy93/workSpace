@@ -26,10 +26,8 @@
         label.frame = CGRectMake(leading, top,[title widthWithFont:[UIFont systemFontOfSize:15]]+15, 30);
         label.text = title;
         label.textAlignment = NSTextAlignmentCenter;
-        label.layer.cornerRadius = 10;
-        label.layer.masksToBounds = YES;
-        label.layer.borderColor = [UIColor blueColor].CGColor;
-        label.layer.borderWidth = 1;
+       
+        [label setCorenerRadius:10 borderColor:[UIColor blueColor]];
         [self.tagsVIew addSubview:label];
         leading += label.frame.size.width+10;
         

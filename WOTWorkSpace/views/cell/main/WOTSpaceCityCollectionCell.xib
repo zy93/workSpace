@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="94" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-2y-ywG">
-                        <rect key="frame" x="26" y="15" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-2y-ywG">
+                        <rect key="frame" x="5" y="5" width="84" height="40"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -27,8 +27,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="TUb-2y-ywG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Cj2-Hu-2qF"/>
-                <constraint firstItem="TUb-2y-ywG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dSS-Qg-7sd"/>
+                <constraint firstAttribute="trailing" secondItem="TUb-2y-ywG" secondAttribute="trailing" constant="5" id="Byr-ab-eyg"/>
+                <constraint firstItem="TUb-2y-ywG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="d1N-Ch-ghZ"/>
+                <constraint firstAttribute="bottom" secondItem="TUb-2y-ywG" secondAttribute="bottom" constant="5" id="ros-b7-XUH"/>
+                <constraint firstItem="TUb-2y-ywG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="sLu-5B-h6C"/>
             </constraints>
             <size key="customSize" width="94" height="50"/>
             <connections>

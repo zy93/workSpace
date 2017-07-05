@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-LF-9hH">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="85"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rid-Kq-DGI">
                         <size key="itemSize" width="50" height="50"/>
@@ -25,13 +25,32 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_more" translatesAutoresizingMaskIntoConstraints="NO" id="XUW-ph-W20">
+                    <rect key="frame" x="330" y="30" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="49i-VN-0a7"/>
+                        <constraint firstAttribute="width" constant="25" id="tqC-mL-nVy"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP9-83-kE7">
+                    <rect key="frame" x="330" y="0.0" width="45" height="85"/>
+                    <connections>
+                        <action selector="moreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Saz-zh-JQu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="XUW-ph-W20" secondAttribute="trailing" constant="20" id="16U-r7-v99"/>
+                <constraint firstItem="XUW-ph-W20" firstAttribute="leading" secondItem="Nf1-LF-9hH" secondAttribute="trailing" constant="5" id="E52-ud-0c8"/>
+                <constraint firstAttribute="bottom" secondItem="KP9-83-kE7" secondAttribute="bottom" id="OYl-sH-a5C"/>
                 <constraint firstItem="Nf1-LF-9hH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xsa-Dt-dBk"/>
                 <constraint firstAttribute="bottom" secondItem="Nf1-LF-9hH" secondAttribute="bottom" id="c6U-5V-Goh"/>
-                <constraint firstAttribute="trailing" secondItem="Nf1-LF-9hH" secondAttribute="trailing" id="h6N-4r-OCf"/>
+                <constraint firstItem="KP9-83-kE7" firstAttribute="leading" secondItem="Nf1-LF-9hH" secondAttribute="trailing" constant="5" id="faH-S3-V5c"/>
+                <constraint firstItem="KP9-83-kE7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uAb-fo-3DO"/>
+                <constraint firstItem="XUW-ph-W20" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uGF-YN-aYe"/>
                 <constraint firstItem="Nf1-LF-9hH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wFo-gf-bvq"/>
+                <constraint firstAttribute="trailing" secondItem="KP9-83-kE7" secondAttribute="trailing" id="y1A-gy-tSi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -40,4 +59,7 @@
             <point key="canvasLocation" x="33.5" y="-236.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="main_more" width="24" height="24"/>
+    </resources>
 </document>

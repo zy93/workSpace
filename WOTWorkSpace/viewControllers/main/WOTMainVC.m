@@ -147,9 +147,11 @@
         }];
     }];
     WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:sender.titleLabel.text];
+    WOTEnterpriseLIstVC *vc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
     switch (balltype) {
         case WOTEnterprise:
-            
+           
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         case WOTOthers:
             

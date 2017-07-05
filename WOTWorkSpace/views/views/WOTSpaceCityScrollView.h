@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol WOTWorkSpaceMoreCityDelegate
+@required
+    -(void)showMoreCityVC;
 
+
+@end
 @interface WOTSpaceCityScrollView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionVIew;
-
+@property(nonatomic,strong)id<WOTWorkSpaceMoreCityDelegate>delegate;
 
 @end

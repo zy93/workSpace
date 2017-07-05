@@ -47,6 +47,7 @@
             </constraints>
             <size key="customSize" width="145" height="121"/>
             <connections>
+                <outlet property="cityImage" destination="LrZ-wo-cpW" id="La2-Vk-90G"/>
                 <outlet property="cityName" destination="vWm-gS-Z5q" id="mjM-aT-iPf"/>
                 <outlet property="workSpaceNum" destination="yQK-Id-ybQ" id="cnY-wO-xp0"/>
             </connections>

@@ -12,7 +12,8 @@
 #import "WOTworkSpacenearCell.h"
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
-@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate>
 
 @end
 
@@ -20,9 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = MainColor;
+    self.view.backgroundColor = White;
     self.tableVIew.backgroundColor = CLEARCOLOR;
-    [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"天津",@"上海",@"杭州",@"深圳",@"北京",@"天津",@"上海",@"杭州",@"深圳",nil];
+   
+    [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
@@ -117,7 +119,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     WOTSpaceCityScrollView *view = [[NSBundle mainBundle]loadNibNamed:@"WOTSpaceCityScrollView" owner:nil options:nil].lastObject;
-    
+    view.delegate = self;
     return view;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -140,7 +142,10 @@
     return commoncell;
 }
 
-
+//切换城市headerview 点击更多action
+-(void)showMoreCityVC{
+    //TODO:跳转到城市列表页面
+}
 /*
 #pragma mark - Navigation
 

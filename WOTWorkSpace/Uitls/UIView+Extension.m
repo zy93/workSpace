@@ -21,4 +21,14 @@
     self.layer.mask = shapeLayer;
     
 }
+
+-(void)setCorenerRadius:(CGFloat)radiu borderColor:(UIColor *)borderColor{
+   
+    self.layer.cornerRadius = 10;
+    self.layer.masksToBounds = YES;
+    self.layer.borderColor = borderColor.CGColor;
+    self.layer.borderWidth = 1;
+}
+
+
 @end

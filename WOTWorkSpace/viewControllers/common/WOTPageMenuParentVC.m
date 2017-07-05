@@ -28,27 +28,7 @@
     
    
     [self setpageMenu];
-    //    //左右切换按钮
-    //    UIButton *lastBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 60, 30)];
-    //    lastBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    //    [lastBtn setTitle:@"上一页" forState:UIControlStateNormal];
-    //    [lastBtn addTarget:self action:@selector(scrollToLast:) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:lastBtn];
-    //
-    //    UIButton *nextBtn = [[UIButton alloc] initWithFrame:CGRectMake(80, 20, 60, 30)];
-    //    nextBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    //    [nextBtn setTitle:@"下一页" forState:UIControlStateNormal];
-    //    [nextBtn addTarget:self action:@selector(scrollToNext:) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:nextBtn];
-    //
-    //    //修改按钮
-    //    UIButton *refreshBtn = [[UIButton alloc] initWithFrame:CGRectMake(160, 20, 60, 30)];
-    //    refreshBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    //    [refreshBtn setTitle:@"自定义" forState:UIControlStateNormal];
-    //    [refreshBtn addTarget:self action:@selector(refreshPageTabView:) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:refreshBtn];
-    //    
-    //    self.view.backgroundColor = [UIColor lightGrayColor];
+   
     
     // Do any additional setup after loading the view.
   
@@ -64,7 +44,6 @@
 
 -(void)setpageMenu{
    
-    //支持网易云音乐，今日头条，微博等切换栏效果
     self.pageTabView = [[XXPageTabView alloc] initWithChildControllers:self.childViewControllers childTitles:@[]];
     self.pageTabView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     self.pageTabView.delegate = self;

@@ -11,13 +11,16 @@
 #import "WOTEnums.h"
 @implementation WOTEnumUtils
 -(WOT3DBallVCType)Wot3DballVCtypeenumToString:(NSString *)ballTitle{
-  
+    WOT3DBallVCType type;
     for (NSString *title in [WOTSingtleton shared].ballTitle) {
-        if ([title isEqualToString:@"友邻"]) {
-            return WOTEnterprise;
+        if ([ballTitle isEqualToString:@"友邻"]) {
+            type = WOTEnterprise;
+            break;
+        } else {
+            type = WOTOthers;
+            break;
         }
     }
-
-    return  WOTOthers;
+    return  type;
 }
 @end

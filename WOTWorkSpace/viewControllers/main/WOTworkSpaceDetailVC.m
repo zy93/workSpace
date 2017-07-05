@@ -7,8 +7,13 @@
 //
 
 #import "WOTworkSpaceDetailVC.h"
-
-@interface WOTworkSpaceDetailVC ()<UIScrollViewDelegate>
+#import "WOTSpaceDetailCell.h"
+#import "WOTSpaceDetailTeamCollectionCell.h"
+@interface WOTworkSpaceDetailVC ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *enterBtn;
+@property (weak, nonatomic) IBOutlet UIButton *visitBtn;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionVIew;
+@property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 
 @end
 
@@ -16,9 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self congigNav];
+    [self configScrollView];
     [self getautoScrollViewDataSource];
     [self loadAutoScrollView];
+      [_collectionVIew registerNib:[UINib nibWithNibName:@"WOTSpaceDetailTeamCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"WOTSpaceDetailTeamCollectionCellID"];
     // Do any additional setup after loading the view.
 }
 
@@ -38,10 +46,11 @@
 }
 
 -(void)configScrollView{
+    self.scrollVIew.backgroundColor = MainColor;
     self.scrollVIew.delegate = self;
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
-    self.scrollVIew.backgroundColor = MainColor;
+   
     
     
     
@@ -70,6 +79,15 @@
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:_spaceTel.text]];
 }
 
+- (IBAction)goToAppointmentVC:(id)sender {
+    
+    //TODO:预约参观
+}
+- (IBAction)goToEnterVC:(id)sender {
+   //TODO:预约入驻
+
+
+}
 
 //MARK:SDCycleScrollView   Delegate
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -93,6 +111,70 @@
 
     
 }
+
+//Mark:tableView dataSource   delegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  
+    return 3;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+    return  120;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return  0.01;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTSpaceDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTSpaceDetailCellID" forIndexPath:indexPath];
+    return cell;
+}
+
+
+#pragma mark -CollectionView datasource
+//section
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+//item个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 5;
+    
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    WOTSpaceDetailTeamCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WOTSpaceDetailTeamCollectionCellID" forIndexPath:indexPath];
+   
+    return cell;
+    
+}
+
+//定义每个UICollectionViewCell 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(self.collectionVIew.frame.size.width/3.5, self.collectionVIew.frame.size.height);
+}
+//定义每个Section 的 margin
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10, 10, 10, 10);//分别为上、左、下、右
+}
+
+
+
 /*
 #pragma mark - Navigation
 

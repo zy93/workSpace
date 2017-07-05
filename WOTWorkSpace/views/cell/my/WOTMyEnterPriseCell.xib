@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backAcssory" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-Nm-PsV">
-                        <rect key="frame" x="303" y="30" width="7" height="13"/>
+                        <rect key="frame" x="293" y="30" width="7" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="7" id="Daw-81-0Wf"/>
                             <constraint firstAttribute="height" constant="13" id="bw7-oW-NBA"/>
@@ -61,7 +61,7 @@
                     <constraint firstItem="LHw-Ng-a4h" firstAttribute="top" secondItem="BXm-Hi-NwR" secondAttribute="bottom" constant="5" id="eW4-1n-nAM"/>
                     <constraint firstItem="BXm-Hi-NwR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-10" id="fKW-uJ-aBB"/>
                     <constraint firstAttribute="trailing" secondItem="zdm-3v-J13" secondAttribute="trailing" id="hL6-c1-GuH"/>
-                    <constraint firstAttribute="trailing" secondItem="Qbl-Nm-PsV" secondAttribute="trailing" constant="10" id="l5H-M9-2y1"/>
+                    <constraint firstAttribute="trailing" secondItem="Qbl-Nm-PsV" secondAttribute="trailing" constant="20" id="l5H-M9-2y1"/>
                     <constraint firstItem="LHw-Ng-a4h" firstAttribute="leading" secondItem="pjN-By-Fa9" secondAttribute="trailing" constant="10" id="szf-lF-udD"/>
                     <constraint firstItem="Qbl-Nm-PsV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xEz-Ot-2ls"/>
                 </constraints>

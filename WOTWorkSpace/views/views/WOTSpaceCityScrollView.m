@@ -18,7 +18,7 @@
     [super awakeFromNib];
     _collectionVIew.delegate = self;
     _collectionVIew.dataSource = self;
-  
+   
    
 }
 
@@ -47,6 +47,7 @@
     _collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     _collectionCell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
+    
     return _collectionCell;
     
 }
@@ -73,14 +74,23 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WOTSpaceCityCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.cityName.textColor = [UIColor redColor];
+    cell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
+    [cell.cityName setCorenerRadius:15 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
     
 }
 //取消选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WOTSpaceCityCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.cityName.textColor = [UIColor blackColor];
+    cell.cityName.textColor = [UIColor grayColor];
+    [cell.cityName setCorenerRadius:15 borderColor:[UIColor grayColor]];
+}
+- (IBAction)moreAction:(id)sender {
+    
+    if (_delegate) {
+        [_delegate showMoreCityVC];
+    }
+    
 }
 
 /*

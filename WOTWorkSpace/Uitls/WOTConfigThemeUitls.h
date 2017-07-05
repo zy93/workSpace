@@ -11,4 +11,5 @@
 @interface WOTConfigThemeUitls : NSObject
 +(instancetype)shared;
 -(void)setLabelTexts:(NSArray *)labels withTexts:(NSArray *)texts;
+-(void)setLabelColorss:(NSArray *)labels withColor:(UIColor *)color;
 @end
