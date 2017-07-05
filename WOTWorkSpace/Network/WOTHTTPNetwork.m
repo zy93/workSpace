@@ -7,6 +7,7 @@
 //
 
 #import "WOTHTTPNetwork.h"
+#import "header.h"
 #import "WOTLoginModel.h"
 
 
@@ -16,12 +17,10 @@
 
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response
 {
-    BOOL isTel = [telOrEmail containsString:@"@"];
-    NSString *key = isTel?@"tel":@"email";
-    NSDictionary *dic = @{key :telOrEmail, @"password":pwd};
+    NSDictionary *dic = @{@"tel" :telOrEmail, @"password":[WOTUitls md5HexDigestByString:pwd]};
     //afn
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
     NSString * string = [NSString stringWithFormat:@"%@%@", HTTPURL,@"workSpace/Login/Login"];
     
     [manager POST:string parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -29,6 +28,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSError *error = nil;
+//        NSString *string
         WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseObject[@"msg"] error:&error];
         if (error) {
             NSLog(@"----error:%@",error);

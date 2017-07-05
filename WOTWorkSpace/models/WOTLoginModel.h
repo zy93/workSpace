@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSString *industry;
 @property (nonatomic, strong) NSString *spared1;
 @property (nonatomic, strong) NSString *spared2;
-@property (nonatomic, strong) NSString *Spared3;
+@property (nonatomic, strong) NSString *spared3;
 
 
 @end
