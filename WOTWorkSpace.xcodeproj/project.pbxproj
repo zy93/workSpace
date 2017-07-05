@@ -128,6 +128,11 @@
 		E88A7F741F0A243800A670E7 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E88A7F751F0A243800A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E88A7F781F0A37CC00A670E7 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E894D1531F0BA46D007053C6 /* WOTFilterTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E894D1521F0BA46D007053C6 /* WOTFilterTypeModel.m */; };
+		E894D1561F0BA51A007053C6 /* WOTMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E894D1551F0BA51A007053C6 /* WOTMenuView.m */; };
+		E8BA0D6F1F0CC60300B81C3D /* WOTSpaceDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA0D6E1F0CC60300B81C3D /* WOTSpaceDetailCell.m */; };
+		E8BA0D731F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA0D711F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.m */; };
+		E8BA0D741F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8BA0D721F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.xib */; };
 		E8D89D7B1F06021B00FFFFDE /* PFGoldenSectionSpiral.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D741F06021B00FFFFDE /* PFGoldenSectionSpiral.m */; };
 		E8D89D7C1F06021B00FFFFDE /* ZYQSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D7A1F06021B00FFFFDE /* ZYQSphereView.m */; };
 		E8D89D881F0637A700FFFFDE /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D89D851F0637A700FFFFDE /* NewPagedFlowView.m */; };
@@ -350,6 +355,15 @@
 		E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTConfigThemeUitls.m; sourceTree = "<group>"; };
 		E88A54471F03A64B00AD3F57 /* WOTAllOrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAllOrderListVC.h; sourceTree = "<group>"; };
 		E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAllOrderListVC.m; sourceTree = "<group>"; };
+		E894D1511F0BA46D007053C6 /* WOTFilterTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTFilterTypeModel.h; sourceTree = "<group>"; };
+		E894D1521F0BA46D007053C6 /* WOTFilterTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTFilterTypeModel.m; sourceTree = "<group>"; };
+		E894D1541F0BA51A007053C6 /* WOTMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMenuView.h; sourceTree = "<group>"; };
+		E894D1551F0BA51A007053C6 /* WOTMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMenuView.m; sourceTree = "<group>"; };
+		E8BA0D6D1F0CC60300B81C3D /* WOTSpaceDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSpaceDetailCell.h; sourceTree = "<group>"; };
+		E8BA0D6E1F0CC60300B81C3D /* WOTSpaceDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceDetailCell.m; sourceTree = "<group>"; };
+		E8BA0D701F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSpaceDetailTeamCollectionCell.h; sourceTree = "<group>"; };
+		E8BA0D711F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceDetailTeamCollectionCell.m; sourceTree = "<group>"; };
+		E8BA0D721F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTSpaceDetailTeamCollectionCell.xib; sourceTree = "<group>"; };
 		E8D89D721F06021B00FFFFDE /* PFAxisDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAxisDirection.h; sourceTree = "<group>"; };
 		E8D89D731F06021B00FFFFDE /* PFGoldenSectionSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGoldenSectionSpiral.h; sourceTree = "<group>"; };
 		E8D89D741F06021B00FFFFDE /* PFGoldenSectionSpiral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGoldenSectionSpiral.m; sourceTree = "<group>"; };
@@ -793,6 +807,11 @@
 				E85032F11F0B62CE00E79257 /* WOTworkSpaceSearchCell.h */,
 				E85032F21F0B62CE00E79257 /* WOTworkSpaceSearchCell.m */,
 				E85032F31F0B62CE00E79257 /* WOTworkSpaceSearchCell.xib */,
+				E8BA0D6D1F0CC60300B81C3D /* WOTSpaceDetailCell.h */,
+				E8BA0D6E1F0CC60300B81C3D /* WOTSpaceDetailCell.m */,
+				E8BA0D701F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.h */,
+				E8BA0D711F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.m */,
+				E8BA0D721F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.xib */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -872,6 +891,17 @@
 			path = XXPageTab;
 			sourceTree = "<group>";
 		};
+		E894D1501F0BA440007053C6 /* menuView */ = {
+			isa = PBXGroup;
+			children = (
+				E894D1511F0BA46D007053C6 /* WOTFilterTypeModel.h */,
+				E894D1521F0BA46D007053C6 /* WOTFilterTypeModel.m */,
+				E894D1541F0BA51A007053C6 /* WOTMenuView.h */,
+				E894D1551F0BA51A007053C6 /* WOTMenuView.m */,
+			);
+			path = menuView;
+			sourceTree = "<group>";
+		};
 		E8D89D711F06021B00FFFFDE /* SphereView */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +932,7 @@
 		E8EACF741F0344A50015535D /* library */ = {
 			isa = PBXGroup;
 			children = (
+				E894D1501F0BA440007053C6 /* menuView */,
 				E8D89D831F0637A700FFFFDE /* pagedFlowView */,
 				E8D89D711F06021B00FFFFDE /* SphereView */,
 				E88A543D1F03794800AD3F57 /* XXPageTab */,
@@ -1057,6 +1088,7 @@
 				E85032F71F0B62CE00E79257 /* WOTSpaceCityCollectionCell.xib in Resources */,
 				E88A7F4D1F09DD5500A670E7 /* (null) in Resources */,
 				E85032FD1F0B62CE00E79257 /* WOTworkSpaceSearchCell.xib in Resources */,
+				E8BA0D741F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.xib in Resources */,
 				E85A859A1F0201F30016FCA1 /* LaunchScreen.storyboard in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
 				E8693B111F04F92C00772BC1 /* spaceMain.storyboard in Resources */,
@@ -1257,6 +1289,7 @@
 				2AF78CF71F0A3EFA00F7B56D /* WOTFeedbackVC.m in Sources */,
 				E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */,
 				2AF78CEB1F0A0E6B00F7B56D /* WOTServiceProvidersCategoryVC.m in Sources */,
+				E894D1561F0BA51A007053C6 /* WOTMenuView.m in Sources */,
 				2AF78CE51F0A0DF400F7B56D /* WOTServiceProvidersCell.m in Sources */,
 				E85032D41F0B477F00E79257 /* WOTSingtleton.m in Sources */,
 				2AF78CFD1F0A42B100F7B56D /* WOTVisitTypeCell.m in Sources */,
@@ -1301,6 +1334,7 @@
 				E88A7F571F09EB6000A670E7 /* (null) in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
 				2AF78CFA1F0A424300F7B56D /* WOTVisitorsAppointmentCell.m in Sources */,
+				E8BA0D731F0CD43100B81C3D /* WOTSpaceDetailTeamCollectionCell.m in Sources */,
 				E88A7F741F0A243800A670E7 /* (null) in Sources */,
 				E85032F41F0B62CE00E79257 /* WOTImageCollectionViewCell.m in Sources */,
 				E8693AF91F04B1E600772BC1 /* WOTMycommonCell.m in Sources */,
@@ -1315,11 +1349,13 @@
 				E85A85F51F0202460016FCA1 /* View+MASAdditions.m in Sources */,
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
 				E88A7F781F0A37CC00A670E7 /* (null) in Sources */,
+				E894D1531F0BA46D007053C6 /* WOTFilterTypeModel.m in Sources */,
 				E88A7F671F0A091000A670E7 /* (null) in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
 				E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */,
 				2AF78CEE1F0A39E800F7B56D /* WOTGETServiceViewController.m in Sources */,
 				E82D5FB21F07DDCA003EF0AE /* UIView+Extension.m in Sources */,
+				E8BA0D6F1F0CC60300B81C3D /* WOTSpaceDetailCell.m in Sources */,
 				E85032D11F0B476900E79257 /* WOTworkSpaceLIstVC.m in Sources */,
 				E8693ADE1F049C6300772BC1 /* UItableView+Extension.m in Sources */,
 				E85032F61F0B62CE00E79257 /* WOTSpaceCityCollectionCell.m in Sources */,

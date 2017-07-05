@@ -12,7 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [_cityName setDefaultRadiuWithCorners:UIRectCornerAllCorners];
+   [_cityName setCorenerRadius:15 borderColor:[UIColor grayColor]];
+    _cityName.textColor = [UIColor grayColor];
     // Initialization code
 }
 - (IBAction)changeCity:(id)sender {

@@ -10,7 +10,7 @@
 
 @implementation UIViewController(Extension)
 -(void)configNaviBackItem{
-    
+   
     UIBarButtonItem *backitem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
     
     [self.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -23,6 +23,9 @@
 -(void)configNaviView:(NSString *)searchTitle block:(void(^)())search{
     UISearchBar *searchview = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 30.0)];
     [searchview setPlaceholder:searchTitle];
+    [searchview setBarTintColor:[UIColor grayColor]];
+    [searchview setBackgroundColor:[UIColor grayColor]];
+    [searchview setBarStyle:UIBarStyleBlackTranslucent];
     search();
     [self.navigationItem setTitleView:searchview];
     

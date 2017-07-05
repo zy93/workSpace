@@ -26,5 +26,10 @@
 }
 
 
+-(void)setLabelColorss:(NSArray *)labels withColor:(UIColor *)color{
+    for (UILabel *label in labels) {
+        label.textColor = color;
+    }
+}
 
 @end

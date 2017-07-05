@@ -20,7 +20,7 @@
         [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
         
         self.navigationItem.titleView = nil;
-        self.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationBar.tintColor = UIColorFromRGB(0x888888);
         self.navigationBar.shadowImage = [[UIImage alloc]init];
         
     }

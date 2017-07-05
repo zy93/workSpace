@@ -12,4 +12,5 @@
 #import "WOTSingtleton.h"
 #import "NSString+URL.h"
 #import "NSString+Category.h"
+#import "UIImage+Extension.h"
 #endif

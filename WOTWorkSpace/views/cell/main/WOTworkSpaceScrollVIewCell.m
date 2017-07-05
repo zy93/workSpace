@@ -48,8 +48,9 @@
 {
     //重用cell
     WOTImageCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
-   
+    NSArray *imageArrays = @[@"space_bj",@"space_bj", @"space_sh",@"space_tj",@"space_sz",@"space_bj",@"space_sh",@"space_tj",@"space_sz"];
     cell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
+    cell.cityImage.image = [UIImage imageNamed:imageArrays[indexPath.row]];
     return cell;
     
 }

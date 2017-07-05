@@ -13,4 +13,6 @@
 -(void)setDefaultRadiuWithCorners:(UIRectCorner)corners;
 //对指定角设置圆角，并指定圆角弧度
 -(void)setRadiuWithCorners:(UIRectCorner)corners radiu:(CGFloat)radiu;
+
+-(void)setCorenerRadius:(CGFloat)radiu borderColor:(UIColor *)borderColor;
 @end
