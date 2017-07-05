@@ -11,4 +11,5 @@
 @interface WOTSingtleton : NSObject
 +(instancetype)shared;
 @property(nonatomic,strong)NSMutableArray *spaceCityArray;
+@property(nonatomic,strong)NSArray *ballTitle;
 @end

@@ -27,7 +27,7 @@
     _nextImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backAcssory"]];
     _cellImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"enterprise"]];
     _lineview = [[UIView alloc]init];
-    _lineview.backgroundColor = LineBGColor;
+    _lineview.backgroundColor = LINE_COLOR;
     [self.contentView addSubview:_lineview];
     [self.contentView addSubview:_nameLabel];
     [self.contentView addSubview:_nextImageView];

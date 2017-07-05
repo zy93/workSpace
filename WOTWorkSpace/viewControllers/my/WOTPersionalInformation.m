@@ -58,11 +58,9 @@
             }
             break;
         case 1:
-            if (indexPath.row == 0) {
-                return 90;
-            }else if (indexPath.row == 1){
-                return 130;
-            } else {
+            if (indexPath.row == 0 || indexPath.row == 1) {
+                return 100;
+            }else {
                 return 50;
             }
         default:

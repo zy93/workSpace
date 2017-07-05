@@ -26,7 +26,7 @@
         label.frame = CGRectMake(leading, top,[title widthWithFont:[UIFont systemFontOfSize:15]]+15, 30);
         label.text = title;
         label.textAlignment = NSTextAlignmentCenter;
-        [label setRadiuWithCorners:UIRectCornerAllCorners radiu:10];
+        label.layer.cornerRadius = 10;
         label.layer.masksToBounds = YES;
         label.layer.borderColor = [UIColor blueColor].CGColor;
         label.layer.borderWidth = 1;

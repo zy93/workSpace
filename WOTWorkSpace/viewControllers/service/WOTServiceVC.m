@@ -70,7 +70,7 @@
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
     NSArray *section2 = @[@"访客预约", @"问题报修", @"一键开门", @"发布需求", @"意见反馈"];
     tableIconList = [@[@"visitors_icon", @"maintenance_apply_icon", @"openDoor_icon", @"get_service_icon", @"feedback_icon"] mutableCopy];
-    NSArray *section3 = @[@"灯光", @"空调",@"灯光", @"空调"];
+    NSArray *section3 = @[@"灯光", @"空调",@"灯光", @"空调",@"灯光", @"空调",@"灯光", @"空调"];
     tableList = [@[section1, section2, section3] mutableCopy];
     
     [self.table reloadData];
