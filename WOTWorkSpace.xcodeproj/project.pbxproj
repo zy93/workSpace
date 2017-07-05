@@ -10,6 +10,7 @@
 		0DA2DEE8BB52DB960AA913FE /* libPods-WOTWorkSpaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */; };
 		2A3042AC1F0B3047007C4DED /* WOTServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3042AB1F0B3047007C4DED /* WOTServiceCell.m */; };
 		2A3042AF1F0B435C007C4DED /* WOTSubmitRegisterServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3042AE1F0B435C007C4DED /* WOTSubmitRegisterServiceCell.m */; };
+		2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */; };
 		2AF78CDD1F09EA1100F7B56D /* WOTRegisterServiceProvidersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF78CDC1F09EA1100F7B56D /* WOTRegisterServiceProvidersVC.m */; };
 		2AF78CE01F09F66A00F7B56D /* WOTRegisterServiceProvidersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF78CDF1F09F66A00F7B56D /* WOTRegisterServiceProvidersCell.m */; };
 		2AF78CE21F09F8F900F7B56D /* ServiceCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AF78CE11F09F8F900F7B56D /* ServiceCategory.plist */; };
@@ -148,6 +149,8 @@
 		2A3042AB1F0B3047007C4DED /* WOTServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WOTServiceCell.m; path = WOTWorkSpace/viewControllers/service/WOTServiceCell.m; sourceTree = SOURCE_ROOT; };
 		2A3042AD1F0B435C007C4DED /* WOTSubmitRegisterServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOTSubmitRegisterServiceCell.h; path = WOTWorkSpace/viewControllers/service/WOTSubmitRegisterServiceCell.h; sourceTree = SOURCE_ROOT; };
 		2A3042AE1F0B435C007C4DED /* WOTSubmitRegisterServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WOTSubmitRegisterServiceCell.m; path = WOTWorkSpace/viewControllers/service/WOTSubmitRegisterServiceCell.m; sourceTree = SOURCE_ROOT; };
+		2A3042B11F0B7E4E007C4DED /* WOTHTTPNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHTTPNetwork.h; sourceTree = "<group>"; };
+		2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTHTTPNetwork.m; sourceTree = "<group>"; };
 		2AF78CDB1F09EA1100F7B56D /* WOTRegisterServiceProvidersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTRegisterServiceProvidersVC.h; sourceTree = "<group>"; };
 		2AF78CDC1F09EA1100F7B56D /* WOTRegisterServiceProvidersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTRegisterServiceProvidersVC.m; sourceTree = "<group>"; };
 		2AF78CDE1F09F66A00F7B56D /* WOTRegisterServiceProvidersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOTRegisterServiceProvidersCell.h; path = WOTWorkSpace/viewControllers/service/WOTRegisterServiceProvidersCell.h; sourceTree = SOURCE_ROOT; };
@@ -368,6 +371,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A3042B01F0B7DE0007C4DED /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2A3042B11F0B7E4E007C4DED /* WOTHTTPNetwork.h */,
+				2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		63E1B3438CEAB5852577169B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +432,7 @@
 				E85A85BD1F0202450016FCA1 /* common */,
 				E85A85BF1F0202450016FCA1 /* librarys */,
 				E85A85DB1F0202460016FCA1 /* libs */,
+				2A3042B01F0B7DE0007C4DED /* Network */,
 				E85A85E11F0202460016FCA1 /* models */,
 				E85A85E21F0202460016FCA1 /* storyboards */,
 				E85A85E31F0202460016FCA1 /* viewControllers */,
@@ -939,7 +952,7 @@
 			attributes = {
 				CLASSPREFIX = WOT;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "张姝枫";
+				ORGANIZATIONNAME = "北京物联港科技发展有限公司";
 				TargetAttributes = {
 					E85A85831F0201F30016FCA1 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -1225,6 +1238,7 @@
 				E8693AF91F04B1E600772BC1 /* WOTMycommonCell.m in Sources */,
 				E85A85F71F0202460016FCA1 /* MBProgressHUD+Add.m in Sources */,
 				E8693B0F1F04F90E00772BC1 /* WOTMainVC.m in Sources */,
+				2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */,
 				E85A85F11F0202460016FCA1 /* MASViewAttribute.m in Sources */,
 				E8693B141F05061500772BC1 /* WOTServiceVC.m in Sources */,
 				E85032D71F0B5A5900E79257 /* WOTPersionalInformation.m in Sources */,
