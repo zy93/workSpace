@@ -9,5 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTMyAppointmentCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *appointmentCommunityLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *appointmentCommunityValue;
+
+@property (weak, nonatomic) IBOutlet UILabel *appontmentObjectLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *appointmentObjectValue;
+@property (weak, nonatomic) IBOutlet UILabel *appintmentTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *appointmentTimeValue;
+
+@property (weak, nonatomic) IBOutlet UILabel *appointmentReasionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *appointmentReasionValue;
+@property (weak, nonatomic) IBOutlet UIButton *remindmeBtn;
 
 @end

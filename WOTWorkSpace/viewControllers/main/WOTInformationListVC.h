@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WOTInformationListVC : UITableViewController
+#import "WOTTableViewBaseVC.h"
+@interface WOTInformationListVC : WOTTableViewBaseVC
 
 @end

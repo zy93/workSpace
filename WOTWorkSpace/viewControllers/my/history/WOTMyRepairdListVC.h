@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WOTMyRepairdListVC : UIViewController
+#import "WOTMyAppointmentListVC.h"
+@interface WOTMyRepairdListVC : WOTMyAppointmentListVC
 
 @end

@@ -45,13 +45,12 @@
     
     [self configNaviBackItem];
     self.navigationItem.title = @"空间列表";
-    UIBarButtonItem *share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareToThirdPlatform)];
-    self.navigationItem.rightBarButtonItem = share;
+    [self configNaviRightItemWithImage:[UIImage imageNamed:@"share"]];
 }
 
--(void)shareToThirdPlatform{
+-(void)rightItemAction{
     //TODO:分享到朋友圈等
-    
+    NSLog(@"分享到朋友圈去");
 }
 
 

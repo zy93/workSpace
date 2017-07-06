@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTEnums.h"
-@interface WOTOrderLIstBaseVC : UIViewController
-@property(nonatomic,strong)UITableView *tableView;
+#import "WOTTableViewBaseVC.h"
+@interface WOTOrderLIstBaseVC : WOTTableViewBaseVC
+
 @property(nonatomic,strong)NSArray *datasource;
 @property(assign)WOTPageMenuVCType orderlisttype;
 

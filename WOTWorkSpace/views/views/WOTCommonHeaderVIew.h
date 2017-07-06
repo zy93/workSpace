@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTCommonHeaderVIew : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UILabel *headerTitle;
 
 @end

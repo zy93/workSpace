@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTTableViewBaseVC.h"
+@interface WOTMyActivitiesBaseVC : WOTTableViewBaseVC
 
-@interface WOTMyActivitiesBaseVC : UIViewController
-
+@property(nonatomic,strong)NSArray *datasource;
 @end

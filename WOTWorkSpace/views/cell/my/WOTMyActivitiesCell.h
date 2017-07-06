@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTMyActivitiesCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *activityTitle;
+@property (weak, nonatomic) IBOutlet UILabel *activityTime;
+@property (weak, nonatomic) IBOutlet UILabel *activityLocation;
+@property (weak, nonatomic) IBOutlet UIButton *activityBtn;
+@property (weak, nonatomic) IBOutlet UILabel *timeTitle;
+@property (weak, nonatomic) IBOutlet UILabel *locationTitle;
 
 @end

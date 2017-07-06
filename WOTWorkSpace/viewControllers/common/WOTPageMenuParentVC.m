@@ -44,7 +44,9 @@
 
 -(void)setpageMenu{
    
-    self.pageTabView = [[XXPageTabView alloc] initWithChildControllers:self.childViewControllers childTitles:@[]];
+    [self makeVC];
+    NSArray<__kindof UIViewController *> *controllers = [self createViewControllers];
+    self.pageTabView = [[XXPageTabView alloc] initWithChildControllers:controllers childTitles:[self createTitles]];
     self.pageTabView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     self.pageTabView.delegate = self;
     //    self.pageTabView.bodyBounces = NO;
@@ -70,6 +72,12 @@
     [self.view addSubview:self.pageTabView];
 }
 
+-(NSArray *)createTitles{
+    return [[NSArray alloc]init];
+}
+-(NSArray<__kindof UIViewController *> *)createViewControllers{
+    return [[NSArray alloc]init];
+}
 #pragma mark - XXPageTabViewDelegate
 - (void)pageTabViewDidEndChange {
     NSLog(@"#####%d", (int)self.pageTabView.selectedTabIndex);

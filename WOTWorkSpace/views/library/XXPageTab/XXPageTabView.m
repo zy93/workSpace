@@ -9,7 +9,7 @@
 #import "XXPageTabView.h"
 #import "XXPageTabItemLable.h"
 
-#define kTabDefautHeight 38.0
+#define kTabDefautHeight 40.0
 #define kTabDefautFontSize 15.0
 #define kMaxNumberOfPageItems 4
 #define kIndicatorHeight 2.0
@@ -28,7 +28,7 @@
 //tab
 @property (nonatomic, strong) UIScrollView *tabView;
 @property (nonatomic, strong) UIView *indicatorView;
-
+@property (nonatomic, strong) UIView *lineView;
 //body
 @property (nonatomic, strong) UIScrollView *bodyView;
 
@@ -118,10 +118,18 @@
         
         self.tabView.frame = CGRectMake(0, 0, _tabSize.width, _tabSize.height);
         self.tabView.contentSize = CGSizeMake(_tabItemWidth*_numberOfTabItems, 0);
+        self.lineView.frame = CGRectMake(0,_tabSize.height-_indicatorHeight, _tabSize.width, 1);
         
         for(NSInteger i = 0; i < _tabItems.count; i++) {
             XXPageTabItemLable *tabItem = (XXPageTabItemLable *)_tabItems[i];
             tabItem.frame = CGRectMake(_tabItemWidth*i, 0, _tabItemWidth, _tabSize.height);
+            if (i < _tabItems.count-1) {
+                UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
+                lineview.backgroundColor = UIColorFromRGB(0xd6d6d6);
+                [tabItem addSubview:lineview];
+            }
+            
+            
         }
         [self layoutIndicatorViewWithStyle];
 
@@ -153,8 +161,8 @@
     _tabItems = [NSMutableArray array];
     _tabBackgroundColor = [UIColor whiteColor];
     _bodyBackgroundColor = [UIColor whiteColor];
-    _unSelectedColor = [UIColor blackColor];
-    _selectedColor = [UIColor redColor];
+    _unSelectedColor = HighTextColor;
+    _selectedColor = MainOrangeColor;
     _isNeedRefreshLayout = YES;
     _isChangeByClick = NO;
     _bodyBounces = YES;
@@ -186,11 +194,16 @@
         tabItem.textAlignment = NSTextAlignmentCenter;
         tabItem.userInteractionEnabled = YES;
         
+       
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeChildControllerOnClick:)];
         [tabItem addGestureRecognizer:tapRecognizer];
         [_tabItems addObject:tabItem];
         [self.tabView addSubview:tabItem];
     }
+    if (!self.lineView.superview) {
+        [self addSubview:_lineView];
+    }
+    
 }
 
 - (void)resetTabView {
@@ -614,6 +627,13 @@
         _indicatorView.backgroundColor = _selectedColor;
     }
     return _indicatorView;
+}
+- (UIView *)lineView {
+    if(!_lineView) {
+        _lineView = [UIView new];
+        _lineView.backgroundColor = UIColorFromRGB(0xd6d6d6);
+    }
+    return _lineView;
 }
 
 - (void)setTabBackgroundColor:(UIColor *)tabBackgroundColor {

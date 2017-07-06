@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTTableViewBaseVC.h"
+@interface WOTJoiningEnterpriseVC : WOTTableViewBaseVC
 
-@interface WOTJoiningEnterpriseVC : UIViewController
 
+@property(nonatomic,strong)NSMutableArray *dataSource;
 @end

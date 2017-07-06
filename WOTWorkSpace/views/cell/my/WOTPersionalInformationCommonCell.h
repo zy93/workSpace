@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *valueImage;
 
 @property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageWidth;
 @end

@@ -17,7 +17,7 @@
 }
 
 -(void)loadtagsBtn{
-    CGFloat leading = 20;
+    CGFloat leading = 10;
     CGFloat top  = 0;
     
     for (NSString *title in _tagLabelArray) {
@@ -26,8 +26,8 @@
         label.frame = CGRectMake(leading, top,[title widthWithFont:[UIFont systemFontOfSize:15]]+15, 30);
         label.text = title;
         label.textAlignment = NSTextAlignmentCenter;
-       
-        [label setCorenerRadius:10 borderColor:[UIColor blueColor]];
+        label.textColor = ViewBorderColor;
+        [label setCorenerRadius:10 borderColor:[UIColor colorWithRed:123.0/255.0 green:163.0/255.0 blue:238.0/255.0 alpha:1.0]];
         [self.tagsVIew addSubview:label];
         leading += label.frame.size.width+10;
         

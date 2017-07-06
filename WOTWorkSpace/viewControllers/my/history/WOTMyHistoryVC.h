@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WOTMyHistoryVC : UIViewController
+@interface WOTMyHistoryVC : WOTPageMenuParentVC
 
 @end

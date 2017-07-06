@@ -7,16 +7,22 @@
 //
 
 #import "WOTInformationListVC.h"
-
+#import "WOTInformationLIstCell.h"
+#import "WOTCommonHeaderVIew.h"
 @interface WOTInformationListVC ()
-
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation WOTInformationListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = MainColor;
+    self.tableView.backgroundColor = CLEARCOLOR;
     
+    [self configNav];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTInformationLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTInformationLIstCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTCommonHeaderVIew" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTCommonHeaderVIewID"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,27 +35,50 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)configNav{
+    [self configNaviBackItem];
+    self.navigationItem.title = @"我的资讯";
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return 4;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    WOTCommonHeaderVIew *view = [[NSBundle mainBundle]loadNibNamed:@"WOTCommonHeaderVIew" owner:nil options:nil].lastObject;
+    if (section == 0) {
+        view.headerTitle.text = @"空间资讯";
+    } else {
+        view.headerTitle.text = @"企业资讯";
+    }
+    return view;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 125;
 }
 
-/*
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 50;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return section == 0 ? 10:0;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    WOTInformationLIstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTInformationLIstCellID"forIndexPath:indexPath];
+    cell.infoValue.text = @"万物互联的新时代 易联港链接前沿创新力量走向新时代";
+    cell.infoTime.text = @"07/08 10:22:22";
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

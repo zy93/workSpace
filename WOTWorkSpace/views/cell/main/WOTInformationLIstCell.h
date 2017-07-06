@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTInformationLIstCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *infoImage;
+@property (weak, nonatomic) IBOutlet UITextView *infoValue;
 
+@property (weak, nonatomic) IBOutlet UILabel *infoTime;
 @end

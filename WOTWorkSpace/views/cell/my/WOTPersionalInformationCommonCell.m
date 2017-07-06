@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [_valueImage setRadiuWithCorners:UIRectCornerAllCorners radiu:_valueImage.frame.size.width/2];
+    [[WOTConfigThemeUitls shared]setLabelColorss:[NSArray arrayWithObjects:self.titleLabel,self.valueLabel, nil] withColor:HighTextColor];
     // Initialization code
 }
 

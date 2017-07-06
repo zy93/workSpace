@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-   [_cityName setCorenerRadius:15 borderColor:[UIColor grayColor]];
+   [_cityName setCorenerRadius:10 borderColor:[UIColor grayColor]];
     _cityName.textColor = [UIColor grayColor];
     // Initialization code
 }

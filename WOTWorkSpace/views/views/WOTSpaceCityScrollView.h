@@ -15,6 +15,8 @@
 @end
 @interface WOTSpaceCityScrollView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionVIew;
+@property (weak, nonatomic) IBOutlet UIImageView *moreBtn;
+
 @property(nonatomic,strong)id<WOTWorkSpaceMoreCityDelegate>delegate;
 
 @end

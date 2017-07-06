@@ -11,8 +11,9 @@
 #import "WOTMyuserCell.h"
 #import "WOTMycommonCell.h"
 #import "WOTMyOrderCell.h"
-
-@interface WOTMyVC ()<UITableViewDataSource,UITableViewDelegate,WOTOrderCellDelegate,WOTOMyCellDelegate>
+#import "WOTMyActivitiesVC.h"
+#import "WOTMyHistoryVC.h"
+@interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
 @end
@@ -21,9 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = White;
-   
-    [self loadSubViews];
+    
+    [self configNaviBackItem];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
+    [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
     
     // Do any additional setup after loading the view.
 }
@@ -33,27 +36,13 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)loadSubViews{
-    self.tableView = [[UITableView alloc]init];
-    self.tableView.backgroundColor = White;
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
-     [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
-    
-    
-    [self.view addSubview:_tableView];
-}
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
     [self.navigationController.navigationBar setHidden:YES];
     
 }
--(void)viewWillLayoutSubviews{
-   [self.tableView layoutConstraintsToView:self.view];
-}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -109,7 +98,7 @@
     UITableViewCell *commoncell;
     
     if (indexPath.section == 0) {
-        WOTMyuserCell *mycell = [_tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
+        WOTMyuserCell *mycell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
         mycell.userName.text = @"张小宝";
         mycell.constellation.text = @"狮子座";
         mycell.signature.text = @"如果你不能很好的表达你的想法，说明你还不够了解啊";
@@ -148,9 +137,11 @@
                 
                 
             } else if (indexPath.row == 1){
-                
+                WOTMyActivitiesVC *activityvc = [[WOTMyActivitiesVC alloc]init];
+                [self.navigationController pushViewController:activityvc animated:YES];
             } else {
-                
+                WOTMyHistoryVC *historyvc = [[WOTMyHistoryVC alloc]init];
+                [self.navigationController pushViewController:historyvc animated:YES];
             }
         default:
             break;

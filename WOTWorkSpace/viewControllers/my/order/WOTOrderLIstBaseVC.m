@@ -10,7 +10,7 @@
 
 
 #import "WOTOrderCell.h"
-@interface WOTOrderLIstBaseVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface WOTOrderLIstBaseVC ()
 
 @end
 
@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadSubViews];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTOrderCell" bundle:nil] forCellReuseIdentifier:@"orderlistCellID"];
     // Do any additional setup after loading the view.
 }
 
@@ -26,28 +26,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:NO];
-}
--(void)loadSubViews{
-    self.tableView = [[UITableView alloc]init];
-    self.tableView.backgroundColor = CLEARCOLOR;
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.tableHeaderView.backgroundColor = CLEARCOLOR;
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTOrderCell" bundle:nil] forCellReuseIdentifier:@"orderlistCellID"];
 
-    
-    [self.view addSubview:_tableView];
-}
 
--(void)viewWillLayoutSubviews{
-    [self.tableView layoutConstraintsToView:self.view];
-}
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableViewr{
-    return 1;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 20;
 }

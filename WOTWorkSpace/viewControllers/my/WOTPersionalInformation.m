@@ -19,6 +19,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableView.backgroundColor = CLEARCOLOR;
+    self.tableView.showsVerticalScrollIndicator = NO;
     [self configNav];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTPersionalInformationCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTPersionalInformationCommonCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTPersionalInformationTagCell" bundle:nil] forCellReuseIdentifier:@"WOTPersionalInformationTagCellID"];
@@ -86,11 +87,18 @@
     if (indexPath.section == 0) {
         WOTPersionalInformationCommonCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationCommonCellID" forIndexPath:indexPath];
         NSArray *titleArray = @[@"头像",@"姓名",@"性别",@"星座",@"收获地址"];
+        NSArray *valueArray = @[@"",@"张小宝",@"",@"水瓶座",@"海淀区方圆大厦众创空间"];
         cell.titleLabel.text = titleArray[indexPath.row];
-        
+        cell.valueLabel.text = valueArray[indexPath.row];
+         cell.valueImage.image = indexPath.row == 0 ? [UIImage imageNamed:@"defaultHeaderVIew"] : [UIImage imageNamed:@"boy_blue"];
+        cell.imageWidth.constant = indexPath.row==0 ? 50:28;
+        cell.imageHeight.constant = indexPath.row==0 ? 50:28;
         if (indexPath.row == 0 || indexPath.row == 2) {
             [cell.valueLabel setHidden:YES];
             [cell.valueImage setHidden:NO];
+           
+            
+            
         } else {
             [cell.valueLabel setHidden:NO];
             [cell.valueImage setHidden:YES];
@@ -101,6 +109,7 @@
         commoncell = cell;
     } else if (indexPath.section == 1){
         NSArray *titleArray = @[@"技    能",@"兴    趣",@"行业",@"个性签名"];
+        NSArray *valueArray = @[@"",@"",@"物联网行业",@"要得到从未得到的东西，就要付出从未过的努力！！！"];
         if (indexPath.row == 0|| indexPath.row == 1) {
             
             WOTPersionalInformationTagCell *tagcell = [tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationTagCellID" forIndexPath:indexPath];
@@ -114,6 +123,7 @@
                 [cell.valueLabel setHidden:NO];
                 [cell.valueImage setHidden:YES];
             cell.titleLabel.text = titleArray[indexPath.row];
+            cell.valueLabel.text = valueArray[indexPath.row];
             commoncell = cell;
             if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section]-1) {
                 [cell.lineView setHidden:YES];

@@ -14,6 +14,8 @@
 #import "WOTworkSpaceLIstVC.h"
 #import "WOTworkSpaceDetailVC.h"
 #import "WOTEnterpriseLIstVC.h"
+#import "WOTActivitiesLIstVC.h"
+#import "WOTInformationListVC.h"
 #import "WOTEnumUtils.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
@@ -252,6 +254,21 @@
     [self.navigationController pushViewController:_spacevc animated:YES];
     
     
+    
+}
+
+
+- (IBAction)showActivitiesVC:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
+    WOTActivitiesLIstVC *acvc = [storyboard instantiateViewControllerWithIdentifier:@"WOTActivitiesLIstVCID"];
+    [self.navigationController pushViewController:acvc animated:YES];
+    
+    
+}
+- (IBAction)showInformationLIstVC:(id)sender {
+    
+    WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
+    [self.navigationController pushViewController:infovc animated:YES];
     
 }
 

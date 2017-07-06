@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京市海淀区四级青桥1号楼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFJ-fl-qdG">
-                        <rect key="frame" x="10" y="155" width="165.5" height="16"/>
+                        <rect key="frame" x="15" y="155" width="165.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                     <constraint firstItem="KS0-zV-2gn" firstAttribute="top" secondItem="8yb-bd-lpw" secondAttribute="bottom" constant="2" id="kMv-K6-WYD"/>
                     <constraint firstAttribute="trailing" secondItem="2Je-e2-hph" secondAttribute="trailing" id="pKf-fP-FN9"/>
                     <constraint firstItem="XVK-tf-b4v" firstAttribute="leading" secondItem="8yb-bd-lpw" secondAttribute="trailing" constant="5" id="tEj-gO-GbK"/>
-                    <constraint firstItem="IFJ-fl-qdG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="toP-T3-9Vv"/>
+                    <constraint firstItem="IFJ-fl-qdG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="toP-T3-9Vv"/>
                     <constraint firstItem="KS0-zV-2gn" firstAttribute="top" secondItem="m9d-Ud-6KF" secondAttribute="bottom" constant="2" id="zxF-gX-GwM"/>
                 </constraints>
             </tableViewCellContentView>

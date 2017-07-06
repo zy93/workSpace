@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTActivitiesListCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *activityImage;
+@property (weak, nonatomic) IBOutlet UILabel *activityTitle;
+@property (weak, nonatomic) IBOutlet UILabel *activityLocation;
+@property (weak, nonatomic) IBOutlet UILabel *activityState;
 
 @end

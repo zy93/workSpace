@@ -10,4 +10,9 @@
 
 @interface WOTTEnterpriseListCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *enterpriseLogo;
+@property (weak, nonatomic) IBOutlet UILabel *enterpriseName;
+
+@property (weak, nonatomic) IBOutlet UILabel *enterpriseInfo;
+
 @end

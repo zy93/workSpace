@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.infoTime.textColor = HighTextColor;
+    self.infoValue.textColor = HighTextColor;
+    self.infoValue.scrollEnabled = NO;
     // Initialization code
 }
 

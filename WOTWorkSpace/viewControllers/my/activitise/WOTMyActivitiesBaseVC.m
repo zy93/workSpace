@@ -7,7 +7,7 @@
 //
 
 #import "WOTMyActivitiesBaseVC.h"
-
+#import "WOTMyActivitiesCell.h"
 @interface WOTMyActivitiesBaseVC ()
 
 @end
@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableHeaderView.backgroundColor = CLEARCOLOR;
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyActivitiesCell" bundle:nil] forCellReuseIdentifier:@"WOTMyActivitiesCellID"];
+ 
     // Do any additional setup after loading the view.
 }
 
@@ -24,6 +27,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTMyActivitiesCell *activityCell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyActivitiesCellID" forIndexPath:indexPath];
+    activityCell.activityTitle.text = @"单身交流会！！！";
+    activityCell.activityTime.text = @"07/11 15:00 -- 07/12 16:00";
+    activityCell.activityLocation.text = @"阳光100.优客工厂";
+    return activityCell;
+
+}
 /*
 #pragma mark - Navigation
 

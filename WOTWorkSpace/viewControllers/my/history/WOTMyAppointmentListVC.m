@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyAppointmentCell" bundle:nil] forCellReuseIdentifier:@"WOTMyAppointmentCellID"];
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -24,6 +27,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTMyAppointmentCell *appointmentcell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyAppointmentCellID" forIndexPath:indexPath];
+    appointmentcell.appointmentCommunityValue.text = @"方圆大厦--众创空间";
+    appointmentcell.appointmentObjectValue.text =@"北京物联港科技发展有限公司";
+    appointmentcell.appointmentTimeValue.text = @"2017-07-11 12:30:23";
+    appointmentcell.appointmentReasionValue.text = @"讨论新项目需求";
+    return appointmentcell;
+    
+}
 /*
 #pragma mark - Navigation
 
