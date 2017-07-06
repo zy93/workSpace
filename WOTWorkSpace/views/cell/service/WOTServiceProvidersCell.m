@@ -16,6 +16,8 @@
     if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
         [self setSeparatorInset:UIEdgeInsetsZero];
     }
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    self.selectedBackgroundView.backgroundColor = UIColorFromRGB(0xffffff);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

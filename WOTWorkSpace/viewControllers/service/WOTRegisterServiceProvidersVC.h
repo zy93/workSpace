@@ -10,4 +10,6 @@
 
 @interface WOTRegisterServiceProvidersVC : UIViewController
 
+@property (nonatomic, strong) NSArray *selectServiceList;
+
 @end

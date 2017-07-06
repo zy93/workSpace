@@ -10,4 +10,7 @@
 
 @interface WOTLoginVC : UIViewController
 
+@property (nonatomic, strong)NSString *cityName;
+@property (nonatomic, strong)NSString *cityCode;
+
 @end

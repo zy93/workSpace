@@ -10,4 +10,6 @@
 
 @interface WOTGETServiceViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *selectServiceList;
+
 @end

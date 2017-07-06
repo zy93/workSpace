@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0DA2DEE8BB52DB960AA913FE /* libPods-WOTWorkSpaceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */; };
+		2A1624EA1F0E211300F216F9 /* CityCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1624E91F0E211300F216F9 /* CityCode.plist */; };
+		2A1624ED1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1624EC1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m */; };
+		2A1624F01F0E231E00F216F9 /* WOTFileUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1624EF1F0E231E00F216F9 /* WOTFileUitls.m */; };
+		2A1624F31F0E24DA00F216F9 /* WOTLoginNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1624F21F0E24DA00F216F9 /* WOTLoginNaviController.m */; };
+		2A1624F61F0E3F4B00F216F9 /* WOTUserRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1624F51F0E3F4B00F216F9 /* WOTUserRegisterVC.m */; };
 		2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */; };
 		2A336A611F0CCECC00F5B0AF /* WOTLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A336A601F0CCECC00F5B0AF /* WOTLoginModel.m */; };
 		2A336A641F0CD26D00F5B0AF /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A336A631F0CD26D00F5B0AF /* WOTBaseModel.m */; };
@@ -171,6 +176,15 @@
 
 /* Begin PBXFileReference section */
 		157AADE7023AC29418E68C7A /* Pods-WOTWorkSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
+		2A1624E91F0E211300F216F9 /* CityCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityCode.plist; sourceTree = "<group>"; };
+		2A1624EB1F0E21CB00F216F9 /* WOTSelectCityCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSelectCityCodeVC.h; sourceTree = "<group>"; };
+		2A1624EC1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSelectCityCodeVC.m; sourceTree = "<group>"; };
+		2A1624EE1F0E231E00F216F9 /* WOTFileUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTFileUitls.h; sourceTree = "<group>"; };
+		2A1624EF1F0E231E00F216F9 /* WOTFileUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTFileUitls.m; sourceTree = "<group>"; };
+		2A1624F11F0E24DA00F216F9 /* WOTLoginNaviController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLoginNaviController.h; sourceTree = "<group>"; };
+		2A1624F21F0E24DA00F216F9 /* WOTLoginNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLoginNaviController.m; sourceTree = "<group>"; };
+		2A1624F41F0E3F4B00F216F9 /* WOTUserRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUserRegisterVC.h; sourceTree = "<group>"; };
+		2A1624F51F0E3F4B00F216F9 /* WOTUserRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTUserRegisterVC.m; sourceTree = "<group>"; };
 		2A3042B11F0B7E4E007C4DED /* WOTHTTPNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHTTPNetwork.h; sourceTree = "<group>"; };
 		2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTHTTPNetwork.m; sourceTree = "<group>"; };
 		2A336A5F1F0CCECC00F5B0AF /* WOTLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLoginModel.h; sourceTree = "<group>"; };
@@ -480,6 +494,12 @@
 			children = (
 				2A336A841F0CF2B600F5B0AF /* WOTLoginVC.h */,
 				2A336A851F0CF2B600F5B0AF /* WOTLoginVC.m */,
+				2A1624EB1F0E21CB00F216F9 /* WOTSelectCityCodeVC.h */,
+				2A1624EC1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m */,
+				2A1624F41F0E3F4B00F216F9 /* WOTUserRegisterVC.h */,
+				2A1624F51F0E3F4B00F216F9 /* WOTUserRegisterVC.m */,
+				2A1624F11F0E24DA00F216F9 /* WOTLoginNaviController.h */,
+				2A1624F21F0E24DA00F216F9 /* WOTLoginNaviController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -591,6 +611,7 @@
 				E85A86011F0206730016FCA1 /* WOTConstants.h */,
 				E8EACF8B1F034C9E0015535D /* WOTEnums.h */,
 				2AF78CE11F09F8F900F7B56D /* ServiceCategory.plist */,
+				2A1624E91F0E211300F216F9 /* CityCode.plist */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -831,6 +852,8 @@
 				E850330A1F0B922000E79257 /* WOTEnumUtils.m */,
 				2A336A871F0CF46600F5B0AF /* WOTUitls.h */,
 				2A336A881F0CF46600F5B0AF /* WOTUitls.m */,
+				2A1624EE1F0E231E00F216F9 /* WOTFileUitls.h */,
+				2A1624EF1F0E231E00F216F9 /* WOTFileUitls.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -1151,6 +1174,7 @@
 				E8D89D8E1F06481D00FFFFDE /* WOTMyuserCell.xib in Resources */,
 				E8693AFB1F04B1E600772BC1 /* WOTMyOrderCell.xib in Resources */,
 				E85033021F0B62EF00E79257 /* WOTSpaceCityScrollView.xib in Resources */,
+				2A1624EA1F0E211300F216F9 /* CityCode.plist in Resources */,
 				E85032E11F0B5A9600E79257 /* WOTPersionalInformationTagCell.xib in Resources */,
 				2AF78CE21F09F8F900F7B56D /* ServiceCategory.plist in Resources */,
 				E85032F91F0B62CE00E79257 /* WOTworkSpaceCommonCell.xib in Resources */,
@@ -1335,6 +1359,7 @@
 				E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */,
 				2A336A641F0CD26D00F5B0AF /* WOTBaseModel.m in Sources */,
 				2AF78CEB1F0A0E6B00F7B56D /* WOTServiceProvidersCategoryVC.m in Sources */,
+				2A1624ED1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m in Sources */,
 				E894D1561F0BA51A007053C6 /* WOTMenuView.m in Sources */,
 				E85032D41F0B477F00E79257 /* WOTSingtleton.m in Sources */,
 				E8693AF81F04B1E600772BC1 /* WOTMyCell.m in Sources */,
@@ -1342,6 +1367,7 @@
 				E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */,
 				E85A858C1F0201F30016FCA1 /* AppDelegate.m in Sources */,
 				E8588CEA1F0B27F900951105 /* NSString+URL.m in Sources */,
+				2A1624F01F0E231E00F216F9 /* WOTFileUitls.m in Sources */,
 				E85032FB1F0B62CE00E79257 /* WOTworkSpaceScrollVIewCell.m in Sources */,
 				E85033011F0B62EF00E79257 /* WOTSpaceCityScrollView.m in Sources */,
 				E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */,
@@ -1388,6 +1414,7 @@
 				E85A85F71F0202460016FCA1 /* MBProgressHUD+Add.m in Sources */,
 				E8693B0F1F04F90E00772BC1 /* WOTMainVC.m in Sources */,
 				2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */,
+				2A1624F31F0E24DA00F216F9 /* WOTLoginNaviController.m in Sources */,
 				E85A85F11F0202460016FCA1 /* MASViewAttribute.m in Sources */,
 				E8693B141F05061500772BC1 /* WOTServiceVC.m in Sources */,
 				2A336A861F0CF2B600F5B0AF /* WOTLoginVC.m in Sources */,
@@ -1396,6 +1423,7 @@
 				E85032CF1F0B476900E79257 /* WOTMainNavigationController.m in Sources */,
 				2A336A811F0CDAB300F5B0AF /* WOTVisitorsAppointmentCell.m in Sources */,
 				E8D89D7B1F06021B00FFFFDE /* PFGoldenSectionSpiral.m in Sources */,
+				2A1624F61F0E3F4B00F216F9 /* WOTUserRegisterVC.m in Sources */,
 				E85A85F51F0202460016FCA1 /* View+MASAdditions.m in Sources */,
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
 				2A336A611F0CCECC00F5B0AF /* WOTLoginModel.m in Sources */,

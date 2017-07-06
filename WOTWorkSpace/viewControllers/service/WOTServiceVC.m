@@ -13,6 +13,7 @@
 #import "WOTServiceCell.h"
 
 #import "WOTLoginVC.h"
+#import "WOTLoginNaviController.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -59,7 +60,7 @@
 
 -(void)configNav{
     self.navigationItem.title = @"服务";
-    
+    //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
@@ -221,8 +222,11 @@
         }
         else if (indexPath.row==2) {
 //            [self pushVCByVCName:@""];
+
             WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
-            [self presentViewController:vc animated:YES completion:^{
+            WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
+
+            [self presentViewController:nav animated:YES completion:^{
                 
             }];
         }
