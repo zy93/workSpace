@@ -7,13 +7,18 @@
 //
 
 #import "WOTServiceProvidersCategoryVC.h"
+#import "WOTGETServiceViewController.h"
+
 #import "WOTServiceProvidersCell.h"
 #import "WOTServiceProvidersCategoryCell.h"
+
 
 @interface WOTServiceProvidersCategoryVC () <UITableViewDelegate, UITableViewDataSource>
 {
     NSDictionary *table1Dict;
     NSArray *table2List;
+    NSString *selectService;
+    NSMutableArray *selectServiceCategoryList;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table1;
 @property (weak, nonatomic) IBOutlet UITableView *table2;
@@ -38,6 +43,10 @@
 -(void)configNav{
     self.navigationItem.title = @"选择服务商类别";
     
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(selectDoneAction)];
+    
+    [self.navigationItem setRightBarButtonItem:doneItem];
+    //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
@@ -46,25 +55,23 @@
 
 -(void)loadData
 {
-    NSDictionary *dic = [self readPlistFileForFileName:@"ServiceCategory"];
+    NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
+    selectServiceCategoryList = [[NSMutableArray alloc] init];
     table1Dict = dic;
     table2List = dic[[dic allKeys].firstObject];
+    self.table2.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.table1 reloadData];
     [self.table2 reloadData];
 }
 
-#pragma mark - plist file
--(NSDictionary *)readPlistFileForFileName:(NSString *)fileName
+#pragma mark - action
+-(void)selectDoneAction
 {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-//    //添加一项内容    
-//    //获取应用程序沙盒的Documents目录
-//    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-//    NSString *plistPath1 = [paths objectAtIndex:0];
-    return dataDic;
-    
+   UIViewController *previousVC = [(WOTServiceNaviController*)self.navigationController getPreviousViewController];
+    ((WOTGETServiceViewController *)previousVC).selectServiceList = selectServiceCategoryList;
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 #pragma mark - table delegate & data source
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -93,6 +100,10 @@
         }
         NSArray *arr = [table1Dict allKeys];
         [cell.titleLab setText:arr[indexPath.row]];
+        if (indexPath.row==0) {
+            selectService = arr[indexPath.row];
+            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        }
         return  cell;
     }
     else {
@@ -100,6 +111,15 @@
         if (cell == nil) {
             cell = [[WOTServiceProvidersCategoryCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTServiceProvidersCategoryCell"];
         }
+        
+        [cell.selectImg setHidden:YES];
+        for (NSString *str in selectServiceCategoryList) {
+            if ([str containsString:table2List[indexPath.row]]) {
+                [cell.selectImg setHidden:NO];
+                break;
+            }
+        }
+        
         [cell.titleLab setText:table2List[indexPath.row]];
         return  cell;
     }
@@ -110,9 +130,20 @@
     if ([tableView isEqual:self.table1]) {
         WOTServiceProvidersCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         table2List = table1Dict[cell.titleLab.text];
+        selectService = cell.titleLab.text;
         [self.table2 reloadData];
     }
     else {
+        WOTServiceProvidersCategoryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        for (NSString *str in selectServiceCategoryList) {
+            if ([str containsString:table2List[indexPath.row]]) {
+                [cell.selectImg setHidden:YES];
+                [selectServiceCategoryList removeObject:str];
+                return;
+            }
+        }
+        [cell.selectImg setHidden:NO];
+        [selectServiceCategoryList addObject:[NSString stringWithFormat:@"%@-%@",selectService,table2List[indexPath.row]]];
     }
 }
 

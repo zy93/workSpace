@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTServiceProvidersCategoryVC : UIViewController
+@property (nonatomic, strong) NSArray *selectServiceList;
 
 @end

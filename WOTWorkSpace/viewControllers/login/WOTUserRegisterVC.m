@@ -1,35 +1,27 @@
 //
-//  WOTServiceNaviController.m
+//  WOTUserRegisterVC.m
 //  WOTWorkSpace
 //
-//  Created by 张姝枫 on 2017/6/29.
-//  Copyright © 2017年 张姝枫. All rights reserved.
+//  Created by 张雨 on 2017/7/6.
+//  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTServiceNaviController.h"
+#import "WOTUserRegisterVC.h"
 
-@interface WOTServiceNaviController () <UINavigationControllerDelegate>
+@interface WOTUserRegisterVC ()
 
 @end
 
-@implementation WOTServiceNaviController
+@implementation WOTUserRegisterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-
--(UIViewController *)getPreviousViewController
-{
-    return  self.viewControllers.count >1? self.viewControllers[self.viewControllers.count-2]:nil;
 }
 
 /*

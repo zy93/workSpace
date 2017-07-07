@@ -10,5 +10,6 @@
 
 @interface WOTServiceProvidersCategoryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImg;
 
 @end

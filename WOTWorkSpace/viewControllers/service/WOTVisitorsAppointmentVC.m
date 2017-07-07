@@ -35,7 +35,7 @@
 
 -(void)configNav{
     self.navigationItem.title = @"访客预约";
-    
+    //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;

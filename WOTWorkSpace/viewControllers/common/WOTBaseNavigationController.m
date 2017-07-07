@@ -10,7 +10,7 @@
 #import "WOTConstants.h"
 
 
-@implementation WOTBaseNavigationController
+@implementation WOTBaseNavigationController 
 
 
 -(instancetype)initWithRootViewController:(UIViewController *)rootViewController{
@@ -30,11 +30,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemAction)];
+    
+    //    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemAction)];
+    
+    viewController.navigationItem.leftBarButtonItems = @[backBarButtonItem];
+    
+}
+
+- (void)backBarButtonItemAction
+{
+    [self popViewControllerAnimated:YES];
 }
 
 /*

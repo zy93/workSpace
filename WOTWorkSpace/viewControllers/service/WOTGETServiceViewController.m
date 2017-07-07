@@ -31,11 +31,17 @@
 
 -(void)configNav{
     self.navigationItem.title = @"获取服务";
-    
+    //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"----- %@", self.selectServiceList);
 }
 
 #pragma mark - action 
