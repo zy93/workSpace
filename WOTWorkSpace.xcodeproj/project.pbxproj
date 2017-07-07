@@ -1560,6 +1560,7 @@
 				2A336A811F0CDAB300F5B0AF /* WOTVisitorsAppointmentCell.m in Sources */,
 				E8D89D7B1F06021B00FFFFDE /* PFGoldenSectionSpiral.m in Sources */,
 				E8370F1D1F0E02670070C077 /* WOTActivitiesListCell.m in Sources */,
+				2A1624F61F0E3F4B00F216F9 /* WOTUserRegisterVC.m in Sources */,
 				E85A85F51F0202460016FCA1 /* View+MASAdditions.m in Sources */,
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
 				2A336A611F0CCECC00F5B0AF /* WOTLoginModel.m in Sources */,
