@@ -12,6 +12,7 @@
 #import "WOTGETServiceCell.h"
 #import "WOTServiceCell.h"
 
+#import "WOTLoginVC.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -220,6 +221,10 @@
         }
         else if (indexPath.row==2) {
 //            [self pushVCByVCName:@""];
+            WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
+            [self presentViewController:vc animated:YES completion:^{
+                
+            }];
         }
         else if (indexPath.row==3) {
             [self pushVCByVCName:@"WOTGETServiceViewController"];
