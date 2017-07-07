@@ -123,11 +123,14 @@
         for(NSInteger i = 0; i < _tabItems.count; i++) {
             XXPageTabItemLable *tabItem = (XXPageTabItemLable *)_tabItems[i];
             tabItem.frame = CGRectMake(_tabItemWidth*i, 0, _tabItemWidth, _tabSize.height);
-            if (i < _tabItems.count-1) {
-                UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
-                lineview.backgroundColor = UIColorFromRGB(0xd6d6d6);
-                [tabItem addSubview:lineview];
+            if (_cutOffLine) {
+                if (i < _tabItems.count-1) {
+                    UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
+                    lineview.backgroundColor = UIColorFromRGB(0xd6d6d6);
+                    [tabItem addSubview:lineview];
+                }
             }
+            
             
             
         }

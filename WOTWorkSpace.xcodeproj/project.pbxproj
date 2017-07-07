@@ -177,6 +177,8 @@
 		E8BA0D8A1F0CFA1F00B81C3D /* WOTMyRepairdListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA0D891F0CFA1F00B81C3D /* WOTMyRepairdListVC.m */; };
 		E8BA0D8D1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA0D8C1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.m */; };
 		E8BA0D901F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA0D8F1F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m */; };
+		E8CF9FCE1F0F751B00EF0F46 /* WOTBookStationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF9FCD1F0F751B00EF0F46 /* WOTBookStationVC.m */; };
+		E8CF9FD41F0F8EA400EF0F46 /* WOTBookStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF9FD31F0F8EA400EF0F46 /* WOTBookStationCell.m */; };
 		E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF721F033D3E0015535D /* UIViewController+Extension.m */; };
 		E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF7D1F0344EC0015535D /* WOTPageMenuParentVC.m */; };
 		E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF8E1F035A990015535D /* WOTOrderLIstVC.m */; };
@@ -485,6 +487,10 @@
 		E8BA0D8C1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyPublishDemandsLIstVC.m; sourceTree = "<group>"; };
 		E8BA0D8E1F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyFeedbackLIstVC.h; sourceTree = "<group>"; };
 		E8BA0D8F1F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyFeedbackLIstVC.m; sourceTree = "<group>"; };
+		E8CF9FCC1F0F751B00EF0F46 /* WOTBookStationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBookStationVC.h; sourceTree = "<group>"; };
+		E8CF9FCD1F0F751B00EF0F46 /* WOTBookStationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBookStationVC.m; sourceTree = "<group>"; };
+		E8CF9FD21F0F8EA400EF0F46 /* WOTBookStationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBookStationCell.h; sourceTree = "<group>"; };
+		E8CF9FD31F0F8EA400EF0F46 /* WOTBookStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBookStationCell.m; sourceTree = "<group>"; };
 		E8D89D821F06136000FFFFDE /* WOTWorkSpace_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkSpace_Prefix.pch; sourceTree = "<group>"; };
 		E8EACF711F033D3E0015535D /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		E8EACF721F033D3E0015535D /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
@@ -699,6 +705,8 @@
 				E8190D6E1F0F69660000B07C /* WOTVisitorsAppointmentCell.m */,
 				E8190D6F1F0F69660000B07C /* WOTVisitTypeCell.h */,
 				E8190D701F0F69660000B07C /* WOTVisitTypeCell.m */,
+				E8CF9FD21F0F8EA400EF0F46 /* WOTBookStationCell.h */,
+				E8CF9FD31F0F8EA400EF0F46 /* WOTBookStationCell.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1061,6 +1069,8 @@
 				2AF78CF61F0A3EFA00F7B56D /* WOTFeedbackVC.m */,
 				E8693B1B1F05143800772BC1 /* WOTServiceNaviController.h */,
 				E8693B1C1F05143800772BC1 /* WOTServiceNaviController.m */,
+				E8CF9FCC1F0F751B00EF0F46 /* WOTBookStationVC.h */,
+				E8CF9FCD1F0F751B00EF0F46 /* WOTBookStationVC.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1517,6 +1527,7 @@
 				E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */,
 				E8190DAC1F0F69660000B07C /* WOTMyAppointmentCell.m in Sources */,
 				2A336A641F0CD26D00F5B0AF /* WOTBaseModel.m in Sources */,
+				E8CF9FCE1F0F751B00EF0F46 /* WOTBookStationVC.m in Sources */,
 				2AF78CEB1F0A0E6B00F7B56D /* WOTServiceProvidersCategoryVC.m in Sources */,
 				2A1624ED1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m in Sources */,
 				E85032D41F0B477F00E79257 /* WOTSingtleton.m in Sources */,
@@ -1587,6 +1598,7 @@
 				E88A7F671F0A091000A670E7 /* (null) in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
 				E8190DCB1F0F69660000B07C /* PFGoldenSectionSpiral.m in Sources */,
+				E8CF9FD41F0F8EA400EF0F46 /* WOTBookStationCell.m in Sources */,
 				E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */,
 				2AF78CEE1F0A39E800F7B56D /* WOTGETServiceViewController.m in Sources */,
 				E82D5FB21F07DDCA003EF0AE /* UIView+Extension.m in Sources */,

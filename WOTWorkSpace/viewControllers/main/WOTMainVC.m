@@ -16,6 +16,7 @@
 #import "WOTEnterpriseLIstVC.h"
 #import "WOTActivitiesLIstVC.h"
 #import "WOTInformationListVC.h"
+#import "WOTBookStationVC.h"
 #import "WOTEnumUtils.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
@@ -150,11 +151,16 @@
         }];
     }];
     WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:sender.titleLabel.text];
-    WOTEnterpriseLIstVC *vc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
+    WOTEnterpriseLIstVC *enterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
+    WOTBookStationVC *stationvc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTBookStationVCID"];
     switch (balltype) {
         case WOTEnterprise:
            
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:enterprisevc animated:YES];
+            break;
+        case WOTBookStation:
+            [self.navigationController pushViewController:stationvc animated:YES];
             break;
         case WOTOthers:
             

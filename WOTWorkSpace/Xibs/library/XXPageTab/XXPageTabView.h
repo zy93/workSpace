@@ -47,7 +47,8 @@ typedef NS_ENUM(NSInteger, XXPageTabIndicatorStyle) {
 @property (nonatomic, strong) UIColor *bodyBackgroundColor;
 /*是否打开body的边界弹动效果*/
 @property (nonatomic, assign) BOOL bodyBounces;
-
+/*是否item之间添加分割线*/
+@property (nonatomic, assign) BOOL cutOffLine;
 /*Title效果设置*/
 @property (nonatomic, assign) XXPageTabTitleStyle titleStyle;
 /*字体渐变，未选择的item的scale，默认是0.8（0~1）。仅XXPageTabTitleStyleScale生效*/

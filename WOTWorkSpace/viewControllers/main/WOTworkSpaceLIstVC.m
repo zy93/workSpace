@@ -23,7 +23,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
-   
+    self.tableVIew.showsVerticalScrollIndicator = NO;
     [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
