@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WOTCreateEnterpriseVC : UIViewController
+#import "WOTTableViewBaseVC.h"
+@interface WOTCreateEnterpriseVC : WOTTableViewBaseVC
 
 @end
