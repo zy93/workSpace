@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTUserRegisterVC : UIViewController
-
+@property (nonatomic, strong)NSString *cityName;
+@property (nonatomic, strong)NSString *cityCode;
 @end

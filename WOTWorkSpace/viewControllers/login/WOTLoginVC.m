@@ -9,6 +9,7 @@
 #import "WOTLoginVC.h"
 
 #import "WOTSelectCityCodeVC.h"
+#import "WOTUserRegisterVC.h"
 
 @interface WOTLoginVC ()
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
@@ -57,6 +58,11 @@
 }
 
 #pragma mark - action
+
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)clickSelectCityBtn:(id)sender {
     WOTSelectCityCodeVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectCityCodeVC"];
     [self.navigationController pushViewController:vc animated:YES];
@@ -82,6 +88,9 @@
     }];
 }
 - (IBAction)clickRegisterBtn:(id)sender {
+    WOTUserRegisterVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTUserRegisterVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 /*
