@@ -7,7 +7,7 @@
 //
 
 #import "WOTMyFeedbackLIstVC.h"
-
+#import "WOTFeedBackLIstCell.h"
 @interface WOTMyFeedbackLIstVC ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTFeedBackLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTFeedBackLIstCellID"];
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +24,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTFeedBackLIstCell *feedbackcell = [tableView dequeueReusableCellWithIdentifier:@"WOTFeedBackLIstCellID" forIndexPath:indexPath];
+    return feedbackcell;
+    
+}
+
 
 /*
 #pragma mark - Navigation

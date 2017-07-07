@@ -7,7 +7,7 @@
 //
 
 #import "WOTMyPublishDemandsLIstVC.h"
-
+#import "WOTFeedBackLIstCell.h"
 @interface WOTMyPublishDemandsLIstVC ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     [self.tableView registerNib:[UINib nibWithNibName:@"WOTFeedBackLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTFeedBackLIstCellID"];
     // Do any additional setup after loading the view.
 }
 
@@ -23,7 +24,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTFeedBackLIstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTFeedBackLIstCellID" forIndexPath:indexPath];
+    
+    cell.tagLabelArray = @[@"软件服务-软件集成",@"金融-理财培训"];
+    [cell loadtagsBtn];
+    return cell;
+    
+}
 /*
 #pragma mark - Navigation
 

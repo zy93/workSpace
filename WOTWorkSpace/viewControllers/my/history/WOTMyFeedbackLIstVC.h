@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WOTMyFeedbackLIstVC : UIViewController
+#import "WOTTableViewBaseVC.h"
+@interface WOTMyFeedbackLIstVC : WOTTableViewBaseVC
 
 @end

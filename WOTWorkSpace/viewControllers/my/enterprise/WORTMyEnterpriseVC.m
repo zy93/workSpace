@@ -69,6 +69,7 @@
     
     _createvc = [[WOTCreateEnterpriseVC alloc]init];
     _createvc.view.frame = CGRectMake(self.scrollVIew.frame.size.width,0,self.scrollVIew.frame.size.width,self.scrollVIew.frame.size.height);
+   
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     [self.scrollVIew addSubview:_joinvc.view];
     [self.scrollVIew addSubview:_createvc.view];

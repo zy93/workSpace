@@ -29,7 +29,7 @@
     appointmentcell.appointmentCommunityLabel.text = @"报修类型:";
     appointmentcell.appointmentCommunityValue.text = @"清洁";
       appointmentcell.appontmentObjectLabel.text =@"报修位置:";
-    appointmentcell.appointmentObjectValue.text =@"";
+    appointmentcell.appointmentObjectValue.text =@"2012旁边饮水机旁";
     appointmentcell.appintmentTimeLabel.text = @"报修时间:";
     appointmentcell.appointmentTimeValue.text = @"2017-07-11 12:30:23";
     appointmentcell.appointmentReasionLabel.text = @"描      述:";

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WOTMyPublishDemandsLIstVC : UIViewController
+#import "WOTTableViewBaseVC.h"
+@interface WOTMyPublishDemandsLIstVC : WOTTableViewBaseVC
 
 @end
