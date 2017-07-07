@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTTableViewBaseVC.h"
+@interface WOTSearchVC : WOTTableViewBaseVC
 
-@interface WOTSearchVC : UIViewController
-@property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSArray *dataSource;
 @end

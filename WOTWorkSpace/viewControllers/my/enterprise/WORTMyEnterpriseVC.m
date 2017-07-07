@@ -8,10 +8,16 @@
 
 #import "WORTMyEnterpriseVC.h"
 
-#import "WOTMyEnterPriseCell.h"
+#import "WOTJoiningEnterpriseVC.h"
 #import "WOTCreateEnterpriseVC.h"
-@interface WORTMyEnterpriseVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface WORTMyEnterpriseVC ()<UIScrollViewDelegate>
 
+@property(nonatomic,strong)WOTJoiningEnterpriseVC *joinvc;
+@property(nonatomic,strong)WOTCreateEnterpriseVC *createvc;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
+
+@property (weak, nonatomic) IBOutlet UILabel *joinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createLabel;
 @end
 
 @implementation WORTMyEnterpriseVC
@@ -19,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configNavi];
-    [self loadSubViews];
+    [self loadScrollViewSubviews];
     // Do any additional setup after loading the view.
 }
 
@@ -36,28 +42,38 @@
     self.navigationItem.title = @"我的企业";
     
 }
--(void)loadSubViews{
+
+- (IBAction)joiningEnterprise:(id)sender {
+    self.joinLabel.textColor = MainOrangeColor;
+    self.createLabel.textColor = HighTextColor;
+   [self.scrollVIew setContentOffset:CGPointMake(0,0) animated:YES];
+}
+
+- (IBAction)createEnterprise:(id)sender {
     
-    _tableVIew.dataSource = self;
-    _tableVIew.delegate = self;
-    [_tableVIew registerNib:[UINib nibWithNibName:@"WOTMyEnterPriseCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"myenterpriseCellID"];
-   
-    
+    self.joinLabel.textColor = HighTextColor;
+    self.createLabel.textColor = MainOrangeColor;
+    [self.scrollVIew setContentOffset:CGPointMake(self.scrollVIew.frame.size.width,0) animated:YES];
     
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return  1;
+-(void)viewDidLayoutSubviews{
+    
+    self.scrollVIew.contentSize = CGSizeMake(2*self.scrollVIew.frame.size.width, self.scrollVIew.frame.size.height);
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WOTMyEnterPriseCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"myenterpriseCellID" forIndexPath:indexPath];
-    return enterprisecell;
+
+-(void)loadScrollViewSubviews{
+    _joinvc = [[WOTJoiningEnterpriseVC alloc]init];
+    _joinvc.view.frame = CGRectMake(0, 0, self.scrollVIew.frame.size.width, self.scrollVIew.frame.size.height);
+    
+    
+    _createvc = [[WOTCreateEnterpriseVC alloc]init];
+    _createvc.view.frame = CGRectMake(self.scrollVIew.frame.size.width,0,self.scrollVIew.frame.size.width,self.scrollVIew.frame.size.height);
+   
+    self.scrollVIew.showsHorizontalScrollIndicator = NO;
+    [self.scrollVIew addSubview:_joinvc.view];
+    [self.scrollVIew addSubview:_createvc.view];
+    
 }
 
 

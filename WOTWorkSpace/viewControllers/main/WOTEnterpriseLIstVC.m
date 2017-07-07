@@ -7,7 +7,7 @@
 //
 
 #import "WOTEnterpriseLIstVC.h"
-#import "WOTMyEnterPriseCell.h"
+#import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpirse.h"
 #import "WOTMenuView.h"
 @interface WOTEnterpriseLIstVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -33,7 +33,7 @@ bool istags =  NO;
     [super viewDidLoad];
     [self configNav];
     [self getAllDataFromWeb];
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyEnterPriseCell" bundle:nil] forCellReuseIdentifier:@"myenterpriseCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
     
     self.enterpriseTag.text = ((WOTFilterTypeModel *)self.menuArray[0]).filterName;
     self.enterpriseStyle.text = ((WOTFilterTypeModel *)self.stylemenuArray[0]).filterName;
@@ -176,7 +176,7 @@ bool istags =  NO;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
   
-    return  70;
+    return  110;
 }
 
 
@@ -187,7 +187,11 @@ bool istags =  NO;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    WOTMyEnterPriseCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"myenterpriseCellID" forIndexPath:indexPath];
+    WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
+    enterprisecell.enterpriseName.text = @"北京物联港科技发展有限公司";
+    enterprisecell.enterpriseInfo.text = @"#软件#  集成软件我们是专家，欢迎大家来咨询！！！";
+    enterprisecell.enterpriseLogo.image = [UIImage imageNamed:@"enterprise_logo"];
+    
     return enterprisecell;
 }
 

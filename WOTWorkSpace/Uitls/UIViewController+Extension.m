@@ -31,6 +31,17 @@
     
 }
 
+
+-(void)configNaviRightItemWithImage:(UIImage *)image{
+    UIButton *rightbtn = [[UIButton alloc]init];
+    [rightbtn setFrame:CGRectMake(0,0,25,25)];
+    [rightbtn setBackgroundImage:image forState:UIControlStateNormal];
+    [rightbtn addTarget:self action:@selector(rightItemAction) forControlEvents: UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
+    
+}
+
+
 -(void)goback{
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -38,4 +49,8 @@
     
 }
 
+
+-(void)rightItemAction{
+    //跳转页面
+}
 @end

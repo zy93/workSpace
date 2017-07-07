@@ -9,7 +9,7 @@
 #import "WOTSearchVC.h"
 
 #import "WOTOrderCell.h"
-@interface WOTSearchVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface WOTSearchVC ()
 
 @end
 
@@ -21,7 +21,7 @@
     [self configNaviView:@"请输入关键字" block:^(){
         
     }];
-    [self loadSubViews];
+  [self.tableView registerNib:[UINib nibWithNibName:@"WOTOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"orderlistCellID"];
     // Do any additional setup after loading the view.
 }
 
@@ -35,25 +35,7 @@
     }
    
 }
--(void)loadSubViews{
-    _tableView = [[UITableView alloc]init];
-    _tableView.backgroundColor = White;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [_tableView registerNib:[UINib nibWithNibName:@"WOTOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"orderlistCellID"];
-    [self.view addSubview:_tableView];
-    
-}
 
--(void)viewWillLayoutSubviews{
-    [self.tableView layoutConstraintsToView:self.view];
-}
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataSource.count;

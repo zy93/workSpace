@@ -21,9 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = White;
+    self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
-   
+    self.tableVIew.showsVerticalScrollIndicator = NO;
     [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
@@ -45,13 +45,12 @@
     
     [self configNaviBackItem];
     self.navigationItem.title = @"空间列表";
-    UIBarButtonItem *share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareToThirdPlatform)];
-    self.navigationItem.rightBarButtonItem = share;
+    [self configNaviRightItemWithImage:[UIImage imageNamed:@"share"]];
 }
 
--(void)shareToThirdPlatform{
+-(void)rightItemAction{
     //TODO:分享到朋友圈等
-    
+    NSLog(@"分享到朋友圈去");
 }
 
 
@@ -137,6 +136,7 @@
         }
     } else{
         WOTworkSpaceCommonCell *spacecell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceCommonCellID" forIndexPath:indexPath];
+        spacecell.lineVIew.hidden = indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1 ? YES:NO;
         commoncell = spacecell;
     }
     return commoncell;

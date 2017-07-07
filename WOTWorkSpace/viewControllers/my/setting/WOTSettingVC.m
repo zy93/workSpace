@@ -11,7 +11,7 @@
 
 #import "WOTSettingCell.h"
 
-@interface WOTSettingVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface WOTSettingVC ()
 
 @end
 
@@ -20,8 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
-    [self loadSubViews];
+ 
     [self configNaviBackItem];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTSettingCell" bundle:nil] forCellReuseIdentifier:@"settingCellID"];
     self.navigationItem.title = @"设置";
     // Do any additional setup after loading the view.
 }
@@ -31,25 +32,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:NO];
-}
--(void)loadSubViews{
-    self.tableView = [[UITableView alloc]init];
-    self.tableView.backgroundColor = CLEARCOLOR;
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.tableHeaderView.backgroundColor = CLEARCOLOR;
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTSettingCell" bundle:nil] forCellReuseIdentifier:@"settingCellID"];
-    self.navigationItem.title = @"设置";
-    
-    [self.view addSubview:_tableView];
-}
 
--(void)viewWillLayoutSubviews{
-    [self.tableView layoutConstraintsToView:self.view];
-}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;

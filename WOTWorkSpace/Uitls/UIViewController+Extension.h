@@ -11,5 +11,5 @@
 @interface UIViewController(Extension)
 -(void)configNaviBackItem;
 -(void)configNaviView:(NSString *)searchTitle block:(void(^)())search;
-
+-(void)configNaviRightItemWithImage:(UIImage *)image;
 @end

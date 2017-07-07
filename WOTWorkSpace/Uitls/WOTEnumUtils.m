@@ -16,7 +16,10 @@
         if ([ballTitle isEqualToString:@"友邻"]) {
             type = WOTEnterprise;
             break;
-        } else {
+        } else if([ballTitle isEqualToString:@"订工位"]) {
+            type = WOTBookStation;
+            break;
+        }else {
             type = WOTOthers;
             break;
         }

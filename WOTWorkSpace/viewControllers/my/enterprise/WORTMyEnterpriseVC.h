@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WOTPageMenuParentVC.h"
 @interface WORTMyEnterpriseVC : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 
-@property(nonatomic,strong)NSMutableArray *dataSource;
 @end

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTTableViewBaseVC.h"
+@interface WOTSettingVC : WOTTableViewBaseVC
 
-@interface WOTSettingVC : UIViewController
-@property(nonatomic,strong)UITableView *tableView;
 
 @end

@@ -14,6 +14,9 @@
 #import "WOTworkSpaceLIstVC.h"
 #import "WOTworkSpaceDetailVC.h"
 #import "WOTEnterpriseLIstVC.h"
+#import "WOTActivitiesLIstVC.h"
+#import "WOTInformationListVC.h"
+#import "WOTBookStationVC.h"
 #import "WOTEnumUtils.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
@@ -43,12 +46,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 //必须在页面出现以后，重新设置scrollview 的contengsize
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
+    
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+70);
     
 }
@@ -147,11 +151,16 @@
         }];
     }];
     WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:sender.titleLabel.text];
-    WOTEnterpriseLIstVC *vc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
+    WOTEnterpriseLIstVC *enterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
+    WOTBookStationVC *stationvc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTBookStationVCID"];
     switch (balltype) {
         case WOTEnterprise:
            
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:enterprisevc animated:YES];
+            break;
+        case WOTBookStation:
+            [self.navigationController pushViewController:stationvc animated:YES];
             break;
         case WOTOthers:
             
@@ -252,6 +261,21 @@
     [self.navigationController pushViewController:_spacevc animated:YES];
     
     
+    
+}
+
+
+- (IBAction)showActivitiesVC:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
+    WOTActivitiesLIstVC *acvc = [storyboard instantiateViewControllerWithIdentifier:@"WOTActivitiesLIstVCID"];
+    [self.navigationController pushViewController:acvc animated:YES];
+    
+    
+}
+- (IBAction)showInformationLIstVC:(id)sender {
+    
+    WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
+    [self.navigationController pushViewController:infovc animated:YES];
     
 }
 
