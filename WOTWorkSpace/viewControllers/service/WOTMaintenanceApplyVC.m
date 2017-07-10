@@ -9,12 +9,12 @@
 #import "WOTMaintenanceApplyVC.h"
 
 #import "WOTRadioView.h"
-//#import "UIPickerView.h"
+#import "WOTPickerView.h"
 #import "WOTEnterTextVC.h"
 
-@interface WOTMaintenanceApplyVC () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate>
 {
-    UIPickerView *pickerView;
+    WOTPickerView *pickerView;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectTypeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
@@ -74,11 +74,11 @@
 - (IBAction)clickSelectImageBtn:(id)sender {
 }
 - (IBAction)clickSelectTimeBtn:(id)sender {
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
+    pickerView = [[WOTPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
     pickerView.dataSource = self;
     pickerView.delegate = self;
     [self.view addSubview:pickerView];
-//    [pickerView popPickerView];
+    [pickerView popPickerView];
 }
 - (IBAction)clickEnterAddrBtn:(id)sender {
 }
@@ -88,17 +88,17 @@
 
 
 #pragma mark - picker view dataSource
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+-(NSInteger)numberOfComponentsInPickerView:(WOTPickerView *)pickerView
 {
     return 2;
 }
 
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+-(NSInteger)pickerView:(WOTPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return component==0?24:60;
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+-(NSString *)pickerView:(WOTPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return component==0? [NSString stringWithFormat:@"%d时",(int)row]:[NSString stringWithFormat:@"%02d分",(int)row];
 }
