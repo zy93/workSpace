@@ -1253,7 +1253,7 @@
         <image name="IT_icon" width="43" height="31"/>
         <image name="arrows_down" width="12" height="12"/>
         <image name="backAcssory" width="7" height="13"/>
-        <image name="camera_bg" width="55" height="55"/>
+        <image name="bookStation" width="335" height="190"/>
         <image name="camera_icon" width="25" height="20"/>
         <image name="investment_icon" width="36" height="35"/>
         <image name="law_icon" width="46" height="39"/>
