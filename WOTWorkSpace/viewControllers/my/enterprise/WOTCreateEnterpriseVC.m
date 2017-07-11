@@ -19,6 +19,8 @@
 @implementation WOTCreateEnterpriseVC
 
 - (void)viewDidLoad {
+    
+    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
     [self createDataSource];
     self.navigationItem.title = @"创建企业";
@@ -29,10 +31,10 @@
     _connectvc.view.frame = self.view.frame;
     
     _connectvc.cancelBlokc  = ^{
-        [self setViewHidden];
+        [weakSelf setViewHidden];
     };
     _connectvc.okBlock = ^(NSString *name,NSString *tel, NSString *email){
-        [self setViewHidden];
+        [weakSelf setViewHidden];
         //TODO:保存输入的企业信息
     };
     _maskView = [[UIView alloc]initWithFrame:self.view.bounds];

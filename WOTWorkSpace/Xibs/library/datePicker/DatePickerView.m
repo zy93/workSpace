@@ -61,7 +61,7 @@
        
         [picker selectRow:16 inComponent:0 animated:YES];
         [picker selectRow:month-1 inComponent:1 animated:YES];
-        [picker selectRow:day-1 inComponent:2 animated:YES];
+        [picker selectRow:day inComponent:2 animated:YES];
     }
     return self;
 }
@@ -164,7 +164,7 @@
        
     }else
     {
-        if (row+1 == _selectedrow_day || row+1 == day){
+        if (row+1 == _selectedrow_day || row == day){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
         } else {
             mycom1.textColor = _otherTextcolor;

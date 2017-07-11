@@ -10,6 +10,7 @@
 #import "XXPageTabView.h"
 #import "XXPageTabItemLable.h"
 #import "WOTBookStationCell.h"
+#import "WOTDatePickerView.h"
 @interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) XXPageTabView *pageTabView;
 
@@ -34,18 +35,36 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectedBtn;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableIView;
-
+@property(nonatomic,strong)WOTDatePickerView *datepickerview;
 
 @end
 
 @implementation WOTBookStationVC
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    __weak typeof(self) weakSelf = self;
+    
     self.viewWidth.constant = self.view.frame.size.width/3;
     self.view.backgroundColor = MainColor;
     self.tableIView.backgroundColor = CLEARCOLOR;
        [self setTextColor:UIColorFromRGB(0x5484e7) tomorrowcolor:[UIColor blackColor] timecolor:[UIColor blackColor]];
+    
+    _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
+    [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - 250, self.view.frame.size.width, 250)];
+    _datepickerview.cancelBlokc = ^(){
+        weakSelf.datepickerview.hidden = YES;
+    };
+    
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+        weakSelf.datepickerview.hidden = YES;
+        NSLog(@"%ld年%ld月%ld日",year,month,day);
+    };
+
+    [self.view addSubview:_datepickerview];
+    _datepickerview.hidden  = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -56,6 +75,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
+    [self configNaviBackItem];
     self.navigationItem.title = @"订工位";
     
 }
@@ -82,8 +102,11 @@
 - (IBAction)selectedTime:(id)sender {
     self.indicatorVIewCenter.constant = self.selectDateView.frame.origin.x;
     [self setTextColor:[UIColor blackColor] tomorrowcolor:[UIColor blackColor] timecolor:UIColorFromRGB(0x5484e7)];
+    _datepickerview.hidden = NO;
     
 }
+
+
 
 -(void)setTextColor:(UIColor *)todaycolor tomorrowcolor:(UIColor *)tomorrowcolor timecolor:(UIColor *)timecolor{
     self.todayLabel.textColor = todaycolor;
