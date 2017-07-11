@@ -15,6 +15,7 @@
 #import "WOTMyHistoryVC.h"
 #import "WOTLoginVC.h"
 #import "WOTLoginNaviController.h"
+#import "WOTReservationsMeetingVC.h"
 @interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
