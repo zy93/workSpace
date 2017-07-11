@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WOTTableViewBaseVC.h"
 @interface WOTCreateEnterpriseVC : WOTTableViewBaseVC
+@property(nonatomic,strong)UIViewController *supervc;
 
 @end

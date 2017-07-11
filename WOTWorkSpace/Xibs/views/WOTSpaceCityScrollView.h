@@ -10,7 +10,7 @@
 @protocol WOTWorkSpaceMoreCityDelegate
 @required
     -(void)showMoreCityVC;
-
+    -(void)selectWithCity:(NSInteger)index;
 
 @end
 @interface WOTSpaceCityScrollView : UITableViewHeaderFooterView

@@ -13,6 +13,8 @@
 #import "WOTMyOrderCell.h"
 #import "WOTMyActivitiesVC.h"
 #import "WOTMyHistoryVC.h"
+#import "WOTLoginVC.h"
+#import "WOTLoginNaviController.h"
 @interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
@@ -99,10 +101,20 @@
     
     if (indexPath.section == 0) {
         WOTMyuserCell *mycell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
-        mycell.userName.text = @"张小宝";
-        mycell.constellation.text = @"狮子座";
-        mycell.signature.text = @"如果你不能很好的表达你的想法，说明你还不够了解啊";
-        mycell.headerImage.image = [UIImage imageNamed:@"defaultHeaderVIew"];
+        if ([WOTSingtleton shared].isuserLogin) {
+            mycell.userName.text = @"张小宝";
+            mycell.constellation.text = @"狮子座";
+            mycell.signature.text = @"如果你不能很好的表达你的想法，说明你还不够了解啊";
+            mycell.sexImage.image = [UIImage imageNamed:@"boy"];
+            mycell.headerImage.image = [UIImage imageNamed:@"defaultHeaderVIew"];
+            
+        } else {
+            mycell.userName.text = @"登录／注册";
+            mycell.constellation.text = @"";
+            mycell.signature.text = @"";
+            mycell.headerImage.image = [UIImage imageNamed:@"unlogin"];
+            mycell.sexImage = [UIImage imageNamed:@""];
+        }
         mycell.bgImage.image = [UIImage imageNamed:@"mybgimage"];
         mycell.mycelldelegate = self;
     
@@ -175,10 +187,20 @@
 }
 -(void)showPersonalInformationVC
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
-    
-    _persionalVC = [storyboard instantiateViewControllerWithIdentifier:@"WOTPersionalInformationID"];
-    [self.navigationController pushViewController:_persionalVC animated:YES];
+    if ([WOTSingtleton shared].isuserLogin) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
+        
+        _persionalVC = [storyboard instantiateViewControllerWithIdentifier:@"WOTPersionalInformationID"];
+        [self.navigationController pushViewController:_persionalVC animated:YES];
+    } else{
+        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
+        WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
+        
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+    }
+   
 }
 /*
 #pragma mark - Navigation

@@ -82,6 +82,7 @@
 - (IBAction)selectedTime:(id)sender {
     self.indicatorVIewCenter.constant = self.selectDateView.frame.origin.x;
     [self setTextColor:[UIColor blackColor] tomorrowcolor:[UIColor blackColor] timecolor:UIColorFromRGB(0x5484e7)];
+    
 }
 
 -(void)setTextColor:(UIColor *)todaycolor tomorrowcolor:(UIColor *)tomorrowcolor timecolor:(UIColor *)timecolor{

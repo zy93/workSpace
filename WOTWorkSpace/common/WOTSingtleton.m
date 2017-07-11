@@ -30,4 +30,10 @@
     }
     return _ballTitle;
 }
+-(BOOL)isuserLogin{
+    if (_isuserLogin == nil) {
+        _isuserLogin = YES;
+    }
+    return _isuserLogin;
+}
 @end

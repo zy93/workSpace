@@ -13,7 +13,7 @@
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
 
-@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate>
+@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 
 @end
 
@@ -145,6 +145,16 @@
 //切换城市headerview 点击更多action
 -(void)showMoreCityVC{
     //TODO:跳转到城市列表页面
+}
+-(void)selectWithCity:(NSInteger)index{
+    /**
+     * @param 选择的城市的index， 在系统单利中索引即可
+     */
+    //TODO:根据城市进行筛选空间列表
+}
+#pragma textfield delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return YES;
 }
 /*
 #pragma mark - Navigation

@@ -12,4 +12,7 @@
 -(void)configNaviBackItem;
 -(void)configNaviView:(NSString *)searchTitle block:(void(^)())search;
 -(void)configNaviRightItemWithImage:(UIImage *)image;
+-(void)configNaviRightItemWithTitle:(NSString *)title textColor:(UIColor *)textColor;
+
+-(void)touchViewHiddenKeyboard;
 @end

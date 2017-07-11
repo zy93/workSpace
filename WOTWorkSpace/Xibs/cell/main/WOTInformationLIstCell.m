@@ -14,7 +14,7 @@
     [super awakeFromNib];
     self.infoTime.textColor = HighTextColor;
     self.infoValue.textColor = HighTextColor;
-    self.infoValue.scrollEnabled = NO;
+    self.infoValue.userInteractionEnabled = YES;
     // Initialization code
 }
 

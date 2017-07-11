@@ -12,4 +12,5 @@
 +(instancetype)shared;
 @property(nonatomic,strong)NSMutableArray *spaceCityArray;
 @property(nonatomic,strong)NSArray *ballTitle;
+@property(nonatomic,assign)BOOL isuserLogin ;
 @end
