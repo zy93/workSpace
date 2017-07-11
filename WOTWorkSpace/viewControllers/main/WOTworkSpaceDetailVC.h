@@ -9,16 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SDCycleScrollView.h"
 @interface WOTworkSpaceDetailVC : UIViewController
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
-@property (weak, nonatomic) IBOutlet SDCycleScrollView *headerScrollview;
-@property (weak, nonatomic) IBOutlet UIView *mapView;
-@property (weak, nonatomic) IBOutlet UIView *spaceNameView;
-@property (weak, nonatomic) IBOutlet UIView *spaceInformationVIew;
-@property (weak, nonatomic) IBOutlet UIView *spaceServiceView;
-@property (weak, nonatomic) IBOutlet UIView *spaceConnectsView;
-@property (weak, nonatomic) IBOutlet UILabel *spaceTel;
-@property (weak, nonatomic) IBOutlet UILabel *spaceLocation;
+@property (weak, nonatomic) IBOutlet UIWebView *web;
 
-@property(nonatomic,strong)NSArray *imageUrls;
-@property(nonatomic,strong)NSArray *scrollViewTitles;
+//直接打开H5
+@property (nonatomic, strong) NSString *url;
+
 @end

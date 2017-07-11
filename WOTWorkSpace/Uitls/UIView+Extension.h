@@ -9,6 +9,27 @@
 #import <Foundation/Foundation.h>
 
 @interface UIView(Extension)
+
+
+@property CGPoint origin;
+@property CGSize size;
+
+@property (readonly) CGPoint bottomLeft;
+@property (readonly) CGPoint bottomRight;
+@property (readonly) CGPoint topRight;
+
+@property CGFloat height;
+@property CGFloat width;
+
+@property CGFloat top;
+@property CGFloat left;
+
+@property CGFloat bottom;
+@property CGFloat right;
+
+
+
+
 //对指定角设置默认圆角
 -(void)setDefaultRadiuWithCorners:(UIRectCorner)corners;
 //对指定角设置圆角，并指定圆角弧度
