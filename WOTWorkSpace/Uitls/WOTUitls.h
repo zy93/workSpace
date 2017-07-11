@@ -13,4 +13,7 @@
 + (NSString *)md5HexDigestByString:(NSString*)input;//返回 长度为32字节的字符串
 + (NSString *)md5HexDigestByData:(NSData*)input;    //返回 长度为32字节的字符串
 
+//获取屏幕比率
++(CGFloat) GetLengthAdaptRate;
+
 @end

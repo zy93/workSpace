@@ -174,8 +174,7 @@
     [self.navigationController pushViewController:station_ordervc animated:YES];
 }
 -(void)showMettingRoomOrderList{
-    WOTOrderLIstVC *mettingroom_ordervc = [[WOTOrderLIstVC alloc]init];
-    mettingroom_ordervc.vctype = WOTPageMenuVCTypeMetting;
+    WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
     [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
 
 }

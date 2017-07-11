@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTMaintenanceApplyVC : UIViewController
-
+@property (nonatomic, strong) NSString *enterString;
 @end
