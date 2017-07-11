@@ -13,6 +13,7 @@
 #import "WOTMyOrderCell.h"
 #import "WOTMyActivitiesVC.h"
 #import "WOTMyHistoryVC.h"
+#import "WOTReservationsMeetingVC.h"
 @interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
@@ -162,8 +163,7 @@
     [self.navigationController pushViewController:station_ordervc animated:YES];
 }
 -(void)showMettingRoomOrderList{
-    WOTOrderLIstVC *mettingroom_ordervc = [[WOTOrderLIstVC alloc]init];
-    mettingroom_ordervc.vctype = WOTPageMenuVCTypeMetting;
+    WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
     [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
 
 }
