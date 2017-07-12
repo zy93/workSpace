@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseName;
 
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseInfo;
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end

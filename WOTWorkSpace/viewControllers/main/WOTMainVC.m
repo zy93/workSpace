@@ -18,11 +18,16 @@
 #import "WOTInformationListVC.h"
 #import "WOTBookStationVC.h"
 #import "WOTEnumUtils.h"
-@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate>
+#import "WOTTEnterpriseListCell.h"
+@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
 
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 @end
 
 @implementation WOTMainVC
@@ -33,8 +38,10 @@
     [self loadAutoScrollView];
     [self configScrollView];
     [self loadSpaceView];
-
-  
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+  [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
+    _tableView.scrollEnabled = NO;
     // Do any additional setup after loading the view.
 }
 
@@ -53,7 +60,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+70);
+    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
     
 }
 
@@ -77,28 +84,43 @@
 
 
 -(void)load3DBallView{
-    _sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(15, 0, self.ballView.frame.size.width, self.ballView.frame.size.height)];
-    
+   
+    if (IS_IPHONE_5) {
+         _sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(-1,11, self.ballView.frame.size.width-30, self.ballView.frame.size.height-30)];
+    } else {
+         _sphereView = [[ZYQSphereView alloc] initWithFrame:CGRectMake(-1,11, self.ballView.frame.size.width, self.ballView.frame.size.height)];
+    }
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (int i = 0; i < [WOTSingtleton shared].ballTitle.count; i++) {
-        UIButton *subV = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80,80)];
+        UIView * subview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80,80)];
+        subview.backgroundColor = COLOR(96.0, 119.0, 195.0, 1.0);
+      
+        [subview setCorenerRadius:subview.frame.size.width/2 borderColor:CLEARCOLOR];
+        UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(23, 10, 35,35)];
+        icon.image = [UIImage imageNamed:[WOTSingtleton shared].ballImage[i]];
+        [subview addSubview:icon];
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(5,50,70,25)];
+        title.text = [WOTSingtleton shared].ballTitle[i];
+        title.textAlignment = NSTextAlignmentCenter;
+        title.font = [UIFont systemFontOfSize:14.0];
+        title.textColor = COLOR(129.0, 225.0, 250.0, 1.0);
+        [subview addSubview:title];
+        UIButton *subbtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80,80)];
         
-        [subV setBackgroundColor:UIColorFromRGB(0x86d3ff)];
-        subV.alpha = 0.5;
-        [subV setTitle:[NSString stringWithFormat:@"%@",[WOTSingtleton shared].ballTitle[i]] forState:UIControlStateNormal];
-        [subV setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        subV.layer.masksToBounds=YES;
-        subV.layer.cornerRadius=subV.frame.size.width/2;
-        [subV addTarget:self action:@selector(subVClick:) forControlEvents:UIControlEventTouchUpInside];
-        [views addObject:subV];
+        [subbtn setBackgroundColor:CLEARCOLOR];
+        subbtn.alpha = 0.5;
+        subbtn.tag = i;
+        [subbtn setCorenerRadius:subbtn.frame.size.width/2 borderColor:CLEARCOLOR];
+        [subbtn addTarget:self action:@selector(subVClick:) forControlEvents:UIControlEventTouchUpInside];
+        [subview addSubview:subbtn];
+        [views addObject:subview];
         
     }
     
     [_sphereView setItems:views];
     
     _sphereView.isPanTimerStart=YES;
-   
-    
+  
     [self.ballView addSubview:_sphereView];
     [_sphereView timerStart];
     
@@ -134,7 +156,8 @@
 
 //3D球点击事件
 -(void)subVClick:(UIButton*)sender{
-    NSLog(@"%@",sender.titleLabel.text);
+    
+    NSLog(@"%@",[WOTSingtleton shared].ballTitle[sender.tag]);
     
     BOOL isStart=[_sphereView isTimerStart];
     
@@ -150,7 +173,7 @@
             }
         }];
     }];
-    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:sender.titleLabel.text];
+    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:[WOTSingtleton shared].ballTitle[sender.tag]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
     WOTEnterpriseLIstVC *enterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
     WOTBookStationVC *stationvc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTBookStationVCID"];
@@ -278,11 +301,50 @@
     [self.navigationController pushViewController:infovc animated:YES];
     
 }
+- (IBAction)showEnterpriseListVC:(id)sender {
+
+    WOTEnterpriseLIstVC *enterprisevc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
+    
+    [self.navigationController pushViewController:enterprisevc animated:YES];
+}
 
 //MARK:SDCycleScrollView   Delegate
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
 }
+
+//MARK:tableView datasource delegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 2;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 110;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return  0.01;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
+    enterprisecell.enterpriseName.text = @"北京物联港科技发展有限公司";
+    enterprisecell.enterpriseInfo.text = @"#软件#  集成软件我们是专家，欢迎大家来咨询！！！";
+    enterprisecell.enterpriseLogo.image = [UIImage imageNamed:@"enterprise_logo"];
+    
+    return enterprisecell;
+    
+}
+
 /*
 #pragma mark - Navigation
 

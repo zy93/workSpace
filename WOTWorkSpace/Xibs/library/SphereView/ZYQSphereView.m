@@ -20,6 +20,7 @@
 @interface ZYQSphereView (){
     float intervalX;
     float intervalY;
+    UIBezierPath *path;
 }
 
 @property(nonatomic,strong)NSTimer *timer;
@@ -65,6 +66,9 @@
 #endif
         
         intervalX=1;
+        
+       path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:(self.frame.size.width -10)/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+        
     }
     return self;
 }
@@ -120,138 +124,164 @@
 }
 
 
-
 #pragma mark -
 #pragma mark UIGestureRecognizer methods
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panRecognizer {
-	switch (panRecognizer.state) {
-		case UIGestureRecognizerStateBegan:
-			originalLocationInView = [panRecognizer locationInView:self];
-			previousLocationInView = originalLocationInView;
-			break;
-		case UIGestureRecognizerStateChanged: {
-			CGPoint touchPoint = [panRecognizer locationInView:self];
-			
-			CGPoint normalizedTouchPoint = CGPointMakeNormalizedPoint(touchPoint, self.frame.size.width);
-			CGPoint normalizedPreviousTouchPoint = CGPointMakeNormalizedPoint(previousLocationInView, self.frame.size.width);
-			CGPoint normalizedOriginalTouchPoint = CGPointMakeNormalizedPoint(originalLocationInView, self.frame.size.width);
-			
-            // Touch direction handling
-			PFAxisDirection xAxisDirection = PFDirectionMakeXAxisSensitive(normalizedPreviousTouchPoint, normalizedTouchPoint);
-			if (xAxisDirection != lastXAxisDirection && xAxisDirection != PFAxisDirectionNone) {
-				lastXAxisDirection = xAxisDirection;
-				
-				originalLocationInView = CGPointMake(touchPoint.x, previousLocationInView.y);
-			}
-			
-			PFAxisDirection yAxisDirection = PFDirectionMakeYAxisSensitive(normalizedPreviousTouchPoint, normalizedTouchPoint);
-			if (yAxisDirection != lastYAxisDirection && yAxisDirection != PFAxisDirectionNone) {
-				lastYAxisDirection = yAxisDirection;
-				
-				originalLocationInView = CGPointMake(previousLocationInView.x, touchPoint.y);
-			}
-			
-			previousLocationInView = touchPoint;
-			
-            intervalX=normalizedTouchPoint.x<normalizedOriginalTouchPoint.x?-1:1;
-            intervalY=normalizedTouchPoint.y<normalizedOriginalTouchPoint.y?-1:1;
-
-			// Sphere rotation
-			[self rotateSphereByAngle:1 fromPoint:normalizedOriginalTouchPoint toPoint:normalizedTouchPoint];
-		}
-			
-			break;
-		default:
-			break;
-	}
-    if (_isPanTimerStart) {
-        [self timerStart];
+    
+    
+    
+    if ([path containsPoint:[panRecognizer locationInView:self]])
+        
+    {
+        
+        
+        switch (panRecognizer.state) {
+            case UIGestureRecognizerStateBegan:
+                originalLocationInView = [panRecognizer locationInView:self];
+                previousLocationInView = originalLocationInView;
+                break;
+            case UIGestureRecognizerStateChanged: {
+                CGPoint touchPoint = [panRecognizer locationInView:self];
+                
+                CGPoint normalizedTouchPoint = CGPointMakeNormalizedPoint(touchPoint, self.frame.size.width);
+                CGPoint normalizedPreviousTouchPoint = CGPointMakeNormalizedPoint(previousLocationInView, self.frame.size.width);
+                CGPoint normalizedOriginalTouchPoint = CGPointMakeNormalizedPoint(originalLocationInView, self.frame.size.width);
+                
+                // Touch direction handling
+                PFAxisDirection xAxisDirection = PFDirectionMakeXAxisSensitive(normalizedPreviousTouchPoint, normalizedTouchPoint);
+                if (xAxisDirection != lastXAxisDirection && xAxisDirection != PFAxisDirectionNone) {
+                    lastXAxisDirection = xAxisDirection;
+                    
+                    originalLocationInView = CGPointMake(touchPoint.x, previousLocationInView.y);
+                }
+                
+                PFAxisDirection yAxisDirection = PFDirectionMakeYAxisSensitive(normalizedPreviousTouchPoint, normalizedTouchPoint);
+                if (yAxisDirection != lastYAxisDirection && yAxisDirection != PFAxisDirectionNone) {
+                    lastYAxisDirection = yAxisDirection;
+                    
+                    originalLocationInView = CGPointMake(previousLocationInView.x, touchPoint.y);
+                }
+                
+                previousLocationInView = touchPoint;
+                
+                intervalX=normalizedTouchPoint.x<normalizedOriginalTouchPoint.x?-1:1;
+                intervalY=normalizedTouchPoint.y<normalizedOriginalTouchPoint.y?-1:1;
+                
+                // Sphere rotation
+                [self rotateSphereByAngle:1 fromPoint:normalizedOriginalTouchPoint toPoint:normalizedTouchPoint];
+            }
+                
+                break;
+            default:
+                break;
+        }
+        if (_isPanTimerStart) {
+            [self timerStart];
+        }
     }
-
 }
+    
+
+
+
+
+
+
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchRecognizer {
-	static CGRect InitialSphereViewBounds;
-	
-	UIView *view = pinchRecognizer.view;
-	
-	if (pinchRecognizer.state == UIGestureRecognizerStateBegan){
-		InitialSphereViewBounds = view.bounds;
-	}
-	
-	CGFloat factor = pinchRecognizer.scale;
-	
-	CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity, factor, factor);
-	
-	CGRect sphereFrame = CGRectApplyAffineTransform(InitialSphereViewBounds, scaleTransform);
-	CGRect screenFrame = [UIScreen mainScreen].bounds;
-	
-	if ((sphereFrame.size.width > screenFrame.size.width 
-		&& sphereFrame.size.height > screenFrame.size.height)
-		|| (sphereFrame.size.width < originalSphereViewBounds.size.width 
-			&& sphereFrame.size.height < originalSphereViewBounds.size.height)) {
-		return;
-	}
-	
-	view.bounds = sphereFrame;
-	
     
-	[self layoutViews];
+    if ([path containsPoint:[pinchRecognizer locationInView:self]]) {
+        
+        static CGRect InitialSphereViewBounds;
+        
+        UIView *view = pinchRecognizer.view;
+        
+        if (pinchRecognizer.state == UIGestureRecognizerStateBegan){
+            InitialSphereViewBounds = view.bounds;
+        }
+        
+        CGFloat factor = pinchRecognizer.scale;
+        
+        CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity, factor, factor);
+        
+        CGRect sphereFrame = CGRectApplyAffineTransform(InitialSphereViewBounds, scaleTransform);
+        CGRect screenFrame = [UIScreen mainScreen].bounds;
+        
+        if ((sphereFrame.size.width > screenFrame.size.width
+             && sphereFrame.size.height > screenFrame.size.height)
+            || (sphereFrame.size.width < originalSphereViewBounds.size.width
+                && sphereFrame.size.height < originalSphereViewBounds.size.height)) {
+                return;
+            }
+        
+        view.bounds = sphereFrame;
+        
+        
+        [self layoutViews];
+    }
+	
 }
 
 - (void)handleRotationGesture:(UIRotationGestureRecognizer *)rotationRecognizer {
-	static CGFloat LastSphereRotationAngle;
-	
-	if (rotationRecognizer.state == UIGestureRecognizerStateEnded) {
-		LastSphereRotationAngle = 0;
-		return;
-	}
-	
-	PFAxisDirection rotationDirection;
-	
-	CGFloat rotation = rotationRecognizer.rotation;
-	
-	if (rotation > LastSphereRotationAngle) {
-		rotationDirection = PFAxisDirectionPositive;
-	} else if (rotation < LastSphereRotationAngle) {
-		rotationDirection = PFAxisDirectionNegative;
-	}
-		
-	rotation = fabs(rotation) * rotationDirection;
-	
-	NSArray *subviews = self.subviews;
-	for (int i=0; i<subviews.count; i++) {
-		UIView *view = [subviews objectAtIndex:i];
-		
-		NSNumber *key = [NSNumber numberWithInt:i];
-		
-		PFPoint point;
-		
-		NSValue *pointRep = [pointMap objectForKey:key];
-		[pointRep getValue:&point];
-		
-		PFPoint aroundPoint = PFPointMake(0, 0, 0);
-		PFMatrix coordinate = PFMatrixTransform3DMakeFromPFPoint(point);
+    
+    if ([path containsPoint:[rotationRecognizer locationInView:self]]) {
+        static CGFloat LastSphereRotationAngle;
+        
+        if (rotationRecognizer.state == UIGestureRecognizerStateEnded) {
+            LastSphereRotationAngle = 0;
+            return;
+        }
+        
+        PFAxisDirection rotationDirection;
+        
+        CGFloat rotation = rotationRecognizer.rotation;
+        
+        if (rotation > LastSphereRotationAngle) {
+            rotationDirection = PFAxisDirectionPositive;
+        } else if (rotation < LastSphereRotationAngle) {
+            rotationDirection = PFAxisDirectionNegative;
+        }
+        
+        rotation = fabs(rotation) * rotationDirection;
+        
+        NSArray *subviews = self.subviews;
+        for (int i=0; i<subviews.count; i++) {
+            UIView *view = [subviews objectAtIndex:i];
+            
+            NSNumber *key = [NSNumber numberWithInt:i];
+            
+            PFPoint point;
+            
+            NSValue *pointRep = [pointMap objectForKey:key];
+            [pointRep getValue:&point];
+            
+            PFPoint aroundPoint = PFPointMake(0, 0, 0);
+            PFMatrix coordinate = PFMatrixTransform3DMakeFromPFPoint(point);
+            
+            PFMatrix transform = PFMatrixTransform3DMakeZRotationOnPoint(aroundPoint, rotation);
+            
+            point = PFPointMakeFromMatrix(PFMatrixMultiply(coordinate, transform)); 
+            
+            [pointMap setObject:[NSValue value:&point withObjCType:@encode(PFPoint)] forKey:key];
+            
+            [self layoutView:view withPoint:point];
+        }
+        
+        LastSphereRotationAngle = rotationRecognizer.rotation;
+    }
 
-		PFMatrix transform = PFMatrixTransform3DMakeZRotationOnPoint(aroundPoint, rotation);
-		
-		point = PFPointMakeFromMatrix(PFMatrixMultiply(coordinate, transform)); 
-		
-		[pointMap setObject:[NSValue value:&point withObjCType:@encode(PFPoint)] forKey:key];
-		
-		[self layoutView:view withPoint:point];
-	}
 	
-	LastSphereRotationAngle = rotationRecognizer.rotation;
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)tapRecognizer {
-    if ([self isTimerStart]) {
-        [self timerStop];
-    }
-    else{
-        [self timerStart];
+    if ([path containsPoint:[tapRecognizer locationInView:self]]) {
+        if ([self isTimerStart]) {
+            [self timerStop];
+        }
+        else{
+            [self timerStart];
+        }
     }
 }
 

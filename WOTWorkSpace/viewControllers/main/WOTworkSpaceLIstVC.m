@@ -137,6 +137,7 @@
     } else{
         WOTworkSpaceCommonCell *spacecell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceCommonCellID" forIndexPath:indexPath];
         spacecell.lineVIew.hidden = indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1 ? YES:NO;
+        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
         commoncell = spacecell;
     }
     return commoncell;

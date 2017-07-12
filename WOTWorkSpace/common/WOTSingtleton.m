@@ -30,9 +30,15 @@
     }
     return _ballTitle;
 }
+-(NSArray *)ballImage{
+    if (_ballImage == nil) {
+        _ballImage = @[@"zixun",@"youlin",@"dinggongwei",@"dinghuiyishi",@"kaimen",@"huodong",@"yudingchangdi",@"qiyejieshao",@"fangke",@"jingxuan",@"baoxiu",@"yijianfankui",@"jishi",@"",@"",@"",@"",@"",@""];
+    }
+    return _ballImage;
+}
 -(BOOL)isuserLogin{
     if (_isuserLogin == nil) {
-        _isuserLogin = YES;
+        _isuserLogin = NO;
     }
     return _isuserLogin;
 }

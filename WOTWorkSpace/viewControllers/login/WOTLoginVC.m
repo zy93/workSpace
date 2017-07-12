@@ -10,7 +10,7 @@
 
 #import "WOTSelectCityCodeVC.h"
 #import "WOTUserRegisterVC.h"
-
+#import "WOTLoginModel.h"
 @interface WOTLoginVC ()
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -83,9 +83,13 @@
 }
 
 - (IBAction)clickLoginBtn:(id)sender {
-    [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean) {
+    [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
         NSLog(@"====%@", bean);
+        
+        WOTLoginModel *dd = (WOTLoginModel *)bean;
+        NSLog(@"当前用户名字：%@",dd.userName);
     }];
+    
 }
 - (IBAction)clickRegisterBtn:(id)sender {
     

@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *informationView;
 @property (weak, nonatomic) IBOutlet UIView *workspaceView;
+@property (weak, nonatomic) IBOutlet UIView *enterpriseView;
 
 
 @end

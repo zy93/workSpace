@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = CLEARCOLOR;
+    self.view.backgroundColor = MainColor;
     self.tableView.showsVerticalScrollIndicator = NO;
      [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyEnterPriseCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"myenterpriseCellID"];
     // Do any additional setup after loading the view.

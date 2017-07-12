@@ -29,11 +29,12 @@ bool ismenu1 =  NO;
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     [self configNav];
-    
+    [self getDataFromWeb];
     [self makeMenuArrays];
     [self.tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
     self.communityName.text = ((WOTFilterTypeModel *)self.menu1Array[0]).filterName;
     self.categoryLabel.text = ((WOTFilterTypeModel *)self.menu2Array[0]).filterName;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -160,6 +161,11 @@ bool ismenu1 =  NO;
     return activitycell;
 }
 
+-(void)getDataFromWeb{
+    [WOTHTTPNetwork getActivitiesWithSpace:@"11" activityType:@"11" response:^(id bean, NSError *error) {
+        [self.tableVIew reloadData];
+    }];
+}
 /*
 #pragma mark - Navigation
 

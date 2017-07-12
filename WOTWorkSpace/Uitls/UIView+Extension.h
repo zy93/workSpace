@@ -15,5 +15,7 @@
 -(void)setRadiuWithCorners:(UIRectCorner)corners radiu:(CGFloat)radiu;
 
 -(void)setCorenerRadius:(CGFloat)radiu borderColor:(UIColor *)borderColor;
--(void)touchViewHiddenKeyboard;
+
+
+-(UIImage *)toImage;
 @end

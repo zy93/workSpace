@@ -15,3 +15,18 @@
 //@property (nonatomic, strong) NSString*;
 
 @end
+
+
+
+@interface  WOTImagePathModel_w: JSONModel
+@property(nonatomic,strong) NSString *site;
+@property(nonatomic,strong) NSString *fileName;
+
+@end
+
+
+@interface WOTImagePathModel : JSONModel
+@property(nonatomic,strong)NSArray<WOTImagePathModel_w *>*headPortrait;
+
+@end
+

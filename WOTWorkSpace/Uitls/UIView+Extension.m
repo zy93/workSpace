@@ -31,6 +31,51 @@
 }
 
 
+-(UIImage *)toImage{
+    UIGraphicsBeginImageContext(CGSizeMake(self.bounds.size.width, self.bounds.size.height));
+    CGContextRef currentContex = UIGraphicsGetCurrentContext();
+    [self.layer renderInContext:currentContex];
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self cutImage:result size:self.bounds.size];
+    return result;
+    
+}
+
+
+
+//裁剪图片
+/**
+ *
+ *
+ */
+- (UIImage *)cutImage:(UIImage*)originImage size:(CGSize)viewsize
+{
+    CGSize newImageSize;
+    CGImageRef imageRef = nil;
+    
+    CGSize imageViewSize = viewsize;
+    CGSize originImageSize = originImage.size;
+    
+    if ((originImageSize.width / originImageSize.height) < (imageViewSize.width / imageViewSize.height))
+    {
+        // imageView的宽高比 > image的宽高比
+        newImageSize.width = originImageSize.width;
+        newImageSize.height = imageViewSize.height * (originImageSize.width / imageViewSize.width);
+        
+        imageRef = CGImageCreateWithImageInRect([originImage CGImage], CGRectMake(0, fabs(originImageSize.height - newImageSize.height) / 2, newImageSize.width, newImageSize.height));
+    }
+    else
+    {
+        // image的宽高比 > imageView的宽高比   ： 也就是说原始图片比较狭长
+        newImageSize.height = originImageSize.height;
+        newImageSize.width = imageViewSize.width * (originImageSize.height / imageViewSize.height);
+        
+        imageRef = CGImageCreateWithImageInRect([originImage CGImage], CGRectMake(fabs(originImageSize.width - newImageSize.width) / 2, 0, newImageSize.width, newImageSize.height));
+    }
+    
+    return [UIImage imageWithCGImage:imageRef];
+}
 
 
 @end

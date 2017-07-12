@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-typedef void(^response)(id bean);
+typedef void(^response)(id bean,NSError *error);
 
 @interface WOTHTTPNetwork : NSObject
 
 
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
-
++(void)getActivitiesWithSpace:(NSInteger)workSpaceid activityType:(NSString *)activityType response:(response)response;
 @end
