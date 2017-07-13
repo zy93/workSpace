@@ -12,18 +12,21 @@
 #import "WOTworkSpacenearCell.h"
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
+#import "WOTSpaceModel.h"
 
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
-
+@property (strong,nonatomic)NSArray<WOTSpaceModel *> *dataSource;
 @end
 
 @implementation WOTworkSpaceLIstVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getDataSourceFromWeb];
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     self.tableVIew.showsVerticalScrollIndicator = NO;
+    _dataSource = [[NSArray alloc]init];
     [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
@@ -65,7 +68,7 @@
             return 3;
             break;
         case 1:
-            return 10;
+            return _dataSource.count;
             break;
             
         default:
@@ -137,7 +140,13 @@
     } else{
         WOTworkSpaceCommonCell *spacecell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceCommonCellID" forIndexPath:indexPath];
         spacecell.lineVIew.hidden = indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1 ? YES:NO;
-        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+        
+//        spacecell.workSpaceName.text = _dataSource[indexPath.row].spaceName;
+        NSLog(@"空间名：%@",_dataSource[indexPath.row].spaceName);
+//        spacecell.workSpaceLocation.text = _dataSource[indexPath.row].spaceSite;
+//        spacecell.stationNum.text = [_dataSource[indexPath.row].fixPhone stringByAppendingString:@"工位可预订"];
+//        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@"_dataSource[indexPath.row].spacePicture"] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+//        
         commoncell = spacecell;
     }
     return commoncell;
@@ -156,6 +165,18 @@
 #pragma textfield delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     return YES;
+}
+
+
+-(void)getDataSourceFromWeb{
+    
+   [WOTHTTPNetwork getAllSpace:^(id bean, NSError *error) {
+       WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
+       _dataSource = dd.msg;
+       [self.tableVIew reloadData];
+   }];
+    
+
 }
 /*
 #pragma mark - Navigation

@@ -22,9 +22,11 @@
 -(CGFloat)heightWithFont:(UIFont *)f maxWidth:(CGFloat)mWidth;
 
 - (CGSize)labelAutoCalculateRectWith:(NSString *)text FontSize:(CGFloat)fontSize MaxSize:(CGSize)maxSize;
+-(NSArray<NSString *>*)separatedWithString:(NSString *)separatedString;
 @end
 
 @interface NSString (Date)
 //将NSString类型的时间 根据格式字符串 转换为NSDate类型
 +(NSDate *)dataWithFormat:(NSString *)format;
+
 @end

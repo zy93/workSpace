@@ -9,7 +9,7 @@
 #import "WOTHTTPNetwork.h"
 #import "header.h"
 #import "WOTLoginModel.h"
-
+#import "WOTSpaceModel.h"
 
 #define HTTPURL @"http://192.168.6.219:8080/"
 
@@ -100,5 +100,20 @@
     }];
     
 }
-
++(void)getAllSpace:(response)response{
+    
+     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPURL,@"workSpace/Space/findAllSpace"];
+    
+    [self doRequestWithParameters:nil useUrl:urlstring complete:^JSONModel *(id responseobj) {
+        WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];
+        
+        return  spacemodel;
+        
+        
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
 @end
