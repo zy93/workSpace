@@ -35,7 +35,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYh-Er-sLD">
                                         <rect key="frame" x="0.0" y="182" width="375" height="410"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
                                             </imageView>
                                         </subviews>
@@ -94,7 +94,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asL-0x-wIO">
-                                        <rect key="frame" x="0.0" y="1302" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="1192" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-r9-LOu">
                                                 <rect key="frame" x="20" y="5" width="3" height="20"/>
@@ -158,7 +158,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-Nx-AkA">
-                                        <rect key="frame" x="0.0" y="852" width="375" height="250"/>
+                                        <rect key="frame" x="0.0" y="852" width="375" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-GB-uLK">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -175,7 +175,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="30y-Ou-Iq2">
-                                                <rect key="frame" x="0.0" y="35" width="375" height="215"/>
+                                                <rect key="frame" x="0.0" y="35" width="375" height="105"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="友邻企业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UQ-NO-fC7">
@@ -192,7 +192,7 @@
                                             <constraint firstItem="30y-Ou-Iq2" firstAttribute="top" secondItem="zw7-kU-Du5" secondAttribute="bottom" constant="5" id="8Yl-vS-IKE"/>
                                             <constraint firstItem="30y-Ou-Iq2" firstAttribute="leading" secondItem="7nj-Nx-AkA" secondAttribute="leading" id="Avo-Rv-BX0"/>
                                             <constraint firstItem="68Y-GB-uLK" firstAttribute="leading" secondItem="7nj-Nx-AkA" secondAttribute="leading" constant="15" id="Lqc-kp-W2f"/>
-                                            <constraint firstAttribute="height" constant="250" id="bdT-Nw-z4p"/>
+                                            <constraint firstAttribute="height" constant="140" id="bdT-Nw-z4p"/>
                                             <constraint firstItem="zw7-kU-Du5" firstAttribute="top" secondItem="7nj-Nx-AkA" secondAttribute="top" id="etc-7C-jQ2"/>
                                             <constraint firstItem="5UQ-NO-fC7" firstAttribute="leading" secondItem="68Y-GB-uLK" secondAttribute="trailing" constant="10" id="nug-Pe-L5C"/>
                                             <constraint firstItem="30y-Ou-Iq2" firstAttribute="top" secondItem="5UQ-NO-fC7" secondAttribute="bottom" constant="5" id="oYh-S3-aGa"/>
@@ -203,7 +203,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-LE-hiG">
-                                        <rect key="frame" x="0.0" y="1112" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="1002" width="375" height="180"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-k9-KBE">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>

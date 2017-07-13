@@ -15,5 +15,9 @@ typedef void(^response)(id bean,NSError *error);
 
 
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
+
 +(void)getActivitiesWithSpace:(NSInteger)workSpaceid activityType:(NSString *)activityType response:(response)response;
+
++(void)getAllSpace:(response)response;
+
 @end

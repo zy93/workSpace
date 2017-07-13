@@ -36,10 +36,16 @@
     return labelSize;
 }
 
+
+-(NSArray<NSString *> *)separatedWithString:(NSString *)separatedString
+{
+   NSArray<NSString *> *stringArray = [self componentsSeparatedByString:separatedString];
+    return stringArray;
+}
 @end
 
 @implementation NSString (Date)
--(NSDate *)dataWithFormat:(NSString *)format
++(NSDate *)dataWithFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];

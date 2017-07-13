@@ -36,9 +36,13 @@
     }
     return _ballImage;
 }
+
+
+
 -(BOOL)isuserLogin{
     if (_isuserLogin == nil) {
-        _isuserLogin = NO;
+        return NO;
+        
     }
     return _isuserLogin;
 }

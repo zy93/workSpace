@@ -17,4 +17,6 @@
 #import "SDWebImageManager.h"
 #import "UIImageView+WebCache.h"
 #import "WOTBaseModel.h"
+#import "WOTFileUitls.h"
+#import "WOTUserSingleton.h"
 #endif

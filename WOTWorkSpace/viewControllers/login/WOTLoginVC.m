@@ -87,8 +87,15 @@
         NSLog(@"====%@", bean);
         
         WOTLoginModel *dd = (WOTLoginModel *)bean;
+        
         NSLog(@"当前用户名字：%@",dd.userName);
+       
+        [[WOTUserSingleton currentUser] saveUserInfoToPlist:bean];
+      [[WOTUserSingleton currentUser] readUserInfoFromPlist];
+
     }];
+
+    
     
 }
 - (IBAction)clickRegisterBtn:(id)sender {
