@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+Extension.h"
-
+#import "UISearchBar+JCSearchBarPlaceholder.h"
 @implementation UIViewController(Extension)
 -(void)configNaviBackItem{
    
@@ -22,10 +22,31 @@
 
 -(void)configNaviView:(NSString *)searchTitle block:(void(^)())search{
     UISearchBar *searchview = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 30.0)];
-    [searchview setPlaceholder:searchTitle];
+
+    [searchview changeLeftPlaceholder:searchTitle];
     [searchview setBarTintColor:[UIColor grayColor]];
-    [searchview setBackgroundColor:[UIColor grayColor]];
+    
     [searchview setBarStyle:UIBarStyleBlackTranslucent];
+    
+    UIView *searchTextField = nil;
+    
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    
+    if (is7Version) {
+       
+        searchTextField = [[[searchview.subviews firstObject] subviews] lastObject];
+       
+    }else{// iOS6以下版本searchBar内部子视图的结构不一样
+        for(UIView *subview in searchview.subviews)
+        {
+            if ([subview isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+                searchTextField = subview;
+                
+            }
+        }
+    }
+    searchTextField.backgroundColor = MainColor;
+   
     search();
     [self.navigationItem setTitleView:searchview];
     
@@ -40,6 +61,19 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
     
 }
+
+
+-(void)configNaviRightItemWithTitle:(NSString *)title textColor:(UIColor *)textColor{
+    UIButton *rightbtn = [[UIButton alloc]init];
+    [rightbtn setFrame:CGRectMake(0,0,50,30)];
+    [rightbtn setTitle:title forState:UIControlStateNormal];
+    [rightbtn setTitleColor:textColor forState:UIControlStateNormal];
+    [rightbtn addTarget:self action:@selector(rightItemAction) forControlEvents: UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
+    
+}
+
+
 
 
 -(void)goback{

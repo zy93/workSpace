@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [[WOTConfigThemeUitls shared]setLabelColorss:[NSArray arrayWithObjects:self.placeLabel,self.placeValue,self.dateLabel,self.dateValue,self.timeLabel,self.timeValue,self.moneyLabel,self.moneyValue, nil] withColor:HighTextColor];
     // Initialization code
 }
 

@@ -13,4 +13,8 @@
 #import "NSString+URL.h"
 #import "NSString+Category.h"
 #import "UIImage+Extension.h"
+
+#import "SDWebImageManager.h"
+#import "UIImageView+WebCache.h"
+#import "WOTBaseModel.h"
 #endif

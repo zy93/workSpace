@@ -15,36 +15,89 @@
 
 @implementation WOTHTTPNetwork
 
-+(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response
-{
-    NSDictionary *dic = @{@"tel" :telOrEmail, @"password":[WOTUitls md5HexDigestByString:pwd]};
-    //afn
++(void)doRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
-    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPURL,@"workSpace/Login/Login"];
     
-    [manager POST:string parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
+    
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
+    
+    [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+     
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        NSString *responseStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"responseStr:%@",responseStr);
         NSError *error = nil;
-//        NSString *string
-        WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseObject[@"msg"] error:&error];
+        NSData *jsonData = [responseStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        
+        NSInteger statusCode = [responseDic[@"code"] integerValue];
+        if (statusCode == 200) {
+            
+            
+            
+            if (complete(responseDic) == nil) {
+                NSError *error = [NSError errorWithDomain:@"JSONModel" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"json convert to response failed!"}];
+                block(nil,error);
+            } else {
+                if (block) {
+                    block(complete(responseDic),nil);
+                }
+            }
+            
+        }
+        
         if (error) {
             NSLog(@"----error:%@",error);
+            block(nil,error);
             return ;
         }
-        if (response) {
-            response(model);
-        }
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {
             NSLog(@"http:----error:%@",error);
+            block(nil,error);
         }
         
     }];
+}
+
+
++(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response
+{
+    NSDictionary *dic = @{@"tel" :telOrEmail, @"password":[WOTUitls md5HexDigestByString:pwd]};
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPURL,@"workSpace/Login/Login"];
     
+    [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
+        WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseobj[@"msg"] error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+    
+}
+
+
+
++(void)getActivitiesWithSpace:(NSInteger)workSpaceid activityType:(NSString *)activityType response:(response)response
+{
+    NSDictionary *dic = @{@"spaceId":[NSNumber numberWithInteger:workSpaceid]};
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPURL,@"workSpace/Activity/findBySpaceId"];
+    
+    [self doRequestWithParameters:dic useUrl:urlstring complete:^JSONModel *(id responseobj) {
+        WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseobj[@"msg"] error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
     
 }
 

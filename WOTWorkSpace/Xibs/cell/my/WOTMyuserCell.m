@@ -12,8 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.imageView setRadiuWithCorners:UIRectCornerAllCorners radiu:self.imageView.frame.size.height/2];
-  
+   
+    
+    [self.headerImage setCorenerRadius:self.headerImage.frame.size.width/2 borderColor:White];
     [[WOTConfigThemeUitls shared] setLabelColorss:[NSArray arrayWithObjects:self.userName,self.constellation,self.signature, nil] withColor:[UIColor whiteColor]];
     // Initialization code
 }

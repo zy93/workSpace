@@ -8,19 +8,42 @@
 
 #import "WOTCreateEnterpriseVC.h"
 #import "WOTCerateEnterpriseCell.h"
-@interface WOTCreateEnterpriseVC ()<UIActionSheetDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate>
+#import "WOTEnterpriseTypeVC.h"
+#import "WOTEnterpriseConnectsInfoVC.h"
+@interface WOTCreateEnterpriseVC ()<UIActionSheetDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 @property(nonatomic,strong)NSArray *tableViewTitles;
-
+@property(nonatomic,strong)UIView *maskView;
+@property(nonatomic,strong)WOTEnterpriseConnectsInfoVC *connectvc;
 @end
 
 @implementation WOTCreateEnterpriseVC
 
 - (void)viewDidLoad {
+    
+    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
     [self createDataSource];
+    self.navigationItem.title = @"创建企业";
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTCerateEnterpriseCell" bundle:nil] forCellReuseIdentifier:@"WOTCerateEnterpriseCellID"];
     
-     // Do any additional setup after loading the view.
+    
+    _connectvc = [[UIStoryboard storyboardWithName:@"My" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseConnectsInfoVCID"];
+    _connectvc.view.frame = self.view.frame;
+    
+    _connectvc.cancelBlokc  = ^{
+        [weakSelf setViewHidden];
+    };
+    _connectvc.okBlock = ^(NSString *name,NSString *tel, NSString *email){
+        [weakSelf setViewHidden];
+        //TODO:保存输入的企业信息
+    };
+    _maskView = [[UIView alloc]initWithFrame:self.view.bounds];
+    _maskView.backgroundColor = Black;
+    _maskView.alpha = 0.5;
+    [self.view addSubview:_maskView];
+    [self.view addSubview:_connectvc.view];
+    [self setViewHidden];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +69,7 @@
     WOTCerateEnterpriseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTCerateEnterpriseCellID" forIndexPath:indexPath];
     cell.titleLabel.text = self.tableViewTitles[0][indexPath.row];
     cell.textfield.placeholder = self.tableViewTitles[1][indexPath.row];
+    cell.textfield.delegate  = self;
     cell.cameraImage.hidden = indexPath.row == 0?NO:YES;
     cell.nextImage.hidden = indexPath.row == 0?YES:NO;
     [cell.textfield setUserInteractionEnabled:indexPath.row == 1?YES:NO];
@@ -64,18 +88,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.row) {
-        case 0:
-            [self showSelectedPhotoSheet];
-            break;
-        case 1:
-            
-        case 2:
-            //TODO:进入选择企业类型页面
-        case 3:
-            
-        default:
-            break;
+    if (indexPath.row == 0) {
+        [self showSelectedPhotoSheet];
+    } else if (indexPath.row == 2) {
+        WOTEnterpriseTypeVC *typevc = [[UIStoryboard storyboardWithName:@"My" bundle:nil]instantiateViewControllerWithIdentifier:@"WOTEnterpriseTypeVCID"];
+        [self.supervc.navigationController pushViewController:typevc animated:YES];
+    } else if (indexPath.row == 3){
+        [self showView];
     }
 }
 
@@ -114,10 +133,9 @@
 
 //textfield delegate
 
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    textField  = NO;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [textField resignFirstResponder];
 }
-
 
 
 /** 
@@ -229,6 +247,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+
+-(void)setViewHidden{
+    [_connectvc.view setHidden:YES];
+    [_maskView setHidden:YES];
+}
+
+-(void)showView{
+    [_connectvc.view setHidden:NO];
+    [_maskView setHidden:NO];
+}
+
 
 /*
 #pragma mark - Navigation

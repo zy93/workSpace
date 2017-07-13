@@ -13,7 +13,7 @@
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
 
-@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate>
+@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 
 @end
 
@@ -137,6 +137,7 @@
     } else{
         WOTworkSpaceCommonCell *spacecell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceCommonCellID" forIndexPath:indexPath];
         spacecell.lineVIew.hidden = indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1 ? YES:NO;
+        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
         commoncell = spacecell;
     }
     return commoncell;
@@ -145,6 +146,16 @@
 //切换城市headerview 点击更多action
 -(void)showMoreCityVC{
     //TODO:跳转到城市列表页面
+}
+-(void)selectWithCity:(NSInteger)index{
+    /**
+     * @param 选择的城市的index， 在系统单利中索引即可
+     */
+    //TODO:根据城市进行筛选空间列表
+}
+#pragma textfield delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return YES;
 }
 /*
 #pragma mark - Navigation

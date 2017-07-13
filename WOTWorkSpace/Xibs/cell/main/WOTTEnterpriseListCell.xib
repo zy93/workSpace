@@ -63,6 +63,7 @@
                 <outlet property="enterpriseInfo" destination="Z1e-xD-M7Q" id="s7S-QN-Ddg"/>
                 <outlet property="enterpriseLogo" destination="a3T-Kx-K9y" id="YY2-9v-1bw"/>
                 <outlet property="enterpriseName" destination="Va3-IV-vC5" id="wPQ-0p-BJO"/>
+                <outlet property="lineView" destination="7C3-LP-xbY" id="xn1-EW-Giz"/>
             </connections>
             <point key="canvasLocation" x="18" y="-42"/>
         </tableViewCell>

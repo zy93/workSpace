@@ -11,3 +11,14 @@
 @implementation WOTBaseModel
 
 @end
+
+@implementation WOTImagePathModel
+
+
+@end
+
+@implementation WOTImagePathModel_w
+
+
+
+@end

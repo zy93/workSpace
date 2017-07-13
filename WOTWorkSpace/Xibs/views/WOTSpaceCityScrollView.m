@@ -10,6 +10,7 @@
 #import "WOTSpaceCityCollectionCell.h"
 @interface WOTSpaceCityScrollView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong) WOTSpaceCityCollectionCell *collectionCell;
+@property(nonatomic,assign) NSInteger selectedindex;
 
 @end
 @implementation WOTSpaceCityScrollView
@@ -18,7 +19,7 @@
     [super awakeFromNib];
     _collectionVIew.delegate = self;
     _collectionVIew.dataSource = self;
-   
+    _selectedindex = 0;
    
 }
 
@@ -47,7 +48,15 @@
     _collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     _collectionCell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
+    if (_selectedindex == indexPath.row) {
+        _collectionCell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
+        [_collectionCell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
+    } else {
+        _collectionCell.cityName.textColor = MiddleTextColor;
+        [_collectionCell.cityName setCorenerRadius:10 borderColor:MiddleTextColor];
+    }
     
+   
     return _collectionCell;
     
 }
@@ -73,17 +82,21 @@
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WOTSpaceCityCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
-    [cell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
-    
+//    WOTSpaceCityCollectionCell *cell = (WOTSpaceCityCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    cell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
+//    [cell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
+    _selectedindex = indexPath.row;
+    if (_delegate) {
+        [_delegate selectWithCity:_selectedindex];
+    }
+    [self.collectionVIew reloadData];
 }
 //取消选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WOTSpaceCityCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.cityName.textColor = [UIColor grayColor];
-    [cell.cityName setCorenerRadius:10 borderColor:[UIColor grayColor]];
+//    WOTSpaceCityCollectionCell *cell = (WOTSpaceCityCollectionCell *) [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.cityName.textColor = HighTextColor;
+//    [cell.cityName setCorenerRadius:10 borderColor:HighTextColor];
 }
 - (IBAction)moreAction:(id)sender {
     

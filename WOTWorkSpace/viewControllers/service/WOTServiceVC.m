@@ -14,6 +14,7 @@
 
 #import "WOTLoginVC.h"
 #import "WOTLoginNaviController.h"
+
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
+
 
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 
@@ -38,6 +40,11 @@
     [self configNav];
     [self loadAutoScrollView];
     [self addData];
+    
+ 
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -223,12 +230,7 @@
         else if (indexPath.row==2) {
 //            [self pushVCByVCName:@""];
 
-            WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
-            WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
-
-            [self presentViewController:nav animated:YES completion:^{
-                
-            }];
+            
         }
         else if (indexPath.row==3) {
             [self pushVCByVCName:@"WOTGETServiceViewController"];

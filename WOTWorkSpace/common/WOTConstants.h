@@ -47,13 +47,13 @@
 #define MainColor [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
 
 //#define NavigationBGColor [UIColor colorWithRed:53.0/255.0 green:128.0/255.0 blue:81.0/255.0 alpha:1.0];
-#define NavigationBGColor [UIColor whiteColor];
-#define TabBGColor [UIColor colorWithRed:39.0/255.0 green:90.0/255.0 blue:134.0/255.0 alpha:1.0];
-#define LINE_COLOR [UIColor colorWithRed:214.0/255.0 green:214.0/255.0 blue:214.0/255.0 alpha:1.0];
-#define ViewBorderColor [UIColor colorWithRed:123.0/255.0 green:163.0/255.0 blue:238.0/255.0 alpha:1.0];
+#define NavigationBGColor [UIColor whiteColor]
+#define TabBGColor [UIColor colorWithRed:39.0/255.0 green:90.0/255.0 blue:134.0/255.0 alpha:1.0]
+#define LINE_COLOR [UIColor colorWithRed:214.0/255.0 green:214.0/255.0 blue:214.0/255.0 alpha:1.0]
+#define ViewBorderColor [UIColor colorWithRed:123.0/255.0 green:163.0/255.0 blue:238.0/255.0 alpha:1.0]
 
-#define White [UIColor whiteColor];
-#define Black [UIColor blackColor];
+#define White [UIColor whiteColor]
+#define Black [UIColor blackColor]
 #define HighTextColor UIColorFromRGB(0x333333)
 #define MiddleTextColor UIColorFromRGB(0x666666)
 #define LowTextColor UIColorFromRGB(0x888888)
