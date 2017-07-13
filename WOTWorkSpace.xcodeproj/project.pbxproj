@@ -54,6 +54,7 @@
 		2A42147F1F146A700010B003 /* share_weixin_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4214671F146A700010B003 /* share_weixin_select@3x.png */; };
 		2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214801F149ECA0010B003 /* libsqlite3.tbd */; };
 		2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214821F149ED80010B003 /* CoreGraphics.framework */; };
+		2A4214D11F14EE730010B003 /* WOTSelectScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */; };
 		2A5B230E1F0F7DBE00466BEF /* WOTEnterTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B230D1F0F7DBE00466BEF /* WOTEnterTextVC.m */; };
 		2A5B23171F0F9AA300466BEF /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B23161F0F9AA300466BEF /* UIDevice+Resolutions.m */; };
 		2AF18A241F131898004681CE /* WOTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF18A231F131898004681CE /* WOTPickerView.m */; };
@@ -300,6 +301,8 @@
 		2A4214671F146A700010B003 /* share_weixin_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_weixin_select@3x.png"; sourceTree = "<group>"; };
 		2A4214801F149ECA0010B003 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2A4214821F149ED80010B003 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2A4214CF1F14EE730010B003 /* WOTSelectScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSelectScrollView.h; sourceTree = "<group>"; };
+		2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSelectScrollView.m; sourceTree = "<group>"; };
 		2A5B230C1F0F7DBE00466BEF /* WOTEnterTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterTextVC.h; sourceTree = "<group>"; };
 		2A5B230D1F0F7DBE00466BEF /* WOTEnterTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterTextVC.m; sourceTree = "<group>"; };
 		2A5B23151F0F9AA300466BEF /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
@@ -1039,6 +1042,8 @@
 		E8190D8D1F0F69660000B07C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				2A4214CF1F14EE730010B003 /* WOTSelectScrollView.h */,
+				2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */,
 				2AF18A221F131898004681CE /* WOTPickerView.h */,
 				2AF18A231F131898004681CE /* WOTPickerView.m */,
 				2AFAC8921F0FB796001BAB14 /* WOTRadioView.h */,
@@ -1801,6 +1806,7 @@
 				E8190DBA1F0F69660000B07C /* WOTPersionalInformationTagCell.m in Sources */,
 				E8190D9B1F0F69660000B07C /* WOTSpaceDetailCell.m in Sources */,
 				E8190DBC1F0F69660000B07C /* WOTSettingCell.m in Sources */,
+				2A4214D11F14EE730010B003 /* WOTSelectScrollView.m in Sources */,
 				E8190DA21F0F69660000B07C /* WOTworkSpacenearCell.m in Sources */,
 				E8190DCF1F0F69660000B07C /* WOTCommonHeaderVIew.m in Sources */,
 				E8190DAF1F0F69660000B07C /* WOTMycommonCell.m in Sources */,

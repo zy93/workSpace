@@ -21,11 +21,11 @@
     [self loadTabView];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
-//    /* 打开调试日志 */
-//    [[UMSocialManager defaultManager] openLog:YES];
-//    /* 设置友盟appkey */
-//    [[UMSocialManager defaultManager] setUmSocialAppkey:@"59642cfcc62dca6c850020c0"];
-//    [self ConfigUSharePlatforms];
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"59642cfcc62dca6c850020c0"];
+    [self ConfigUSharePlatforms];
 
     return YES;
 }
@@ -114,16 +114,16 @@
 -(void)ConfigUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxea16a6da91f9aaa8" appSecret:@"cd290e671987b2cb918a4c1ecac6acc0" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxa8ea2d93af90c99d" appSecret:@"0f4410167040301eb559643e63f68080" redirectURL:@"http://mobile.umeng.com/social"];
     
     /* 设置分享到QQ互联的appID
      * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
      */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105989160"  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"101415512"  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     
     
     /* 设置新浪的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"2287708255"  appSecret:@"1f320e822e4c1f3ee9e7988ab634276d" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"958434094"  appSecret:@"c8126f4af61b6287bd2ce86a54360e7f" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
 
 

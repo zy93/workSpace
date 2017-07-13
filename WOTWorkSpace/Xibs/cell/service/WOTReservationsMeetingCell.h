@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTSelectScrollView.h"
 
 @protocol WOTReservationsMeetingCellDelegate <NSObject>
 
@@ -20,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *meetingNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *meetingInfoLab;
 @property (weak, nonatomic) IBOutlet UILabel *meetingPriceLab;
-@property (weak, nonatomic) IBOutlet UIScrollView *selectTimeScroll;
+@property (weak, nonatomic) IBOutlet WOTSelectScrollView *selectTimeScroll;
 @property (weak, nonatomic) IBOutlet UIButton *subTimeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addTimeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeStatisticsLab;

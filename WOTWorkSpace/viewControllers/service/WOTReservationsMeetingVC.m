@@ -55,9 +55,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (selectIndex && selectIndex.row == indexPath.row) {
-        return 360;
+        return 390;
     }
-    return 210;
+    return 240;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,6 +67,7 @@
         cell = [[WOTReservationsMeetingCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTReservationsMeetingCell"];
     }
     cell.delegate = self;
+    [cell.selectTimeScroll setBeginValue:8 endValue:23];
     return cell;
 
 }

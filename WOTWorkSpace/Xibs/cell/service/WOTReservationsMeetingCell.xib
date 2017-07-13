@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="WOTReservationsMeetingCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTReservationsMeetingCell" rowHeight="361" id="KGk-i7-Jjw" customClass="WOTReservationsMeetingCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="WOTReservationsMeetingCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTReservationsMeetingCell" rowHeight="392" id="KGk-i7-Jjw" customClass="WOTReservationsMeetingCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="360.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="391.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookStation" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-dd-AIA">
@@ -57,14 +57,14 @@
                             <constraint firstItem="moX-Fu-uxb" firstAttribute="top" secondItem="Jo1-y3-LHF" secondAttribute="top" id="ubM-UY-9pA"/>
                         </constraints>
                     </view>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8j-vK-EGK">
-                        <rect key="frame" x="0.0" y="160" width="320" height="50"/>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8j-vK-EGK" customClass="WOTSelectScrollView">
+                        <rect key="frame" x="0.0" y="160" width="320" height="80"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="AWm-wP-set"/>
+                            <constraint firstAttribute="height" constant="80" id="AWm-wP-set"/>
                         </constraints>
                     </scrollView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0b-RZ-rZe">
-                        <rect key="frame" x="0.0" y="210" width="320" height="60"/>
+                        <rect key="frame" x="0.0" y="240" width="320" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00-12:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOC-lf-wa9">
                                 <rect key="frame" x="127" y="35" width="67" height="15"/>
@@ -109,7 +109,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gn-vS-Keg">
-                        <rect key="frame" x="0.0" y="270" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="300" width="320" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议室开放时间09:00-22:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-RP-Cy8">
                                 <rect key="frame" x="93" y="35" width="134" height="12"/>
@@ -221,7 +221,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhK-dt-1y4">
-                        <rect key="frame" x="0.0" y="320" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="350" width="320" height="40"/>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.16862745100000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="evb-JG-46w"/>
@@ -263,13 +263,13 @@
                 <outlet property="meetingNameLab" destination="moX-Fu-uxb" id="OaX-AM-QYb"/>
                 <outlet property="meetingOpenTimeLab" destination="sae-RP-Cy8" id="Cjn-E5-YDA"/>
                 <outlet property="meetingPriceLab" destination="MSZ-33-Xkm" id="YP3-46-7VA"/>
-                <outlet property="selectTimeScroll" destination="J8j-vK-EGK" id="ty1-DZ-qQQ"/>
+                <outlet property="selectTimeScroll" destination="J8j-vK-EGK" id="poi-cS-bMr"/>
                 <outlet property="subTimeBtn" destination="GZp-66-oml" id="1Qx-m0-Scc"/>
                 <outlet property="submitBtn" destination="uhK-dt-1y4" id="rae-of-IZl"/>
                 <outlet property="timeScopeLab" destination="BOC-lf-wa9" id="nGI-lz-7Do"/>
                 <outlet property="timeStatisticsLab" destination="BOC-lf-wa9" id="vsy-Fh-AW7"/>
             </connections>
-            <point key="canvasLocation" x="25" y="210.5"/>
+            <point key="canvasLocation" x="25" y="226"/>
         </tableViewCell>
     </objects>
     <resources>

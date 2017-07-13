@@ -39,147 +39,146 @@
 #pragma mark - table delegate & dataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    if (section == 0) {
+        return 5;
+    }
+    else if (section == 1) {
+        return 2;
+    }
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0) {
-        return 210;
-    }
-    else if (indexPath.row==1) {
-        if (self.isBookStation) {
-            return 169;
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row==0) {
+            return 210;
         }
-        return 85;
+        else if (indexPath.row==1) {
+            if (self.isBookStation) {
+                return 169;
+            }
+            return 85;
+        }
+        else if (indexPath.row==2) {
+            return 176;
+        }
+        else if (indexPath.row==3) {
+            return 59;
+        }
+        else  {
+            return 59;
+        }
     }
-    else if (indexPath.row==2) {
-        return 134;
-    }
-    else if (indexPath.row==3) {
-        return 59;
-    }
-    else if (indexPath.row==4 || indexPath.row == 5) {
-        return 59;
-    }
-    else if (indexPath.row==6 || indexPath.row == 7) {
+    else if (indexPath.section == 1) {
         return 49;
     }
     else {
-        return 52;
-    }
+        
+    }return 52;
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 0;
+    }
+    return 30;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
-        }
-        return cell;
-    }
-    else if (indexPath.row == 1) {
-        
-        if (self.isBookStation) {
-            WOTOrderForBookStationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForBookStationCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
-            }
-            return cell;
-        }
-        else {
-            WOTOrderForSiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSiteCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForSiteCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSiteCell"];
-            }
-            return cell;
-        }
-        
-    }
-    else if (indexPath.row == 2) {
-        WOTOrderForServiceInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForServiceInfoCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForServiceInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForServiceInfoCell"];
-        }
-        return cell;
-    }
-    else if (indexPath.row == 3 || indexPath.row == 4) {
-        WOTOrderForSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSelectCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSelectCell"];
-        }
-        if (indexPath.row==3) {
-            [cell.titleLab setText:@"发票信息"];
-            [cell.subtitleLab setText:@"北京物联港科技发展有限公司"];
-        }
-        else {
-            [cell.titleLab setText:@"代金券"];
-            [cell.subtitleLab setText:@"无代金券可用"];
-        }
-        return cell;
-    }
-    else if (indexPath.row == 5 || indexPath.row == 6) {
-        WOTOrderForPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForPaymentCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForPaymentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForPaymentCell"];
-        }
-        
-        return cell;
-    }
-    else if (indexPath.row == 7) {
-        WOTOrderForAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForAmountCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForAmountCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForAmountCell"];
-        }
-        [cell.titleLab setText:@"￥298"];
-        return cell;
-    }
-    else if (indexPath.row == 6) {
-        WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
-        }
-        return cell;
     
-    }
-    else if (indexPath.row == 7) {
-        WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
+            if (cell == nil) {
+                cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
+            }
+            return cell;
         }
-        return cell;
+        else if (indexPath.row == 1) {
+            
+            if (self.isBookStation) {
+                WOTOrderForBookStationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForBookStationCell"];
+                if (cell == nil) {
+                    cell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
+                }
+                return cell;
+            }
+            else {
+                WOTOrderForSiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSiteCell"];
+                if (cell == nil) {
+                    cell = [[WOTOrderForSiteCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSiteCell"];
+                }
+                return cell;
+            }
+            
+        }
+        else if (indexPath.row == 2) {
+            WOTOrderForServiceInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForServiceInfoCell"];
+            if (cell == nil) {
+                cell = [[WOTOrderForServiceInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForServiceInfoCell"];
+            }
+            return cell;
+        }
+        else  {
+            WOTOrderForSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSelectCell"];
+            if (cell == nil) {
+                cell = [[WOTOrderForSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSelectCell"];
+            }
+            if (indexPath.row==3) {
+                [cell.titleLab setText:@"发票信息"];
+                [cell.subtitleLab setText:@"北京物联港科技发展有限公司"];
+            }
+            else {
+                [cell.titleLab setText:@"代金券"];
+                [cell.subtitleLab setText:@"无代金券可用"];
+            }
+            return cell;
+        }
+    }
+    else if (indexPath.section == 1) {
+            WOTOrderForPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForPaymentCell"];
+            if (cell == nil) {
+                cell = [[WOTOrderForPaymentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForPaymentCell"];
+            }
+            return cell;
     }
     else {
-        WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
-        if (cell == nil) {
-            cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
-        }
+            WOTOrderForAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForAmountCell"];
+            if (cell == nil) {
+                cell = [[WOTOrderForAmountCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForAmountCell"];
+            }
+//            [cell.titleLab setText:@"￥298"];
         return cell;
     }
+    
+    
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 30;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 30;
+//}
 
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    [lab setText:@"您可以在使用前2小时取消预定"];
-    [lab setTextAlignment:NSTextAlignmentCenter];
-    [view addSubview:lab];
-    [view setBackgroundColor:UIColorFromRGB(0x12fdff)];
-    return view;
-}
+//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+//    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+//    [lab setText:@"您可以在使用前2小时取消预定"];
+//    [lab setTextAlignment:NSTextAlignmentCenter];
+//    [view addSubview:lab];
+//    [view setBackgroundColor:UIColorFromRGB(0x12fdff)];
+//    return view;
+//}
 
 /*
 #pragma mark - Navigation
