@@ -13,7 +13,7 @@
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
 #import "WOTSpaceModel.h"
-
+#import "WOTworkSpaceDetailVC.h"
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 @property (strong,nonatomic)NSArray<WOTSpaceModel *> *dataSource;
 @end
@@ -22,7 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getDataSourceFromWeb];
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view
+     whileExcusingBlock:^(MBProgressHUD *hud) {
+     [self getDataSourceFromWeb:^{
+        
+            [hud setHidden:YES];
+      
+        
+    }];
+}];
+    
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     self.tableVIew.showsVerticalScrollIndicator = NO;
@@ -48,14 +57,8 @@
     
     [self configNaviBackItem];
     self.navigationItem.title = @"空间列表";
-    [self configNaviRightItemWithImage:[UIImage imageNamed:@"share"]];
+   
 }
-
--(void)rightItemAction{
-    //TODO:分享到朋友圈等
-    NSLog(@"分享到朋友圈去");
-}
-
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -141,17 +144,21 @@
         WOTworkSpaceCommonCell *spacecell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceCommonCellID" forIndexPath:indexPath];
         spacecell.lineVIew.hidden = indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1 ? YES:NO;
         
-//        spacecell.workSpaceName.text = _dataSource[indexPath.row].spaceName;
-        NSLog(@"空间名：%@",_dataSource[indexPath.row].spaceName);
-//        spacecell.workSpaceLocation.text = _dataSource[indexPath.row].spaceSite;
-//        spacecell.stationNum.text = [_dataSource[indexPath.row].fixPhone stringByAppendingString:@"工位可预订"];
-//        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@"_dataSource[indexPath.row].spacePicture"] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
-//        
+        spacecell.workSpaceName.text = _dataSource[indexPath.row].spaceName;
+
+        spacecell.workSpaceLocation.text = _dataSource[indexPath.row].spaceSite;
+        spacecell.stationNum.text = [_dataSource[indexPath.row].fixPhone stringByAppendingString:@"工位可预订"];
+        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@"_dataSource[indexPath.row].spacePicture"] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+//
         commoncell = spacecell;
     }
     return commoncell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    [self.navigationController pushViewController:detailvc animated:YES];
+}
 //切换城市headerview 点击更多action
 -(void)showMoreCityVC{
     //TODO:跳转到城市列表页面
@@ -168,15 +175,27 @@
 }
 
 
--(void)getDataSourceFromWeb{
+-(void)getDataSourceFromWeb:(void(^)())complete{
     
-   [WOTHTTPNetwork getAllSpace:^(id bean, NSError *error) {
-       WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
-       _dataSource = dd.msg;
-       [self.tableVIew reloadData];
-   }];
+    [WOTHTTPNetwork getAllSpace:^(id bean, NSError *error) {
+        
+        if (bean != nil) {
+            
+            complete();
+            WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
+            _dataSource = dd.msg;
+            [self.tableVIew reloadData];
+            
+            
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
     
-
+    
+    
 }
 /*
 #pragma mark - Navigation

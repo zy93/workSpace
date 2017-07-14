@@ -39,8 +39,13 @@
 
 -(NSArray<NSString *> *)separatedWithString:(NSString *)separatedString
 {
-   NSArray<NSString *> *stringArray = [self componentsSeparatedByString:separatedString];
-    return stringArray;
+    if ([self isEqualToString:@""]||self == nil) {
+        return [[NSArray alloc]init];
+    } else {
+        NSArray<NSString *> *stringArray = [self componentsSeparatedByString:separatedString];
+        return stringArray;
+    }
+   
 }
 @end
 
@@ -51,5 +56,9 @@
     [formatter setDateFormat:format];
     NSDate *date = [formatter dateFromString:self];
     return date;
+}
+-(NSURL *)ToUrl{
+    NSString *base = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,self];
+    return [NSURL URLWithString:base];
 }
 @end

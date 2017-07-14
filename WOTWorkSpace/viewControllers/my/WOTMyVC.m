@@ -43,7 +43,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
     [self.navigationController.navigationBar setHidden:YES];
-    
+    [self.tableView reloadData];
 }
 
 
@@ -103,18 +103,19 @@
     if (indexPath.section == 0) {
         WOTMyuserCell *mycell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
         if ([WOTSingtleton shared].isuserLogin) {
-            mycell.userName.text = @"张小宝";
-            mycell.constellation.text = @"狮子座";
-            mycell.signature.text = @"如果你不能很好的表达你的想法，说明你还不够了解啊";
-            mycell.sexImage.image = [UIImage imageNamed:@"boy"];
-            mycell.headerImage.image = [UIImage imageNamed:@"defaultHeaderVIew"];
+            [[WOTUserSingleton currentUser] setValues];
+            mycell.userName.text = [WOTUserSingleton currentUser].userName;
+            mycell.constellation.text = [WOTUserSingleton currentUser].constellation;
+            mycell.signature.text = [WOTUserSingleton currentUser].spared1;
+            mycell.sexImage.image = [[WOTUserSingleton currentUser].sex isEqualToString:@"man"]? [UIImage imageNamed:@"boy"]:[UIImage imageNamed:@"girl"];
+            [mycell.headerImage sd_setImageWithURL:[[WOTUserSingleton currentUser].headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
             
         } else {
             mycell.userName.text = @"登录／注册";
             mycell.constellation.text = @"";
             mycell.signature.text = @"";
             mycell.headerImage.image = [UIImage imageNamed:@"unlogin"];
-            mycell.sexImage = [UIImage imageNamed:@""];
+            mycell.sexImage.image = [UIImage imageNamed:@""];
         }
         mycell.bgImage.image = [UIImage imageNamed:@"mybgimage"];
         mycell.mycelldelegate = self;

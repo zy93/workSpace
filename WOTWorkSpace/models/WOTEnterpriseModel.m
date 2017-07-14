@@ -11,3 +11,6 @@
 @implementation WOTEnterpriseModel
 
 @end
+@implementation WOTEnterpriseModel_msg
+
+@end

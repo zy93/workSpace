@@ -60,6 +60,6 @@
 #define MainOrangeColor UIColorFromRGB(0xfa8d14)
 
 
-#define HTTPBaseURL @"http://192.168.6.219:8080/"
-
+#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
+#define LOGIN_STATE_USERDEFAULT @"islogin"
 #endif /* WOTConstants_h */

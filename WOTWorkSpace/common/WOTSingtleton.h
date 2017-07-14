@@ -13,5 +13,5 @@
 @property(nonatomic,strong)NSMutableArray *spaceCityArray;
 @property(nonatomic,strong)NSArray *ballTitle;
 @property(nonatomic,strong)NSArray *ballImage;
-@property(nonatomic,assign)BOOL isuserLogin ;
+@property(nonatomic,assign)bool isuserLogin ;
 @end

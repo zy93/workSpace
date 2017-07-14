@@ -9,6 +9,7 @@
 #import "WOTActivitiesLIstVC.h"
 #import "WOTFilterTypeModel.h"
 #import "WOTActivitiesListCell.h"
+#import "WOTActivityModel.h"
 @interface WOTActivitiesLIstVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *communityView;
 @property (weak, nonatomic) IBOutlet UILabel *communityName;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *category_arrowdown;
 @property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 
+@property (strong,nonatomic)NSArray<WOTActivityModel *> *dataSource;
 @end
 
 @implementation WOTActivitiesLIstVC
@@ -29,7 +31,13 @@ bool ismenu1 =  NO;
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     [self configNav];
-    [self getDataFromWeb];
+    
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [self getDataFromWeb:^{
+            [hud setHidden:YES];
+        }];
+    }];
+    
     [self makeMenuArrays];
     [self.tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
     self.communityName.text = ((WOTFilterTypeModel *)self.menu1Array[0]).filterName;
@@ -94,9 +102,9 @@ bool ismenu1 =  NO;
 }
 
 
--(NSMutableArray *)dataSource{
+-(NSArray <WOTActivityModel *> *)dataSource{
     if (_dataSource == nil) {
-        _dataSource = [[NSMutableArray alloc]init];
+        _dataSource = [[NSArray alloc]init];
     }
     return  _dataSource;
 }
@@ -138,7 +146,7 @@ bool ismenu1 =  NO;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
    
-    return 10;
+    return _dataSource.count;
 }
 
 
@@ -155,15 +163,29 @@ bool ismenu1 =  NO;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTActivitiesListCell *activitycell = [tableView dequeueReusableCellWithIdentifier:@"WOTActivitiesListCellID" forIndexPath:indexPath];
-    activitycell.activityTitle.text = @"单身交流会！！！";
-    activitycell.activityLocation.text = @"方圆大厦-众创空间";
+    
+    activitycell.activityTitle.text = _dataSource[indexPath.row].title;
+    activitycell.activityLocation.text = _dataSource[indexPath.row].spaceName;
     activitycell.activityState.text = @"活动进行中";
+    NSString *pictureurl = [_dataSource[indexPath.row].pictureSite separatedWithString:@","].count==0? @"":[_dataSource[indexPath.row].pictureSite separatedWithString:@","][0];
+    [activitycell.activityImage sd_setImageWithURL:[pictureurl ToUrl]  placeholderImage:[UIImage imageNamed:@"activity_image"]];
     return activitycell;
 }
 
--(void)getDataFromWeb{
-    [WOTHTTPNetwork getActivitiesWithSpace:@"11" activityType:@"11" response:^(id bean, NSError *error) {
-        [self.tableVIew reloadData];
+-(void)getDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getActivitiesWithSpaceId:nil spaceState:[[NSNumber alloc]initWithInt:1]  response:^(id bean, NSError *error) {
+        
+        complete();
+        if (bean) {
+            WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
+            _dataSource = dd.msg;
+            [self.tableVIew reloadData];
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
     }];
 }
 /*

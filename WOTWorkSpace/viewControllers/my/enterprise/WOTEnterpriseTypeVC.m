@@ -14,6 +14,7 @@
 @property(nonatomic,strong)NSArray *sectionName;
 @property(nonatomic,strong)NSArray *typeimage;
 @property(nonatomic,strong)NSMutableArray *selectedArray;
+
 @property(nonatomic,strong)NSArray *typeName;
 @end
 
@@ -152,13 +153,17 @@
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if ([self.selectedArray containsObject:indexPath]) {
-        [self.selectedArray removeObject:indexPath];
-    }else
-    {
-        [self.selectedArray addObject:indexPath];
+    if (self.selectedArray.count<=4) {
+        if ([self.selectedArray containsObject:indexPath]) {
+            [self.selectedArray removeObject:indexPath];
+        }else
+        {
+            [self.selectedArray addObject:indexPath];
+        }
+    } else {
+        [MBProgressHUDUtil showMessage:@"最多可以选择4项" toView:self.view];
     }
+   
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     
 }
@@ -171,6 +176,16 @@
 
 -(void)rightItemAction{
     //TODO:保存选择的企业类型；
+   NSString *string = @"";
+    for (NSIndexPath *indexpath in _selectedArray) {
+        string = [NSString stringWithFormat:@"%@%@,",string,_typeName[indexpath.section][indexpath.row]];
+        
+    }
+ 
+    if (_gobackBlokc) {
+        self.gobackBlokc(string);
+    }
+    NSLog(@"---选择企业---%@",string);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

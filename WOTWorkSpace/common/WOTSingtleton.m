@@ -9,6 +9,8 @@
 #import "WOTSingtleton.h"
 
 @implementation WOTSingtleton
+
+
 +(instancetype)shared{
     static WOTSingtleton *instance;
     static dispatch_once_t token;
@@ -39,11 +41,16 @@
 
 
 
--(BOOL)isuserLogin{
+-(bool)isuserLogin{
     if (_isuserLogin == nil) {
-        return NO;
-        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:LOGIN_STATE_USERDEFAULT]) {
+            return [[NSUserDefaults standardUserDefaults] boolForKey:LOGIN_STATE_USERDEFAULT];
+        } else {
+            return NO;
+        }
+     
     }
     return _isuserLogin;
 }
+
 @end

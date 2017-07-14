@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,6 +39,10 @@
                     </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_icon" translatesAutoresizingMaskIntoConstraints="NO" id="lIl-Ns-BM1">
                         <rect key="frame" x="275" y="24" width="25" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="hTP-GW-Uoo"/>
+                            <constraint firstAttribute="height" constant="20" id="soz-Pk-T5v"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VqG-9f-Jxa">
                         <rect key="frame" x="0.0" y="66" width="320" height="1"/>
@@ -65,6 +69,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cameraImage" destination="lIl-Ns-BM1" id="htM-IF-l9p"/>
+                <outlet property="imageHeight" destination="soz-Pk-T5v" id="1sw-Wv-h7q"/>
+                <outlet property="imageWidth" destination="hTP-GW-Uoo" id="MdV-Bl-EH8"/>
                 <outlet property="nextImage" destination="p15-cR-3rg" id="tgs-uo-ArC"/>
                 <outlet property="textfield" destination="nbm-GD-S6B" id="pqk-1e-ged"/>
                 <outlet property="titleLabel" destination="R1c-gE-M4c" id="ix6-gA-he6"/>

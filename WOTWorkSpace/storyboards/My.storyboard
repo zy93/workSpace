@@ -27,8 +27,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（可多选）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-zx-h6W">
-                                <rect key="frame" x="152" y="59.5" width="71.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（可多选,最多选4项）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-zx-h6W">
+                                <rect key="frame" x="117" y="59.5" width="141.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -245,6 +245,10 @@
         <scene sceneID="0H5-d3-djH">
             <objects>
                 <viewController storyboardIdentifier="WOTEnterpriseConnectsInfoVCID" id="QZK-KA-zAy" customClass="WOTEnterpriseConnectsInfoVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y8s-Vj-bn9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vho-Ga-4jC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yas-NV-n3q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

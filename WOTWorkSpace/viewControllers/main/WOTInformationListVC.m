@@ -9,8 +9,10 @@
 #import "WOTInformationListVC.h"
 #import "WOTInformationLIstCell.h"
 #import "WOTCommonHeaderVIew.h"
+#import "WOTNewInformationModel.h"
 @interface WOTInformationListVC ()
-@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *dataSource;
+
 @end
 
 @implementation WOTInformationListVC
@@ -19,7 +21,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableView.backgroundColor = CLEARCOLOR;
-    
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [self getDataFromWeb:^{
+            [hud setHidden:YES];
+        }];
+    }];
     [self configNav];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTInformationLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTInformationLIstCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTCommonHeaderVIew" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTCommonHeaderVIewID"];
@@ -39,7 +45,12 @@
     [self configNaviBackItem];
     self.navigationItem.title = @"我的资讯";
 }
-
+-(NSArray<WOTNewInformationModel *>*)dataSource{
+    if (_dataSource == nil) {
+        _dataSource = [[NSArray alloc]init];
+    }
+    return _dataSource;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -73,13 +84,22 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WOTInformationLIstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTInformationLIstCellID"forIndexPath:indexPath];
-    cell.infoValue.text = @"万物互联的新时代 易联港链接前沿创新力量走向新时代";
-    cell.infoTime.text = @"07/08 10:22:22";
-    
+    cell.infoValue.text = _dataSource[indexPath.row].messageInfo;
+   cell.infoTime.text = _dataSource[indexPath.row].issueTime;
+    NSString *urlstring = [_dataSource[indexPath.row].pictureSite separatedWithString:@","].count != 0? [_dataSource[indexPath.row].pictureSite separatedWithString:@","][0]:@"";
+    [cell.infoImage sd_setImageWithURL:[urlstring ToUrl] placeholderImage:[UIImage imageNamed:@"infoImage"]];
     return cell;
 }
 
-
+-(void)getDataFromWeb:(void(^)())complete{
+    
+   [WOTHTTPNetwork getAllNewInformation:^(id bean, NSError *error) {
+       complete();
+       WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
+       _dataSource = dd.msg;
+       [self.tableView reloadData];
+   }];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

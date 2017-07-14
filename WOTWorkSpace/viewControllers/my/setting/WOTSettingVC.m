@@ -11,6 +11,9 @@
 
 #import "WOTSettingCell.h"
 
+#import "WOTLoginVC.h"
+
+#import "WOTLoginNaviController.h"
 @interface WOTSettingVC ()
 
 @end
@@ -98,7 +101,7 @@
             
         }
         NSArray *nameArray = [[NSArray alloc]initWithObjects:@"个人资料",@"通知设置",@"修改密码",@"设置手势密码",@"设置指纹",@"清除缓存",nil];
-        [settingcell.signoutBtn setHidden:YES];
+        settingcell.loginOut.hidden = YES;
         settingcell.nameLabel.text = nameArray[indexPath.row];
 
     } else if (indexPath.section == 1){
@@ -113,21 +116,31 @@
         if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section]-1) {
             [settingcell.lineVIew setHidden:YES];
         }
-         [settingcell.signoutBtn setHidden:YES];
+         [settingcell.loginOut setHidden:YES];
         NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",@"检查新版本",nil];
         settingcell.nameLabel.text = nameArray1[indexPath.row];
     }else {
         [settingcell.valueLabel setHidden:YES];
         [settingcell.nameLabel setHidden:YES];
         [settingcell.nextImage setHidden:YES];
-        [settingcell.signoutBtn setHidden:NO];
+        [settingcell.loginOut setHidden:NO];
         [settingcell.lineVIew setHidden:YES];
         
     }
     
     return settingcell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
+    if (indexPath.section == 2) {
+        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
+        WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
+        
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+    }
+}
 /*
 #pragma mark - Navigation
 

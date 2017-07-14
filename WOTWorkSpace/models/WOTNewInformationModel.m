@@ -11,3 +11,7 @@
 @implementation WOTNewInformationModel
 
 @end
+@implementation WOTNewInformationModel_msg
+
+
+@end
