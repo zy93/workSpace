@@ -23,6 +23,7 @@
 
 - (CGSize)labelAutoCalculateRectWith:(NSString *)text FontSize:(CGFloat)fontSize MaxSize:(CGSize)maxSize;
 -(NSArray<NSString *>*)separatedWithString:(NSString *)separatedString;
+-(NSURL *)ToUrl;
 @end
 
 @interface NSString (Date)

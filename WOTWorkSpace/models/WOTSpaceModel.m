@@ -30,14 +30,5 @@
 @end
 @implementation WOTSpaceModel_msg
 
-+(JSONKeyMapper *)keyMapper
-{
-    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
-}
-
-+(BOOL)propertyIsOptional:(NSString *)propertyName
-{
-    return YES;
-}
 
 @end

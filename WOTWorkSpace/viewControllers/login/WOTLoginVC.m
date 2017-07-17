@@ -11,6 +11,7 @@
 #import "WOTSelectCityCodeVC.h"
 #import "WOTUserRegisterVC.h"
 #import "WOTLoginModel.h"
+
 @interface WOTLoginVC ()
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -83,19 +84,38 @@
 }
 
 - (IBAction)clickLoginBtn:(id)sender {
-    [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
-        NSLog(@"====%@", bean);
+    [MBProgressHUDUtil showLoadingWithMessage:@"登录中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         
-        WOTLoginModel *dd = (WOTLoginModel *)bean;
+        [hud setHidden:YES];
         
-        NSLog(@"当前用户名字：%@",dd.userName);
-       
-        [[WOTUserSingleton currentUser] saveUserInfoToPlist:bean];
-      [[WOTUserSingleton currentUser] readUserInfoFromPlist];
-
+        [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
+            
+            if (bean) {
+                
+                WOTLoginModel *dd = (WOTLoginModel *)bean;
+                
+                NSLog(@"当前用户名字：%@",dd.userName);
+               
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+                    NSDictionary * userdic = @{@"userName":dd.userName,@"password":dd.password,@"realName":dd.realName,@"sex":dd.sex,@"headPortrait":dd.headPortrait,@"userType":dd.userType,@"site":dd.site,@"skill":dd.skill,@"interest":dd.interest,@"industry":dd.industry,@"spared1":dd.spared1,@"constellation":dd.constellation};
+                    [[WOTUserSingleton currentUser] saveUserInfoToPlist:userdic];
+                    
+                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
+                });
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"是否登陆：%d",[WOTSingtleton shared].isuserLogin);
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                });
+                
+            }
+          
+            if (error) {
+                [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+            }
+        }];
+        
     }];
-
-    
+   
     
 }
 - (IBAction)clickRegisterBtn:(id)sender {

@@ -19,6 +19,7 @@
 #import "WOTBookStationVC.h"
 #import "WOTEnumUtils.h"
 #import "WOTTEnterpriseListCell.h"
+#import "WOTEnterpriseModel.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -26,7 +27,7 @@
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *enterpriseListdata;
 
 @end
 
@@ -42,6 +43,10 @@
     _tableView.delegate = self;
   [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
     _tableView.scrollEnabled = NO;
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -81,7 +86,12 @@
     }
     return _imageArray;
 }
-
+-(NSArray<WOTEnterpriseModel *>*)enterpriseListdata{
+    if (_enterpriseListdata == nil) {
+        _enterpriseListdata = [[NSArray alloc]init];
+    }
+    return _enterpriseListdata;
+}
 
 -(void)load3DBallView{
    
@@ -318,7 +328,7 @@
 - (IBAction)showEnterpriseListVC:(id)sender {
 
     WOTEnterpriseLIstVC *enterprisevc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
-    
+    [enterprisevc setDataSource:_enterpriseListdata];
     [self.navigationController pushViewController:enterprisevc animated:YES];
 }
 
@@ -351,14 +361,27 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
-    enterprisecell.enterpriseName.text = @"北京物联港科技发展有限公司";
-    enterprisecell.enterpriseInfo.text = @"#软件#  集成软件我们是专家，欢迎大家来咨询！！！";
-    enterprisecell.enterpriseLogo.image = [UIImage imageNamed:@"enterprise_logo"];
-    
+    enterprisecell.enterpriseName.text = _enterpriseListdata[indexPath.row].companyName;
+    enterprisecell.enterpriseInfo.text = _enterpriseListdata[indexPath.row].companyProfile;
+    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_enterpriseListdata[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_logo"]];
+    enterprisecell.lineView.hidden = indexPath.row == _enterpriseListdata.count-1 ? YES:NO;
     return enterprisecell;
     
 }
-
+-(void)getEnterpriseListDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:55] response:^(id bean, NSError *error) {
+        complete();
+        if (bean) {
+            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            _enterpriseListdata = dd.msg;
+            [self.tableView reloadData];
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+    }];
+}
 /*
 #pragma mark - Navigation
 

@@ -44,38 +44,32 @@
                             <constraint firstAttribute="width" constant="7" id="Pke-5J-glO"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SH-C4-fJa">
-                        <rect key="frame" x="0.0" y="8" width="320" height="38"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLl-Bz-YZf">
+                        <rect key="frame" x="115.5" y="14.5" width="89.5" height="26.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <state key="normal" title="退出">
-                            <color key="titleColor" red="0.8606715202331543" green="0.0" blue="0.18043883144855499" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </state>
-                        <connections>
-                            <action selector="signOutAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VPv-o2-eHL"/>
-                        </connections>
-                    </button>
+                        <color key="textColor" red="0.86067152020000004" green="0.0" blue="0.1804388314" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8SH-C4-fJa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1AW-9R-HeW"/>
                     <constraint firstItem="f27-4A-uuf" firstAttribute="leading" secondItem="Bp6-O8-A1N" secondAttribute="trailing" constant="10" id="56f-jq-u95"/>
-                    <constraint firstItem="Tb3-2y-sve" firstAttribute="top" secondItem="8SH-C4-fJa" secondAttribute="bottom" constant="8" id="8DX-hJ-hG6"/>
                     <constraint firstItem="lvw-Bu-9Fr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FCn-cm-M9E"/>
                     <constraint firstItem="Tb3-2y-sve" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LQn-cF-gAO"/>
                     <constraint firstAttribute="trailing" secondItem="f27-4A-uuf" secondAttribute="trailing" constant="10" id="M5s-rS-68W"/>
-                    <constraint firstAttribute="trailing" secondItem="8SH-C4-fJa" secondAttribute="trailing" id="Sxg-Hc-I5k"/>
                     <constraint firstAttribute="trailing" secondItem="Tb3-2y-sve" secondAttribute="trailing" id="duS-QS-in9"/>
                     <constraint firstItem="Bp6-O8-A1N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eDB-da-31g"/>
-                    <constraint firstItem="8SH-C4-fJa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nfe-Ue-gFl"/>
+                    <constraint firstItem="QLl-Bz-YZf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="nFP-3K-Ayy"/>
                     <constraint firstAttribute="bottom" secondItem="Tb3-2y-sve" secondAttribute="bottom" id="pNk-xI-8FR"/>
                     <constraint firstItem="f27-4A-uuf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qU3-oI-obu"/>
+                    <constraint firstItem="QLl-Bz-YZf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tlp-Jh-IHx"/>
                     <constraint firstItem="lvw-Bu-9Fr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vaF-lo-HoV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lineVIew" destination="Tb3-2y-sve" id="tl1-JS-gFy"/>
+                <outlet property="loginOut" destination="QLl-Bz-YZf" id="Ayh-wH-U6M"/>
                 <outlet property="nameLabel" destination="lvw-Bu-9Fr" id="yab-Q6-fBo"/>
                 <outlet property="nextImage" destination="f27-4A-uuf" id="Lq7-cF-c01"/>
-                <outlet property="signoutBtn" destination="8SH-C4-fJa" id="e27-lk-tid"/>
                 <outlet property="valueLabel" destination="Bp6-O8-A1N" id="8ej-Qq-AQP"/>
             </connections>
             <point key="canvasLocation" x="34" y="93.5"/>

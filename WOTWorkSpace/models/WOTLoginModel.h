@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *realName;
+@property (nonatomic, strong) NSString *constellation;
 @property (nonatomic, strong) NSString *sex;
 @property (nonatomic, strong) NSString *headPortrait;
 @property (nonatomic, strong) NSString *birthDate;

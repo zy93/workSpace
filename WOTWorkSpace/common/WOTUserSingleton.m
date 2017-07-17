@@ -9,15 +9,42 @@
 #import "WOTUserSingleton.h"
 
 @implementation WOTUserSingleton
+
+-(id)initSingleton{
+    if ((self = [super init])) {
+        [self setValues];
+    }
+    return self;
+}
+
+
 +(instancetype)currentUser{
     static WOTUserSingleton *currentUser;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         currentUser = [[self alloc]init];
+     
     });
+    
     return currentUser;
 }
 
+-(void)setValues{
+    NSDictionary *dic = [self readUserInfoFromPlist];
+    self.userName = dic[@"userName"];
+    self.password = dic[@"password"];
+    self.realName = dic[@"realName"];
+    self.sex = dic[@"sex"];
+    self.headPortrait = dic[@"headPortrait"];
+    self.userType = dic[@"userType"];
+    self.site = dic[@"site"];
+    self.skill = dic[@"skill"];
+    self.interests = dic[@"interest"];
+    self.industry = dic[@"industry"];
+    self.spared1 = dic[@"spared1"];
+    self.constellation = dic[@"constellation"];
+    
+}
 
 -(void)saveUserInfoToPlist:(NSDictionary *)userinfo{
     
@@ -42,4 +69,5 @@
     NSLog(@"%@", user);
     return user;
 }
+
 @end

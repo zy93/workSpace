@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WOTEnterpriseModel.h"
 @interface WOTEnterpriseLIstVC : UIViewController
-@property(nonatomic,strong)NSMutableArray *dataSource;
+@property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *dataSource;
 @end

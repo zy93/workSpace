@@ -10,6 +10,7 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpirse.h"
 #import "WOTMenuView.h"
+
 @interface WOTEnterpriseLIstVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseTag;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) WOTMenuView *stylemenuView;
 @property (nonatomic, strong) NSMutableArray *menuArray;
 @property (nonatomic, strong) NSMutableArray *stylemenuArray;
+
 @end
 
 @implementation WOTEnterpriseLIstVC
@@ -32,9 +34,9 @@ bool istags =  NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configNav];
-    [self getAllDataFromWeb];
+   
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
-    
+    self.tableView.backgroundColor = MainColor;
     self.enterpriseTag.text = ((WOTFilterTypeModel *)self.menuArray[0]).filterName;
     self.enterpriseStyle.text = ((WOTFilterTypeModel *)self.stylemenuArray[0]).filterName;
     
@@ -71,9 +73,9 @@ bool istags =  NO;
     [self.navigationController.navigationBar setHidden:NO];
     
 }
--(NSMutableArray *)dataSource{
+-(NSArray<WOTEnterpriseModel *> *)dataSource{
     if (_dataSource == nil) {
-        _dataSource = [[NSMutableArray alloc]init];
+        _dataSource = [[NSArray alloc]init];
     }
     return  _dataSource;
 }
@@ -170,7 +172,7 @@ bool istags =  NO;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   
-    return 10;
+    return _dataSource.count;
 }
 
 
@@ -188,10 +190,10 @@ bool istags =  NO;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
-    enterprisecell.enterpriseName.text = @"北京物联港科技发展有限公司";
-    enterprisecell.enterpriseInfo.text = @"#软件#  集成软件我们是专家，欢迎大家来咨询！！！";
-    enterprisecell.enterpriseLogo.image = [UIImage imageNamed:@"enterprise_logo"];
-    
+    enterprisecell.enterpriseName.text = _dataSource[indexPath.row].companyName;
+    enterprisecell.enterpriseInfo.text = _dataSource[indexPath.row].companyProfile;
+    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_dataSource[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_logo"]];
+    enterprisecell.lineView.hidden = indexPath.row == _dataSource.count-1 ? YES:NO;
     return enterprisecell;
 }
 
@@ -203,12 +205,11 @@ bool istags =  NO;
     [_tableView reloadData];
 }
 
--(void)getAllDataFromWeb{
+
     
-    WOTEnterpirse *enterprise = [[WOTEnterpirse alloc]initWithImage:@"" enterpriseName:@"北京物联港科技发展有限公司" enterpriseInfo:@"我们有健全的软件服务体系，为您打造周围的智慧社区"];
-    [_dataSource addObject:enterprise];
-    
-}
+
+
+
 /*
 #pragma mark - Navigation
 

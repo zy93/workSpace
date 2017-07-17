@@ -10,5 +10,6 @@
 #import "WOTMenuViewParentVC.h"
 
 @interface WOTActivitiesLIstVC : WOTMenuViewParentVC
-@property(nonatomic,strong)NSMutableArray *dataSource;
+
+
 @end

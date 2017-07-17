@@ -11,7 +11,8 @@
 @interface WOTSettingCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UIButton *signoutBtn;
+@property (weak, nonatomic) IBOutlet UILabel *loginOut;
+
 @property (weak, nonatomic) IBOutlet UIImageView *nextImage;
 @property (weak, nonatomic) IBOutlet UIView *lineVIew;
 

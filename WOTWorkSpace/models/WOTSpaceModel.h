@@ -8,6 +8,9 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol WOTSpaceModel
+
+@end
 @interface WOTSpaceModel : JSONModel
 @property(nonatomic,assign)NSNumber* spaceId;
 @property(nonatomic,strong)NSString *spaceName;
@@ -21,11 +24,12 @@
 @property(nonatomic,strong)NSString *spacePicture;
 
 
--(instancetype)initWithSpaceId:(long)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe  city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(long)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture lng:(long)lng lat:(long)lat;
+-(instancetype)initWithSpaceId:(NSNumber *)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe  city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(NSNumber *)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture;
 @end
 
 @interface WOTSpaceModel_msg : JSONModel
 @property(nonatomic,strong)NSString *code;
-@property(nonatomic,strong)NSArray<WOTSpaceModel *> *msg;
+@property(nonatomic,strong)NSString *result;
+@property(nonatomic,strong)NSArray<WOTSpaceModel> *msg;
 
 @end
