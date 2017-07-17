@@ -8,7 +8,7 @@
 
 #import "WOTEnterpriseLIstVC.h"
 #import "WOTTEnterpriseListCell.h"
-#import "WOTEnterpirse.h"
+
 #import "WOTMenuView.h"
 
 @interface WOTEnterpriseLIstVC ()<UITableViewDelegate,UITableViewDataSource>

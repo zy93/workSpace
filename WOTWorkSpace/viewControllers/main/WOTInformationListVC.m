@@ -60,7 +60,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 4;
+    return _dataSource.count;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     WOTCommonHeaderVIew *view = [[NSBundle mainBundle]loadNibNamed:@"WOTCommonHeaderVIew" owner:nil options:nil].lastObject;
@@ -95,9 +95,15 @@
     
    [WOTHTTPNetwork getAllNewInformation:^(id bean, NSError *error) {
        complete();
-       WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
-       _dataSource = dd.msg;
-       [self.tableView reloadData];
+       if (bean) {
+           WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
+           _dataSource = dd.msg;
+           [self.tableView reloadData];
+       }
+       if (error) {
+           [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+       }
+      
    }];
 }
 /*

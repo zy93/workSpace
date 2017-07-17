@@ -9,6 +9,12 @@
 #import "WOTSpaceModel.h"
 
 @implementation WOTSpaceModel
+
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+
 -(instancetype)initWithSpaceId:(NSNumber *)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(NSNumber *)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture{
     self = [super init];
     if (self) {

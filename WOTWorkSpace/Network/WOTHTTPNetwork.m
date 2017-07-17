@@ -13,9 +13,12 @@
 #import "WOTActivityModel.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTNewInformationModel.h"
+#import "WOTSliderModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
+
 @property(nonatomic,assign)NSInteger requestcount;
+
 @end
 @implementation WOTHTTPNetwork
 -(instancetype)init{
@@ -27,6 +30,7 @@
 }
 //网络请求
 +(void)doRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
+   
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
@@ -34,8 +38,7 @@
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
-    
-   
+  
     [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
      
         
@@ -75,6 +78,7 @@
         
         NSLog(@"request URL: %@",task.originalRequest.URL.absoluteString);
         
+       
                 NSError *err = [NSError errorWithDomain:@"WOTWorkSpace" code:error.code userInfo:@{NSLocalizedDescriptionKey:@"网络异常，请重试"}];
                 block(nil,err);
 
@@ -102,11 +106,11 @@
 /**
  * 无参数获取全部空间
  */
-+(void)getAllSpace:(response)response{
++(void)getAllSpaceWithCity:(NSString *)city block:(response)response{
     
      NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
-    
-    [self doRequestWithParameters:nil useUrl:urlstring complete:^JSONModel *(id responseobj) {
+     NSDictionary * parameters = @{@"city":city};
+    [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
         WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];
         
         return  spacemodel;
@@ -119,11 +123,11 @@
     }];
 }
 /**
- *  根据空间id 和状态请求筛选
+ *  根据空间id 和状态请求筛选 获取活动列表
  */
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState  response:(response)response{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Activity/findByState"];
-    NSDictionary * parameters = @{@"/activityState":spaceState};
+    NSDictionary * parameters = @{@"activityState":spaceState};
     
      [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
          
@@ -170,6 +174,20 @@
     [self doRequestWithParameters:nil useUrl:infourl complete:^JSONModel *(id responseobj) {
         WOTNewInformationModel_msg *infomodel = [[WOTNewInformationModel_msg alloc]initWithDictionary:responseobj error:nil];
         return infomodel;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+/**
+ *获取首页轮播图资源数据
+ */
++(void)getFlexSliderSouceInfo:(response)response{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findAll"];
+    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTSliderModel_msg *model = [[WOTSliderModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
             response(responseObject,error);

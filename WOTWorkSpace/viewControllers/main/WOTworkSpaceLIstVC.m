@@ -24,12 +24,11 @@
     [super viewDidLoad];
     [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view
      whileExcusingBlock:^(MBProgressHUD *hud) {
-     [self getDataSourceFromWeb:^{
-        
-            [hud setHidden:YES];
-      
-        
-    }];
+         [self getDataSourceFromWebFWithCity:@"北京" complete:^{
+         [hud setHidden:YES];
+     }];
+         
+
 }];
     
     self.view.backgroundColor = MainColor;
@@ -175,18 +174,17 @@
 }
 
 
--(void)getDataSourceFromWeb:(void(^)())complete{
+-(void)getDataSourceFromWebFWithCity:( NSString * _Nonnull )city complete:(void(^)())complete{
     
-    [WOTHTTPNetwork getAllSpace:^(id bean, NSError *error) {
-        
+    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+         complete();
         if (bean != nil) {
             
-            complete();
+           
             WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
             _dataSource = dd.msg;
             [self.tableVIew reloadData];
-            
-            
+   
         }
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
@@ -194,9 +192,8 @@
         
     }];
     
-    
-    
 }
+
 /*
 #pragma mark - Navigation
 

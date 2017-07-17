@@ -37,7 +37,7 @@
 }
 
 -(void)congigNav{
-    self.navigationItem.title = @"空间详情";
+    self.navigationItem.title = @"详情";
     //
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(shareDetail)];
     [self.navigationItem setRightBarButtonItem:shareItem];

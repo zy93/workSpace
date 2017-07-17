@@ -20,6 +20,7 @@
 #import "WOTEnumUtils.h"
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
+#import "WOTSliderModel.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -28,7 +29,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *enterpriseListdata;
-
+@property (nonatomic,strong) NSMutableArray *imageUrlStrings;
+@property (nonatomic,strong) NSMutableArray *imageTitles;
+@property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
 @end
 
 @implementation WOTMainVC
@@ -36,7 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self load3DBallView];
-    [self loadAutoScrollView];
+    [self getSliderDataSource:^{
+        [self loadAutoScrollView];
+    }];
+    
     [self configScrollView];
     [self loadSpaceView];
     _tableView.dataSource = self;
@@ -47,6 +53,11 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [self getEnterpriseListDataFromWeb:^{
+            [hud setHidden:YES];
+        }];
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -93,6 +104,28 @@
     return _enterpriseListdata;
 }
 
+- (NSMutableArray *)imageUrlStrings {
+    if (_imageUrlStrings == nil) {
+        _imageUrlStrings = [NSMutableArray array];
+    }
+    return _imageUrlStrings;
+}
+
+- (NSMutableArray *)imageTitles {
+    if (_imageTitles == nil) {
+        _imageTitles = [NSMutableArray array];
+    }
+    return _imageTitles;
+}
+
+- (NSMutableArray *)sliderUrlStrings {
+    if (_sliderUrlStrings == nil) {
+        _sliderUrlStrings = [NSMutableArray array];
+    }
+    return _sliderUrlStrings;
+}
+
+
 -(void)load3DBallView{
    
     if (IS_IPHONE_5) {
@@ -138,24 +171,13 @@
 
 
 -(void)loadAutoScrollView{
-    NSArray *imagesURLStrings = @[
-                                  @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
-                                  @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
-                                  @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
-                                  ];
     
-    // 图片配文字
-    NSArray *titles = @[@"物联港科技",
-                        @"物联港科技",
-                        @"物联港科技",
-                        @"物联港科技"
-                        ];
-    
-    
-    self.autoScrollView.imageURLStringsGroup = imagesURLStrings;
+
+    self.autoScrollView.imageURLStringsGroup = _imageUrlStrings;
     self.autoScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+//    self.autoScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFit;  //设置图片填充格式
     self.autoScrollView.delegate = self;
-    self.autoScrollView.titlesGroup = titles;
+    self.autoScrollView.titlesGroup = _imageTitles;
     self.autoScrollView.currentPageDotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
     self.autoScrollView.placeholderImage = [UIImage imageNamed:@"placeholder"];
     
@@ -319,8 +341,14 @@
     [self.navigationController pushViewController:enterprisevc animated:YES];
 }
 
-//MARK:SDCycleScrollView   Delegate
+//MARK:SDCycleScrollView   Delegate  点击轮播图显示详情
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    
+    
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = _sliderUrlStrings[index];
+    [self.navigationController pushViewController:detailvc animated:YES];
+    
     NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
 }
 
@@ -366,6 +394,45 @@
         }
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+    }];
+}
+-(void)getSliderDataSource:(void(^)())complete{
+    [WOTHTTPNetwork getFlexSliderSouceInfo:^(id bean, NSError *error) {
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+            _imageUrlStrings = [[NSMutableArray alloc]initWithArray:@[
+                                                                     @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
+                                                                     @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
+                                                                     @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+                                                                     @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+                                                                     @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
+                                                                     ]];
+            
+            // 图片配文字
+            _imageTitles = [[NSMutableArray alloc]initWithArray:            @[@"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技"
+                                                                              ]];
+            
+            
+            
+        }
+        if (bean) {
+         
+            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            _imageTitles = [[NSMutableArray alloc]init];
+            _imageUrlStrings = [[NSMutableArray alloc]init];
+            _sliderUrlStrings = [[NSMutableArray alloc]init];
+            for (WOTSliderModel *slider in dd.msg) {
+                [_imageUrlStrings addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,slider.image]];
+                [_imageTitles addObject:slider.headline];
+                [_sliderUrlStrings addObject:slider.url];
+            }
+            complete();
+            
         }
     }];
 }
