@@ -18,6 +18,7 @@
 		2A336A641F0CD26D00F5B0AF /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A336A631F0CD26D00F5B0AF /* WOTBaseModel.m */; };
 		2A336A661F0CD84900F5B0AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A336A651F0CD84900F5B0AF /* Login.storyboard */; };
 		2A336A861F0CF2B600F5B0AF /* WOTLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A336A851F0CF2B600F5B0AF /* WOTLoginVC.m */; };
+		2A36B0051F18C450007DB615 /* WOTPaymentTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A36B0041F18C450007DB615 /* WOTPaymentTypeCell.m */; };
 		2A4214421F14699B0010B003 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214311F14699B0010B003 /* libSocialQQ.a */; };
 		2A4214431F14699B0010B003 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214341F14699B0010B003 /* libSocialSina.a */; };
 		2A4214441F14699B0010B003 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214371F14699B0010B003 /* libSocialWeChat.a */; };
@@ -275,6 +276,8 @@
 		2A336A651F0CD84900F5B0AF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2A336A841F0CF2B600F5B0AF /* WOTLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLoginVC.h; sourceTree = "<group>"; };
 		2A336A851F0CF2B600F5B0AF /* WOTLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLoginVC.m; sourceTree = "<group>"; };
+		2A36B0031F18C450007DB615 /* WOTPaymentTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPaymentTypeCell.h; sourceTree = "<group>"; };
+		2A36B0041F18C450007DB615 /* WOTPaymentTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPaymentTypeCell.m; sourceTree = "<group>"; };
 		2A4214311F14699B0010B003 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		2A4214321F14699B0010B003 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		2A4214341F14699B0010B003 /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
@@ -994,6 +997,8 @@
 				2AF18A371F136074004681CE /* WOTOrderForSiteCell.m */,
 				2AF18A391F1360EC004681CE /* WOTOrderForServiceInfoCell.h */,
 				2AF18A3A1F1360EC004681CE /* WOTOrderForServiceInfoCell.m */,
+				2A36B0031F18C450007DB615 /* WOTPaymentTypeCell.h */,
+				2A36B0041F18C450007DB615 /* WOTPaymentTypeCell.m */,
 				2AF18A3C1F13610E004681CE /* WOTOrderForSelectCell.h */,
 				2AF18A3D1F13610E004681CE /* WOTOrderForSelectCell.m */,
 				2AF18A421F136F6D004681CE /* WOTOrderForPaymentCell.h */,
@@ -1899,6 +1904,7 @@
 				E8370F1A1F0DD9EE0070C077 /* WOTMenuViewParentVC.m in Sources */,
 				2AF78CF71F0A3EFA00F7B56D /* WOTFeedbackVC.m in Sources */,
 				E8190DC91F0F69660000B07C /* NewPagedFlowView.m in Sources */,
+				2A36B0051F18C450007DB615 /* WOTPaymentTypeCell.m in Sources */,
 				E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */,
 				E8190DAC1F0F69660000B07C /* WOTMyAppointmentCell.m in Sources */,
 				2A336A641F0CD26D00F5B0AF /* WOTBaseModel.m in Sources */,

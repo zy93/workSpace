@@ -12,11 +12,12 @@
 @protocol WOTReservationsMeetingCellDelegate <NSObject>
 
 -(void)submitReservations;
+-(void)selectTimeWithTag:(NSInteger)tag;
 
 @end
 
 
-@interface WOTReservationsMeetingCell : UITableViewCell
+@interface WOTReservationsMeetingCell : UITableViewCell <WOTSelectScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *meetingImg;
 @property (weak, nonatomic) IBOutlet UILabel *meetingNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *meetingInfoLab;
@@ -29,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *meetingOpenTimeLab;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 @property (weak, nonatomic) IBOutlet UIView *meetingImgBGView;
-
 @property (weak, nonatomic) id <WOTReservationsMeetingCellDelegate> delegate;
 
 @end

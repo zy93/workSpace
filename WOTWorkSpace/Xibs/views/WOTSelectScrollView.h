@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
+@interface WOTScrollButton : UIButton
+
+@end
+
+
 @protocol WOTSelectScrollViewDelegate <NSObject>
 
 -(void)selectButton:(NSInteger)btnTage;
@@ -27,6 +32,9 @@
     
 }
 
--(void)setBeginValue:(CGFloat)begin endValue:(CGFloat)end;
+@property (nonatomic, weak) id <WOTSelectScrollViewDelegate> mDelegate;
 
+-(void)setBeginValue:(CGFloat)begin endValue:(CGFloat)end;
+-(void)setSelectBtnTagList:(NSArray *)tagList;
+-(void)setInvalidBtnTagList:(NSArray *)tagList;
 @end

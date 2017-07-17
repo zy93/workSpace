@@ -11,13 +11,27 @@
 #import "WOTOrderForBookStationCell.h"
 #import "WOTOrderForSiteCell.h"
 #import "WOTOrderForServiceInfoCell.h"
+#import "WOTPaymentTypeCell.h"
 #import "WOTOrderForSelectCell.h"
 #import "WOTOrderForPaymentCell.h"
 #import "WOTOrderForAmountCell.h"
 
+#define infoCell @"infoCell"
+#define bookStationCell @"bookStationCell"
+#define serviceCell @"serviceCell"
+#define payTypeCell @"payTypeCell"
+#define selectCell @"selectCell"
+#define siteCell @"siteCell"
+#define amountCell @"amountCell"
+#define uitableCell @"uitableCell"
+#define paymentCell @"paymentCell"
 
 @interface WOTOrderVC () <UITableViewDataSource, UITableViewDelegate>
 {
+    NSArray *tableList;
+    
+    NSIndexPath *payTypeIndex;//个人、企业支付
+    NSIndexPath *paymentIndex;//微信、支付宝支付
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -29,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    self.table.separatorStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,138 +51,210 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)configNav{
+    self.navigationItem.title = @"确认订单";
+}
+
+-(void)setIsBookStation:(BOOL)isBookStation
+{
+    _isBookStation = isBookStation;
+    
+    NSArray *list1 = nil;
+    
+    if (_isBookStation) {
+        list1 = @[infoCell, bookStationCell, serviceCell, payTypeCell, selectCell, selectCell];
+    }
+    else {
+        list1 = @[infoCell, siteCell, serviceCell, payTypeCell, selectCell, selectCell];
+    }
+    
+    NSArray *list2 = @[uitableCell,paymentCell,paymentCell];
+    NSArray *list3 = @[amountCell];
+    
+    tableList = @[list1, list2, list3];
+    [self.table reloadData];
+    
+}
+
 #pragma mark - table delegate & dataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return tableList.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 5;
-    }
-    else if (section == 1) {
-        return 2;
-    }
-    return 1;
+    NSArray *list = tableList[section];
+    return list.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section == 0) {
-        if (indexPath.row==0) {
-            return 210;
-        }
-        else if (indexPath.row==1) {
-            if (self.isBookStation) {
-                return 169;
-            }
-            return 85;
-        }
-        else if (indexPath.row==2) {
-            return 176;
-        }
-        else if (indexPath.row==3) {
-            return 59;
-        }
-        else  {
-            return 59;
-        }
+    NSArray *list = tableList[indexPath.section];
+    NSString *cellType = list[indexPath.row];
+    
+    if ([cellType isEqualToString:infoCell]) {
+        return 198;
     }
-    else if (indexPath.section == 1) {
-        return 49;
+    else if ([cellType isEqualToString:bookStationCell]) {
+        return 169;
     }
-    else {
-        
-    }return 52;
+    else if ([cellType isEqualToString:siteCell]) {
+        return 65;
+    }
+    else if ([cellType isEqualToString:serviceCell]) {
+        return 176;
+    }
+    else if ([cellType isEqualToString:payTypeCell]) {
+        return 50;
+    }
+    else if ([cellType isEqualToString:selectCell]) {
+        return 50;
+    }
+    else if ([cellType isEqualToString:uitableCell]) {
+        return 30;
+    }
+    else if ([cellType isEqualToString:paymentCell]) {
+        return 50;
+    }
+    else // ([cellType isEqualToString:amountCell])
+    {
+        return 50;
+    }
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    if (section==0) {
+//        return 0;
+//    }
+//    return 15;
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 0;
-    }
-    return 30;
+    return 15;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
-            }
-            return cell;
+    
+    
+    NSArray *list = tableList[indexPath.section];
+    NSString *cellType = list[indexPath.row];
+    
+    if ([cellType isEqualToString:infoCell]) {
+        WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
         }
-        else if (indexPath.row == 1) {
-            
-            if (self.isBookStation) {
-                WOTOrderForBookStationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForBookStationCell"];
-                if (cell == nil) {
-                    cell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
-                }
-                return cell;
-            }
-            else {
-                WOTOrderForSiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSiteCell"];
-                if (cell == nil) {
-                    cell = [[WOTOrderForSiteCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSiteCell"];
-                }
-                return cell;
-            }
-            
-        }
-        else if (indexPath.row == 2) {
-            WOTOrderForServiceInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForServiceInfoCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForServiceInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForServiceInfoCell"];
-            }
-            return cell;
-        }
-        else  {
-            WOTOrderForSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSelectCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSelectCell"];
-            }
-            if (indexPath.row==3) {
-                [cell.titleLab setText:@"发票信息"];
-                [cell.subtitleLab setText:@"北京物联港科技发展有限公司"];
-            }
-            else {
-                [cell.titleLab setText:@"代金券"];
-                [cell.subtitleLab setText:@"无代金券可用"];
-            }
-            return cell;
-        }
+        return cell;
     }
-    else if (indexPath.section == 1) {
-            WOTOrderForPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForPaymentCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForPaymentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForPaymentCell"];
-            }
-            return cell;
+    else if ([cellType isEqualToString:bookStationCell]) {
+        WOTOrderForBookStationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForBookStationCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
+        }
+        return cell;
     }
-    else {
-            WOTOrderForAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForAmountCell"];
-            if (cell == nil) {
-                cell = [[WOTOrderForAmountCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForAmountCell"];
-            }
-//            [cell.titleLab setText:@"￥298"];
+    else if ([cellType isEqualToString:siteCell]) {
+        WOTOrderForSiteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSiteCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForSiteCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSiteCell"];
+        }
+        return cell;
+    }
+    else if ([cellType isEqualToString:serviceCell]) {
+        WOTOrderForServiceInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForServiceInfoCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForServiceInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForServiceInfoCell"];
+        }
+        return cell;
+    }
+    else if ([cellType isEqualToString:payTypeCell]) {
+        WOTPaymentTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTPaymentTypeCell"];
+        if (cell == nil) {
+            cell = [[WOTPaymentTypeCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTPaymentTypeCell"];
+        }
+        return cell;
+    }
+    else if ([cellType isEqualToString:selectCell]) {
+        WOTOrderForSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForSelectCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSelectCell"];
+        }
+        if (indexPath.row==4) {
+            [cell.titleLab setText:@"发票信息"];
+            [cell.subtitleLab setText:@"北京物联港科技发展有限公司"];
+        }
+        else {
+            [cell.titleLab setText:@"代金券"];
+            [cell.subtitleLab setText:@"无代金券可用"];
+        }
+        return cell;
+    }
+    else if ([cellType isEqualToString:uitableCell]) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCelll"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCelll"];
+        }
+        [cell.textLabel setText:@"电子支付"];
+//        cell.separatorInset = UIEdgeInsetsMake(0, SCREEN_WIDTH, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, MAXFLOAT);
+        
+        return cell;
+    }
+    else if ([cellType isEqualToString:paymentCell]) {
+        WOTOrderForPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForPaymentCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForPaymentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForPaymentCell"];
+        }
+        if (indexPath.row == 1) {
+            cell.alipay = YES;
+        }
+        else {
+            cell.alipay = NO;
+        }
+        if (indexPath.row == paymentIndex.row) {
+            cell.select = YES;
+        }
+        else {
+            cell.select = NO;
+        }
+            
+        return cell;
+    }
+    else // ([cellType isEqualToString:amountCell])
+    {
+        WOTOrderForAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForAmountCell"];
+        if (cell == nil) {
+            cell = [[WOTOrderForAmountCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForAmountCell"];
+        }
         return cell;
     }
     
-    
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 30;
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==0) {
+        if (indexPath.row == 4 || indexPath.row == 5) {
+            payTypeIndex = indexPath;
+//            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+//        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if (indexPath.section == 1) {
+        if (indexPath.row == 1 || indexPath.row == 2) {
+            paymentIndex = indexPath;
+        }
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 
 //-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 //{

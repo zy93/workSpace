@@ -7,14 +7,69 @@
 //
 
 #import "WOTSelectScrollView.h"
+#import "WOTReservationsMeetingCell.h"
 
 #define ButtonWith 40
 #define ButtonHeight 50
+
+
+@interface WOTScrollButton ()
+
+@end
+
+
+@implementation WOTScrollButton
+
+-(void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+
+    if (selected) {
+        [self setBackgroundColor:UIColor_blue_40];
+        [self setImage:[UIImage imageNamed:@"select_white"]  forState:UIControlStateNormal];
+        [self.layer setBorderColor:UIColor_blue_40.CGColor];
+    }
+    else {
+        [self setBackgroundColor:[UIColor whiteColor]];
+        [self.layer setBorderColor:UIColor_gray_d6.CGColor];
+    }
+}
+
+-(void)setEnabled:(BOOL)enabled
+{
+    [super setEnabled:enabled];
+    self.enabled = enabled;
+    if (enabled) {
+        [self setBackgroundColor:UIColor_gray_d6];
+        [self setImage:[UIImage imageNamed:@"select_gray"]  forState:UIControlStateNormal];
+    }
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+}
+
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesCancelled:touches withEvent:event];
+}
+
+@end
+
 
 @interface WOTSelectScrollView ()
 {
     UIView *topLine;
     
+    NSArray *selectList;
+    NSArray *invalidList;
     
 }
 
@@ -48,6 +103,23 @@
     return self;
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+}
+
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesCancelled:touches withEvent:event];
+}
+
+
 -(void)setBeginValue:(CGFloat)begin endValue:(CGFloat)end
 {
     beginValue = begin;
@@ -56,15 +128,39 @@
     [self commonInit];
 }
 
+-(void)setSelectBtnTagList:(NSArray *)tagList
+{
+    selectList = tagList;
+}
+
+-(void)setInvalidBtnTagList:(NSArray *)tagList
+{
+    invalidList = tagList;
+}
+
 -(void)commonInit
 {
     if (!buttonArr) {
         buttonArr = [[NSMutableArray alloc] init];
     }
+    else {
+        for (UIButton *button in buttonArr) {
+            [button removeFromSuperview];
+        }
+        [buttonArr removeAllObjects];
+    }
     if (!titleArr) {
         titleArr = [[NSMutableArray alloc] init];
     }
-    topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 1)];
+    else {
+        for (UILabel *lab in titleArr) {
+            [lab removeFromSuperview];
+        }
+        [titleArr removeAllObjects];
+    }
+    if (!topLine) {
+        topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 1)];
+    }
     [topLine setBackgroundColor:[UIColor grayColor]];
     [self addSubview:topLine];
     NSMutableArray *titles =[NSMutableArray new];
@@ -72,9 +168,29 @@
         [titles addObject:[NSString stringWithFormat:@"%d时",i]];
     }
     
-    for (NSString *tit in titles ) {
+    for (int i = 0;i<titles.count;i++) {
+        NSString *tit =titles[i];
         UIButton *btn1 = [self createButtonWithTitle:nil];
         UIButton *btn2 = [self createButtonWithTitle:nil];
+        btn1.tag = i;
+        btn2.tag = i+titles.count+1;
+        for (NSNumber *t in invalidList) {
+            if (btn1.tag == [t integerValue]) {
+                btn1.enabled = NO;
+            }
+            if (btn2.tag == [t integerValue]) {
+                btn2.enabled = NO;
+            }
+        }
+        for (NSNumber *t in selectList) {
+            if (btn1.tag == [t integerValue]) {
+                btn1.selected = YES;
+            }
+            
+            if (btn2.tag == [t integerValue]) {
+                btn2.selected = YES;
+            }
+        }
         UILabel *lab = [self createLabelWithTitle:tit];
         [buttonArr addObject:btn1];
         [buttonArr addObject:btn2];
@@ -83,15 +199,21 @@
         [self addSubview:btn2];
         [self addSubview:lab];
     }
+    
+    for (UIButton *btn in buttonArr) {
+        if (btn.isSelected) {
+        }
+    }
+    
     [self setNeedsLayout];
 }
 
 
--(UIButton *)createButtonWithTitle:(NSString *)title
+-(WOTScrollButton *)createButtonWithTitle:(NSString *)title
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    WOTScrollButton *button = [WOTScrollButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(selectButton:) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.borderColor = [UIColor grayColor].CGColor;
+    button.layer.borderColor = UIColor_gray_d6.CGColor;
     button.layer.borderWidth = 1.f;
     if (title) {
         [button setTitle:title forState:UIControlStateNormal];
@@ -134,15 +256,10 @@
     if (sender.isEnabled==NO) {
         return;
     }
-    if (sender.isSelected) {
-        [sender setBackgroundColor:[UIColor whiteColor]];
-        [sender setImage:nil forState:UIControlStateNormal];
+//    sender.selected = !sender.isSelected;
+    if ([_mDelegate respondsToSelector:@selector(selectButton:)]) {
+        [_mDelegate selectButton:sender.tag];
     }
-    else {
-        [sender setBackgroundColor:[UIColor greenColor]];
-        [sender setImage:[UIImage imageNamed:@"select_blue"] forState:UIControlStateNormal];
-    }
-    sender.selected = !sender.isSelected;
 }
 
 @end
