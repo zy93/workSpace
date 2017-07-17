@@ -15,6 +15,7 @@
     // Initialization code
     self.clipsToBounds = YES;
     [self.meetingImgBGView setBackgroundColor:COLOR(40, 43, 50, 0.6)];
+    self.selectTimeScroll.mDelegate = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,6 +27,32 @@
     if ([_delegate respondsToSelector:@selector(submitReservations)]) {
         [_delegate submitReservations];
     }
+}
+
+
+#pragma mark - WOTScrollView Delegate
+-(void)selectButton:(NSInteger)btnTage
+{
+    if ([_delegate respondsToSelector:@selector(selectTimeWithTag:)]) {
+        [_delegate selectTimeWithTag:btnTage];
+    }
+}
+
+#pragma mark - touches
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+}
+
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[self nextResponder] touchesCancelled:touches withEvent:event];
 }
 
 @end

@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.separatorInset = UIEdgeInsetsMake(0, SCREEN_WIDTH, 0, 0); // ViewWidth  [宏] 指的是手机屏幕的宽度
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

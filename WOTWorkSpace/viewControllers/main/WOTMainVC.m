@@ -219,10 +219,23 @@
             break;
         case WOTOthers:
             
+            break;
+        case WOTReservationsMeeting:
+            [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTReservationsMeetingVC"];
+            break;
         default:
             break;
     }
 }
+
+
+-(void)pushToViewControllerWithStoryBoardName:(NSString *)sbName viewControllerName:(NSString *)vcName
+{
+    UIViewController *stationvc = [[UIStoryboard storyboardWithName:sbName bundle:nil] instantiateViewControllerWithIdentifier:vcName];
+    [self.navigationController pushViewController:stationvc animated:YES];
+}
+
+
 -(void)loadSpaceView{
     for (int index = 0; index < 5; index++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d",index]];

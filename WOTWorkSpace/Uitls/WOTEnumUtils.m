@@ -19,6 +19,9 @@
         } else if([ballTitle isEqualToString:@"订工位"]) {
             type = WOTBookStation;
             break;
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            break;
         }else {
             type = WOTOthers;
             break;
