@@ -15,6 +15,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
@@ -74,9 +75,14 @@
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    __weak typeof(self) weakSelf = self;
+      UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor greenColor]];
+    if (self.collectionImageViewBlock != nil) {
+       weakSelf.collectionImageViewBlock(indexPath.row);
+    }
 }
+
 //取消选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {

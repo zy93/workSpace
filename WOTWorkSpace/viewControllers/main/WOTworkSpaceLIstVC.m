@@ -12,29 +12,22 @@
 #import "WOTworkSpacenearCell.h"
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
-#import "WOTSpaceModel.h"
+
 #import "WOTworkSpaceDetailVC.h"
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
-@property (strong,nonatomic)NSArray<WOTSpaceModel *> *dataSource;
+
 @end
 
 @implementation WOTworkSpaceLIstVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view
-     whileExcusingBlock:^(MBProgressHUD *hud) {
-         [self getDataSourceFromWebFWithCity:@"北京" complete:^{
-         [hud setHidden:YES];
-     }];
-         
-
-}];
+  
     
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     self.tableVIew.showsVerticalScrollIndicator = NO;
-    _dataSource = [[NSArray alloc]init];
+    
     [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
@@ -122,18 +115,45 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
     WOTSpaceCityScrollView *view = [[NSBundle mainBundle]loadNibNamed:@"WOTSpaceCityScrollView" owner:nil options:nil].lastObject;
     view.delegate = self;
     return view;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     UITableViewCell *commoncell;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             WOTworkSpaceSearchCell *searchcell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceSearchCellID" forIndexPath:indexPath];
+            searchcell.searchBarBlock = ^(NSString *searchText){
+                [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+                    [_dataSource removeAllObjects];
+                    [self getDataSourceFromWebFWithCity:searchText complete:^{
+                        [hud setHidden:YES];
+                    }];
+                }];
+                
+            };
             commoncell = searchcell;
         } else if (indexPath.row == 1){
             WOTworkSpaceScrollVIewCell *scrollcell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceScrollVIewCellID" forIndexPath:indexPath];
+            scrollcell.collectionImageViewBlock = ^(NSInteger index){
+                
+                //MARK:选择顶部城市筛选  修改数据源  修改sectionview的选中城市
+                
+                [_dataSource removeAllObjects];
+                [self selectSpaceWithCity:index othersBlock:^{
+                   NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+                    [_tableVIew reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+                    NSIndexPath *dd = [NSIndexPath indexPathForRow:index inSection:0];
+                    NSDictionary *dic = @{@"cityindex":dd};
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"scrollToDestinationCity" object:nil userInfo:dic];
+                }];
+                
+               
+                
+            };
             commoncell = scrollcell;
         } else {
             WOTworkSpacenearCell *nearcell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpacenearCellID" forIndexPath:indexPath];
@@ -147,8 +167,9 @@
 
         spacecell.workSpaceLocation.text = _dataSource[indexPath.row].spaceSite;
         spacecell.stationNum.text = [_dataSource[indexPath.row].fixPhone stringByAppendingString:@"工位可预订"];
-        [spacecell.workSpaceImage sd_setImageWithURL:[NSURL URLWithString:@"_dataSource[indexPath.row].spacePicture"] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
-//
+    
+        [spacecell.workSpaceImage sd_setImageWithURL:[[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+        NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0]]);
         commoncell = spacecell;
     }
     return commoncell;
@@ -167,14 +188,18 @@
      * @param 选择的城市的index， 在系统单利中索引即可
      */
     //TODO:根据城市进行筛选空间列表
+    [_dataSource removeAllObjects];
+    [self selectSpaceWithCity:index othersBlock:^{
+        [self.tableVIew reloadData];
+    }];
 }
 #pragma textfield delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     return YES;
 }
 
-
--(void)getDataSourceFromWebFWithCity:( NSString * _Nonnull )city complete:(void(^)())complete{
+//从网络获取数据
+-(void)getDataSourceFromWebFWithCity:( NSString * __nullable )city complete:(void(^)())complete{
     
     [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
          complete();
@@ -194,6 +219,22 @@
     
 }
 
+//MARK:根据城市进行筛选空间列表
+-(void)selectSpaceWithCity:(NSInteger)cityindex othersBlock:(void(^)())othersBlock{
+    
+    if (cityindex == 0) {
+        [self getDataSourceFromWebFWithCity:nil complete:^{
+            othersBlock();
+            
+        }];
+    } else {
+        [self getDataSourceFromWebFWithCity:[WOTSingtleton shared].spaceCityArray[cityindex] complete:^{
+            othersBlock();
+            
+        }];
+    }
+    
+}
 /*
 #pragma mark - Navigation
 

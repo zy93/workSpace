@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTTableViewBaseVC.h"
+#import "WOTNewInformationModel.h"
 @interface WOTInformationListVC : WOTTableViewBaseVC
-
+@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *dataSource;
 @end

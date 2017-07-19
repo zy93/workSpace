@@ -10,4 +10,6 @@
 
 @interface WOTEnumUtils : NSObject
 -(WOT3DBallVCType)Wot3DballVCtypeenumToString:(NSString *)ballTitle;
+-(NSString *)WOTFeedBackStateToString:(NSInteger)state;
+
 @end

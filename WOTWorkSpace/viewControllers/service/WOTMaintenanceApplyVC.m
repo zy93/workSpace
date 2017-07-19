@@ -11,7 +11,7 @@
 #import "WOTRadioView.h"
 #import "WOTPickerView.h"
 #import "WOTEnterTextVC.h"
-
+#import "WOTPhotosBaseUtils.h"
 @interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate>
 {
     WOTPickerView *pickerView;
@@ -81,8 +81,16 @@
     [pickerView popPickerView];
 }
 - (IBAction)clickEnterAddrBtn:(id)sender {
+    WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+    photo.vc = self;
+    
+    [photo showSelectedPhotoSheet];
+    
 }
 - (IBAction)clickSubmitBtn:(id)sender {
+    
+    
+    
 }
 
 
@@ -103,6 +111,38 @@
     return component==0? [NSString stringWithFormat:@"%d时",(int)row]:[NSString stringWithFormat:@"%02d分",(int)row];
 }
 
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// 拍照完成回调
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+
+{
+    
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        
+    {
+        
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        
+    }
+
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//进入拍摄页面点击取消按钮
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 /*
 #pragma mark - Navigation

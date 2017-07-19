@@ -137,47 +137,66 @@
     return commoncell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.section) {
-        case 0:
-            //enter to mymainvc
-            break;
-        case 1:
-            break;
-        case 2:
-            if (indexPath.row ==0 ) {
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
-                WORTMyEnterpriseVC *myenterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WORTMyEnterpriseVCID"];
-                [self.navigationController pushViewController:myenterprisevc animated:YES];
-                
-                
-            } else if (indexPath.row == 1){
-                WOTMyActivitiesVC *activityvc = [[WOTMyActivitiesVC alloc]init];
-                [self.navigationController pushViewController:activityvc animated:YES];
-            } else {
-                WOTMyHistoryVC *historyvc = [[WOTMyHistoryVC alloc]init];
-                [self.navigationController pushViewController:historyvc animated:YES];
-            }
-        default:
-            break;
+    if ([WOTSingtleton shared].isuserLogin) {
+        switch (indexPath.section) {
+            case 0:
+                //enter to mymainvc
+                break;
+            case 1:
+                break;
+            case 2:
+                if (indexPath.row ==0 ) {
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
+                    WORTMyEnterpriseVC *myenterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WORTMyEnterpriseVCID"];
+                    [self.navigationController pushViewController:myenterprisevc animated:YES];
+                    
+                    
+                } else if (indexPath.row == 1){
+                    WOTMyActivitiesVC *activityvc = [[WOTMyActivitiesVC alloc]init];
+                    [self.navigationController pushViewController:activityvc animated:YES];
+                } else {
+                    WOTMyHistoryVC *historyvc = [[WOTMyHistoryVC alloc]init];
+                    [self.navigationController pushViewController:historyvc animated:YES];
+                }
+            default:
+                break;
+        }
+    } else {
+        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
     }
+   
 }
 
 
 /**订单celldelegate*/
 -(void)showAllOrderList{
-    WOTAllOrderListVC *station_ordervc = [[WOTAllOrderListVC alloc]init];
-    [self.navigationController pushViewController:station_ordervc animated:YES];
+    if ([WOTSingtleton shared].isuserLogin) {
+        WOTAllOrderListVC *station_ordervc = [[WOTAllOrderListVC alloc]init];
+        [self.navigationController pushViewController:station_ordervc animated:YES];
+    } else {
+        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+    }
+    
     
 }
 
 -(void)showStationOrderList{
-    WOTOrderLIstVC *station_ordervc = [[WOTOrderLIstVC alloc]init];
-    station_ordervc.vctype = WOTPageMenuVCTypeStation;
-    [self.navigationController pushViewController:station_ordervc animated:YES];
+    if ([WOTSingtleton shared].isuserLogin) {
+        WOTOrderLIstVC *station_ordervc = [[WOTOrderLIstVC alloc]init];
+        station_ordervc.vctype = WOTPageMenuVCTypeStation;
+        [self.navigationController pushViewController:station_ordervc animated:YES];
+    } else {
+        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+    }
+    
 }
 -(void)showMettingRoomOrderList{
-    WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
-    [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
+    if ([WOTSingtleton shared].isuserLogin) {
+        WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
+        [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
+    } else {
+        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+    }
 
 }
 
@@ -203,6 +222,7 @@
     }
    
 }
+
 /*
 #pragma mark - Navigation
 

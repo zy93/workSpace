@@ -10,5 +10,5 @@
 
 @interface WOTworkSpaceSearchCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (nonatomic,copy)void(^searchBarBlock)(NSString *searchText);
 @end

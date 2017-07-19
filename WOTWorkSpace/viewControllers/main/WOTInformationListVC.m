@@ -9,9 +9,9 @@
 #import "WOTInformationListVC.h"
 #import "WOTInformationLIstCell.h"
 #import "WOTCommonHeaderVIew.h"
-#import "WOTNewInformationModel.h"
+
 @interface WOTInformationListVC ()
-@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *dataSource;
+
 
 @end
 
@@ -21,11 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableView.backgroundColor = CLEARCOLOR;
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        [self getDataFromWeb:^{
-            [hud setHidden:YES];
-        }];
-    }];
+  
     [self configNav];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTInformationLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTInformationLIstCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTCommonHeaderVIew" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTCommonHeaderVIewID"];
@@ -91,21 +87,6 @@
     return cell;
 }
 
--(void)getDataFromWeb:(void(^)())complete{
-    
-   [WOTHTTPNetwork getAllNewInformation:^(id bean, NSError *error) {
-       complete();
-       if (bean) {
-           WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
-           _dataSource = dd.msg;
-           [self.tableView reloadData];
-       }
-       if (error) {
-           [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
-       }
-      
-   }];
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

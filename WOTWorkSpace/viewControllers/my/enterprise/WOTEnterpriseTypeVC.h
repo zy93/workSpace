@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTEnterpriseTypeVC : UIViewController
-@property (nonatomic,copy) void (^gobackBlokc)(NSString *);
+@property (nonatomic,copy) void (^gobackBlock)(NSString *);
 @end

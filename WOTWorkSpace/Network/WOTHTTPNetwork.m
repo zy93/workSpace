@@ -14,6 +14,9 @@
 #import "WOTEnterpriseModel.h"
 #import "WOTNewInformationModel.h"
 #import "WOTSliderModel.h"
+#import "WOTMyFeedBackModel.h"
+#import "WOTBaseModel.h"
+#import "AFURLRequestSerialization.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -33,13 +36,19 @@
    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",  @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                            @"text/json", nil];
     
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
   
-    [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    [manager POST:Url parameters:parameters  progress:^(NSProgress * _Nonnull uploadProgress) {
      
         
         
@@ -65,8 +74,14 @@
                 }
             }
             
+        } else if (statusCode == 202)
+        {
+            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:202 userInfo:@{NSLocalizedDescriptionKey:@"暂无数据"}];
+            block(nil,error);
+        } else if (statusCode == 500){
+            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:500 userInfo:@{NSLocalizedDescriptionKey:@"请求失败，请重试"}];
+            block(nil,error);
         }
-        
         if (error) {
             NSLog(@"----error:%@",error);
             block(nil,error);
@@ -84,6 +99,83 @@
 
     }];
 }
+
+
++(NSDictionary*)paramEncoding:(NSDictionary*)parameters{
+    NSMutableDictionary *mutaDic = [[NSMutableDictionary alloc] initWithDictionary:parameters];
+    for (NSString *key in [mutaDic allKeys]) {
+        NSString * strEncoding= [mutaDic[key] UrlEncodedString];
+        mutaDic[key] = strEncoding;
+    }
+    return mutaDic;
+}
+
+
++(void)doFileRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url image:(NSArray<UIImage *> *)images complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"image/jpeg",@"image/png",@"application/octet-stream",@"text/json",nil];
+    
+    manager.requestSerializer= [AFHTTPRequestSerializer serializer];
+    
+    manager.responseSerializer= [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:Url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        
+        
+//        NSData *data = UIImagePNGRepresentation(image);
+//        
+//        //上传的参数(上传图片，以文件流的格式)
+//        
+//        [formData appendPartWithFileData:data
+//         
+//                                    name:@"firmLogo"
+//         
+//                                fileName:@"gauge.png"
+//         
+//                                mimeType:@"image/png"];
+        
+        
+        int i = 0;
+        //根据当前系统时间生成图片名称
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy年MM月dd日"];
+        NSString *dateString = [formatter stringFromDate:date];
+        
+        for (UIImage *image in images) {
+            NSString *fileName = [NSString stringWithFormat:@"%@%d.png",dateString,i];
+            NSData *imageData;
+           
+            imageData = UIImageJPEGRepresentation(image, 1.0f);
+           
+            [formData appendPartWithFileData:imageData name:@"firmLogo" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+        }
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"上传成功");
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"上传失败%@",error);
+        
+        
+        
+    }];
+  
+}
+
 
 //登录
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response
@@ -104,12 +196,17 @@
 
 
 /**
- * 无参数获取全部空间
+ * 获取空间列表
+ *parameter：传入城市 string类型，不传参，返回全部数据
  */
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response{
     
      NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
-     NSDictionary * parameters = @{@"city":city};
+    NSDictionary *parameters;
+    if (city != nil) {
+        parameters = @{@"city":city};
+    }
+
     [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
         WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];
         
@@ -183,8 +280,8 @@
 /**
  *获取首页轮播图资源数据
  */
-+(void)getFlexSliderSouceInfo:(response)response{
-    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findAll"];
++(void)getHomeSliderSouceInfo:(response)response{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findByHome"];
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTSliderModel_msg *model = [[WOTSliderModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
@@ -194,4 +291,113 @@
         }
     }];
 }
+
+
+/**
+ *获取我的历史--反馈列表数据
+ */
+
+
++(void)getMyHistoryFeedBackData:(NSNumber *)userId response:(response)response{
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Opinion/findByUserId"];
+     NSDictionary * parameters = @{@"userId":userId};
+    [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
+
+/**
+ *注册成为平台服务商
+ */
+
++(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response{
+    
+    
+    NSString *registerurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorInfo/addInfo"];
+    NSMutableDictionary * parameters = [[NSMutableDictionary alloc]initWithObjectsAndKeys:userId,@"userId",firmName,@"firmName",businessScope,@"businessScope",contatcts,@"contatcts",tel,@"tel",facilitatorType,@"facilitatorType",nil];
+    if (facilitatorState) {
+        [parameters setValue:facilitatorState forKey:@"facilitatorState"];
+
+    }
+    
+    [self doFileRequestWithParameters:parameters useUrl:registerurl image:nil complete:^JSONModel *(id responseobj) {
+        WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+    
+
+}
+
+/**
+ *提交意见反馈
+ */
++(void)postFeedBackInfoWithContent:(NSString *)opinionContent spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId userName:(NSString *)userName tel:(NSString*)   tel  response:(response)response{
+    
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Opinion/addOpinion"];
+    NSMutableDictionary * parameters = [[NSMutableDictionary alloc]initWithObjectsAndKeys:opinionContent,@"opinionContent",spaceId,@"spaceId",userId,@"userId",userName,@"userName",nil];
+    if (tel) {
+        [parameters setValue:tel forKey:@"tel"];
+    }
+    [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+   }
+
+
+
+
+/**
+ *服务--发布需求页面
+ */
++(void)postServiceRequestWithDescribe:(NSString *)describe spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId facilitator_type:(NSString *)facilitator_type time:(NSDate   *)time  response:(response)response{
+    
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/GetFacilitator/addGetFacilitator"];
+   
+    NSMutableDictionary * parameters = [[NSMutableDictionary alloc]initWithObjectsAndKeys:describe,@"describe",spaceId,@"spaceId",userId,@"userId",facilitator_type,@"facilitator_type",time,@"time",nil];
+   
+    [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
+
+/**
+ *服务--获取服务商类别
+ */
++(void)getAllServiceTypes:(response)response{
+    
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorLabel/findAll"];
+    
+
+    
+    [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
 @end

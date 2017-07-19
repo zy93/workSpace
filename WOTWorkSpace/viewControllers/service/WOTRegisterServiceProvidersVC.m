@@ -10,11 +10,15 @@
 #import "WOTServiceProvidersCategoryVC.h"
 #import "WOTRegisterServiceProvidersCell.h"
 #import "WOTSubmitRegisterServiceCell.h"
-
-@interface WOTRegisterServiceProvidersVC () <UITableViewDataSource, UITableViewDelegate>
+#import "WOTPhotosBaseUtils.h"
+@interface WOTRegisterServiceProvidersVC () <UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
 {
     NSMutableArray *tableList;
     NSMutableArray *tableSubtitleList;
+    UIImage *enterpriseLogo;
+    NSString *enterpriseLogoPath;
+    NSString *enterpriseTypeString;
+    NSMutableDictionary *tableInputDatadic;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -49,6 +53,8 @@
     NSArray *tableList2 = @[@"提交"];
     tableList = [@[tableList1, tableList2] mutableCopy];
     tableSubtitleList = [@[@"请选择企业logo", @"请输入企业名称", @"请输入经营范围", @"请输入联系人", @"请输入联系方式", @"选择服务商类别", @"选择服务社区"] mutableCopy];
+    tableInputDatadic = [[NSMutableDictionary alloc]init];
+    enterpriseTypeString = @"";
     self.table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.table reloadData];
 }
@@ -57,6 +63,19 @@
 -(void)pushVCByVCName:(NSString *)vcName
 {
     UIViewController *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:vcName];
+    if ([vcName isEqualToString:@"WOTServiceProvidersCategoryVC"]) {
+     WOTServiceProvidersCategoryVC *dd =   (WOTServiceProvidersCategoryVC *)vc;
+        dd.selectServiceBlock = ^(NSArray *selectedArray){
+            for (NSString *text in selectedArray) {
+                enterpriseTypeString = [NSString stringWithFormat:@"%@%@%@",enterpriseTypeString,text,@","];
+            }
+            tableInputDatadic[@"facilitatorType"] = enterpriseTypeString;
+            
+            [tableInputDatadic setValue:[[NSNumber alloc]initWithInt:1] forKey:@"facilitatorState"];
+            [_table reloadData];
+        };
+        
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -97,13 +116,22 @@
         NSArray *arr = tableList[indexPath.section];
         [cell.titleLab setText:arr[indexPath.row]];
         [cell.contentText setPlaceholder:tableSubtitleList[indexPath.row]];
+        [cell.contentText setTag:indexPath.row];
+        cell.contentText.delegate = self;
         if (indexPath.row == 0) {
             cell.contentText.enabled = NO;
             [cell.contentText setHidden:YES];
             [cell.iconImg setHidden:NO];
+            cell.iconImg.image = enterpriseLogo?enterpriseLogo:[UIImage imageNamed:@"camera_icon"];
+            cell.imageWidth.constant = enterpriseLogo?45:25;
+            cell.imageHeight.constant = enterpriseLogo?45:20;
         }
         else if (indexPath.row==5 || indexPath.row == 6) {
             cell.contentText.enabled = NO;
+            if (indexPath.row == 5) {
+                cell.contentText.text = enterpriseTypeString;
+            }
+            
             [cell.contentText setHidden:NO];
             [cell.iconImg setHidden:YES];
             
@@ -115,6 +143,7 @@
             [cell.iconImg setHidden:YES];
             
         }
+       
         return cell;
     }
     else {
@@ -134,15 +163,105 @@
     if (indexPath.section == 0) {
         if (indexPath.row==5 || indexPath.row==6) {
             [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
+        }if (indexPath.row == 0) {
+            WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+            photo.vc = self;
+            
+            [photo showSelectedPhotoSheet];
         }
+        
     }
     else {
+        [[WOTUserSingleton currentUser]setValues];
+        [self registerService:[WOTUserSingleton currentUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
+            tel:tableInputDatadic[@"tel"]
+            facilitatorType:tableInputDatadic[@"facilitatorType"]
+             facilitatorState:tableInputDatadic[@"facilitatorState"]
+            firmLogo:enterpriseLogo];
+        
+        
         //提交
     }
     
 }
 
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// 拍照完成回调
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+
+{
+    
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        
+    {
+        
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        
+    }
+
+    enterpriseLogoPath = editingInfo[UIImagePickerControllerReferenceURL];
+    tableInputDatadic[@"firmLogo"] = enterpriseLogoPath;
+    enterpriseLogo = image;
+    [self.table reloadData];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//进入拍摄页面点击取消按钮
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+   
+    return [textField resignFirstResponder];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    switch (textField.tag) {
+        case 0:
+            
+            break;
+        case 1:
+            tableInputDatadic[@"firmName"] = textField.text;
+            break;
+        case 2:
+             tableInputDatadic[@"businessScope"] = textField.text;
+                break;
+        case 3:
+            tableInputDatadic[@"contatcts"] = textField.text;
+                break;
+        case 4:
+            tableInputDatadic[@"tel"] = textField.text;
+            break;
+        case 5:
+           
+                break;
+        case 6:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)registerService:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(UIImage *)firmLogo{
+    
+    NSArray<UIImage *> *aa = @[firmLogo];
+    [WOTHTTPNetwork registerServiceBusiness:userId firmName:firmName businessScope:businessScope contatcts:contatcts tel:tel facilitatorType:facilitatorType facilitatorState:facilitatorState firmLogo:aa response:^(id bean, NSError *error) {
+        
+    }];
+}
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

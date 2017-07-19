@@ -123,7 +123,7 @@
             WOTPersionalInformationTagCell *tagcell = [tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationTagCellID" forIndexPath:indexPath];
             tagcell.titleLabel.text = titleArray[indexPath.row];
             tagcell.tagLabelArray = @[@"移动开发",@"移动测试",@"美食",@"摄影"];
-            [tagcell loadtagsBtn];
+            [[WOTConfigThemeUitls shared] loadtagsBtn:tagcell.tagLabelArray superView:tagcell.tagsVIew];
             commoncell = tagcell;
             
         } else {

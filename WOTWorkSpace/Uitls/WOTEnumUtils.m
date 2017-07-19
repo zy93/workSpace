@@ -9,6 +9,7 @@
 #import "WOTEnumUtils.h"
 
 #import "WOTEnums.h"
+
 @implementation WOTEnumUtils
 -(WOT3DBallVCType)Wot3DballVCtypeenumToString:(NSString *)ballTitle{
     WOT3DBallVCType type;
@@ -28,5 +29,31 @@
         }
     }
     return  type;
+}
+-(NSString *)WOTFeedBackStateToString:(NSInteger)state{
+    
+    switch ([self intToEnum_FeedBackStateType:state]) {
+        case WOTFeedBackUnRead:
+            return @"未读";
+            break;
+        case WOTFeedBackRead:
+            return @"已读";
+        default:
+            break;
+    }
+}
+
+-(WOTFeedBackStateType)intToEnum_FeedBackStateType:(NSInteger)intstate{
+    switch (intstate) {
+        case 0:
+            return WOTFeedBackUnRead;
+            break;
+        case 1:
+            return WOTFeedBackRead;
+            
+        default:
+            break;
+    }
+    return WOTFeedBackUnRead;
 }
 @end

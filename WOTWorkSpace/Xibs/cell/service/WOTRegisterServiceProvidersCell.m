@@ -16,6 +16,7 @@
     if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
         [self setSeparatorInset:UIEdgeInsetsZero];
     }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

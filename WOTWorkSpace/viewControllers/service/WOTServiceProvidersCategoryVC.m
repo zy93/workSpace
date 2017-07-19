@@ -69,6 +69,9 @@
 {
    UIViewController *previousVC = [(WOTServiceNaviController*)self.navigationController getPreviousViewController];
     ((WOTGETServiceViewController *)previousVC).selectServiceList = selectServiceCategoryList;
+    if (_selectServiceBlock) {
+        self.selectServiceBlock(selectServiceCategoryList);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -143,7 +146,13 @@
             }
         }
         [cell.selectImg setHidden:NO];
-        [selectServiceCategoryList addObject:[NSString stringWithFormat:@"%@-%@",selectService,table2List[indexPath.row]]];
+       
+        if (selectServiceCategoryList.count>=6) {
+            [MBProgressHUDUtil showMessage:ServiceTypeNumLimitReminding toView:self.view];
+        } else {
+            [selectServiceCategoryList addObject:[NSString stringWithFormat:@"%@-%@",selectService,table2List[indexPath.row]]];
+        }
+        
     }
 }
 

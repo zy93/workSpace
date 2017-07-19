@@ -21,17 +21,27 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
+#import "WOTSpaceModel.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
 
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 
+@property (weak, nonatomic) IBOutlet UIImageView *activityImage;
+@property (weak, nonatomic) IBOutlet UIImageView *infoImage;
+@property (weak, nonatomic) IBOutlet UILabel *InfoMessage;
+@property (weak, nonatomic) IBOutlet UILabel *InfoTime;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *enterpriseListdata;
 @property (nonatomic,strong) NSMutableArray *imageUrlStrings;
 @property (nonatomic,strong) NSMutableArray *imageTitles;
 @property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
+@property (strong,nonatomic)NSMutableArray<WOTSpaceModel *> *spacedataSource;
+@property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
+@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *infodataSource;
+@property(nonatomic,strong)NSString *activityImageUrl;
 @end
 
 @implementation WOTMainVC
@@ -45,6 +55,9 @@
     
     [self configScrollView];
     [self loadSpaceView];
+    
+   
+     
     _tableView.dataSource = self;
     _tableView.delegate = self;
   [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
@@ -53,13 +66,33 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    
+    
     [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         [self getEnterpriseListDataFromWeb:^{
             [hud setHidden:YES];
         }];
+        
     }];
+    
+    
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [self getActivityDataFromWeb:^{
+            [hud setHidden: YES];
+        }];
+        
+    }];
+    
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [self getInfoDataFromWeb:^{
+            [hud setHidden:YES];
+        }];
+        
+    }];
+    
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,6 +101,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+   
+ 
+    
     [self.navigationController.navigationBar setHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
 }
@@ -125,6 +161,12 @@
     return _sliderUrlStrings;
 }
 
+-(NSString *)activityImageUrl{
+    if (_activityImageUrl == nil) {
+        _activityImageUrl = @"";
+    }
+    return  _activityImageUrl;
+}
 
 -(void)load3DBallView{
    
@@ -136,9 +178,13 @@
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (int i = 0; i < [WOTSingtleton shared].ballTitle.count; i++) {
         UIView * subview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80,80)];
-        subview.backgroundColor = COLOR(96.0, 119.0, 195.0, 1.0);
+//        subview.backgroundColor = UIColorFromRGB(0x86d3ff);
+        subview.backgroundColor = CLEARCOLOR;
       
         [subview setCorenerRadius:subview.frame.size.width/2 borderColor:CLEARCOLOR];
+        UIImageView *bgimage = [[UIImageView alloc]initWithFrame:subview.bounds];
+        [bgimage setImage:[UIImage imageNamed:@"ball_iconbgimage"]];
+        [subview addSubview:bgimage];
         UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(23, 10, 35,35)];
         icon.image = [UIImage imageNamed:[WOTSingtleton shared].ballImage[i]];
         [subview addSubview:icon];
@@ -237,12 +283,16 @@
 
 
 -(void)loadSpaceView{
-    for (int index = 0; index < 5; index++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite%02d",index]];
-        [self.imageArray addObject:image];
-    }
     
-    [self setupUI];
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        
+        [self getDataSourceFromWebFWithCity:nil complete:^{
+            [hud setHidden: YES];
+        } loadVIews:^{
+            [self setupUI];
+        }];
+    }];
+ 
 }
 
 
@@ -256,7 +306,7 @@
 - (void)setupUI {
     
     
-    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_WIDTH * 9 / 20)];
+    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, self.spaceView.frame.size.height-20)];
     _pageFlowView.delegate = self;
     _pageFlowView.dataSource = self;
     _pageFlowView.minimumPageAlpha = 0.1;
@@ -312,10 +362,10 @@
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
-    //在这里下载网络图片
-    //  [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:hostUrlsImg,imageDict[@"img"]]] placeholderImage:[UIImage imageNamed:@""]];
-    bannerView.mainImageView.image = self.imageArray[index];
-    
+    //从网络加载图片用
+      [bannerView.mainImageView sd_setImageWithURL:self.imageArray[index] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+    //从本地加载图片用
+//    bannerView.mainImageView.image = self.imageArray[index];
     return bannerView;
 }
 
@@ -323,10 +373,11 @@
     
     NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
 }
-
+//MARK:点击显示新页面
 - (IBAction)showWorkSpaceVC:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
     _spacevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTworkSpaceLIstVCID"];
+    [_spacevc setDataSource:_spacedataSource];
     [self.navigationController pushViewController:_spacevc animated:YES];
     
     
@@ -336,7 +387,8 @@
 
 - (IBAction)showActivitiesVC:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
-    WOTActivitiesLIstVC *acvc = [storyboard instantiateViewControllerWithIdentifier:@"WOTActivitiesLIstVCID"];
+  WOTActivitiesLIstVC  *acvc = [storyboard instantiateViewControllerWithIdentifier:@"WOTActivitiesLIstVCID"];
+    [acvc setDataSource:_activitydataSource];
     [self.navigationController pushViewController:acvc animated:YES];
     
     
@@ -344,6 +396,7 @@
 - (IBAction)showInformationLIstVC:(id)sender {
     
     WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
+    infovc.dataSource = _infodataSource;
     [self.navigationController pushViewController:infovc animated:YES];
     
 }
@@ -352,6 +405,23 @@
     WOTEnterpriseLIstVC *enterprisevc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
     [enterprisevc setDataSource:_enterpriseListdata];
     [self.navigationController pushViewController:enterprisevc animated:YES];
+}
+//activity section imageClick
+- (IBAction)showActivityDetail:(id)sender {
+    
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    [self.navigationController pushViewController:detailvc animated:YES];
+    
+    
+}
+//new information section imageClick 
+- (IBAction)showInfoDetail:(id)sender {
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    [self.navigationController pushViewController:detailvc animated:YES];
+    
+    
 }
 
 //MARK:SDCycleScrollView   Delegate  点击轮播图显示详情
@@ -411,7 +481,7 @@
     }];
 }
 -(void)getSliderDataSource:(void(^)())complete{
-    [WOTHTTPNetwork getFlexSliderSouceInfo:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getHomeSliderSouceInfo:^(id bean, NSError *error) {
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
             _imageUrlStrings = [[NSMutableArray alloc]initWithArray:@[
@@ -449,6 +519,92 @@
         }
     }];
 }
+
+//从网络获取空间数据
+-(void)getDataSourceFromWebFWithCity:( NSString * __nullable )city complete:(void(^)())complete loadVIews:(void(^)())loadViews{
+    
+    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+        complete();
+        if (bean != nil) {
+            
+            
+            WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
+            _spacedataSource = dd.msg;
+            
+            if (_spacedataSource.count>5) {
+                for (int index = 0; index < 5; index++) {
+                    if ([_spacedataSource[index].spacePicture separatedWithString:@","].count != 0) {
+                        [self.imageArray addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacedataSource[index].spacePicture separatedWithString:@","][0]]];
+                    }
+                }
+            } else {
+                for (int index = 0; index < _spacedataSource.count; index++) {
+                    if ([_spacedataSource[index].spacePicture separatedWithString:@","].count != 0) {
+                        [self.imageArray addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacedataSource[index].spacePicture separatedWithString:@","][0]]];
+                    }
+                }
+            }
+            loadViews();
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
+    
+}
+
+
+-(void)getActivityDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getActivitiesWithSpaceId:nil spaceState:[[NSNumber alloc]initWithInt:1]  response:^(id bean, NSError *error) {
+        
+        complete();
+        if (bean) {
+            WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
+            _activitydataSource = dd.msg;
+            if (_activitydataSource.count>0) {
+                if ([_activitydataSource[3].pictureSite separatedWithString:@","].count !=0 ) {
+                    _activityImageUrl = [_activitydataSource[3].pictureSite separatedWithString:@","][0];
+                    
+                    [_activityImage sd_setImageWithURL:[_activityImageUrl ToUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                    
+                }
+            }
+
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
+}
+\
+
+
+-(void)getInfoDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getAllNewInformation:^(id bean, NSError *error) {
+        complete();
+        if (bean) {
+            WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
+          
+            _infodataSource = dd.msg;
+            
+            WOTNewInformationModel *model = _infodataSource[0];
+           
+            [_infoImage sd_setImageWithURL: [[model.pictureSite separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+            _InfoMessage.text = model.messageInfo;
+            _InfoTime.text = model.issueTime;
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
+}
+
+
 /*
 #pragma mark - Navigation
 

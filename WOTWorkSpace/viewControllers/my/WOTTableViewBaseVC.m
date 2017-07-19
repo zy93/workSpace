@@ -18,6 +18,8 @@
     [super viewDidLoad];
     [self loadSubViews];
     self.view.backgroundColor = MainColor;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
     // Do any additional setup after loading the view.
 }
 

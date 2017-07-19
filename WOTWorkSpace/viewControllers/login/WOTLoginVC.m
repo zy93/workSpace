@@ -97,7 +97,7 @@
                 NSLog(@"当前用户名字：%@",dd.userName);
                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                    NSDictionary * userdic = @{@"userName":dd.userName,@"password":dd.password,@"realName":dd.realName,@"sex":dd.sex,@"headPortrait":dd.headPortrait,@"userType":dd.userType,@"site":dd.site,@"skill":dd.skill,@"interest":dd.interest,@"industry":dd.industry,@"spared1":dd.spared1,@"constellation":dd.constellation};
+                    NSDictionary * userdic = @{@"userId":dd.userId,@"userName":dd.userName,@"password":dd.password,@"realName":dd.realName,@"sex":dd.sex,@"headPortrait":dd.headPortrait,@"userType":dd.userType,@"site":dd.site,@"skill":dd.skill,@"interest":dd.interest,@"industry":dd.industry,@"spared1":dd.spared1,@"constellation":dd.constellation};
                     [[WOTUserSingleton currentUser] saveUserInfoToPlist:userdic];
                     
                     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];

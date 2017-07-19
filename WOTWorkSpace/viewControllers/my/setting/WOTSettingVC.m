@@ -45,7 +45,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
         case 0:
-            return 6;
+            return 4;
             break;
         case 1:
             return 4;
@@ -100,7 +100,7 @@
            
             
         }
-        NSArray *nameArray = [[NSArray alloc]initWithObjects:@"个人资料",@"通知设置",@"修改密码",@"设置手势密码",@"设置指纹",@"清除缓存",nil];
+        NSArray *nameArray = [[NSArray alloc]initWithObjects:@"个人资料",@"通知设置",@"修改密码",@"设置手势密码",nil];
         settingcell.loginOut.hidden = YES;
         settingcell.nameLabel.text = nameArray[indexPath.row];
 
