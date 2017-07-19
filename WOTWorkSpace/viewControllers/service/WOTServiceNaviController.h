@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 #import "WOTBaseNavigationController.h"
 @interface WOTServiceNaviController : WOTBaseNavigationController
--(UIViewController *)getPreviousViewController;
 @end

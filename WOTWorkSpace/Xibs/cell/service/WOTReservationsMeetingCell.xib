@@ -72,8 +72,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共1.5小时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-hh-NTR">
-                                <rect key="frame" x="123" y="10" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共xx小时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-hh-NTR">
+                                <rect key="frame" x="125" y="10" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="HPj-s4-fwm" firstAttribute="leading" secondItem="ivs-bs-e5o" secondAttribute="trailing" constant="5" id="DmC-rO-Bfg"/>
                                     <constraint firstAttribute="bottom" secondItem="ivs-bs-e5o" secondAttribute="bottom" id="Efd-2s-aB8"/>
@@ -162,7 +162,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="kf0-tO-7sV" secondAttribute="trailing" id="93A-gn-Mew"/>
                                     <constraint firstItem="kf0-tO-7sV" firstAttribute="centerY" secondItem="jZc-fb-jIV" secondAttribute="centerY" id="BV9-NR-MYF"/>
@@ -192,7 +192,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="BDk-b2-n3s" firstAttribute="leading" secondItem="EWn-vc-R1j" secondAttribute="trailing" constant="5" id="MmW-cH-EiQ"/>
                                     <constraint firstItem="EWn-vc-R1j" firstAttribute="leading" secondItem="fw3-Yv-b7E" secondAttribute="leading" id="ROT-aw-wHx"/>
@@ -204,7 +204,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HUg-TB-s0r" firstAttribute="centerX" secondItem="2gn-vS-Keg" secondAttribute="centerX" id="5V1-Cu-BZz"/>
                             <constraint firstItem="fw3-Yv-b7E" firstAttribute="centerY" secondItem="S22-1P-FAQ" secondAttribute="centerY" id="Ddl-iv-ed1"/>
@@ -254,6 +254,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="TimeStatisticLab" destination="L9V-hh-NTR" id="oGi-CE-qMK"/>
                 <outlet property="addTimeBtn" destination="X8d-3l-eyw" id="aIH-sQ-mxN"/>
                 <outlet property="meetingImg" destination="SQS-dd-AIA" id="c1u-gR-roF"/>
                 <outlet property="meetingImgBGView" destination="Jo1-y3-LHF" id="CEg-4z-E3X"/>
@@ -261,6 +262,7 @@
                 <outlet property="meetingNameLab" destination="moX-Fu-uxb" id="OaX-AM-QYb"/>
                 <outlet property="meetingOpenTimeLab" destination="sae-RP-Cy8" id="Cjn-E5-YDA"/>
                 <outlet property="meetingPriceLab" destination="MSZ-33-Xkm" id="YP3-46-7VA"/>
+                <outlet property="selectIndicationView" destination="jZc-fb-jIV" id="04M-B4-JMT"/>
                 <outlet property="selectTimeScroll" destination="J8j-vK-EGK" id="poi-cS-bMr"/>
                 <outlet property="subTimeBtn" destination="GZp-66-oml" id="1Qx-m0-Scc"/>
                 <outlet property="submitBtn" destination="uhK-dt-1y4" id="rae-of-IZl"/>

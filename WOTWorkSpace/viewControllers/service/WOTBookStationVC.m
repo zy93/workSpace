@@ -11,9 +11,13 @@
 #import "XXPageTabItemLable.h"
 #import "WOTBookStationCell.h"
 #import "WOTDatePickerView.h"
+#import "WOTWorkspaceListVC.h"
 @interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) XXPageTabView *pageTabView;
+{
+    NSArray *tableList;
+}
 
+@property (nonatomic, strong) XXPageTabView *pageTabView;
 @property (weak, nonatomic) IBOutlet UIView *tomorrowView;
 @property (weak, nonatomic) IBOutlet UIView *todayView;
 @property (weak, nonatomic) IBOutlet UIView *selectDateView;
@@ -65,6 +69,9 @@
 
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden  = YES;
+    
+    [self configNavi];
+    _spaceId = @(56);
     // Do any additional setup after loading the view.
 }
 
@@ -75,12 +82,28 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
-    [self configNaviBackItem];
-    self.navigationItem.title = @"订工位";
+//    [self configNaviBackItem];
+    [self createRequest];
     
 }
 
+-(void)configNavi{
+    self.navigationItem.title = @"订工位";
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+    
+    [self.navigationItem setRightBarButtonItem:doneItem];
+}
 
+#pragma mark - request
+-(void)createRequest
+{
+//    [WOTHTTPNetwork getBookStationListWithSpaceId:self.spaceId response:^(id bean, NSError *error) {
+//        
+//    }];
+}
+
+
+#pragma mark - action
 
 - (IBAction)selectedToday:(id)sender {
     
@@ -107,6 +130,13 @@
 }
 
 
+-(void)selectSpace:(UIButton *)sender
+{
+    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark -
 
 -(void)setTextColor:(UIColor *)todaycolor tomorrowcolor:(UIColor *)tomorrowcolor timecolor:(UIColor *)timecolor{
     self.todayLabel.textColor = todaycolor;

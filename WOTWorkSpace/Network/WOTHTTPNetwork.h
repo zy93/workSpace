@@ -19,4 +19,54 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getEnterprisesWithSpaceId:(NSNumber *)spaceid response:(response)response;
 +(void)getAllNewInformation:(response)response;
 +(void)getFlexSliderSouceInfo:(response)response;
+
+
+
+
+
+
+
+/****************           Service        ****************************/
+
+//TODO: 会议室
+
+/**
+ 获取会议室列表
+
+ @param spaceid 空间id
+ @param response 响应回调
+ */
++(void)getMeetingRoomListWithSpaceId:(NSNumber *)spaceid response:(response)response;
+
+/**
+ 获取某个会议室预定情况
+
+ @param spaceid 空间id
+ @param confid 会议室id
+ @param strTime 查询时间
+ @param response 回调
+ */
++(void)getMeetingReservationsTimeWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)strTime response:(response)response;
+
+/**
+ 预定会议室
+
+ @param spaceid 空间id
+ @param confid 会议室id
+ @param startTime 预约开始时间
+ @param endTime 结束时间
+ @param response 回调
+ */
++(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
+
+//TODO: 工位
+
+/**
+ 获取空间工位信息
+
+ @param spaceid 空间id
+ @param response 回调
+ */
++(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;
+
 @end

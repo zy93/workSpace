@@ -44,6 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.table.separatorStyle = UITableViewCellSelectionStyleNone;
+    [self configNav];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +74,20 @@
     
     tableList = @[list1, list2, list3];
     [self.table reloadData];
+    
+}
+#pragma mark - action
+- (IBAction)clickSubmitBtn:(id)sender {
+    
+    if (self.isBookStation) {
+        
+    }
+    else {
+        [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId conferenceId:self.conferenceId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
+            
+        }];
+    }
+    
     
 }
 
@@ -141,8 +156,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     NSArray *list = tableList[indexPath.section];
     NSString *cellType = list[indexPath.row];
     
@@ -165,6 +178,15 @@
         if (cell == nil) {
             cell = [[WOTOrderForSiteCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForSiteCell"];
         }
+        //
+        [cell.reservationsDateLab setText:[self.startTime substringWithRange:NSMakeRange(0, 10)]];
+        NSString *str = [NSString stringWithFormat:@"%@-%@",
+                         [self.startTime substringWithRange:NSMakeRange(11, 5)],
+                         [self.endTime   substringWithRange:NSMakeRange(11, 5)]];
+        
+        [cell.reservationsTimeLab setText:str];
+
+        
         return cell;
     }
     else if ([cellType isEqualToString:serviceCell]) {

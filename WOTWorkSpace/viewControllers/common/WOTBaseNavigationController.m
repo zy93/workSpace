@@ -54,6 +54,11 @@
     [self popViewControllerAnimated:YES];
 }
 
+-(UIViewController *)getPreviousViewController
+{
+    return  self.viewControllers.count >1? self.viewControllers[self.viewControllers.count-2]:nil;
+}
+
 /*
 #pragma mark - Navigation
 
