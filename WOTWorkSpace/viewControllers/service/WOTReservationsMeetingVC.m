@@ -13,8 +13,7 @@
 #import "WOTDatePickerView.h"
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
-#import "NSDate+Uitls.h"
-#import "NSString+Category.h"
+
 
 @interface WOTReservationsMeetingVC () <UITableViewDelegate, UITableViewDataSource, WOTReservationsMeetingCellDelegate>
 {
@@ -41,7 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNavi];
-    [self loadViews];
+    [self setupView];
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
     
     _spaceId = @(56);
@@ -67,16 +66,17 @@
 {
     self.navigationItem.title = @"预定会议室";
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
-    
     [self.navigationItem setRightBarButtonItem:doneItem];
     //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    self.navigationController.navigationBar.translucent = NO; //有个万恶的黑色
 }
 
--(void)loadViews{
+-(void)setupView
+{
     __weak typeof(self) weakSelf = self;
     _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
     [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - [WOTUitls GetLengthAdaptRate]*300, self.view.frame.size.width, 300)];

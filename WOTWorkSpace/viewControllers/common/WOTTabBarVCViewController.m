@@ -60,6 +60,7 @@
 -(void)configTab{
    
     [self.tabBar setBackgroundImage:[UIImage imageNamed:@"fgcolor"]];
+    self.tabBar.translucent = NO;
  
 }
 /*

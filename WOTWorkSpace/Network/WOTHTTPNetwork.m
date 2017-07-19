@@ -262,10 +262,10 @@
 
 +(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
 {
-    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/subscriByTime"];
-    NSDictionary *dic = @{@"spaceId":spaceid
-                          };
-    [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/findAllStation"];
+//    NSDictionary *dic = @{@"spaceId":spaceid
+//                          };
+    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {

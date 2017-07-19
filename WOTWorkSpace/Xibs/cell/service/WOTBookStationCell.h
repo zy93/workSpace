@@ -8,12 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class WOTBookStationCell;
+
+@protocol WOTBookStationCellDelegate <NSObject>
+
+-(void)gotoOrderVC:(WOTBookStationCell *)cell;
+
+@end
+
+
 @interface WOTBookStationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *spaceName;
 @property (weak, nonatomic) IBOutlet UILabel *spaceLocation;
 @property (weak, nonatomic) IBOutlet UILabel *stationNum;
 @property (weak, nonatomic) IBOutlet UILabel *stationPrice;
 @property (weak, nonatomic) IBOutlet UIButton *bookBtn;
-
 @property (weak, nonatomic) IBOutlet UIImageView *spaceImage;
+
+@property (nonatomic, weak) id <WOTBookStationCellDelegate> delegate;
+
+
 @end
