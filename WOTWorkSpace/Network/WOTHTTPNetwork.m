@@ -136,15 +136,10 @@
         
         
 //        NSData *data = UIImagePNGRepresentation(image);
-//        
 //        //上传的参数(上传图片，以文件流的格式)
-//        
 //        [formData appendPartWithFileData:data
-//         
 //                                    name:@"firmLogo"
-//         
 //                                fileName:@"gauge.png"
-//         
 //                                mimeType:@"image/png"];
         
         
@@ -158,10 +153,12 @@
         for (UIImage *image in images) {
             NSString *fileName = [NSString stringWithFormat:@"%@%d.png",dateString,i];
             NSData *imageData;
-           
-            imageData = UIImageJPEGRepresentation(image, 1.0f);
-           
-            [formData appendPartWithFileData:imageData name:@"firmLogo" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+            imageData = UIImageJPEGRepresentation(image,1.f);
+            if (!imageData) {
+                imageData = UIImagePNGRepresentation(image);
+            }
+            [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+            
         }
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -355,9 +352,14 @@
 
     }
     
-//    [self doFileRequestWithParameters:parameters useUrl:registerurl image:nil complete:^JSONModel *(id responseobj) {
-//        WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
-//    }];
+    
+    [self doFileRequestWithParameters:parameters useUrl:registerurl image:firmLogo complete:^JSONModel *(id responseobj) {
+        WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        response (nil, nil);
+    }];
+    
 }
 /****************           Service        ****************************/
 #pragma mark - Service

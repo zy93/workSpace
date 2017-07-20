@@ -70,4 +70,17 @@
     return rate;
 }
 
+
++(NSData *)StringToByte:(NSString *)str
+{
+    unsigned char temp[1024] ;
+    int i ;
+    for (i=0; i < str.length/2; i++) {
+        NSRange _range = NSMakeRange(i*2, 2);
+        temp[i] = strtoul([[str substringWithRange:_range] UTF8String], 0, 16);
+    }
+    NSData *data = [NSData dataWithBytes:&temp length:str.length/2];
+    return data;
+}
+
 @end
