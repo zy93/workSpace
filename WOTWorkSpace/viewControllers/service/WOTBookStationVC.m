@@ -92,7 +92,7 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
         inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
@@ -192,6 +192,7 @@
     bookcell.stationPrice.text = @"¥123元／天";
     return bookcell;
 }
+
 
 
 

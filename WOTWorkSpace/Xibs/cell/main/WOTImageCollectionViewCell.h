@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTImageCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *cityName;
-@property (weak, nonatomic) IBOutlet UILabel *workSpaceNum;
+
 @property (weak, nonatomic) IBOutlet UIImageView *cityImage;
 
 @end

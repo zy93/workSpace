@@ -225,7 +225,7 @@
             [self pushVCByVCName:@"WOTVisitorsAppointmentVC"];
         }
         else if (indexPath.row==1) {
-            [self pushVCByVCName:@"WOTMaintenanceApplyVC"];
+            [self pushVCByVCName:@"WOTMainAppleRepairVCID"];
         }
         else if (indexPath.row==2) {
             [self pushVCByVCName:@"WOTOpenLockScanVCID"];

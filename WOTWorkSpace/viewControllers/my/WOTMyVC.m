@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     [self configNaviBackItem];
+    [self setHidesBottomBarWhenPushed:YES];[self configNaviBackItem];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
     [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];

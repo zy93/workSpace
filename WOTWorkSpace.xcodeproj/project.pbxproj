@@ -211,6 +211,13 @@
 		E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E8391F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m */; };
 		E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */; };
 		E869E8401F1E15CA00DBDBB9 /* WOTPostImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */; };
+		E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */; };
+		E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */; };
+		E86FD1F31F20742A009BE16A /* WOTApplyRepairCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F11F20742A009BE16A /* WOTApplyRepairCell.m */; };
+		E86FD1F41F20742A009BE16A /* WOTApplyRepairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86FD1F21F20742A009BE16A /* WOTApplyRepairCell.xib */; };
+		E86FD1F71F207734009BE16A /* WOTMainAppleRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */; };
+		E86FD1FA1F208582009BE16A /* WOTAppleRepairCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */; };
+		E86FD1FD1F209723009BE16A /* WOTImageLookoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */; };
 		E87EFEA61F1767A000F0D372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87EFEA41F1767A000F0D372 /* Main.storyboard */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
@@ -629,6 +636,20 @@
 		E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPhotosBaseUtils.m; sourceTree = "<group>"; };
 		E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPostImage.h; sourceTree = "<group>"; };
 		E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPostImage.m; sourceTree = "<group>"; };
+		E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZSIMagePickerSDK.a; sourceTree = "<group>"; };
+		E86FD1EA1F2056F6009BE16A /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
+		E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
+		E86FD1EC1F2056F6009BE16A /* ZSDefineFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSDefineFile.h; sourceTree = "<group>"; };
+		E86FD1ED1F2056F6009BE16A /* ZSImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSImagePickerController.h; sourceTree = "<group>"; };
+		E86FD1F01F20742A009BE16A /* WOTApplyRepairCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTApplyRepairCell.h; sourceTree = "<group>"; };
+		E86FD1F11F20742A009BE16A /* WOTApplyRepairCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTApplyRepairCell.m; sourceTree = "<group>"; };
+		E86FD1F21F20742A009BE16A /* WOTApplyRepairCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTApplyRepairCell.xib; sourceTree = "<group>"; };
+		E86FD1F51F207734009BE16A /* WOTMainAppleRepairVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMainAppleRepairVC.h; sourceTree = "<group>"; };
+		E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMainAppleRepairVC.m; sourceTree = "<group>"; };
+		E86FD1F81F208582009BE16A /* WOTAppleRepairCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAppleRepairCommonCell.h; sourceTree = "<group>"; };
+		E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAppleRepairCommonCell.m; sourceTree = "<group>"; };
+		E86FD1FB1F209723009BE16A /* WOTImageLookoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTImageLookoverVC.h; sourceTree = "<group>"; };
+		E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTImageLookoverVC.m; sourceTree = "<group>"; };
 		E87EFEA51F1767A000F0D372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
@@ -697,6 +718,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */,
 				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
 				2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */,
 				2A4214451F14699B0010B003 /* UMSocialCore.framework in Frameworks */,
@@ -1044,6 +1066,11 @@
 				2AF18A281F131DEA004681CE /* WOTReservationsMeetingCell.h */,
 				2AF18A291F131DEA004681CE /* WOTReservationsMeetingCell.m */,
 				2AF18A2A1F131DEA004681CE /* WOTReservationsMeetingCell.xib */,
+				E86FD1F01F20742A009BE16A /* WOTApplyRepairCell.h */,
+				E86FD1F11F20742A009BE16A /* WOTApplyRepairCell.m */,
+				E86FD1F21F20742A009BE16A /* WOTApplyRepairCell.xib */,
+				E86FD1F81F208582009BE16A /* WOTAppleRepairCommonCell.h */,
+				E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1243,6 +1270,7 @@
 		E85A85BF1F0202450016FCA1 /* librarys */ = {
 			isa = PBXGroup;
 			children = (
+				E86FD1E71F2056F6009BE16A /* WOTImagePicker */,
 				2A42142E1F14699B0010B003 /* UMSocial */,
 				E85A85C01F0202450016FCA1 /* Masonry */,
 				E85A85D81F0202460016FCA1 /* MBProgressHUD */,
@@ -1358,6 +1386,8 @@
 				E8EACF7D1F0344EC0015535D /* WOTPageMenuParentVC.m */,
 				E869E83B1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.h */,
 				E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */,
+				E86FD1FB1F209723009BE16A /* WOTImageLookoverVC.h */,
+				E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1436,6 +1466,8 @@
 				E8CF9FCD1F0F751B00EF0F46 /* WOTBookStationVC.m */,
 				E86615661F1F2E12005E182A /* WOTOpenLockScanVC.h */,
 				E86615671F1F2E12005E182A /* WOTOpenLockScanVC.m */,
+				E86FD1F51F207734009BE16A /* WOTMainAppleRepairVC.h */,
+				E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1501,6 +1533,26 @@
 				E8693B191F05100800772BC1 /* WOTSocialcontactNaviController.m */,
 			);
 			path = socialcontact;
+			sourceTree = "<group>";
+		};
+		E86FD1E71F2056F6009BE16A /* WOTImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */,
+				E86FD1E91F2056F6009BE16A /* ZSImagePickerController */,
+			);
+			path = WOTImagePicker;
+			sourceTree = "<group>";
+		};
+		E86FD1E91F2056F6009BE16A /* ZSImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				E86FD1EA1F2056F6009BE16A /* UIScrollView+Touch.h */,
+				E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */,
+				E86FD1EC1F2056F6009BE16A /* ZSDefineFile.h */,
+				E86FD1ED1F2056F6009BE16A /* ZSImagePickerController.h */,
+			);
+			path = ZSImagePickerController;
 			sourceTree = "<group>";
 		};
 		E889CD611F146E32000CC8BD /* datePicker */ = {
@@ -1778,6 +1830,7 @@
 				2A336A661F0CD84900F5B0AF /* Login.storyboard in Resources */,
 				E8190DA91F0F69660000B07C /* WOTFeedBackLIstCell.xib in Resources */,
 				E8605CA61F132221005C09F4 /* WOTEnterpriseHeaderView.xib in Resources */,
+				E86FD1F41F20742A009BE16A /* WOTApplyRepairCell.xib in Resources */,
 				2AF83EE81F05FB92000AE733 /* Service.storyboard in Resources */,
 				E88A7F681F0A091000A670E7 /* (null) in Resources */,
 				2A42146A1F146A700010B003 /* share_icon_select@2x.png in Resources */,
@@ -1977,6 +2030,7 @@
 				2AF78CF11F0A3B7000F7B56D /* WOTVisitorsAppointmentVC.m in Sources */,
 				E80F4C0F1F0F24AA008BF066 /* WOTUitls.m in Sources */,
 				E8A200161F1C8266003C8A86 /* WOTUserModel.m in Sources */,
+				E86FD1F71F207734009BE16A /* WOTMainAppleRepairVC.m in Sources */,
 				E8BA0D791F0CEB9E00B81C3D /* WOTMyActivitiesVC.m in Sources */,
 				E85A85EF1F0202460016FCA1 /* MASConstraintMaker.m in Sources */,
 				E8190DA01F0F69660000B07C /* WOTworkSpaceCommonCell.m in Sources */,
@@ -1993,6 +2047,7 @@
 				E8190DA21F0F69660000B07C /* WOTworkSpacenearCell.m in Sources */,
 				E8190DCF1F0F69660000B07C /* WOTCommonHeaderVIew.m in Sources */,
 				E8190DAF1F0F69660000B07C /* WOTMycommonCell.m in Sources */,
+				E86FD1F31F20742A009BE16A /* WOTApplyRepairCell.m in Sources */,
 				E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */,
 				E8190DAA1F0F69660000B07C /* WOTMyActivitiesCell.m in Sources */,
 				E8A2001A1F1C8266003C8A86 /* WOTSliderModel.m in Sources */,
@@ -2039,6 +2094,7 @@
 				E85A85EE1F0202460016FCA1 /* MASConstraint.m in Sources */,
 				2AF18A2F1F135AE2004681CE /* WOTOrderVC.m in Sources */,
 				E8190DB61F0F69660000B07C /* WOTOrderCell.m in Sources */,
+				E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */,
 				E8693B0A1F04C45100772BC1 /* WOTCreateEnterpriseVC.m in Sources */,
 				E8190D9E1F0F69660000B07C /* WOTTEnterpriseListCell.m in Sources */,
 				E8A200151F1C8266003C8A86 /* WOTLoginModel.m in Sources */,
@@ -2113,8 +2169,10 @@
 				E8190DCE1F0F69660000B07C /* XXPageTabView.m in Sources */,
 				E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */,
 				E8190DB81F0F69660000B07C /* WOTPersionalInformationCommonCell.m in Sources */,
+				E86FD1FD1F209723009BE16A /* WOTImageLookoverVC.m in Sources */,
 				E8190DCC1F0F69660000B07C /* ZYQSphereView.m in Sources */,
 				2A90C3681F1CC86A00E75AE0 /* WOTMeetingReservationsModel.m in Sources */,
+				E86FD1FA1F208582009BE16A /* WOTAppleRepairCommonCell.m in Sources */,
 				E8190DB01F0F69660000B07C /* WOTMyEnterPriseCell.m in Sources */,
 				E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */,
 				2AB255021F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m in Sources */,
@@ -2297,6 +2355,7 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2326,6 +2385,7 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";

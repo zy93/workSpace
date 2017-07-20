@@ -1,35 +1,45 @@
 //
-//  WOTworkSpaceScrollVIewCell.m
+//  WOTApplyRepairCell.m
 //  WOTWorkSpace
 //
-//  Created by 张姝枫 on 2017/7/3.
-//  Copyright © 2017年 张姝枫. All rights reserved.
+//  Created by 张姝枫 on 2017/7/20.
+//  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTworkSpaceScrollVIewCell.h"
+#import "WOTApplyRepairCell.h"
 #import "WOTImageCollectionViewCell.h"
-@interface WOTworkSpaceScrollVIewCell()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface WOTApplyRepairCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
-@implementation WOTworkSpaceScrollVIewCell
+
+@implementation WOTApplyRepairCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    _cellTitle.textColor = HighTextColor;
+    _cellValue.textColor = MiddleTextColor;
     _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    
-    [_collectionView registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
+    _collectionView.dataSource =self;
+    [_collectionView setScrollEnabled:NO];
+     [_collectionView registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
+  
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 
+-(NSMutableArray *)photosArray{
+    if (_photosArray) {
+        _photosArray = [[NSMutableArray alloc]init];
+        
+    }
+    return _photosArray;
+}
 
 #pragma mark -CollectionView datasource
 //section
@@ -40,7 +50,7 @@
 //item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [WOTSingtleton shared].spaceCityArray.count;
+    return _photosArray.count;
     
 }
 
@@ -49,9 +59,8 @@
 {
     //重用cell
     WOTImageCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
-    NSArray *imageArrays = @[@"space_bj",@"space_bj", @"space_sh",@"space_tj",@"space_sz",@"space_bj",@"space_sh",@"space_tj",@"space_sz"];
-
-    cell.cityImage.image = [UIImage imageNamed:imageArrays[indexPath.row]];
+    
+    cell.cityImage.image = _photosArray[indexPath.row];
     return cell;
     
 }
@@ -59,7 +68,7 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.collectionView.frame.size.width/3.5, self.collectionView.frame.size.height-40);
+    return CGSizeMake((SCREEN_WIDTH-20)/4,(SCREEN_WIDTH-20)/4);
 }
 //定义每个Section 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -67,19 +76,14 @@
     return UIEdgeInsetsMake(10, 10, 10, 10);//分别为上、左、下、右
 }
 
-//每个item之间的间距
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 100;
-//}
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     __weak typeof(self) weakSelf = self;
-      UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor greenColor]];
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+  
     if (self.collectionImageViewBlock != nil) {
-       weakSelf.collectionImageViewBlock(indexPath.row);
+        weakSelf.collectionImageViewBlock(indexPath.row);
     }
 }
 
@@ -87,7 +91,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor redColor]];
+    
 }
-
 @end

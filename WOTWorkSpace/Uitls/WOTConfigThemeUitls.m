@@ -47,7 +47,7 @@
         [tagsView addSubview:label];
         leading += label.frame.size.width+10;
         
-        if (leading+[title widthWithFont:[UIFont systemFontOfSize:15]]+15>=tagsView.frame.size.width) {
+        if (leading+[title widthWithFont:[UIFont systemFontOfSize:15]]+20>=tagsView.frame.size.width) {
             top += label.frame.size.height+10;
             leading = 10;
         }

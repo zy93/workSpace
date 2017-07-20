@@ -137,19 +137,21 @@
         [self.table2 reloadData];
     }
     else {
-        WOTServiceProvidersCategoryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        for (NSString *str in selectServiceCategoryList) {
-            if ([str containsString:table2List[indexPath.row]]) {
-                [cell.selectImg setHidden:YES];
-                [selectServiceCategoryList removeObject:str];
-                return;
-            }
-        }
-        [cell.selectImg setHidden:NO];
+       
        
         if (selectServiceCategoryList.count>=6) {
             [MBProgressHUDUtil showMessage:ServiceTypeNumLimitReminding toView:self.view];
         } else {
+            
+            WOTServiceProvidersCategoryCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            for (NSString *str in selectServiceCategoryList) {
+                if ([str containsString:table2List[indexPath.row]]) {
+                    [cell.selectImg setHidden:YES];
+                    [selectServiceCategoryList removeObject:str];
+                    return;
+                }
+            }
+            [cell.selectImg setHidden:NO];
             [selectServiceCategoryList addObject:[NSString stringWithFormat:@"%@-%@",selectService,table2List[indexPath.row]]];
         }
         

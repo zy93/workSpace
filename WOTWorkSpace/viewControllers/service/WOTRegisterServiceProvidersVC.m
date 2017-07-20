@@ -165,6 +165,7 @@
             [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
         }if (indexPath.row == 0) {
             WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+            photo.onlyOne = YES;
             photo.vc = self;
             
             [photo showSelectedPhotoSheet];
@@ -220,6 +221,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
    
     return [textField resignFirstResponder];

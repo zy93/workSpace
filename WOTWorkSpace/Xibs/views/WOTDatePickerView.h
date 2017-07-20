@@ -14,5 +14,5 @@
 
 @property (nonatomic,copy) void (^cancelBlokc)();
 
-@property (nonatomic,copy) void (^okBlock)(NSInteger year,NSInteger month,NSInteger day);
+@property (nonatomic,copy) void (^okBlock)(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min);
 @end

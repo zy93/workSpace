@@ -7,7 +7,8 @@
 //
 
 #import "WOTPhotosBaseUtils.h"
-
+#import "ZSImagePickerController.h"
+#import <Photos/Photos.h>
 @interface WOTPhotosBaseUtils ()
 
 @end
@@ -18,6 +19,7 @@
     self = [super init];
     if (self) {
         _vc = [[UIViewController alloc]init];
+        _onlyOne = YES;
     }
     return  self;
 }
@@ -101,34 +103,41 @@
 
 {
     // 进入相册
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-        
-    {
-        
-        UIImagePickerController *imageVC = [[UIImagePickerController alloc]init];
-        
-        imageVC.allowsEditing = YES;
-        imageVC.delegate = _vc;
-        imageVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        
-        
-        [_vc presentViewController:imageVC animated:YES completion:^{
+    if (_onlyOne) {
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
             
-            NSLog(@"打开相册");
+        {
             
-        }];
+            UIImagePickerController *imageVC = [[UIImagePickerController alloc]init];
+            
+            imageVC.allowsEditing = YES;
+            imageVC.delegate = _vc;
+            imageVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            
+            
+            
+            [_vc presentViewController:imageVC animated:YES completion:^{
+                
+                NSLog(@"打开相册");
+                
+            }];
+            
+        }
         
+        else
+            
+        {
+            
+            NSLog(@"不能打开相册");
+            
+        }
+    } else {
+        ZSImagePickerController *imagePicker = [[ZSImagePickerController alloc]init];
+        imagePicker.isNeedCustom = YES;
+        imagePicker.zs_delegate = _vc;
+        [_vc presentViewController:imagePicker animated:YES completion:nil];
     }
-    
-    else
-        
-    {
-        
-        NSLog(@"不能打开相册");
-        
-    }
+
     
 }
 

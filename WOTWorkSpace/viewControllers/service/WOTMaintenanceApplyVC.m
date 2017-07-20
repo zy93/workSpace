@@ -12,9 +12,12 @@
 #import "WOTPickerView.h"
 #import "WOTEnterTextVC.h"
 #import "WOTPhotosBaseUtils.h"
-@interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate>
+#import "ZSImagePickerController.h"
+#import <Photos/Photos.h>
+@interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate,ZSImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     WOTPickerView *pickerView;
+    NSMutableArray *selectedPhotoArray;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectTypeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
@@ -30,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    selectedPhotoArray = [[NSMutableArray alloc]init];
     [self configNav];
 }
 
@@ -72,6 +76,13 @@
 
 }
 - (IBAction)clickSelectImageBtn:(id)sender {
+    
+    WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+    photo.onlyOne = NO;
+    photo.vc = self;
+    
+    [photo showSelectedPhotoSheet];
+    
 }
 - (IBAction)clickSelectTimeBtn:(id)sender {
     pickerView = [[WOTPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
@@ -81,10 +92,7 @@
     [pickerView popPickerView];
 }
 - (IBAction)clickEnterAddrBtn:(id)sender {
-    WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
-    photo.vc = self;
-    
-    [photo showSelectedPhotoSheet];
+  
     
 }
 - (IBAction)clickSubmitBtn:(id)sender {
@@ -111,38 +119,37 @@
     return component==0? [NSString stringWithFormat:@"%d时",(int)row]:[NSString stringWithFormat:@"%02d分",(int)row];
 }
 
+#pragma mark ZSImagePickerController delegate  选择多张照片代理
 
-#pragma mark - UIImagePickerControllerDelegate
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker beyondMaxSelectedPhotoCount:(NSInteger)count{
+    NSLog(@"%zd",count);
+}
 
-// 拍照完成回调
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingMediaWithInfo:(nullable NSDictionary<NSString *,NSArray *> *)info{
+    NSLog(@"%@",info);
+}
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+- (void)zs_imagePickerControllerDidCancel:(nullable ZSImagePickerController *)picker{
+    NSLog(@"Cancel");
+}
 
-{
-    
-    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
-        
-    {
-        
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingImage:(nullable NSDictionary<NSString *,id> *)info{
+    NSLog(@"%@",info);
+    NSArray <PHAsset *>*assets = info[@"result"];
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.synchronous = YES;
+    for (PHAsset *asset in assets) {
+        // 是否要原图
+        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            NSLog(@"%@", result);
+            [selectedPhotoArray addObject:result];
+        }];
         
     }
-
-    
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
-//进入拍摄页面点击取消按钮
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-
-{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 
 /*
 #pragma mark - Navigation

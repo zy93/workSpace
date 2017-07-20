@@ -9,7 +9,7 @@
 #import "WOTOpenLockScanVC.h"
 #import <AVFoundation/AVFoundation.h>
 
-#define TOP (SCREEN_HEIGHT-220)/2
+#define TOP (SCREEN_HEIGHT-400)/2
 #define LEFT (SCREEN_WIDTH-220)/2
 #define kScanRect CGRectMake(LEFT, TOP, 220, 220)
 @interface WOTOpenLockScanVC ()<AVCaptureMetadataOutputObjectsDelegate>{

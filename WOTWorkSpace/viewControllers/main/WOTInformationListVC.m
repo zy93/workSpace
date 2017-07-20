@@ -37,8 +37,7 @@
 }
 
 -(void)configNav{
-    [self configNaviBackItem];
-    [self setHidesBottomBarWhenPushed:YES];
+    [self configNaviBackItem];  
     self.navigationItem.title = @"我的资讯";
 }
 -(NSArray<WOTNewInformationModel *>*)dataSource{

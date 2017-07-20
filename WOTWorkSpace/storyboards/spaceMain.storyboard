@@ -13,7 +13,7 @@
         <!--MainVC-->
         <scene sceneID="jas-wK-qLJ">
             <objects>
-                <viewController storyboardIdentifier="WOTMainVCID" hidesBottomBarWhenPushed="YES" id="ReM-5A-Olt" customClass="WOTMainVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTMainVCID" id="ReM-5A-Olt" customClass="WOTMainVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ch0-uQ-9uC"/>
                         <viewControllerLayoutGuide type="bottom" id="A1h-ML-8c3"/>

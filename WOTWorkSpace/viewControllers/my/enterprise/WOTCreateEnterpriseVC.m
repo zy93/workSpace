@@ -114,6 +114,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+        photo.onlyOne = YES;
         photo.vc = self;
         
         [photo showSelectedPhotoSheet];
