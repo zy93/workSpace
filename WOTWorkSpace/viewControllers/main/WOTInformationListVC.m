@@ -21,7 +21,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableView.backgroundColor = CLEARCOLOR;
-  
     [self configNav];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTInformationLIstCell" bundle:nil] forCellReuseIdentifier:@"WOTInformationLIstCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTCommonHeaderVIew" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTCommonHeaderVIewID"];
@@ -39,6 +38,7 @@
 
 -(void)configNav{
     [self configNaviBackItem];
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = @"我的资讯";
 }
 -(NSArray<WOTNewInformationModel *>*)dataSource{

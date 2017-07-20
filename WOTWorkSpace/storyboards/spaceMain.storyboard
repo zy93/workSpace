@@ -13,7 +13,7 @@
         <!--MainVC-->
         <scene sceneID="jas-wK-qLJ">
             <objects>
-                <viewController storyboardIdentifier="WOTMainVCID" id="ReM-5A-Olt" customClass="WOTMainVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTMainVCID" hidesBottomBarWhenPushed="YES" id="ReM-5A-Olt" customClass="WOTMainVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ch0-uQ-9uC"/>
                         <viewControllerLayoutGuide type="bottom" id="A1h-ML-8c3"/>
@@ -359,7 +359,7 @@
         <!--Twork SpaceL IstVC-->
         <scene sceneID="47w-uJ-QHh">
             <objects>
-                <viewController storyboardIdentifier="WOTworkSpaceLIstVCID" id="4xZ-0w-iu4" customClass="WOTworkSpaceLIstVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTworkSpaceLIstVCID" hidesBottomBarWhenPushed="YES" id="4xZ-0w-iu4" customClass="WOTworkSpaceLIstVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U3K-nh-rTv"/>
                         <viewControllerLayoutGuide type="bottom" id="04w-Hf-vru"/>
@@ -968,7 +968,7 @@
         <!--EnterpriseL IstVC-->
         <scene sceneID="lqD-i0-7Fe">
             <objects>
-                <viewController storyboardIdentifier="WOTEnterpriseLIstVCID" id="fgP-dS-Bcu" customClass="WOTEnterpriseLIstVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTEnterpriseLIstVCID" hidesBottomBarWhenPushed="YES" id="fgP-dS-Bcu" customClass="WOTEnterpriseLIstVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T8x-Gt-ZDD"/>
                         <viewControllerLayoutGuide type="bottom" id="111-mr-azl"/>
@@ -1109,7 +1109,7 @@
         <!--ActivitiesL IstVC-->
         <scene sceneID="eft-aS-1qH">
             <objects>
-                <viewController storyboardIdentifier="WOTActivitiesLIstVCID" id="ajt-h4-zut" customClass="WOTActivitiesLIstVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTActivitiesLIstVCID" hidesBottomBarWhenPushed="YES" id="ajt-h4-zut" customClass="WOTActivitiesLIstVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hHy-QW-5L2"/>
                         <viewControllerLayoutGuide type="bottom" id="GAM-Ps-tG3"/>

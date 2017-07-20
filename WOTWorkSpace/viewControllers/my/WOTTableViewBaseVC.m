@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
+    [self setHidesBottomBarWhenPushed:YES];
     self.view.backgroundColor = MainColor;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;

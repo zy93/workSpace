@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
+    [self setHidesBottomBarWhenPushed:YES];
     self.tableView.backgroundColor = CLEARCOLOR;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self configNav];

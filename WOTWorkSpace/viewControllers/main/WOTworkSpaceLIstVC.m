@@ -167,9 +167,12 @@
 
         spacecell.workSpaceLocation.text = _dataSource[indexPath.row].spaceSite;
         spacecell.stationNum.text = [_dataSource[indexPath.row].fixPhone stringByAppendingString:@"工位可预订"];
-    
-        [spacecell.workSpaceImage sd_setImageWithURL:[[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
-        NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0]]);
+        if ([_dataSource[indexPath.row].spacePicture separatedWithString:@","].count!=0) {
+            [spacecell.workSpaceImage sd_setImageWithURL:[[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+             NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_dataSource[indexPath.row].spacePicture separatedWithString:@","][0]]);
+        }
+        
+       
         commoncell = spacecell;
     }
     return commoncell;
