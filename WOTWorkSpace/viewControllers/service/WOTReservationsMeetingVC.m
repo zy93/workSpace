@@ -9,19 +9,28 @@
 #import "WOTReservationsMeetingVC.h"
 #import "WOTReservationsMeetingCell.h"
 #import "WOTOrderVC.h"
+#import "WOTWorkspaceListVC.h"
 #import "WOTDatePickerView.h"
+#import "WOTMeetingListModel.h"
+#import "WOTMeetingReservationsModel.h"
+
 
 @interface WOTReservationsMeetingVC () <UITableViewDelegate, UITableViewDataSource, WOTReservationsMeetingCellDelegate>
 {
+    NSArray *tableList;
     NSIndexPath *selectIndex;
-    NSMutableArray *selectTimeList; //已选时间记录
+    NSMutableArray *invalidTimeList; //失效时间记录
+    NSString *inquireTime;//查询日期;
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorViewCenter;
 @property (weak, nonatomic) IBOutlet UIButton *tomorrowBtn;
 @property (weak, nonatomic) IBOutlet UIButton *todayBtn;
 @property (weak, nonatomic) IBOutlet UIButton *selectTimeBtn;
-@property(nonatomic,strong)WOTDatePickerView *datepickerview;
+@property (nonatomic,strong) WOTDatePickerView *datepickerview;
+
+
 
 @end
 
@@ -31,8 +40,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNavi];
-    [self loadViews];
+    [self setupView];
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
+    
+    _spaceId = @(56);
+    inquireTime = [NSDate getNewTimeZero];
 
 }
 
@@ -45,19 +57,26 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:NO];
+    selectIndex = nil;
+    [self createRequest];
+
 }
 
 -(void)configNavi
 {
     self.navigationItem.title = @"预定会议室";
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+    [self.navigationItem setRightBarButtonItem:doneItem];
     //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    self.navigationController.navigationBar.translucent = NO; //有个万恶的黑色
 }
 
--(void)loadViews{
+-(void)setupView
+{
     __weak typeof(self) weakSelf = self;
     _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
     [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - [WOTUitls GetLengthAdaptRate]*300, self.view.frame.size.width, 300)];
@@ -68,11 +87,29 @@
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
     };
     
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden  = YES;
 }
+
+#pragma mark - request
+-(void)createRequest
+{
+    [WOTHTTPNetwork getMeetingRoomListWithSpaceId:self.spaceId response:^(id bean, NSError *error) {
+        if (error) {
+            NSLog(@"error:%@",error);
+            return ;
+        }
+        WOTMeetingListModel_msg *model = bean;
+        tableList = model.msg;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.table reloadData];
+        });
+    }];
+}
+
 
 #pragma mark - action
 - (IBAction)today:(id)sender {
@@ -80,12 +117,14 @@
     self.todayBtn.selected = YES;
     self.tomorrowBtn.selected = NO;
     self.selectTimeBtn.selected = NO;
+    inquireTime = [NSDate getNewTimeZero];
 }
 - (IBAction)tomorrow:(id)sender {
     self.indicatorViewCenter.constant = CGRectGetMidX(self.tomorrowBtn.frame)-CGRectGetMidX(self.todayBtn.frame);
     self.todayBtn.selected = NO;
     self.tomorrowBtn.selected = YES;
     self.selectTimeBtn.selected = NO;
+    inquireTime = [NSDate getTomorrowTimeZero];
 }
 - (IBAction)selectTime:(id)sender {
     self.indicatorViewCenter.constant = CGRectGetMidX(((UIButton *)sender).frame) -CGRectGetMidX(self.todayBtn.frame);
@@ -95,29 +134,55 @@
     _datepickerview.hidden = NO;
 }
 
-
+-(void)selectSpace:(UIButton *)sender
+{
+    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 #pragma mark - cell delegate
--(void)submitReservations
+-(void)submitReservationsCell:(WOTReservationsMeetingCell *)cell
 {
     WOTOrderVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTOrderVC"];
+    if (self.endTime == 0) {
+        return;
+    }
+    NSArray *arr = [NSString getReservationsTimesWithDate:inquireTime StartTime:self.beginTime  endTime:self.endTime];
+    vc.startTime = arr.firstObject;
+    vc.endTime = arr.lastObject;
+    vc.spaceId = self.spaceId;
+    vc.conferenceId = cell.model.conferenceId;
+    
     [self.navigationController pushViewController:vc animated:YES];
+    
     vc.isBookStation = NO;
 }
 
--(void)selectTimeWithTag:(NSInteger)tag
+-(void)selectTimeWithCell:(WOTReservationsMeetingCell *)cell Time:(CGFloat)time
 {
-    if (!selectTimeList) {
-        selectTimeList = [NSMutableArray new];
+    if (self.beginTime == self.endTime && self.endTime == 0) {
+        self.beginTime = time;
+        self.endTime = self.beginTime+0.5;
     }
-    for (NSNumber *num in selectTimeList) {
-        if ([num integerValue] == tag) {
-            [selectTimeList removeObject:num];
-            return;
+    else if (time ==  self.beginTime && self.beginTime == self.endTime-0.5) {
+        self.beginTime = self.endTime = 0;
+    }
+    else if (time<self.beginTime) {
+        self.beginTime = time;
+    }
+    else if (time>=self.endTime) {
+        self.endTime = time+0.5;
+    }
+    else if (time>self.beginTime && time<self.endTime) {
+        if (time == self.endTime-0.5) {
+            self.endTime = time;
+        }
+        else {
+            self.endTime = time+0.5;
         }
     }
-    [selectTimeList addObject:@(tag)];
+    
 }
 
 #pragma mark - table delegate  & dataSource
@@ -128,7 +193,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return tableList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,9 +217,11 @@
     }
     cell.delegate = self;
     if (selectIndex && selectIndex.row == indexPath.row) {
-        [cell.selectTimeScroll setSelectBtnTagList:selectTimeList];
+        [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
+        [cell.selectTimeScroll setInvalidBtnTimeList:invalidTimeList];
     }
-    [cell.selectTimeScroll setBeginValue:8 endValue:23];
+    WOTMeetingListModel *model = tableList[indexPath.row];
+    [cell setModel:model];
     
     return cell;
 
@@ -164,6 +231,23 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     selectIndex = indexPath;
+    WOTReservationsMeetingCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
+    
+//    @"2017/07/13 00:00:00"
+    [WOTHTTPNetwork getMeetingReservationsTimeWithSpaceId:self.spaceId conferenceId:cell.model.conferenceId startTime:inquireTime response:^(id bean, NSError *error) {
+        
+        WOTMeetingReservationsModel_msg *mod = bean;
+        NSMutableArray *reserList = [NSMutableArray new];
+        for (WOTMeetingReservationsModel * model in  mod.msg) {
+            NSArray *arr = [NSString getReservationsTimesWithStartTime:model.startTime endTime:model.endTime];
+            [reserList addObject:arr];
+        }
+        invalidTimeList = reserList;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.selectTimeScroll setInvalidBtnTimeList:reserList];
+        });
+    }];
     [self.table reloadRowsAtIndexPaths:@[selectIndex] withRowAnimation:NO];
 }
 

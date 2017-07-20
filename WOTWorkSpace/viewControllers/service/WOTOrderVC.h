@@ -12,4 +12,9 @@
 
 @property (nonatomic, assign) BOOL isBookStation;
 
+@property (nonatomic, strong) NSNumber *spaceId;
+@property (nonatomic, strong) NSNumber *conferenceId;
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, strong) NSString *endTime;
+
 @end

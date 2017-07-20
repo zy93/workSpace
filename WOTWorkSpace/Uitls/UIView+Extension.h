@@ -39,4 +39,13 @@
 
 
 -(UIImage *)toImage;
+
+
+/**
+ *  获取视图所在的控制器
+ *
+ *  @return 控制器
+ */
+- (UIViewController *)GetSubordinateControllerForSelf;
+
 @end

@@ -24,7 +24,9 @@
 }
 - (IBAction)goTobookStation:(id)sender {
     
-    
+    if ([_delegate respondsToSelector:@selector(gotoOrderVC:)]) {
+        [_delegate gotoOrderVC:self];
+    }
     
 }
 

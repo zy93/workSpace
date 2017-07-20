@@ -10,5 +10,6 @@
 
 @interface WOTBookStationVC : UIViewController
 
+@property (nonatomic, strong) NSNumber *spaceId;
 
 @end

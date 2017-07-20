@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTSelectScrollView.h"
+#import "WOTMeetingListModel.h"
+
+@class WOTReservationsMeetingCell;
 
 @protocol WOTReservationsMeetingCellDelegate <NSObject>
 
--(void)submitReservations;
--(void)selectTimeWithTag:(NSInteger)tag;
+-(void)submitReservationsCell:(WOTReservationsMeetingCell*)cell;
+-(void)selectTimeWithCell:(WOTReservationsMeetingCell*)cell Time:(CGFloat)time;
 
 @end
 
@@ -25,11 +28,18 @@
 @property (weak, nonatomic) IBOutlet WOTSelectScrollView *selectTimeScroll;
 @property (weak, nonatomic) IBOutlet UIButton *subTimeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addTimeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *TimeStatisticLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeStatisticsLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeScopeLab;
 @property (weak, nonatomic) IBOutlet UILabel *meetingOpenTimeLab;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 @property (weak, nonatomic) IBOutlet UIView *meetingImgBGView;
+@property (weak, nonatomic) IBOutlet UIView *selectIndicationView;
 @property (weak, nonatomic) id <WOTReservationsMeetingCellDelegate> delegate;
+
+//设置数据
+@property (nonatomic, strong)WOTMeetingListModel *model;
+
+//-(void)setData:(WOTMeetingListModel *)model;
 
 @end

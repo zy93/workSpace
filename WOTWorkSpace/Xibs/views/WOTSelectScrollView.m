@@ -23,7 +23,6 @@
 -(void)setSelected:(BOOL)selected
 {
     [super setSelected:selected];
-
     if (selected) {
         [self setBackgroundColor:UIColor_blue_40];
         [self setImage:[UIImage imageNamed:@"select_white"]  forState:UIControlStateNormal];
@@ -38,11 +37,15 @@
 -(void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
-    self.enabled = enabled;
-    if (enabled) {
+    if (!enabled) {
         [self setBackgroundColor:UIColor_gray_d6];
         [self setImage:[UIImage imageNamed:@"select_gray"]  forState:UIControlStateNormal];
     }
+    else {
+        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setImage:nil  forState:UIControlStateNormal];
+    }
+        
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -68,7 +71,7 @@
 {
     UIView *topLine;
     
-    NSArray *selectList;
+//    NSArray *selectList;
     NSArray *invalidList;
     
 }
@@ -119,23 +122,31 @@
     [[self nextResponder] touchesCancelled:touches withEvent:event];
 }
 
-
--(void)setBeginValue:(CGFloat)begin endValue:(CGFloat)end
+-(void)setOpenTime:(NSString *)openTime
 {
-    beginValue = begin;
-    endValue = end;
-    
+    NSArray *tims = [openTime getDECTime];
+    openStartTime = [tims.firstObject floatValue];
+    openEndTime   = [tims.lastObject floatValue];
     [self commonInit];
 }
 
--(void)setSelectBtnTagList:(NSArray *)tagList
+-(void)setBeginTime:(CGFloat)begin endTime:(CGFloat)end
 {
-    selectList = tagList;
+    selectBeginTime = begin;
+    selectEndTime = end;
+    [self setNeedsLayout];
 }
 
--(void)setInvalidBtnTagList:(NSArray *)tagList
+//-(void)setSelectBtnTimeList:(NSArray *)tagList
+//{
+//    selectList = tagList;
+//    [self setNeedsLayout];
+//}
+
+-(void)setInvalidBtnTimeList:(NSArray *)tagList
 {
     invalidList = tagList;
+    [self setNeedsLayout];
 }
 
 -(void)commonInit
@@ -163,46 +174,20 @@
     }
     [topLine setBackgroundColor:[UIColor grayColor]];
     [self addSubview:topLine];
-    NSMutableArray *titles =[NSMutableArray new];
-    for (int i = beginValue; i<endValue; i++) {
-        [titles addObject:[NSString stringWithFormat:@"%d时",i]];
-    }
     
-    for (int i = 0;i<titles.count;i++) {
-        NSString *tit =titles[i];
-        UIButton *btn1 = [self createButtonWithTitle:nil];
-        UIButton *btn2 = [self createButtonWithTitle:nil];
-        btn1.tag = i;
-        btn2.tag = i+titles.count+1;
-        for (NSNumber *t in invalidList) {
-            if (btn1.tag == [t integerValue]) {
-                btn1.enabled = NO;
-            }
-            if (btn2.tag == [t integerValue]) {
-                btn2.enabled = NO;
-            }
+    for (float i = openStartTime; i<openEndTime; i+=0.5) {
+        BOOL isInteger = i-((int)i)==0;
+        NSString *tit = nil;
+        if (isInteger) {
+            tit = [NSString stringWithFormat:@"%d时",(int)i];
         }
-        for (NSNumber *t in selectList) {
-            if (btn1.tag == [t integerValue]) {
-                btn1.selected = YES;
-            }
-            
-            if (btn2.tag == [t integerValue]) {
-                btn2.selected = YES;
-            }
-        }
+        WOTScrollButton *btn = [self createButtonWithTitle:nil];
+        btn.time = i;
         UILabel *lab = [self createLabelWithTitle:tit];
-        [buttonArr addObject:btn1];
-        [buttonArr addObject:btn2];
+        [buttonArr addObject:btn];
         [titleArr addObject:lab];
-        [self addSubview:btn1];
-        [self addSubview:btn2];
+        [self addSubview:btn];
         [self addSubview:lab];
-    }
-    
-    for (UIButton *btn in buttonArr) {
-        if (btn.isSelected) {
-        }
     }
     
     [self setNeedsLayout];
@@ -237,12 +222,22 @@
     
     CGRect btnRect = CGRectMake(0, 30, ButtonWith, ButtonHeight);
     for (int i = 0 ; i<buttonArr.count ; i++) {
-        UIButton *btn = buttonArr[i];
+        WOTScrollButton *btn = buttonArr[i];
         [btn setFrame:btnRect];
         btnRect = CGRectMake(CGRectGetMaxX(btn.frame)-1, 30, ButtonWith, ButtonHeight);
         if (i%2==0) {
-            UILabel *lab = [titleArr objectAtIndex:i/2];
+            UILabel *lab = [titleArr objectAtIndex:i];
             [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
+        }
+        for (NSArray *times in invalidList) {
+            CGFloat beginTime = [times.firstObject floatValue];
+            CGFloat endTime = [times.lastObject floatValue];
+            if (btn.time >= beginTime && btn.time < endTime) {
+                [btn setEnabled:NO];
+            }
+        }
+        if (btn.time >= selectBeginTime && btn.time < selectEndTime) {
+            btn.selected = YES;
         }
     }
     
@@ -251,14 +246,14 @@
     [topLine setFrame:CGRectMake(0, 0, btnRect.origin.x, 1)];
 }
 
--(void)selectButton:(UIButton *)sender
+-(void)selectButton:(WOTScrollButton *)sender
 {
     if (sender.isEnabled==NO) {
         return;
     }
 //    sender.selected = !sender.isSelected;
     if ([_mDelegate respondsToSelector:@selector(selectButton:)]) {
-        [_mDelegate selectButton:sender.tag];
+        [_mDelegate selectButton:sender];
     }
 }
 

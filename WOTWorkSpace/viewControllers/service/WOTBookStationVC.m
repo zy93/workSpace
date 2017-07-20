@@ -11,9 +11,15 @@
 #import "XXPageTabItemLable.h"
 #import "WOTBookStationCell.h"
 #import "WOTDatePickerView.h"
-@interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) XXPageTabView *pageTabView;
+#import "WOTWorkspaceListVC.h"
+#import "WOTOrderVC.h"
+@interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource, WOTBookStationCellDelegate>
+{
+    NSArray *tableList;
+    NSString *inquireTime;//查询日期;
+}
 
+@property (nonatomic, strong) XXPageTabView *pageTabView;
 @property (weak, nonatomic) IBOutlet UIView *tomorrowView;
 @property (weak, nonatomic) IBOutlet UIView *todayView;
 @property (weak, nonatomic) IBOutlet UIView *selectDateView;
@@ -44,28 +50,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    __weak typeof(self) weakSelf = self;
     
-    self.viewWidth.constant = self.view.frame.size.width/3;
-    self.view.backgroundColor = MainColor;
-    self.tableIView.backgroundColor = CLEARCOLOR;
-       [self setTextColor:UIColorFromRGB(0x5484e7) tomorrowcolor:[UIColor blackColor] timecolor:[UIColor blackColor]];
-    
-    _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
-    [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - 250, self.view.frame.size.width, 250)];
-    _datepickerview.cancelBlokc = ^(){
-        weakSelf.datepickerview.hidden = YES;
-    };
-    
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
-        weakSelf.datepickerview.hidden = YES;
-        NSLog(@"%ld年%ld月%ld日",year,month,day);
-    };
+    [self configNavi];
+    [self setupView];
+    _spaceId = @(56);
+    inquireTime = [NSDate getNewTimeZero];
 
-    [self.view addSubview:_datepickerview];
-    _datepickerview.hidden  = YES;
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,29 +65,67 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
-    [self configNaviBackItem];
-    self.navigationItem.title = @"订工位";
+//    [self configNaviBackItem];
+    [self createRequest];
     
 }
 
+-(void)configNavi{
+    self.navigationItem.title = @"订工位";
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+    [self.navigationItem setRightBarButtonItem:doneItem];
+//    
+}
 
+-(void)setupView
+{
+    self.viewWidth.constant = self.view.frame.size.width/3;
+    self.view.backgroundColor = MainColor;
+    self.tableIView.backgroundColor = CLEARCOLOR;
+    [self setTextColor:UIColorFromRGB(0x5484e7) tomorrowcolor:[UIColor blackColor] timecolor:[UIColor blackColor]];
+    
+    __weak typeof(self) weakSelf = self;
+
+    _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
+    [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - 250, self.view.frame.size.width, 250)];
+    _datepickerview.cancelBlokc = ^(){
+        weakSelf.datepickerview.hidden = YES;
+    };
+    
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+        weakSelf.datepickerview.hidden = YES;
+        NSLog(@"%ld年%ld月%ld日",year,month,day);
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
+    };
+    
+    [self.view addSubview:_datepickerview];
+    _datepickerview.hidden  = YES;
+}
+
+#pragma mark - request
+-(void)createRequest
+{
+//    [WOTHTTPNetwork getBookStationListWithSpaceId:self.spaceId response:^(id bean, NSError *error) {
+//        
+//    }];
+}
+
+
+#pragma mark - action
 
 - (IBAction)selectedToday:(id)sender {
     
     self.indicatorVIewCenter.constant = self.todayView.frame.origin.x;
     [self setTextColor:UIColorFromRGB(0x5484e7) tomorrowcolor:[UIColor blackColor] timecolor:[UIColor blackColor]];
+    inquireTime = [NSDate getNewTimeZero];
     
 }
-
-
-
 
 - (IBAction)selectedTomorrow:(id)sender {
     self.indicatorVIewCenter.constant = self.tomorrowView.frame.origin.x;
      [self setTextColor:[UIColor blackColor] tomorrowcolor:UIColorFromRGB(0x5484e7) timecolor:[UIColor blackColor]];
+    inquireTime = [NSDate getTomorrowTimeZero];
 }
-
-
 
 - (IBAction)selectedTime:(id)sender {
     self.indicatorVIewCenter.constant = self.selectDateView.frame.origin.x;
@@ -107,6 +135,13 @@
 }
 
 
+-(void)selectSpace:(UIButton *)sender
+{
+    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark -
 
 -(void)setTextColor:(UIColor *)todaycolor tomorrowcolor:(UIColor *)tomorrowcolor timecolor:(UIColor *)timecolor{
     self.todayLabel.textColor = todaycolor;
@@ -114,18 +149,32 @@
     self.selectedTimeLabel.textColor = timecolor;
 }
 
+#pragma mark - cell delegate
+-(void)gotoOrderVC:(WOTBookStationCell *)cell
+{
+    WOTOrderVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTOrderVC"];
+//    NSArray *arr = [NSString getReservationsTimesWithDate:inquireTime StartTime:self.beginTime  endTime:self.endTime];
+    vc.startTime = inquireTime;//arr.firstObject;
+    vc.endTime = inquireTime;//arr.lastObject;
+    vc.spaceId = self.spaceId;
+//    vc.conferenceId = cell.model.conferenceId;
+    vc.isBookStation = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+#pragma mark - table datasource & delegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 2;
 }
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{   
     return  225;
 }
 

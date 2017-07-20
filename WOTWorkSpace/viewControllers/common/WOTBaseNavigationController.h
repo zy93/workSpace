@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTBaseNavigationController : UINavigationController <UINavigationControllerDelegate>
-
+//获取前一个VC
+-(UIViewController *)getPreviousViewController;
 @end
