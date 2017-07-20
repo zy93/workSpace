@@ -17,6 +17,8 @@
 #import "WOTMyFeedBackModel.h"
 #import "WOTBaseModel.h"
 #import "AFURLRequestSerialization.h"
+#import "WOTMeetingListModel.h"
+#import "WOTMeetingReservationsModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -36,6 +38,7 @@
    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",  @"text/html",
                                                          @"image/jpeg",
@@ -48,8 +51,7 @@
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
   
 
-    [manager POST:Url parameters:parameters  progress:^(NSProgress * _Nonnull uploadProgress) {
-     
+    [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -82,6 +84,11 @@
             NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:500 userInfo:@{NSLocalizedDescriptionKey:@"请求失败，请重试"}];
             block(nil,error);
         }
+        else {
+            NSLog(@"----error:%@",error);
+            block(nil,error);
+        }
+        
         if (error) {
             NSLog(@"----error:%@",error);
             block(nil,error);
@@ -328,6 +335,14 @@
     
     [self doFileRequestWithParameters:parameters useUrl:registerurl image:nil complete:^JSONModel *(id responseobj) {
         WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
+/****************           Service        ****************************/
+#pragma mark - Service
++(void)getMeetingRoomListWithSpaceId:(NSNumber *)spaceid response:(response)response
+{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conference/findBySpaceId"];
+    NSDictionary *dic = @{@"spaceId":spaceid};
+    [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTMeetingListModel_msg *model = [[WOTMeetingListModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
@@ -350,6 +365,14 @@
     }
     [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
++(void)getMeetingReservationsTimeWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)strTime response:(response)response
+{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/findByIdAndTime"];
+    NSDictionary *dic = @{@"spaceId":spaceid,
+                          @"conferenceId":confid,
+                          @"startTime":strTime};
+    [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTMeetingReservationsModel_msg *model = [[WOTMeetingReservationsModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
@@ -372,6 +395,15 @@
    
     [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
++(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
+{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/subscriByTime"];
+    NSDictionary *dic = @{@"spaceId":spaceid,
+                          @"conferenceId":confid,
+                          @"startTime":startTime,
+                          @"endTime":endTime};
+    [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
@@ -392,6 +424,13 @@
     
     [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
++(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
+{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/findAllStation"];
+//    NSDictionary *dic = @{@"spaceId":spaceid
+//                          };
+    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {

@@ -1469,6 +1469,8 @@
 				2A1624EF1F0E231E00F216F9 /* WOTFileUitls.m */,
 				E86615691F1F2F56005E182A /* WOTQRCodeUtils.h */,
 				E866156A1F1F2F56005E182A /* WOTQRCodeUtils.m */,
+				2A022E571F1DBC36001AE9E9 /* NSDate+Uitls.h */,
+				2A022E581F1DBC36001AE9E9 /* NSDate+Uitls.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
