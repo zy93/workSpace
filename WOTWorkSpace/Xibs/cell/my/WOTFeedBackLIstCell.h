@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTFeedBackLIstCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *yearmonth;
 
-@property (weak, nonatomic) IBOutlet UILabel *day;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 
 @property (weak, nonatomic) IBOutlet UILabel *content;
 
 @property (weak, nonatomic) IBOutlet UIView *tagsView;
+@property (weak, nonatomic) IBOutlet UILabel *state;
 
 @property(strong,nonatomic)NSArray *tagLabelArray;
--(void)loadtagsBtn;
+
 @end

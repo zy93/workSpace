@@ -9,7 +9,7 @@
 #import "WOTActivitiesLIstVC.h"
 #import "WOTFilterTypeModel.h"
 #import "WOTActivitiesListCell.h"
-#import "WOTActivityModel.h"
+
 @interface WOTActivitiesLIstVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *communityView;
 @property (weak, nonatomic) IBOutlet UILabel *communityName;
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *category_arrowdown;
 @property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 
-@property (strong,nonatomic)NSArray<WOTActivityModel *> *dataSource;
+
 @end
 
 @implementation WOTActivitiesLIstVC
@@ -31,12 +31,7 @@ bool ismenu1 =  NO;
     self.view.backgroundColor = MainColor;
     self.tableVIew.backgroundColor = CLEARCOLOR;
     [self configNav];
-    
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        [self getDataFromWeb:^{
-            [hud setHidden:YES];
-        }];
-    }];
+
     
     [self makeMenuArrays];
     [self.tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
@@ -168,26 +163,12 @@ bool ismenu1 =  NO;
     activitycell.activityLocation.text = _dataSource[indexPath.row].spaceName;
     activitycell.activityState.text = @"活动进行中";
     NSString *pictureurl = [_dataSource[indexPath.row].pictureSite separatedWithString:@","].count==0? @"":[_dataSource[indexPath.row].pictureSite separatedWithString:@","][0];
-    [activitycell.activityImage sd_setImageWithURL:[pictureurl ToUrl]  placeholderImage:[UIImage imageNamed:@"activity_image"]];
+    [activitycell.activityImage sd_setImageWithURL:[pictureurl ToUrl]  placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+    
     return activitycell;
 }
 
--(void)getDataFromWeb:(void(^)())complete{
-    
-    [WOTHTTPNetwork getActivitiesWithSpaceId:nil spaceState:[[NSNumber alloc]initWithInt:1]  response:^(id bean, NSError *error) {
-        
-        complete();
-        if (bean) {
-            WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
-            _dataSource = dd.msg;
-            [self.tableVIew reloadData];
-        }
-        if (error) {
-            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
-        }
-        
-    }];
-}
+
 /*
 #pragma mark - Navigation
 

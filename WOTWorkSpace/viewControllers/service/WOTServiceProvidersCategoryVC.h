@@ -10,5 +10,6 @@
 
 @interface WOTServiceProvidersCategoryVC : UIViewController
 @property (nonatomic, strong) NSArray *selectServiceList;
+@property (nonatomic,strong)void(^selectServiceBlock)(NSArray *);
 
 @end

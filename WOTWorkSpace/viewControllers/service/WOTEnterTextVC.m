@@ -8,7 +8,7 @@
 
 #import "WOTEnterTextVC.h"
 #import "WOTMaintenanceApplyVC.h"
-
+#import "WOTMainAppleRepairVC.h"
 @interface WOTEnterTextVC ()
 @property (weak, nonatomic) IBOutlet UITextView *enterText;
 
@@ -44,8 +44,9 @@
 #pragma mark - action
 -(void)selectDoneAction
 {
-    UIViewController *previousVC = [(WOTServiceNaviController*)self.navigationController getPreviousViewController];
-    ((WOTMaintenanceApplyVC *)previousVC).enterString = self.enterText.text;
+    if (_popVCWithEnterString) {
+        self.popVCWithEnterString(_enterText.text);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -14,5 +14,5 @@
 -(void)configNaviRightItemWithImage:(UIImage *)image;
 -(void)configNaviRightItemWithTitle:(NSString *)title textColor:(UIColor *)textColor;
 
--(void)touchViewHiddenKeyboard;
+
 @end

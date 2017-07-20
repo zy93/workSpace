@@ -21,35 +21,17 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultHeaderVIew" translatesAutoresizingMaskIntoConstraints="NO" id="LrZ-wo-cpW">
                         <rect key="frame" x="0.0" y="0.0" width="145" height="121"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWm-gS-Z5q">
-                        <rect key="frame" x="54.5" y="50" width="35" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26个社区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQK-Id-ybQ">
-                        <rect key="frame" x="42.5" y="81" width="60" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="vWm-gS-Z5q" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="14Z-SE-OLC"/>
                 <constraint firstItem="LrZ-wo-cpW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Q3h-KN-7kr"/>
                 <constraint firstAttribute="bottom" secondItem="LrZ-wo-cpW" secondAttribute="bottom" id="T5I-n9-fj4"/>
-                <constraint firstItem="yQK-Id-ybQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Uo3-fS-DUv"/>
                 <constraint firstAttribute="trailing" secondItem="LrZ-wo-cpW" secondAttribute="trailing" id="V74-ux-qjF"/>
-                <constraint firstItem="vWm-gS-Z5q" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dsV-8X-eem"/>
                 <constraint firstItem="LrZ-wo-cpW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iyX-cZ-7bG"/>
-                <constraint firstItem="yQK-Id-ybQ" firstAttribute="top" secondItem="vWm-gS-Z5q" secondAttribute="bottom" constant="10" id="zd4-7y-ezz"/>
             </constraints>
             <size key="customSize" width="145" height="121"/>
             <connections>
                 <outlet property="cityImage" destination="LrZ-wo-cpW" id="La2-Vk-90G"/>
-                <outlet property="cityName" destination="vWm-gS-Z5q" id="mjM-aT-iPf"/>
-                <outlet property="workSpaceNum" destination="yQK-Id-ybQ" id="cnY-wO-xp0"/>
             </connections>
             <point key="canvasLocation" x="-72.5" y="50.5"/>
         </collectionViewCell>

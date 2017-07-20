@@ -19,5 +19,5 @@
 #import "WOTBaseModel.h"
 #import "WOTFileUitls.h"
 #import "WOTUserSingleton.h"
-
+#import "WOTErrorMessageMacro.h"
 #endif

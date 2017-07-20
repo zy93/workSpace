@@ -20,7 +20,10 @@
     _nameTextfield.delegate  = self;
     _telTextfield.delegate = self;
     _emailTextfield.delegate = self;
-    [self touchViewHiddenKeyboard];
+    [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
+    [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
+        [self keyboardHidden];
+    };
 
     
   
@@ -48,16 +51,7 @@
     [self keyboardHidden];
 }
 
-//添加屏幕触摸方法，完成收键盘
--(void)touchViewHiddenKeyboard{
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:) ];
-    tapGestureRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapGestureRecognizer];
-}
 
--(void)keyboardHide:(UITapGestureRecognizer*)tap{
-    [self keyboardHidden];
-}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

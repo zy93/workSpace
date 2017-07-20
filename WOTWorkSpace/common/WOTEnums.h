@@ -22,10 +22,12 @@ typedef NS_ENUM(NSInteger, WOT3DBallVCType) {
     WOTReservationsMeeting,
     WOTOthers,
 
-    
-
 };
 
+typedef NS_ENUM(NSInteger, WOTFeedBackStateType) {
+    WOTFeedBackUnRead = 0,
+    WOTFeedBackRead,
+};
 
 
 #endif /* WOTEnums_h */

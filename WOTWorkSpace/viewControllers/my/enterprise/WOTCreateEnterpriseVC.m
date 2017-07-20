@@ -10,7 +10,8 @@
 #import "WOTCerateEnterpriseCell.h"
 #import "WOTEnterpriseTypeVC.h"
 #import "WOTEnterpriseConnectsInfoVC.h"
-@interface WOTCreateEnterpriseVC ()<UIActionSheetDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate>
+#import "WOTPhotosBaseUtils.h"
+@interface WOTCreateEnterpriseVC ()<UITextFieldDelegate,UIImagePickerControllerDelegate>
 @property(nonatomic,strong)NSArray *tableViewTitles;
 @property(nonatomic,strong)UIView *maskView;
 @property(nonatomic,strong)WOTEnterpriseConnectsInfoVC *connectvc;
@@ -112,10 +113,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        [self showSelectedPhotoSheet];
+        WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+        photo.onlyOne = YES;
+        photo.vc = self;
+        
+        [photo showSelectedPhotoSheet];
     } else if (indexPath.row == 2) {
         WOTEnterpriseTypeVC *typevc = [[UIStoryboard storyboardWithName:@"My" bundle:nil]instantiateViewControllerWithIdentifier:@"WOTEnterpriseTypeVCID"];
-        typevc.gobackBlokc = ^(NSString *type){
+        typevc.gobackBlock = ^(NSString *type){
             _enterpriseType = type;
             [self.tableView reloadData];
         };
@@ -125,37 +130,6 @@
     }
 }
 
--(void)showSelectedPhotoSheet{
-
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [self addActionTarget:alert title:@"拍照" color: [UIColor blackColor] action:^(UIAlertAction *action) {
-        [self openCamera];
-    }];
-    [self addActionTarget:alert title:@"从相册中选择" color:[UIColor blackColor] action:^(UIAlertAction *action) {
-        [self openPhotoLibrary];
-    }];
-    [self addCancelActionTarget:alert title:@"取消"];
-    [self presentViewController:alert animated:YES completion:nil];
-    
-}
-
-- (void)addActionTarget:(UIAlertController *)alertController title:(NSString *)title color:(UIColor *)color action:(void(^)(UIAlertAction *action))actionTarget
-{
-    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        actionTarget(action);
-    }];
-    [action setValue:color forKey:@"_titleTextColor"];
-    [alertController addAction:action];
-}
-
--(void)addCancelActionTarget:(UIAlertController*)alertController title:(NSString *)title
-{
-    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        
-    }];
-    [action setValue:[UIColor redColor] forKey:@"_titleTextColor"];
-    [alertController addAction:action];
-}
 
 
 //textfield delegate
@@ -165,83 +139,16 @@
 }
 
 
-/** 
- 
- * 打开相机
- 
- */
-- (void)openCamera
 
-{
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
-    imagePicker.delegate = self;
-    imagePicker.allowsEditing = YES;
-    //判断是否可以打开照相机
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-        
-    {
-        
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        
-    }
-    
-    else
-        
-    {
-        
-        [MBProgressHUDUtil showMessage:@"摄像头不可用" toView:self.view];
-        
-    }
-    
+-(void)setViewHidden{
+    [_connectvc.view setHidden:YES];
+    [_maskView setHidden:YES];
 }
 
-
-
-/**
- 
- *  打开相册
- 
- */
-
--(void)openPhotoLibrary
-
-{
-// 进入相册
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-        
-    {
-      
-        UIImagePickerController *imageVC = [[UIImagePickerController alloc]init];
-        
-        imageVC.allowsEditing = YES;
-        imageVC.delegate = self;
-        imageVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-   
-        
-        [self presentViewController:imageVC animated:YES completion:^{
-            
-            NSLog(@"打开相册");
-            
-        }];
-        
-    }
-    
-    else
-        
-    {
-        
-        NSLog(@"不能打开相册");
-        
-    }
-    
+-(void)showView{
+    [_connectvc.view setHidden:NO];
+    [_maskView setHidden:NO];
 }
-
-
 
 #pragma mark - UIImagePickerControllerDelegate
 
@@ -250,16 +157,17 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
 
 {
-
+    
     if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
         
     {
-
+        
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         
     }
     _enterpriseLogo = image;
     [self.tableView reloadData];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -272,17 +180,6 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
-}
-
-
--(void)setViewHidden{
-    [_connectvc.view setHidden:YES];
-    [_maskView setHidden:YES];
-}
-
--(void)showView{
-    [_connectvc.view setHidden:NO];
-    [_maskView setHidden:NO];
 }
 
 

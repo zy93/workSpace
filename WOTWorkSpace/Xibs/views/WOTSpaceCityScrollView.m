@@ -20,7 +20,7 @@
     _collectionVIew.delegate = self;
     _collectionVIew.dataSource = self;
     _selectedindex = 0;
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(scrollToCity:) name:@"scrollToDestinationCity" object:nil];
 }
 
 
@@ -86,7 +86,7 @@
 //    cell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
 //    [cell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
     _selectedindex = indexPath.row;
-    if (_delegate) {
+    if (_delegate!=nil) {
         [_delegate selectWithCity:_selectedindex];
     }
     [self.collectionVIew reloadData];
@@ -105,7 +105,14 @@
     }
     
 }
-
+//MARK：注册通知方法
+-(void)scrollToCity:(NSNotification *)noti{
+    NSIndexPath *ii = noti.userInfo[@"cityindex"];
+    
+    [_collectionVIew scrollToItemAtIndexPath:ii atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    _selectedindex = ii.row;
+    [_collectionVIew reloadData];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

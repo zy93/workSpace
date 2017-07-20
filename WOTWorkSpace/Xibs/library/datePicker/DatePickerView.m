@@ -21,7 +21,7 @@
     UIPickerView *picker;
     
 }
-@synthesize year,day,month;
+@synthesize year,day,month,hour,min;
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -38,9 +38,12 @@
         
         _dayarr1 = [NSArray arrayWithObjects:@"31",@"28",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
         _dayarr2 = [NSArray arrayWithObjects:@"31",@"29",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
-        _montharr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+         _montharr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+        _hourarr = [NSArray arrayWithObjects:@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+        _minarr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+     
         _yeararr = [[NSMutableArray alloc] initWithCapacity:0];
-         _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr, nil];
+         _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr,_hourarr,_minarr, nil];
         
         NSDate * date1 = [NSDate date];
         NSDate *date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date1];
@@ -51,7 +54,10 @@
         month = [[formatter stringFromDate:date] intValue];
         [formatter setDateFormat:@"dd"];
         day = [[formatter stringFromDate:date] intValue];
-        
+        [formatter setDateFormat:@"hh"];
+        hour = [[formatter stringFromDate:date] intValue];
+        [formatter setDateFormat:@"mm"];
+        min = [[formatter stringFromDate:date] intValue];
         
         for (int i = year-16; i<=year; i++) {
             NSString *str = [NSString stringWithFormat:@"%d",i];
@@ -62,23 +68,28 @@
         [picker selectRow:16 inComponent:0 animated:YES];
         [picker selectRow:month-1 inComponent:1 animated:YES];
         [picker selectRow:day inComponent:2 animated:YES];
+        [picker selectRow:hour-1 inComponent:3 animated:YES];
+        [picker selectRow:min-1 inComponent:4 animated:YES];
     }
     return self;
 }
 #pragma mark - pickerview
 
 
--(void)selectedRow:(NSInteger)selectedyear month:(NSInteger)selectedmonth day:(NSInteger)selectedday
+-(void)selectedRow:(NSInteger)selectedyear month:(NSInteger)selectedmonth day:(NSInteger)selectedday hour:(NSInteger)selectedhour min:(NSInteger)selectedmin
 {
     _selectedrow_year = 16;
     _selectedrow_month = selectedmonth;
     _selectedrow_day = selectedday-1;
+    _selectedrow_hour = selectedhour;
+    _selectedrow_min = selectedmin;
     [picker selectRow:_selectedrow_year inComponent:0 animated:YES];
 
     [picker selectRow:_selectedrow_month-1 inComponent:1 animated:YES];
     
     [picker selectRow:_selectedrow_day-1 inComponent:2 animated:YES];
-
+    [picker selectRow:_selectedrow_hour inComponent:3 animated:YES];
+    [picker selectRow:_selectedrow_min inComponent:4 animated:YES];
  
     
     
@@ -101,9 +112,7 @@
     else if(component == 1){
         
         return _montharr.count;
-    }
-    else
-    {
+    }else if (component == 2) {
         //获得前二个滚轮的当前所选行的索引
         int row = (int)[picker selectedRowInComponent:0];
         int nowyear;
@@ -131,6 +140,10 @@
         }
         
         
+    } else if (component == 3){
+        return _hourarr.count;
+    } else  {
+        return _minarr.count;
     }
     
 }
@@ -140,9 +153,9 @@
     mycom1.textAlignment = NSTextAlignmentCenter;
     mycom1.backgroundColor = [UIColor clearColor];
     
-    mycom1.frame = CGRectMake(0, 0, self.frame.size.width/3.0, 50);
+    mycom1.frame = CGRectMake(0, 0, self.frame.size.width/5.0, 50);
 
-    [mycom1 setFont:[UIFont boldSystemFontOfSize:20]];
+    [mycom1 setFont:[UIFont boldSystemFontOfSize:18]];
     if(component == 0)
     {
         if (row == _selectedrow_year || row == 16) {
@@ -162,8 +175,7 @@
         }
         mycom1.text = [NSString stringWithFormat:@"%02ld月",row+1];
        
-    }else
-    {
+    }else if(component == 2){
         if (row+1 == _selectedrow_day || row == day){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
         } else {
@@ -176,6 +188,24 @@
 //        }
         
         
+    } else if (component == 3){
+        
+        if (row == _selectedrow_hour || row+1 == hour){
+            mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
+        } else {
+            mycom1.textColor = _otherTextcolor;
+        }
+        mycom1.text = [NSString stringWithFormat:@"%02ld时",row+1];
+        
+    } else {
+        
+        if (row == _selectedrow_min || row+1 == min){
+            mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
+        } else {
+            mycom1.textColor = _otherTextcolor;
+        }
+        mycom1.text = [NSString stringWithFormat:@"%02ld分",row+1];
+        
     }
     return mycom1;
 }
@@ -183,7 +213,7 @@
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     
-    return self.frame.size.width/3.0;
+    return self.frame.size.width/5.0;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
@@ -198,6 +228,8 @@
     int rowy;
     int rowm;
     int rowd;
+    int rowh;
+    int rowmm;
     if (_yeararr.count != 0) {
         rowy = (int)[picker selectedRowInComponent:0];
         year = [[_yeararr objectAtIndex:rowy] intValue];
@@ -214,7 +246,17 @@
        day = (int)rowd+1;
         _selectedrow_day = rowd+1;
     }
-     
+    
+    if (_hourarr.count!=0){
+        rowh = (int)[picker selectedRowInComponent:3];
+        hour = (int)rowh+1;
+        _selectedrow_hour = rowh+1;
+    }
+    if (_minarr.count!=0){
+        rowmm = (int)[picker selectedRowInComponent:4];
+        min = (int)rowmm+1;
+        _selectedrow_min = rowmm+1;
+    }
     
     [picker reloadAllComponents];
 }

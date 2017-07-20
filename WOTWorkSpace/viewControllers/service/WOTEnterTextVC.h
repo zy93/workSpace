@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTEnterTextVC : UIViewController
-
+@property (nonatomic,copy) void (^popVCWithEnterString)(NSString *enterString);
 @end

@@ -57,7 +57,7 @@
 #define HighTextColor UIColorFromRGB(0x333333)
 #define MiddleTextColor UIColorFromRGB(0x666666)
 #define LowTextColor UIColorFromRGB(0x888888)
-#define MainOrangeColor UIColorFromRGB(0xfa8d14)
+#define MainOrangeColor UIColorFromRGB(0x4087ee)
 
 #define UIColor_gray_d6 UIColorFromRGB(0xd6d6d6)
 #define UIColor_gray_89 UIColorFromRGB(0x898989)

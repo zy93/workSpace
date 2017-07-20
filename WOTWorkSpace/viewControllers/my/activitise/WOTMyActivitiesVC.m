@@ -38,7 +38,7 @@
 
 
 -(NSArray *)createTitles{
-    return [[NSArray alloc]initWithObjects:@"全部",@"待支付",@"待使用",@"已完成",@"已取消", nil];
+    return [[NSArray alloc]initWithObjects:@"全部",@"未开始",@"已结束",nil];
 }
 -(NSArray<__kindof UIViewController *> *)createViewControllers{
     WOTMyActivitiesBaseVC *basevc = [[WOTMyActivitiesBaseVC alloc]init];
@@ -50,12 +50,7 @@
     WOTMyActivitiesBaseVC *basevc2 = [[WOTMyActivitiesBaseVC alloc]init];
   
     [self addChildViewController:basevc2];
-    WOTMyActivitiesBaseVC *basevc3 = [[WOTMyActivitiesBaseVC alloc]init];
-
-    [self addChildViewController:basevc3];
-    WOTMyActivitiesBaseVC *basevc4 = [[WOTMyActivitiesBaseVC alloc]init];
- 
-    [self addChildViewController:basevc4];
+   
     
     return self.childViewControllers;
 }

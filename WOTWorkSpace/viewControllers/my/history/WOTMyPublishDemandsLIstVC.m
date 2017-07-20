@@ -31,7 +31,7 @@
     WOTFeedBackLIstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTFeedBackLIstCellID" forIndexPath:indexPath];
     
     cell.tagLabelArray = @[@"软件服务-软件集成",@"金融-理财培训"];
-    [cell loadtagsBtn];
+    [[WOTConfigThemeUitls shared] loadtagsBtn:cell.tagLabelArray superView:cell.tagsView];
     return cell;
     
 }

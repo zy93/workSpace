@@ -12,4 +12,7 @@
 +(instancetype)shared;
 -(void)setLabelTexts:(NSArray *)labels withTexts:(NSArray *)texts;
 -(void)setLabelColorss:(NSArray *)labels withColor:(UIColor *)color;
+-(void)loadtagsBtn:(NSArray *)tagsArray superView:(UIView *)tagsView;
+-(void)touchViewHiddenKeyboard:(UIView *)view;
+@property(nonatomic,copy)void (^hiddenKeyboardBlcok)();
 @end

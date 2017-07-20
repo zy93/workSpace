@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WOTSpaceModel.h"
 @interface WOTworkSpaceLIstVC : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableVIew;
-
+@property (strong,nonatomic)NSMutableArray<WOTSpaceModel *> *dataSource;
 @end

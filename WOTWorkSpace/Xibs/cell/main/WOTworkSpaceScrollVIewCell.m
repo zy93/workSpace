@@ -15,6 +15,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     
@@ -49,7 +50,7 @@
     //重用cell
     WOTImageCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
     NSArray *imageArrays = @[@"space_bj",@"space_bj", @"space_sh",@"space_tj",@"space_sz",@"space_bj",@"space_sh",@"space_tj",@"space_sz"];
-    cell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
+
     cell.cityImage.image = [UIImage imageNamed:imageArrays[indexPath.row]];
     return cell;
     
@@ -74,9 +75,14 @@
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    __weak typeof(self) weakSelf = self;
+      UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor greenColor]];
+    if (self.collectionImageViewBlock != nil) {
+       weakSelf.collectionImageViewBlock(indexPath.row);
+    }
 }
+
 //取消选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {

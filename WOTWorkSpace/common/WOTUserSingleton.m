@@ -31,6 +31,7 @@
 
 -(void)setValues{
     NSDictionary *dic = [self readUserInfoFromPlist];
+    self.userId = dic[@"userId"];
     self.userName = dic[@"userName"];
     self.password = dic[@"password"];
     self.realName = dic[@"realName"];

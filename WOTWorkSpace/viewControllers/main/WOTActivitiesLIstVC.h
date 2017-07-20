@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTMenuViewParentVC.h"
-
+#import "WOTActivityModel.h"
 @interface WOTActivitiesLIstVC : WOTMenuViewParentVC
 
-
+@property (strong,nonatomic)NSArray<WOTActivityModel *> *dataSource;
 @end

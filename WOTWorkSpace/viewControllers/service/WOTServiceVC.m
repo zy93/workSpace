@@ -14,7 +14,7 @@
 
 #import "WOTLoginVC.h"
 #import "WOTLoginNaviController.h"
-
+#import "WOTOpenLockScanVC.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -225,11 +225,11 @@
             [self pushVCByVCName:@"WOTVisitorsAppointmentVC"];
         }
         else if (indexPath.row==1) {
-            [self pushVCByVCName:@"WOTMaintenanceApplyVC"];
+            [self pushVCByVCName:@"WOTMainAppleRepairVCID"];
         }
         else if (indexPath.row==2) {
-//            [self pushVCByVCName:@""];
-
+            [self pushVCByVCName:@"WOTOpenLockScanVCID"];
+            
             
         }
         else if (indexPath.row==3) {

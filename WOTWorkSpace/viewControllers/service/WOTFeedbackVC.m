@@ -8,7 +8,7 @@
 
 #import "WOTFeedbackVC.h"
 
-@interface WOTFeedbackVC ()
+@interface WOTFeedbackVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *customerServiceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
@@ -20,8 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _textView.delegate = self;
+    _phoneText.delegate = self;
     // Do any additional setup after loading the view.
     [self configNav];
+    [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
+    [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
+        [self.textView resignFirstResponder];
+        [self.phoneText resignFirstResponder];
+    };
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +43,33 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+}
+- (IBAction)submitFeedbackInfo:(id)sender {
+    
+    if ([_textView.text isEqualToString:@""]){
+        [MBProgressHUDUtil showMessage:UnInputFeedbackContentReminding toView:self.view ];
+    } else{
+        [[WOTUserSingleton currentUser]setValues];
+        
+         [WOTHTTPNetwork postFeedBackInfoWithContent:self.textView.text spaceId:[[NSNumber alloc]initWithInt:57] userId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] userName:[WOTUserSingleton currentUser].userName tel:self.phoneText.text  response:^(id bean, NSError *error) {
+             if (bean) {
+                 [MBProgressHUDUtil showMessage:((WOTBaseModel *)bean).result toView:self.view];
+             }
+             if (error) {
+                 [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+             }
+         }];
+    }
+        
+ 
+  
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+   
+    [self.phoneText resignFirstResponder];
+    return YES;
 }
 
 /*

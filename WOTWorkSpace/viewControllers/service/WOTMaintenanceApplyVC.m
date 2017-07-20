@@ -11,10 +11,13 @@
 #import "WOTRadioView.h"
 #import "WOTPickerView.h"
 #import "WOTEnterTextVC.h"
-
-@interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate>
+#import "WOTPhotosBaseUtils.h"
+#import "ZSImagePickerController.h"
+#import <Photos/Photos.h>
+@interface WOTMaintenanceApplyVC () <WOTPickerViewDataSource, WOTPickerViewDelegate,ZSImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     WOTPickerView *pickerView;
+    NSMutableArray *selectedPhotoArray;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectTypeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
@@ -30,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    selectedPhotoArray = [[NSMutableArray alloc]init];
     [self configNav];
 }
 
@@ -72,6 +76,13 @@
 
 }
 - (IBAction)clickSelectImageBtn:(id)sender {
+    
+    WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
+    photo.onlyOne = NO;
+    photo.vc = self;
+    
+    [photo showSelectedPhotoSheet];
+    
 }
 - (IBAction)clickSelectTimeBtn:(id)sender {
     pickerView = [[WOTPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
@@ -81,8 +92,13 @@
     [pickerView popPickerView];
 }
 - (IBAction)clickEnterAddrBtn:(id)sender {
+  
+    
 }
 - (IBAction)clickSubmitBtn:(id)sender {
+    
+    
+    
 }
 
 
@@ -101,6 +117,37 @@
 -(NSString *)pickerView:(WOTPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return component==0? [NSString stringWithFormat:@"%d时",(int)row]:[NSString stringWithFormat:@"%02d分",(int)row];
+}
+
+#pragma mark ZSImagePickerController delegate  选择多张照片代理
+
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker beyondMaxSelectedPhotoCount:(NSInteger)count{
+    NSLog(@"%zd",count);
+}
+
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingMediaWithInfo:(nullable NSDictionary<NSString *,NSArray *> *)info{
+    NSLog(@"%@",info);
+}
+
+- (void)zs_imagePickerControllerDidCancel:(nullable ZSImagePickerController *)picker{
+    NSLog(@"Cancel");
+}
+
+- (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingImage:(nullable NSDictionary<NSString *,id> *)info{
+    NSLog(@"%@",info);
+    NSArray <PHAsset *>*assets = info[@"result"];
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.synchronous = YES;
+    for (PHAsset *asset in assets) {
+        // 是否要原图
+        CGSize size = CGSizeMake(asset.pixelWidth, asset.pixelHeight);
+
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            NSLog(@"%@", result);
+            [selectedPhotoArray addObject:result];
+        }];
+        
+    }
 }
 
 

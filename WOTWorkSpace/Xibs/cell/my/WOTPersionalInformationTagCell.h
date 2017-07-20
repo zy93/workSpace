@@ -16,5 +16,5 @@
 
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property(strong,nonatomic)NSArray *tagLabelArray;
--(void)loadtagsBtn;
+
 @end
