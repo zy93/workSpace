@@ -15,6 +15,7 @@ typedef void(^response)(id bean,NSError *error);
 
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response;
++(void)getSpaceSitationBlock:(response)response;
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState response:(response)response;
 +(void)getEnterprisesWithSpaceId:(NSNumber *)spaceid response:(response)response;
 +(void)getAllNewInformation:(response)response;

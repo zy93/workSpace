@@ -10,4 +10,22 @@
 
 @implementation WOTBookStationListModel
 
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+
+@end
+
+@implementation WOTBookStationListModel_msg_List
+
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+} 
+@end
+
+@implementation WOTBookStationListModel_msg
+
+
 @end

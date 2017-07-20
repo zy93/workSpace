@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTBookStationListModel.h"
 
 @interface WOTOrderVC : UIViewController
 
@@ -16,5 +17,7 @@
 @property (nonatomic, strong) NSNumber *conferenceId;
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSString *endTime;
+
+@property (nonatomic, strong) WOTBookStationListModel *model;
 
 @end

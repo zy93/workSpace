@@ -64,8 +64,8 @@
 #define UIColor_blue_40 UIColorFromRGB(0x4087ee)
 #define UIColor_green_12 UIColorFromRGB(0x12c700)
 
-#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
-//#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
+//#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
+#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
 
 #define LOGIN_STATE_USERDEFAULT @"islogin"
 #endif /* WOTConstants_h */

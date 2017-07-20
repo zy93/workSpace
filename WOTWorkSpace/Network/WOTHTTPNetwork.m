@@ -16,6 +16,7 @@
 #import "WOTSliderModel.h"
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
+#import "WOTBookStationListModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -131,6 +132,27 @@
         }
     }];
 }
+
+/**
+ * 无参数获取全部空间
+ */
++(void)getSpaceSitationBlock:(response)response{
+    
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpaceToAPP"];
+    NSDictionary * parameters =nil;
+    [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
+        WOTBookStationListModel_msg * spacemodel = [[WOTBookStationListModel_msg alloc]initWithDictionary:responseobj error:nil];
+        
+        return  spacemodel;
+        
+        
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
 /**
  *  根据空间id 和状态请求筛选 获取活动列表
  */
@@ -263,8 +285,6 @@
 +(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
 {
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/findAllStation"];
-//    NSDictionary *dic = @{@"spaceId":spaceid
-//                          };
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
