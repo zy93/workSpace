@@ -11,7 +11,10 @@
 
 @implementation WOTReservationsResponseModel
 
-
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end
 
 @implementation WOTReservationsResponseModel_msg
@@ -20,7 +23,10 @@
 
 
 @implementation WOTMeetingReservationsModel
-
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end
 
 

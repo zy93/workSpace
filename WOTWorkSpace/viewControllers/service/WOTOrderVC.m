@@ -53,7 +53,7 @@
 }
 
 -(void)configNav{
-    self.navigationItem.title = @"确认订单";
+    self.navigationItem.title = @"确认订单"; 
 }
 
 -(void)setIsBookStation:(BOOL)isBookStation

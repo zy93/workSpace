@@ -13,9 +13,13 @@
 #import "WOTDatePickerView.h"
 #import "WOTWorkspaceListVC.h"
 #import "WOTOrderVC.h"
+#import "WOTSpaceModel.h"
+#import "WOTBookStationListModel.h"
 @interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource, WOTBookStationCellDelegate>
 {
+    NSArray *allModelList; //所有的
     NSArray *tableList;
+    NSString *cityName;
     NSString *inquireTime;//查询日期;
 }
 
@@ -55,6 +59,7 @@
     [self setupView];
     _spaceId = @(56);
     inquireTime = [NSDate getNewTimeZero];
+    cityName = @"北京";
 
 }
 
@@ -105,9 +110,18 @@
 #pragma mark - request
 -(void)createRequest
 {
-//    [WOTHTTPNetwork getBookStationListWithSpaceId:self.spaceId response:^(id bean, NSError *error) {
-//        
-//    }];
+    [WOTHTTPNetwork getSpaceSitationBlock:^(id bean, NSError *error) {
+        WOTBookStationListModel_msg *msg = bean;
+        allModelList = msg.msg;
+        for (WOTBookStationListModel_msg_List *model in allModelList) {
+            if ([model.cityName isEqualToString:cityName]) {
+                tableList = model.cityList;
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableIView reloadData];
+        });
+    }];
 }
 
 
@@ -159,6 +173,7 @@
     vc.spaceId = self.spaceId;
 //    vc.conferenceId = cell.model.conferenceId;
     vc.isBookStation = YES;
+    vc.model = cell.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -170,7 +185,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return  tableList.count;;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -186,10 +201,15 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTBookStationCell *bookcell = [tableView dequeueReusableCellWithIdentifier:@"WOTBookStationCellID" forIndexPath:indexPath];
-    bookcell.spaceName.text = @"方圆大厦-众创空间";
-    bookcell.spaceLocation.text = @"中关村南大街甲56号" ;
-    bookcell.stationNum.text  = @"23个工位可以预定";
-    bookcell.stationPrice.text = @"¥123元／天";
+    
+    WOTBookStationListModel *model = tableList[indexPath.row];
+    
+    bookcell.spaceName.text =model.spaceName;// @"方圆大厦-众创空间";
+    bookcell.spaceLocation.text = model.spaceSite;// @"中关村南大街甲56号" ;
+    bookcell.stationNum.text  = [NSString stringWithFormat:@"%ld工位可以预定",model.longRent.integerValue+model.shortRent.integerValue]; //@"23个工位可以预定";
+    bookcell.stationPrice.text = [NSString stringWithFormat:@"￥%ld/天",model.spacePicture.integerValue];//@"¥123元／天";
+    bookcell.delegate = self;
+    bookcell.model = model;
     return bookcell;
 }
 

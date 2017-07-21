@@ -22,7 +22,12 @@
 @property(nonatomic,assign)NSNumber *spaceState;
 @property(nonatomic,strong)NSString *creationTime;
 @property(nonatomic,strong)NSString *spacePicture;
-
+@property(nonatomic,assign)NSNumber *lat;
+@property(nonatomic,assign)NSNumber *lng;
+@property(nonatomic,assign)NSNumber *leaseConditions; //长短租
+@property(nonatomic,assign)NSNumber *shortRent;
+@property(nonatomic,strong)NSString *spaceStar;
+@property(nonatomic,strong)NSString *spaceUrl;
 
 -(instancetype)initWithSpaceId:(NSNumber *)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe  city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(NSNumber *)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture;
 @end
