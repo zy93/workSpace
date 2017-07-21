@@ -8,17 +8,28 @@
 
 #import "WOTJoiningEnterpriseVC.h"
 #import "WOTMyEnterPriseCell.h"
-@interface WOTJoiningEnterpriseVC ()
+#import "WOTEnterpriseModel.h"
+@interface WOTJoiningEnterpriseVC (){
+    NSArray<WOTEnterpriseModel *> *endataSource;
+}
 @property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation WOTJoiningEnterpriseVC
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        endataSource =  [[NSArray alloc]init];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     self.tableView.showsVerticalScrollIndicator = NO;
      [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyEnterPriseCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"myenterpriseCellID"];
+    [self getMyEnterpriseDataSourceFromWeb];
     // Do any additional setup after loading the view.
 }
 
@@ -29,19 +40,35 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return endataSource.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTMyEnterPriseCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"myenterpriseCellID" forIndexPath:indexPath];
-    enterprisecell.enterpariseName.text = @"北京物联港科技发展有限公司";
-    enterprisecell.joinEnterpriseTime.text = @"2017-06-12";
-    enterprisecell.enterpriseHeaderImage.image = [UIImage imageNamed:@"myenterprise_logo"];
+    enterprisecell.enterpariseName.text = endataSource[indexPath.row].companyName;
+    enterprisecell.joinEnterpriseTime.text = endataSource[indexPath.row].spared1;
+    [enterprisecell.enterpriseHeaderImage sd_setImageWithURL:[endataSource[indexPath.row].companyPicture ToUrl] placeholderImage:[UIImage imageNamed:@"enterprise_default"]];
+    if (indexPath.row == [tableView numberOfRowsInSection:0]-1) {
+        enterprisecell.lineView.hidden = YES;
+    } else {
+        enterprisecell.lineView.hidden = NO;
+    }
     return enterprisecell;
 }
 
+-(void)getMyEnterpriseDataSourceFromWeb{
+    [[WOTUserSingleton currentUser]setValues];
+    [WOTHTTPNetwork getUserEnterpriseWithCompanyId:[WOTUserSingleton currentUser].companyId response:^(id bean, NSError *error) {
+        WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg*)bean;
+        endataSource = dd.msg;
+        [self.tableView reloadData];
+        
+    }];
+    
+    
+}
 
 /*
 #pragma mark - Navigation

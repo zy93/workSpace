@@ -70,6 +70,7 @@
                 <outlet property="enterpariseName" destination="BXm-Hi-NwR" id="2u6-sc-pQ2"/>
                 <outlet property="enterpriseHeaderImage" destination="pjN-By-Fa9" id="8ar-rB-ar6"/>
                 <outlet property="joinEnterpriseTime" destination="LHw-Ng-a4h" id="3oG-sp-DMm"/>
+                <outlet property="lineView" destination="zdm-3v-J13" id="mDf-kw-q8V"/>
             </connections>
             <point key="canvasLocation" x="34" y="115.5"/>
         </tableViewCell>

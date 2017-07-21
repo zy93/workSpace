@@ -1,35 +1,40 @@
 //
-//  WOTApplyRepairCell.m
+//  WOTSocialContactCell.m
 //  WOTWorkSpace
 //
-//  Created by 张姝枫 on 2017/7/20.
+//  Created by 张姝枫 on 2017/7/21.
 //  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTApplyRepairCell.h"
+#import "WOTSocialContactCell.h"
 #import "WOTImageCollectionViewCell.h"
-@interface WOTApplyRepairCell()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface WOTSocialContactCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
-
-@implementation WOTApplyRepairCell
+@implementation WOTSocialContactCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _cellTitle.textColor = HighTextColor;
-    _cellValue.textColor = MiddleTextColor;
-    _collectionView.delegate = self;
-    _collectionView.dataSource =self;
-    [_collectionView setScrollEnabled:NO];
-     [_collectionView registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
-  
+    _contactName.textColor = MainOrangeColor;
+    _time.textColor = MiddleTextColor;
+    _contactName.textColor = HighTextColor;
+    [_headerImage setCorenerRadius:_headerImage.frame.size.height/2 borderColor:CLEARCOLOR];
+    _collectionview.delegate = self;
+    _collectionview.dataSource =self;
+    [_collectionview setScrollEnabled:NO];
+    [_collectionview registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
+
     // Configure the view for the selected state
+}
+-(void)setCellBean:(WOTSocialContactsBean *)cellBean{
+    _contactName.text = cellBean.contactname;
+    _time.text = cellBean.time;
+    _content.text = cellBean.time;
 }
 
 
@@ -58,7 +63,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //重用cell
-    WOTImageCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
+    WOTImageCollectionViewCell *cell = [_collectionview dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
     
     cell.cityImage.image = _photosArray[indexPath.row];
     return cell;
@@ -73,7 +78,7 @@
 //定义每个Section 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(10, 10, 10, 10);//分别为上、左、下、右
+    return UIEdgeInsetsMake(10, 5, 10, 10);//分别为上、左、下、右
 }
 
 //选择了某个cell
@@ -81,10 +86,7 @@
 {
     __weak typeof(self) weakSelf = self;
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-  
-    if (self.collectionImageViewBlock != nil) {
-        weakSelf.collectionImageViewBlock(indexPath.row);
-    }
+    
 }
 
 //取消选择了某个cell

@@ -192,7 +192,7 @@ bool istags =  NO;
     WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
     enterprisecell.enterpriseName.text = _dataSource[indexPath.row].companyName;
     enterprisecell.enterpriseInfo.text = _dataSource[indexPath.row].companyProfile;
-    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_dataSource[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_logo"]];
+    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_dataSource[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_default"]];
     enterprisecell.lineView.hidden = indexPath.row == _dataSource.count-1 ? YES:NO;
     return enterprisecell;
 }

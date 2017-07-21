@@ -9,10 +9,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--MyVC-->
+        <scene sceneID="kqc-4w-prL">
+            <objects>
+                <viewController storyboardIdentifier="WOTMyVCID" id="lQM-mF-Xfs" customClass="WOTMyVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q1g-PK-Xfb"/>
+                        <viewControllerLayoutGuide type="bottom" id="YqD-yY-rzv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8vq-pa-uyN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m2Z-5G-x3d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lQM-mF-Xfs" id="FbK-mQ-qgE"/>
+                                    <outlet property="delegate" destination="lQM-mF-Xfs" id="bdh-3z-7Ty"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m2Z-5G-x3d" firstAttribute="top" secondItem="8vq-pa-uyN" secondAttribute="top" id="0IR-Hb-bom"/>
+                            <constraint firstAttribute="trailing" secondItem="m2Z-5G-x3d" secondAttribute="trailing" id="Afo-LJ-Tbx"/>
+                            <constraint firstItem="YqD-yY-rzv" firstAttribute="top" secondItem="m2Z-5G-x3d" secondAttribute="bottom" id="iGZ-dX-fth"/>
+                            <constraint firstItem="m2Z-5G-x3d" firstAttribute="leading" secondItem="8vq-pa-uyN" secondAttribute="leading" id="ymV-Gt-UYn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="m2Z-5G-x3d" id="czH-OK-HnA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fff-Gr-oKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1427" y="-230"/>
+        </scene>
         <!--Enterprise TypeVC-->
         <scene sceneID="cxA-Dg-lcy">
             <objects>
-                <viewController storyboardIdentifier="WOTEnterpriseTypeVCID" id="xgM-5F-And" customClass="WOTEnterpriseTypeVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTEnterpriseTypeVCID" hidesBottomBarWhenPushed="YES" id="xgM-5F-And" customClass="WOTEnterpriseTypeVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0gd-4W-xL2"/>
                         <viewControllerLayoutGuide type="bottom" id="tnm-37-q8k"/>
@@ -85,7 +122,7 @@
         <!--My EnterpriseVC-->
         <scene sceneID="1P7-KT-i0v">
             <objects>
-                <viewController storyboardIdentifier="WORTMyEnterpriseVCID" id="jm1-ru-KQV" customClass="WORTMyEnterpriseVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WORTMyEnterpriseVCID" hidesBottomBarWhenPushed="YES" id="jm1-ru-KQV" customClass="WORTMyEnterpriseVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lbu-in-jRd"/>
                         <viewControllerLayoutGuide type="bottom" id="0HK-FG-7qt"/>
@@ -207,7 +244,7 @@
         <!--Persional Information-->
         <scene sceneID="aGT-Ci-B5N">
             <objects>
-                <viewController storyboardIdentifier="WOTPersionalInformationID" id="4uu-9u-jkM" customClass="WOTPersionalInformation" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTPersionalInformationID" hidesBottomBarWhenPushed="YES" id="4uu-9u-jkM" customClass="WOTPersionalInformation" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Fh-Jf-geO"/>
                         <viewControllerLayoutGuide type="bottom" id="HxG-hM-7GH"/>

@@ -41,3 +41,12 @@
 
 
 @end
+
+@implementation WOTMyActivityModel
+
+
+@end
+
+@implementation WOTMyActivityModel_msg
+
+@end

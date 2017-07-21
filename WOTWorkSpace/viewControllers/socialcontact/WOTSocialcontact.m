@@ -7,7 +7,7 @@
 //
 
 #import "WOTSocialcontact.h"
-
+#import "WOTNearCirclesVC.h"
 @interface WOTSocialcontact ()
 
 @end
@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configNav];
+    self.view.backgroundColor = MainColor;
+    [self configNavi];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -26,10 +28,33 @@
 }
 
 
--(void)configNav{
-   
+-(void)viewWillAppear:(BOOL)animated{
+
+}
+-(void)configNavi{
+    self.navigationItem.title = @"易创客";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIView alloc]init]];
 }
 
+
+
+-(NSArray *)createTitles{
+    return [[NSArray alloc]initWithObjects:@"最近的圈子",@"友邻企业",@"空间集市",nil];
+}
+-(NSArray<__kindof UIViewController *> *)createViewControllers{
+    WOTNearCirclesVC *circle = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTNearCirclesVCID"];
+
+    [self addChildViewController:circle];
+    WOTNearCirclesVC *circle1 = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTNearCirclesVCID"];
+    WOTNearCirclesVC *circle2 = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTNearCirclesVCID"];
+    
+    [self addChildViewController:circle1];
+    
+    [self addChildViewController:circle2];
+    
+    
+    return self.childViewControllers;
+}
 /*
 #pragma mark - Navigation
 

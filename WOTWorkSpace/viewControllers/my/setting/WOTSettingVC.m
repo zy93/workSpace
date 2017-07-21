@@ -23,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
- 
-    [self configNaviBackItem];
+   
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTSettingCell" bundle:nil] forCellReuseIdentifier:@"settingCellID"];
     self.navigationItem.title = @"设置";
     // Do any additional setup after loading the view.
@@ -91,15 +90,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTSettingCell *settingcell = [tableView dequeueReusableCellWithIdentifier:@"settingCellID" forIndexPath:indexPath];
     if (indexPath.section == 0) {
-        if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section]-1) {
-            [settingcell.valueLabel setHidden:NO];
-             settingcell.valueLabel.text = @"122.M";
-            [settingcell.lineVIew setHidden:YES];
-        } else {
+    
             [settingcell.valueLabel setHidden:YES];
-           
-            
-        }
+ 
         NSArray *nameArray = [[NSArray alloc]initWithObjects:@"个人资料",@"通知设置",@"修改密码",@"设置手势密码",nil];
         settingcell.loginOut.hidden = YES;
         settingcell.nameLabel.text = nameArray[indexPath.row];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WOTMyNaviController.h"
 #import "WOTTableViewBaseVC.h"
-@interface WOTMyVC : WOTTableViewBaseVC
+@interface WOTMyVC : UIViewController
 
 @property(nonatomic,strong)WOTMyNaviController *mynavi;
 

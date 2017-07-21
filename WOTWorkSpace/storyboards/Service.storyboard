@@ -243,7 +243,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTRegisterServiceProvidersCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTRegisterServiceProvidersCell" id="Adm-yp-4dZ" customClass="WOTRegisterServiceProvidersCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTRegisterServiceProvidersCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTRegisterServiceProvidersCell" id="Adm-yp-4dZ" customClass="WOTRegisterServiceProvidersCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Adm-yp-4dZ" id="0Yj-gr-VhB">
@@ -289,7 +289,7 @@
                                             <outlet property="titleLab" destination="8yf-CT-dTZ" id="fhQ-l2-B1p"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTSubmitRegisterServiceCell" rowHeight="50" id="OuY-qY-z51" customClass="WOTSubmitRegisterServiceCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTSubmitRegisterServiceCell" rowHeight="50" id="OuY-qY-z51" customClass="WOTSubmitRegisterServiceCell">
                                         <rect key="frame" x="0.0" y="72" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OuY-qY-z51" id="aZj-wo-29l">
@@ -2240,6 +2240,10 @@
         <scene sceneID="GS9-gV-pKw">
             <objects>
                 <viewController id="FIU-uZ-8X5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ybo-hQ-45y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Giz-qD-X5i"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Cn-rw-Mla">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

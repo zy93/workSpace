@@ -90,6 +90,7 @@
         
     }];
     
+    self.tabBarController.tabBar.translucent = NO;
     // Do any additional setup after loading the view.
 }
 

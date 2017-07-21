@@ -11,4 +11,6 @@
 @interface WOTMyActivitiesBaseVC : WOTTableViewBaseVC
 
 @property(nonatomic,strong)NSArray *datasource;
+@property(nonatomic,assign)NSString *vctype;
+-(void)getActivityDataSourceFromWeb:(NSString *)state;
 @end

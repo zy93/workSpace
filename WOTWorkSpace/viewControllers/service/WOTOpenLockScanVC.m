@@ -229,13 +229,20 @@
 
 - (IBAction)scanClick:(id)sender {
       [((UIButton *)sender) setSelected:!((UIButton *)sender).isSelected];
-    _scanImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"scan_selected"]:[UIImage imageNamed:@"scan"];
+    _scanImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"scan"]:[UIImage imageNamed:@"scan"];
+//    if (((UIButton *)sender).isSelected) {
+//        _bluetoothImage.image = [UIImage imageNamed:@"bluetooth"];
+//    }
+    
     //TODO:二维码开门
 }
 
 - (IBAction)blueToothClick:(id)sender {
     [((UIButton *)sender) setSelected:!((UIButton *)sender).isSelected];
-    _bluetoothImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"bluetooth_selected"]:[UIImage imageNamed:@"bluetooth"];
+    _bluetoothImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"bluetooth"]:[UIImage imageNamed:@"bluetooth"];
+//    if (((UIButton *)sender).isSelected) {
+//    _scanImage.image = [UIImage imageNamed:@"scan"];
+//    }
     
     //TODO:蓝牙开门
     

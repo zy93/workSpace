@@ -77,9 +77,16 @@
         for (NSString *text in _selectServiceList) {
             dd = [NSString stringWithFormat:@"%@%@%@",dd,text,@","];
         }
-        [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:[[NSNumber alloc]initWithInt:55 ] userId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] facilitator_type:dd time:[NSDate date] response:^(id bean, NSError *error) {
-            
-        }];
+
+        
+//        [WOTHTTPNetwork postServiceRequestWithDescribe:[self.describeText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] spaceId:[@"55" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] userId:[[WOTUserSingleton currentUser].userId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorType:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorLabel:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] response:^(id bean, NSError *error) {
+//            
+//        }];
+        
+                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"  userId:[WOTUserSingleton currentUser].userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
+        
+                }];
+        
     }
    
 }

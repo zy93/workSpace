@@ -42,3 +42,22 @@
 @property(nonatomic,strong)NSArray<WOTActivityModel> *msg;
 
 @end
+
+
+
+@protocol WOTMyActivityModel
+
+@end
+
+@interface WOTMyActivityModel:JSONModel
+@property(nonatomic,strong)NSString *state;
+@property(nonatomic,strong)WOTActivityModel *content;
+
+@end
+
+@interface WOTMyActivityModel_msg:JSONModel
+@property(nonatomic,strong)NSString *code;
+@property(nonatomic,strong)NSString *result;
+@property(nonatomic,strong)NSArray<WOTMyActivityModel> *msg;
+
+@end

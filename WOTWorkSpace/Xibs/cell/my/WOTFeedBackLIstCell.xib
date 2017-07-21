@@ -32,7 +32,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vD5-MV-up0">
-                        <rect key="frame" x="20" y="75.5" width="290" height="55.5"/>
+                        <rect key="frame" x="5" y="75.5" width="310" height="55.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-07-91 12:34:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKp-t0-JI0">
@@ -55,12 +55,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ncm-ZV-Don" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="0aJ-2e-TBv"/>
-                    <constraint firstAttribute="trailing" secondItem="vD5-MV-up0" secondAttribute="trailing" constant="10" id="5eI-v3-CYg"/>
+                    <constraint firstAttribute="trailing" secondItem="vD5-MV-up0" secondAttribute="trailing" constant="5" id="5eI-v3-CYg"/>
                     <constraint firstItem="vD5-MV-up0" firstAttribute="top" secondItem="pjV-Tn-mj1" secondAttribute="bottom" constant="5" id="7HW-4L-G3v"/>
                     <constraint firstAttribute="trailing" secondItem="KAT-QF-Zsf" secondAttribute="trailing" id="8Dd-ND-P9j"/>
                     <constraint firstAttribute="trailing" secondItem="pjV-Tn-mj1" secondAttribute="trailing" constant="10" id="8Ss-PO-nLh"/>
                     <constraint firstAttribute="bottom" secondItem="KAT-QF-Zsf" secondAttribute="bottom" id="HBv-8w-gLG"/>
-                    <constraint firstItem="vD5-MV-up0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="LP4-Up-vRs"/>
+                    <constraint firstItem="vD5-MV-up0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="LP4-Up-vRs"/>
                     <constraint firstItem="pjV-Tn-mj1" firstAttribute="top" secondItem="wKp-t0-JI0" secondAttribute="bottom" constant="10" id="NgQ-MX-hdb"/>
                     <constraint firstAttribute="trailing" secondItem="Ncm-ZV-Don" secondAttribute="trailing" constant="10" id="eGS-T9-Rb2"/>
                     <constraint firstItem="wKp-t0-JI0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gRw-tL-DbE"/>

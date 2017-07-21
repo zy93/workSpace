@@ -32,7 +32,7 @@
     }
 }
 
--(void)loadtagsBtn:(NSArray *)tagsArray superView:(UIView *)tagsView{
+-(void)loadtagsBtn:(NSArray *)tagsArray superView:(UIView*)tagsView{
     CGFloat leading = 10;
     CGFloat top  = 0;
     
@@ -44,15 +44,19 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = ViewBorderColor;
         [label setCorenerRadius:10 borderColor:[UIColor colorWithRed:123.0/255.0 green:163.0/255.0 blue:238.0/255.0 alpha:1.0]];
+    
         [tagsView addSubview:label];
+
         leading += label.frame.size.width+10;
         
         if (leading+[title widthWithFont:[UIFont systemFontOfSize:15]]+20>=tagsView.frame.size.width) {
             top += label.frame.size.height+10;
             leading = 10;
         }
+      
         
     }
+ 
 }
 
 
