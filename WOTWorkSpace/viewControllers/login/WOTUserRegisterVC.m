@@ -8,6 +8,8 @@
 
 #import "WOTUserRegisterVC.h"
 #import "WOTSelectCityCodeVC.h"
+#import "WOTRegisterModel.h"
+#import "WOTGetVerifyModel.h"
 
 @interface WOTUserRegisterVC ()
 
@@ -51,6 +53,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBarHidden = YES;
     if (self.cityName) {
         [self.selectCityBtn setTitle:self.cityName forState:UIControlStateNormal];
@@ -71,9 +74,21 @@
 }
 
 - (IBAction)clickGetVerificationCodeBtn:(id)sender {
+    [WOTHTTPNetwork userGetVerifyWitTel:self.phoneText.text response:^(id bean, NSError *error) {
+        WOTGetVerifyModel *model = bean;
+        if (model.code.intValue == 200) {
+            [MBProgressHUDUtil showMessage:@"发送成功" toView:self.view];
+        }
+        else {
+            [MBProgressHUDUtil showMessage:@"发送失败，请稍后再试!" toView:self.view];
+        }
+    }];
 }
 
 - (IBAction)clickRegisterBtn:(id)sender {
+    [WOTHTTPNetwork userRegisterWitUserNick:@"Tom" tel:self.phoneText.text password:self.passwordText.text response:^(id bean, NSError *error) {
+        WOTRegisterModel *model = bean;
+    }];
 }
 
 - (IBAction)clickProcotolBtn:(id)sender {

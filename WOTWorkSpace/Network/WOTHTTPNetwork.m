@@ -23,6 +23,8 @@
 #import "WOTBookStationListModel.h"
 #import "WOTVisitorsModel.h"
 #import "WOTAppointmentModel.h"
+#import "WOTGetVerifyModel.h"
+#import "WOTRegisterModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -249,6 +251,35 @@
     
 }
 
++(void)userGetVerifyWitTel:(NSString *)tel response:(response)response
+{
+    NSDictionary *dic = @{@"tel" :tel};
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Login/sendVerify"];
+    
+    [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
+        WOTGetVerifyModel *model = [[WOTGetVerifyModel alloc] initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
++(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response
+{
+    NSDictionary *dic = @{@"tel" :tel, @"nick": nick, @"password":[WOTUitls md5HexDigestByString:pass]};
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Login/register"];
+    
+    [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
+        WOTRegisterModel *model = [[WOTRegisterModel alloc] initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
 
 /**
  * 获取空间列表

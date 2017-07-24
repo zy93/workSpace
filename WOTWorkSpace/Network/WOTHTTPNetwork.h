@@ -14,6 +14,8 @@ typedef void(^response)(id bean,NSError *error);
 @interface WOTHTTPNetwork : NSObject
 
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
++(void)userGetVerifyWitTel:(NSString *)tel response:(response)response;
++(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response;
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response;
 +(void)getSpaceSitationBlock:(response)response;
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState response:(response)response;
