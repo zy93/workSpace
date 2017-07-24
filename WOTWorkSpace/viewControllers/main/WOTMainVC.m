@@ -21,7 +21,7 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
-#import "WOTSpaceModel.h"
+
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -129,11 +129,11 @@
 
 
 #pragma mark --懒加载
-- (NSMutableArray *)imageArray {
-    if (_imageArray == nil) {
-        _imageArray = [NSMutableArray array];
+- (NSMutableArray *)spacePageViewDataSource {
+    if (_spacePageViewDataSource == nil) {
+        _spacePageViewDataSource = [NSMutableArray array];
     }
-    return _imageArray;
+    return _spacePageViewDataSource;
 }
 -(NSArray<WOTEnterpriseModel *>*)enterpriseListdata{
     if (_enterpriseListdata == nil) {
@@ -387,7 +387,7 @@
     
     NSLog(@"点击了第%ld张图",(long)subIndex + 1);
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_spacePageViewDataSource[subIndex].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
     
 
@@ -396,7 +396,7 @@
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
     
-    return self.imageArray.count;
+    return self.spacePageViewDataSource.count;
     
 }
 
@@ -409,7 +409,14 @@
         bannerView.layer.masksToBounds = YES;
     }
     //从网络加载图片用
-      [bannerView.mainImageView sd_setImageWithURL:self.imageArray[index] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+    
+      [bannerView.mainImageView sd_setImageWithURL:[[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_spacedataSource[index].spacePicture] ToUrl]placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+    
+    if ([_spacePageViewDataSource[index].spacePicture separatedWithString:@","].count!=0) {
+        [bannerView.mainImageView sd_setImageWithURL:[[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+        NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0]]);
+    }
+    
     //从本地加载图片用
 //    bannerView.mainImageView.image = self.imageArray[index];
     return bannerView;
@@ -454,7 +461,7 @@
 - (IBAction)showActivityDetail:(id)sender {
     
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/activity.html";
+    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_activitydataSource[0].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -462,7 +469,12 @@
 //new information section imageClick 
 - (IBAction)showInfoDetail:(id)sender {
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/news1.html";
+    
+    if (_infodataSource[0].count  >0) {
+        detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_infodataSource[0][0].spared3];
+    }
+    
+    
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -513,7 +525,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/companyInfo.html";
+    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_enterpriseListdata[indexPath.row].spared2];
     [self.navigationController pushViewController:detailvc animated:YES];
 }
 -(void)showNewInfoVC{
@@ -591,15 +603,15 @@
             
             if (_spacedataSource.count>5) {
                 for (int index = 0; index < 5; index++) {
-                    if ([_spacedataSource[index].spacePicture separatedWithString:@","].count != 0) {
-                        [self.imageArray addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacedataSource[index].spacePicture separatedWithString:@","][0]]];
-                    }
+                    
+                        [self.spacePageViewDataSource addObject:_spacedataSource[index]];
+                 
                 }
             } else {
                 for (int index = 0; index < _spacedataSource.count; index++) {
-                    if ([_spacedataSource[index].spacePicture separatedWithString:@","].count != 0) {
-                        [self.imageArray addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacedataSource[index].spacePicture separatedWithString:@","][0]]];
-                    }
+                    
+                        [self.spacePageViewDataSource addObject:_spacedataSource[index]];
+                   
                 }
             }
             loadViews();

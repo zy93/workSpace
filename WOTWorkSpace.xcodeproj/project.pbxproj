@@ -1799,7 +1799,7 @@
 					E85A85831F0201F30016FCA1 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5EY377SJTX;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					E85A859F1F0201F30016FCA1 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -2396,6 +2396,7 @@
 			baseConfigurationReference = 3AD4D44235E619477B1F5D13 /* Pods-WOTWorkSpace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 张 姝枫 (RPRK4646TW)";
 				DEVELOPMENT_TEAM = 5EY377SJTX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2417,6 +2418,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "53f8061d-b749-495b-b832-e39cea23984e";
+				PROVISIONING_PROFILE_SPECIFIER = com.WOTWorkSpace;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2426,6 +2429,7 @@
 			baseConfigurationReference = D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 张 姝枫 (RPRK4646TW)";
 				DEVELOPMENT_TEAM = 5EY377SJTX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2447,6 +2451,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8145f34c-024e-41a7-a954-1de142a00113";
+				PROVISIONING_PROFILE_SPECIFIER = com.WOTWorkSpace;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 			};
 			name = Release;

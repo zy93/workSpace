@@ -106,7 +106,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/news1.html";
+       detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_dataSource[indexPath.section][indexPath.row].spared3];
+
     [self.navigationController pushViewController:detailvc animated:YES];
 }
 //

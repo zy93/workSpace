@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "SDCycleScrollView.h"
 #import "ZYQSphereView.h"
+#import "WOTSpaceModel.h"
 @interface WOTMainVC : UIViewController
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 
 @property (weak, nonatomic) IBOutlet UIView *ballView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
-@property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, strong) NSMutableArray<WOTSpaceModel *> *spacePageViewDataSource;
 
 @property (weak, nonatomic) IBOutlet UIView *spaceView;
 @property (weak, nonatomic) IBOutlet UIView *activityView;

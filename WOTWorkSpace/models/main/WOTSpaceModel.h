@@ -28,7 +28,9 @@
 @property(nonatomic,assign)NSNumber *shortRent;
 @property(nonatomic,strong)NSString *spaceStar;
 @property(nonatomic,strong)NSString *spaceUrl;
-
+@property(nonatomic,strong)NSString *spared1;
+@property(nonatomic,strong)NSString *spared2;
+@property(nonatomic,strong)NSString *spared3;
 -(instancetype)initWithSpaceId:(NSNumber *)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe  city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(NSNumber *)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture;
 @end
 

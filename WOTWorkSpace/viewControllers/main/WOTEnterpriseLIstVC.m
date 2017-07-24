@@ -10,7 +10,7 @@
 #import "WOTTEnterpriseListCell.h"
 
 #import "WOTMenuView.h"
-
+#import "WOTworkSpaceDetailVC.h"
 @interface WOTEnterpriseLIstVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *enterpriseTag;
@@ -201,6 +201,11 @@ bool istags =  NO;
     return enterprisecell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_dataSource[indexPath.row].spared2];
+    [self.navigationController pushViewController:detailvc animated:YES];
+}
 
 //获取tableview数据源
 
