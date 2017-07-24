@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mug-id-hfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58.399999999999999" y="103.89805097451276"/>
+            <point key="canvasLocation" x="-28" y="104"/>
         </scene>
         <!--Register Service ProvidersVC-->
         <scene sceneID="Nlg-Lm-pw3">
@@ -2389,23 +2389,6 @@
             </objects>
             <point key="canvasLocation" x="7637.6000000000004" y="87.706146926536732"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="GS9-gV-pKw">
-            <objects>
-                <viewController id="FIU-uZ-8X5" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aW7-Mj-Zad"/>
-                        <viewControllerLayoutGuide type="bottom" id="kas-t7-LLB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9Cn-rw-Mla">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vig-8P-kzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="HR_icon" width="36" height="45"/>
@@ -2751,6 +2734,7 @@ EdcR3BHeEeAR5RHtEfAR9RH9EgASEhIVEhoAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAASHA
 </mutableData>
         </image>
         <image name="camera_icon" width="25" height="20"/>
+        <image name="createtel" width="20" height="20"/>
         <image name="head_icon" width="40" height="48"/>
         <image name="investment_icon" width="36" height="35"/>
         <image name="lashlight" width="16" height="30"/>

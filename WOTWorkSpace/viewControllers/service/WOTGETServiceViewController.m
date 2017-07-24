@@ -31,6 +31,8 @@
         self.describeText.text = @"请填写您的需求";
     };
     [_describeText setCorenerRadius:10.0 borderColor:LowTextColor];
+    
+    self.submitBtn.layer.cornerRadius = 5.f;
 }
 
 - (void)didReceiveMemoryWarning {

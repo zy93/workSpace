@@ -213,6 +213,7 @@
             if (cell == nil) {
                 cell = [[WOTGETServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTGETServiceCell"];
             }
+            cell.mDelegate = self;
             return cell;
         }
 
