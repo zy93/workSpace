@@ -33,23 +33,23 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYh-Er-sLD">
-                                        <rect key="frame" x="0.0" y="182" width="375" height="410"/>
+                                        <rect key="frame" x="0.0" y="182" width="375" height="424"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
+                                                <rect key="frame" x="-2" y="-2" width="379" height="428"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="VXj-Q4-Y04" secondAttribute="bottom" id="8kB-e8-BDK"/>
-                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="leading" secondItem="FYh-Er-sLD" secondAttribute="leading" id="9T5-f8-iPb"/>
-                                            <constraint firstAttribute="height" constant="410" id="I2D-K4-m5z"/>
-                                            <constraint firstAttribute="trailing" secondItem="VXj-Q4-Y04" secondAttribute="trailing" id="aOV-BD-QGa"/>
-                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="top" secondItem="FYh-Er-sLD" secondAttribute="top" id="cnF-IK-IMt"/>
+                                            <constraint firstAttribute="bottom" secondItem="VXj-Q4-Y04" secondAttribute="bottom" constant="-2" id="8kB-e8-BDK"/>
+                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="leading" secondItem="FYh-Er-sLD" secondAttribute="leading" constant="-2" id="9T5-f8-iPb"/>
+                                            <constraint firstAttribute="height" constant="424" id="I2D-K4-m5z"/>
+                                            <constraint firstAttribute="trailing" secondItem="VXj-Q4-Y04" secondAttribute="trailing" constant="-2" id="aOV-BD-QGa"/>
+                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="top" secondItem="FYh-Er-sLD" secondAttribute="top" constant="-2" id="cnF-IK-IMt"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-Cg-Xxw" userLabel="workspace">
-                                        <rect key="frame" x="0.0" y="612" width="375" height="230"/>
+                                        <rect key="frame" x="0.0" y="626" width="375" height="230"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTL-1P-dlz">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -94,7 +94,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asL-0x-wIO">
-                                        <rect key="frame" x="0.0" y="1192" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="1206" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-r9-LOu">
                                                 <rect key="frame" x="20" y="5" width="3" height="20"/>
@@ -168,7 +168,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-Nx-AkA">
-                                        <rect key="frame" x="0.0" y="852" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="866" width="375" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-GB-uLK">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -213,7 +213,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-LE-hiG">
-                                        <rect key="frame" x="0.0" y="1002" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="1016" width="375" height="180"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-k9-KBE">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -1230,8 +1230,8 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmI-m8-dP4">
-                                                    <rect key="frame" x="20" y="200" width="44" height="12.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <rect key="frame" x="20" y="200" width="39.5" height="12.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

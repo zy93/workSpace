@@ -28,12 +28,18 @@
     [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
         [self.textView resignFirstResponder];
         [self.phoneText resignFirstResponder];
+        _textView.textColor = LowTextColor;
+        _textView.text = @"*您的意见，是我们前进的动力";
     };
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:NO];
 }
 
 -(void)configNav{
@@ -44,6 +50,16 @@
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
 }
+
+- (IBAction)callCustomerServices:(id)sender {
+    
+    //TODO:打电话给客服
+}
+
+
+
+
+
 - (IBAction)submitFeedbackInfo:(id)sender {
     
     if ([_textView.text isEqualToString:@""]){
@@ -69,6 +85,12 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
    
     [self.phoneText resignFirstResponder];
+    return YES;
+}
+
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    _textView.text = @"";
+    _textView.textColor = Black;
     return YES;
 }
 

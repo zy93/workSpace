@@ -19,7 +19,7 @@
 @interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
+
 
 @end
 
@@ -28,9 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableview registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
-    [self.tableview registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
-    [self.tableview registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
+    [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
     
     // Do any additional setup after loading the view.
 }
@@ -43,8 +43,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
+     self.tabBarController.tabBar.translucent = YES;
     [self.navigationController.navigationBar setHidden:YES];
-    [self.tableview reloadData];
+    [self.tableView reloadData];
 }
 
 

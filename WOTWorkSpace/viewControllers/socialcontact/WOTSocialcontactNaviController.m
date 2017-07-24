@@ -25,6 +25,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{ 
+    UIBarButtonItem *Item = [[UIBarButtonItem alloc] init];
+
+    viewController.navigationItem.leftBarButtonItems = @[Item];
+    
+}
+
 /*
 #pragma mark - Navigation
 

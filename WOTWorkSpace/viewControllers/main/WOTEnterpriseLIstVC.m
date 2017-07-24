@@ -63,14 +63,21 @@ bool istags =  NO;
 
 
 -(void)configNav{
-    [self configNaviBackItem];
-    [self configNaviView:@"输入企业名或标签" block:^{
-        
-    }];
+    
+        [self configNaviBackItem];
+        [self configNaviView:@"输入企业名或标签" block:^{
+            
+        }];
+   
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+
     [self.navigationController.navigationBar setHidden:NO];
+  
+    
+   
     
 }
 -(NSArray<WOTEnterpriseModel *> *)dataSource{
@@ -206,7 +213,20 @@ bool istags =  NO;
 }
 
 
+-(void)getEnterpriseListDataFromWeb:(void(^)())complete{
     
+    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:55] response:^(id bean, NSError *error) {
+        complete();
+        if (bean) {
+            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            _dataSource = dd.msg;
+            [self.tableView reloadData];
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+    }];
+}
 
 
 

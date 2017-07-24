@@ -13,21 +13,45 @@
 @implementation WOTEnumUtils
 -(WOT3DBallVCType)Wot3DballVCtypeenumToString:(NSString *)ballTitle{
     WOT3DBallVCType type;
-    for (NSString *title in [WOTSingtleton shared].ballTitle) {
+  
+        
         if ([ballTitle isEqualToString:@"友邻"]) {
             type = WOTEnterprise;
-            break;
+           
         } else if([ballTitle isEqualToString:@"订工位"]) {
             type = WOTBookStation;
-            break;
+          
         }else if([ballTitle isEqualToString:@"订会议室"]) {
             type = WOTReservationsMeeting;
-            break;
+            
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+          
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+           
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+          
+        }else if([ballTitle isEqualToString:@"订会议室"]) {
+            type = WOTReservationsMeeting;
+            
         }else {
             type = WOTOthers;
-            break;
+            
         }
-    }
     return  type;
 }
 -(NSString *)WOTFeedBackStateToString:(NSInteger)state{

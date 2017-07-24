@@ -169,6 +169,26 @@ bool ismenu1 =  NO;
 }
 
 
+-(void)getActivityDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getActivitiesWithSpaceId:nil spaceState:[[NSNumber alloc]initWithInt:1]  response:^(id bean, NSError *error) {
+        
+        complete();
+        if (bean) {
+            WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
+            _dataSource = dd.msg;
+           
+            [self.tableVIew reloadData];
+            
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
+}
+
+
 /*
 #pragma mark - Navigation
 

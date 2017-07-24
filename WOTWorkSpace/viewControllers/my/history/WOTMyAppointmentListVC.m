@@ -7,9 +7,11 @@
 //
 
 #import "WOTMyAppointmentListVC.h"
-
-@interface WOTMyAppointmentListVC ()
-
+#import "WOTAppointmentModel.h"
+@interface WOTMyAppointmentListVC (){
+   
+}
+@property(nonatomic,strong)NSArray<WOTAppointmentModel *> *appintmentDataSource;
 @end
 
 @implementation WOTMyAppointmentListVC
@@ -18,7 +20,7 @@
     [super viewDidLoad];
      [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyAppointmentCell" bundle:nil] forCellReuseIdentifier:@"WOTMyAppointmentCellID"];
     
-    
+    [self getDataSourceFromWeb];
     // Do any additional setup after loading the view.
 }
 
@@ -29,7 +31,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _appintmentDataSource.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -37,11 +39,27 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTMyAppointmentCell *appointmentcell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyAppointmentCellID" forIndexPath:indexPath];
-    appointmentcell.appointmentCommunityValue.text = @"方圆大厦--众创空间";
-    appointmentcell.appointmentObjectValue.text =@"北京物联港科技发展有限公司";
-    appointmentcell.appointmentTimeValue.text = @"2017-07-11 12:30:23";
-    appointmentcell.appointmentReasionValue.text = @"讨论新项目需求";
+    appointmentcell.appointmentCommunityValue.text = _appintmentDataSource[indexPath.row].visitorName;
+    appointmentcell.appointmentObjectValue.text =_appintmentDataSource[indexPath.row].visitorName;
+    appointmentcell.appointmentTimeValue.text = _appintmentDataSource[indexPath.row].visitTime;
+    appointmentcell.appointmentReasionValue.text = _appintmentDataSource[indexPath.row].visitInfo;
     return appointmentcell;
+    
+}
+
+
+-(void)getDataSourceFromWeb{
+    [[WOTUserSingleton currentUser]setValues];
+   [WOTHTTPNetwork getMyAppointmentWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] response:^(id bean, NSError *error) {
+       if (bean) {
+           WOTAppointmentModel_msg *dd = (WOTAppointmentModel_msg *)bean;
+           _appintmentDataSource = dd.msg;
+           [self.tableView reloadData];
+       }
+       if (error) {
+           [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+       }
+   }];
     
 }
 /*

@@ -12,4 +12,5 @@
 @interface WOTActivitiesLIstVC : WOTMenuViewParentVC
 
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *dataSource;
+-(void)getActivityDataFromWeb:(void(^)())complete;
 @end

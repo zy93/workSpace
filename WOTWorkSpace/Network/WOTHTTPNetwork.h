@@ -94,4 +94,12 @@ typedef void(^response)(id bean,NSError *error);
  *服务--提交保修申请
  */
 +(void)postRepairApplyWithUserId:(NSString *)userId type:(NSString *)type info:(NSString *)info appointmentTime:(NSString *)orderTime address:(NSString *)address file:(NSArray<UIImage *> *)file alias:(NSString *)alias  response:(response)response;
+
+
+/**
+ *我的历史--我的预约
+ */
+
+
++(void)getMyAppointmentWithUserId:(NSNumber *)userId   response:(response)response;
 @end

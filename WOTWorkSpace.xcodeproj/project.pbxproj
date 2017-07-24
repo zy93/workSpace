@@ -223,6 +223,7 @@
 		E86FD1F71F207734009BE16A /* WOTMainAppleRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */; };
 		E86FD1FA1F208582009BE16A /* WOTAppleRepairCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */; };
 		E86FD1FD1F209723009BE16A /* WOTImageLookoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */; };
+		E877ABDB1F25BE3C00056525 /* WOTAppointmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E877ABDA1F25BE3C00056525 /* WOTAppointmentModel.m */; };
 		E87EFEA61F1767A000F0D372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87EFEA41F1767A000F0D372 /* Main.storyboard */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
@@ -664,6 +665,8 @@
 		E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAppleRepairCommonCell.m; sourceTree = "<group>"; };
 		E86FD1FB1F209723009BE16A /* WOTImageLookoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTImageLookoverVC.h; sourceTree = "<group>"; };
 		E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTImageLookoverVC.m; sourceTree = "<group>"; };
+		E877ABD91F25BE3C00056525 /* WOTAppointmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAppointmentModel.h; sourceTree = "<group>"; };
+		E877ABDA1F25BE3C00056525 /* WOTAppointmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAppointmentModel.m; sourceTree = "<group>"; };
 		E87EFEA51F1767A000F0D372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
@@ -692,7 +695,7 @@
 		E8BA0D7D1F0CEBE000B81C3D /* WOTMyActivitiesBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyActivitiesBaseVC.h; sourceTree = "<group>"; };
 		E8BA0D7E1F0CEBE000B81C3D /* WOTMyActivitiesBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyActivitiesBaseVC.m; sourceTree = "<group>"; };
 		E8BA0D851F0CF9F800B81C3D /* WOTMyAppointmentListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyAppointmentListVC.h; sourceTree = "<group>"; };
-		E8BA0D861F0CF9F800B81C3D /* WOTMyAppointmentListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyAppointmentListVC.m; sourceTree = "<group>"; };
+		E8BA0D861F0CF9F800B81C3D /* WOTMyAppointmentListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyAppointmentListVC.m; sourceTree = "<group>"; tabWidth = 3; };
 		E8BA0D881F0CFA1F00B81C3D /* WOTMyRepairdListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyRepairdListVC.h; sourceTree = "<group>"; };
 		E8BA0D891F0CFA1F00B81C3D /* WOTMyRepairdListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyRepairdListVC.m; sourceTree = "<group>"; };
 		E8BA0D8B1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMyPublishDemandsLIstVC.h; sourceTree = "<group>"; };
@@ -1631,6 +1634,8 @@
 				2A90C3671F1CC86A00E75AE0 /* WOTMeetingReservationsModel.m */,
 				2A022E541F1DAF1F001AE9E9 /* WOTBookStationListModel.h */,
 				2A022E551F1DAF1F001AE9E9 /* WOTBookStationListModel.m */,
+				E877ABD91F25BE3C00056525 /* WOTAppointmentModel.h */,
+				E877ABDA1F25BE3C00056525 /* WOTAppointmentModel.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -2164,6 +2169,7 @@
 				E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */,
 				E8190D991F0F69660000B07C /* WOTSpaceCityCollectionCell.m in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
+				E877ABDB1F25BE3C00056525 /* WOTAppointmentModel.m in Sources */,
 				E8190DCB1F0F69660000B07C /* PFGoldenSectionSpiral.m in Sources */,
 				E8DDCCD61F11D542007D001C /* WOTEnterpriseTypeCell.m in Sources */,
 				2AF18A441F136F6D004681CE /* WOTOrderForPaymentCell.m in Sources */,

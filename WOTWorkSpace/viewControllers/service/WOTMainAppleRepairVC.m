@@ -49,20 +49,28 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
 - (IBAction)sunmitAction:(id)sender {
     [[WOTUserSingleton currentUser]setValues];
+    [selectedPhotoArray removeObjectAtIndex:0];
+    NSLog(@"%@",selectedPhotoArray[0]);
     [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
        [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton currentUser].userId type:repariType info:repairInfo appointmentTime:repairTime address:repairLocation file:selectedPhotoArray alias:@"1" response:^(id bean, NSError *error) {
            [hud setHidden:YES];
            if (bean) {
                [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   [self.navigationController popViewControllerAnimated:YES];
+               });
            }
            if (error) {
                 [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
            }
-           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               [self.navigationController popViewControllerAnimated:YES];
-           });
+           
        }];
     }];
     

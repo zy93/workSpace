@@ -20,6 +20,8 @@
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
 #import "WOTMyHistoryDemandsModel.h"
+#import "WOTBookStationListModel.h"
+#import "WOTAppointmentModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -117,7 +119,7 @@
     return mutaDic;
 }
 
-
+//上传文件网络请求
 +(void)doFileRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url image:(NSArray<UIImage *> *)images complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -158,7 +160,12 @@
            
             imageData = UIImageJPEGRepresentation(image, 1.0f);
            
+            imageData = UIImageJPEGRepresentation(image,1.f);
+            if (!imageData) {
+                imageData = UIImagePNGRepresentation(image);
+            }
             [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+            
         }
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -335,7 +342,7 @@
  *获取全部资讯列表 
  */
 +(void)getAllNewInformation:(response)response{
-    NSString *infourl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Message/findAllMessage"];
+    NSString *infourl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Message/findAllMessageToApp"];
     [self doRequestWithParameters:nil useUrl:infourl complete:^JSONModel *(id responseobj) {
         WOTNewInformationModel_msg *infomodel = [[WOTNewInformationModel_msg alloc]initWithDictionary:responseobj error:nil];
         return infomodel;
@@ -593,6 +600,28 @@
         return  activitymodel;
         
         
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
+
+
+/**
+ *我的历史--我的预约
+ */
+
+
++(void)getMyAppointmentWithUserId:(NSNumber *)userId   response:(response)response{
+    
+    NSString *applyurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Visitor/findVisitorByUserId"];
+    NSDictionary *parameters = @{@"userId":userId};
+    [self doRequestWithParameters:parameters useUrl:applyurl  complete:^JSONModel *(id responseobj) {
+        WOTAppointmentModel_msg *model = [[WOTAppointmentModel_msg alloc]initWithDictionary:responseobj error:nil];
+        
+        return  model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
             response(responseObject,error);

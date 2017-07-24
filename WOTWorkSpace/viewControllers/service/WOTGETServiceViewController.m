@@ -9,7 +9,7 @@
 #import "WOTGETServiceViewController.h"
 #import "WOTServiceProvidersCategoryVC.h"
 
-@interface WOTGETServiceViewController ()
+@interface WOTGETServiceViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *describeText;
 @property (weak, nonatomic) IBOutlet UIButton *selectServiceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
@@ -23,10 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
+    _describeText.delegate  = self;
     [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
     [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
         [self.describeText resignFirstResponder];
+        self.describeText.textColor = LowTextColor;
+        self.describeText.text = @"请填写您的需求";
     };
+    [_describeText setCorenerRadius:10.0 borderColor:LowTextColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +94,11 @@
     }
    
 }
-
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    _describeText.textColor = Black;
+    _describeText.text = @"";
+    return YES;
+}
 /*
 #pragma mark - Navigation
 
