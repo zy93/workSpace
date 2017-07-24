@@ -71,7 +71,10 @@
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        time = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
+        time = [NSString stringWithFormat:@"%02d/%02d/%02d %2d:%2d",(int)year, (int)month, (int)day,(int)hour,(int)min];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.table reloadData];
+        });
     };
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden = YES;
@@ -87,7 +90,7 @@
     }
     [contentList replaceObjectAtIndex:2 withObject:@"男"];
     [contentList replaceObjectAtIndex:5 withObject:@(2)];
-    tableSubtitleList = @[@"", @"必填", @"MAN", @"必填", @"请选择", @"", @"请输入", @"请选择", @"必填", @"请选择"];
+    tableSubtitleList = @[@"", @"必填", @"MAN", @"必填", @"请选择", @"", @"请输入", @"请输入", @"必填", @"请选择"];
     [self.table reloadData];
 }
 
@@ -233,6 +236,7 @@
         }
         if ([str isEqualToString:@"访客照片"]) {
             cell.headImg.hidden = NO;
+            cell.contentText.hidden = YES;
             if (headImage) {
                 [cell.headImg setImage:headImage];
             }
@@ -261,6 +265,10 @@
         }
         if (self.spaceName && [str isEqualToString:@"访问社区"]) {
             cell.contentText.text = self.spaceName;
+        }
+        
+        if ([str isEqualToString:@"到访日期"] && time) {
+            cell.contentText.text = time;
         }
         
         cell.delegate = self;

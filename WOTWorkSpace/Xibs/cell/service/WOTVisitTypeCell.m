@@ -17,6 +17,8 @@
         [self setSeparatorInset:UIEdgeInsetsZero];
     }
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     self.visitBtn.layer.borderColor = UIColor_blue_40.CGColor;
     self.visitBtn.layer.borderWidth = 1.f;
     self.visitBtn.layer.cornerRadius = 5.f;

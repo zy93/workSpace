@@ -31,7 +31,8 @@
         _textView.textColor = LowTextColor;
         _textView.text = @"*您的意见，是我们前进的动力";
     };
-    
+    self.submitBtn.layer.cornerRadius = 5.f;
+
 }
 
 - (void)didReceiveMemoryWarning {
