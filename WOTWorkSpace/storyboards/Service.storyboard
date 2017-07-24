@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -587,24 +587,75 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzJ-Wo-Wh8">
-                                                    <rect key="frame" x="352" y="0.0" width="8" height="43.5"/>
+                                                    <rect key="frame" x="67" y="0.0" width="293" height="44"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9WN-53-G3f">
+                                                    <rect key="frame" x="330" y="6.5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="QBa-Qc-gWr"/>
+                                                        <constraint firstAttribute="width" constant="30" id="wDL-wN-ph2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyV-bc-0R4">
+                                                    <rect key="frame" x="330" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="i3w-Wh-suM"/>
+                                                        <constraint firstAttribute="height" constant="30" id="xDq-TB-NRo"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="女">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="womBtn:" destination="YTJ-WI-iYA" eventType="touchUpInside" id="56a-sF-SjC"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPn-ck-xOX">
+                                                    <rect key="frame" x="285" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="5Sa-FR-x7z"/>
+                                                        <constraint firstAttribute="height" constant="30" id="6Mm-3J-HcJ"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="男">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="manBtn:" destination="YTJ-WI-iYA" eventType="touchUpInside" id="Svg-Eo-Ygl"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kNp-CV-Z6Q" firstAttribute="centerY" secondItem="s0r-zP-bZ2" secondAttribute="centerY" id="0bw-Vb-5Au"/>
                                                 <constraint firstAttribute="trailing" secondItem="gzJ-Wo-Wh8" secondAttribute="trailing" constant="15" id="5ME-zW-tbg"/>
+                                                <constraint firstItem="gzJ-Wo-Wh8" firstAttribute="leading" secondItem="kNp-CV-Z6Q" secondAttribute="trailing" constant="10" id="AVJ-ZZ-rE2"/>
                                                 <constraint firstAttribute="bottom" secondItem="gzJ-Wo-Wh8" secondAttribute="bottom" id="DcC-e2-Ra2"/>
+                                                <constraint firstItem="wyV-bc-0R4" firstAttribute="leading" secondItem="GPn-ck-xOX" secondAttribute="trailing" constant="15" id="Hpy-rd-9k7"/>
+                                                <constraint firstAttribute="trailing" secondItem="9WN-53-G3f" secondAttribute="trailing" constant="15" id="ID0-nL-zE2"/>
+                                                <constraint firstItem="wyV-bc-0R4" firstAttribute="centerY" secondItem="s0r-zP-bZ2" secondAttribute="centerY" id="OLp-z7-pAB"/>
+                                                <constraint firstAttribute="trailing" secondItem="wyV-bc-0R4" secondAttribute="trailing" constant="15" id="PJB-ft-cPV"/>
+                                                <constraint firstItem="GPn-ck-xOX" firstAttribute="centerY" secondItem="s0r-zP-bZ2" secondAttribute="centerY" id="XCx-GL-FeN"/>
                                                 <constraint firstItem="gzJ-Wo-Wh8" firstAttribute="centerY" secondItem="s0r-zP-bZ2" secondAttribute="centerY" id="b7p-vD-p3x"/>
                                                 <constraint firstItem="gzJ-Wo-Wh8" firstAttribute="top" secondItem="s0r-zP-bZ2" secondAttribute="top" id="iHa-2e-cEM"/>
                                                 <constraint firstItem="kNp-CV-Z6Q" firstAttribute="leading" secondItem="s0r-zP-bZ2" secondAttribute="leading" constant="15" id="nXL-Pl-2Qe"/>
+                                                <constraint firstItem="9WN-53-G3f" firstAttribute="centerY" secondItem="s0r-zP-bZ2" secondAttribute="centerY" id="ucN-4c-Q3m"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentText" destination="gzJ-Wo-Wh8" id="wqC-r6-2Zn"/>
+                                            <outlet property="headImg" destination="9WN-53-G3f" id="j1P-U7-fZm"/>
+                                            <outlet property="manBtn" destination="GPn-ck-xOX" id="wgb-MI-ylC"/>
                                             <outlet property="titleLab" destination="kNp-CV-Z6Q" id="uus-0O-urN"/>
+                                            <outlet property="womBtn" destination="wyV-bc-0R4" id="vn9-NJ-pUd"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTVisitTypeCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTVisitTypeCell" rowHeight="90" id="zaD-3g-u4E" customClass="WOTVisitTypeCell">
@@ -620,20 +671,44 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuz-X8-byk">
-                                                    <rect key="frame" x="30" y="41" width="62" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="62" id="sIA-Na-yRx"/>
-                                                    </constraints>
-                                                    <state key="normal" title="空间参观"/>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuz-X8-byk">
+                                                    <rect key="frame" x="20" y="41" width="86" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="   空间参观   ">
+                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="visitBtn:" destination="zaD-3g-u4E" eventType="touchUpInside" id="oz1-OZ-ir9"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6I-aW-cfs">
-                                                    <rect key="frame" x="141.5" y="41" width="92" height="30"/>
-                                                    <state key="normal" title="访问入驻企业"/>
+                                                    <rect key="frame" x="129.5" y="41" width="116" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="   访问入驻企业   ">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="businessBtn:" destination="zaD-3g-u4E" eventType="touchUpInside" id="IJL-gN-aUq"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywg-6L-esl">
-                                                    <rect key="frame" x="283" y="41" width="62" height="30"/>
-                                                    <state key="normal" title="访问个人"/>
+                                                    <rect key="frame" x="269" y="41" width="86" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="   访问个人   ">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="personalBtn:" destination="zaD-3g-u4E" eventType="touchUpInside" id="bp3-76-sa9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -643,8 +718,8 @@
                                                 <constraint firstItem="X6I-aW-cfs" firstAttribute="centerX" secondItem="bea-9A-Wey" secondAttribute="centerX" id="WAD-6h-OdF"/>
                                                 <constraint firstItem="TXN-uL-JQE" firstAttribute="top" secondItem="bea-9A-Wey" secondAttribute="top" constant="10" id="WoA-I1-j0c"/>
                                                 <constraint firstItem="kuz-X8-byk" firstAttribute="top" secondItem="TXN-uL-JQE" secondAttribute="bottom" constant="10" id="eS3-8d-uW3"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ywg-6L-esl" secondAttribute="trailing" constant="30" id="gBE-VW-STJ"/>
-                                                <constraint firstItem="kuz-X8-byk" firstAttribute="leading" secondItem="bea-9A-Wey" secondAttribute="leading" constant="30" id="wjf-he-Zch"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ywg-6L-esl" secondAttribute="trailing" constant="20" id="gBE-VW-STJ"/>
+                                                <constraint firstItem="kuz-X8-byk" firstAttribute="leading" secondItem="bea-9A-Wey" secondAttribute="leading" constant="20" id="wjf-he-Zch"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -652,6 +727,38 @@
                                             <outlet property="visitBtn" destination="kuz-X8-byk" id="qOW-dY-kKq"/>
                                             <outlet property="visitEnterpriseBtn" destination="X6I-aW-cfs" id="zCF-SP-5gA"/>
                                             <outlet property="visitIndividualBtn" destination="Ywg-6L-esl" id="Ikh-qU-c1Q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTVisitorsAppointmentSubmitCell" rowHeight="66" id="WOO-pq-acV" customClass="WOTVisitorsAppointmentSubmitCell">
+                                        <rect key="frame" x="0.0" y="162" width="375" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WOO-pq-acV" id="WRd-uI-OvB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDC-Iv-gaf">
+                                                    <rect key="frame" x="20" y="15.5" width="335" height="45"/>
+                                                    <color key="backgroundColor" red="0.25098039220000001" green="0.52941176469999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="xnp-7K-NRv"/>
+                                                    </constraints>
+                                                    <state key="normal" title="提交">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="submitBtn:" destination="WOO-pq-acV" eventType="touchUpInside" id="c5g-o7-rSW"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="QDC-Iv-gaf" secondAttribute="bottom" constant="5" id="7ZG-l4-G06"/>
+                                                <constraint firstAttribute="trailing" secondItem="QDC-Iv-gaf" secondAttribute="trailing" constant="20" id="HN2-KA-l8U"/>
+                                                <constraint firstItem="QDC-Iv-gaf" firstAttribute="leading" secondItem="WRd-uI-OvB" secondAttribute="leading" constant="20" id="Wbr-qs-y1n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="submitBtn" destination="QDC-Iv-gaf" id="wPn-lV-eGA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2287,8 +2394,8 @@
             <objects>
                 <viewController id="FIU-uZ-8X5" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ybo-hQ-45y"/>
-                        <viewControllerLayoutGuide type="bottom" id="Giz-qD-X5i"/>
+                        <viewControllerLayoutGuide type="top" id="aW7-Mj-Zad"/>
+                        <viewControllerLayoutGuide type="bottom" id="kas-t7-LLB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Cn-rw-Mla">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -2644,7 +2751,7 @@ EdcR3BHeEeAR5RHtEfAR9RH9EgASEhIVEhoAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAASHA
 </mutableData>
         </image>
         <image name="camera_icon" width="25" height="20"/>
-        <image name="createtel" width="20" height="20"/>
+        <image name="head_icon" width="40" height="48"/>
         <image name="investment_icon" width="36" height="35"/>
         <image name="lashlight" width="16" height="30"/>
         <image name="law_icon" width="46" height="39"/>

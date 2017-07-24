@@ -11,6 +11,6 @@
 @interface WOTPhotosBaseUtils : NSObject
 
 @property(nonatomic,strong)UIViewController *vc;
-@property(nonatomic,assign)BOOL *onlyOne;
+@property(nonatomic,assign)BOOL onlyOne;
 -(void)showSelectedPhotoSheet;
 @end

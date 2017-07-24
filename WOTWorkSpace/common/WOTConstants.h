@@ -24,7 +24,8 @@
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 
-
+//判断字符串是否为空
+#define strIsEmpty(str) (str == nil || [str length]<1 ? YES : NO )
 
 //----------------------颜色类---------------------------
 // rgb颜色转换（16进制->10进制）
@@ -60,12 +61,13 @@
 #define MainOrangeColor UIColorFromRGB(0x4087ee)
 
 #define UIColor_gray_d6 UIColorFromRGB(0xd6d6d6)
+#define UIColor_gray_f7 UIColorFromRGB(0xf7f7f7)
 #define UIColor_gray_89 UIColorFromRGB(0x898989)
 #define UIColor_blue_40 UIColorFromRGB(0x4087ee)
 #define UIColor_green_12 UIColorFromRGB(0x12c700)
 
 //#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
-#define HTTPBaseURL @"http://192.168.7.240:8012/workSpace"
+#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
 
 //#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
 #define LOGIN_STATE_USERDEFAULT @"islogin"

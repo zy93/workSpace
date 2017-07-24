@@ -16,6 +16,15 @@
     if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
         [self setSeparatorInset:UIEdgeInsetsZero];
     }
+    self.contentText.delegate = self;
+    self.manBtn.layer.borderColor = UIColor_blue_40.CGColor;
+    self.manBtn.layer.borderWidth = 1.f;
+    self.manBtn.layer.cornerRadius = 5.f;
+    
+    self.womBtn.layer.borderColor = UIColor_gray_89.CGColor;
+    self.womBtn.layer.borderWidth = 1.f;
+    self.womBtn.layer.cornerRadius = 5.f;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,4 +33,29 @@
     // Configure the view for the selected state
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([_delegate respondsToSelector:@selector(textFiledEndEnter:text:)]) {
+        [_delegate textFiledEndEnter:self text:textField.text];
+    }
+}
+- (IBAction)manBtn:(id)sender {
+    self.manBtn.selected = YES;
+    self.womBtn.selected = NO;
+    self.manBtn.layer.borderColor = UIColor_blue_40.CGColor;
+    self.womBtn.layer.borderColor = UIColor_gray_89.CGColor;
+    if ([_delegate respondsToSelector:@selector(textFiledEndEnter:text:)]) {
+        [_delegate textFiledEndEnter:self text:@"Man"];
+    }
+}
+
+- (IBAction)womBtn:(id)sender {
+    self.manBtn.selected = NO;
+    self.womBtn.selected = YES;
+    self.womBtn.layer.borderColor = UIColor_blue_40.CGColor;
+    self.manBtn.layer.borderColor = UIColor_gray_89.CGColor;
+    if ([_delegate respondsToSelector:@selector(textFiledEndEnter:text:)]) {
+        [_delegate textFiledEndEnter:self text:@"wom"];
+    }
+}
 @end

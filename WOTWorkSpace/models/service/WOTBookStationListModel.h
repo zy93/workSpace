@@ -9,11 +9,12 @@
 #import <JSONModel/JSONModel.h>
 
 
-@protocol WOTBookStationListModel1 <NSObject>
+@protocol WOTBookStationListModel <NSObject>
 
 @end
 
-@interface WOTBookStationListModel1 : JSONModel
+@interface WOTBookStationListModel : JSONModel
+
 
 @property(nonatomic,assign)NSNumber* spaceId;
 @property(nonatomic,strong)NSString *spaceName;
@@ -36,24 +37,24 @@
 
 @end
 
-@protocol WOTBookStationListModel_msg_List1 <NSObject>
+@protocol WOTBookStationListModel_msg_List <NSObject>
 
 @end
-@protocol WOTBookStationListModel_msg_dic1 <NSObject>
+@protocol WOTBookStationListModel_msg_dic <NSObject>
 
 @end
 
-@interface WOTBookStationListModel_msg_List1 : JSONModel
+@interface WOTBookStationListModel_msg_List : JSONModel
 @property(nonatomic,strong)NSString *cityName;
-@property(nonatomic,strong)NSArray <WOTBookStationListModel1> *cityList;
+@property(nonatomic,strong)NSArray <WOTBookStationListModel> *cityList;
 
 @end
 
 
-@interface WOTBookStationListModel_msg1 : JSONModel
+@interface WOTBookStationListModel_msg : JSONModel
 
 @property(nonatomic,strong)NSString *code;
 @property(nonatomic,strong)NSString *result;
-@property(nonatomic,strong)NSArray  <WOTBookStationListModel_msg_List1> *msg;
+@property(nonatomic,strong)NSArray  <WOTBookStationListModel_msg_List> *msg;
 
 @end
