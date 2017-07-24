@@ -40,7 +40,7 @@
 @property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
 @property (strong,nonatomic)NSMutableArray<WOTSpaceModel *> *spacedataSource;
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
-@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *infodataSource;
+@property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *infodataSource;
 @property(nonatomic,strong)NSString *activityImageUrl;
 @end
 
@@ -90,8 +90,9 @@
         
     }];
     
+   
     // Do any additional setup after loading the view.
-    self.tabBarController.tabBar.translucent = NO;
+    
 }
 
 
@@ -102,7 +103,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   
+    self.tabBarController.tabBar.translucent = NO;
  
     
     [self.navigationController.navigationBar setHidden:YES];
@@ -168,7 +169,12 @@
     }
     return  _activityImageUrl;
 }
-
+-(NSMutableArray<NSArray<WOTNewInformationModel *> *> *)infodataSource{
+    if (_infodataSource == nil) {
+        _infodataSource = [[NSMutableArray alloc]init];
+    }
+    return _infodataSource;
+}
 -(void)load3DBallView{
    
     if (IS_IPHONE_5) {
@@ -252,24 +258,67 @@
             }
         }];
     }];
-    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:[WOTSingtleton shared].ballTitle[sender.tag]];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
-    WOTEnterpriseLIstVC *enterprisevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTEnterpriseLIstVCID"];
-    WOTBookStationVC *stationvc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTBookStationVCID"];
-    switch (balltype) {
-        case WOTEnterprise:
+//    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:[WOTSingtleton shared].ballTitle[sender.tag]];
+   
+    switch (sender.tag) {
+        case 0:
+           //资讯
+            [self showNewInfoVC];
+            break;
+        case 1:
+            //友邻
            
-            [self.navigationController pushViewController:enterprisevc animated:YES];
+            [self pushToViewControllerWithStoryBoardName:@"spaceMain" viewControllerName:@"WOTEnterpriseLIstVCID"];
             break;
-        case WOTBookStation:
-            [self.navigationController pushViewController:stationvc animated:YES];
-            break;
-        case WOTOthers:
+        
+        case 2:
+            //订工位
             
+            [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTBookStationVCID"];
             break;
-        case WOTReservationsMeeting:
+        case 3:
+            //订会议室
             [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTReservationsMeetingVC"];
             break;
+        case 4:
+            //开门
+            
+             [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTOpenLockScanVCID"];
+            break;
+        case 5:
+            //活动
+             [self pushToViewControllerWithStoryBoardName:@"spaceMain" viewControllerName:@"WOTActivitiesLIstVCID"];
+            break;
+        case 6:
+            //预定场地
+             [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
+            break;
+        case 7:
+            //企业介绍
+             [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
+            break;
+        case 8:
+            //访客
+             [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTVisitorsAppointmentVC"];
+            break;
+        case 9:
+            //精选
+            [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
+            break;
+        case 10:
+            //一键报修
+             [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTMainAppleRepairVCID"];
+            break;
+        case 11:
+            //一键反馈
+             [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTFeedbackVC"];
+            break;
+        case 12:
+            //集市
+            [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
+            break;
+
+            
         default:
             break;
     }
@@ -279,6 +328,17 @@
 -(void)pushToViewControllerWithStoryBoardName:(NSString *)sbName viewControllerName:(NSString *)vcName
 {
     UIViewController *stationvc = [[UIStoryboard storyboardWithName:sbName bundle:nil] instantiateViewControllerWithIdentifier:vcName];
+    if ([stationvc isKindOfClass:[WOTActivitiesLIstVC class]]) {
+        [((WOTActivitiesLIstVC *)stationvc) getActivityDataFromWeb:^{
+        }];
+    }
+    if ([stationvc isKindOfClass:[WOTEnterpriseLIstVC class]]) {
+        [((WOTEnterpriseLIstVC *)stationvc) getEnterpriseListDataFromWeb:^{
+        }];
+    }
+
+  
+    
     [self.navigationController pushViewController:stationvc animated:YES];
 }
 
@@ -396,9 +456,7 @@
 }
 - (IBAction)showInformationLIstVC:(id)sender {
     
-    WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
-    infovc.dataSource = _infodataSource;
-    [self.navigationController pushViewController:infovc animated:YES];
+    [self showNewInfoVC];
     
 }
 - (IBAction)showEnterpriseListVC:(id)sender {
@@ -467,9 +525,15 @@
     return enterprisecell;
     
 }
+
+-(void)showNewInfoVC{
+    WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
+    infovc.dataSource = _infodataSource;
+    [self.navigationController pushViewController:infovc animated:YES];
+}
 -(void)getEnterpriseListDataFromWeb:(void(^)())complete{
     
-    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:55] response:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:69] response:^(id bean, NSError *error) {
         complete();
         if (bean) {
             WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
@@ -580,7 +644,7 @@
         
     }];
 }
-\
+
 
 
 -(void)getInfoDataFromWeb:(void(^)())complete{
@@ -589,14 +653,23 @@
         complete();
         if (bean) {
             WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
-          
-            _infodataSource = dd.msg;
+            _infodataSource = [[NSMutableArray alloc]init];
+            [_infodataSource addObject:dd.msg.space];
+            [_infodataSource addObject:dd.msg.firm];
             
-            WOTNewInformationModel *model = _infodataSource[0];
-           
-            [_infoImage sd_setImageWithURL: [[model.pictureSite separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-            _InfoMessage.text = model.messageInfo;
-            _InfoTime.text = model.issueTime;
+            if (_infodataSource[0].count  >0) {
+                WOTNewInformationModel *model = _infodataSource[0][0];
+                
+                
+                [_infoImage sd_setImageWithURL: [[model.pictureSite separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                _InfoMessage.text = model.messageInfo;
+                _InfoTime.text = model.issueTime;
+            } else {
+                _infoImage.image = [UIImage imageNamed:@"placeholder"];
+                _InfoMessage.text = @"";
+                _InfoTime.text = @"";
+            }
+            
         }
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];

@@ -8,8 +8,8 @@
 
 #import "WOTMyActivitiesVC.h"
 #import "WOTMyActivitiesBaseVC.h"
-@interface WOTMyActivitiesVC ()
 
+@interface WOTMyActivitiesVC ()
 @end
 
 @implementation WOTMyActivitiesVC
@@ -18,6 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
     [self configNavi];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -42,13 +43,16 @@
 }
 -(NSArray<__kindof UIViewController *> *)createViewControllers{
     WOTMyActivitiesBaseVC *basevc = [[WOTMyActivitiesBaseVC alloc]init];
-
+    basevc.vctype = @"0";
+    [basevc getActivityDataSourceFromWeb:@"0"];
     [self addChildViewController:basevc];
     WOTMyActivitiesBaseVC *basevc1 = [[WOTMyActivitiesBaseVC alloc]init];
-
+    basevc1.vctype = @"1";
+    [basevc1 getActivityDataSourceFromWeb:@"1"];
     [self addChildViewController:basevc1];
     WOTMyActivitiesBaseVC *basevc2 = [[WOTMyActivitiesBaseVC alloc]init];
-  
+     basevc2.vctype = @"2";
+    [basevc2 getActivityDataSourceFromWeb:@"2"];
     [self addChildViewController:basevc2];
    
     

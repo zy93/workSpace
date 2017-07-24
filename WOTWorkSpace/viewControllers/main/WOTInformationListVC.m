@@ -35,14 +35,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.translucent = YES;
+    self.edgesForExtendedLayout = UIRectEdgeBottom;
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setHidden:NO];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.translucent = YES;
+}
 -(void)configNav{
     [self configNaviBackItem];  
     self.navigationItem.title = @"我的资讯";
 }
--(NSArray<WOTNewInformationModel *>*)dataSource{
+-(NSMutableArray<NSArray<WOTNewInformationModel *> *>*)dataSource{
     if (_dataSource == nil) {
-        _dataSource = [[NSArray alloc]init];
+        _dataSource = [[NSMutableArray alloc]init];
     }
     return _dataSource;
 }
@@ -50,12 +58,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 2;
+    return _dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return _dataSource.count;
+    switch (section) {
+        case 0:
+            return _dataSource[0].count;
+            break;
+        case 1:
+            return _dataSource[1].count;
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     WOTCommonHeaderVIew *view = [[NSBundle mainBundle]loadNibNamed:@"WOTCommonHeaderVIew" owner:nil options:nil].lastObject;
@@ -79,12 +97,31 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WOTInformationLIstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTInformationLIstCellID"forIndexPath:indexPath];
-    cell.infoValue.text = _dataSource[indexPath.row].messageInfo;
-   cell.infoTime.text = _dataSource[indexPath.row].issueTime;
-    NSString *urlstring = [_dataSource[indexPath.row].pictureSite separatedWithString:@","].count != 0? [_dataSource[indexPath.row].pictureSite separatedWithString:@","][0]:@"";
+    cell.infoValue.text = _dataSource[indexPath.section][indexPath.row].messageInfo;
+    cell.infoTime.text = _dataSource[indexPath.section][indexPath.row].issueTime;
+    NSString *urlstring = [_dataSource[indexPath.section][indexPath.row].pictureSite separatedWithString:@","].count != 0? [_dataSource[indexPath.section][indexPath.row].pictureSite separatedWithString:@","][0]:@"";
     [cell.infoImage sd_setImageWithURL:[urlstring ToUrl] placeholderImage:[UIImage imageNamed:@"infoImage"]];
     return cell;
 }
+
+//
+-(void)getInfoDataFromWeb:(void(^)())complete{
+    
+    [WOTHTTPNetwork getAllNewInformation:^(id bean, NSError *error) {
+        complete();
+        if (bean) {
+            WOTNewInformationModel_msg *dd = (WOTNewInformationModel_msg *)bean;
+            
+            [_dataSource addObject:dd.msg.space];
+            [_dataSource addObject:dd.msg.firm];
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+        
+    }];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

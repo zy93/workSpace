@@ -63,14 +63,21 @@ bool istags =  NO;
 
 
 -(void)configNav{
-    [self configNaviBackItem];
-    [self configNaviView:@"输入企业名或标签" block:^{
-        
-    }];
+    
+        [self configNaviBackItem];
+        [self configNaviView:@"输入企业名或标签" block:^{
+            
+        }];
+   
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+
     [self.navigationController.navigationBar setHidden:NO];
+  
+    
+   
     
 }
 -(NSArray<WOTEnterpriseModel *> *)dataSource{
@@ -192,7 +199,7 @@ bool istags =  NO;
     WOTTEnterpriseListCell *enterprisecell = [tableView dequeueReusableCellWithIdentifier:@"WOTTEnterpriseListCellID" forIndexPath:indexPath];
     enterprisecell.enterpriseName.text = _dataSource[indexPath.row].companyName;
     enterprisecell.enterpriseInfo.text = _dataSource[indexPath.row].companyProfile;
-    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_dataSource[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_logo"]];
+    [enterprisecell.enterpriseLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_dataSource[indexPath.row].companyPicture]] placeholderImage:[UIImage imageNamed:@"enterprise_default"]];
     enterprisecell.lineView.hidden = indexPath.row == _dataSource.count-1 ? YES:NO;
     return enterprisecell;
 }
@@ -206,7 +213,20 @@ bool istags =  NO;
 }
 
 
+-(void)getEnterpriseListDataFromWeb:(void(^)())complete{
     
+    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:55] response:^(id bean, NSError *error) {
+        complete();
+        if (bean) {
+            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            _dataSource = dd.msg;
+            [self.tableView reloadData];
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+    }];
+}
 
 
 

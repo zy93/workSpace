@@ -13,4 +13,5 @@
 #define UnInputFeedbackContentReminding @"请输入反馈意见"
 #define UnInputServiceContentReminding @"请输入完整信息"
 #define ServiceTypeNumLimitReminding @"最多只能选择6项"
+#define SubmitReminding @"提交成功"
 #endif /* WOTErrorMessageMacro_h */

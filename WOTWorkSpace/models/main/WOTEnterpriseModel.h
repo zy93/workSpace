@@ -21,6 +21,7 @@
 @property(nonatomic,strong)NSString *contacts;
 @property(nonatomic,strong)NSString *mailbox;
 @property(nonatomic,assign)NSNumber *peopleNum;
+@property(nonatomic,assign)NSNumber *companyState;
 @property(nonatomic,strong)NSNumber *spaceId;
 @property(nonatomic,strong)NSString *tel;
 @property(nonatomic,strong)NSString *spared1;

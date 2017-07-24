@@ -19,15 +19,15 @@
 @interface WOTMyVC ()<WOTOrderCellDelegate,WOTOMyCellDelegate>
 @property(nonatomic,strong)WOTSettingVC *settingvc;
 @property(nonatomic,strong)WOTPersionalInformation *persionalVC;
+
+
 @end
 
 @implementation WOTMyVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self configNaviBackItem];
-    [self setHidesBottomBarWhenPushed:YES];[self configNaviBackItem];
+
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
     [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
@@ -43,6 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
+     self.tabBarController.tabBar.translucent = YES;
     [self.navigationController.navigationBar setHidden:YES];
     [self.tableView reloadData];
 }
@@ -193,8 +194,12 @@
 }
 -(void)showMettingRoomOrderList{
     if ([WOTSingtleton shared].isuserLogin) {
-        WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
-        [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
+//        WOTReservationsMeetingVC *mettingroom_ordervc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTReservationsMeetingVC"];
+//        [self.navigationController pushViewController:mettingroom_ordervc animated:YES];
+        WOTOrderLIstVC *station_ordervc = [[WOTOrderLIstVC alloc]init];
+        station_ordervc.vctype = WOTPageMenuVCTypeMetting;
+        [self.navigationController pushViewController:station_ordervc animated:YES];
+        
     } else {
         [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
     }
@@ -224,7 +229,7 @@
    
 }
 
-/*
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

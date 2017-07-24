@@ -44,7 +44,7 @@
     self.industry = dic[@"industry"];
     self.spared1 = dic[@"spared1"];
     self.constellation = dic[@"constellation"];
-    
+     self.companyId = dic[@"companyId"];
 }
 
 -(void)saveUserInfoToPlist:(NSDictionary *)userinfo{

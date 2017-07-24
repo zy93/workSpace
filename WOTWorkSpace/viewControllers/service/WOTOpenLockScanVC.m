@@ -78,7 +78,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [self setCropRect:kScanRect];
-   
+   [self.navigationController.navigationBar setHidden:NO];
     [self performSelector:@selector(setupCamera) withObject:nil afterDelay:0.3];
     
 }
@@ -228,14 +228,16 @@
 
 
 - (IBAction)scanClick:(id)sender {
-      [((UIButton *)sender) setSelected:!((UIButton *)sender).isSelected];
-    _scanImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"scan_selected"]:[UIImage imageNamed:@"scan"];
+    
+    _scanImage.image = [UIImage imageNamed:@"scan_selected"];
+    _bluetoothImage.image = [UIImage imageNamed:@"bluetooth"];
     //TODO:二维码开门
 }
 
 - (IBAction)blueToothClick:(id)sender {
-    [((UIButton *)sender) setSelected:!((UIButton *)sender).isSelected];
-    _bluetoothImage.image = ((UIButton *)sender).isSelected ? [UIImage imageNamed:@"bluetooth_selected"]:[UIImage imageNamed:@"bluetooth"];
+   
+    _bluetoothImage.image = [UIImage imageNamed:@"bluetooth_selected"];
+    _scanImage.image = [UIImage imageNamed:@"scan"];
     
     //TODO:蓝牙开门
     

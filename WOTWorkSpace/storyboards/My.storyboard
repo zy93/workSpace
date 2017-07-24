@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哪个领域是你们的特长？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-A7-Rdo">
-                                <rect key="frame" x="97" y="35" width="180" height="19.5"/>
+                                <rect key="frame" x="97.5" y="35" width="180" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,13 +109,13 @@
                                 <rect key="frame" x="0.0" y="64" width="187" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入企业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keJ-nf-k3N">
-                                        <rect key="frame" x="69" y="19" width="69.5" height="21"/>
+                                        <rect key="frame" x="69.5" y="19" width="69.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1K2-GU-6ee">
-                                        <rect key="frame" x="44" y="19.5" width="20" height="20"/>
+                                        <rect key="frame" x="44.5" y="19.5" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="66g-VP-11a"/>
                                             <constraint firstAttribute="height" constant="20" id="mfA-TU-IFo"/>
@@ -145,13 +145,13 @@
                                 <rect key="frame" x="188" y="64" width="187" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建企业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvm-2A-S1e">
-                                        <rect key="frame" x="69" y="19" width="69.5" height="21"/>
+                                        <rect key="frame" x="69.5" y="19" width="69.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="create_enterprise" translatesAutoresizingMaskIntoConstraints="NO" id="eIt-3u-oGE">
-                                        <rect key="frame" x="44" y="19.5" width="20" height="20"/>
+                                        <rect key="frame" x="44.5" y="19.5" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="L28-rd-asd"/>
                                             <constraint firstAttribute="height" constant="20" id="en3-xO-e8b"/>

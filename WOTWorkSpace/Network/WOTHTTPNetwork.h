@@ -23,7 +23,7 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getMyHistoryFeedBackData:(NSNumber *)userId response:(response)response;
 +(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response;
 +(void)postFeedBackInfoWithContent:(NSString *)opinionContent spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId userName:(NSString *)userName tel:(NSString *)   tel response:(response)response;
-+(void)postServiceRequestWithDescribe:(NSString *)describe spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId facilitator_type:(NSString *)facilitator_type time:(NSDate   *)time  response:(response)response;
++(void)postServiceRequestWithDescribe:(NSString *)describe spaceId:(NSString *)spaceId userId:(NSString *)userId facilitatorType:(NSString *)facilitatorType facilitatorLabel:(NSString *)facilitatorLabel  response:(response)response;
 +(void)getAllServiceTypes:(response)response;
 +(void)getFlexSliderSouceInfo:(response)response;
 
@@ -76,4 +76,30 @@ typedef void(^response)(id bean,NSError *error);
  */
 +(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;
 
++(void)getUserActivitiseWithUserId:(NSNumber *)userId state:(NSString *)state response:(response)response;
+/**
+*我的--我的活动
+*/
++(void)getUserEnterpriseWithCompanyId:(NSString *)companyId  response:(response)response;
+
+
+/**
+ *我的--我的历史获取提交的历史服务需求
+ */
+
+
++(void)getDemandsWithUserId:(NSNumber *)userId response:(response)response;
+
+/**
+ *服务--提交保修申请
+ */
++(void)postRepairApplyWithUserId:(NSString *)userId type:(NSString *)type info:(NSString *)info appointmentTime:(NSString *)orderTime address:(NSString *)address file:(NSArray<UIImage *> *)file alias:(NSString *)alias  response:(response)response;
+
+
+/**
+ *我的历史--我的预约
+ */
+
+
++(void)getMyAppointmentWithUserId:(NSNumber *)userId   response:(response)response;
 @end

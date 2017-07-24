@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, WOTPageMenuVCType) {
 
 
 typedef NS_ENUM(NSInteger, WOT3DBallVCType) {
-    WOTEnterprise,
+    WOTEnterprise = 0,
     WOTBookStation,
     WOTReservationsMeeting,
     WOTOthers,

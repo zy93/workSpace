@@ -11,6 +11,11 @@
 @implementation WOTNewInformationModel
 
 @end
+
+@implementation WOTNewInformationModel_spacefirm
+
+
+@end
 @implementation WOTNewInformationModel_msg
 
 

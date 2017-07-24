@@ -29,8 +29,13 @@
 
 @end
 
+@interface WOTNewInformationModel_spacefirm : JSONModel
+@property(nonatomic,strong)NSArray<WOTNewInformationModel> *space;
+@property(nonatomic,strong)NSArray<WOTNewInformationModel> *firm;
+@end
+
 @interface WOTNewInformationModel_msg : JSONModel
 @property(nonatomic,strong)NSString *code;
 @property(nonatomic,strong)NSString *result;
-@property(nonatomic,strong)NSArray<WOTNewInformationModel> *msg;
+@property(nonatomic,strong)WOTNewInformationModel_spacefirm *msg;
 @end

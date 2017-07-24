@@ -9,7 +9,7 @@
 #import "WOTGETServiceViewController.h"
 #import "WOTServiceProvidersCategoryVC.h"
 
-@interface WOTGETServiceViewController ()
+@interface WOTGETServiceViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *describeText;
 @property (weak, nonatomic) IBOutlet UIButton *selectServiceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
@@ -23,10 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
+    _describeText.delegate  = self;
     [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
     [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
         [self.describeText resignFirstResponder];
+        self.describeText.textColor = LowTextColor;
+        self.describeText.text = @"请填写您的需求";
     };
+    [_describeText setCorenerRadius:10.0 borderColor:LowTextColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,13 +81,24 @@
         for (NSString *text in _selectServiceList) {
             dd = [NSString stringWithFormat:@"%@%@%@",dd,text,@","];
         }
-        [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:[[NSNumber alloc]initWithInt:55 ] userId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] facilitator_type:dd time:[NSDate date] response:^(id bean, NSError *error) {
-            
-        }];
+
+        
+//        [WOTHTTPNetwork postServiceRequestWithDescribe:[self.describeText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] spaceId:[@"55" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] userId:[[WOTUserSingleton currentUser].userId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorType:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorLabel:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] response:^(id bean, NSError *error) {
+//            
+//        }];
+        
+                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"  userId:[WOTUserSingleton currentUser].userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
+        
+                }];
+        
     }
    
 }
-
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    _describeText.textColor = Black;
+    _describeText.text = @"";
+    return YES;
+}
 /*
 #pragma mark - Navigation
 

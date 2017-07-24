@@ -8,17 +8,32 @@
 
 #import "WOTMyActivitiesBaseVC.h"
 #import "WOTMyActivitiesCell.h"
-@interface WOTMyActivitiesBaseVC ()
+#import "WOTActivityModel.h"
+@interface WOTMyActivitiesBaseVC (){
+    NSArray<WOTMyActivityModel *> *dataSource0;
+    NSArray<WOTActivityModel *> *dataSource1;
+}
+
 
 @end
 
 @implementation WOTMyActivitiesBaseVC
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+         _vctype = @"";
+        dataSource0 = [[NSArray alloc]init];
+        dataSource1 = [[NSArray alloc]init];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableHeaderView.backgroundColor = CLEARCOLOR;
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyActivitiesCell" bundle:nil] forCellReuseIdentifier:@"WOTMyActivitiesCellID"];
- 
+  
+    
     // Do any additional setup after loading the view.
 }
 
@@ -30,7 +45,12 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    if ([_vctype isEqualToString:@"0"]) {
+        return dataSource0.count;
+    } else {
+        return dataSource1.count;
+    }
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -38,12 +58,45 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTMyActivitiesCell *activityCell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyActivitiesCellID" forIndexPath:indexPath];
-    activityCell.activityTitle.text = @"单身交流会！！！";
-    activityCell.activityTime.text = @"07/11 15:00 -- 07/12 16:00";
-    activityCell.activityLocation.text = @"阳光100.优客工厂";
+    if ([_vctype isEqualToString:@"0"]) {
+        activityCell.activityTitle.text = dataSource0[indexPath.row].content.title;
+        activityCell.activityTime.text = [NSString stringWithFormat:@"%@---%@",dataSource0[indexPath.row].content.starTime,dataSource0[indexPath.row].content.endTime];
+        activityCell.activityLocation.text = dataSource0[indexPath.row].content.spared1;
+        [activityCell.activityBtn setTitle:dataSource0[indexPath.row].state forState:UIControlStateNormal];
+    } else {
+        activityCell.activityTitle.text = dataSource1[indexPath.row].title;
+        activityCell.activityTime.text = [NSString stringWithFormat:@"%@---%@",dataSource1[indexPath.row].starTime,dataSource1[indexPath.row].endTime];
+        activityCell.activityLocation.text = dataSource1[indexPath.row].spared1;
+        if ([_vctype isEqualToString:@"1"]) {
+            [activityCell.activityBtn setTitle:@"未开始" forState:UIControlStateNormal];
+        } else {
+            [activityCell.activityBtn setTitle:@"已结束" forState:UIControlStateNormal];
+        }
+        
+    }
+    
     return activityCell;
 
 }
+
+
+-(void)getActivityDataSourceFromWeb:(NSString *)state{
+    [[WOTUserSingleton currentUser]setValues];
+    
+    [WOTHTTPNetwork getUserActivitiseWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] state:state response:^(id bean, NSError *error) {
+        if ([_vctype isEqualToString:@"0"]) {
+            WOTMyActivityModel_msg *dd = (WOTMyActivityModel_msg *)bean;
+            dataSource0 = dd.msg;
+        } else {
+            WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
+            dataSource1 = dd.msg;
+        }
+        
+        
+        [self.tableView reloadData];
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

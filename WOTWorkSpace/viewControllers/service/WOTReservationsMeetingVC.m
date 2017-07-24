@@ -56,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.navigationController.navigationBar setHidden:NO];
     selectIndex = nil;
     [self createRequest];
@@ -72,9 +73,12 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+    
     self.navigationController.navigationBar.translucent = NO; //有个万恶的黑色
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.translucent = YES;
+}
 -(void)setupView
 {
     __weak typeof(self) weakSelf = self;

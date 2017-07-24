@@ -46,11 +46,10 @@
     WOTServiceNaviController *servicnav = [[WOTServiceNaviController alloc]initWithRootViewController:servicevc];
     servicnav.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"服务" image:[UIImage imageNamed:@"service"] selectedImage:[UIImage imageNamed:@"service_select"]];
     
-    WOTMyNaviController *myvc = [[WOTMyNaviController alloc]initWithRootViewController:[[WOTMyVC alloc]init]];
+//    WOTMyNaviController *myvc = [[WOTMyNaviController alloc]initWithRootViewController:[[UIStoryboard storyboardWithName:@"My" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTMyVCID"]];
+       WOTMyNaviController *myvc = [[WOTMyNaviController alloc]initWithRootViewController:[[WOTMyVC alloc]init]];
     myvc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我的" image:[UIImage imageNamed:@"my"] selectedImage:[UIImage imageNamed:@"my_select"]];
-    
-    
-   
+ 
     [vcarray addObject:mainnav];
     [vcarray addObject:socialnav];
     [vcarray addObject:servicnav];
@@ -60,7 +59,7 @@
 -(void)configTab{
    
     [self.tabBar setBackgroundImage:[UIImage imageNamed:@"fgcolor"]];
- 
+    
 }
 /*
 #pragma mark - Navigation

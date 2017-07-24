@@ -20,6 +20,10 @@
 @interface WOTMainAppleRepairVC ()<WOTPickerViewDataSource, WOTPickerViewDelegate,ZSImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource>{
 
     NSMutableArray *selectedPhotoArray;
+    NSString *repariType;
+    NSString *repairInfo;
+    NSString *repairTime;
+    NSString *repairLocation;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
@@ -45,8 +49,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
 - (IBAction)sunmitAction:(id)sender {
-    
+    [[WOTUserSingleton currentUser]setValues];
+    [selectedPhotoArray removeObjectAtIndex:0];
+    NSLog(@"%@",selectedPhotoArray[0]);
+    [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+       [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton currentUser].userId type:repariType info:repairInfo appointmentTime:repairTime address:repairLocation file:selectedPhotoArray alias:@"1" response:^(id bean, NSError *error) {
+           [hud setHidden:YES];
+           if (bean) {
+               [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   [self.navigationController popViewControllerAnimated:YES];
+               });
+           }
+           if (error) {
+                [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+           }
+           
+       }];
+    }];
     
 }
 
@@ -64,7 +90,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1) {
         
-        return (SCREEN_WIDTH-20)/4 * ceil(selectedPhotoArray.count*0.25) +70;
+        return (SCREEN_WIDTH-20)/3.5 * ceil(selectedPhotoArray.count*0.3) +70;
     } else {
         return 70;
     }
@@ -126,6 +152,7 @@
         [view handleButtonBlock:^(NSInteger btnTag, NSString *title) {
             WOTAppleRepairCommonCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
             cell.cellValue.text = title;
+            repariType = title;
         }];
     } else if (indexPath.row == 1 || indexPath.row == 3){
       
@@ -133,11 +160,18 @@
         vc.popVCWithEnterString = ^(NSString *enterString){
             WOTAppleRepairCommonCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
             cell.cellValue.text = enterString;
+            if (indexPath.row == 1){
+                repairInfo = enterString;
+            } else {
+                repairLocation = enterString;
+            }
+            
         };
         [self.navigationController pushViewController:vc animated:YES];
         
     } else if (indexPath.row == 2){
         _datepickerview.hidden  = NO;
+        
     }
 }
 
@@ -217,7 +251,9 @@
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日%ld时%ld分",year,month,day,hour,min);
-        
+        repairTime = [NSString stringWithFormat:@"%ld/%ld/%ld %ld:%ld:00",year,month,day,hour,min];
+        WOTAppleRepairCommonCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        cell.cellValue.text = repairTime;
     };
     
     [self.view addSubview:_datepickerview];

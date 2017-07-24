@@ -17,6 +17,7 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationItem setLeftBarButtonItem:backitem];
     [self.tabBarController.tabBar setHidden:YES];
+ 
 }
 
 

@@ -10,4 +10,7 @@
 #import "WOTEnterpriseModel.h"
 @interface WOTEnterpriseLIstVC : UIViewController
 @property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *dataSource;
+
+-(void)getEnterpriseListDataFromWeb:(void(^)())complete;
+
 @end

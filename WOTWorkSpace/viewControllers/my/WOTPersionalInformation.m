@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
-    [self setHidesBottomBarWhenPushed:YES];
+  
     self.tableView.backgroundColor = CLEARCOLOR;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self configNav];
@@ -48,7 +48,12 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return  12.5;
+    if (section == 0) {
+        return  0.01;
+    } else {
+        return  12.5;
+    }
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {

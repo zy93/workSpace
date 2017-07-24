@@ -27,5 +27,60 @@
             </objects>
             <point key="canvasLocation" x="89" y="181"/>
         </scene>
+        <!--Near CirclesVC-->
+        <scene sceneID="P9L-sv-QNX">
+            <objects>
+                <viewController storyboardIdentifier="WOTNearCirclesVCID" id="iCt-wy-DiJ" customClass="WOTNearCirclesVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0HM-LG-GCQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="44h-Sf-P8Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J8Y-y6-fRP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eGP-gn-2cB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iCt-wy-DiJ" id="hUY-xH-NNB"/>
+                                    <outlet property="delegate" destination="iCt-wy-DiJ" id="wPb-HL-Kj2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eGP-gn-2cB" firstAttribute="top" secondItem="J8Y-y6-fRP" secondAttribute="top" id="3EY-bX-8eI"/>
+                            <constraint firstItem="44h-Sf-P8Q" firstAttribute="top" secondItem="eGP-gn-2cB" secondAttribute="bottom" constant="54" id="ffJ-1Q-QJd"/>
+                            <constraint firstItem="eGP-gn-2cB" firstAttribute="leading" secondItem="J8Y-y6-fRP" secondAttribute="leading" id="mbj-nu-t3O"/>
+                            <constraint firstAttribute="trailing" secondItem="eGP-gn-2cB" secondAttribute="trailing" id="oUh-Y7-smG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="eGP-gn-2cB" id="ca0-Dp-uZD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jeD-dW-PUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="180"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RIw-iU-RiA">
+            <objects>
+                <viewController id="Wyg-mV-Rcq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="74t-m4-yT3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sp5-kn-CMG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQW-ws-0ow">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ut-Mx-eZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="181"/>
+        </scene>
     </scenes>
 </document>

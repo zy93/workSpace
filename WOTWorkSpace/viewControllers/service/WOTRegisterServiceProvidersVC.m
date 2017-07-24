@@ -173,15 +173,15 @@
         
     }
     else {
-        [[WOTUserSingleton currentUser]setValues];
-        [self registerService:[WOTUserSingleton currentUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
-            tel:tableInputDatadic[@"tel"]
-            facilitatorType:tableInputDatadic[@"facilitatorType"]
-             facilitatorState:tableInputDatadic[@"facilitatorState"]
-            firmLogo:enterpriseLogo];
         
-        
-        //提交
+            
+            [self registerService:[WOTUserSingleton currentUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
+                              tel:tableInputDatadic[@"tel"]
+                  facilitatorType:tableInputDatadic[@"facilitatorType"]
+                 facilitatorState:tableInputDatadic[@"facilitatorState"]
+                         firmLogo:enterpriseLogo];
+      
+
     }
     
 }
@@ -259,8 +259,24 @@
 -(void)registerService:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(UIImage *)firmLogo{
     
     NSArray<UIImage *> *aa = @[firmLogo];
-    [WOTHTTPNetwork registerServiceBusiness:userId firmName:firmName businessScope:businessScope contatcts:contatcts tel:tel facilitatorType:facilitatorType facilitatorState:facilitatorState firmLogo:aa response:^(id bean, NSError *error) {
+    
+    [[WOTUserSingleton currentUser]setValues];
+    [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         
+    [WOTHTTPNetwork registerServiceBusiness:userId firmName:firmName businessScope:businessScope contatcts:contatcts tel:tel facilitatorType:facilitatorType facilitatorState:facilitatorState firmLogo:aa response:^(id bean, NSError *error) {
+       
+        [hud setHidden: YES];
+        if (bean) {
+            [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+        }
+       
+    }];
     }];
 }
 /*

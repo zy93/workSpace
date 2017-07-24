@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
-    [self setHidesBottomBarWhenPushed:YES];
+    
     self.view.backgroundColor = MainColor;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
@@ -41,6 +41,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self configNaviBackItem];
     [self.navigationController.navigationBar setHidden:NO];
 }
 

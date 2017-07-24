@@ -10,5 +10,6 @@
 #import "WOTTableViewBaseVC.h"
 #import "WOTNewInformationModel.h"
 @interface WOTInformationListVC : WOTTableViewBaseVC
-@property(nonatomic,strong)NSArray<WOTNewInformationModel *> *dataSource;
+@property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *dataSource;
+-(void)getInfoDataFromWeb:(void(^)())complete;
 @end
