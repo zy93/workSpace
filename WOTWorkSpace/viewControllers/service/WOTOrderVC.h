@@ -18,6 +18,6 @@
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSString *endTime;
 
-@property (nonatomic, strong) WOTBookStationListModel *model;
+@property (nonatomic, strong) WOTBookStationListModel1 *model;
 
 @end

@@ -11,12 +11,11 @@
 //TODO:会议室列表Model
 
 
-@protocol WOTMeetingListModel
+@protocol WOTMeetingListModel1 <NSObject>
 
 @end
 
-
-@interface WOTMeetingListModel : JSONModel
+@interface WOTMeetingListModel1 : JSONModel
 
 @property (nonatomic, strong) NSNumber * conferenceId;
 @property (nonatomic, strong) NSString * conferenceName;
@@ -37,9 +36,9 @@
 @end
 
 
-@interface WOTMeetingListModel_msg:JSONModel
+@interface WOTMeetingListModel_msg1:JSONModel
 @property(nonatomic,strong)NSString *code;
 @property(nonatomic,strong)NSString *result;
-@property(nonatomic,strong)NSArray<WOTMeetingListModel> *msg;
+@property(nonatomic,strong)NSArray<WOTMeetingListModel1> *msg;
 
 @end

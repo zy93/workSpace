@@ -22,6 +22,7 @@
 #import "WOTMyHistoryDemandsModel.h"
 #import "WOTBookStationListModel.h"
 #import "WOTVisitorsModel.h"
+#import "WOTAppointmentModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -465,7 +466,7 @@
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conference/findBySpaceId"];
     NSDictionary *dic = @{@"spaceId":spaceid};
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
-        WOTMeetingListModel_msg *model = [[WOTMeetingListModel_msg alloc]initWithDictionary:responseobj error:nil];
+        WOTMeetingListModel_msg1 *model = [[WOTMeetingListModel_msg1 alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
