@@ -9,6 +9,7 @@
 #import "WOTJoiningEnterpriseVC.h"
 #import "WOTMyEnterPriseCell.h"
 #import "WOTEnterpriseModel.h"
+#import "WOTworkSpaceDetailVC.h"
 @interface WOTJoiningEnterpriseVC (){
     NSArray<WOTEnterpriseModel *> *endataSource;
 }
@@ -33,6 +34,9 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tabBarController.tabBar setHidden:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -57,7 +61,11 @@
     }
     return enterprisecell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/companyInfo.html";
+    [self.supervc.navigationController pushViewController:detailvc animated:YES];
+}
 -(void)getMyEnterpriseDataSourceFromWeb{
     [[WOTUserSingleton currentUser]setValues];
     [WOTHTTPNetwork getUserEnterpriseWithCompanyId:[WOTUserSingleton currentUser].companyId response:^(id bean, NSError *error) {

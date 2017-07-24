@@ -37,6 +37,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:YES];
 }
 -(void)configNavi{
     [self configNaviBackItem];
@@ -68,7 +69,7 @@
 -(void)loadScrollViewSubviews{
     _joinvc = [[WOTJoiningEnterpriseVC alloc]init];
     _joinvc.view.frame = CGRectMake(0, 0, self.scrollVIew.frame.size.width, self.scrollVIew.frame.size.height);
-
+    _joinvc.supervc = self;
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
     [self.scrollVIew addSubview:_joinvc.view];

@@ -74,7 +74,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/main/WOTworkSpaceLIstVC.m"
-                  timestampString = "522584829.443389"
+                  timestampString = "522587462.746968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "207"
@@ -89,7 +89,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/main/WOTworkSpaceLIstVC.m"
-                  timestampString = "522584829.446287"
+                  timestampString = "522587462.751954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
@@ -211,7 +211,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "522584829.461032"
+                  timestampString = "522587462.769178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -226,7 +226,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "522584829.463791"
+                  timestampString = "522587462.771055"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -269,7 +269,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "522584829.469243"
+                  timestampString = "522587462.775989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -284,7 +284,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "522584829.471443"
+                  timestampString = "522587462.777705"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "63"
@@ -366,38 +366,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WOTWorkSpace/viewControllers/main/WOTInformationListVC.m"
-            timestampString = "522575081.902827"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WOTWorkSpace/viewControllers/main/WOTMainVC.m"
-            timestampString = "522584250.710214"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
-            landmarkName = "-showNewInfoVC"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

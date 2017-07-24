@@ -10,6 +10,6 @@
 #import "WOTTableViewBaseVC.h"
 @interface WOTJoiningEnterpriseVC : WOTTableViewBaseVC
 
-
+@property(nonatomic,strong)UIViewController *supervc;
 @property(nonatomic,strong)NSMutableArray *dataSource;
 @end
