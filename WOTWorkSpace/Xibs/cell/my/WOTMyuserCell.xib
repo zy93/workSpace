@@ -59,10 +59,10 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boy" translatesAutoresizingMaskIntoConstraints="NO" id="hC7-wQ-kfb">
-                        <rect key="frame" x="175.5" y="165" width="17" height="18"/>
+                        <rect key="frame" x="175.5" y="166" width="17" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="17" id="GjS-mt-pdy"/>
-                            <constraint firstAttribute="height" constant="18" id="hff-pD-rIL"/>
+                            <constraint firstAttribute="height" constant="16" id="hff-pD-rIL"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-Ch-7As">

@@ -16,6 +16,7 @@
 #import "WOTLoginNaviController.h"
 #import "WOTOpenLockScanVC.h"
 #import "WOTSliderModel.h"
+#import "WOTworkSpaceDetailVC.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -147,9 +148,15 @@
 
 #pragma mark - SDCycleScroll delgate
 /** 点击图片回调 */
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
-{
+//MARK:SDCycleScrollView   Delegate  点击轮播图显示详情
+-(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
+    
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = _sliderUrlStrings[index];
+    [self.navigationController pushViewController:detailvc animated:YES];
+    
+    NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
 }
 
 #pragma mark - cell delegate
@@ -288,7 +295,9 @@
             for (WOTSliderModel *slider in dd.msg) {
                 [_imageUrlStrings addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,slider.image]];
                 [_imageTitles addObject:slider.headline];
-                [_sliderUrlStrings addObject:slider.url];
+                if ([slider.url hasPrefix:@"http"] == NO) {
+                    [_sliderUrlStrings addObject:[NSString stringWithFormat:@"%@%@",@"http://",slider.url]];
+                }
             }
             complete();
             
