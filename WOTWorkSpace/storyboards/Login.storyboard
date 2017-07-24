@@ -85,8 +85,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-LF-aly">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-LF-aly">
                                 <rect key="frame" x="50" y="120" width="275" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="Iab-xA-k0Q"/>
+                                    <constraint firstAttribute="height" constant="40" id="h8h-OA-Mev"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-XU-pQi">
                                 <rect key="frame" x="111" y="204" width="232" height="32"/>
@@ -146,8 +150,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="clickLoginBtn:" destination="c58-1Y-X1a" eventType="touchUpInside" id="7FU-aw-mAN"/>
-                                    <action selector="clickRegisterBtn:" destination="c58-1Y-X1a" eventType="touchUpInside" id="Xif-Ub-Akn"/>
+                                    <action selector="clickRegisterBtn:" destination="c58-1Y-X1a" eventType="touchUpInside" id="HXm-KG-jM1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -209,7 +212,7 @@
                         <outlet property="forgetPasswordBtn" destination="14Y-C1-l3k" id="bhN-mo-ZOn"/>
                         <outlet property="loginBtn" destination="zrd-ct-rfa" id="ZBB-A6-zeJ"/>
                         <outlet property="passwordText" destination="1hD-tY-uCl" id="We8-8O-Hgv"/>
-                        <outlet property="registerBtn" destination="KYZ-rH-G6X" id="RHK-tn-OSt"/>
+                        <outlet property="registerBtn" destination="KYZ-rH-G6X" id="j8q-vP-OYG"/>
                         <outlet property="showPasswordBtn" destination="2fo-G7-AmS" id="6El-jA-ylX"/>
                     </connections>
                 </viewController>
@@ -516,6 +519,6 @@
     <resources>
         <image name="backAcssory" width="7" height="13"/>
         <image name="eye_icon" width="20" height="9"/>
-        <image name="logo" width="275" height="40"/>
+        <image name="icon_" width="794" height="240"/>
     </resources>
 </document>
