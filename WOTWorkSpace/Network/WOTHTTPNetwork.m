@@ -369,6 +369,22 @@
 
 
 /**
+ *获取服务页面轮播图资源数据
+ */
++(void)getServeSliderSouceInfo:(response)response{
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findByServe"];
+    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+        WOTSliderModel_msg *model = [[WOTSliderModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
+
+/**
  *获取我的历史--反馈列表数据
  */
 

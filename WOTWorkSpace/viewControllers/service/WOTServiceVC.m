@@ -15,6 +15,7 @@
 #import "WOTLoginVC.h"
 #import "WOTLoginNaviController.h"
 #import "WOTOpenLockScanVC.h"
+#import "WOTSliderModel.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -27,7 +28,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableHeight;
 
-
+@property (nonatomic,strong) NSMutableArray *imageUrlStrings;
+@property (nonatomic,strong) NSMutableArray *imageTitles;
+@property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 
 
@@ -40,7 +43,9 @@
     [self configNav];
     [self loadAutoScrollView];
     [self addData];
-    
+    [self getSliderDataSource:^{
+        [self loadAutoScrollView];
+    }];
  
     
     
@@ -75,6 +80,27 @@
     }
 }
 
+- (NSMutableArray *)imageUrlStrings {
+    if (_imageUrlStrings == nil) {
+        _imageUrlStrings = [NSMutableArray array];
+    }
+    return _imageUrlStrings;
+}
+
+- (NSMutableArray *)imageTitles {
+    if (_imageTitles == nil) {
+        _imageTitles = [NSMutableArray array];
+    }
+    return _imageTitles;
+}
+
+- (NSMutableArray *)sliderUrlStrings {
+    if (_sliderUrlStrings == nil) {
+        _sliderUrlStrings = [NSMutableArray array];
+    }
+    return _sliderUrlStrings;
+}
+
 -(void)addData
 {
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
@@ -89,24 +115,12 @@
 
 #pragma mark - setup View
 -(void)loadAutoScrollView{
-    NSArray *imagesURLStrings = @[
-                                  @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
-                                  @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
-                                  @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
-                                  ];
+ 
     
-    // 图片配文字
-    NSArray *titles = @[@"物联港科技",
-                        @"物联港科技",
-                        @"物联港科技",
-                        @"物联港科技"
-                        ];
-    
-    
-    self.autoScrollView.imageURLStringsGroup = imagesURLStrings;
+    self.autoScrollView.imageURLStringsGroup = _imageUrlStrings;
     self.autoScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     self.autoScrollView.delegate = self;
-    self.autoScrollView.titlesGroup = titles;
+    self.autoScrollView.titlesGroup = _imageTitles;
     self.autoScrollView.currentPageDotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
     self.autoScrollView.placeholderImage = [UIImage imageNamed:@"placeholder"];
     
@@ -241,6 +255,47 @@
         }
     }
 }
+
+-(void)getSliderDataSource:(void(^)())complete{
+    [WOTHTTPNetwork getServeSliderSouceInfo:^(id bean, NSError *error) {
+        if (error) {
+            [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+            _imageUrlStrings = [[NSMutableArray alloc]initWithArray:@[
+                                                                      @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
+                                                                      @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
+                                                                      @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+                                                                      @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+                                                                      @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
+                                                                      ]];
+            
+            // 图片配文字
+            _imageTitles = [[NSMutableArray alloc]initWithArray:            @[@"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技",
+                                                                              @"物联港科技"
+                                                                              ]];
+            
+            
+            
+        }
+        if (bean) {
+            
+            WOTSliderModel_msg *dd = (WOTSliderModel_msg *)bean;
+            _imageTitles = [[NSMutableArray alloc]init];
+            _imageUrlStrings = [[NSMutableArray alloc]init];
+            _sliderUrlStrings = [[NSMutableArray alloc]init];
+            for (WOTSliderModel *slider in dd.msg) {
+                [_imageUrlStrings addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,slider.image]];
+                [_imageTitles addObject:slider.headline];
+                [_sliderUrlStrings addObject:slider.url];
+            }
+            complete();
+            
+        }
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

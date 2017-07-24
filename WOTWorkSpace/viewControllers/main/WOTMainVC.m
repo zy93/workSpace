@@ -469,7 +469,7 @@
 - (IBAction)showActivityDetail:(id)sender {
     
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/activity.html";
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -477,7 +477,7 @@
 //new information section imageClick 
 - (IBAction)showInfoDetail:(id)sender {
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/news1.html";
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -570,7 +570,7 @@
         }
         if (bean) {
          
-            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            WOTSliderModel_msg *dd = (WOTSliderModel_msg *)bean;
             _imageTitles = [[NSMutableArray alloc]init];
             _imageUrlStrings = [[NSMutableArray alloc]init];
             _sliderUrlStrings = [[NSMutableArray alloc]init];

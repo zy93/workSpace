@@ -179,7 +179,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = @"www.yiliangang.net:8012/makerSpace/spaceInfo.html";
     [self.navigationController pushViewController:detailvc animated:YES];
 }
 //切换城市headerview 点击更多action
