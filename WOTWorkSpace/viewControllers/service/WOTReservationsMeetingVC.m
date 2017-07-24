@@ -137,6 +137,11 @@
 -(void)selectSpace:(UIButton *)sender
 {
     WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    __weak typeof(self) weakSelf = self;
+    vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
+        weakSelf.spaceId = spaceId;
+        weakSelf.spaceName = spaceName;
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
 

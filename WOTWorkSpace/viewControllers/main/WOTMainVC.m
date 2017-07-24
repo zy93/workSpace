@@ -565,8 +565,8 @@
             WOTActivityModel_msg *dd = (WOTActivityModel_msg *)bean;
             _activitydataSource = dd.msg;
             if (_activitydataSource.count>0) {
-                if ([_activitydataSource[3].pictureSite separatedWithString:@","].count !=0 ) {
-                    _activityImageUrl = [_activitydataSource[3].pictureSite separatedWithString:@","][0];
+                if ([_activitydataSource[0].pictureSite separatedWithString:@","].count !=0 ) {
+                    _activityImageUrl = [_activitydataSource[0].pictureSite separatedWithString:@","][0];
                     
                     [_activityImage sd_setImageWithURL:[_activityImageUrl ToUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
                     

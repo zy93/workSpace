@@ -29,7 +29,7 @@ typedef void(^response)(id bean,NSError *error);
 
 
 
-
++(void)visitorAppointmentWithVisitorName:(NSString *)name headPortrait:(UIImage *)head sex:(NSString *)sex papersType:(NSNumber *)papersType papersNumber:(NSString *)papersNumber tel:(NSString *)tel spaceId:(NSNumber *)spaceId accessType:(NSNumber*)accessType userName:(NSString *)userName visitorInfo:(NSString*)visitorInfo peopleNum:(NSNumber*)peopleNum visitTime:(NSString*)time response:(response)response;
 
 
 

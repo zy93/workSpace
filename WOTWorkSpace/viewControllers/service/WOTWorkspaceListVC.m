@@ -154,8 +154,9 @@
     NSArray *modelList = tableDic[key];
     
     WOTSpaceModel *model = modelList[indexPath.row];
-    UIViewController *vc = [(WOTBaseNavigationController*)self.navigationController getPreviousViewController];
-    ((WOTReservationsMeetingVC*)vc).spaceId = model.spaceId;
+    if (self.selectSpaceBlock) {
+        self.selectSpaceBlock(model.spaceId, model.spaceName);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

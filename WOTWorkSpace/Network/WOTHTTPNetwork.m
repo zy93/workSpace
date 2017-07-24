@@ -20,6 +20,7 @@
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
 #import "WOTBookStationListModel.h"
+#import "WOTVisitorsModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -361,6 +362,52 @@
     }];
     
 }
+
+
+
++(void)visitorAppointmentWithVisitorName:(NSString *)name headPortrait:(UIImage *)head sex:(NSString *)sex papersType:(NSNumber *)papersType papersNumber:(NSString *)papersNumber tel:(NSString *)tel spaceId:(NSNumber *)spaceId accessType:(NSNumber *)accessType userName:(NSString *)userName visitorInfo:(NSString *)visitorInfo peopleNum:(NSNumber *)peopleNum visitTime:(NSString *)time response:(response)response
+{
+    NSDictionary *dic = @{
+                          @"visitorName":name,
+                          @"sex":sex,
+                          @"papersType":papersType,
+                          @"papersNum":papersNumber,
+                          @"visitorTel":tel,
+                          @"spaceId":spaceId,
+                          @"accessType":accessType,
+                          @"userName":userName,
+                          @"visitInfo":visitorInfo,
+                          @"peopleNum":peopleNum,
+                          @"visitTime":time,
+                        };
+    
+    NSArray *heads = nil;
+    
+    if (head) {
+        heads = @[head];
+    }
+    
+    NSString *registerurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Visitor/addVisitorOrUpdate"];
+    
+    [self doFileRequestWithParameters:dic useUrl:registerurl image:heads complete:^JSONModel *(id responseobj) {
+        NSError *error = nil;
+        WOTVisitorsModel *model = [[WOTVisitorsModel alloc] initWithDictionary:responseobj error:&error];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        response(nil, nil);
+    }];
+    
+}
+
+
+
+
+
+
+
+
+
+
 /****************           Service        ****************************/
 #pragma mark - Service
 +(void)getMeetingRoomListWithSpaceId:(NSNumber *)spaceid response:(response)response
