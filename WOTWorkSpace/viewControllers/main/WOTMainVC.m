@@ -259,7 +259,7 @@
         }];
     }];
 //    WOT3DBallVCType balltype = [[[WOTEnumUtils alloc]init] Wot3DballVCtypeenumToString:[WOTSingtleton shared].ballTitle[sender.tag]];
-   
+
     switch (sender.tag) {
         case 0:
            //资讯
@@ -290,34 +290,19 @@
              [self pushToViewControllerWithStoryBoardName:@"spaceMain" viewControllerName:@"WOTActivitiesLIstVCID"];
             break;
         case 6:
-            //预定场地
-             [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
-            break;
-        case 7:
-            //企业介绍
-             [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
-            break;
-        case 8:
+         
             //访客
              [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTVisitorsAppointmentVC"];
             break;
-        case 9:
-            //精选
-            [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
-            break;
-        case 10:
+        case 7:
             //一键报修
              [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTMainAppleRepairVCID"];
             break;
-        case 11:
+        case 8:
             //一键反馈
              [self pushToViewControllerWithStoryBoardName:@"Service" viewControllerName:@"WOTFeedbackVC"];
             break;
-        case 12:
-            //集市
-            [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
-            break;
-
+       
             
         default:
             break;
@@ -469,7 +454,7 @@
 - (IBAction)showActivityDetail:(id)sender {
     
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/activity.html";
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -477,7 +462,7 @@
 //new information section imageClick 
 - (IBAction)showInfoDetail:(id)sender {
     WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = @"http://219.143.170.100:8012/makerSpace/activity.html";
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/news1.html";
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -526,6 +511,11 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/companyInfo.html";
+    [self.navigationController pushViewController:detailvc animated:YES];
+}
 -(void)showNewInfoVC{
     WOTInformationListVC *infovc = [[WOTInformationListVC alloc]init];
     infovc.dataSource = _infodataSource;
@@ -570,14 +560,17 @@
         }
         if (bean) {
          
-            WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
+            WOTSliderModel_msg *dd = (WOTSliderModel_msg *)bean;
             _imageTitles = [[NSMutableArray alloc]init];
             _imageUrlStrings = [[NSMutableArray alloc]init];
             _sliderUrlStrings = [[NSMutableArray alloc]init];
             for (WOTSliderModel *slider in dd.msg) {
                 [_imageUrlStrings addObject:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,slider.image]];
                 [_imageTitles addObject:slider.headline];
-                [_sliderUrlStrings addObject:slider.url];
+                if ([slider.url hasPrefix:@"http"] == NO) {
+                    [_sliderUrlStrings addObject:[NSString stringWithFormat:@"%@%@",@"http://",slider.url]];
+                }
+                
             }
             complete();
             

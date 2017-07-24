@@ -75,10 +75,7 @@ bool istags =  NO;
 -(void)viewWillAppear:(BOOL)animated{
 
     [self.navigationController.navigationBar setHidden:NO];
-  
-    
-   
-    
+ 
 }
 -(NSArray<WOTEnterpriseModel *> *)dataSource{
     if (_dataSource == nil) {

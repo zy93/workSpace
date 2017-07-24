@@ -21,7 +21,18 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState response:(response)response;
 +(void)getEnterprisesWithSpaceId:(NSNumber *)spaceid response:(response)response;
 +(void)getAllNewInformation:(response)response;
+
+/**
+ *获取首页页面轮播图资源数据
+ */
+
 +(void)getHomeSliderSouceInfo:(response)response;
+
+/**
+ *获取服务页面轮播图资源数据
+ */
++(void)getServeSliderSouceInfo:(response)response;
+
 +(void)getMyHistoryFeedBackData:(NSNumber *)userId response:(response)response;
 +(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response;
 +(void)postFeedBackInfoWithContent:(NSString *)opinionContent spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId userName:(NSString *)userName tel:(NSString *)   tel response:(response)response;

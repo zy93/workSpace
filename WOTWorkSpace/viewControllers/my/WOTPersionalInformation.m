@@ -105,8 +105,8 @@
             [cell.valueImage sd_setImageWithURL:[@"" ToUrl] placeholderImage:[[WOTUserSingleton currentUser].sex isEqualToString:@"man"] ? [UIImage imageNamed:@"boy_blue"]:[UIImage imageNamed:@"girl_blue"]];
         }
         
-        cell.imageWidth.constant = indexPath.row==0 ? 50:28;
-        cell.imageHeight.constant = indexPath.row==0 ? 50:28;
+        cell.imageWidth.constant = indexPath.row==0 ? 50:60;
+        cell.imageHeight.constant = indexPath.row==0 ? 50:18;
         if (indexPath.row == 0 || indexPath.row == 2) {
             [cell.valueLabel setHidden:YES];
             [cell.valueImage setHidden:NO];
@@ -128,7 +128,7 @@
             
             WOTPersionalInformationTagCell *tagcell = [tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationTagCellID" forIndexPath:indexPath];
             tagcell.titleLabel.text = titleArray[indexPath.row];
-            tagcell.tagLabelArray = @[@"移动开发",@"移动测试",@"美食",@"摄影"];
+            tagcell.tagLabelArray = indexPath.row == 0? @[@"移动开发",@"移动测试"]: @[@"美食",@"摄影",@"绘画",@"插画"];
             [[WOTConfigThemeUitls shared] loadtagsBtn:tagcell.tagLabelArray superView:tagcell.tagsVIew];
             commoncell = tagcell;
             
