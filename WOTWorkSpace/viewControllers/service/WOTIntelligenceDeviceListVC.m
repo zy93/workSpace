@@ -9,6 +9,8 @@
 #import "WOTIntelligenceDeviceListVC.h"
 #import "WOTAirconditioningCell.h"
 #import "WOTInteligenceDeviceCommonCell.h"
+#import "WOTCurtainCell.h"
+#import "WOTLightCell.h"
 @interface WOTIntelligenceDeviceListVC ()<UITableViewDelegate,UITableViewDataSource,WOTAirconditioningDelegate>{
     BOOL airConditionOpen;
     BOOL curtainsOpen;
@@ -26,6 +28,8 @@
     [super viewDidLoad];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTAirconditioningCell" bundle:nil] forCellReuseIdentifier:@"WOTAirconditioningCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTInteligenceDeviceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTInteligenceDeviceCommonCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"WOTCurtainCell" bundle:nil] forCellReuseIdentifier:@"WOTCurtainCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"WOTLightCell" bundle:nil] forCellReuseIdentifier:@"WOTLightCell"];
     airConditionOpen = NO;
     curtainsOpen = NO;
     lightOpen = NO;
@@ -66,12 +70,12 @@
             if (indexPath.row == 0) {
                   return airConditionOpen?350:60;
             } else {
-                  return curtainsOpen?250:60;
+                  return 250;
             }
           
             break;
         case 1:
-            return lightOpen?200:60;
+            return 200;
             break;
         case 2:
             return 60;
@@ -101,8 +105,8 @@
             aircell.delegate = self;
             commoncell = aircell;
         } else {
-            WOTAirconditioningCell *aircell = [tableView dequeueReusableCellWithIdentifier:@"WOTAirconditioningCellID" forIndexPath:indexPath];
-            commoncell = aircell;
+           WOTCurtainCell  *cutaincell = [tableView dequeueReusableCellWithIdentifier:@"WOTCurtainCell" forIndexPath:indexPath];
+            commoncell = cutaincell;
         }
             
     } else if (indexPath.section == 2) {
@@ -112,10 +116,10 @@
         cell.cellTitle.text = @[@"1号插座",@"2号插座"][indexPath.row];
         commoncell = cell;
     } else if (indexPath.section == 1) {
-        WOTInteligenceDeviceCommonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTInteligenceDeviceCommonCellID" forIndexPath:indexPath];
-        cell.cellImage.image = [UIImage imageNamed:@"lights"];
-        cell.cellTitle.text = @[@"1号灯",@"2号灯"][indexPath.row];
-        commoncell = cell;
+        WOTLightCell *lightCell = [tableView dequeueReusableCellWithIdentifier:@"WOTLightCell" forIndexPath:indexPath];
+        lightCell.iconImg.image = [UIImage imageNamed:@"lights"];
+        lightCell.titleLab.text = @[@"1号灯",@"2号灯"][indexPath.row];
+        commoncell = lightCell;
     }
     return  commoncell;
 }
@@ -125,7 +129,7 @@
 */
 -(void)switchChangeState:(BOOL)switchState{
     airConditionOpen = switchState;
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
 }
  

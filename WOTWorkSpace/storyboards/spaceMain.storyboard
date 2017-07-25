@@ -26,14 +26,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSz-Ke-nyz" customClass="SDCycleScrollView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="69w-7C-ynJ"/>
+                                            <constraint firstAttribute="height" constant="210" id="69w-7C-ynJ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYh-Er-sLD">
-                                        <rect key="frame" x="0.0" y="182" width="375" height="424"/>
+                                        <rect key="frame" x="0.0" y="212" width="375" height="424"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
                                                 <rect key="frame" x="-2" y="-2" width="379" height="428"/>
@@ -49,7 +49,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-Cg-Xxw" userLabel="workspace">
-                                        <rect key="frame" x="0.0" y="626" width="375" height="230"/>
+                                        <rect key="frame" x="0.0" y="656" width="375" height="230"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTL-1P-dlz">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -94,7 +94,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asL-0x-wIO">
-                                        <rect key="frame" x="0.0" y="1206" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="1236" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-r9-LOu">
                                                 <rect key="frame" x="20" y="5" width="3" height="20"/>
@@ -168,7 +168,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-Nx-AkA">
-                                        <rect key="frame" x="0.0" y="866" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="896" width="375" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-GB-uLK">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -213,7 +213,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-LE-hiG">
-                                        <rect key="frame" x="0.0" y="1016" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="1046" width="375" height="180"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-k9-KBE">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
