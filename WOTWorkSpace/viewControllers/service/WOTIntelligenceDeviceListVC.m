@@ -70,13 +70,14 @@
         case 0:
             if (indexPath.row == 0) {
                   return airConditionOpen?350:60;
-            } else {
-                  return 250;
+            } else if (indexPath.row == 2){
+                  return 190;
             }
+            else return 200;
           
             break;
         case 1:
-            return 200;
+            return 175;
             break;
         case 2:
             return 60;
