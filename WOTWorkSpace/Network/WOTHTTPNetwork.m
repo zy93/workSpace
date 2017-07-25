@@ -25,6 +25,7 @@
 #import "WOTAppointmentModel.h"
 #import "WOTGetVerifyModel.h"
 #import "WOTRegisterModel.h"
+#import "WOTBusinessModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -490,6 +491,9 @@
     [self doFileRequestWithParameters:dic useUrl:registerurl image:heads complete:^JSONModel *(id responseobj) {
         NSError *error = nil;
         WOTVisitorsModel *model = [[WOTVisitorsModel alloc] initWithDictionary:responseobj error:&error];
+        if (response) {
+            response(model, nil);
+        }
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         response(nil, nil);
@@ -499,7 +503,34 @@
 
 
 
-
++(void)addBusinessWithLogo:(UIImage *)logo name:(NSString *)name type:(NSString *)type contactName:(NSString *)contactName contactTel:(NSString *)contactTel contactEmail:(NSString *)email response:(response)response
+{
+    NSDictionary *dic = @{
+                          @"companyName":name,
+                          @"companyType":type,
+                          @"contacts":contactName,
+                          @"tel":contactTel,
+                          @"mailbox":email,
+                          };
+    
+    NSArray *companyPictures = nil;
+    
+    if (logo) {
+        companyPictures = @[logo];
+    }
+    
+    NSString *registerurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/CompanyInfo/addCompanyInfo"];
+    
+    [self doFileRequestWithParameters:dic useUrl:registerurl image:companyPictures complete:^JSONModel *(id responseobj) {
+        WOTBusinessModel *model = [[WOTBusinessModel alloc] initWithDictionary:responseobj error:nil];
+        if (response) {
+            response(model,nil);
+        }
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        response(nil, error);
+    }];
+}
 
 
 

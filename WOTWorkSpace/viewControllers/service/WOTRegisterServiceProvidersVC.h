@@ -11,5 +11,6 @@
 @interface WOTRegisterServiceProvidersVC : UIViewController
 
 @property (nonatomic, strong) NSArray *selectServiceList;
-
+@property (nonatomic, strong) NSNumber *spaceId;
+@property (nonatomic, strong) NSString *spaceName;
 @end

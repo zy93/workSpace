@@ -8,6 +8,7 @@
 
 #import "WOTRegisterServiceProvidersVC.h"
 #import "WOTServiceProvidersCategoryVC.h"
+#import "WOTWorkspaceListVC.h"
 #import "WOTRegisterServiceProvidersCell.h"
 #import "WOTSubmitRegisterServiceCell.h"
 #import "WOTPhotosBaseUtils.h"
@@ -71,10 +72,19 @@
             }
             tableInputDatadic[@"facilitatorType"] = enterpriseTypeString;
             
-            [tableInputDatadic setValue:[[NSNumber alloc]initWithInt:1] forKey:@"facilitatorState"];
+            [tableInputDatadic setValue:[[NSNumber alloc]initWithInt:0] forKey:@"facilitatorState"];
             [_table reloadData];
         };
         
+    }
+    else if ([vcName isEqualToString:@"WOTWorkspaceListVC"]){
+        __weak typeof(self) weakSelf = self;
+        WOTWorkspaceListVC *lc = (WOTWorkspaceListVC*)vc;
+        lc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
+            weakSelf.spaceId = spaceId;
+            weakSelf.spaceName = spaceName;
+            [weakSelf.table reloadData];
+        };
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -131,6 +141,9 @@
             if (indexPath.row == 5) {
                 cell.contentText.text = enterpriseTypeString;
             }
+            else if (self.spaceName) {
+                cell.contentText.text = self.spaceName;
+            }
             
             [cell.contentText setHidden:NO];
             [cell.iconImg setHidden:YES];
@@ -146,7 +159,7 @@
        
         return cell;
     }
-    else {
+    else{
         WOTSubmitRegisterServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTSubmitRegisterServiceCell"];
         if (cell == nil) {
             cell = [[WOTSubmitRegisterServiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTSubmitRegisterServiceCell"];
@@ -161,20 +174,24 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        if (indexPath.row==5 || indexPath.row==6) {
-            [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
-        }if (indexPath.row == 0) {
+        if (indexPath.row == 0) {
             WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
             photo.onlyOne = YES;
             photo.vc = self;
             
             [photo showSelectedPhotoSheet];
         }
+        else if (indexPath.row==5)
+        {
+            [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
+        }
+        else if (indexPath.row == 6) {
+            [self pushVCByVCName:@"WOTWorkspaceListVC"];
+        }
+        
         
     }
     else {
-        
-            
             [self registerService:[WOTUserSingleton currentUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
                               tel:tableInputDatadic[@"tel"]
                   facilitatorType:tableInputDatadic[@"facilitatorType"]

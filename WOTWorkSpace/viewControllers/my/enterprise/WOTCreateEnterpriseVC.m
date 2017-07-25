@@ -11,6 +11,7 @@
 #import "WOTEnterpriseTypeVC.h"
 #import "WOTEnterpriseConnectsInfoVC.h"
 #import "WOTPhotosBaseUtils.h"
+#import "WOTBusinessModel.h"
 @interface WOTCreateEnterpriseVC ()<UITextFieldDelegate,UIImagePickerControllerDelegate>
 @property(nonatomic,strong)NSArray *tableViewTitles;
 @property(nonatomic,strong)UIView *maskView;
@@ -55,7 +56,47 @@
 -(void)rightItemAction{
     //TODO:调用接口保存企业信息
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (strIsEmpty(_enterpriseConntects)) {
+        [MBProgressHUDUtil showMessage:@"请填写企业名称" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(_enterpriseType)) {
+        [MBProgressHUDUtil showMessage:@"请选择企业类型" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(_connectvc.nameTextfield.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入联系人姓名" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(_connectvc.telTextfield.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入联系人电话" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(_connectvc.emailTextfield.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入联系人邮箱" toView:self.view];
+        return;
+    }
+    
+    
+    [MBProgressHUDUtil showLoadingWithMessage:@"请稍后" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [WOTHTTPNetwork addBusinessWithLogo:_enterpriseLogo name:_enterpriseConntects type:_enterpriseType contactName:_connectvc.nameTextfield.text contactTel:_connectvc.telTextfield.text contactEmail:_connectvc.emailTextfield.text response:^(id bean, NSError *error) {
+            WOTBusinessModel*model;
+            
+            if (bean) {
+                model = (WOTBusinessModel*)bean;
+            }
+            if (model.code.integerValue==200) {
+                [hud setLabelText:@"信息已提交，请等待管理人员审核"];
+                [hud hide:YES afterDelay:2.f];
+            }
+            else {
+            }
+            
+        }];
+    }];
+    
+    
+    
 }
 
 
