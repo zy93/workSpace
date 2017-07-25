@@ -10,10 +10,11 @@
 #import "SDCycleScrollView.h"
 #import "ZYQSphereView.h"
 #import "WOTSpaceModel.h"
+#import "WOTShortcutMenuView.h"
 @interface WOTMainVC : UIViewController
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 
-@property (weak, nonatomic) IBOutlet UIView *ballView;
+@property (weak, nonatomic) IBOutlet WOTShortcutMenuView *ballView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVIew;
 @property (nonatomic, strong) NSMutableArray<WOTSpaceModel *> *spacePageViewDataSource;

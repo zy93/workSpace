@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,24 +32,15 @@
                                             <constraint firstAttribute="height" constant="210" id="69w-7C-ynJ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYh-Er-sLD">
-                                        <rect key="frame" x="0.0" y="212" width="375" height="424"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ballBg" translatesAutoresizingMaskIntoConstraints="NO" id="VXj-Q4-Y04">
-                                                <rect key="frame" x="-2" y="-2" width="379" height="428"/>
-                                            </imageView>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYh-Er-sLD" customClass="WOTShortcutMenuView">
+                                        <rect key="frame" x="0.0" y="212" width="375" height="190"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="VXj-Q4-Y04" secondAttribute="bottom" constant="-2" id="8kB-e8-BDK"/>
-                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="leading" secondItem="FYh-Er-sLD" secondAttribute="leading" constant="-2" id="9T5-f8-iPb"/>
-                                            <constraint firstAttribute="height" constant="424" id="I2D-K4-m5z"/>
-                                            <constraint firstAttribute="trailing" secondItem="VXj-Q4-Y04" secondAttribute="trailing" constant="-2" id="aOV-BD-QGa"/>
-                                            <constraint firstItem="VXj-Q4-Y04" firstAttribute="top" secondItem="FYh-Er-sLD" secondAttribute="top" constant="-2" id="cnF-IK-IMt"/>
+                                            <constraint firstAttribute="height" constant="190" id="I2D-K4-m5z"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-Cg-Xxw" userLabel="workspace">
-                                        <rect key="frame" x="0.0" y="656" width="375" height="230"/>
+                                        <rect key="frame" x="0.0" y="422" width="375" height="230"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTL-1P-dlz">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -94,7 +85,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asL-0x-wIO">
-                                        <rect key="frame" x="0.0" y="1236" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="1002" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-r9-LOu">
                                                 <rect key="frame" x="20" y="5" width="3" height="20"/>
@@ -168,7 +159,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-Nx-AkA">
-                                        <rect key="frame" x="0.0" y="896" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="662" width="375" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-GB-uLK">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -213,7 +204,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-LE-hiG">
-                                        <rect key="frame" x="0.0" y="1046" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="812" width="375" height="180"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-k9-KBE">
                                                 <rect key="frame" x="15" y="5" width="3" height="20"/>
@@ -307,7 +298,7 @@
                         <outlet property="activityImage" destination="Z3D-t0-le7" id="Fov-fj-kau"/>
                         <outlet property="activityView" destination="heX-LE-hiG" id="d6T-Kf-gaS"/>
                         <outlet property="autoScrollView" destination="HSz-Ke-nyz" id="Olt-FQ-o0T"/>
-                        <outlet property="ballView" destination="FYh-Er-sLD" id="FIS-y8-eKV"/>
+                        <outlet property="ballView" destination="FYh-Er-sLD" id="Ich-oC-WPV"/>
                         <outlet property="enterpriseView" destination="7nj-Nx-AkA" id="pON-88-kyz"/>
                         <outlet property="infoImage" destination="sAP-1O-1Ym" id="lrY-2r-6g6"/>
                         <outlet property="informationView" destination="asL-0x-wIO" id="HTk-hn-Fs9"/>
@@ -1326,7 +1317,6 @@
         <image name="activity_image" width="335" height="160"/>
         <image name="arrows_down" width="12" height="12"/>
         <image name="backAcssory" width="7" height="13"/>
-        <image name="ballBg" width="378" height="421"/>
         <image name="clock_icon" width="18" height="18"/>
         <image name="commentStar" width="15" height="15"/>
         <image name="location_icon" width="18" height="20"/>

@@ -22,7 +22,7 @@
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
 
-@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
 
@@ -48,7 +48,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self load3DBallView];
+//    [self load3DBallView];
     [self getSliderDataSource:^{
         [self loadAutoScrollView];
     }];
@@ -60,6 +60,7 @@
      
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    self.ballView.delegate = self;
   [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
     _tableView.scrollEnabled = NO;
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
@@ -114,7 +115,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
+    self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
     
 }
 
@@ -175,6 +176,13 @@
     }
     return _infodataSource;
 }
+
+-(void)loadShortcutMenuView
+{
+    
+}
+
+
 -(void)load3DBallView{
    
     if (IS_IPHONE_5) {
@@ -426,6 +434,18 @@
     
     NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
 }
+
+
+#pragma mark - shortcut delegate
+-(void)pushToVCWithStoryBoardName:(NSString *)sbName vcName:(NSString *)vcName
+{
+    if (strIsEmpty(sbName)) {
+        [self showNewInfoVC];
+        return;
+    }
+    [self pushToViewControllerWithStoryBoardName:sbName viewControllerName:vcName];
+}
+
 //MARK:点击显示新页面
 - (IBAction)showWorkSpaceVC:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"spaceMain" bundle:nil];
