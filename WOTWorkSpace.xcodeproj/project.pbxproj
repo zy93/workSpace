@@ -1160,6 +1160,12 @@
 				E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */,
 				E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */,
 				E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */,
+				2AD2BE1D1F2711BD00D4C3BC /* WOTCurtainCell.h */,
+				2AD2BE1E1F2711BD00D4C3BC /* WOTCurtainCell.m */,
+				2AD2BE1F1F2711BD00D4C3BC /* WOTCurtainCell.xib */,
+				2AD2BE251F271BE400D4C3BC /* WOTLightCell.h */,
+				2AD2BE261F271BE400D4C3BC /* WOTLightCell.m */,
+				2AD2BE271F271BE400D4C3BC /* WOTLightCell.xib */,
 			);
 			path = service;
 			sourceTree = "<group>";
