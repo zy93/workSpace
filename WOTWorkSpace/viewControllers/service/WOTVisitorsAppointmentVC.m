@@ -163,9 +163,18 @@
     }
     
     
-    [WOTHTTPNetwork visitorAppointmentWithVisitorName:visitorName headPortrait:headImage sex:sex papersType:@(0) papersNumber:@"123456" tel:tel spaceId:spaceId accessType:type userName:userName visitorInfo:visitorInfo peopleNum:number visitTime:tim response:^(id bean, NSError *error) {
-        WOTVisitorsModel *model = bean;
+    [MBProgressHUDUtil showLoadingWithMessage:@"请稍后" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [WOTHTTPNetwork visitorAppointmentWithVisitorName:visitorName headPortrait:headImage sex:sex papersType:@(0) papersNumber:@"123456" tel:tel spaceId:spaceId accessType:type userName:userName visitorInfo:visitorInfo peopleNum:number visitTime:tim response:^(id bean, NSError *error) {
+            WOTVisitorsModel *model = bean;
+            if (model.code.integerValue==200) {
+                [hud setLabelText:@"信息已提交，请等待管理人员审核"];
+                [hud hide:YES afterDelay:2.f];
+                
+            }
+        }];
     }];
+    
+    
 }
 
 -(void)textFiledEndEnter:(WOTVisitorsAppointmentCell *)cell text:(NSString *)text
@@ -260,7 +269,7 @@
             cell.womBtn.hidden = NO;
         }
         else {
-            cell.contentText.hidden = NO;
+            cell.contentText.hidden = cell.contentText.isHidden;
             cell.headImg.hidden = cell.headImg.isHidden;
             cell.manBtn.hidden = YES;
             cell.womBtn.hidden = YES;
