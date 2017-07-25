@@ -30,6 +30,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *middleBtn;
 @property (weak, nonatomic) IBOutlet UIButton *autoControlBtn;
 @property (weak, nonatomic) IBOutlet UISwitch *cellSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *slidleValue;
+
 @property(nonatomic,strong)id<WOTAirconditioningDelegate>delegate;
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "WOTAirconditioningCell.h"
-@interface WOTAirconditioningCell()
+@interface WOTAirconditioningCell(){
+   UILabel *lab;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnWidth;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderVlaueLocation;
+
 
 @end
 
@@ -23,7 +25,14 @@
     [_middleBtn setTitleColor:MiddleTextColor forState:UIControlStateNormal];
     [_highBtn setTitleColor:MiddleTextColor forState:UIControlStateNormal];
     _temperatureLabel.textColor = MiddleTextColor;
+    
     [_controlView setShadow:Black];
+    lab = [[UILabel alloc] initWithFrame:CGRectZero];
+    lab.font = [UIFont systemFontOfSize:16.f];
+    lab.text = [NSString stringWithFormat:@"%.2f%@",_temperatureSlider.value,@"℃"];
+    lab.textColor = MiddleTextColor;
+    //    [lab setBackgroundColor:[UIColor blueColor]];
+    [self.controlView addSubview:lab];
    
     // Initialization code
 }
@@ -79,8 +88,10 @@
 
 - (IBAction)temperatureControl:(id)sender {
     
-    _slidleValue.text = [NSString stringWithFormat:@"%.2f%@",_temperatureSlider.value,@"℃"];
-   // _sliderVlaueLocation.constant =  _sliderVlaueLocation.constant
+
+    _temperatureLabel.text = [NSString stringWithFormat:@"当前室内温度:%.2f%@",_temperatureSlider.value,@"℃"];
+    [self setNeedsLayout];
+    lab.text = [NSString stringWithFormat:@"%.2f%@",_temperatureSlider.value,@"℃"];
 
 }
 
@@ -103,4 +114,21 @@
     _heatingLabel.textColor = heating;
     _fanspeedLabel.textColor = fanspeed;
 }
+
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [lab setFrame:CGRectMake(CGRectGetMinX(self.temperatureSlider.frame)+((CGRectGetWidth(self.temperatureSlider.frame)/60)*(self.temperatureSlider.value)), CGRectGetMinY(self.temperatureSlider.frame)-10, 80, 14)];
+        
+    }];
+    
+  
+}
+
+
+
 @end

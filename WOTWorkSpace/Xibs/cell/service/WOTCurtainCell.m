@@ -46,8 +46,9 @@
     // Configure the view for the selected state
 }
 - (IBAction)switchChangeValue:(id)sender {
-    if ([_delegate respondsToSelector:@selector(cellOfSwitch:option:)]) {
-        [_delegate cellOfSwitch:self option:((UISwitch*)sender).isOn];
+    [self.switchSW setOn:!self.switchSW.on];
+    if ([_delegate respondsToSelector:@selector(curtaincellOfSwitch:option:)]) {
+        [_delegate curtaincellOfSwitch:self option:((UISwitch*)sender).isOn];
     }
 }
 - (IBAction)clickOnBtn:(id)sender {

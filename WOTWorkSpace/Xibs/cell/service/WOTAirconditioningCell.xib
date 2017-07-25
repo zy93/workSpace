@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-id-FLg">
-                        <rect key="frame" x="334" y="13.5" width="52" height="30"/>
+                        <rect key="frame" x="334" y="7.5" width="52" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="QMZ-n4-fKl"/>
                             <constraint firstAttribute="height" constant="30" id="fPn-je-cS6"/>
@@ -29,14 +29,14 @@
                         </connections>
                     </switch>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aircondition" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-IN-JX0">
-                        <rect key="frame" x="20" y="20" width="25" height="15"/>
+                        <rect key="frame" x="20" y="14" width="25" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="255-hT-szN"/>
                             <constraint firstAttribute="width" constant="25" id="7bM-tj-K70"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空调" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-15-9Rj">
-                        <rect key="frame" x="55" y="18" width="33" height="19.5"/>
+                        <rect key="frame" x="55" y="12" width="33" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,10 +49,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-H1-Rlw">
-                        <rect key="frame" x="0.0" y="58.5" width="404" height="313"/>
+                        <rect key="frame" x="0.0" y="52.5" width="404" height="319"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzw-1O-WRa">
-                                <rect key="frame" x="20" y="122" width="364" height="166"/>
+                                <rect key="frame" x="20" y="128" width="364" height="166"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fanspeed" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-za-dhz">
                                         <rect key="frame" x="169.5" y="10" width="25" height="25"/>
@@ -136,12 +136,6 @@
                                             <action selector="heatingAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eVL-6c-VLb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfS-g3-htT">
-                                        <rect key="frame" x="60" y="75.5" width="39" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -160,10 +154,8 @@
                                     <constraint firstAttribute="height" constant="166" id="Ocs-Fg-J8I"/>
                                     <constraint firstItem="6DT-fg-OdB" firstAttribute="centerX" secondItem="Wzw-1O-WRa" secondAttribute="centerX" id="UWH-aS-dJd"/>
                                     <constraint firstItem="HGK-za-dhz" firstAttribute="centerX" secondItem="Wzw-1O-WRa" secondAttribute="centerX" id="V6M-Ee-ktr"/>
-                                    <constraint firstItem="lec-QN-MdG" firstAttribute="top" secondItem="GfS-g3-htT" secondAttribute="bottom" constant="-5" id="ZJa-XR-ZnJ"/>
                                     <constraint firstItem="HGK-za-dhz" firstAttribute="top" secondItem="Wzw-1O-WRa" secondAttribute="top" constant="10" id="cNf-HD-8DW"/>
                                     <constraint firstItem="lDY-Fo-FkC" firstAttribute="centerX" secondItem="CTT-pq-YUi" secondAttribute="centerX" id="eU8-Db-hKA"/>
-                                    <constraint firstItem="GfS-g3-htT" firstAttribute="leading" secondItem="Wzw-1O-WRa" secondAttribute="leading" constant="60" id="epY-zD-Awm"/>
                                     <constraint firstItem="9iJ-0s-QQw" firstAttribute="top" secondItem="HGK-za-dhz" secondAttribute="bottom" constant="10" id="exc-cd-my7"/>
                                     <constraint firstItem="G4c-gk-UpE" firstAttribute="top" secondItem="Wzw-1O-WRa" secondAttribute="top" id="fpd-go-pvb"/>
                                     <constraint firstAttribute="trailing" secondItem="CTT-pq-YUi" secondAttribute="trailing" constant="25" id="jWg-RE-8MA"/>
@@ -265,7 +257,7 @@
                     <constraint firstItem="U8f-id-FLg" firstAttribute="centerY" secondItem="6Dr-15-9Rj" secondAttribute="centerY" id="TGk-pq-Dag"/>
                     <constraint firstAttribute="bottom" secondItem="c6J-Y8-msy" secondAttribute="bottom" id="pyg-Me-DwW"/>
                     <constraint firstItem="6Dr-15-9Rj" firstAttribute="centerY" secondItem="0OP-IN-JX0" secondAttribute="centerY" id="qln-tL-Ap9"/>
-                    <constraint firstItem="0OP-IN-JX0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="tLo-ZU-d1u"/>
+                    <constraint firstItem="0OP-IN-JX0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="tLo-ZU-d1u"/>
                     <constraint firstAttribute="trailing" secondItem="c6J-Y8-msy" secondAttribute="trailing" id="yC2-8h-2Gn"/>
                 </constraints>
             </tableViewCellContentView>
@@ -286,8 +278,6 @@
                 <outlet property="progressView" destination="05F-2k-zdW" id="VhP-0g-ik0"/>
                 <outlet property="refrigerationImage" destination="LP1-N0-nKQ" id="Nz5-7T-i3j"/>
                 <outlet property="refrigerationLabel" destination="ctC-u7-gPx" id="lfw-tR-PAm"/>
-                <outlet property="sliderVlaueLocation" destination="epY-zD-Awm" id="zHQ-NV-ElS"/>
-                <outlet property="slidleValue" destination="GfS-g3-htT" id="l9Y-Ck-5Vu"/>
                 <outlet property="temperatureLabel" destination="6DT-fg-OdB" id="bLU-dF-K0Q"/>
                 <outlet property="temperatureSlider" destination="lec-QN-MdG" id="3YW-ku-RNW"/>
             </connections>
