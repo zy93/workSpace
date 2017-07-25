@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"设备列表";
     [_tableView registerNib:[UINib nibWithNibName:@"WOTAirconditioningCell" bundle:nil] forCellReuseIdentifier:@"WOTAirconditioningCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTInteligenceDeviceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTInteligenceDeviceCommonCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTCurtainCell" bundle:nil] forCellReuseIdentifier:@"WOTCurtainCell"];
@@ -103,6 +104,10 @@
         if (indexPath.row == 0) {
             WOTAirconditioningCell *aircell = [tableView dequeueReusableCellWithIdentifier:@"WOTAirconditioningCellID" forIndexPath:indexPath];
             aircell.delegate = self;
+            [aircell.cellSwitch setOn:airConditionOpen];
+            aircell.bgview.hidden = !airConditionOpen;
+            [aircell.lowBtn setTitleColor:aircell.lowBtn.isSelected?InteligenceDeviceSelectedColor:HighTextColor forState:UIControlStateNormal];
+            
             commoncell = aircell;
         } else {
            WOTCurtainCell  *cutaincell = [tableView dequeueReusableCellWithIdentifier:@"WOTCurtainCell" forIndexPath:indexPath];

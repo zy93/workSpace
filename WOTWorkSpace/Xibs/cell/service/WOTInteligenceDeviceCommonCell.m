@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _cellTitle.textColor = HighTextColor;
+    [_cellSwitch setOn:NO];
     // Initialization code
 }
 
