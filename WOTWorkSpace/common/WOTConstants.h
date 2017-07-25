@@ -63,9 +63,10 @@
 #define UIColor_gray_d6 UIColorFromRGB(0xd6d6d6)
 #define UIColor_gray_f7 UIColorFromRGB(0xf7f7f7)
 #define UIColor_gray_89 UIColorFromRGB(0x898989)
+#define UIColor_gray_90 UIColorFromRGB(0x909090)
 #define UIColor_blue_40 UIColorFromRGB(0x4087ee)
 #define UIColor_green_12 UIColorFromRGB(0x12c700)
-
+#define UIColor_green_37 UIColorFromRGB(0x37c922)
 //#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
 #define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
 
