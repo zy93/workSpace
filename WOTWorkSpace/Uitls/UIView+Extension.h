@@ -35,11 +35,19 @@
 //对指定角设置圆角，并指定圆角弧度
 -(void)setRadiuWithCorners:(UIRectCorner)corners radiu:(CGFloat)radiu;
 
+/**
+*设置边框和圆角
+ *radiu  圆角的大小
+ *borderColor 边框的颜色
+*/
 -(void)setCorenerRadius:(CGFloat)radiu borderColor:(UIColor *)borderColor;
 
 
 -(UIImage *)toImage;
 
+//设置view的阴影
+
+-(void)setShadow:(UIColor *)shadowColor;
 
 /**
  *  获取视图所在的控制器

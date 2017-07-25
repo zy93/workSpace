@@ -228,6 +228,11 @@
 		E86FD1F71F207734009BE16A /* WOTMainAppleRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */; };
 		E86FD1FA1F208582009BE16A /* WOTAppleRepairCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */; };
 		E86FD1FD1F209723009BE16A /* WOTImageLookoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */; };
+		E8747AE21F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE11F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m */; };
+		E8747AE61F26E1E400125CEB /* WOTAirconditioningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE41F26E1E400125CEB /* WOTAirconditioningCell.m */; };
+		E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */; };
+		E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */; };
+		E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */; };
 		E87EFEA61F1767A000F0D372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87EFEA41F1767A000F0D372 /* Main.storyboard */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
@@ -679,6 +684,14 @@
 		E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAppleRepairCommonCell.m; sourceTree = "<group>"; };
 		E86FD1FB1F209723009BE16A /* WOTImageLookoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTImageLookoverVC.h; sourceTree = "<group>"; };
 		E86FD1FC1F209723009BE16A /* WOTImageLookoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTImageLookoverVC.m; sourceTree = "<group>"; };
+		E8747AE01F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTIntelligenceDeviceListVC.h; sourceTree = "<group>"; };
+		E8747AE11F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTIntelligenceDeviceListVC.m; sourceTree = "<group>"; };
+		E8747AE31F26E1E400125CEB /* WOTAirconditioningCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAirconditioningCell.h; sourceTree = "<group>"; };
+		E8747AE41F26E1E400125CEB /* WOTAirconditioningCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAirconditioningCell.m; sourceTree = "<group>"; };
+		E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTAirconditioningCell.xib; sourceTree = "<group>"; };
+		E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTInteligenceDeviceCommonCell.h; sourceTree = "<group>"; };
+		E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTInteligenceDeviceCommonCell.m; sourceTree = "<group>"; };
+		E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTInteligenceDeviceCommonCell.xib; sourceTree = "<group>"; };
 		E87EFEA51F1767A000F0D372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
@@ -1128,6 +1141,12 @@
 				E86FD1F21F20742A009BE16A /* WOTApplyRepairCell.xib */,
 				E86FD1F81F208582009BE16A /* WOTAppleRepairCommonCell.h */,
 				E86FD1F91F208582009BE16A /* WOTAppleRepairCommonCell.m */,
+				E8747AE31F26E1E400125CEB /* WOTAirconditioningCell.h */,
+				E8747AE41F26E1E400125CEB /* WOTAirconditioningCell.m */,
+				E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */,
+				E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */,
+				E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */,
+				E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1528,6 +1547,8 @@
 				E86615671F1F2E12005E182A /* WOTOpenLockScanVC.m */,
 				E86FD1F51F207734009BE16A /* WOTMainAppleRepairVC.h */,
 				E86FD1F61F207734009BE16A /* WOTMainAppleRepairVC.m */,
+				E8747AE01F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.h */,
+				E8747AE11F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1876,8 +1897,10 @@
 				2A4214681F146A700010B003 /* share_icon@2x.png in Resources */,
 				E8190DA11F0F69660000B07C /* WOTworkSpaceCommonCell.xib in Resources */,
 				2A336A661F0CD84900F5B0AF /* Login.storyboard in Resources */,
+				E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */,
 				E8190DA91F0F69660000B07C /* WOTFeedBackLIstCell.xib in Resources */,
 				E8605CA61F132221005C09F4 /* WOTEnterpriseHeaderView.xib in Resources */,
+				E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */,
 				E86594821F21C9260093B796 /* WOTSocialContactCell.xib in Resources */,
 				E86FD1F41F20742A009BE16A /* WOTApplyRepairCell.xib in Resources */,
 				2AF83EE81F05FB92000AE733 /* Service.storyboard in Resources */,
@@ -2145,6 +2168,7 @@
 				E8693ADB1F049A6B00772BC1 /* WOTSearchVC.m in Sources */,
 				E8190DC41F0F69660000B07C /* WOTSubmitRegisterServiceCell.m in Sources */,
 				E85A85EE1F0202460016FCA1 /* MASConstraint.m in Sources */,
+				E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */,
 				2AF18A2F1F135AE2004681CE /* WOTOrderVC.m in Sources */,
 				E8190DB61F0F69660000B07C /* WOTOrderCell.m in Sources */,
 				E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */,
@@ -2213,6 +2237,7 @@
 				E8693B1A1F05100800772BC1 /* WOTSocialcontactNaviController.m in Sources */,
 				E8190DC11F0F69660000B07C /* WOTServiceProvidersApplyCell.m in Sources */,
 				E8190DC21F0F69660000B07C /* WOTServiceProvidersCategoryCell.m in Sources */,
+				E8747AE61F26E1E400125CEB /* WOTAirconditioningCell.m in Sources */,
 				E8190DB21F0F69660000B07C /* WOTMyOrderCell.m in Sources */,
 				E8588CE91F0B27F900951105 /* NSString+Category.m in Sources */,
 				E8190DC71F0F69660000B07C /* WOTFilterTypeModel.m in Sources */,
@@ -2242,6 +2267,7 @@
 				E8190DA81F0F69660000B07C /* WOTFeedBackLIstCell.m in Sources */,
 				2A99FB671F258A4000869732 /* WOTVisitorsModel.m in Sources */,
 				E8605CD71F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
+				E8747AE21F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m in Sources */,
 				2AF18A351F136034004681CE /* WOTOrderForBookStationCell.m in Sources */,
 				E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */,
 				E8370F201F0E04850070C077 /* WOTInformationListVC.m in Sources */,

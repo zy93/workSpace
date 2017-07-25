@@ -217,5 +217,12 @@
     return nil;
 }
 
+//设置view的阴影
 
+-(void)setShadow:(UIColor *)shadowColor{
+    self.layer.shadowColor = shadowColor.CGColor;
+    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.layer.shadowOpacity = 1;
+    self.layer.shadowRadius = 5;
+}
 @end
