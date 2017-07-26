@@ -221,10 +221,9 @@
 
 -(void)setShadow:(UIColor *)shadowColor{
     self.layer.shadowColor = shadowColor.CGColor;
-    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
     self.layer.shadowRadius = 4.f;
     self.layer.shadowOpacity = 0.2f;
     self.layer.shadowOffset = CGSizeMake(1, 1);
-    
+    self.layer.cornerRadius = 4.f;
 }
 @end

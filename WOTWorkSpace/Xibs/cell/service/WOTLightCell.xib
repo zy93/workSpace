@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,12 +21,19 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lights" translatesAutoresizingMaskIntoConstraints="NO" id="GEF-m6-vsx">
                         <rect key="frame" x="25" y="12" width="17" height="25"/>
                     </imageView>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcN-w0-Pxk">
-                        <rect key="frame" x="241" y="9" width="51" height="31"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pcN-w0-Pxk">
+                        <rect key="frame" x="251" y="9" width="51" height="31"/>
                         <connections>
                             <action selector="switchChangeValue:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Gqt-pH-GCS"/>
                         </connections>
                     </switch>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HD-zg-yfw">
+                        <rect key="frame" x="0.0" y="173.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="UTB-Y7-VtP"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKp-Ju-q7E">
                         <rect key="frame" x="20" y="52" width="280" height="95"/>
                         <subviews>
@@ -37,7 +44,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wkb-CK-OgP">
-                                <rect key="frame" x="35" y="55" width="210" height="31"/>
+                                <rect key="frame" x="35" y="56" width="210" height="31"/>
+                                <color key="tintColor" red="0.35917648670000002" green="0.76441258190000005" blue="0.2234415263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="sliderChangeValue:" destination="KGk-i7-Jjw" eventType="valueChanged" id="GeV-U9-DxH"/>
                                 </connections>
@@ -63,13 +71,16 @@
                 <constraints>
                     <constraint firstItem="kKp-Ju-q7E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1vd-NV-f9o"/>
                     <constraint firstItem="GEF-m6-vsx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="3k0-Nc-vLg"/>
-                    <constraint firstAttribute="trailing" secondItem="pcN-w0-Pxk" secondAttribute="trailing" constant="30" id="6lh-LL-kse"/>
+                    <constraint firstAttribute="trailing" secondItem="pcN-w0-Pxk" secondAttribute="trailing" constant="20" id="6lh-LL-kse"/>
                     <constraint firstItem="H6b-55-mbC" firstAttribute="centerY" secondItem="GEF-m6-vsx" secondAttribute="centerY" id="8yW-eZ-JOY"/>
                     <constraint firstItem="H6b-55-mbC" firstAttribute="leading" secondItem="GEF-m6-vsx" secondAttribute="trailing" constant="15" id="C6l-Vq-oTL"/>
                     <constraint firstItem="pcN-w0-Pxk" firstAttribute="centerY" secondItem="H6b-55-mbC" secondAttribute="centerY" id="EXS-Qm-inC"/>
                     <constraint firstAttribute="trailing" secondItem="kKp-Ju-q7E" secondAttribute="trailing" constant="20" id="RUR-fw-Le1"/>
+                    <constraint firstItem="8HD-zg-yfw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Rgu-iO-bem"/>
                     <constraint firstItem="GEF-m6-vsx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="bJX-E4-DZp"/>
                     <constraint firstItem="kKp-Ju-q7E" firstAttribute="top" secondItem="GEF-m6-vsx" secondAttribute="bottom" constant="15" id="e2f-hF-GQ5"/>
+                    <constraint firstAttribute="bottom" secondItem="8HD-zg-yfw" secondAttribute="bottom" id="nev-mb-dao"/>
+                    <constraint firstAttribute="trailing" secondItem="8HD-zg-yfw" secondAttribute="trailing" id="sNs-ts-Y8U"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -15,7 +15,7 @@
 
 @protocol WOTCurtainCellDelegate <NSObject>
 
--(void)cellOfSwitch:(WOTCurtainCell*)cell option:(BOOL)isOn;
+-(void)curtaincellOfSwitch:(WOTCurtainCell*)cell option:(BOOL)isOn;
 
 /**
  开关停代理

@@ -11,10 +11,11 @@
 #import "WOTInteligenceDeviceCommonCell.h"
 #import "WOTCurtainCell.h"
 #import "WOTLightCell.h"
-@interface WOTIntelligenceDeviceListVC ()<UITableViewDelegate,UITableViewDataSource,WOTAirconditioningDelegate>{
+@interface WOTIntelligenceDeviceListVC ()<UITableViewDelegate,UITableViewDataSource,WOTAirconditioningDelegate,WOTLightCellDelegate,WOTCurtainCellDelegate>{
     BOOL airConditionOpen;
     BOOL curtainsOpen;
     BOOL lightOpen;
+    NSInteger lightcellindex;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -26,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"设备列表";
     [_tableView registerNib:[UINib nibWithNibName:@"WOTAirconditioningCell" bundle:nil] forCellReuseIdentifier:@"WOTAirconditioningCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTInteligenceDeviceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTInteligenceDeviceCommonCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"WOTCurtainCell" bundle:nil] forCellReuseIdentifier:@"WOTCurtainCell"];
@@ -68,15 +70,18 @@
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 0) {
-                  return airConditionOpen?350:60;
-            } else if (indexPath.row == 2){
-                  return 190;
+                  return airConditionOpen?350:50;
+            } else if (indexPath.row == 1){
+                return curtainsOpen? 190:50;
             }
-            else return 200;
-          
             break;
         case 1:
-            return 175;
+            if (lightcellindex == indexPath.row) {
+                return lightOpen ? 175:50;
+            } else {
+                return 50;
+            }
+            
             break;
         case 2:
             return 60;
@@ -104,9 +109,17 @@
         if (indexPath.row == 0) {
             WOTAirconditioningCell *aircell = [tableView dequeueReusableCellWithIdentifier:@"WOTAirconditioningCellID" forIndexPath:indexPath];
             aircell.delegate = self;
+            [aircell.cellSwitch setOn:airConditionOpen];
+            aircell.bgview.hidden = !airConditionOpen;
+            [aircell.lowBtn setTitleColor:aircell.lowBtn.isSelected?InteligenceDeviceSelectedColor:HighTextColor forState:UIControlStateNormal];
+            
             commoncell = aircell;
         } else {
            WOTCurtainCell  *cutaincell = [tableView dequeueReusableCellWithIdentifier:@"WOTCurtainCell" forIndexPath:indexPath];
+            cutaincell.titleLab.text = @"窗帘";
+            cutaincell.delegate = self;
+            [cutaincell.switchSW setOn:curtainsOpen];
+            cutaincell.contentBGView.hidden = !curtainsOpen;
             commoncell = cutaincell;
         }
             
@@ -120,6 +133,13 @@
         WOTLightCell *lightCell = [tableView dequeueReusableCellWithIdentifier:@"WOTLightCell" forIndexPath:indexPath];
         lightCell.iconImg.image = [UIImage imageNamed:@"lights"];
         lightCell.titleLab.text = @[@"1号灯",@"2号灯"][indexPath.row];
+        lightCell.index = indexPath.row;
+        lightCell.delegate = self;
+        lightCell.contentBGView.hidden = !lightOpen;
+//        if (indexPath.row == lightcellindex) {
+            [lightCell.switchSW setOn:lightOpen];
+//        }
+        
         commoncell = lightCell;
     }
     return  commoncell;
@@ -133,7 +153,16 @@
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
 }
- 
+-(void)curtaincellOfSwitch:(WOTCurtainCell *)cell option:(BOOL)isOn{
+    curtainsOpen = isOn;
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+-(void)lightcellOfSwitch:(NSInteger)index option:(BOOL)isOn{
+    lightOpen = isOn;
+    lightcellindex = index;
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

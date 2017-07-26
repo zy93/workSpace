@@ -13,7 +13,7 @@
 
 @protocol WOTLightCellDelegate <NSObject>
 
--(void)cellOfSwitch:(WOTLightCell*)cell option:(BOOL)isOn;
+-(void)lightcellOfSwitch:(NSInteger)index option:(BOOL)isOn;
 -(void)cellOfSlider:(WOTLightCell*)cell value:(NSInteger)value;
 
 @end
@@ -26,5 +26,5 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 
 @property (nonatomic, strong) id <WOTLightCellDelegate> delegate;
-
+@property (nonatomic, assign) NSInteger index;
 @end

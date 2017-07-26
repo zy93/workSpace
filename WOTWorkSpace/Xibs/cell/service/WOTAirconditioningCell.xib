@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="404" height="372.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-id-FLg">
-                        <rect key="frame" x="334" y="13.5" width="52" height="30"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-id-FLg">
+                        <rect key="frame" x="334" y="7.5" width="52" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="QMZ-n4-fKl"/>
                             <constraint firstAttribute="height" constant="30" id="fPn-je-cS6"/>
@@ -29,14 +29,14 @@
                         </connections>
                     </switch>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aircondition" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-IN-JX0">
-                        <rect key="frame" x="20" y="20" width="25" height="15"/>
+                        <rect key="frame" x="20" y="14" width="25" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="255-hT-szN"/>
                             <constraint firstAttribute="width" constant="25" id="7bM-tj-K70"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空调" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-15-9Rj">
-                        <rect key="frame" x="55" y="18" width="33" height="19.5"/>
+                        <rect key="frame" x="55" y="12" width="33" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,12 +49,12 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-H1-Rlw">
-                        <rect key="frame" x="0.0" y="58.5" width="404" height="313"/>
+                        <rect key="frame" x="0.0" y="52.5" width="404" height="319"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzw-1O-WRa">
-                                <rect key="frame" x="20" y="122" width="364" height="166"/>
+                                <rect key="frame" x="20" y="128" width="364" height="166"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fanspead" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-za-dhz">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fanspeed" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-za-dhz">
                                         <rect key="frame" x="169.5" y="10" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="ZSK-0a-Cuk"/>
@@ -73,6 +73,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="制热" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDY-Fo-FkC">
+                                        <rect key="frame" x="310" y="44.5" width="33" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="室内温度:22度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DT-fg-OdB">
                                         <rect key="frame" x="129.5" y="131.5" width="105" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -86,7 +92,7 @@
                                             <constraint firstAttribute="width" constant="25" id="mRZ-9H-7ve"/>
                                         </constraints>
                                     </imageView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lec-QN-MdG">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-20" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="lec-QN-MdG">
                                         <rect key="frame" x="58" y="91.5" width="248" height="31"/>
                                         <color key="tintColor" red="0.35917648670000002" green="0.76441258190000005" blue="0.2234415263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
@@ -100,12 +106,6 @@
                                             <constraint firstAttribute="height" constant="25" id="RSO-iL-P1u"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="制热" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDY-Fo-FkC">
-                                        <rect key="frame" x="310" y="45" width="33" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cd-GF-Cvb">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <constraints>
@@ -123,8 +123,7 @@
                                             <constraint firstAttribute="width" constant="70" id="Ssa-AL-eJA"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="fanspeedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kjb-TI-0KN"/>
-                                            <action selector="refrigerationAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4XD-N7-QRd"/>
+                                            <action selector="fanspeedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dLj-L3-ZZc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyn-Yf-JQl">
@@ -258,26 +257,27 @@
                     <constraint firstItem="U8f-id-FLg" firstAttribute="centerY" secondItem="6Dr-15-9Rj" secondAttribute="centerY" id="TGk-pq-Dag"/>
                     <constraint firstAttribute="bottom" secondItem="c6J-Y8-msy" secondAttribute="bottom" id="pyg-Me-DwW"/>
                     <constraint firstItem="6Dr-15-9Rj" firstAttribute="centerY" secondItem="0OP-IN-JX0" secondAttribute="centerY" id="qln-tL-Ap9"/>
-                    <constraint firstItem="0OP-IN-JX0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="tLo-ZU-d1u"/>
+                    <constraint firstItem="0OP-IN-JX0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="tLo-ZU-d1u"/>
                     <constraint firstAttribute="trailing" secondItem="c6J-Y8-msy" secondAttribute="trailing" id="yC2-8h-2Gn"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="autoControlBtn" destination="Kvt-gd-NFa" id="8jH-x0-3WZ"/>
                 <outlet property="autoControlImage" destination="SVa-7V-IG8" id="4EH-cI-LgB"/>
                 <outlet property="bgview" destination="ahh-H1-Rlw" id="mcg-F0-8sP"/>
                 <outlet property="btnWidth" destination="dtW-bA-RD2" id="rzI-Lb-6iO"/>
                 <outlet property="cellSwitch" destination="U8f-id-FLg" id="hbC-Ze-luk"/>
                 <outlet property="controlView" destination="Wzw-1O-WRa" id="Bta-Vj-Zb8"/>
-                <outlet property="fanspeedLabel" destination="9iJ-0s-QQw" id="EeE-9k-aoW"/>
+                <outlet property="fanspeedImage" destination="HGK-za-dhz" id="Wi3-gy-dvd"/>
+                <outlet property="fanspeedLabel" destination="9iJ-0s-QQw" id="HsT-H1-5qn"/>
                 <outlet property="heatingImage" destination="CTT-pq-YUi" id="2L0-KU-Emg"/>
-                <outlet property="heatingLabel" destination="lDY-Fo-FkC" id="N1N-O5-7wW"/>
+                <outlet property="heatingLabel" destination="lDY-Fo-FkC" id="aXB-nR-v2s"/>
                 <outlet property="highBtn" destination="9na-Gs-jfz" id="P18-hc-SGP"/>
                 <outlet property="lowBtn" destination="Utm-JH-Mz5" id="csv-h2-rXY"/>
                 <outlet property="middleBtn" destination="Gqt-at-gQ7" id="hu5-S3-cRQ"/>
                 <outlet property="progressView" destination="05F-2k-zdW" id="VhP-0g-ik0"/>
                 <outlet property="refrigerationImage" destination="LP1-N0-nKQ" id="Nz5-7T-i3j"/>
-                <outlet property="refrigerationLabel" destination="ctC-u7-gPx" id="LGn-dI-Cdt"/>
-                <outlet property="sanspeedImage" destination="HGK-za-dhz" id="gVe-Ww-QTf"/>
+                <outlet property="refrigerationLabel" destination="ctC-u7-gPx" id="lfw-tR-PAm"/>
                 <outlet property="temperatureLabel" destination="6DT-fg-OdB" id="bLU-dF-K0Q"/>
                 <outlet property="temperatureSlider" destination="lec-QN-MdG" id="3YW-ku-RNW"/>
             </connections>
@@ -287,7 +287,7 @@
     <resources>
         <image name="aircondition" width="25" height="14"/>
         <image name="autoControl" width="25" height="25"/>
-        <image name="fanspead" width="23" height="23"/>
+        <image name="fanspeed" width="23" height="23"/>
         <image name="heating" width="24" height="24"/>
         <image name="refrigeration" width="25" height="22"/>
     </resources>

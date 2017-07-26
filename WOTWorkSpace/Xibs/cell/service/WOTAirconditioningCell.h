@@ -15,7 +15,7 @@
 @interface WOTAirconditioningCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *controlView;
 @property (weak, nonatomic) IBOutlet UIView *bgview;
-@property (weak, nonatomic) IBOutlet UIImageView *sanspeedImage;
+@property (weak, nonatomic) IBOutlet UIImageView *fanspeedImage;
 @property (weak, nonatomic) IBOutlet UIImageView *heatingImage;
 @property (weak, nonatomic) IBOutlet UIImageView *refrigerationImage;
 @property (weak, nonatomic) IBOutlet UILabel *fanspeedLabel;
@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *lowBtn;
 @property (weak, nonatomic) IBOutlet UIButton *highBtn;
 @property (weak, nonatomic) IBOutlet UIButton *middleBtn;
+@property (weak, nonatomic) IBOutlet UIButton *autoControlBtn;
 @property (weak, nonatomic) IBOutlet UISwitch *cellSwitch;
+
 @property(nonatomic,strong)id<WOTAirconditioningDelegate>delegate;
 @end

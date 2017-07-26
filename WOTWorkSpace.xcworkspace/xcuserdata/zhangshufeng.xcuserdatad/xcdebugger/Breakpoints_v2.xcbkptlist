@@ -58,7 +58,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/main/WOTworkSpaceLIstVC.m"
-                  timestampString = "522658642.513234"
+                  timestampString = "522671921.598211"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "207"
@@ -73,7 +73,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/main/WOTworkSpaceLIstVC.m"
-                  timestampString = "522658642.515738"
+                  timestampString = "522671921.600417"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
@@ -106,7 +106,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/Network/WOTHTTPNetwork.m"
-                  timestampString = "522658642.522099"
+                  timestampString = "522671921.607357"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "454"
@@ -121,7 +121,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/Network/WOTHTTPNetwork.m"
-                  timestampString = "522658642.523845"
+                  timestampString = "522671921.609679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "455"
@@ -176,6 +176,15 @@
                   usesParentBreakpointCondition = "Yes"
                   offsetFromSymbolStart = "0">
                </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "std::__1::bitset&lt;256ul&gt;::test(unsigned long) const"
+                  moduleName = "VoiceServices"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,7 +227,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "522658642.534499"
+                  timestampString = "522671921.622349"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -233,7 +242,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "522658642.536237"
+                  timestampString = "522671921.624513"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -266,7 +275,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "522658642.540484"
+                  timestampString = "522671921.630474"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -281,7 +290,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "522658642.542129"
+                  timestampString = "522671921.633063"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "63"

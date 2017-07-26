@@ -31,32 +31,34 @@
                             <constraint firstAttribute="width" constant="140" id="cYd-WF-oF7"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" pagingEnabled="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uUx-As-kuN">
-                        <rect key="frame" x="175" y="16" width="210" height="73"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJV-AV-nxU">
                         <rect key="frame" x="180" y="94" width="205" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="nUc-pd-Jak"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-94-gCO">
+                        <rect key="frame" x="175" y="16" width="210" height="73"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BJ8-94-gCO" firstAttribute="top" secondItem="PoQ-vp-LeC" secondAttribute="bottom" constant="15" id="4uo-8O-BN9"/>
                     <constraint firstItem="aj5-f2-gqr" firstAttribute="top" secondItem="PoQ-vp-LeC" secondAttribute="bottom" constant="15" id="CLt-bT-dHD"/>
                     <constraint firstItem="RJV-AV-nxU" firstAttribute="leading" secondItem="aj5-f2-gqr" secondAttribute="trailing" constant="20" id="GLG-m7-WzY"/>
                     <constraint firstAttribute="bottom" secondItem="RJV-AV-nxU" secondAttribute="bottom" constant="15" id="H53-Ww-8HW"/>
-                    <constraint firstItem="RJV-AV-nxU" firstAttribute="top" secondItem="uUx-As-kuN" secondAttribute="bottom" constant="5" id="NtI-lF-F6l"/>
+                    <constraint firstItem="BJ8-94-gCO" firstAttribute="leading" secondItem="aj5-f2-gqr" secondAttribute="trailing" constant="15" id="JcJ-RB-Vqu"/>
+                    <constraint firstItem="RJV-AV-nxU" firstAttribute="top" secondItem="BJ8-94-gCO" secondAttribute="bottom" constant="5" id="MT6-EO-y7y"/>
                     <constraint firstAttribute="trailing" secondItem="PoQ-vp-LeC" secondAttribute="trailing" id="QWh-de-bJb"/>
-                    <constraint firstItem="uUx-As-kuN" firstAttribute="leading" secondItem="aj5-f2-gqr" secondAttribute="trailing" constant="15" id="RT5-VS-LvL"/>
                     <constraint firstAttribute="trailing" secondItem="RJV-AV-nxU" secondAttribute="trailing" constant="20" id="Vbb-4S-XhI"/>
                     <constraint firstItem="PoQ-vp-LeC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Z84-pT-3Sw"/>
                     <constraint firstItem="PoQ-vp-LeC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="clq-tK-8Rb"/>
-                    <constraint firstItem="uUx-As-kuN" firstAttribute="top" secondItem="PoQ-vp-LeC" secondAttribute="bottom" constant="15" id="klu-LM-GLB"/>
-                    <constraint firstAttribute="trailing" secondItem="uUx-As-kuN" secondAttribute="trailing" constant="20" id="nt1-be-HQR"/>
+                    <constraint firstAttribute="trailing" secondItem="BJ8-94-gCO" secondAttribute="trailing" constant="20" id="g0V-wM-f0A"/>
                     <constraint firstItem="aj5-f2-gqr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="spQ-gH-a8c"/>
                     <constraint firstAttribute="bottom" secondItem="aj5-f2-gqr" secondAttribute="bottom" constant="15" id="wF4-x8-BiN"/>
                 </constraints>
@@ -64,7 +66,7 @@
             <connections>
                 <outlet property="infoImage" destination="aj5-f2-gqr" id="Tgv-aT-u3b"/>
                 <outlet property="infoTime" destination="RJV-AV-nxU" id="pXb-tS-6SI"/>
-                <outlet property="infoValue" destination="uUx-As-kuN" id="2bW-tH-GjG"/>
+                <outlet property="infoValue" destination="BJ8-94-gCO" id="XTS-rQ-V6J"/>
             </connections>
             <point key="canvasLocation" x="-7" y="-3"/>
         </tableViewCell>
