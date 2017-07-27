@@ -217,7 +217,7 @@ bool istags =  NO;
 
 -(void)getEnterpriseListDataFromWeb:(void(^)())complete{
     
-    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:55] response:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getEnterprisesWithSpaceId:[[NSNumber alloc]initWithInt:69] response:^(id bean, NSError *error) {
         complete();
         if (bean) {
             WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg *)bean;
