@@ -48,6 +48,8 @@
     NSArray<__kindof UIViewController *> *controllers = [self createViewControllers];
     self.pageTabView = [[XXPageTabView alloc] initWithChildControllers:controllers childTitles:[self createTitles]];
     self.pageTabView.cutOffLine = YES;
+    self.pageTabView.bottomOffLine = YES;
+    [self.pageTabView addIndicatorViewWithStyle];
     [self.pageTabView layoutSubviews];
     self.pageTabView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     self.pageTabView.delegate = self;

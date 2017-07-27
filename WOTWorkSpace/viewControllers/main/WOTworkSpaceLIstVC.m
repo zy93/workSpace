@@ -106,7 +106,7 @@
             return 0;
             break;
         case 1:
-            return 45;
+            return 60;
             
         default:
             break;

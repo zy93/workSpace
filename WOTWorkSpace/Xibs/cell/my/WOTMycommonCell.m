@@ -23,10 +23,11 @@
 -(void)loadSubViews{
  
     _nameLabel = [[UILabel alloc]init];
-    _nameLabel.font = [UIFont systemFontOfSize:15];
+    _nameLabel.font = [UIFont systemFontOfSize:14];
     _nameLabel.textColor = HighTextColor;
     _nextImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backAcssory"]];
     _cellImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"enterprise"]];
+    _cellImage.contentMode = UIViewContentModeScaleAspectFit;
     _lineview = [[UIView alloc]init];
     _lineview.backgroundColor = LINE_COLOR;
     [self.contentView addSubview:_lineview];
@@ -58,7 +59,7 @@
     [_cellImage mas_makeConstraints:^(MASConstraintMaker *maker){
         
         maker.height.mas_equalTo(25);
-        maker.width.mas_equalTo(25);
+        maker.width.mas_equalTo(19);
         maker.left.mas_equalTo(self.contentView).offset(20);
         maker.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];

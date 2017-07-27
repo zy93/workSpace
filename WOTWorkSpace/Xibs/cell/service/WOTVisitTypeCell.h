@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *visitBtn;
 @property (weak, nonatomic) IBOutlet UIButton *visitEnterpriseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *visitIndividualBtn;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonWidth;
+
+
 @property (nonatomic, strong) NSIndexPath *index;
 @property (nonatomic, strong) id <WOTVisitTypeCellDelegate> delegate;
 

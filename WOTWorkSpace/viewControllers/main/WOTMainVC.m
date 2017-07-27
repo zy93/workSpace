@@ -259,6 +259,7 @@
     self.autoScrollView.delegate = self;
     self.autoScrollView.titlesGroup = _imageTitles;
     self.autoScrollView.currentPageDotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
+   
     self.autoScrollView.placeholderImage = [UIImage imageNamed:@"placeholder"];
     
 }

@@ -53,7 +53,7 @@
 
 -(void)commonInit
 {
-    self.backgroundColor = UIColorFromRGB(0x1087ef);
+    self.backgroundColor = UIColorFromRGB(0x8fc5f3);
     
     sbNameList = @[@"Service",@"Service",@"Service",@"Service",@"Service",
                    @"spaceMain",@"",@"spaceMain",];

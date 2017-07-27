@@ -58,11 +58,17 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
     cell.fd_enforceFrameLayout = NO;
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.photosArray = photoArray;
+    if (indexPath.row == [tableView numberOfRowsInSection:0]-1) {
+        cell.lineView.hidden= YES;
+    } else {
+        cell.lineView.hidden = NO;
+    }
     cell.content.text = dataSource[indexPath.row];
     cell.contactName.textColor = MainOrangeColor;
     cell.headerImage.image = [UIImage imageNamed:@"Yosemite01"];
     cell.contactName.text = @"风清扬";
     cell.time.text = @"30分钟前";
+    
     return cell;
 }
 
