@@ -122,7 +122,7 @@
     
     
     [UIView animateWithDuration:0.2 animations:^{
-        [lab setFrame:CGRectMake(CGRectGetMinX(self.temperatureSlider.frame)+((CGRectGetWidth(self.temperatureSlider.frame)/60)*(self.temperatureSlider.value)), CGRectGetMinY(self.temperatureSlider.frame)-10, 80, 14)];
+        [lab setFrame:CGRectMake(CGRectGetMinX(self.temperatureSlider.frame)+((CGRectGetWidth(self.temperatureSlider.frame)/100)*(self.temperatureSlider.value)), CGRectGetMinY(self.temperatureSlider.frame)-10, 80, 14)];
         
     }];
     

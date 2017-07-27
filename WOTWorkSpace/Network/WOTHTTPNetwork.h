@@ -12,14 +12,55 @@
 typedef void(^response)(id bean,NSError *error);
 
 @interface WOTHTTPNetwork : NSObject
-
+/**
+ * 登录接口
+ @param telOrEmail  登录账号手机号或邮箱
+ @param pwd         登录密码 md5加密
+ @param response    回调数据到上层
+ */
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd response:(response)response;
+
+/**
+ * 发送手机验证码
+ @param tel  验证码
+ @param response    回调数据到上层
+ */
 +(void)userGetVerifyWitTel:(NSString *)tel response:(response)response;
+/**
+ * 注册接口
+ @param tel  手机号注册
+ @param response    回调数据到上层
+ */
 +(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response;
+
+/**
+ * 注册接口
+ @param city  城市名称 传入城市名称根据城市筛选，不传查询全部
+ @param response    回调数据到上层
+ */
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response;
+/**
+ * 无参数获取全部空间
+ */
 +(void)getSpaceSitationBlock:(response)response;
+
+/**
+ *  根据空间id 和状态请求筛选 获取活动列表
+ * @param spaceid  空间id
+   @param spaceState 空间状态
+   @param response 回调数据返回上层
+ */
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState response:(response)response;
+/**
+ *获取空间下的友邻企业
+ *@param spaceid  空间id
+ *@param response  对象返回上层，错误返回error
+ */
 +(void)getEnterprisesWithSpaceId:(NSNumber *)spaceid response:(response)response;
+
+/**
+ *获取全部资讯列表
+ */
 +(void)getAllNewInformation:(response)response;
 
 /**
@@ -32,18 +73,47 @@ typedef void(^response)(id bean,NSError *error);
  *获取服务页面轮播图资源数据
  */
 +(void)getServeSliderSouceInfo:(response)response;
+/**
+ *获取我的历史--反馈列表数据
+ @param userId  登录者用户id
+ @param response 回调数据返回到上层
+ */
 
 +(void)getMyHistoryFeedBackData:(NSNumber *)userId response:(response)response;
+/**
+ *注册成为平台服务商
+ @param userId  用户id
+ 
+ */
+
 +(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response;
+
+/**
+ *提交意见反馈
+ */
+
 +(void)postFeedBackInfoWithContent:(NSString *)opinionContent spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId userName:(NSString *)userName tel:(NSString *)   tel response:(response)response;
+
+/**
+ *服务--发布需求页面
+ */
+
 +(void)postServiceRequestWithDescribe:(NSString *)describe spaceId:(NSString *)spaceId userId:(NSString *)userId facilitatorType:(NSString *)facilitatorType facilitatorLabel:(NSString *)facilitatorLabel  response:(response)response;
+/**
+ *服务--获取服务商类别
+ */
 +(void)getAllServiceTypes:(response)response;
+
 +(void)getFlexSliderSouceInfo:(response)response;
 
 
-
+/**
+ *  访客预约
+ */
 +(void)visitorAppointmentWithVisitorName:(NSString *)name headPortrait:(UIImage *)head sex:(NSString *)sex papersType:(NSNumber *)papersType papersNumber:(NSString *)papersNumber tel:(NSString *)tel spaceId:(NSNumber *)spaceId accessType:(NSNumber*)accessType userName:(NSString *)userName visitorInfo:(NSString*)visitorInfo peopleNum:(NSNumber*)peopleNum visitTime:(NSString*)time response:(response)response;
-
+/**
+ *  添加企业
+ */
 +(void)addBusinessWithLogo:(UIImage*)logo name:(NSString*)name type:(NSString *)type contactName:(NSString*)contactName contactTel:(NSString *)contactTel contactEmail:(NSString*)email response:(response)response;
 
 /****************           Service        ****************************/
@@ -88,10 +158,13 @@ typedef void(^response)(id bean,NSError *error);
  @param response 回调
  */
 +(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;
-
+/**
+ *我的--我的活动
+ */
 +(void)getUserActivitiseWithUserId:(NSNumber *)userId state:(NSString *)state response:(response)response;
 /**
-*我的--我的活动
+*我的--我的企业
+ @param companyId  企业id 登录接口返回用户的companyId,字符串
 */
 +(void)getUserEnterpriseWithCompanyId:(NSString *)companyId  response:(response)response;
 
@@ -105,8 +178,16 @@ typedef void(^response)(id bean,NSError *error);
 
 /**
  *服务--提交保修申请
+ @param userId  用户id
+ @param type 维修类型
+ @param info 维修描述
+ @param appointmentTime 时间
+ @param address 报修的位置
+ @param file 上传报修的图片
+ @param alias  *接口返回，未知*
+ @param response 回调数据到上层
  */
-+(void)postRepairApplyWithUserId:(NSString *)userId type:(NSString *)type info:(NSString *)info appointmentTime:(NSString *)orderTime address:(NSString *)address file:(NSArray<UIImage *> *)file alias:(NSString *)alias  response:(response)response;
++(void)postRepairApplyWithUserId:(NSString *)userId type:(NSString *)type info:(NSString *)info appointmentTime:(NSString *)appointmentTime address:(NSString *)address file:(NSArray<UIImage *> *)file alias:(NSString *)alias  response:(response)response;
 
 
 /**

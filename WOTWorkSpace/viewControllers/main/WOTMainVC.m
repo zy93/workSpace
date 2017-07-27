@@ -42,13 +42,16 @@
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
 @property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *infodataSource;
 @property(nonatomic,strong)NSString *activityImageUrl;
+@property(nonatomic,strong)UIRefreshControl *refreshControl;
 @end
 
 @implementation WOTMainVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self load3DBallView];
+    //    [self load3DBallView];
+    
+    [self loadAutoScrollView];
     [self getSliderDataSource:^{
         [self loadAutoScrollView];
     }];
@@ -56,44 +59,62 @@
     [self configScrollView];
     [self loadSpaceView];
     
-   
-     
+    
+    
     _tableView.dataSource = self;
     _tableView.delegate = self;
     self.ballView.delegate = self;
-  [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
     _tableView.scrollEnabled = NO;
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
     
-    
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        [self getEnterpriseListDataFromWeb:^{
-            [hud setHidden:YES];
-        }];
-        
-    }];
-    
-    
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        [self getActivityDataFromWeb:^{
-            [hud setHidden: YES];
-        }];
-        
-    }];
-    
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        [self getInfoDataFromWeb:^{
-            [hud setHidden:YES];
-        }];
-        
-    }];
-    
+    _infoImage.image = [UIImage imageNamed:@"placeholder"];
+    _activityImage.image = [UIImage imageNamed:@"placeholder"];
    
+    [self getAllData];
+    _refreshControl = [[UIRefreshControl alloc]init];
+    [_refreshControl addTarget:self action:@selector(downLoadRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.scrollVIew addSubview:_refreshControl];
     // Do any additional setup after loading the view.
     
+}
+-(void)getAllData{
+    
+    dispatch_queue_t queue = dispatch_queue_create("com.workspacek.gcd.group", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_group_t group = dispatch_group_create();
+    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        dispatch_group_enter(group);
+        [self getEnterpriseListDataFromWeb:^{
+            dispatch_group_leave(group);
+        }];
+        
+        dispatch_group_enter(group);
+        [self getActivityDataFromWeb:^{
+            dispatch_group_leave(group);
+        }];
+        
+        dispatch_group_enter(group);
+        [self getInfoDataFromWeb:^{
+            dispatch_group_leave(group);
+        }];
+        
+        dispatch_group_notify(group, queue, ^{
+            [hud setHidden:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"回到主线程，刷新UI");
+            });
+        });
+        
+    }];
+    
+}
+//下拉刷新
+-(void)downLoadRefresh:(UIRefreshControl *)refreshControl{
+    
+    [self getAllData];
 }
 
 
@@ -105,8 +126,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.translucent = NO;
- 
-    
     [self.navigationController.navigationBar setHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
 }
