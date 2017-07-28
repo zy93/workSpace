@@ -56,6 +56,7 @@
 		2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214801F149ECA0010B003 /* libsqlite3.tbd */; };
 		2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214821F149ED80010B003 /* CoreGraphics.framework */; };
 		2A4214D11F14EE730010B003 /* WOTSelectScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */; };
+		2A4ABBAD1F2AE50D00BEE21D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4ABBAC1F2AE50D00BEE21D /* LaunchScreen.storyboard */; };
 		2A5B230E1F0F7DBE00466BEF /* WOTEnterTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B230D1F0F7DBE00466BEF /* WOTEnterTextVC.m */; };
 		2A5B23171F0F9AA300466BEF /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B23161F0F9AA300466BEF /* UIDevice+Resolutions.m */; };
 		2A99FB621F258A0F00869732 /* WOTBookStationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99FB5C1F258A0F00869732 /* WOTBookStationListModel.m */; };
@@ -185,7 +186,6 @@
 		E85A858F1F0201F30016FCA1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A858E1F0201F30016FCA1 /* ViewController.m */; };
 		E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E85A85931F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld */; };
 		E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85A85961F0201F30016FCA1 /* Assets.xcassets */; };
-		E85A859A1F0201F30016FCA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85A85981F0201F30016FCA1 /* LaunchScreen.storyboard */; };
 		E85A85A51F0201F30016FCA1 /* WOTWorkSpaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85A41F0201F30016FCA1 /* WOTWorkSpaceTests.m */; };
 		E85A85B01F0201F30016FCA1 /* WOTWorkSpaceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85AF1F0201F30016FCA1 /* WOTWorkSpaceUITests.m */; };
 		E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85C21F0202450016FCA1 /* MASCompositeConstraint.m */; };
@@ -243,13 +243,6 @@
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
 		E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */; };
-		E88A7F481F09D73700A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F4D1F09DD5500A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F581F09EB6000A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F631F09ED2000A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F681F0A091000A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F701F0A22B700A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		E88A7F751F0A243800A670E7 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E8A200151F1C8266003C8A86 /* WOTLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A200041F1C8266003C8A86 /* WOTLoginModel.m */; };
 		E8A200161F1C8266003C8A86 /* WOTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A200061F1C8266003C8A86 /* WOTUserModel.m */; };
 		E8A200171F1C8266003C8A86 /* WOTActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A200091F1C8266003C8A86 /* WOTActivityModel.m */; };
@@ -359,6 +352,7 @@
 		2A4214821F149ED80010B003 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A4214CF1F14EE730010B003 /* WOTSelectScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSelectScrollView.h; sourceTree = "<group>"; };
 		2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSelectScrollView.m; sourceTree = "<group>"; };
+		2A4ABBAC1F2AE50D00BEE21D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A5B230C1F0F7DBE00466BEF /* WOTEnterTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterTextVC.h; sourceTree = "<group>"; };
 		2A5B230D1F0F7DBE00466BEF /* WOTEnterTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterTextVC.m; sourceTree = "<group>"; };
 		2A5B23151F0F9AA300466BEF /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
@@ -596,7 +590,6 @@
 		E85A858E1F0201F30016FCA1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E85A85941F0201F30016FCA1 /* WOTWorkSpace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WOTWorkSpace.xcdatamodel; sourceTree = "<group>"; };
 		E85A85961F0201F30016FCA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E85A85991F0201F30016FCA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E85A859B1F0201F30016FCA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E85A85A01F0201F30016FCA1 /* WOTWorkSpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOTWorkSpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85A85A41F0201F30016FCA1 /* WOTWorkSpaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WOTWorkSpaceTests.m; sourceTree = "<group>"; };
@@ -1456,6 +1449,7 @@
 		E85A85E21F0202460016FCA1 /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				2A4ABBAC1F2AE50D00BEE21D /* LaunchScreen.storyboard */,
 				E8693B0B1F04F47700772BC1 /* My.storyboard */,
 				E8693B101F04F92C00772BC1 /* spaceMain.storyboard */,
 				2AF83EE71F05FB92000AE733 /* Service.storyboard */,
@@ -1887,11 +1881,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E88A7F4D1F09DD5500A670E7 /* (null) in Resources */,
 				E8190D961F0F69660000B07C /* WOTImageCollectionViewCell.xib in Resources */,
 				E8190D9A1F0F69660000B07C /* WOTSpaceCityCollectionCell.xib in Resources */,
 				2A42147A1F146A700010B003 /* share_sina_select@2x.png in Resources */,
-				E85A859A1F0201F30016FCA1 /* LaunchScreen.storyboard in Resources */,
 				E8C7203E1F14785800DED44C /* WOTDatePickerView.xib in Resources */,
 				E86C05B21F2B0B79000ABDBF /* Main.storyboard in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
@@ -1904,9 +1896,7 @@
 				2A4214771F146A700010B003 /* share_qqkongjian_select@3x.png in Resources */,
 				E8190D9F1F0F69660000B07C /* WOTTEnterpriseListCell.xib in Resources */,
 				2A4214741F146A700010B003 /* share_qqkongjian@2x.png in Resources */,
-				E88A7F701F0A22B700A670E7 /* (null) in Resources */,
 				E8190DB51F0F69660000B07C /* WOTMyuserCell.xib in Resources */,
-				E88A7F581F09EB6000A670E7 /* (null) in Resources */,
 				2A42146E1F146A700010B003 /* share_pengyouquan_select@2x.png in Resources */,
 				E8190DA71F0F69660000B07C /* WOTCerateEnterpriseCell.xib in Resources */,
 				2A4214761F146A700010B003 /* share_qqkongjian_select@2x.png in Resources */,
@@ -1914,9 +1904,6 @@
 				E8693B0C1F04F47700772BC1 /* My.storyboard in Resources */,
 				E8190DBB1F0F69660000B07C /* WOTPersionalInformationTagCell.xib in Resources */,
 				E8190DA51F0F69660000B07C /* WOTworkSpaceSearchCell.xib in Resources */,
-				E88A7F751F0A243800A670E7 /* (null) in Resources */,
-				E88A7F631F09ED2000A670E7 /* (null) in Resources */,
-				E88A7F481F09D73700A670E7 /* (null) in Resources */,
 				E8190DB91F0F69660000B07C /* WOTPersionalInformationCommonCell.xib in Resources */,
 				2AD2BE291F271BE400D4C3BC /* WOTLightCell.xib in Resources */,
 				2A42147F1F146A700010B003 /* share_weixin_select@3x.png in Resources */,
@@ -1928,11 +1915,11 @@
 				E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */,
 				E8190DA91F0F69660000B07C /* WOTFeedBackLIstCell.xib in Resources */,
 				E8605CA61F132221005C09F4 /* WOTEnterpriseHeaderView.xib in Resources */,
+				2A4ABBAD1F2AE50D00BEE21D /* LaunchScreen.storyboard in Resources */,
 				E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */,
 				E86594821F21C9260093B796 /* WOTSocialContactCell.xib in Resources */,
 				E86FD1F41F20742A009BE16A /* WOTApplyRepairCell.xib in Resources */,
 				2AF83EE81F05FB92000AE733 /* Service.storyboard in Resources */,
-				E88A7F681F0A091000A670E7 /* (null) in Resources */,
 				2A42146A1F146A700010B003 /* share_icon_select@2x.png in Resources */,
 				E8190DB11F0F69660000B07C /* WOTMyEnterPriseCell.xib in Resources */,
 				E8190DB71F0F69660000B07C /* WOTOrderCell.xib in Resources */,
