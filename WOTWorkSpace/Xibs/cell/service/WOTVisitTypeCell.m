@@ -17,6 +17,8 @@
         [self setSeparatorInset:UIEdgeInsetsZero];
     }
     
+    _buttonWidth.constant = (self.contentView.frame.size.width-40)/3;
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.visitBtn.layer.borderColor = UIColor_blue_40.CGColor;

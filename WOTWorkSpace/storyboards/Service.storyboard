@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-sb-SOy">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-sb-SOy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ua4-Zy-Yb3">
@@ -32,7 +32,7 @@
                                             <constraint firstAttribute="height" constant="436" id="1Lf-1t-vbv"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ServiceProvidersApplicationCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTServiceProvidersApplyCell" id="vcb-wp-dNd" customClass="WOTServiceProvidersApplyCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ServiceProvidersApplicationCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTServiceProvidersApplyCell" id="vcb-wp-dNd" customClass="WOTServiceProvidersApplyCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vcb-wp-dNd" id="YpI-5B-zJx">
@@ -43,11 +43,11 @@
                                                             <rect key="frame" x="348" y="15" width="7" height="13"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请成为平台服务商" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq2-vG-MvI">
-                                                            <rect key="frame" x="20" y="11" width="156" height="21"/>
+                                                            <rect key="frame" x="20" y="11" width="147" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BEI-FA-ghh"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -64,7 +64,7 @@
                                                     <outlet property="titleLab" destination="Rq2-vG-MvI" id="xEy-Zw-js4"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTGETServiceCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTGETServiceCell" rowHeight="105" id="bq2-t6-AwD" customClass="WOTGETServiceCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTGETServiceCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTGETServiceCell" rowHeight="105" id="bq2-t6-AwD" customClass="WOTGETServiceCell">
                                                 <rect key="frame" x="0.0" y="72" width="375" height="105"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bq2-t6-AwD" id="aJn-kV-6D5">
@@ -74,7 +74,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGo-0d-bQt">
                                                             <rect key="frame" x="104" y="15" width="83.5" height="75"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="人力资源" image="HR_icon">
@@ -88,7 +88,7 @@
                                                             <rect key="frame" x="187.5" y="15" width="84" height="75"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="法律" image="law_icon">
@@ -102,7 +102,7 @@
                                                             <rect key="frame" x="271.5" y="15" width="83.5" height="75"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="IT" image="IT_icon">
@@ -116,7 +116,7 @@
                                                             <rect key="frame" x="20" y="15" width="84" height="75"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="20" minY="-30" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="投融资" image="investment_icon">
@@ -161,8 +161,8 @@
                                                             <rect key="frame" x="348" y="16" width="7" height="13"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-sD-sdp">
-                                                            <rect key="frame" x="54" y="12" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="54" y="13.5" width="35.5" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -239,7 +239,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ht-Nh-zJx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ht-Nh-zJx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -607,7 +607,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5iN-rW-USv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5iN-rW-USv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -710,7 +710,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuz-X8-byk">
-                                                    <rect key="frame" x="20" y="41" width="86" height="30"/>
+                                                    <rect key="frame" x="20" y="41" width="80" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="   空间参观   ">
                                                         <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
@@ -723,7 +724,11 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6I-aW-cfs">
-                                                    <rect key="frame" x="129.5" y="41" width="116" height="30"/>
+                                                    <rect key="frame" x="105" y="41" width="100" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="maW-30-NRH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="   访问入驻企业   ">
                                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -736,7 +741,8 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywg-6L-esl">
-                                                    <rect key="frame" x="269" y="41" width="86" height="30"/>
+                                                    <rect key="frame" x="210" y="41" width="100" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="   访问个人   ">
                                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -753,14 +759,18 @@
                                                 <constraint firstItem="Ywg-6L-esl" firstAttribute="centerY" secondItem="kuz-X8-byk" secondAttribute="centerY" id="1T2-6I-CXS"/>
                                                 <constraint firstItem="TXN-uL-JQE" firstAttribute="leading" secondItem="bea-9A-Wey" secondAttribute="leading" constant="15" id="Dai-nG-LWr"/>
                                                 <constraint firstItem="X6I-aW-cfs" firstAttribute="centerY" secondItem="kuz-X8-byk" secondAttribute="centerY" id="KCy-N4-WOs"/>
-                                                <constraint firstItem="X6I-aW-cfs" firstAttribute="centerX" secondItem="bea-9A-Wey" secondAttribute="centerX" id="WAD-6h-OdF"/>
+                                                <constraint firstItem="X6I-aW-cfs" firstAttribute="centerX" secondItem="bea-9A-Wey" secondAttribute="centerX" id="NLQ-C5-EW3"/>
+                                                <constraint firstItem="X6I-aW-cfs" firstAttribute="leading" secondItem="kuz-X8-byk" secondAttribute="trailing" constant="5" id="OuM-EB-OWp"/>
                                                 <constraint firstItem="TXN-uL-JQE" firstAttribute="top" secondItem="bea-9A-Wey" secondAttribute="top" constant="10" id="WoA-I1-j0c"/>
+                                                <constraint firstItem="Ywg-6L-esl" firstAttribute="leading" secondItem="X6I-aW-cfs" secondAttribute="trailing" constant="5" id="afG-Z9-I6L"/>
+                                                <constraint firstItem="Ywg-6L-esl" firstAttribute="width" secondItem="X6I-aW-cfs" secondAttribute="width" id="dG5-0J-2zw"/>
                                                 <constraint firstItem="kuz-X8-byk" firstAttribute="top" secondItem="TXN-uL-JQE" secondAttribute="bottom" constant="10" id="eS3-8d-uW3"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ywg-6L-esl" secondAttribute="trailing" constant="20" id="gBE-VW-STJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ywg-6L-esl" secondAttribute="trailing" constant="20" id="fZo-N0-ppL"/>
                                                 <constraint firstItem="kuz-X8-byk" firstAttribute="leading" secondItem="bea-9A-Wey" secondAttribute="leading" constant="20" id="wjf-he-Zch"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonWidth" destination="maW-30-NRH" id="sjv-Ow-pzl"/>
                                             <outlet property="titleLab" destination="TXN-uL-JQE" id="rkf-Ne-6sd"/>
                                             <outlet property="visitBtn" destination="kuz-X8-byk" id="qOW-dY-kKq"/>
                                             <outlet property="visitEnterpriseBtn" destination="X6I-aW-cfs" id="zCF-SP-5gA"/>

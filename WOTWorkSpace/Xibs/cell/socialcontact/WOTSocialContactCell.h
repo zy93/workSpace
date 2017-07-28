@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionview;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 @property(nonatomic,strong) WOTSocialContactsBean *cellBean;
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (nonatomic,strong)NSMutableArray *photosArray;
 @end

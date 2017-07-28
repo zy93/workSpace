@@ -49,6 +49,8 @@ typedef NS_ENUM(NSInteger, XXPageTabIndicatorStyle) {
 @property (nonatomic, assign) BOOL bodyBounces;
 /*是否item之间添加分割线*/
 @property (nonatomic, assign) BOOL cutOffLine;
+/*是否在item下面添加分割线*/
+@property (nonatomic, assign) BOOL bottomOffLine;
 /*Title效果设置*/
 @property (nonatomic, assign) XXPageTabTitleStyle titleStyle;
 /*字体渐变，未选择的item的scale，默认是0.8（0~1）。仅XXPageTabTitleStyleScale生效*/
@@ -70,5 +72,6 @@ typedef NS_ENUM(NSInteger, XXPageTabIndicatorStyle) {
 
 /*用于外部设置selectedTabIndex时动画展示*/
 - (void)setSelectedTabIndexWithAnimation:(NSInteger)selectedTabIndex;
-
+//代码手动添加下划线
+- (void)addIndicatorViewWithStyle;
 @end

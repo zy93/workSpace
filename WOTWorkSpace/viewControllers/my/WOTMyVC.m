@@ -49,6 +49,18 @@
      self.tabBarController.tabBar.translucent = YES;
     [self.navigationController.navigationBar setHidden:YES];
     [self.tableView reloadData];
+    
+}
+
+
+-(void)viewWillLayoutSubviews{
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *maker){
+        maker.top.mas_equalTo(self.view).offset(-20);
+        maker.left.mas_equalTo(self.view);
+        maker.right.mas_equalTo(self.view);
+        maker.bottom.mas_equalTo(self.view);
+        
+    }];
 }
 
 

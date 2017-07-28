@@ -69,7 +69,7 @@
         [self initBaseSettings];
         [self initTabView];
         [self initMainView];
-        [self addIndicatorViewWithStyle];
+//        [self addIndicatorViewWithStyle];
     }
     return self;
 }
@@ -124,11 +124,14 @@
             XXPageTabItemLable *tabItem = (XXPageTabItemLable *)_tabItems[i];
             tabItem.frame = CGRectMake(_tabItemWidth*i, 0, _tabItemWidth, _tabSize.height);
             if (_cutOffLine) {
-                if (i < _tabItems.count-1) {
-                    UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
-                    lineview.backgroundColor = UIColorFromRGB(0xd6d6d6);
-                    [tabItem addSubview:lineview];
-                }
+                
+                    if (i < _tabItems.count-1) {
+                        UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
+                        lineview.backgroundColor = UIColorFromRGB(0xd6d6d6);
+                        [tabItem addSubview:lineview];
+                    }
+                
+                
             }
             
             
@@ -316,15 +319,18 @@
  根据不同风格添加相应下标
  */
 - (void)addIndicatorViewWithStyle {
-    switch (_indicatorStyle) {
-        case XXPageTabIndicatorStyleDefault:
-        case XXPageTabIndicatorStyleFollowText:
-        case XXPageTabIndicatorStyleStretch:
-            [self addSubview:self.indicatorView];
-            break;
-        default:
-            break;
+    if (_bottomOffLine) {
+        switch (_indicatorStyle) {
+            case XXPageTabIndicatorStyleDefault:
+            case XXPageTabIndicatorStyleFollowText:
+            case XXPageTabIndicatorStyleStretch:
+                [self addSubview:self.indicatorView];
+                break;
+            default:
+                break;
+        }
     }
+   
 }
 
 /**

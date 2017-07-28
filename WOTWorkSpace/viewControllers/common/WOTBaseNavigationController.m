@@ -17,7 +17,7 @@
     if (self = [super initWithRootViewController:rootViewController]) {
         self.navigationBar.barTintColor = NavigationBGColor;
         [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-        [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+        [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
         
         self.navigationItem.titleView = nil;
         self.navigationBar.tintColor = UIColorFromRGB(0x888888);

@@ -85,6 +85,7 @@
                 <outlet property="contactName" destination="pCU-i8-V0Z" id="mmW-wr-fTh"/>
                 <outlet property="content" destination="Ihl-WL-mOM" id="BcD-pd-pts"/>
                 <outlet property="headerImage" destination="tCS-9v-e08" id="zFT-Fs-PSo"/>
+                <outlet property="lineView" destination="kKO-Pe-1VE" id="KIL-e7-2wb"/>
                 <outlet property="time" destination="08E-sg-K8W" id="Ybt-mF-R5x"/>
             </connections>
             <point key="canvasLocation" x="34" y="143.5"/>

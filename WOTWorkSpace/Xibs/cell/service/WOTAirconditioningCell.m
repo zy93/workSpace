@@ -20,18 +20,24 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _btnWidth.constant = (self.bgview.frame.size.width-60)/4;
-    [[WOTConfigThemeUitls shared]setLabelColorss:@[_refrigerationLabel,_heatingLabel,_fanspeedLabel] withColor:MiddleTextColor];
+    
+    [self setTextColor:InteligenceDeviceSelectedColor middle:MiddleTextColor high:MiddleTextColor autoControl:MiddleTextColor];
+    _progressView.progress = 0.333;
+    _autoControlImage.image = [UIImage imageNamed:@"autoControl"];
+    
+  
     [_lowBtn setTitleColor:MiddleTextColor forState:UIControlStateNormal];
     [_middleBtn setTitleColor:MiddleTextColor forState:UIControlStateNormal];
     [_highBtn setTitleColor:MiddleTextColor forState:UIControlStateNormal];
     _temperatureLabel.textColor = MiddleTextColor;
     
     [_controlView setShadow:Black];
+    
     lab = [[UILabel alloc] initWithFrame:CGRectZero];
     lab.font = [UIFont systemFontOfSize:16.f];
     lab.text = [NSString stringWithFormat:@"%.2f%@",_temperatureSlider.value,@"℃"];
     lab.textColor = MiddleTextColor;
-    //    [lab setBackgroundColor:[UIColor blueColor]];
+    
     [self.controlView addSubview:lab];
    
     // Initialization code
@@ -122,13 +128,12 @@
     
     
     [UIView animateWithDuration:0.2 animations:^{
-        [lab setFrame:CGRectMake(CGRectGetMinX(self.temperatureSlider.frame)+((CGRectGetWidth(self.temperatureSlider.frame)/60)*(self.temperatureSlider.value)), CGRectGetMinY(self.temperatureSlider.frame)-10, 80, 14)];
+        [lab setFrame:CGRectMake(CGRectGetMinX(self.temperatureSlider.frame)+((CGRectGetWidth(self.temperatureSlider.frame)/100)*(self.temperatureSlider.value)), CGRectGetMinY(self.temperatureSlider.frame)-10, 80, 14)];
         
     }];
     
-  
-}
 
+}
 
 
 @end

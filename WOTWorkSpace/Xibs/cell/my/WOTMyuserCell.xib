@@ -36,13 +36,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jx-6D-PkN">
-                        <rect key="frame" x="212.5" y="164.5" width="39.5" height="19.5"/>
+                        <rect key="frame" x="212.5" y="159.5" width="39.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y66-8c-YCX">
-                        <rect key="frame" x="80" y="194" width="286" height="57.5"/>
+                        <rect key="frame" x="80" y="189" width="286" height="47.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -59,10 +59,10 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boy" translatesAutoresizingMaskIntoConstraints="NO" id="hC7-wQ-kfb">
-                        <rect key="frame" x="175.5" y="166" width="17" height="16"/>
+                        <rect key="frame" x="177.5" y="163" width="15" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="17" id="GjS-mt-pdy"/>
-                            <constraint firstAttribute="height" constant="16" id="hff-pD-rIL"/>
+                            <constraint firstAttribute="width" constant="15" id="GjS-mt-pdy"/>
+                            <constraint firstAttribute="height" constant="12" id="hff-pD-rIL"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-Ch-7As">
@@ -75,7 +75,7 @@
                 <constraints>
                     <constraint firstItem="k1k-Rh-2hu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="0VV-Vd-N3I"/>
                     <constraint firstAttribute="trailingMargin" secondItem="y66-8c-YCX" secondAttribute="trailing" constant="60" id="6MD-Oi-2EN"/>
-                    <constraint firstAttribute="bottom" secondItem="y66-8c-YCX" secondAttribute="bottom" constant="10" id="9jm-ki-XpB"/>
+                    <constraint firstAttribute="bottom" secondItem="y66-8c-YCX" secondAttribute="bottom" constant="25" id="9jm-ki-XpB"/>
                     <constraint firstAttribute="bottom" secondItem="ogY-Ch-7As" secondAttribute="bottom" id="F6R-gd-Zav"/>
                     <constraint firstItem="Ivb-Z9-PCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Fyp-EP-4jI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="k1k-Rh-2hu" secondAttribute="trailing" constant="10" id="Hme-pd-YrP"/>
@@ -85,7 +85,7 @@
                     <constraint firstItem="CU5-w4-RND" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qo9-0I-Rpc"/>
                     <constraint firstItem="hC7-wQ-kfb" firstAttribute="centerY" secondItem="5jx-6D-PkN" secondAttribute="centerY" id="Qt5-ou-Nn2"/>
                     <constraint firstItem="5jx-6D-PkN" firstAttribute="leading" secondItem="hC7-wQ-kfb" secondAttribute="trailing" constant="20" id="SHQ-de-l1c"/>
-                    <constraint firstItem="5jx-6D-PkN" firstAttribute="top" secondItem="qhR-Ud-Bdy" secondAttribute="bottom" constant="15" id="T2d-ab-1a5"/>
+                    <constraint firstItem="5jx-6D-PkN" firstAttribute="top" secondItem="qhR-Ud-Bdy" secondAttribute="bottom" constant="10" id="T2d-ab-1a5"/>
                     <constraint firstItem="qhR-Ud-Bdy" firstAttribute="top" secondItem="CU5-w4-RND" secondAttribute="bottom" constant="15" id="YK1-gA-6mZ"/>
                     <constraint firstItem="Ivb-Z9-PCm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aXi-Wi-Exc"/>
                     <constraint firstItem="qhR-Ud-Bdy" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cMP-fH-8he"/>
@@ -109,7 +109,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="boy" width="17" height="18"/>
+        <image name="boy" width="11" height="11"/>
         <image name="mybgimage" width="375" height="241"/>
         <image name="setting" width="25" height="25"/>
     </resources>

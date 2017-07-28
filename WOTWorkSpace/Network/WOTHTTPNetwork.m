@@ -282,10 +282,6 @@
     }];
 }
 
-/**
- * 获取空间列表
- *parameter：传入城市 string类型，不传参，返回全部数据
- */
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response{
     
      NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
@@ -327,9 +323,7 @@
     }];
 }
 
-/**
- *  根据空间id 和状态请求筛选 获取活动列表
- */
+
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState  response:(response)response{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Activity/findByState"];
     NSDictionary * parameters = @{@"activityState":spaceState};
@@ -348,11 +342,7 @@
      }];
 }
 
-/**
- *获取空间下的友邻企业
- *parameter:spaceid  空间id
- * block: 对象返回上层，错误返回error
- */
+
 +(void)getEnterprisesWithSpaceId:(NSNumber *)spaceid response:(response)response{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/CompanyInfo/findBySpaceId"];
     NSDictionary * parameters = @{@"spaceId":spaceid};
@@ -371,9 +361,6 @@
     }];
 }
 
-/**
- *获取全部资讯列表 
- */
 +(void)getAllNewInformation:(response)response{
     NSString *infourl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Message/findAllMessageToApp"];
     [self doRequestWithParameters:nil useUrl:infourl complete:^JSONModel *(id responseobj) {
@@ -385,9 +372,7 @@
         }
     }];
 }
-/**
- *获取首页轮播图资源数据
- */
+
 +(void)getHomeSliderSouceInfo:(response)response{
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findByHome"];
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
@@ -401,9 +386,7 @@
 }
 
 
-/**
- *获取服务页面轮播图资源数据
- */
+
 +(void)getServeSliderSouceInfo:(response)response{
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Slider/findByServe"];
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
@@ -417,9 +400,6 @@
 }
 
 
-/**
- *获取我的历史--反馈列表数据
- */
 
 
 +(void)getMyHistoryFeedBackData:(NSNumber *)userId response:(response)response{
@@ -436,9 +416,7 @@
 }
 
 
-/**
- *注册成为平台服务商
- */
+
 
 +(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response{
     
@@ -555,9 +533,7 @@
 
 }
 
-/**
- *提交意见反馈
- */
+
 +(void)postFeedBackInfoWithContent:(NSString *)opinionContent spaceId:(NSNumber *)spaceId userId:(NSNumber *)userId userName:(NSString *)userName tel:(NSString*)   tel  response:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Opinion/addOpinion"];
@@ -594,9 +570,7 @@
 
 
 
-/**
- *服务--发布需求页面
- */
+
 +(void)postServiceRequestWithDescribe:(NSString *)describe spaceId:(NSString *)spaceId userId:(NSString *)userId facilitatorType:(NSString *)facilitatorType facilitatorLabel:(NSString *)facilitatorLabel  response:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/GetFacilitator/addGetFacilitator"];
@@ -630,9 +604,7 @@
 }
 
 
-/**
- *服务--获取服务商类别
- */
+
 +(void)getAllServiceTypes:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorLabel/findAll"];
@@ -661,9 +633,7 @@
     }];
 }
 
-/**
- *我的--我的活动
- */
+
 +(void)getUserActivitiseWithUserId:(NSNumber *)userId state:(NSString *)state response:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/ActivityApply/findByUserId"];
@@ -686,10 +656,6 @@
     }];
 }
 
-/**
- *我的--我的企业
- */
-
 
 +(void)getUserEnterpriseWithCompanyId:(NSString *)companyId response:(response)response{
     
@@ -710,9 +676,6 @@
 
 
 
-/**
- *我的--我的历史获取提交的历史服务需求
- */
 
 
 +(void)getDemandsWithUserId:(NSNumber *)userId response:(response)response{
@@ -733,12 +696,6 @@
 }
 
 
-
-/**
- *我的历史--我的预约
- */
-
-
 +(void)getMyAppointmentWithUserId:(NSNumber *)userId   response:(response)response{
     
     NSString *applyurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Visitor/findVisitorByUserId"];
@@ -753,11 +710,6 @@
         }
     }];
 }
-
-
-/**
- *服务--提交保修申请
- */
 
 
 +(void)postRepairApplyWithUserId:(NSString *)userId type:(NSString *)type info:(NSString *)info appointmentTime:(NSString *)appointmentTime address:(NSString *)address file:(NSArray<UIImage *> *)file alias:(NSString *)alias  response:(response)response{

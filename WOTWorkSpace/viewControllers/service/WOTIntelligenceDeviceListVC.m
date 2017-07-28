@@ -16,6 +16,7 @@
     BOOL curtainsOpen;
     BOOL lightOpen;
     NSInteger lightcellindex;
+    NSMutableArray *lightSelectedindex;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -35,6 +36,7 @@
     airConditionOpen = NO;
     curtainsOpen = NO;
     lightOpen = NO;
+    lightSelectedindex = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
 }
 
@@ -76,12 +78,8 @@
             }
             break;
         case 1:
-            if (lightcellindex == indexPath.row) {
-                return lightOpen ? 175:50;
-            } else {
-                return 50;
-            }
-            
+            return [lightSelectedindex containsObject:[NSString stringWithFormat:@"%ld",indexPath.row]]?175:50;
+
             break;
         case 2:
             return 60;
@@ -136,9 +134,9 @@
         lightCell.index = indexPath.row;
         lightCell.delegate = self;
         lightCell.contentBGView.hidden = !lightOpen;
-//        if (indexPath.row == lightcellindex) {
+        if (indexPath.row == lightcellindex) {
             [lightCell.switchSW setOn:lightOpen];
-//        }
+        }
         
         commoncell = lightCell;
     }
@@ -160,6 +158,12 @@
 -(void)lightcellOfSwitch:(NSInteger)index option:(BOOL)isOn{
     lightOpen = isOn;
     lightcellindex = index;
+    if (isOn == YES) {
+        [lightSelectedindex addObject:[NSString stringWithFormat:@"%ld",index]];
+    }
+    if ([lightSelectedindex containsObject:[NSString stringWithFormat:@"%ld",index]] && isOn == NO) {
+        [lightSelectedindex removeObject:[NSString stringWithFormat:@"%ld",index]];
+    }
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
