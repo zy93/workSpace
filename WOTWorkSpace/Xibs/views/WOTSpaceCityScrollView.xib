@@ -39,7 +39,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="36" height="85"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="moreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Saz-zh-JQu"/>
+                                <action selector="moreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="OYl-4F-b4I"/>
                             </connections>
                         </button>
                     </subviews>
@@ -68,7 +68,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionVIew" destination="Nf1-LF-9hH" id="KBZ-uM-aDr"/>
-                <outlet property="moreBtn" destination="XUW-ph-W20" id="iHf-sI-m34"/>
+                <outlet property="moreBtn" destination="KP9-83-kE7" id="FGd-sa-KK0"/>
+                <outlet property="moreImage" destination="XUW-ph-W20" id="pHN-fR-vd2"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-236.5"/>
         </view>

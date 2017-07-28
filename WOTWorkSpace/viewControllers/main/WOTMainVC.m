@@ -21,7 +21,7 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
-
+         
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -59,7 +59,7 @@
     [self configScrollView];
     [self loadSpaceView];
     
-    
+ 
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -102,9 +102,11 @@
         }];
         
         dispatch_group_notify(group, queue, ^{
-            [hud setHidden:YES];
+           
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSLog(@"回到主线程，刷新UI");
+                [hud setHidden:YES];
+                [_refreshControl endRefreshing];
             });
         });
         

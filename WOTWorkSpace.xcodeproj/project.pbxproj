@@ -227,6 +227,7 @@
 		E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E8391F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m */; };
 		E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */; };
 		E869E8401F1E15CA00DBDBB9 /* WOTPostImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */; };
+		E86C05B21F2B0B79000ABDBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86C05B01F2B0B79000ABDBF /* Main.storyboard */; };
 		E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */; };
 		E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */; };
 		E86FD1F31F20742A009BE16A /* WOTApplyRepairCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F11F20742A009BE16A /* WOTApplyRepairCell.m */; };
@@ -239,7 +240,6 @@
 		E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */; };
 		E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */; };
 		E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */; };
-		E87EFEA61F1767A000F0D372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87EFEA41F1767A000F0D372 /* Main.storyboard */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
 		E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */; };
@@ -686,6 +686,7 @@
 		E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPhotosBaseUtils.m; sourceTree = "<group>"; };
 		E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPostImage.h; sourceTree = "<group>"; };
 		E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPostImage.m; sourceTree = "<group>"; };
+		E86C05B11F2B0B79000ABDBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZSIMagePickerSDK.a; sourceTree = "<group>"; };
 		E86FD1EA1F2056F6009BE16A /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
@@ -708,7 +709,6 @@
 		E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTInteligenceDeviceCommonCell.h; sourceTree = "<group>"; };
 		E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTInteligenceDeviceCommonCell.m; sourceTree = "<group>"; };
 		E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTInteligenceDeviceCommonCell.xib; sourceTree = "<group>"; };
-		E87EFEA51F1767A000F0D372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		E88A54441F039D4500AD3F57 /* WOTConfigThemeUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTConfigThemeUitls.h; sourceTree = "<group>"; };
@@ -1318,7 +1318,7 @@
 				E85A858E1F0201F30016FCA1 /* ViewController.m */,
 				E85A85961F0201F30016FCA1 /* Assets.xcassets */,
 				E85A85981F0201F30016FCA1 /* LaunchScreen.storyboard */,
-				E87EFEA41F1767A000F0D372 /* Main.storyboard */,
+				E86C05B01F2B0B79000ABDBF /* Main.storyboard */,
 				E85A859B1F0201F30016FCA1 /* Info.plist */,
 				E85A85931F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld */,
 				E85A85871F0201F30016FCA1 /* Supporting Files */,
@@ -1893,6 +1893,7 @@
 				2A42147A1F146A700010B003 /* share_sina_select@2x.png in Resources */,
 				E85A859A1F0201F30016FCA1 /* LaunchScreen.storyboard in Resources */,
 				E8C7203E1F14785800DED44C /* WOTDatePickerView.xib in Resources */,
+				E86C05B21F2B0B79000ABDBF /* Main.storyboard in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
 				2A42147B1F146A700010B003 /* share_sina_select@3x.png in Resources */,
 				E8190DD21F0F69660000B07C /* WOTSpaceCityScrollView.xib in Resources */,
@@ -1956,7 +1957,6 @@
 				E8190D981F0F69660000B07C /* WOTInformationLIstCell.xib in Resources */,
 				E8190DBD1F0F69660000B07C /* WOTSettingCell.xib in Resources */,
 				E8DDCCD71F11D542007D001C /* WOTEnterpriseTypeCell.xib in Resources */,
-				E87EFEA61F1767A000F0D372 /* Main.storyboard in Resources */,
 				E8190DAB1F0F69660000B07C /* WOTMyActivitiesCell.xib in Resources */,
 				2A4214781F146A700010B003 /* share_sina@2x.png in Resources */,
 				E8190DD01F0F69660000B07C /* WOTCommonHeaderVIew.xib in Resources */,
@@ -2346,10 +2346,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E87EFEA41F1767A000F0D372 /* Main.storyboard */ = {
+		E86C05B01F2B0B79000ABDBF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E87EFEA51F1767A000F0D372 /* Base */,
+				E86C05B11F2B0B79000ABDBF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2427,10 +2427,11 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2582,10 +2583,11 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2618,10 +2620,11 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

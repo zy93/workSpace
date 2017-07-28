@@ -21,6 +21,8 @@
     _collectionVIew.dataSource = self;
     _selectedindex = 0;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(scrollToCity:) name:@"scrollToDestinationCity" object:nil];
+    _moreImage.image = [UIImage imageNamed:@"mainmore_unselected"];
+    [_moreBtn setSelected: NO];
 }
 
 
@@ -100,7 +102,9 @@
 }
 - (IBAction)moreAction:(id)sender {
     
-    if (_delegate) {
+    [_moreBtn setSelected:!_moreBtn];
+    _moreImage.image = _moreBtn.isSelected ? [UIImage imageNamed:@"mainmore_selected"]:[UIImage imageNamed:@"mainmore_unselected"];
+    if ([_delegate respondsToSelector:@selector(showMoreCityVC)]) {
         [_delegate showMoreCityVC];
     }
     
