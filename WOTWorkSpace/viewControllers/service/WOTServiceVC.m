@@ -16,7 +16,7 @@
 #import "WOTLoginNaviController.h"
 #import "WOTOpenLockScanVC.h"
 #import "WOTSliderModel.h"
-#import "WOTworkSpaceDetailVC.h"
+#import "WOTH5VC.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -152,7 +152,7 @@
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
     
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = _sliderUrlStrings[index];
     [self.navigationController pushViewController:detailvc animated:YES];
     
