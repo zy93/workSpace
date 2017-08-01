@@ -45,6 +45,14 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getSpaceSitationBlock:(response)response;
 
 /**
+ 获取定位最近的空间
+
+ @param lat 纬度
+ @param lon 经度
+ */
++(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;;
+
+/**
  *  根据空间id 和状态请求筛选 获取活动列表
  * @param spaceid  空间id
    @param spaceState 空间状态

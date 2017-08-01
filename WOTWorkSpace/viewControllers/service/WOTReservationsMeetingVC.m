@@ -79,6 +79,8 @@
 -(void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBar.translucent = YES;
 }
+
+
 -(void)setupView
 {
     __weak typeof(self) weakSelf = self;
@@ -96,6 +98,17 @@
     
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden  = YES;
+}
+
+-(void)setIsMeeting:(BOOL)isMeeting
+{
+    _isMeeting = isMeeting;
+    if (isMeeting) {
+        self.navigationItem.title = @"预定会议室";
+    }
+    else {
+        self.navigationItem.title = @"预定场地";
+    }
 }
 
 #pragma mark - request

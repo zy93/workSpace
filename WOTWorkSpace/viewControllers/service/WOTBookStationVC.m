@@ -29,21 +29,13 @@
 @property (weak, nonatomic) IBOutlet UIView *selectDateView;
 @property (weak, nonatomic) IBOutlet UIView *indicatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewWidth;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorVIewCenter;
-
 @property (weak, nonatomic) IBOutlet UILabel *todayLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *tomorrowLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *selectedTimeLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *tomorrowBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *todayBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *selectedBtn;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableIView;
 @property(nonatomic,strong)WOTDatePickerView *datepickerview;
 
@@ -128,17 +120,17 @@
 #pragma mark - action
 
 - (IBAction)selectedToday:(id)sender {
-    
     self.indicatorVIewCenter.constant = self.todayView.frame.origin.x;
     [self setTextColor:UIColorFromRGB(0x5484e7) tomorrowcolor:[UIColor blackColor] timecolor:[UIColor blackColor]];
     inquireTime = [NSDate getNewTimeZero];
-    
+    _datepickerview.hidden = YES;
 }
 
 - (IBAction)selectedTomorrow:(id)sender {
     self.indicatorVIewCenter.constant = self.tomorrowView.frame.origin.x;
      [self setTextColor:[UIColor blackColor] tomorrowcolor:UIColorFromRGB(0x5484e7) timecolor:[UIColor blackColor]];
     inquireTime = [NSDate getTomorrowTimeZero];
+    _datepickerview.hidden = YES;
 }
 
 - (IBAction)selectedTime:(id)sender {

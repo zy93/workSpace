@@ -21,6 +21,7 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
+#import "WOTLocationManager.h"
 
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
@@ -58,7 +59,7 @@
     [self configScrollView];
     [self loadSpaceView];
     
-    
+    [self loadLocation];
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -142,6 +143,15 @@
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
     self.scrollVIew.backgroundColor = MainColor;
+}
+
+-(void)loadLocation
+{
+    [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon) {
+        [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
+            [WOTSingtleton shared].nearbySpace = bean;
+        }];
+    }];
 }
 
 
@@ -456,6 +466,10 @@
 {
     if (strIsEmpty(sbName)) {
         [self showNewInfoVC];
+        return;
+    }
+    if ([vcName isEqualToString:@"WOTOpenLockScanVCID"]) {
+        [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
         return;
     }
     [self pushToViewControllerWithStoryBoardName:sbName viewControllerName:vcName];

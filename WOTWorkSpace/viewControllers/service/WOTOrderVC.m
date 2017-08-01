@@ -53,7 +53,8 @@
 }
 
 -(void)configNav{
-    self.navigationItem.title = @"确认订单"; 
+    self.navigationItem.title = @"确认订单";
+    
 }
 
 -(void)setIsBookStation:(BOOL)isBookStation
@@ -140,17 +141,20 @@
     
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    if (section==0) {
-//        return 0;
-//    }
-//    return 15;
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 0;
+    }
+    return 0;
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 15;
+    if (section==0) {
+        return 0;
+    }
+    return 20;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -262,6 +266,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==0) {
         if (indexPath.row == 4 || indexPath.row == 5) {
             payTypeIndex = indexPath;
@@ -278,7 +283,7 @@
 }
 
 
-//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
 //    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];

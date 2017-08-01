@@ -19,6 +19,9 @@
 		2A336A661F0CD84900F5B0AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A336A651F0CD84900F5B0AF /* Login.storyboard */; };
 		2A336A861F0CF2B600F5B0AF /* WOTLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A336A851F0CF2B600F5B0AF /* WOTLoginVC.m */; };
 		2A36B0051F18C450007DB615 /* WOTPaymentTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A36B0041F18C450007DB615 /* WOTPaymentTypeCell.m */; };
+		2A3B600B1F2EF9D000AC9C8D /* WOTLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3B600A1F2EF9D000AC9C8D /* WOTLocationModel.m */; };
+		2A3B600E1F2EFF4600AC9C8D /* WOTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3B600D1F2EFF4600AC9C8D /* WOTLocationManager.m */; };
+		2A3B60101F2F0A9700AC9C8D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */; };
 		2A4214421F14699B0010B003 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214311F14699B0010B003 /* libSocialQQ.a */; };
 		2A4214431F14699B0010B003 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214341F14699B0010B003 /* libSocialSina.a */; };
 		2A4214441F14699B0010B003 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4214371F14699B0010B003 /* libSocialWeChat.a */; };
@@ -309,6 +312,11 @@
 		2A336A851F0CF2B600F5B0AF /* WOTLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLoginVC.m; sourceTree = "<group>"; };
 		2A36B0031F18C450007DB615 /* WOTPaymentTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPaymentTypeCell.h; sourceTree = "<group>"; };
 		2A36B0041F18C450007DB615 /* WOTPaymentTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPaymentTypeCell.m; sourceTree = "<group>"; };
+		2A3B60091F2EF9D000AC9C8D /* WOTLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLocationModel.h; sourceTree = "<group>"; };
+		2A3B600A1F2EF9D000AC9C8D /* WOTLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLocationModel.m; sourceTree = "<group>"; };
+		2A3B600C1F2EFF4600AC9C8D /* WOTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLocationManager.h; sourceTree = "<group>"; };
+		2A3B600D1F2EFF4600AC9C8D /* WOTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLocationManager.m; sourceTree = "<group>"; };
+		2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2A4214311F14699B0010B003 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		2A4214321F14699B0010B003 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		2A4214341F14699B0010B003 /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
@@ -767,6 +775,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3B60101F2F0A9700AC9C8D /* CoreLocation.framework in Frameworks */,
 				E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */,
 				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
 				2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */,
@@ -984,6 +993,7 @@
 		9809956DAB35897C197FBC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */,
 				2A4214821F149ED80010B003 /* CoreGraphics.framework */,
 				2A4214801F149ECA0010B003 /* libsqlite3.tbd */,
 				D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */,
@@ -1592,6 +1602,8 @@
 				E850330A1F0B922000E79257 /* WOTEnumUtils.m */,
 				E80F4C0D1F0F24AA008BF066 /* WOTUitls.h */,
 				E80F4C0E1F0F24AA008BF066 /* WOTUitls.m */,
+				2A3B600C1F2EFF4600AC9C8D /* WOTLocationManager.h */,
+				2A3B600D1F2EFF4600AC9C8D /* WOTLocationManager.m */,
 				2A1624EE1F0E231E00F216F9 /* WOTFileUitls.h */,
 				2A1624EF1F0E231E00F216F9 /* WOTFileUitls.m */,
 				E86615691F1F2F56005E182A /* WOTQRCodeUtils.h */,
@@ -1702,6 +1714,8 @@
 				E84FACE31F21B23B00274DAA /* WOTMyHistoryDemandsModel.m */,
 				2AD2BE171F26DC4F00D4C3BC /* WOTBusinessModel.h */,
 				2AD2BE181F26DC4F00D4C3BC /* WOTBusinessModel.m */,
+				2A3B60091F2EF9D000AC9C8D /* WOTLocationModel.h */,
+				2A3B600A1F2EF9D000AC9C8D /* WOTLocationModel.m */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -2138,6 +2152,7 @@
 				E8190D951F0F69660000B07C /* WOTImageCollectionViewCell.m in Sources */,
 				E8190DAE1F0F69660000B07C /* WOTMyCell.m in Sources */,
 				E8190DA61F0F69660000B07C /* WOTCerateEnterpriseCell.m in Sources */,
+				2A3B600E1F2EFF4600AC9C8D /* WOTLocationManager.m in Sources */,
 				2AF18A271F131BEE004681CE /* WOTReservationsMeetingVC.m in Sources */,
 				E85A85F81F0202460016FCA1 /* MBProgressHUDUtil.m in Sources */,
 				E866156B1F1F2F56005E182A /* WOTQRCodeUtils.m in Sources */,
@@ -2259,6 +2274,7 @@
 				E85A85891F0201F30016FCA1 /* main.m in Sources */,
 				E8605CA51F132221005C09F4 /* WOTEnterpriseHeaderView.m in Sources */,
 				2A5B230E1F0F7DBE00466BEF /* WOTEnterTextVC.m in Sources */,
+				2A3B600B1F2EF9D000AC9C8D /* WOTLocationModel.m in Sources */,
 				E8190DBF1F0F69660000B07C /* WOTRegisterServiceProvidersCell.m in Sources */,
 				2A42144E1F146A1A0010B003 /* YYShareView.m in Sources */,
 				2A99FB761F25F2C000869732 /* WOTAppointmentModel.m in Sources */,

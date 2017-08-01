@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1660,7 +1660,7 @@
                                             <outlet property="infoTitle" destination="5QG-OT-jBn" id="tdu-DP-Zqa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForSiteCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTOrderForSiteCell" rowHeight="65" id="7YA-6d-oeD" customClass="WOTOrderForSiteCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForSiteCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTOrderForSiteCell" rowHeight="65" id="7YA-6d-oeD" customClass="WOTOrderForSiteCell">
                                         <rect key="frame" x="0.0" y="226" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7YA-6d-oeD" id="saI-qc-heA">
@@ -1708,7 +1708,7 @@
                                             <outlet property="reservationsTimeLab" destination="ppK-uG-t58" id="YYf-G3-pAc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForBookStationCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTOrderForBookStationCell" rowHeight="169" id="Twn-Lq-4Fl" customClass="WOTOrderForBookStationCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForBookStationCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTOrderForBookStationCell" rowHeight="169" id="Twn-Lq-4Fl" customClass="WOTOrderForBookStationCell">
                                         <rect key="frame" x="0.0" y="291" width="375" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Twn-Lq-4Fl" id="IbJ-4u-hcg">
@@ -1833,7 +1833,7 @@
                                             <outlet property="timeExplanationLab" destination="Zm9-77-MsI" id="tyC-Hf-owL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForServiceInfoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTOrderForServiceInfoCell" rowHeight="176" id="udL-0M-Me2" customClass="WOTOrderForServiceInfoCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForServiceInfoCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTOrderForServiceInfoCell" rowHeight="176" id="udL-0M-Me2" customClass="WOTOrderForServiceInfoCell">
                                         <rect key="frame" x="0.0" y="460" width="375" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udL-0M-Me2" id="i03-Uh-Fel">
@@ -1930,7 +1930,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTPaymentTypeCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTPaymentTypeCell" rowHeight="50" id="KX9-Y8-fyT" customClass="WOTPaymentTypeCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTPaymentTypeCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTPaymentTypeCell" rowHeight="50" id="KX9-Y8-fyT" customClass="WOTPaymentTypeCell">
                                         <rect key="frame" x="0.0" y="636" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KX9-Y8-fyT" id="QBr-g1-Moj">
@@ -2056,7 +2056,7 @@
                                             <outlet property="titleLab" destination="efB-Dm-OcH" id="Rem-L8-1B5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForAmountCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WOTOrderForAmountCell" rowHeight="52" id="efe-uY-dnY" customClass="WOTOrderForAmountCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WOTOrderForAmountCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="WOTOrderForAmountCell" rowHeight="52" id="efe-uY-dnY" customClass="WOTOrderForAmountCell">
                                         <rect key="frame" x="0.0" y="777" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="efe-uY-dnY" id="KiP-9v-s8x">
@@ -2147,7 +2147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kds-uJ-Aye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5852" y="842.87856071964029"/>
+            <point key="canvasLocation" x="5852" y="915"/>
         </scene>
         <!--Workspace ListVC-->
         <scene sceneID="VVr-Pp-ac9">

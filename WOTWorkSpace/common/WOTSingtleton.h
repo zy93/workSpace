@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "WOTLocationModel.h"
+
 @interface WOTSingtleton : NSObject
 +(instancetype)shared;
 @property(nonatomic,strong)NSMutableArray *spaceCityArray;
 @property(nonatomic,strong)NSArray *ballTitle;
 @property(nonatomic,strong)NSArray *ballImage;
 @property(nonatomic,assign)bool isuserLogin ;
+
+@property (nonatomic, strong) WOTLocationModel *nearbySpace;
+
 @end

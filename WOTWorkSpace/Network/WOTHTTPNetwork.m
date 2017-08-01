@@ -26,6 +26,7 @@
 #import "WOTGetVerifyModel.h"
 #import "WOTRegisterModel.h"
 #import "WOTBusinessModel.h"
+#import "WOTLocationModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -323,6 +324,23 @@
     }];
 }
 
++(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findCoord"];
+    NSDictionary * parameters = @{@"lng":@(lon),
+                                  @"lat":@(lat)};
+    
+    [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
+        
+        WOTLocationModel_Msg * activitymodel = [[WOTLocationModel_Msg alloc]initWithDictionary:responseobj error:nil];
+        
+        return  activitymodel;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
 
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState  response:(response)response{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Activity/findByState"];

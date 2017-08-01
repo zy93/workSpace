@@ -17,6 +17,14 @@
 #import "WOTOpenLockScanVC.h"
 #import "WOTSliderModel.h"
 #import "WOTH5VC.h"
+
+
+#define visitors @"访客预约"
+#define maintenance @"问题报修"
+#define opendoor @"一键开门"
+#define getservice @"发布需求"
+#define feedback @"意见反馈"
+
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;
@@ -105,11 +113,11 @@
 -(void)addData
 {
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
-    NSArray *section2 = @[@"访客预约", @"问题报修", @"一键开门", @"发布需求", @"意见反馈"];
+    NSArray *section2 = @[visitors, maintenance, getservice, feedback];
     tableIconList = [@[@"visitors_icon", @"maintenance_apply_icon", @"openDoor_icon", @"get_service_icon", @"feedback_icon"] mutableCopy];
-    NSArray *section3 = @[@"可操控设备"];
+//    NSArray *section3 = @[@"可操控设备"];
 
-    tableList = [@[section1, section2, section3] mutableCopy];
+    tableList = [@[section1, section2] mutableCopy];
     
     [self.table reloadData];
 }
@@ -244,21 +252,20 @@
         }
     }
     else if (indexPath.section==1) {
-        if (indexPath.row==0) {
+        NSArray *sectionArr = tableList[indexPath.section];
+        if ([sectionArr[indexPath.row] isEqualToString:visitors]) {
             [self pushVCByVCName:@"WOTVisitorsAppointmentVC"];
         }
-        else if (indexPath.row==1) {
+        else if ([sectionArr[indexPath.row] isEqualToString:maintenance]) {
             [self pushVCByVCName:@"WOTMainAppleRepairVCID"];
         }
-        else if (indexPath.row==2) {
+        else if ([sectionArr[indexPath.row] isEqualToString:opendoor]) {
             [self pushVCByVCName:@"WOTOpenLockScanVCID"];
-            
-            
         }
-        else if (indexPath.row==3) {
+        else if ([sectionArr[indexPath.row] isEqualToString:getservice]) {
             [self pushVCByVCName:@"WOTGETServiceViewController"];
         }
-        else if (indexPath.row==4) {
+        else if ([sectionArr[indexPath.row] isEqualToString:feedback]) {
             [self pushVCByVCName:@"WOTFeedbackVC"];
         }
     } else if (indexPath.section == 2){

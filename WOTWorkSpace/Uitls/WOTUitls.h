@@ -16,4 +16,6 @@
 //获取屏幕比率
 +(CGFloat) GetLengthAdaptRate;
 +(NSData *)StringToByte:(NSString *)str;
+
+
 @end
