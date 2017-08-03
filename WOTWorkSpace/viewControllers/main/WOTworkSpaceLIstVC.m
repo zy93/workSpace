@@ -13,7 +13,8 @@
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
 
-#import "WOTworkSpaceDetailVC.h"
+#import "WOTH5VC.h"
+@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 
 #import "WOTRefreshControlUitls.h"
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>{
