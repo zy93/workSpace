@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol WOTWorkSpaceMoreCityDelegate<NSObject>
 @required
-    -(void)showMoreCityVC;
-    -(void)selectWithCity:(NSInteger)index;
+-(void)selectWithCity:(NSInteger)index;
 
 @end
 @interface WOTSpaceCityScrollView : UITableViewHeaderFooterView
@@ -19,5 +18,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 
 @property(nonatomic,strong)id<WOTWorkSpaceMoreCityDelegate>delegate;
-
+@property NSInteger selectedindex;
 @end

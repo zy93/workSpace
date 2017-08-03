@@ -17,24 +17,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-w1-vXA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </searchBar>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Hkg-w1-vXA" secondAttribute="bottom" id="VZe-l1-7nC"/>
-                    <constraint firstAttribute="trailing" secondItem="Hkg-w1-vXA" secondAttribute="trailing" id="lHx-WK-Lm1"/>
-                    <constraint firstItem="Hkg-w1-vXA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rzk-ns-cUy"/>
-                    <constraint firstItem="Hkg-w1-vXA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vWn-K3-ZQ1"/>
-                </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="searchBar" destination="Hkg-w1-vXA" id="kff-uH-LnO"/>
-            </connections>
         </tableViewCell>
     </objects>
 </document>

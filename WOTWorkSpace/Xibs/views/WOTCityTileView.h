@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WOTCityTileViewDelegate <NSObject>
+
+@required
+-(void)selectedCityIndex:(NSInteger)index;
+
+@end
+
 @interface WOTCityTileView : UIView
+
+@property (nonatomic,copy)id <WOTCityTileViewDelegate>tiledelegate;
+
+-(WOTCityTileView *)initWithFrame:(CGRect)frame;
 
 @end

@@ -10,4 +10,30 @@
 
 @implementation WOTRefreshControlUitls
 
+
+-(instancetype)initWithScroll:(UIScrollView *)scroll;{
+    self=[super init];
+    if (self) {
+
+        self.commonRefresh = [[WOTConciseRefreshControl alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+        [self.commonRefresh attachToScrollView:scroll];
+        
+        
+    }
+    return self;
+}
+
+
+- (void)addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;{
+
+        [self.commonRefresh addTarget:target action:action forControlEvents:controlEvents];
+  
+}
+
+-(void)stop{
+
+    [self.commonRefresh endRefreshing];
+    
+}
+
 @end

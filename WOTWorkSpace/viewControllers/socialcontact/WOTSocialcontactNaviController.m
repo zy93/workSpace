@@ -20,6 +20,21 @@
     // Do any additional setup after loading the view.
 }
 
+
+-(instancetype)initWithRootViewController:(UIViewController *)rootViewController{
+    if (self = [super initWithRootViewController:rootViewController]) {
+        self.navigationBar.barTintColor = NavigationBGColor;
+        [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
+        
+        self.navigationItem.titleView = nil;
+        self.navigationBar.tintColor = UIColorFromRGB(0x888888);
+        self.navigationBar.shadowImage = [[UIImage alloc]init];
+        
+    }
+    return self;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -219,7 +219,6 @@
 		E8693B0A1F04C45100772BC1 /* WOTCreateEnterpriseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693B091F04C45100772BC1 /* WOTCreateEnterpriseVC.m */; };
 		E8693B0C1F04F47700772BC1 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8693B0B1F04F47700772BC1 /* My.storyboard */; };
 		E8693B0F1F04F90E00772BC1 /* WOTMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693B0E1F04F90E00772BC1 /* WOTMainVC.m */; };
-		E8693B111F04F92C00772BC1 /* spaceMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8693B101F04F92C00772BC1 /* spaceMain.storyboard */; };
 		E8693B141F05061500772BC1 /* WOTServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693B131F05061500772BC1 /* WOTServiceVC.m */; };
 		E8693B171F05062D00772BC1 /* WOTSocialcontact.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693B161F05062D00772BC1 /* WOTSocialcontact.m */; };
 		E8693B1A1F05100800772BC1 /* WOTSocialcontactNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693B191F05100800772BC1 /* WOTSocialcontactNaviController.m */; };
@@ -227,7 +226,8 @@
 		E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E8391F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m */; };
 		E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */; };
 		E869E8401F1E15CA00DBDBB9 /* WOTPostImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */; };
-		E86C05B21F2B0B79000ABDBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86C05B01F2B0B79000ABDBF /* Main.storyboard */; };
+		E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */; };
+		E86C05B71F2B17C2000ABDBF /* spaceMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */; };
 		E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */; };
 		E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */; };
 		E86FD1F31F20742A009BE16A /* WOTApplyRepairCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E86FD1F11F20742A009BE16A /* WOTApplyRepairCell.m */; };
@@ -261,6 +261,9 @@
 		E8C7203E1F14785800DED44C /* WOTDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C7203D1F14785800DED44C /* WOTDatePickerView.xib */; };
 		E8CF9FCE1F0F751B00EF0F46 /* WOTBookStationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF9FCD1F0F751B00EF0F46 /* WOTBookStationVC.m */; };
 		E8CF9FD41F0F8EA400EF0F46 /* WOTBookStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF9FD31F0F8EA400EF0F46 /* WOTBookStationCell.m */; };
+		E8DAE7461F30228E00830A2F /* WOTConciseRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAE7441F30228E00830A2F /* WOTConciseRefreshControl.m */; };
+		E8DAE7471F30228E00830A2F /* WOTConciseRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8DAE7451F30228E00830A2F /* WOTConciseRefreshControl.xib */; };
+		E8DAE74A1F3025D800830A2F /* WOTRefreshControlUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAE7491F3025D800830A2F /* WOTRefreshControlUitls.m */; };
 		E8DDCCD21F11D151007D001C /* WOTEnterpriseTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DDCCD11F11D151007D001C /* WOTEnterpriseTypeVC.m */; };
 		E8DDCCD61F11D542007D001C /* WOTEnterpriseTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DDCCD41F11D542007D001C /* WOTEnterpriseTypeCell.m */; };
 		E8DDCCD71F11D542007D001C /* WOTEnterpriseTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8DDCCD51F11D542007D001C /* WOTEnterpriseTypeCell.xib */; };
@@ -269,6 +272,7 @@
 		E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF8E1F035A990015535D /* WOTOrderLIstVC.m */; };
 		E8EACF931F035A990015535D /* WOTSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF911F035A990015535D /* WOTSettingVC.m */; };
 		E8EACF961F035ABA0015535D /* WOTOrderLIstBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EACF951F035ABA0015535D /* WOTOrderLIstBaseVC.m */; };
+		E8F42AC31F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8F42AC21F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -663,7 +667,6 @@
 		E8693B0B1F04F47700772BC1 /* My.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		E8693B0D1F04F90E00772BC1 /* WOTMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMainVC.h; sourceTree = "<group>"; };
 		E8693B0E1F04F90E00772BC1 /* WOTMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMainVC.m; sourceTree = "<group>"; };
-		E8693B101F04F92C00772BC1 /* spaceMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = spaceMain.storyboard; sourceTree = "<group>"; };
 		E8693B121F05061500772BC1 /* WOTServiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTServiceVC.h; sourceTree = "<group>"; };
 		E8693B131F05061500772BC1 /* WOTServiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTServiceVC.m; sourceTree = "<group>"; };
 		E8693B151F05062D00772BC1 /* WOTSocialcontact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSocialcontact.h; sourceTree = "<group>"; };
@@ -679,7 +682,9 @@
 		E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPhotosBaseUtils.m; sourceTree = "<group>"; };
 		E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPostImage.h; sourceTree = "<group>"; };
 		E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPostImage.m; sourceTree = "<group>"; };
-		E86C05B11F2B0B79000ABDBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E86C05B31F2B105D000ABDBF /* WOTCityTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTCityTileView.h; sourceTree = "<group>"; };
+		E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTCityTileView.m; sourceTree = "<group>"; };
+		E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = spaceMain.storyboard; sourceTree = "<group>"; };
 		E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZSIMagePickerSDK.a; sourceTree = "<group>"; };
 		E86FD1EA1F2056F6009BE16A /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		E86FD1EB1F2056F6009BE16A /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
@@ -744,6 +749,11 @@
 		E8CF9FD21F0F8EA400EF0F46 /* WOTBookStationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBookStationCell.h; sourceTree = "<group>"; };
 		E8CF9FD31F0F8EA400EF0F46 /* WOTBookStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBookStationCell.m; sourceTree = "<group>"; };
 		E8D89D821F06136000FFFFDE /* WOTWorkSpace_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkSpace_Prefix.pch; sourceTree = "<group>"; };
+		E8DAE7431F30228E00830A2F /* WOTConciseRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTConciseRefreshControl.h; sourceTree = "<group>"; };
+		E8DAE7441F30228E00830A2F /* WOTConciseRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTConciseRefreshControl.m; sourceTree = "<group>"; };
+		E8DAE7451F30228E00830A2F /* WOTConciseRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTConciseRefreshControl.xib; sourceTree = "<group>"; };
+		E8DAE7481F3025D800830A2F /* WOTRefreshControlUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTRefreshControlUitls.h; sourceTree = "<group>"; };
+		E8DAE7491F3025D800830A2F /* WOTRefreshControlUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTRefreshControlUitls.m; sourceTree = "<group>"; };
 		E8DDCCD01F11D151007D001C /* WOTEnterpriseTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseTypeVC.h; sourceTree = "<group>"; };
 		E8DDCCD11F11D151007D001C /* WOTEnterpriseTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseTypeVC.m; sourceTree = "<group>"; };
 		E8DDCCD31F11D542007D001C /* WOTEnterpriseTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseTypeCell.h; sourceTree = "<group>"; };
@@ -760,6 +770,8 @@
 		E8EACF911F035A990015535D /* WOTSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSettingVC.m; sourceTree = "<group>"; };
 		E8EACF941F035ABA0015535D /* WOTOrderLIstBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTOrderLIstBaseVC.h; sourceTree = "<group>"; };
 		E8EACF951F035ABA0015535D /* WOTOrderLIstBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTOrderLIstBaseVC.m; sourceTree = "<group>"; };
+		E8F42AC11F2F21EA0011C595 /* WOTPublishSocialTrendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPublishSocialTrendsVC.h; sourceTree = "<group>"; };
+		E8F42AC21F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPublishSocialTrendsVC.m; sourceTree = "<group>"; };
 		EFC264D6C897C120A10B700D /* libPods-WOTWorkSpaceUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpaceUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0D65BEE3DC0196385560AF /* Pods-WOTWorkSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceUITests/Pods-WOTWorkSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1247,6 +1259,7 @@
 		E8190D8D1F0F69660000B07C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				E8DAE7421F30228E00830A2F /* reloadView */,
 				2A4214CF1F14EE730010B003 /* WOTSelectScrollView.h */,
 				2A4214D01F14EE730010B003 /* WOTSelectScrollView.m */,
 				2AF18A221F131898004681CE /* WOTPickerView.h */,
@@ -1267,6 +1280,8 @@
 				E8C7203D1F14785800DED44C /* WOTDatePickerView.xib */,
 				2AD2BE2A1F274CB700D4C3BC /* WOTShortcutMenuView.h */,
 				2AD2BE2B1F274CB700D4C3BC /* WOTShortcutMenuView.m */,
+				E86C05B31F2B105D000ABDBF /* WOTCityTileView.h */,
+				E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1311,7 +1326,6 @@
 				E85A858E1F0201F30016FCA1 /* ViewController.m */,
 				E85A85961F0201F30016FCA1 /* Assets.xcassets */,
 				E85A85981F0201F30016FCA1 /* LaunchScreen.storyboard */,
-				E86C05B01F2B0B79000ABDBF /* Main.storyboard */,
 				E85A859B1F0201F30016FCA1 /* Info.plist */,
 				E85A85931F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld */,
 				E85A85871F0201F30016FCA1 /* Supporting Files */,
@@ -1451,7 +1465,7 @@
 			children = (
 				2A4ABBAC1F2AE50D00BEE21D /* LaunchScreen.storyboard */,
 				E8693B0B1F04F47700772BC1 /* My.storyboard */,
-				E8693B101F04F92C00772BC1 /* spaceMain.storyboard */,
+				E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */,
 				2AF83EE71F05FB92000AE733 /* Service.storyboard */,
 				E85032E21F0B5EDE00E79257 /* Socialcontact.storyboard */,
 				2A336A651F0CD84900F5B0AF /* Login.storyboard */,
@@ -1602,6 +1616,8 @@
 				E866156A1F1F2F56005E182A /* WOTQRCodeUtils.m */,
 				2A022E571F1DBC36001AE9E9 /* NSDate+Uitls.h */,
 				2A022E581F1DBC36001AE9E9 /* NSDate+Uitls.m */,
+				E8DAE7481F3025D800830A2F /* WOTRefreshControlUitls.h */,
+				E8DAE7491F3025D800830A2F /* WOTRefreshControlUitls.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -1632,6 +1648,8 @@
 				E8693B191F05100800772BC1 /* WOTSocialcontactNaviController.m */,
 				E86594861F21CFF00093B796 /* WOTNearCirclesVC.h */,
 				E86594871F21CFF00093B796 /* WOTNearCirclesVC.m */,
+				E8F42AC11F2F21EA0011C595 /* WOTPublishSocialTrendsVC.h */,
+				E8F42AC21F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m */,
 			);
 			path = socialcontact;
 			sourceTree = "<group>";
@@ -1736,6 +1754,16 @@
 				E8BA0D8F1F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m */,
 			);
 			path = history;
+			sourceTree = "<group>";
+		};
+		E8DAE7421F30228E00830A2F /* reloadView */ = {
+			isa = PBXGroup;
+			children = (
+				E8DAE7431F30228E00830A2F /* WOTConciseRefreshControl.h */,
+				E8DAE7441F30228E00830A2F /* WOTConciseRefreshControl.m */,
+				E8DAE7451F30228E00830A2F /* WOTConciseRefreshControl.xib */,
+			);
+			path = reloadView;
 			sourceTree = "<group>";
 		};
 		E8EACF8C1F035A990015535D /* order */ = {
@@ -1885,17 +1913,16 @@
 				E8190D9A1F0F69660000B07C /* WOTSpaceCityCollectionCell.xib in Resources */,
 				2A42147A1F146A700010B003 /* share_sina_select@2x.png in Resources */,
 				E8C7203E1F14785800DED44C /* WOTDatePickerView.xib in Resources */,
-				E86C05B21F2B0B79000ABDBF /* Main.storyboard in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
 				2A42147B1F146A700010B003 /* share_sina_select@3x.png in Resources */,
 				E8190DD21F0F69660000B07C /* WOTSpaceCityScrollView.xib in Resources */,
 				2A42147E1F146A700010B003 /* share_weixin_select@2x.png in Resources */,
 				2A4214791F146A700010B003 /* share_sina@3x.png in Resources */,
-				E8693B111F04F92C00772BC1 /* spaceMain.storyboard in Resources */,
 				2A42146C1F146A700010B003 /* share_pengyouquan@2x.png in Resources */,
 				2A4214771F146A700010B003 /* share_qqkongjian_select@3x.png in Resources */,
 				E8190D9F1F0F69660000B07C /* WOTTEnterpriseListCell.xib in Resources */,
 				2A4214741F146A700010B003 /* share_qqkongjian@2x.png in Resources */,
+				E86C05B71F2B17C2000ABDBF /* spaceMain.storyboard in Resources */,
 				E8190DB51F0F69660000B07C /* WOTMyuserCell.xib in Resources */,
 				2A42146E1F146A700010B003 /* share_pengyouquan_select@2x.png in Resources */,
 				E8190DA71F0F69660000B07C /* WOTCerateEnterpriseCell.xib in Resources */,
@@ -1939,6 +1966,7 @@
 				2A42146F1F146A700010B003 /* share_pengyouquan_select@3x.png in Resources */,
 				2AD2BE211F2711BD00D4C3BC /* WOTCurtainCell.xib in Resources */,
 				2A42147C1F146A700010B003 /* share_weixin@2x.png in Resources */,
+				E8DAE7471F30228E00830A2F /* WOTConciseRefreshControl.xib in Resources */,
 				2A4214471F14699B0010B003 /* UMSocialSDKPromptResources.bundle in Resources */,
 				2A4214731F146A700010B003 /* share_qq_select@3x.png in Resources */,
 				E8190D981F0F69660000B07C /* WOTInformationLIstCell.xib in Resources */,
@@ -2135,6 +2163,7 @@
 				E8190DA21F0F69660000B07C /* WOTworkSpacenearCell.m in Sources */,
 				E8190DCF1F0F69660000B07C /* WOTCommonHeaderVIew.m in Sources */,
 				E8190DAF1F0F69660000B07C /* WOTMycommonCell.m in Sources */,
+				E8DAE74A1F3025D800830A2F /* WOTRefreshControlUitls.m in Sources */,
 				E86FD1F31F20742A009BE16A /* WOTApplyRepairCell.m in Sources */,
 				E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */,
 				E8190DAA1F0F69660000B07C /* WOTMyActivitiesCell.m in Sources */,
@@ -2211,6 +2240,7 @@
 				E8BA0D871F0CF9F800B81C3D /* WOTMyAppointmentListVC.m in Sources */,
 				E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */,
 				E8693B1D1F05143800772BC1 /* WOTServiceNaviController.m in Sources */,
+				E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */,
 				2A99FB621F258A0F00869732 /* WOTBookStationListModel.m in Sources */,
 				E8190DC51F0F69660000B07C /* WOTVisitorsAppointmentCell.m in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
@@ -2272,8 +2302,10 @@
 				E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */,
 				E8190DB81F0F69660000B07C /* WOTPersionalInformationCommonCell.m in Sources */,
 				E86FD1FD1F209723009BE16A /* WOTImageLookoverVC.m in Sources */,
+				E8F42AC31F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m in Sources */,
 				2A99FB6A1F25C37E00869732 /* WOTVisitorsAppointmentSubmitCell.m in Sources */,
 				E8190DCC1F0F69660000B07C /* ZYQSphereView.m in Sources */,
+				E8DAE7461F30228E00830A2F /* WOTConciseRefreshControl.m in Sources */,
 				E86FD1FA1F208582009BE16A /* WOTAppleRepairCommonCell.m in Sources */,
 				E8190DB01F0F69660000B07C /* WOTMyEnterPriseCell.m in Sources */,
 				E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */,
@@ -2328,17 +2360,8 @@
 		E85A85981F0201F30016FCA1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E85A85991F0201F30016FCA1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E86C05B01F2B0B79000ABDBF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E86C05B11F2B0B79000ABDBF /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2418,7 +2441,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2574,7 +2597,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2611,7 +2634,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

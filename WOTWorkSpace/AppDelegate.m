@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     [self loadTabView];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
+//    [self registerPush];
     /* 打开调试日志 */
     [[UMSocialManager defaultManager] openLog:YES];
     /* 设置友盟appkey */
@@ -125,7 +125,7 @@
     /* 设置新浪的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"958434094"  appSecret:@"c8126f4af61b6287bd2ce86a54360e7f" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
-
+//
 //-(void)registerPush{
 //   
 //    UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];

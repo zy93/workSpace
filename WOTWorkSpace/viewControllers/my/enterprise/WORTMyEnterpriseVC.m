@@ -10,6 +10,7 @@
 
 #import "WOTJoiningEnterpriseVC.h"
 #import "WOTCreateEnterpriseVC.h"
+
 @interface WORTMyEnterpriseVC ()<UIScrollViewDelegate>
 
 @property(nonatomic,strong)WOTJoiningEnterpriseVC *joinvc;
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     [self configNavi];
     [self loadScrollViewSubviews];
+   
     // Do any additional setup after loading the view.
 }
 

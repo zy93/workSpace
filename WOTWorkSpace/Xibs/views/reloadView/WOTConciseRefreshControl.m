@@ -1,17 +1,17 @@
 //
-//  CCPConciseRefreshControl.m
+//  WOTConciseRefreshControl.m
 //  YNCCProduct
 //
 //  Created by YNKJMACMINI4 on 16/6/30.
 //  Copyright © 2016年 YNKJMACMINI2. All rights reserved.
 //
 
-#import "CCPConciseRefreshControl.h"
+#import "WOTConciseRefreshControl.h"
 
-@implementation CCPConciseRefreshControl
+@implementation WOTConciseRefreshControl
 
 static const CGFloat DefaultScreenWidth = 320.0;
-static const CGFloat ReloadHeight = 100.0;
+static const CGFloat ReloadHeight = 120.0;
 static const CGFloat SpringTreshold = 120.0;
 static const CGFloat AnimationDuration = 1.f;
 static const CGFloat AnimationDamping = 0.4f;
@@ -19,7 +19,8 @@ static const CGFloat AnimationVelosity= 0.8f;
 
 
 - (instancetype)initWithFrame:(CGRect)frame;{
-    return [[[NSBundle mainBundle] loadNibNamed:@"CCPConciseRefreshControl" owner:self options:nil] firstObject];
+
+    return [[[NSBundle mainBundle] loadNibNamed:@"WOTConciseRefreshControl" owner:self options:nil] firstObject];
 }
 
 -(void)awakeFromNib{
@@ -29,11 +30,13 @@ static const CGFloat AnimationVelosity= 0.8f;
 }
 
 
+
 - (void)attachToScrollView:(UIScrollView *)scrollView {
     self.scrollView = scrollView;
     [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [self setFrame:CGRectMake(0.f, 0.f, scrollView.frame.size.width, 0)];
-    [scrollView addSubview:self];
+    [self setFrame:CGRectMake(0.f, 0.f, self.scrollView.frame.size.width,0)];
+    
+    [self.scrollView addSubview:self];
 }
 -(void)dealloc{
     
@@ -51,7 +54,7 @@ static const CGFloat AnimationVelosity= 0.8f;
 -(void)calculateShift{
     
     if (-self.scrollView.contentOffset.y < 100*[UIScreen mainScreen].bounds.size.width/DefaultScreenWidth){
-        self.reloadText.text = @"下拉刷新数据";
+        self.reloadText.text = @"松手刷新数据";
     }
     
     [self setFrame:CGRectMake(0.f, 0.f, self.scrollView.frame.size.width, self.scrollView.contentOffset.y)];
@@ -141,7 +144,7 @@ static const CGFloat AnimationVelosity= 0.8f;
           initialSpringVelocity:AnimationVelosity
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
-                         [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0.f, 0.f, 0.f)];
+                         [self.scrollView setContentInset:UIEdgeInsetsMake(64, 0.f, 0.f, 0.f)];
                      } completion:nil];
     self.forbidSunSet = NO;
     self.reloadText.text = @"下拉刷新数据";

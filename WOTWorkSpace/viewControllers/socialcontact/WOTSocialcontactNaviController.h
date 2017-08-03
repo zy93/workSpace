@@ -7,6 +7,6 @@
 //
 
 
-@interface WOTSocialcontactNaviController : WOTBaseNavigationController
+@interface WOTSocialcontactNaviController : UINavigationController
 
 @end

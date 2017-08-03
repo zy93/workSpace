@@ -30,7 +30,8 @@
         self.describeText.textColor = LowTextColor;
         self.describeText.text = @"请填写您的需求";
     };
-    [_describeText setCorenerRadius:10.0 borderColor:LowTextColor];
+    [_describeText setCorenerRadius:10.0 borderColor:CLEARCOLOR];
+    [_describeText setBackgroundColor:RGB(246.0, 246.0, 246.0)];
     
     self.submitBtn.layer.cornerRadius = 5.f;
 }
@@ -101,6 +102,7 @@
     _describeText.text = @"";
     return YES;
 }
+
 /*
 #pragma mark - Navigation
 

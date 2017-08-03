@@ -265,7 +265,7 @@
         if ([WOTSingtleton shared].isuserLogin){
           [self pushVCByVCName:@"WOTIntelligenceDeviceListVCID"];
         } else {
-            [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+            [[WOTConfigThemeUitls shared] showLoginVC:self];
         }
         
     }

@@ -21,7 +21,7 @@
 #import "WOTTEnterpriseListCell.h"
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
-         
+#import "WOTRefreshControlUitls.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -42,7 +42,7 @@
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
 @property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *infodataSource;
 @property(nonatomic,strong)NSString *activityImageUrl;
-@property(nonatomic,strong)UIRefreshControl *refreshControl;
+@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @end
 
 @implementation WOTMainVC
@@ -52,12 +52,10 @@
     //    [self load3DBallView];
     
     [self loadAutoScrollView];
-    [self getSliderDataSource:^{
-        [self loadAutoScrollView];
-    }];
+    
     
     [self configScrollView];
-    [self loadSpaceView];
+   
     
  
     
@@ -75,10 +73,8 @@
     _activityImage.image = [UIImage imageNamed:@"placeholder"];
    
     [self getAllData];
-    _refreshControl = [[UIRefreshControl alloc]init];
-    [_refreshControl addTarget:self action:@selector(downLoadRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.scrollVIew addSubview:_refreshControl];
-    // Do any additional setup after loading the view.
+   
+     // Do any additional setup after loading the view.
     
 }
 -(void)getAllData{
@@ -100,13 +96,22 @@
         [self getInfoDataFromWeb:^{
             dispatch_group_leave(group);
         }];
+        dispatch_group_enter(group);
+        [self getSliderDataSource:^{
+            [self loadAutoScrollView];
+            dispatch_group_leave(group);
+        }];
+        dispatch_group_enter(group);
+        [self loadSpaceView];
+        dispatch_group_leave(group);
+        
         
         dispatch_group_notify(group, queue, ^{
            
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSLog(@"回到主线程，刷新UI");
                 [hud setHidden:YES];
-                [_refreshControl endRefreshing];
+              
             });
         });
         
@@ -114,8 +119,8 @@
     
 }
 //下拉刷新
--(void)downLoadRefresh:(UIRefreshControl *)refreshControl{
-    
+-(void)downLoadRefresh{
+   
     [self getAllData];
 }
 
@@ -137,6 +142,8 @@
     [super viewDidAppear:animated];
     
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
+    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.scrollVIew];//在viewdidload 中添加，由于scrollview的contentSize不正确，不能下啦
+    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
     
 }
 

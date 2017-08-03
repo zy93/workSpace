@@ -27,9 +27,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
+     self.navigationController.navigationBar.translucent = NO;
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.translucent = YES;
+}
 -(NSArray *)createTitles{
     return [[NSArray alloc]initWithObjects:@"工位订单",@"会议室订单", nil];
 }

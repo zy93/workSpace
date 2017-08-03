@@ -1,5 +1,5 @@
 //
-//  CCPConciseRefreshControl.h
+//  WOTConciseRefreshControl.h
 //  YNCCProduct
 //
 //  Created by YNKJMACMINI4 on 16/6/30.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCPConciseRefreshControl : UIControl
+@interface WOTConciseRefreshControl : UIControl
 @property (strong, nonatomic) IBOutlet UIView *backView;
 @property (strong, nonatomic) IBOutlet UIImageView *centerImage;
 @property (strong, nonatomic) IBOutlet UILabel *reloadText;

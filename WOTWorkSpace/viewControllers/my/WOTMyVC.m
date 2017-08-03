@@ -179,7 +179,8 @@
                 break;
         }
     } else {
-        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+        [[WOTConfigThemeUitls shared] showLoginVC:self];
+        
     }
    
 }
@@ -191,7 +192,7 @@
         WOTAllOrderListVC *station_ordervc = [[WOTAllOrderListVC alloc]init];
         [self.navigationController pushViewController:station_ordervc animated:YES];
     } else {
-        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+        [[WOTConfigThemeUitls shared] showLoginVC:self];
     }
     
     
@@ -203,7 +204,7 @@
         station_ordervc.vctype = WOTPageMenuVCTypeStation;
         [self.navigationController pushViewController:station_ordervc animated:YES];
     } else {
-        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+        [[WOTConfigThemeUitls shared] showLoginVC:self];
     }
     
 }
@@ -216,7 +217,7 @@
         [self.navigationController pushViewController:station_ordervc animated:YES];
         
     } else {
-        [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+        [[WOTConfigThemeUitls shared] showLoginVC:self];
     }
 
 }
@@ -234,12 +235,13 @@
         _persionalVC = [storyboard instantiateViewControllerWithIdentifier:@"WOTPersionalInformationID"];
         [self.navigationController pushViewController:_persionalVC animated:YES];
     } else{
-        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
-        WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
-        
-        [self presentViewController:nav animated:YES completion:^{
-            
-        }];
+//        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
+//        WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
+//        
+//        [self presentViewController:nav animated:YES completion:^{
+//            
+//        }];
+        [[WOTConfigThemeUitls shared] showLoginVC:self];
     }
    
 }

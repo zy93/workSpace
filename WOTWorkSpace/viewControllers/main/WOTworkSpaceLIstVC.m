@@ -14,8 +14,14 @@
 #import "WOTSpaceCityScrollView.h"
 
 #import "WOTworkSpaceDetailVC.h"
-@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 
+#import "WOTRefreshControlUitls.h"
+@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>{
+    NSInteger citySelectedIndex;
+}
+
+@property(nonatomic,strong)WOTSpaceCityScrollView *headerView;
+@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @end
 
 @implementation WOTworkSpaceLIstVC
@@ -29,13 +35,26 @@
     self.tableVIew.showsVerticalScrollIndicator = NO;
     
     [WOTSingtleton shared].spaceCityArray = [NSMutableArray arrayWithObjects:@"全部", @"北京",@"上海",@"天津",@"深圳",@"北京",@"上海",@"天津",@"深圳",nil];
+    
+   
+    _headerView = [[NSBundle mainBundle]loadNibNamed:@"WOTSpaceCityScrollView" owner:nil options:nil].lastObject;
     [self configNav];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceSearchCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceSearchCellID"];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTSpaceCityScrollView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTSpaceCityScrollViewID"];
+    [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
+    
+    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.tableVIew];
+    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
+    
+    
     // Do any additional setup after loading the view.
 }
-
+-(void)downLoadRefresh{
+    [self getDataSourceFromWebFWithCity:nil complete:^{
+        [_refreshControl stop];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -43,6 +62,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
+
+}
+
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
 }
 
 -(void)configNav{
@@ -116,9 +141,9 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    WOTSpaceCityScrollView *view = [[NSBundle mainBundle]loadNibNamed:@"WOTSpaceCityScrollView" owner:nil options:nil].lastObject;
-    view.delegate = self;
-    return view;
+    _headerView.selectedindex = citySelectedIndex;
+    _headerView.delegate = self;
+    return _headerView;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -126,12 +151,18 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             WOTworkSpaceSearchCell *searchcell = [tableView dequeueReusableCellWithIdentifier:@"WOTworkSpaceSearchCellID" forIndexPath:indexPath];
+            [[WOTConfigThemeUitls shared] setHiddenKeyboardBlcok:^{
+                [(UITextField *)searchcell.searchField resignFirstResponder];
+            }];
+            
             searchcell.searchBarBlock = ^(NSString *searchText){
                 [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
                     [_dataSource removeAllObjects];
                     [self getDataSourceFromWebFWithCity:searchText complete:^{
                         [hud setHidden:YES];
+                        
                     }];
+                    
                 }];
                 
             };
@@ -143,12 +174,15 @@
                 //MARK:选择顶部城市筛选  修改数据源  修改sectionview的选中城市
                 
                 [_dataSource removeAllObjects];
+                
+                NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+                [_tableVIew reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+                NSIndexPath *dd = [NSIndexPath indexPathForRow:index inSection:0];
+                NSDictionary *dic = @{@"cityindex":dd};
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"scrollToDestinationCity" object:nil userInfo:dic];
+                
                 [self selectSpaceWithCity:index othersBlock:^{
-                   NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
-                    [_tableVIew reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-                    NSIndexPath *dd = [NSIndexPath indexPathForRow:index inSection:0];
-                    NSDictionary *dic = @{@"cityindex":dd};
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"scrollToDestinationCity" object:nil userInfo:dic];
+                   
                 }];
                 
                
@@ -182,10 +216,12 @@
     detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_dataSource[indexPath.row].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
 }
-//切换城市headerview 点击更多action
--(void)showMoreCityVC{
-    //TODO:跳转到城市列表页面
-    NSLog(@"显示城市列表");
+
+
+//城市平铺view的代理方法
+-(void)selectedCityIndex:(NSInteger)index{
+    citySelectedIndex = index;
+    NSLog(@"%@",[WOTSingtleton shared].spaceCityArray[index]);
 }
 -(void)selectWithCity:(NSInteger)index{
     /**
@@ -212,12 +248,14 @@
            
             WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
             _dataSource = dd.msg;
-            [self.tableVIew reloadData];
+           
    
         }
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
         }
+        
+         [self.tableVIew reloadData];
         
     }];
     
@@ -239,6 +277,7 @@
     }
     
 }
+
 /*
 #pragma mark - Navigation
 
