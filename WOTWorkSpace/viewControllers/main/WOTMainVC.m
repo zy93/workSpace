@@ -12,7 +12,7 @@
 #import "PGIndexBannerSubiew.h"
 #import "ZYQSphereView.h"
 #import "WOTworkSpaceLIstVC.h"
-#import "WOTworkSpaceDetailVC.h"
+#import "WOTH5VC.h"
 #import "WOTEnterpriseLIstVC.h"
 #import "WOTActivitiesLIstVC.h"
 #import "WOTInformationListVC.h"
@@ -25,7 +25,6 @@
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
-
 @property(nonatomic,strong)WOTworkSpaceLIstVC *spacevc;
 
 @property (weak, nonatomic) IBOutlet UIImageView *activityImage;
@@ -34,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *InfoTime;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property(nonatomic,strong)NSArray<WOTEnterpriseModel *> *enterpriseListdata;
+@property (nonatomic,strong) NSArray<WOTEnterpriseModel *> *enterpriseListdata;
 @property (nonatomic,strong) NSMutableArray *imageUrlStrings;
 @property (nonatomic,strong) NSMutableArray *imageTitles;
 @property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
@@ -152,8 +151,6 @@
     self.scrollVIew.showsHorizontalScrollIndicator = NO;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
     self.scrollVIew.backgroundColor = MainColor;
-    
-
 }
 
 
@@ -210,7 +207,7 @@
     
 }
 
-
+/*
 -(void)load3DBallView{
    
     if (IS_IPHONE_5) {
@@ -257,7 +254,7 @@
     [_sphereView timerStart];
     
 }
-
+*/
 
 -(void)loadAutoScrollView{
     
@@ -274,7 +271,7 @@
 }
 
 
-
+/*
 
 //3D球点击事件
 -(void)subVClick:(UIButton*)sender{
@@ -345,7 +342,7 @@
             break;
     }
 }
-
+*/
 
 -(void)pushToViewControllerWithStoryBoardName:(NSString *)sbName viewControllerName:(NSString *)vcName
 {
@@ -423,11 +420,9 @@
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
     
     NSLog(@"点击了第%ld张图",(long)subIndex + 1);
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_spacePageViewDataSource[subIndex].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
-    
-
 }
 
 #pragma mark NewPagedFlowView Datasource
@@ -509,7 +504,7 @@
 //activity section imageClick
 - (IBAction)showActivityDetail:(id)sender {
     
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_activitydataSource[0].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
     
@@ -517,7 +512,7 @@
 }
 //new information section imageClick 
 - (IBAction)showInfoDetail:(id)sender {
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     
     if (_infodataSource[0].count  >0) {
         detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_infodataSource[0][0].spared3];
@@ -533,7 +528,7 @@
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
     
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = _sliderUrlStrings[index];
     [self.navigationController pushViewController:detailvc animated:YES];
     
@@ -573,7 +568,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_enterpriseListdata[indexPath.row].spared2];
     [self.navigationController pushViewController:detailvc animated:YES];
 }

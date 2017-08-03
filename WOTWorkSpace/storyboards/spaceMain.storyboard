@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ReM-5A-Olt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ReM-5A-Olt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -311,10 +311,10 @@
             </objects>
             <point key="canvasLocation" x="213.59999999999999" y="67.466266866566727"/>
         </scene>
-        <!--Twork Space DetailVC-->
+        <!--WOTH5VC-->
         <scene sceneID="g0d-6D-WCL">
             <objects>
-                <viewController storyboardIdentifier="WOTworkSpaceDetailVC" hidesBottomBarWhenPushed="YES" id="L3Q-SY-ojQ" customClass="WOTworkSpaceDetailVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTworkSpaceDetailVC" hidesBottomBarWhenPushed="YES" id="L3Q-SY-ojQ" customClass="WOTH5VC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aN0-TB-rK4"/>
                         <viewControllerLayoutGuide type="bottom" id="NfS-UT-Rzg"/>
@@ -339,7 +339,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="web" destination="PQd-UE-btm" id="wJX-LO-xMc"/>
+                        <outlet property="web" destination="PQd-UE-btm" id="IF8-2p-Bbz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8k-Rc-E8A" userLabel="First Responder" sceneMemberID="firstResponder"/>

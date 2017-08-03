@@ -1,28 +1,28 @@
 //
-//  WORworkSpaceDetailVC.m
+//  WOTH5VC.m
 //  WOTWorkSpace
 //
-//  Created by 张姝枫 on 2017/7/3.
-//  Copyright © 2017年 张姝枫. All rights reserved.
+//  Created by 张雨 on 2017/7/31.
+//  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTworkSpaceDetailVC.h"
-#import "WOTSpaceDetailCell.h"
-#import "WOTSpaceDetailTeamCollectionCell.h"
+#import "WOTH5VC.h"
 #import "YYShareView.h"
 #import <UMSocialCore/UMSocialCore.h>
 
-@interface WOTworkSpaceDetailVC ()<YYShareViewDelegate>
+
+@interface WOTH5VC () <YYShareViewDelegate>
 {
     YYShareView *shareView;
 }
 
 @end
 
-@implementation WOTworkSpaceDetailVC
+@implementation WOTH5VC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     [self congigNav];
     [self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
@@ -32,12 +32,10 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:NO];
-}
 
 -(void)congigNav{
     self.navigationItem.title = @"详情";
+    [self.navigationController.navigationBar setHidden:NO];
     //
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(shareDetail)];
     [self.navigationItem setRightBarButtonItem:shareItem];
@@ -65,6 +63,8 @@
     }
     [shareView ShowView];
 }
+
+
 
 
 #pragma mark - YYShareViewDelegate methods
@@ -105,7 +105,6 @@
     }];
     
 }
-
 
 
 /*

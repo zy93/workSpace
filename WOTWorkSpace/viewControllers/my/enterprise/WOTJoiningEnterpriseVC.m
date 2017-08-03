@@ -9,7 +9,7 @@
 #import "WOTJoiningEnterpriseVC.h"
 #import "WOTMyEnterPriseCell.h"
 #import "WOTEnterpriseModel.h"
-#import "WOTworkSpaceDetailVC.h"
+#import "WOTH5VC.h"
 @interface WOTJoiningEnterpriseVC (){
     NSArray<WOTEnterpriseModel *> *endataSource;
 }
@@ -62,7 +62,7 @@
     return enterprisecell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = @"http://www.yiliangang.net:8012/makerSpace/companyInfo.html";
     [self.supervc.navigationController pushViewController:detailvc animated:YES];
 }

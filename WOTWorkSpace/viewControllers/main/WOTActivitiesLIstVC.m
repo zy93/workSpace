@@ -9,7 +9,7 @@
 #import "WOTActivitiesLIstVC.h"
 #import "WOTFilterTypeModel.h"
 #import "WOTActivitiesListCell.h"
-#import "WOTworkSpaceDetailVC.h"
+#import "WOTH5VC.h"
 @interface WOTActivitiesLIstVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *communityView;
 @property (weak, nonatomic) IBOutlet UILabel *communityName;
@@ -169,7 +169,7 @@ bool ismenu1 =  NO;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WOTworkSpaceDetailVC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
     detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_dataSource[indexPath.row].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
 }
