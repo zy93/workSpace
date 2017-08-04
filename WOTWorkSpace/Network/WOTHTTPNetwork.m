@@ -94,9 +94,11 @@
             NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:500 userInfo:@{NSLocalizedDescriptionKey:@"请求失败，请重试"}];
             block(nil,error);
         }
-        else {
-            NSLog(@"----error:%@",error);
+        else{
+            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:503 userInfo:@{NSLocalizedDescriptionKey:@"请求超时，请重试"}];
             block(nil,error);
+            NSLog(@"----error:%@",error);
+         
         }
         
         if (error) {
@@ -701,7 +703,7 @@
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorLabel/findAll"];
     
     [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
-        WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
+        WOTServiceCategoryModel_msg *model = [[WOTServiceCategoryModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {

@@ -235,7 +235,7 @@
 }
 
 - (IBAction)blueToothClick:(id)sender {
-   
+ 
     _bluetoothImage.image = [UIImage imageNamed:@"bluetooth_selected"];
     _scanImage.image = [UIImage imageNamed:@"scan"];
     

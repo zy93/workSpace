@@ -11,7 +11,7 @@
 
 #import "WOTServiceProvidersCell.h"
 #import "WOTServiceProvidersCategoryCell.h"
-
+#import "WOTServiceCategoryModel.h"
 
 @interface WOTServiceProvidersCategoryVC () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -32,7 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
-    [self loadData];
+    [self getServiceStyleData];
+//    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,16 +54,7 @@
     }
 }
 
--(void)loadData
-{
-    NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
-    selectServiceCategoryList = [[NSMutableArray alloc] init];
-    table1Dict = dic;
-    table2List = dic[[dic allKeys].firstObject];
-    self.table2.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.table1 reloadData];
-    [self.table2 reloadData];
-}
+
 
 #pragma mark - action
 -(void)selectDoneAction
@@ -156,6 +148,37 @@
         }
         
     }
+}
+//从plist文件中读取服务商信息
+-(void)loadData
+{
+    NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
+    selectServiceCategoryList = [[NSMutableArray alloc] init];
+    table1Dict = dic;
+    table2List = dic[[dic allKeys].firstObject];
+    self.table2.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.table1 reloadData];
+    [self.table2 reloadData];
+}
+
+
+//从服务器读取服务商类型
+-(void)getServiceStyleData{
+    [WOTHTTPNetwork getAllServiceTypes:^(id bean, NSError *error) {
+        
+        WOTServiceCategoryModel_msg * category = (WOTServiceCategoryModel_msg *)bean;
+        
+//        NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
+        
+        NSDictionary *dic = [[NSDictionary alloc]init];
+        
+        selectServiceCategoryList = [[NSMutableArray alloc] init];
+        table1Dict = dic;
+        table2List = dic[[dic allKeys].firstObject];
+        self.table2.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        [self.table1 reloadData];
+        [self.table2 reloadData];
+    }];
 }
 
 /*

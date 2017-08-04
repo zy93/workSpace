@@ -38,7 +38,9 @@
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+   
+        return 3;
+  
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -68,7 +70,12 @@
             return 60;
             break;
         case 2:
-            return 60;
+            if ([WOTSingtleton shared].isuserLogin) {
+                return 60;
+            } else {
+                return 0.01;
+            }
+            
             break;
         default:
             break;
@@ -78,11 +85,16 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0){
-        return 0;
+    if ([WOTSingtleton shared].isuserLogin) {
+        if (section == 0){
+            return 0;
+        } else {
+            return  15;
+        }
     } else {
-        return  15;
+        return 0;
     }
+    
   
 }
 
@@ -113,11 +125,21 @@
         NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",@"检查新版本",nil];
         settingcell.nameLabel.text = nameArray1[indexPath.row];
     }else {
-        [settingcell.valueLabel setHidden:YES];
-        [settingcell.nameLabel setHidden:YES];
-        [settingcell.nextImage setHidden:YES];
-        [settingcell.loginOut setHidden:NO];
-        [settingcell.lineVIew setHidden:YES];
+        if ([WOTSingtleton shared].isuserLogin) {
+            [settingcell.valueLabel setHidden:YES];
+            [settingcell.nameLabel setHidden:YES];
+            [settingcell.nextImage setHidden:YES];
+            [settingcell.loginOut setHidden:NO];
+            [settingcell.lineVIew setHidden:YES];
+        } else {
+            [settingcell.valueLabel setHidden:YES];
+            [settingcell.nameLabel setHidden:YES];
+            [settingcell.nextImage setHidden:YES];
+            [settingcell.loginOut setHidden:YES];
+            [settingcell.lineVIew setHidden:YES];
+        }
+        
+        
         
     }
     
@@ -126,12 +148,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
     if (indexPath.section == 2) {
-        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
-        WOTLoginNaviController *nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
-        
-        [self presentViewController:nav animated:YES completion:^{
+        [[WOTConfigThemeUitls shared] showRemindingAlert:self message:@"确定退出当前帐号?" okBlock:^{
+            [self.navigationController popViewControllerAnimated:YES];
+           [self.tabBarController setSelectedIndex:0];
+           
+        } cancel:^{
             
         }];
+        
     }
 }
 /*

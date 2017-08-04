@@ -78,9 +78,13 @@
             }
             break;
         case 1:
-            return [lightSelectedindex containsObject:[NSString stringWithFormat:@"%ld",indexPath.row]]?175:50;
-
-            break;
+            if (lightOpen) {
+                  return lightcellindex == indexPath.row?175:50;
+            } else {
+                return 50;
+            }
+          
+        break;
         case 2:
             return 60;
             break;
@@ -133,7 +137,15 @@
         lightCell.titleLab.text = @[@"1号灯",@"2号灯"][indexPath.row];
         lightCell.index = indexPath.row;
         lightCell.delegate = self;
-        lightCell.contentBGView.hidden = !lightOpen;
+        
+      
+        if (lightcellindex == indexPath.row && lightOpen ) {
+              lightCell.contentBGView.hidden = NO;
+            [lightCell.switchSW setOn:YES];
+        } else {
+              lightCell.contentBGView.hidden = YES;
+            [lightCell.switchSW setOn:NO];
+        }
         if (indexPath.row == lightcellindex) {
             [lightCell.switchSW setOn:lightOpen];
         }
@@ -148,23 +160,35 @@
 */
 -(void)switchChangeState:(BOOL)switchState{
     airConditionOpen = switchState;
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    if (airConditionOpen) {
+        curtainsOpen = NO;
+        lightOpen = NO;
+    }
+    [_tableView reloadData];
     
 }
 -(void)curtaincellOfSwitch:(WOTCurtainCell *)cell option:(BOOL)isOn{
     curtainsOpen = isOn;
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    if (curtainsOpen) {
+        airConditionOpen = NO;
+        lightOpen = NO;
+    }
+    [_tableView reloadData];
 }
 -(void)lightcellOfSwitch:(NSInteger)index option:(BOOL)isOn{
     lightOpen = isOn;
+    if (lightOpen) {
+        airConditionOpen = NO;
+        curtainsOpen = NO;
+    }
     lightcellindex = index;
-    if (isOn == YES) {
+    if (isOn == YES ) {
         [lightSelectedindex addObject:[NSString stringWithFormat:@"%ld",index]];
     }
     if ([lightSelectedindex containsObject:[NSString stringWithFormat:@"%ld",index]] && isOn == NO) {
         [lightSelectedindex removeObject:[NSString stringWithFormat:@"%ld",index]];
     }
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+    [_tableView reloadData];
 }
 
 #pragma mark - Navigation

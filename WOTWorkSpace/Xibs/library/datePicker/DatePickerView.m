@@ -39,14 +39,14 @@
         _dayarr1 = [NSArray arrayWithObjects:@"31",@"28",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
         _dayarr2 = [NSArray arrayWithObjects:@"31",@"29",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
          _montharr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
-        _hourarr = [NSArray arrayWithObjects:@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+        _hourarr = [NSArray arrayWithObjects:@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",nil];
         _minarr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
      
         _yeararr = [[NSMutableArray alloc] initWithCapacity:0];
          _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr,_hourarr,_minarr, nil];
         
-        NSDate * date1 = [NSDate date];
-        NSDate *date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date1];
+        NSDate * date = [NSDate date];
+//        NSDate *date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date1];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy"];
         year = [[formatter stringFromDate:date] intValue];
@@ -54,7 +54,7 @@
         month = [[formatter stringFromDate:date] intValue];
         [formatter setDateFormat:@"dd"];
         day = [[formatter stringFromDate:date] intValue];
-        [formatter setDateFormat:@"hh"];
+        [formatter setDateFormat:@"HH"];
         hour = [[formatter stringFromDate:date] intValue];
         [formatter setDateFormat:@"mm"];
         min = [[formatter stringFromDate:date] intValue];
@@ -67,9 +67,9 @@
        
         [picker selectRow:16 inComponent:0 animated:YES];
         [picker selectRow:month-1 inComponent:1 animated:YES];
-        [picker selectRow:day inComponent:2 animated:YES];
-        [picker selectRow:hour-1 inComponent:3 animated:YES];
-        [picker selectRow:min-1 inComponent:4 animated:YES];
+        [picker selectRow:day-1 inComponent:2 animated:YES];
+        [picker selectRow:hour inComponent:3 animated:YES];
+        [picker selectRow:min inComponent:4 animated:YES];
     }
     return self;
 }
@@ -176,7 +176,7 @@
         mycom1.text = [NSString stringWithFormat:@"%02ld月",row+1];
        
     }else if(component == 2){
-        if (row+1 == _selectedrow_day || row == day){
+        if (row+1 == _selectedrow_day || row+1 == day){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
         } else {
             mycom1.textColor = _otherTextcolor;
@@ -190,21 +190,21 @@
         
     } else if (component == 3){
         
-        if (row == _selectedrow_hour || row+1 == hour){
+        if (row == _selectedrow_hour || row == hour){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
         } else {
             mycom1.textColor = _otherTextcolor;
         }
-        mycom1.text = [NSString stringWithFormat:@"%02ld时",row+1];
+        mycom1.text = [NSString stringWithFormat:@"%02ld时",row];
         
     } else {
         
-        if (row == _selectedrow_min || row+1 == min){
+        if (row == _selectedrow_min || row == min){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
         } else {
             mycom1.textColor = _otherTextcolor;
         }
-        mycom1.text = [NSString stringWithFormat:@"%02ld分",row+1];
+        mycom1.text = [NSString stringWithFormat:@"%02ld分",row];
         
     }
     return mycom1;

@@ -8,6 +8,8 @@
 
 #import "UIViewController+Extension.h"
 #import "UISearchBar+JCSearchBarPlaceholder.h"
+
+
 @implementation UIViewController(Extension)
 -(void)configNaviBackItem{
    
@@ -73,7 +75,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
     
 }
-
 
 
 

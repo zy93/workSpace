@@ -31,7 +31,7 @@
     NSMutableArray *tableIconList;
 
 }
-
+@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -40,6 +40,7 @@
 @property (nonatomic,strong) NSMutableArray *imageUrlStrings;
 @property (nonatomic,strong) NSMutableArray *imageTitles;
 @property (nonatomic,strong) NSMutableArray *sliderUrlStrings;
+
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollviewHeight;
 
 
@@ -57,7 +58,8 @@
     }];
  
     
-    
+   _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.table];
+    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
     
     // Do any additional setup after loading the view.
 }
@@ -66,12 +68,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)downLoadRefresh{
 
+    [self getSliderDataSource:^{
+        [self loadAutoScrollView];
+        [self.refreshControl stop];
+    }];
+
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.translucent = NO;
     self.navigationController.navigationBarHidden = YES;
+  
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -272,7 +282,7 @@
         if ([WOTSingtleton shared].isuserLogin){
           [self pushVCByVCName:@"WOTIntelligenceDeviceListVCID"];
         } else {
-            [MBProgressHUDUtil showMessage:UnLoginReminding toView:self.view];
+            [[WOTConfigThemeUitls shared] showLoginVC:self];
         }
         
     }

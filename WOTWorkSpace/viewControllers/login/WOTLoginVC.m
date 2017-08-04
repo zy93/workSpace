@@ -34,7 +34,8 @@
     self.registerBtn.layer.cornerRadius = 8;
     self.registerBtn.layer.borderColor = UIColorFromRGB(0x4088ef).CGColor;
     self.registerBtn.layer.borderWidth = 1.f;
-    
+   
+    [_showPasswordBtn setImage:[UIImage imageNamed:@"eye_close_icon"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,13 +73,16 @@
 
 - (IBAction)clickShowPassBtn:(id)sender {
     UIButton *btn = sender;
-    if (btn.isSelected) {
+    btn.selected = !btn.isSelected;
+    if (!btn.isSelected) {
         self.passwordText.secureTextEntry = YES;
+        [_showPasswordBtn setImage:[UIImage imageNamed:@"eye_close_icon"] forState:UIControlStateNormal];
     }
     else {
         self.passwordText.secureTextEntry = NO;
+         [_showPasswordBtn setImage:[UIImage imageNamed:@"eye_icon"] forState:UIControlStateSelected];
     }
-    btn.selected = !btn.isSelected;
+    
 }
 
 - (IBAction)clickForgetPassBtn:(id)sender {
@@ -87,9 +91,11 @@
 - (IBAction)clickLoginBtn:(id)sender {
     [MBProgressHUDUtil showLoadingWithMessage:@"登录中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         
-        [hud setHidden:YES];
+       
         
         [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
+            
+             [hud setHidden:YES];
             
             if (bean) {
                 

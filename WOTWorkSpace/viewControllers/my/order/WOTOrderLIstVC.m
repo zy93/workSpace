@@ -32,7 +32,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
+
 }
+
 -(void)configNavi{
     [self configNaviBackItem];
    

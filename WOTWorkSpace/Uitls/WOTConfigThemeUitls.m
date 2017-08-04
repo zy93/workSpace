@@ -8,12 +8,15 @@
 
 #import "WOTConfigThemeUitls.h"
 #import <UIKit/UIKit.h>
+
+
 @implementation WOTConfigThemeUitls
 +(instancetype)shared{
     static WOTConfigThemeUitls *instance;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         instance = [[self alloc]init];
+        
     });
     return  instance;
 }
@@ -72,6 +75,33 @@
         self.hiddenKeyboardBlcok();
     }
 }
+//懒加载登录模块navigationController
+-(WOTLoginNaviController *)nav{
+    if (_nav == nil) {
+        WOTLoginVC *vc = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTLoginVC"];
+       _nav = [[WOTLoginNaviController alloc]initWithRootViewController:vc];
+    }
+    return _nav;
+}
+//跳转到登录页面通用方法
+-(void)showLoginVC:(UIViewController *)persentVC{
+    
+    
+    [persentVC presentViewController:self.nav animated:YES completion:^{
+        
+    }];
+}
 
-
+//统一显示alertView
+-(void)showRemindingAlert:(UIViewController *)vc message:(NSString *)message okBlock:(void(^)())okBlock cancel:(void(^)())cancelBlock{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        okBlock();
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+     cancelBlock();
+    }]];
+    [vc presentViewController:alert animated:YES completion:nil];
+}
 @end

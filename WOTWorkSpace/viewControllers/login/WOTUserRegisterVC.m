@@ -11,7 +11,7 @@
 #import "WOTRegisterModel.h"
 #import "WOTGetVerifyModel.h"
 
-@interface WOTUserRegisterVC ()
+@interface WOTUserRegisterVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
@@ -43,6 +43,18 @@
     self.getVerificationCodeBtn.layer.cornerRadius = 8;
     self.getVerificationCodeBtn.layer.borderColor = UIColorFromRGB(0x888888).CGColor;
     self.getVerificationCodeBtn.layer.borderWidth = 1.f;
+    
+    [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
+    [[WOTConfigThemeUitls shared] setHiddenKeyboardBlcok:^{
+      
+        [self hiddleKeyboard];
+        
+    }];
+    _phoneText.delegate = self;
+    _passwordText.delegate = self;
+    _verificationPasswordText.delegate = self;
+    _verificationCodeText.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,21 +86,49 @@
 }
 
 - (IBAction)clickGetVerificationCodeBtn:(id)sender {
-    [WOTHTTPNetwork userGetVerifyWitTel:self.phoneText.text response:^(id bean, NSError *error) {
-        WOTGetVerifyModel *model = bean;
-        if (model.code.intValue == 200) {
-            [MBProgressHUDUtil showMessage:@"发送成功" toView:self.view];
+    if (strIsEmpty(self.phoneText.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入完整的电话号码" toView:self.view];
+       
+    } else {
+        
+        if (strIsEmpty(self.passwordText.text)) {
+            [MBProgressHUDUtil showMessage:@"请设置密码" toView:self.view];
+        } else {
+            if (strIsEmpty(self.verificationPasswordText.text)) {
+                [MBProgressHUDUtil showMessage:@"请填写确认密码" toView:self.view];
+                
+            } else {
+               
+                    
+                    [WOTHTTPNetwork userGetVerifyWitTel:self.phoneText.text response:^(id bean, NSError *error) {
+                        WOTGetVerifyModel *model = bean;
+                        if (model.code.intValue == 200) {
+                            [MBProgressHUDUtil showMessage:@"发送成功" toView:self.view];
+                        }
+                        else {
+                            [MBProgressHUDUtil showMessage:@"发送失败，请稍后再试!" toView:self.view];
+                        }
+                    }];
+                    
+                
+                
+            }
         }
-        else {
-            [MBProgressHUDUtil showMessage:@"发送失败，请稍后再试!" toView:self.view];
-        }
-    }];
+    }
+    
 }
 
 - (IBAction)clickRegisterBtn:(id)sender {
-    [WOTHTTPNetwork userRegisterWitUserNick:@"Tom" tel:self.phoneText.text password:self.passwordText.text response:^(id bean, NSError *error) {
-        WOTRegisterModel *model = bean;
-    }];
+    if (strIsEmpty(self.verificationCodeText.text)) {
+        [MBProgressHUDUtil showMessage:@"请填写正确的验证码" toView:self.view];
+    } else {
+        
+        [WOTHTTPNetwork userRegisterWitUserNick:@"Tom" tel:self.phoneText.text password:self.passwordText.text response:^(id bean, NSError *error) {
+            WOTRegisterModel *model = bean;
+        }];
+        
+    }
+    
 }
 
 - (IBAction)clickProcotolBtn:(id)sender {
@@ -96,8 +136,18 @@
 
 
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self hiddleKeyboard];
+    return YES;
+}
 
 
+-(void)hiddleKeyboard{
+    [_phoneText resignFirstResponder];
+    [_passwordText resignFirstResponder];
+    [_verificationCodeText resignFirstResponder];
+    [_verificationPasswordText resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 

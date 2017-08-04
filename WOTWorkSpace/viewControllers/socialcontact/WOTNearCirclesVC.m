@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
         cell.fd_enforceFrameLayout = NO;
         cell.accessoryType = UITableViewCellAccessoryNone;
        cell.content.text = dataSource[indexPath.row];
-    }]+(SCREEN_WIDTH-20)/3.5 * ceil(photoArray.count*0.3) + 30;;
+    }]+(SCREEN_WIDTH-20)/3.5 * ceil(photoArray.count*0.3) + 30;
 }
 
 /*

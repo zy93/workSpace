@@ -9,6 +9,7 @@
 #import "WOTSocialcontact.h"
 #import "WOTNearCirclesVC.h"
 #import "WOTEnterpriseLIstVC.h"
+#import "WOTPublishSocialTrendsVC.h"
 @interface WOTSocialcontact ()
 
 @end
@@ -65,14 +66,18 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-
+    
 }
 -(void)configNavi{
     self.navigationItem.title = @"易创客";
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]init];
+  
+    [self configNaviRightItemWithImage:[UIImage imageNamed:@"publishSocial"]];
 }
 
-
+-(void)rightItemAction{
+    WOTPublishSocialTrendsVC *publishvc = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"WOTPublishSocialTrendsVCID"];
+    [self.navigationController pushViewController:publishvc animated:YES];
+}
 
 -(NSArray *)createTitles{
     return [[NSArray alloc]initWithObjects:@"最近的圈子",@"友邻企业",@"空间集市",nil];

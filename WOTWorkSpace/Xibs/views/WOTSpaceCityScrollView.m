@@ -8,10 +8,13 @@
 
 #import "WOTSpaceCityScrollView.h"
 #import "WOTSpaceCityCollectionCell.h"
-@interface WOTSpaceCityScrollView()<UICollectionViewDelegate,UICollectionViewDataSource>
+#import "WOTCityTileView.h"
+@interface WOTSpaceCityScrollView()<UICollectionViewDelegate,UICollectionViewDataSource>{
+    
+}
 @property(nonatomic,strong) WOTSpaceCityCollectionCell *collectionCell;
-@property(nonatomic,assign) NSInteger selectedindex;
 
+@property(nonatomic,strong)WOTCityTileView *tileview;
 @end
 @implementation WOTSpaceCityScrollView
 
@@ -19,8 +22,20 @@
     [super awakeFromNib];
     _collectionVIew.delegate = self;
     _collectionVIew.dataSource = self;
-    _selectedindex = 0;
+    self.contentView.backgroundColor = White;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(scrollToCity:) name:@"scrollToDestinationCity" object:nil];
+    _moreImage.image = [UIImage imageNamed:@"mainmore_unselected"];
+    [_moreBtn setSelected: NO];
+    
+    _tileview = [[WOTCityTileView alloc]initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH,[WOTSingtleton shared].spaceCityArray.count/4*50+50)];
+    [self insertSubview:_tileview aboveSubview:self.moreBtn];
+    
+    
+    
+    [_tileview setHidden:YES];
+    
+    
+    
 }
 
 
@@ -48,7 +63,7 @@
     _collectionCell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
     _collectionCell.cityName.text = [[WOTSingtleton shared].spaceCityArray objectAtIndex:indexPath.row];
-    if (_selectedindex == indexPath.row) {
+    if (self.selectedindex == indexPath.row) {
         _collectionCell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
         [_collectionCell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
     } else {
@@ -64,7 +79,7 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.collectionVIew.frame.size.width/5, self.collectionVIew.frame.size.height-10);
+    return CGSizeMake(self.collectionVIew.frame.size.width/5, 35);
 }
 //定义每个Section 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -85,9 +100,9 @@
 //    WOTSpaceCityCollectionCell *cell = (WOTSpaceCityCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
 //    cell.cityName.textColor = RGBA(77.0, 139.0, 231.0, 1.0);
 //    [cell.cityName setCorenerRadius:10 borderColor:RGBA(77.0, 139.0, 231.0, 1.0)];
-    _selectedindex = indexPath.row;
-    if (_delegate!=nil) {
-        [_delegate selectWithCity:_selectedindex];
+    self.selectedindex = indexPath.row;
+    if ([_delegate respondsToSelector:@selector(selectWithCity:)]) {
+        [_delegate selectWithCity:self.selectedindex];
     }
     [self.collectionVIew reloadData];
 }
@@ -100,9 +115,11 @@
 }
 - (IBAction)moreAction:(id)sender {
     
-    if (_delegate) {
-        [_delegate showMoreCityVC];
-    }
+    [_moreBtn setSelected:!_moreBtn.isSelected];
+    
+    _moreImage.image = _moreBtn.isSelected ? [UIImage imageNamed:@"mainmore_selected"]:[UIImage imageNamed:@"mainmore_unselected"];
+    [self.tileview setHidden:!_moreBtn.isSelected];
+    
     
 }
 //MARK：注册通知方法
@@ -110,7 +127,7 @@
     NSIndexPath *ii = noti.userInfo[@"cityindex"];
     
     [_collectionVIew scrollToItemAtIndexPath:ii atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-    _selectedindex = ii.row;
+    self.selectedindex = ii.row;
     [_collectionVIew reloadData];
 }
 /*

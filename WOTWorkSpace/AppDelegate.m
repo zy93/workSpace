@@ -20,13 +20,13 @@
     // Override point for customization after application launch.
     [self loadTabView];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
+//    [self registerPush];
     /* 打开调试日志 */
     [[UMSocialManager defaultManager] openLog:YES];
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59642cfcc62dca6c850020c0"];
     [self ConfigUSharePlatforms];
-
+    
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -125,6 +125,22 @@
     /* 设置新浪的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"958434094"  appSecret:@"c8126f4af61b6287bd2ce86a54360e7f" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
-
-
+//
+//-(void)registerPush{
+//   
+//    UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+//    [[UIApplication sharedApplication]registerUserNotificationSettings:setting];
+//}
+//
+//-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+//    [application registerForRemoteNotifications];
+//}
+//-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+//    NSString *token = [NSString stringWithFormat:@"%@",deviceToken];
+//    
+//}
+//
+//-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+//    
+//}
 @end

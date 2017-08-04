@@ -59,7 +59,12 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.collectionView.frame.size.width/3.5, self.collectionView.frame.size.height-40);
+  
+    if (IS_IPHONE_5) {
+          return CGSizeMake(self.collectionView.frame.size.width/3.8, self.collectionView.frame.size.height-40);
+    } else {
+          return CGSizeMake(self.collectionView.frame.size.width/3.5, self.collectionView.frame.size.height-40);
+    }
 }
 //定义每个Section 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTworkSpaceSearchCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) UIView *searchField;
 @property (nonatomic,copy)void(^searchBarBlock)(NSString *searchText);
 @end

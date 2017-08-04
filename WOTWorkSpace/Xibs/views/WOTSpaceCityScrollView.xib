@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-LF-9hH">
-                    <rect key="frame" x="0.0" y="0.0" width="339" height="85"/>
+                    <rect key="frame" x="20" y="0.0" width="335" height="85"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rid-Kq-DGI">
                         <size key="itemSize" width="50" height="50"/>
@@ -26,20 +26,21 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xK4-Sb-8gC">
-                    <rect key="frame" x="339" y="0.0" width="36" height="85"/>
+                    <rect key="frame" x="375" y="0.0" width="0.0" height="85"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainmore_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="XUW-ph-W20">
-                            <rect key="frame" x="5.5" y="30" width="25" height="25"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainmore_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="XUW-ph-W20">
+                            <rect key="frame" x="-12.5" y="30" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="49i-VN-0a7"/>
                                 <constraint firstAttribute="width" constant="25" id="tqC-mL-nVy"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KP9-83-kE7">
-                            <rect key="frame" x="0.0" y="0.0" width="36" height="85"/>
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="85"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="moreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Saz-zh-JQu"/>
+                                <action selector="moreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="OYl-4F-b4I"/>
                             </connections>
                         </button>
                     </subviews>
@@ -48,7 +49,7 @@
                         <constraint firstAttribute="bottom" secondItem="KP9-83-kE7" secondAttribute="bottom" id="NKC-Jh-OK7"/>
                         <constraint firstItem="KP9-83-kE7" firstAttribute="leading" secondItem="xK4-Sb-8gC" secondAttribute="leading" id="YS0-Qs-u7i"/>
                         <constraint firstItem="XUW-ph-W20" firstAttribute="centerY" secondItem="xK4-Sb-8gC" secondAttribute="centerY" id="Zle-4u-ddc"/>
-                        <constraint firstAttribute="width" constant="36" id="a7g-PE-uZ5"/>
+                        <constraint firstAttribute="width" id="a7g-PE-uZ5"/>
                         <constraint firstAttribute="trailing" secondItem="KP9-83-kE7" secondAttribute="trailing" id="kDw-qw-Tes"/>
                         <constraint firstItem="XUW-ph-W20" firstAttribute="centerX" secondItem="xK4-Sb-8gC" secondAttribute="centerX" id="rRd-9D-sng"/>
                         <constraint firstItem="KP9-83-kE7" firstAttribute="top" secondItem="xK4-Sb-8gC" secondAttribute="top" id="uaa-Rh-5jA"/>
@@ -59,16 +60,17 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="xK4-Sb-8gC" secondAttribute="trailing" id="Lef-8T-KEA"/>
                 <constraint firstAttribute="bottom" secondItem="xK4-Sb-8gC" secondAttribute="bottom" id="Q9v-Rw-QZ3"/>
-                <constraint firstItem="Nf1-LF-9hH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xsa-Dt-dBk"/>
+                <constraint firstItem="Nf1-LF-9hH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Xsa-Dt-dBk"/>
                 <constraint firstAttribute="bottom" secondItem="Nf1-LF-9hH" secondAttribute="bottom" id="c6U-5V-Goh"/>
+                <constraint firstItem="xK4-Sb-8gC" firstAttribute="leading" secondItem="Nf1-LF-9hH" secondAttribute="trailing" constant="20" id="kUh-L0-CcR"/>
                 <constraint firstItem="xK4-Sb-8gC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rYp-c9-9nN"/>
                 <constraint firstItem="Nf1-LF-9hH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wFo-gf-bvq"/>
-                <constraint firstItem="xK4-Sb-8gC" firstAttribute="leading" secondItem="Nf1-LF-9hH" secondAttribute="trailing" id="xko-eg-i9H"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionVIew" destination="Nf1-LF-9hH" id="KBZ-uM-aDr"/>
-                <outlet property="moreBtn" destination="XUW-ph-W20" id="iHf-sI-m34"/>
+                <outlet property="moreBtn" destination="KP9-83-kE7" id="FGd-sa-KK0"/>
+                <outlet property="moreImage" destination="XUW-ph-W20" id="pHN-fR-vd2"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-236.5"/>
         </view>

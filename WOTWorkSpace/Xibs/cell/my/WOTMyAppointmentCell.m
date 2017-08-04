@@ -24,5 +24,18 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)settingReming:(id)sender {
+    
+    [_remindmeBtn setSelected:!_remindmeBtn.isSelected];
+    if (!_remindmeBtn.isSelected) {
+        [_remindmeBtn setTitle:@"提醒我" forState:UIControlStateNormal];
+    } else {
+        [_remindmeBtn setTitle:@"取消提醒" forState:UIControlStateNormal];
+    }
+    
+    if ([_delegate respondsToSelector:@selector(settingRemindWithIndex:isRemind:)]) {
+        [_delegate settingRemindWithIndex:_index isRemind:_remindmeBtn.isSelected];
+    }
+}
 
 @end
