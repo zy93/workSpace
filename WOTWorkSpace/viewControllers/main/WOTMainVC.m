@@ -83,23 +83,25 @@
     [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         dispatch_group_enter(group);
         [self getEnterpriseListDataFromWeb:^{
-            dispatch_group_leave(group);
+            
         }];
-        
+        dispatch_group_leave(group);
         dispatch_group_enter(group);
         [self getActivityDataFromWeb:^{
-            dispatch_group_leave(group);
+           
         }];
-        
+         dispatch_group_leave(group);
         dispatch_group_enter(group);
         [self getInfoDataFromWeb:^{
-            dispatch_group_leave(group);
+            
         }];
+        dispatch_group_leave(group);
         dispatch_group_enter(group);
         [self getSliderDataSource:^{
             [self loadAutoScrollView];
-            dispatch_group_leave(group);
+           
         }];
+         dispatch_group_leave(group);
         dispatch_group_enter(group);
         [self loadSpaceView];
         dispatch_group_leave(group);
@@ -110,6 +112,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSLog(@"回到主线程，刷新UI");
                 [hud setHidden:YES];
+              
               
             });
         });

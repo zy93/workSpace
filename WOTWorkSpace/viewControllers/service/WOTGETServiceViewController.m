@@ -8,7 +8,7 @@
 
 #import "WOTGETServiceViewController.h"
 #import "WOTServiceProvidersCategoryVC.h"
-
+#define DescribeTextViewPlaceHolder @"请填写你的需求"
 @interface WOTGETServiceViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *describeText;
 @property (weak, nonatomic) IBOutlet UIButton *selectServiceBtn;
@@ -24,11 +24,15 @@
     // Do any additional setup after loading the view.
     [self configNav];
     _describeText.delegate  = self;
+    _describeText.text = DescribeTextViewPlaceHolder;
     [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
     [WOTConfigThemeUitls shared].hiddenKeyboardBlcok = ^(){
         [self.describeText resignFirstResponder];
         self.describeText.textColor = LowTextColor;
-        self.describeText.text = @"请填写您的需求";
+        if ([_describeText.text isEqualToString:@""] || [_describeText.text isEqualToString:DescribeTextViewPlaceHolder]) {
+            self.describeText.text = DescribeTextViewPlaceHolder;
+        }
+        
     };
     [_describeText setCorenerRadius:10.0 borderColor:CLEARCOLOR];
     [_describeText setBackgroundColor:RGB(246.0, 246.0, 246.0)];
@@ -99,7 +103,10 @@
 }
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     _describeText.textColor = Black;
-    _describeText.text = @"";
+    if ([_describeText.text isEqualToString:DescribeTextViewPlaceHolder]) {
+        _describeText.text = @"";
+    }
+    
     return YES;
 }
 

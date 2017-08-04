@@ -32,11 +32,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
-     self.navigationController.navigationBar.translucent = NO;
+
 }
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.translucent = YES;
-}
+
 -(void)configNavi{
     [self configNaviBackItem];
    

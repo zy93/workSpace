@@ -11,7 +11,7 @@
 
 #import "WOTServiceProvidersCell.h"
 #import "WOTServiceProvidersCategoryCell.h"
-
+#import "WOTServiceCategoryModel.h"
 
 @interface WOTServiceProvidersCategoryVC () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -32,7 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
-    [self loadData];
+    [self getServiceStyleData];
+//    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,7 +165,13 @@
 //从服务器读取服务商类型
 -(void)getServiceStyleData{
     [WOTHTTPNetwork getAllServiceTypes:^(id bean, NSError *error) {
-        NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
+        
+        WOTServiceCategoryModel_msg * category = (WOTServiceCategoryModel_msg *)bean;
+        
+//        NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
+        
+        NSDictionary *dic = [[NSDictionary alloc]init];
+        
         selectServiceCategoryList = [[NSMutableArray alloc] init];
         table1Dict = dic;
         table2List = dic[[dic allKeys].firstObject];

@@ -11,9 +11,9 @@
 #import "WOTMyRepairdListVC.h"
 #import "WOTMyPublishDemandsLIstVC.h"
 #import "WOTMyFeedbackLIstVC.h"
-
-@interface WOTMyHistoryVC ()
-
+#import "WOTAppointmentRemindPopView.h"
+@interface WOTMyHistoryVC ()<UIPopoverPresentationControllerDelegate>
+@property(nonatomic,strong)WOTAppointmentRemindPopView *remindPopvc;
 @end
 
 @implementation WOTMyHistoryVC
@@ -34,6 +34,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [_remindPopvc dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)configNavi{
     [self configNaviBackItem];
     self.navigationItem.title = @"我的历史";
@@ -43,7 +47,15 @@
 
 -(void)rightItemAction{
     //TODO:显示提醒列表
-    NSLog(@"我的提醒列表");
+    _remindPopvc = [[UIStoryboard storyboardWithName:@"My" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTAppointmentRemindPopViewID"];
+    _remindPopvc.modalPresentationStyle = UIModalPresentationPopover;
+    _remindPopvc.popoverPresentationController.delegate = self;
+    _remindPopvc.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
+    _remindPopvc.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    _remindPopvc.popoverPresentationController.backgroundColor = CLEARCOLOR;
+    _remindPopvc.preferredContentSize = CGSizeMake(200, 300);
+  
+    [self presentViewController:_remindPopvc animated:YES completion:nil];
 }
 
 
@@ -65,6 +77,11 @@
     [self addChildViewController:feedbackvc];
     
     return self.childViewControllers;
+    
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+    return UIModalPresentationNone;
 }
 
 

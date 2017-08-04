@@ -11,6 +11,7 @@
 #import "WOTPhotosBaseUtils.h"
 #import <Photos/Photos.h>
 #import "ZSImagePickerController.h"
+#define TextViewPlaceholder @"想你所想，写你想讲..."
 @interface WOTPublishSocialTrendsVC ()<UITextViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZSImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *collectionSuperVIew;
@@ -32,10 +33,10 @@
     [[WOTConfigThemeUitls shared] setHiddenKeyboardBlcok:^{
         [_textView resignFirstResponder];
         
-        if ([_textView.text isEqualToString:@"想你所想，写你想讲..."] ||[_textView.text isEqualToString:@""] ) {
-        _textView.text = @"想你所想，写你想讲...";
+        if ([_textView.text isEqualToString:TextViewPlaceholder] ||[_textView.text isEqualToString:@""] ) {
+        _textView.text = TextViewPlaceholder;
         } else {
-             [_textView.text stringByReplacingOccurrencesOfString:@"想你所想，写你想讲..." withString:@""];
+             [_textView.text stringByReplacingOccurrencesOfString:TextViewPlaceholder withString:@""];
         }
         _textView.textColor = LowTextColor;
         [self configNaviRightItemWithTitle:@"发布" textColor:MiddleTextColor];
@@ -81,7 +82,7 @@
 }
 -(void)themeDefatultConfi{
     _textView.textColor = LowTextColor;
-    _textView.text = @"想你所想，写你想讲...";
+    _textView.text = TextViewPlaceholder;
     [self configNaviRightItemWithTitle:@"发布" textColor:MiddleTextColor];
     
 }
@@ -97,7 +98,7 @@
     
     [self configNaviRightItemWithTitle:@"发布" textColor:MainOrangeColor];
 
-    if ([_textView.text isEqualToString:@"想你所想，写你想讲..."]) {
+    if ([_textView.text isEqualToString:TextViewPlaceholder]) {
          _textView.text = @"";
     }
    
@@ -138,7 +139,11 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((SCREEN_WIDTH-20)/3.5,(SCREEN_WIDTH-20)/3.5);
+    if (IS_IPHONE_5) {
+        return CGSizeMake((SCREEN_WIDTH-20)/3.8,(SCREEN_WIDTH-20)/3.8);
+    } else {
+        return CGSizeMake((SCREEN_WIDTH-20)/3.5,(SCREEN_WIDTH-20)/3.5);
+    }
 }
 //定义每个Section 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

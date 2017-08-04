@@ -8,7 +8,16 @@
 
 
 #import <UIKit/UIKit.h>
+#import "WOTRefreshControlUitls.h"
 @interface UIViewController(Extension)
+
+
+///**
+// *	@brief 添加下拉刷新View
+// *
+// *	@param scrollView 需要添加下拉刷新view的滚动视图 
+// */
+//-(void)instenceWithScrollView:(UIScrollView *)scrollView;
 -(void)configNaviBackItem;
 -(void)configNaviView:(NSString *)searchTitle block:(void(^)())search;
 -(void)configNaviRightItemWithImage:(UIImage *)image;

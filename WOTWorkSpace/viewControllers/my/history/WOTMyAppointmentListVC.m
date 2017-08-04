@@ -8,7 +8,7 @@
 
 #import "WOTMyAppointmentListVC.h"
 #import "WOTAppointmentModel.h"
-@interface WOTMyAppointmentListVC (){
+@interface WOTMyAppointmentListVC ()<WOTMyAppointRemindingDelegate>{
    
 }
 @property(nonatomic,strong)NSArray<WOTAppointmentModel *> *appintmentDataSource;
@@ -43,6 +43,8 @@
     appointmentcell.appointmentObjectValue.text =_appintmentDataSource[indexPath.row].visitorName;
     appointmentcell.appointmentTimeValue.text = _appintmentDataSource[indexPath.row].visitTime;
     appointmentcell.appointmentReasionValue.text = _appintmentDataSource[indexPath.row].visitInfo;
+    appointmentcell.delegate = self;
+    appointmentcell.index = indexPath.row;
     return appointmentcell;
     
 }
@@ -61,6 +63,12 @@
        }
    }];
     
+}
+
+
+//设置提醒代理方法
+-(void)settingRemindWithIndex:(NSInteger)index isRemind:(BOOL)isRemid{
+    //
 }
 /*
 #pragma mark - Navigation

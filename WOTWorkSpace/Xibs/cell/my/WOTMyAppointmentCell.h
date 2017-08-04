@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol WOTMyAppointRemindingDelegate<NSObject>
+
+@required
+-(void)settingRemindWithIndex:(NSInteger)index isRemind:(BOOL)isRemid;
+@optional
+
+@end
 
 @interface WOTMyAppointmentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *appointmentCommunityLabel;
@@ -23,5 +30,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *appointmentReasionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *appointmentReasionValue;
 @property (weak, nonatomic) IBOutlet UIButton *remindmeBtn;
+
+@property NSInteger index;
+
+@property (nonatomic,strong)id<WOTMyAppointRemindingDelegate>delegate;
 
 @end

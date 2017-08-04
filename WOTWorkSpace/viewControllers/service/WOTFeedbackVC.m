@@ -7,7 +7,7 @@
 //
 
 #import "WOTFeedbackVC.h"
-
+#define FeedTextViewPlaceholder @"*您的意见，是我们前进的动力"
 @interface WOTFeedbackVC ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *customerServiceBtn;
@@ -29,7 +29,10 @@
         [self.textView resignFirstResponder];
         [self.phoneText resignFirstResponder];
         _textView.textColor = LowTextColor;
-        _textView.text = @"*您的意见，是我们前进的动力";
+        if ([_textView.text isEqualToString:@""]||[_textView.text isEqualToString:FeedTextViewPlaceholder]) {
+            _textView.text = FeedTextViewPlaceholder;
+        }
+        
     };
     self.submitBtn.layer.cornerRadius = 5.f;
 
@@ -90,7 +93,12 @@
 }
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    _textView.text = @"";
+    
+    if ([_textView.text isEqualToString:FeedTextViewPlaceholder]) {
+        _textView.text = @"";
+    }
+    
+    
     _textView.textColor = Black;
     return YES;
 }

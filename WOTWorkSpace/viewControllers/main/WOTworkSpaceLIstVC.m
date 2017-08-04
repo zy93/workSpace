@@ -14,7 +14,6 @@
 #import "WOTSpaceCityScrollView.h"
 
 #import "WOTH5VC.h"
-@interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>
 
 #import "WOTRefreshControlUitls.h"
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>{
