@@ -27,6 +27,9 @@
 #import "WOTRegisterModel.h"
 #import "WOTBusinessModel.h"
 #import "WOTLocationModel.h"
+#import "WOTSiteModel.h"
+#import "WOTSiteReservationsModel.h"
+
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -326,7 +329,7 @@
 
 +(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findCoord"];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findNearSpace"];
     NSDictionary * parameters = @{@"lng":@(lon),
                                   @"lat":@(lat)};
     
@@ -606,8 +609,10 @@
 }
 +(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
 {
-    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/subscriByTime"];
-    NSDictionary *dic = @{@"spaceId":spaceid,
+    
+    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/subscribyTime"];
+    NSDictionary *dic = @{
+                          @"spaceId":spaceid,
                           @"conferenceId":confid,
                           @"startTime":startTime,
                           @"endTime":endTime};
@@ -621,13 +626,79 @@
     }];
 }
 
+#pragma mark - Site
++(void)getAllSiteResponse:(response)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Site/findAllSite"];
+    [self doRequestWithParameters:nil useUrl:url complete:^JSONModel *(id responseobj) {
+         WOTSiteModel_Msg *model = [[WOTSiteModel_Msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
++(void)getSiteListWithSpaceId:(NSNumber *)spaceid response:(response)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Site/findSiteBySpaceId"];
+    NSDictionary *dic = @{
+                          @"spaceId":spaceid,
+                          };
+    [self doRequestWithParameters:dic useUrl:url complete:^JSONModel *(id responseobj) {
+        WOTSiteModel_Msg *model = [[WOTSiteModel_Msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
++(void)getSiteReservationsTimeWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)strTime response:(response)response
+{
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/SiteOrder/findByIdAndTime"];
+    
+    NSDictionary *dic = @{
+                          @"spaceId":spaceid,
+                          @"siteId":siteid,
+                          @"startTime":strTime};
+    
+    [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTSiteReservationsModel_Msg *model = [[WOTSiteReservationsModel_Msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
++(void)siteReservationsWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
+{
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/SiteOrder/findByTime"];
+    
+    NSDictionary *dic = @{
+                          @"spaceId":spaceid,
+                          @"siteId":siteid,
+                          @"startTime":startTime,
+                          @"endTime":endTime};
+    
+    [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        WOTSiteReservationsRsponseModel_Msg *model = [[WOTSiteReservationsRsponseModel_Msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
 
 
 +(void)getAllServiceTypes:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorLabel/findAll"];
-    
-
     
     [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];

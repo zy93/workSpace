@@ -123,6 +123,17 @@
 -(void)clickButton:(UIButton*)sender
 {
     if ([_delegate respondsToSelector:@selector(pushToVCWithStoryBoardName:vcName:)]) {
+        
+        if (sender.tag == 0) {
+            [WOTSingtleton shared].orderType = ORDER_TYPE_SITE;
+        }
+        else if (sender.tag == 2) {
+            [WOTSingtleton shared].orderType = ORDER_TYPE_BOOKSTATION;
+        }
+        else if (sender.tag == 3) {
+            [WOTSingtleton shared].orderType = ORDER_TYPE_MEETING;
+        }
+        
         [_delegate pushToVCWithStoryBoardName:sbNameList[sender.tag] vcName:vcNameList[sender.tag]];
     }
 }

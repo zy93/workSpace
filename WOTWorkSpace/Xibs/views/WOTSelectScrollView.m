@@ -126,7 +126,7 @@
 {
     NSArray *tims = [openTime getDECTime];
     openStartTime = [tims.firstObject floatValue];
-    openEndTime   = [tims.lastObject floatValue];
+    openEndTime   = [tims.lastObject  floatValue];
     [self commonInit];
 }
 
@@ -142,6 +142,20 @@
 //    selectList = tagList;
 //    [self setNeedsLayout];
 //}
+
+-(void)setupView
+{
+    for (UIView *vi in self.subviews) {
+        [vi removeFromSuperview];
+    }
+}
+
+-(void)setScrollOffsetX:(CGFloat)x
+{
+    CGPoint offset = self.contentOffset;
+    offset.x = x;
+    [self setContentOffset:offset];
+}
 
 -(void)setInvalidBtnTimeList:(NSArray *)tagList
 {
@@ -223,6 +237,9 @@
     CGRect btnRect = CGRectMake(0, 30, ButtonWith, ButtonHeight);
     for (int i = 0 ; i<buttonArr.count ; i++) {
         WOTScrollButton *btn = buttonArr[i];
+//        NSLog(@"---Btn:%ld",btn.isEnabled);
+        [btn setEnabled:YES];
+        btn.selected = NO;
         [btn setFrame:btnRect];
         btnRect = CGRectMake(CGRectGetMaxX(btn.frame)-1, 30, ButtonWith, ButtonHeight);
         if (i%2==0) {
@@ -235,10 +252,12 @@
             if (btn.time >= beginTime && btn.time < endTime) {
                 [btn setEnabled:NO];
             }
+            
         }
         if (btn.time >= selectBeginTime && btn.time < selectEndTime) {
             btn.selected = YES;
         }
+        
     }
     
     
@@ -251,10 +270,59 @@
     if (sender.isEnabled==NO) {
         return;
     }
-//    sender.selected = !sender.isSelected;
+    //检查选择的时间内是否被预定过
+    if ([self checkTimeHasBeenBookedWithTime:sender.time] == YES) {
+        
+        return;
+    }
+    
+    
     if ([_mDelegate respondsToSelector:@selector(selectButton:)]) {
         [_mDelegate selectButton:sender];
     }
 }
+
+
+-(BOOL)checkTimeHasBeenBookedWithTime:(CGFloat)time
+{
+    CGFloat tempBeginTime = selectBeginTime;
+    CGFloat tempEndTime = selectEndTime;
+    
+    
+    if (tempBeginTime == tempEndTime && tempEndTime == 0) {
+        tempBeginTime = time;
+        tempEndTime = tempBeginTime+0.5;
+    }
+    else if (time ==  tempBeginTime && tempBeginTime == tempEndTime-0.5) {
+        tempBeginTime = tempEndTime = 0;
+    }
+    else if (time<tempBeginTime) {
+        tempBeginTime = time;
+    }
+    else if (time>=tempEndTime) {
+        tempEndTime = time+0.5;
+    }
+    else if (time>tempBeginTime && time<tempEndTime) {
+        if (time == tempEndTime-0.5) {
+            tempEndTime = time;
+        }
+        else {
+            tempEndTime = time+0.5;
+        }
+    }
+    
+    for (NSArray *times in invalidList) {
+        CGFloat beginTime = [times.firstObject floatValue];
+        CGFloat endTime = [times.lastObject floatValue];
+        
+        if (tempBeginTime <beginTime && tempEndTime > endTime) {
+            return YES;
+        }
+        
+    }
+    
+    return NO;
+}
+
 
 @end

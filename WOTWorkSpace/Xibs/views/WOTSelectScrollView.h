@@ -46,4 +46,6 @@
 -(void)setBeginTime:(CGFloat)begin endTime:(CGFloat)end;
 //-(void)setSelectBtnTimeList:(NSArray *)tagList;
 -(void)setInvalidBtnTimeList:(NSArray *)tagList;
+-(void)setupView;
+-(void)setScrollOffsetX:(CGFloat)x;
 @end

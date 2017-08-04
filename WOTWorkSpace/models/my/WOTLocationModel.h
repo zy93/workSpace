@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString *relationTel;
 @property (nonatomic, strong) NSString *shortRent;
 @property (nonatomic, strong) NSString *spaceDescribe;
-@property (nonatomic, strong) NSString *spaceId;
+@property (nonatomic, strong) NSNumber *spaceId;
 @property (nonatomic, strong) NSString *spaceName;
 @property (nonatomic, strong) NSString *spacePicture;
 @property (nonatomic, strong) NSString *spaceSite;

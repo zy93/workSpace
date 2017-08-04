@@ -8,6 +8,8 @@
 
 #import "WOTReservationsMeetingCell.h"
 #import "WOTReservationsMeetingVC.h"
+#import "WOTMeetingReservationsModel.h"
+#import "WOTSiteReservationsModel.h"
 
 @implementation WOTReservationsMeetingCell
 
@@ -42,14 +44,33 @@
     [self setNeedsLayout];
 }
 
--(void)setModel:(WOTMeetingListModel *)model
+
+
+-(void)setMeetingModel:(WOTMeetingListModel *)meetingModel
 {
-    _model = model;
-    [self.meetingNameLab setText:model.conferenceName];
-    [self.meetingInfoLab setText:model.conferenceDescribe];
-    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%d元/小时",[model.conferencePrice intValue]]];
-    //
-    [self.selectTimeScroll setOpenTime:model.openTime];
+    _meetingModel = meetingModel;
+    [self.meetingNameLab setText:_meetingModel.conferenceName];
+    [self.meetingInfoLab setText:_meetingModel.conferenceDescribe];
+    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%d元/小时",[_meetingModel.conferencePrice intValue]]];
+    [self.selectTimeScroll setupView];
+    [self.selectTimeScroll setOpenTime:_meetingModel.openTime];
+    [self loadMeetingReservationsInfo];
+}
+
+-(void)setSiteModel:(WOTSiteModel *)siteModel
+{
+    _siteModel = siteModel;
+    [self.meetingNameLab setText:_siteModel.siteName];
+    [self.meetingInfoLab setText:_siteModel.siteDescribe];
+    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%d元/小时",[_meetingModel.conferencePrice intValue]]];
+    [self.selectTimeScroll setupView];
+    [self.selectTimeScroll setOpenTime:_siteModel.openTime];
+    [self loadSiteReservationsInfo];
+}
+
+#pragma mark - view layout
+-(void)setupView {
+    [self.selectTimeScroll setupView];
 }
 
 -(void)layoutSubviews
@@ -61,6 +82,45 @@
     self.TimeStatisticLab.text = str;
     self.timeStatisticsLab.text = [NSString stringWithFormat:@"%@-%@",[NSString floatTimeConvertStringTime:vc.beginTime],[NSString floatTimeConvertStringTime:vc.endTime]];
 }
+
+-(void)loadMeetingReservationsInfo
+{
+    //    @"2017/07/13 00:00:00"
+    [WOTHTTPNetwork getMeetingReservationsTimeWithSpaceId:_meetingModel.spaceId conferenceId:_meetingModel.conferenceId startTime:_inquireTime response:^(id bean, NSError *error) {
+        
+        WOTMeetingReservationsModel_msg *mod = bean;
+        NSMutableArray *reserList = [NSMutableArray new];
+        for (WOTMeetingReservationsModel * model in  mod.msg) {
+            NSArray *arr = [NSString getReservationsTimesWithStartTime:model.startTime endTime:model.endTime];
+            [reserList addObject:arr];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.selectTimeScroll setInvalidBtnTimeList:reserList];
+        });
+    }];
+}
+
+
+-(void)loadSiteReservationsInfo
+{
+    
+    [WOTHTTPNetwork getSiteReservationsTimeWithSpaceId:_siteModel.spaceId siteId:_siteModel.siteId startTime:_inquireTime response:^(id bean, NSError *error) {
+        WOTSiteReservationsModel_Msg *mod = bean;
+        NSMutableArray *reserList = [NSMutableArray new];
+        for (WOTSiteReservationsModel * model in  mod.msg) {
+            NSArray *arr = [NSString getReservationsTimesWithStartTime:model.startTime endTime:model.endTime];
+            [reserList addObject:arr];
+        }
+        if ([_siteModel.siteName isEqualToString:@"大厅"]) {
+            NSLog(@"-------");
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.selectTimeScroll setInvalidBtnTimeList:reserList];
+        });
+    }];
+}
+
+
 
 #pragma mark - touches
 

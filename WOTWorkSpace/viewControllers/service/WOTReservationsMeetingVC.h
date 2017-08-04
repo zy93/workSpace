@@ -12,10 +12,10 @@
 
 @property (nonatomic, strong) NSNumber *spaceId;
 @property (nonatomic, strong) NSString *spaceName;
-//@property (nonatomic,strong) NSMutableArray *selectTimeList; //已选时间记录
+//已选时间记录
 @property (nonatomic,assign) CGFloat beginTime;
 @property (nonatomic,assign) CGFloat endTime;
 
-@property (nonatomic, assign) BOOL isMeeting; //会议室
+//@property (nonatomic, assign) BOOL isMeeting; //会议室
 
 @end

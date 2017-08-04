@@ -86,7 +86,7 @@
     NSArray *openTimes = [self componentsSeparatedByString:@"-"];
     NSArray *beginTimes =[openTimes.firstObject componentsSeparatedByString:@":"];
     NSArray *endTimes =[openTimes.lastObject componentsSeparatedByString:@":"];
-    NSLog(@"---%@\n%@",beginTimes,endTimes);
+//    NSLog(@"---%@\n%@",beginTimes,endTimes);
     CGFloat begT = 0.f;
     if ([beginTimes[1] integerValue]>=30) {
         begT = [beginTimes.firstObject integerValue]+0.5;

@@ -164,12 +164,11 @@
 -(void)gotoOrderVC:(WOTBookStationCell *)cell
 {
     WOTOrderVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTOrderVC"];
-//    NSArray *arr = [NSString getReservationsTimesWithDate:inquireTime StartTime:self.beginTime  endTime:self.endTime];
     vc.startTime = inquireTime;//arr.firstObject;
     vc.endTime = inquireTime;//arr.lastObject;
     vc.spaceId = self.spaceId;
 //    vc.conferenceId = cell.model.conferenceId;
-    vc.isBookStation = YES;
+    [WOTSingtleton shared].orderType == ORDER_TYPE_BOOKSTATION;
     vc.model = cell.model;
     [self.navigationController pushViewController:vc animated:YES];
 }

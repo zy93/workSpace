@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTBookStationListModel.h"
+#import "WOTMeetingReservationsModel.h"
+#import "WOTBookStationListModel.h"
+//#import ""
 
 @interface WOTOrderVC : UIViewController
-
-@property (nonatomic, assign) BOOL isBookStation;
-
 @property (nonatomic, strong) NSNumber *spaceId;
-@property (nonatomic, strong) NSNumber *conferenceId;
+@property (nonatomic, strong) NSNumber *conferenceOrSiteId;
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSString *endTime;
 
 @property (nonatomic, strong) WOTBookStationListModel1 *model;
+
 
 @end

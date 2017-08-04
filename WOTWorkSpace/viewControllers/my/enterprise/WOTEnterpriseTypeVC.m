@@ -185,7 +185,7 @@
     if (_gobackBlock) {
         self.gobackBlock(string);
     }
-    NSLog(@"---选择企业---%@",string);
+//    NSLog(@"---选择企业---%@",string);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

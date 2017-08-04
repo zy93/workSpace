@@ -30,7 +30,7 @@
     [components setDay:([components day]+1)];
     NSDate *beginningOfWeek = [gregorian dateFromComponents:components];
     NSDateFormatter *dateday = [[NSDateFormatter alloc] init];
-    [dateday setDateFormat:@"yyyy-MM-dd 00:00:00"];
+    [dateday setDateFormat:@"YYYY/MM/dd 00:00:00"];
     NSString * DateTime =[dateday stringFromDate:beginningOfWeek];
 //    NSLog(@"%@============年-月-日  时：分：秒=====================",DateTime);
     return DateTime;

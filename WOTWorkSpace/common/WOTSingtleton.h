@@ -10,12 +10,25 @@
 
 #import "WOTLocationModel.h"
 
+
+
+typedef NS_ENUM(NSInteger, ORDER_TYPE) {
+    ORDER_TYPE_BOOKSTATION,
+    ORDER_TYPE_MEETING,
+    ORDER_TYPE_SITE,
+};
+
+
+
 @interface WOTSingtleton : NSObject
 +(instancetype)shared;
 @property(nonatomic,strong)NSMutableArray *spaceCityArray;
 @property(nonatomic,strong)NSArray *ballTitle;
 @property(nonatomic,strong)NSArray *ballImage;
 @property(nonatomic,assign)bool isuserLogin ;
+
+//会议室页面跳转记录，因涉及页面较多，在此记录当前操作。
+@property (nonatomic, assign) ORDER_TYPE orderType;
 
 @property (nonatomic, strong) WOTLocationModel *nearbySpace;
 

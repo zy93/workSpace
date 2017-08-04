@@ -45,6 +45,7 @@
     // Do any additional setup after loading the view.
 //    self.table.separatorStyle = UITableViewCellSelectionStyleNone;
     [self configNav];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,39 +58,59 @@
     
 }
 
--(void)setIsBookStation:(BOOL)isBookStation
+
+-(void)loadData
 {
-    _isBookStation = isBookStation;
-    
     NSArray *list1 = nil;
     
-    if (_isBookStation) {
-        list1 = @[infoCell, bookStationCell, serviceCell, payTypeCell, selectCell, selectCell];
-    }
-    else {
-        list1 = @[infoCell, siteCell, serviceCell, payTypeCell, selectCell, selectCell];
+    switch ([WOTSingtleton shared].orderType) {
+        case ORDER_TYPE_BOOKSTATION:
+        {
+            list1 = @[infoCell, bookStationCell, serviceCell, payTypeCell, selectCell, selectCell];
+            
+        }
+            break;
+        case ORDER_TYPE_MEETING:
+        case ORDER_TYPE_SITE:
+        {
+            list1 = @[infoCell, siteCell, serviceCell, payTypeCell, selectCell, selectCell];
+            
+        }
+            break;
+        default:
+            break;
     }
     
     NSArray *list2 = @[uitableCell,paymentCell,paymentCell];
-    NSArray *list3 = @[amountCell];
-    
-    tableList = @[list1, list2, list3];
-    [self.table reloadData];
-    
+    tableList = @[list1, list2];
 }
+
 #pragma mark - action
 - (IBAction)clickSubmitBtn:(id)sender {
     
-    if (self.isBookStation) {
-        
-    }
-    else {
-        [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId conferenceId:self.conferenceId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
+    switch ([WOTSingtleton shared].orderType) {
+        case ORDER_TYPE_BOOKSTATION:
+        {
             
-        }];
+        }
+            break;
+        case ORDER_TYPE_MEETING:
+        {
+            [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId conferenceId:self.conferenceOrSiteId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
+                NSLog(@"---%@", bean);
+            }];
+        }
+            break;
+        case ORDER_TYPE_SITE:
+        {
+            [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId siteId:self.conferenceOrSiteId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
+                NSLog(@"---%@", bean);
+            }];
+        }
+            break;
+        default:
+            break;
     }
-    
-    
 }
 
 #pragma mark - table delegate & dataSource

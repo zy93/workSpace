@@ -115,9 +115,9 @@
     NSArray *section1 = @[@"申请成为平台服务商", @"投融资"];
     NSArray *section2 = @[visitors, maintenance, getservice, feedback];
     tableIconList = [@[@"visitors_icon", @"maintenance_apply_icon", @"openDoor_icon", @"get_service_icon", @"feedback_icon"] mutableCopy];
-//    NSArray *section3 = @[@"可操控设备"];
+    NSArray *section3 = @[@"可操控设备"];
 
-    tableList = [@[section1, section2] mutableCopy];
+    tableList = [@[section1, section2,section3] mutableCopy];
     
     [self.table reloadData];
 }

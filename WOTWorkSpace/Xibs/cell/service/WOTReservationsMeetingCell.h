@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WOTSelectScrollView.h"
 #import "WOTMeetingListModel.h"
+#import "WOTSiteModel.h"
 
 @class WOTReservationsMeetingCell;
 
@@ -38,8 +39,11 @@
 @property (weak, nonatomic) id <WOTReservationsMeetingCellDelegate> delegate;
 
 //设置数据
-@property (nonatomic, strong)WOTMeetingListModel *model;
+@property (nonatomic, strong) WOTMeetingListModel *meetingModel;
+@property (nonatomic, strong) WOTSiteModel *siteModel;
+@property (nonatomic, strong) NSString *inquireTime;//查询日期;
+@property (nonatomic, strong) NSIndexPath *index;
 
-//-(void)setData:(WOTMeetingListModel *)model;
+-(void)setupView;
 
 @end

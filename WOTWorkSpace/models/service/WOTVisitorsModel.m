@@ -9,5 +9,8 @@
 #import "WOTVisitorsModel.h"
 
 @implementation WOTVisitorsModel
-
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end

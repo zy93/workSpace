@@ -157,6 +157,12 @@ typedef void(^response)(id bean,NSError *error);
  */
 +(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
 
+//TODO: 场地
++(void)getAllSiteResponse:(response)response;
++(void)getSiteListWithSpaceId:(NSNumber *)spaceid response:(response)response;
++(void)getSiteReservationsTimeWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)strTime response:(response)response;
++(void)siteReservationsWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
+
 //TODO: 工位
 
 /**

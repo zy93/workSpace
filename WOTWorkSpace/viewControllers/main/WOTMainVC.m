@@ -59,7 +59,6 @@
     [self configScrollView];
     [self loadSpaceView];
     
-    [self loadLocation];
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -129,9 +128,14 @@
     [self.navigationController.navigationBar setHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
 }
-
+int a = 0;
 //必须在页面出现以后，重新设置scrollview 的contengsize
 -(void)viewDidAppear:(BOOL)animated{
+    
+    if (a++<=0) {
+        [self loadLocation];
+    }
+    
     [super viewDidAppear:animated];
     
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
@@ -149,7 +153,7 @@
 {
     [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon) {
         [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
-            [WOTSingtleton shared].nearbySpace = bean;
+            [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
         }];
     }];
 }
@@ -472,6 +476,7 @@
         [MBProgressHUDUtil showMessage:@"敬请期待" toView:self.view];
         return;
     }
+    
     [self pushToViewControllerWithStoryBoardName:sbName viewControllerName:vcName];
 }
 

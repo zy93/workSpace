@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>使用您的定位，获取你附近的空间信息。</string>
-	<key>NSLocationUsageDescription</key>
-	<string>使用您的定位，获取你附近的空间信息。</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -66,7 +62,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqqOpensdkSSoLogin</string>
@@ -124,6 +120,10 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>应用请求访问您的相机</string>
+	<key>NSLocationUsageDescription</key>
+	<string>使用您的定位，获取你附近的空间信息。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>使用您的定位，获取你附近的空间信息。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>应用请求访问您的照片库</string>
 	<key>UILaunchStoryboardName</key>
