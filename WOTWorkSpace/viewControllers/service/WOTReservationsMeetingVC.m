@@ -158,6 +158,7 @@
     self.selectTimeBtn.selected = NO;
     inquireTime = [NSDate getNewTimeZero];
     [self reloadView];
+    _datepickerview.hidden = YES;
 }
 - (IBAction)tomorrow:(id)sender {
     self.indicatorViewCenter.constant = CGRectGetMidX(self.tomorrowBtn.frame)-CGRectGetMidX(self.todayBtn.frame);
@@ -166,6 +167,7 @@
     self.selectTimeBtn.selected = NO;
     inquireTime = [NSDate getTomorrowTimeZero];
     [self reloadView];
+    _datepickerview.hidden = YES;
 }
 - (IBAction)selectTime:(id)sender {
     self.indicatorViewCenter.constant = CGRectGetMidX(((UIButton *)sender).frame) -CGRectGetMidX(self.todayBtn.frame);

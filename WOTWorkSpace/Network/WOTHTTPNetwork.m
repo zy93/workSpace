@@ -30,6 +30,7 @@
 #import "WOTSiteModel.h"
 #import "WOTSiteReservationsModel.h"
 
+#import "WOTServiceCategoryModel.h"
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 

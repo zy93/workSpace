@@ -25,6 +25,7 @@
 #define getservice @"发布需求"
 #define feedback @"意见反馈"
 
+#import "WOTRefreshControlUitls.h"
 @interface WOTServiceVC () <UITableViewDelegate, UITableViewDataSource,SDCycleScrollViewDelegate, WOTGETServiceCellDelegate>
 {
     NSMutableArray *tableList;

@@ -23,6 +23,7 @@
 #import "WOTSliderModel.h"
 #import "WOTLocationManager.h"
 
+#import "WOTRefreshControlUitls.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -56,6 +57,8 @@
     
     [self configScrollView];
    
+    
+ 
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
