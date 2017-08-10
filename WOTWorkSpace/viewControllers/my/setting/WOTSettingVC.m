@@ -49,7 +49,7 @@
             return 4;
             break;
         case 1:
-            return 4;
+            return 3;
             break;
         case 2:
             return 1;
@@ -122,7 +122,7 @@
             [settingcell.lineVIew setHidden:YES];
         }
          [settingcell.loginOut setHidden:YES];
-        NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",@"检查新版本",nil];
+        NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",nil];
         settingcell.nameLabel.text = nameArray1[indexPath.row];
     }else {
         if ([WOTSingtleton shared].isuserLogin) {
