@@ -67,10 +67,23 @@
 #define UIColor_blue_40 UIColorFromRGB(0x4087ee)
 #define UIColor_green_12 UIColorFromRGB(0x12c700)
 #define UIColor_green_37 UIColorFromRGB(0x37c922)
-//#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
-#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
+#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
+//#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
 //#define HTTPBaseURL @"http://192.168.6.166/workSpace"
 //#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
 
+
+//微信支付
+#define APPID @"wxa41b37164b2030d6"
+#define APPSECRET @"d4624c36b6795d1d99dcf0547af5443d"
+#define BASE_URL @"http://192.168.6.219:8080"
+#define PaySERVER_URL [NSString stringWithFormat:@"%@/payment/Payment/placeAnOrder", BASE_URL]
+#define NOTIFY_URL [NSString stringWithFormat:@"%@/rmb/third_pay/weixin", BASE_URL]
+#define PartnerId @"1288580901"
+#define Partner_Sign_Key @"sczJpiMw6V3YO1lPOSL9VsrueXwrIEiK"
+
+
+
+//NSUserDefault 
 #define LOGIN_STATE_USERDEFAULT @"islogin"
 #endif /* WOTConstants_h */

@@ -46,6 +46,12 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.translucent = NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.translucent = YES;
+}
 -(void)setUrl:(NSString *)url
 {
     _url = url;

@@ -210,10 +210,37 @@
 		E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85FF1F0202F40016FCA1 /* WOTMyVC.m */; };
 		E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A86091F022D6C0016FCA1 /* WOTMyNaviController.m */; };
 		E85A861B1F0252F20016FCA1 /* WOTBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A861A1F0252F20016FCA1 /* WOTBaseNavigationController.m */; };
+		E85E63401F3AF0C80050ABB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */; };
+		E85E63431F3B0B650050ABB6 /* WOTBueToothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */; };
 		E8605CA51F132221005C09F4 /* WOTEnterpriseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CA31F132221005C09F4 /* WOTEnterpriseHeaderView.m */; };
 		E8605CA61F132221005C09F4 /* WOTEnterpriseHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8605CA41F132221005C09F4 /* WOTEnterpriseHeaderView.xib */; };
 		E8605CD71F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CD61F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m */; };
 		E8605CDA1F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CD91F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m */; };
+		E86245611F3D4F4900CF0D9D /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245321F3D4F4900CF0D9D /* SRDelegateController.m */; };
+		E86245621F3D4F4900CF0D9D /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */; };
+		E86245631F3D4F4900CF0D9D /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */; };
+		E86245641F3D4F4900CF0D9D /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */; };
+		E86245651F3D4F4900CF0D9D /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */; };
+		E86245661F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */; };
+		E86245671F3D4F4900CF0D9D /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245441F3D4F4900CF0D9D /* SRConstants.m */; };
+		E86245681F3D4F4900CF0D9D /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245471F3D4F4900CF0D9D /* SRError.m */; };
+		E86245691F3D4F4900CF0D9D /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245491F3D4F4900CF0D9D /* SRHash.m */; };
+		E862456A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */; };
+		E862456B1F3D4F4900CF0D9D /* SRLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454D1F3D4F4900CF0D9D /* SRLog.m */; };
+		E862456C1F3D4F4900CF0D9D /* SRMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454F1F3D4F4900CF0D9D /* SRMutex.m */; };
+		E862456D1F3D4F4900CF0D9D /* SRRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245511F3D4F4900CF0D9D /* SRRandom.m */; };
+		E862456E1F3D4F4900CF0D9D /* SRSIMDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */; };
+		E862456F1F3D4F4900CF0D9D /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */; };
+		E86245701F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */; };
+		E86245711F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */; };
+		E86245721F3D4F4900CF0D9D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E862455B1F3D4F4900CF0D9D /* Info.plist */; };
+		E86245731F3D4F4900CF0D9D /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */; };
+		E86245741F3D4F4900CF0D9D /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245601F3D4F4900CF0D9D /* SRWebSocket.m */; };
+		E86245771F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */; };
+		E862457E1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */; };
+		E86245811F3D59F100CF0D9D /* WOTDeviceListRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */; };
+		E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245821F3D7E8400CF0D9D /* libicucore.tbd */; };
+		E86245861F3D893900CF0D9D /* WOTWXPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245851F3D893900CF0D9D /* WOTWXPayModel.m */; };
 		E86592B91F346C170055ABC8 /* WOTServiceCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */; };
 		E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E865947F1F21C9260093B796 /* WOTSocialContactCell.m */; };
 		E86594821F21C9260093B796 /* WOTSocialContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86594801F21C9260093B796 /* WOTSocialContactCell.xib */; };
@@ -233,6 +260,14 @@
 		E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E8391F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m */; };
 		E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */; };
 		E869E8401F1E15CA00DBDBB9 /* WOTPostImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */; };
+		E86B81DF1F383134002AAC63 /* WOTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81DE1F383134002AAC63 /* WOTMapManager.m */; };
+		E86B81E51F3841D8002AAC63 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86B81E11F3841D8002AAC63 /* libWeChatSDK.a */; };
+		E86B81E81F38422B002AAC63 /* WOTWXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */; };
+		E86B81EB1F38431B002AAC63 /* WOTWXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */; };
+		E86B81EE1F38446C002AAC63 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81ED1F38446C002AAC63 /* XMLReader.m */; };
+		E86B81F11F3844A7002AAC63 /* WOTHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F01F3844A7002AAC63 /* WOTHttp.m */; };
+		E86B81F41F3847B7002AAC63 /* WOTMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F31F3847B7002AAC63 /* WOTMD5.m */; };
+		E86B81F71F38480C002AAC63 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F61F38480C002AAC63 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */; };
 		E86C05B71F2B17C2000ABDBF /* spaceMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */; };
 		E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */; };
@@ -448,11 +483,14 @@
 		2AF83EE71F05FB92000AE733 /* Service.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Service.storyboard; sourceTree = "<group>"; };
 		2AFAC8921F0FB796001BAB14 /* WOTRadioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTRadioView.h; sourceTree = "<group>"; };
 		2AFAC8931F0FB796001BAB14 /* WOTRadioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTRadioView.m; sourceTree = "<group>"; };
+		36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceUITests/Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		3704D94D4A02A54BFD2A96B0 /* Pods-WOTWorkSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceUITests/Pods-WOTWorkSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3AD4D44235E619477B1F5D13 /* Pods-WOTWorkSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.debug.xcconfig"; sourceTree = "<group>"; };
 		61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpaceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD7419E0440D789E522F1B2 /* Pods-WOTWorkSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.release.xcconfig"; sourceTree = "<group>"; };
+		D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80F4C0D1F0F24AA008BF066 /* WOTUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUitls.h; sourceTree = "<group>"; };
 		E80F4C0E1F0F24AA008BF066 /* WOTUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTUitls.m; sourceTree = "<group>"; };
@@ -658,6 +696,9 @@
 		E85A86091F022D6C0016FCA1 /* WOTMyNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyNaviController.m; sourceTree = "<group>"; };
 		E85A86191F0252F20016FCA1 /* WOTBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBaseNavigationController.h; sourceTree = "<group>"; };
 		E85A861A1F0252F20016FCA1 /* WOTBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBaseNavigationController.m; sourceTree = "<group>"; };
+		E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E85E63411F3B0B650050ABB6 /* WOTBueToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBueToothManager.h; sourceTree = "<group>"; };
+		E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBueToothManager.m; sourceTree = "<group>"; };
 		E8605CA21F132221005C09F4 /* WOTEnterpriseHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseHeaderView.h; sourceTree = "<group>"; };
 		E8605CA31F132221005C09F4 /* WOTEnterpriseHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseHeaderView.m; sourceTree = "<group>"; };
 		E8605CA41F132221005C09F4 /* WOTEnterpriseHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTEnterpriseHeaderView.xib; sourceTree = "<group>"; };
@@ -665,6 +706,57 @@
 		E8605CD61F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+JCSearchBarPlaceholder.m"; sourceTree = "<group>"; };
 		E8605CD81F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseConnectsInfoVC.h; sourceTree = "<group>"; };
 		E8605CD91F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseConnectsInfoVC.m; sourceTree = "<group>"; };
+		E86245311F3D4F4900CF0D9D /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
+		E86245321F3D4F4900CF0D9D /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
+		E86245341F3D4F4900CF0D9D /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
+		E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
+		E86245361F3D4F4900CF0D9D /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
+		E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
+		E86245381F3D4F4900CF0D9D /* NSRunLoop+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		E86245391F3D4F4900CF0D9D /* NSURLRequest+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		E862453B1F3D4F4900CF0D9D /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
+		E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
+		E862453E1F3D4F4900CF0D9D /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
+		E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
+		E86245411F3D4F4900CF0D9D /* SRPinningSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPinningSecurityPolicy.h; sourceTree = "<group>"; };
+		E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPinningSecurityPolicy.m; sourceTree = "<group>"; };
+		E86245431F3D4F4900CF0D9D /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
+		E86245441F3D4F4900CF0D9D /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
+		E86245461F3D4F4900CF0D9D /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
+		E86245471F3D4F4900CF0D9D /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
+		E86245481F3D4F4900CF0D9D /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
+		E86245491F3D4F4900CF0D9D /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
+		E862454A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHTTPConnectMessage.h; sourceTree = "<group>"; };
+		E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHTTPConnectMessage.m; sourceTree = "<group>"; };
+		E862454C1F3D4F4900CF0D9D /* SRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLog.h; sourceTree = "<group>"; };
+		E862454D1F3D4F4900CF0D9D /* SRLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLog.m; sourceTree = "<group>"; };
+		E862454E1F3D4F4900CF0D9D /* SRMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMutex.h; sourceTree = "<group>"; };
+		E862454F1F3D4F4900CF0D9D /* SRMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMutex.m; sourceTree = "<group>"; };
+		E86245501F3D4F4900CF0D9D /* SRRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRandom.h; sourceTree = "<group>"; };
+		E86245511F3D4F4900CF0D9D /* SRRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRandom.m; sourceTree = "<group>"; };
+		E86245521F3D4F4900CF0D9D /* SRSIMDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSIMDHelpers.h; sourceTree = "<group>"; };
+		E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSIMDHelpers.m; sourceTree = "<group>"; };
+		E86245541F3D4F4900CF0D9D /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
+		E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
+		E86245561F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
+		E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
+		E86245581F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
+		E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
+		E862455B1F3D4F4900CF0D9D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E862455C1F3D4F4900CF0D9D /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		E862455D1F3D4F4900CF0D9D /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
+		E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
+		E862455F1F3D4F4900CF0D9D /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		E86245601F3D4F4900CF0D9D /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		E86245751F3D4FAB00CF0D9D /* WOTDeviceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceInfoModel.h; sourceTree = "<group>"; };
+		E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceInfoModel.m; sourceTree = "<group>"; };
+		E862457C1F3D59DB00CF0D9D /* WOTDeviceRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceRequestTool.h; sourceTree = "<group>"; };
+		E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceRequestTool.m; sourceTree = "<group>"; };
+		E862457F1F3D59F100CF0D9D /* WOTDeviceListRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceListRequestTool.h; sourceTree = "<group>"; };
+		E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceListRequestTool.m; sourceTree = "<group>"; };
+		E86245821F3D7E8400CF0D9D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		E86245841F3D893900CF0D9D /* WOTWXPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXPayModel.h; sourceTree = "<group>"; };
+		E86245851F3D893900CF0D9D /* WOTWXPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXPayModel.m; sourceTree = "<group>"; };
 		E86592B71F346C170055ABC8 /* WOTServiceCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTServiceCategoryModel.h; sourceTree = "<group>"; };
 		E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTServiceCategoryModel.m; sourceTree = "<group>"; };
 		E865947E1F21C9260093B796 /* WOTSocialContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSocialContactCell.h; sourceTree = "<group>"; };
@@ -702,6 +794,24 @@
 		E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPhotosBaseUtils.m; sourceTree = "<group>"; };
 		E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPostImage.h; sourceTree = "<group>"; };
 		E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPostImage.m; sourceTree = "<group>"; };
+		E86B81DD1F383134002AAC63 /* WOTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMapManager.h; sourceTree = "<group>"; };
+		E86B81DE1F383134002AAC63 /* WOTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMapManager.m; sourceTree = "<group>"; };
+		E86B81E11F3841D8002AAC63 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		E86B81E21F3841D8002AAC63 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		E86B81E31F3841D8002AAC63 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		E86B81E41F3841D8002AAC63 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		E86B81E61F38422B002AAC63 /* WOTWXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXApiManager.h; sourceTree = "<group>"; };
+		E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXApiManager.m; sourceTree = "<group>"; };
+		E86B81E91F38431B002AAC63 /* WOTWXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXApiRequestHandler.h; sourceTree = "<group>"; };
+		E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXApiRequestHandler.m; sourceTree = "<group>"; };
+		E86B81EC1F38446C002AAC63 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		E86B81ED1F38446C002AAC63 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		E86B81EF1F3844A7002AAC63 /* WOTHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHttp.h; sourceTree = "<group>"; };
+		E86B81F01F3844A7002AAC63 /* WOTHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTHttp.m; sourceTree = "<group>"; };
+		E86B81F21F3847B7002AAC63 /* WOTMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMD5.h; sourceTree = "<group>"; };
+		E86B81F31F3847B7002AAC63 /* WOTMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMD5.m; sourceTree = "<group>"; };
+		E86B81F51F38480C002AAC63 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		E86B81F61F38480C002AAC63 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		E86C05B31F2B105D000ABDBF /* WOTCityTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTCityTileView.h; sourceTree = "<group>"; };
 		E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTCityTileView.m; sourceTree = "<group>"; };
 		E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = spaceMain.storyboard; sourceTree = "<group>"; };
@@ -801,10 +911,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */,
+				E85E63401F3AF0C80050ABB6 /* CoreBluetooth.framework in Frameworks */,
 				2A3B60101F2F0A9700AC9C8D /* CoreLocation.framework in Frameworks */,
 				E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */,
 				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
 				2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */,
+				E86B81E51F3841D8002AAC63 /* libWeChatSDK.a in Frameworks */,
 				2A4214451F14699B0010B003 /* UMSocialCore.framework in Frameworks */,
 				2A4214421F14699B0010B003 /* libSocialQQ.a in Frameworks */,
 				2A4214461F14699B0010B003 /* UMSocialNetwork.framework in Frameworks */,
@@ -838,6 +951,7 @@
 		2A3042B01F0B7DE0007C4DED /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E862457B1F3D59DB00CF0D9D /* DeviceNet */,
 				2A3042B11F0B7E4E007C4DED /* WOTHTTPNetwork.h */,
 				2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */,
 				E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */,
@@ -996,6 +1110,10 @@
 				2A99FB661F258A4000869732 /* WOTVisitorsModel.m */,
 				E86592B71F346C170055ABC8 /* WOTServiceCategoryModel.h */,
 				E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */,
+				E86245751F3D4FAB00CF0D9D /* WOTDeviceInfoModel.h */,
+				E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */,
+				E86245841F3D893900CF0D9D /* WOTWXPayModel.h */,
+				E86245851F3D893900CF0D9D /* WOTWXPayModel.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1018,6 +1136,9 @@
 				157AADE7023AC29418E68C7A /* Pods-WOTWorkSpaceTests.release.xcconfig */,
 				3704D94D4A02A54BFD2A96B0 /* Pods-WOTWorkSpaceUITests.debug.xcconfig */,
 				FB0D65BEE3DC0196385560AF /* Pods-WOTWorkSpaceUITests.release.xcconfig */,
+				D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */,
+				B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */,
+				36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1025,6 +1146,8 @@
 		9809956DAB35897C197FBC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E86245821F3D7E8400CF0D9D /* libicucore.tbd */,
+				E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */,
 				2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */,
 				2A4214821F149ED80010B003 /* CoreGraphics.framework */,
 				2A4214801F149ECA0010B003 /* libsqlite3.tbd */,
@@ -1408,6 +1531,8 @@
 		E85A85BF1F0202450016FCA1 /* librarys */ = {
 			isa = PBXGroup;
 			children = (
+				E862452E1F3D4F4900CF0D9D /* SocketRocket */,
+				E86B81E01F3841D8002AAC63 /* WXPay */,
 				E86FD1E71F2056F6009BE16A /* WOTImagePicker */,
 				2A42142E1F14699B0010B003 /* UMSocial */,
 				E85A85C01F0202450016FCA1 /* Masonry */,
@@ -1648,8 +1773,136 @@
 				2A022E581F1DBC36001AE9E9 /* NSDate+Uitls.m */,
 				E8DAE7481F3025D800830A2F /* WOTRefreshControlUitls.h */,
 				E8DAE7491F3025D800830A2F /* WOTRefreshControlUitls.m */,
+				E86B81DD1F383134002AAC63 /* WOTMapManager.h */,
+				E86B81DE1F383134002AAC63 /* WOTMapManager.m */,
+				E85E63411F3B0B650050ABB6 /* WOTBueToothManager.h */,
+				E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */,
 			);
 			path = Uitls;
+			sourceTree = "<group>";
+		};
+		E862452E1F3D4F4900CF0D9D /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				E862452F1F3D4F4900CF0D9D /* Internal */,
+				E86245561F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.h */,
+				E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */,
+				E86245581F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.h */,
+				E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */,
+				E862455A1F3D4F4900CF0D9D /* Resources */,
+				E862455C1F3D4F4900CF0D9D /* SocketRocket.h */,
+				E862455D1F3D4F4900CF0D9D /* SRSecurityPolicy.h */,
+				E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */,
+				E862455F1F3D4F4900CF0D9D /* SRWebSocket.h */,
+				E86245601F3D4F4900CF0D9D /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		E862452F1F3D4F4900CF0D9D /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E86245301F3D4F4900CF0D9D /* Delegate */,
+				E86245331F3D4F4900CF0D9D /* IOConsumer */,
+				E86245381F3D4F4900CF0D9D /* NSRunLoop+SRWebSocketPrivate.h */,
+				E86245391F3D4F4900CF0D9D /* NSURLRequest+SRWebSocketPrivate.h */,
+				E862453A1F3D4F4900CF0D9D /* Proxy */,
+				E862453D1F3D4F4900CF0D9D /* RunLoop */,
+				E86245401F3D4F4900CF0D9D /* Security */,
+				E86245431F3D4F4900CF0D9D /* SRConstants.h */,
+				E86245441F3D4F4900CF0D9D /* SRConstants.m */,
+				E86245451F3D4F4900CF0D9D /* Utilities */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		E86245301F3D4F4900CF0D9D /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				E86245311F3D4F4900CF0D9D /* SRDelegateController.h */,
+				E86245321F3D4F4900CF0D9D /* SRDelegateController.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		E86245331F3D4F4900CF0D9D /* IOConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				E86245341F3D4F4900CF0D9D /* SRIOConsumer.h */,
+				E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */,
+				E86245361F3D4F4900CF0D9D /* SRIOConsumerPool.h */,
+				E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */,
+			);
+			path = IOConsumer;
+			sourceTree = "<group>";
+		};
+		E862453A1F3D4F4900CF0D9D /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				E862453B1F3D4F4900CF0D9D /* SRProxyConnect.h */,
+				E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		E862453D1F3D4F4900CF0D9D /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				E862453E1F3D4F4900CF0D9D /* SRRunLoopThread.h */,
+				E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */,
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		E86245401F3D4F4900CF0D9D /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				E86245411F3D4F4900CF0D9D /* SRPinningSecurityPolicy.h */,
+				E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		E86245451F3D4F4900CF0D9D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E86245461F3D4F4900CF0D9D /* SRError.h */,
+				E86245471F3D4F4900CF0D9D /* SRError.m */,
+				E86245481F3D4F4900CF0D9D /* SRHash.h */,
+				E86245491F3D4F4900CF0D9D /* SRHash.m */,
+				E862454A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.h */,
+				E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */,
+				E862454C1F3D4F4900CF0D9D /* SRLog.h */,
+				E862454D1F3D4F4900CF0D9D /* SRLog.m */,
+				E862454E1F3D4F4900CF0D9D /* SRMutex.h */,
+				E862454F1F3D4F4900CF0D9D /* SRMutex.m */,
+				E86245501F3D4F4900CF0D9D /* SRRandom.h */,
+				E86245511F3D4F4900CF0D9D /* SRRandom.m */,
+				E86245521F3D4F4900CF0D9D /* SRSIMDHelpers.h */,
+				E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */,
+				E86245541F3D4F4900CF0D9D /* SRURLUtilities.h */,
+				E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E862455A1F3D4F4900CF0D9D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E862455B1F3D4F4900CF0D9D /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E862457B1F3D59DB00CF0D9D /* DeviceNet */ = {
+			isa = PBXGroup;
+			children = (
+				E862457C1F3D59DB00CF0D9D /* WOTDeviceRequestTool.h */,
+				E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */,
+				E862457F1F3D59F100CF0D9D /* WOTDeviceListRequestTool.h */,
+				E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */,
+			);
+			path = DeviceNet;
 			sourceTree = "<group>";
 		};
 		E8693AE21F04AE9200772BC1 /* enterprise */ = {
@@ -1682,6 +1935,29 @@
 				E8F42AC21F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m */,
 			);
 			path = socialcontact;
+			sourceTree = "<group>";
+		};
+		E86B81E01F3841D8002AAC63 /* WXPay */ = {
+			isa = PBXGroup;
+			children = (
+				E86B81E11F3841D8002AAC63 /* libWeChatSDK.a */,
+				E86B81F51F38480C002AAC63 /* JSONKit.h */,
+				E86B81F61F38480C002AAC63 /* JSONKit.m */,
+				E86B81E21F3841D8002AAC63 /* WechatAuthSDK.h */,
+				E86B81E31F3841D8002AAC63 /* WXApi.h */,
+				E86B81E41F3841D8002AAC63 /* WXApiObject.h */,
+				E86B81E61F38422B002AAC63 /* WOTWXApiManager.h */,
+				E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */,
+				E86B81E91F38431B002AAC63 /* WOTWXApiRequestHandler.h */,
+				E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */,
+				E86B81EF1F3844A7002AAC63 /* WOTHttp.h */,
+				E86B81F01F3844A7002AAC63 /* WOTHttp.m */,
+				E86B81F21F3847B7002AAC63 /* WOTMD5.h */,
+				E86B81F31F3847B7002AAC63 /* WOTMD5.m */,
+				E86B81EC1F38446C002AAC63 /* XMLReader.h */,
+				E86B81ED1F38446C002AAC63 /* XMLReader.m */,
+			);
+			path = WXPay;
 			sourceTree = "<group>";
 		};
 		E86FD1E71F2056F6009BE16A /* WOTImagePicker */ = {
@@ -1965,6 +2241,7 @@
 				E8693B0C1F04F47700772BC1 /* My.storyboard in Resources */,
 				E8190DBB1F0F69660000B07C /* WOTPersionalInformationTagCell.xib in Resources */,
 				E8190DA51F0F69660000B07C /* WOTworkSpaceSearchCell.xib in Resources */,
+				E86245721F3D4F4900CF0D9D /* Info.plist in Resources */,
 				E8190DB91F0F69660000B07C /* WOTPersionalInformationCommonCell.xib in Resources */,
 				2AD2BE291F271BE400D4C3BC /* WOTLightCell.xib in Resources */,
 				2A42147F1F146A700010B003 /* share_weixin_select@3x.png in Resources */,
@@ -2188,6 +2465,7 @@
 				E8370F351F0E2A750070C077 /* WOTJoiningEnterpriseVC.m in Sources */,
 				E8190D941F0F69660000B07C /* WOTActivitiesListCell.m in Sources */,
 				E8C7203C1F14783900DED44C /* WOTDatePickerView.m in Sources */,
+				E86245731F3D4F4900CF0D9D /* SRSecurityPolicy.m in Sources */,
 				2A550D911F33302B0049C9D6 /* WOTSiteReservationsModel.m in Sources */,
 				E8190DBA1F0F69660000B07C /* WOTPersionalInformationTagCell.m in Sources */,
 				E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */,
@@ -2229,6 +2507,7 @@
 				2AD2BE2C1F274CB700D4C3BC /* WOTShortcutMenuView.m in Sources */,
 				E85032D41F0B477F00E79257 /* WOTSingtleton.m in Sources */,
 				E8BA0D8D1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.m in Sources */,
+				E86245701F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m in Sources */,
 				E8BA0D7C1F0CEBB200B81C3D /* WOTMyHistoryVC.m in Sources */,
 				E8190DA31F0F69660000B07C /* WOTworkSpaceScrollVIewCell.m in Sources */,
 				2AF78CF41F0A3DCB00F7B56D /* WOTMaintenanceApplyVC.m in Sources */,
@@ -2239,6 +2518,7 @@
 				E85A858C1F0201F30016FCA1 /* AppDelegate.m in Sources */,
 				E8588CEA1F0B27F900951105 /* NSString+URL.m in Sources */,
 				2A1624F01F0E231E00F216F9 /* WOTFileUitls.m in Sources */,
+				E862457E1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m in Sources */,
 				E86592B91F346C170055ABC8 /* WOTServiceCategoryModel.m in Sources */,
 				2AF18A381F136074004681CE /* WOTOrderForSiteCell.m in Sources */,
 				E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */,
@@ -2246,6 +2526,8 @@
 				E850330B1F0B922000E79257 /* WOTEnumUtils.m in Sources */,
 				2A99FB641F258A0F00869732 /* WOTMeetingReservationsModel.m in Sources */,
 				E8190DA41F0F69660000B07C /* WOTworkSpaceSearchCell.m in Sources */,
+				E86245641F3D4F4900CF0D9D /* SRProxyConnect.m in Sources */,
+				E86245811F3D59F100CF0D9D /* WOTDeviceListRequestTool.m in Sources */,
 				E85A861B1F0252F20016FCA1 /* WOTBaseNavigationController.m in Sources */,
 				E847E0981F1621DC003BAF6C /* WOTUserSingleton.m in Sources */,
 				E85A85FD1F0202B10016FCA1 /* WOTTabBarVCViewController.m in Sources */,
@@ -2254,8 +2536,11 @@
 				E85A85EE1F0202460016FCA1 /* MASConstraint.m in Sources */,
 				E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */,
 				2AF18A2F1F135AE2004681CE /* WOTOrderVC.m in Sources */,
+				E86B81EB1F38431B002AAC63 /* WOTWXApiRequestHandler.m in Sources */,
 				E8190DB61F0F69660000B07C /* WOTOrderCell.m in Sources */,
+				E86245741F3D4F4900CF0D9D /* SRWebSocket.m in Sources */,
 				E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */,
+				E862456B1F3D4F4900CF0D9D /* SRLog.m in Sources */,
 				E8693B0A1F04C45100772BC1 /* WOTCreateEnterpriseVC.m in Sources */,
 				E8190D9E1F0F69660000B07C /* WOTTEnterpriseListCell.m in Sources */,
 				E8A200151F1C8266003C8A86 /* WOTLoginModel.m in Sources */,
@@ -2271,22 +2556,27 @@
 				E8190DCD1F0F69660000B07C /* XXPageTabItemLable.m in Sources */,
 				E8190DC31F0F69660000B07C /* WOTServiceProvidersCell.m in Sources */,
 				2AD2BE201F2711BD00D4C3BC /* WOTCurtainCell.m in Sources */,
+				E86245861F3D893900CF0D9D /* WOTWXPayModel.m in Sources */,
 				E8190DBE1F0F69660000B07C /* WOTGETServiceCell.m in Sources */,
 				E8190DC61F0F69660000B07C /* WOTVisitTypeCell.m in Sources */,
 				E8EACF961F035ABA0015535D /* WOTOrderLIstBaseVC.m in Sources */,
+				E86245681F3D4F4900CF0D9D /* SRError.m in Sources */,
 				E85A85F21F0202460016FCA1 /* MASViewConstraint.m in Sources */,
 				E8190DC01F0F69660000B07C /* WOTServiceCell.m in Sources */,
 				E8BA0D871F0CF9F800B81C3D /* WOTMyAppointmentListVC.m in Sources */,
 				E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */,
 				E8693B1D1F05143800772BC1 /* WOTServiceNaviController.m in Sources */,
 				E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */,
+				E86245631F3D4F4900CF0D9D /* SRIOConsumerPool.m in Sources */,
 				2A99FB621F258A0F00869732 /* WOTBookStationListModel.m in Sources */,
 				E8190DC51F0F69660000B07C /* WOTVisitorsAppointmentCell.m in Sources */,
+				E86B81EE1F38446C002AAC63 /* XMLReader.m in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
 				E85A85F71F0202460016FCA1 /* MBProgressHUD+Add.m in Sources */,
 				E8693B0F1F04F90E00772BC1 /* WOTMainVC.m in Sources */,
 				2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */,
 				2A99FB7C1F26033B00869732 /* WOTRegisterModel.m in Sources */,
+				E862456A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m in Sources */,
 				2A1624F31F0E24DA00F216F9 /* WOTLoginNaviController.m in Sources */,
 				E85A85F11F0202460016FCA1 /* MASViewAttribute.m in Sources */,
 				E8693B141F05061500772BC1 /* WOTServiceVC.m in Sources */,
@@ -2295,20 +2585,26 @@
 				E85032D71F0B5A5900E79257 /* WOTPersionalInformation.m in Sources */,
 				E8A2001B1F1C8266003C8A86 /* WOTSpaceModel.m in Sources */,
 				E85032CF1F0B476900E79257 /* WOTMainNavigationController.m in Sources */,
+				E862456C1F3D4F4900CF0D9D /* SRMutex.m in Sources */,
 				E86594881F21CFF00093B796 /* WOTNearCirclesVC.m in Sources */,
+				E86B81DF1F383134002AAC63 /* WOTMapManager.m in Sources */,
 				2A1624F61F0E3F4B00F216F9 /* WOTUserRegisterVC.m in Sources */,
 				E8190D971F0F69660000B07C /* WOTInformationLIstCell.m in Sources */,
 				E8DDCCD21F11D151007D001C /* WOTEnterpriseTypeVC.m in Sources */,
 				E85A85F51F0202460016FCA1 /* View+MASAdditions.m in Sources */,
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
+				E86245621F3D4F4900CF0D9D /* SRIOConsumer.m in Sources */,
 				E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */,
 				E8190D991F0F69660000B07C /* WOTSpaceCityCollectionCell.m in Sources */,
+				E862456E1F3D4F4900CF0D9D /* SRSIMDHelpers.m in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
 				E8190DCB1F0F69660000B07C /* PFGoldenSectionSpiral.m in Sources */,
 				E8DDCCD61F11D542007D001C /* WOTEnterpriseTypeCell.m in Sources */,
 				2AF18A441F136F6D004681CE /* WOTOrderForPaymentCell.m in Sources */,
+				E86245671F3D4F4900CF0D9D /* SRConstants.m in Sources */,
 				2A99FB791F26021000869732 /* WOTGetVerifyModel.m in Sources */,
 				2AE57C441F2ECB0600A1F149 /* WOTH5VC.m in Sources */,
+				E86245611F3D4F4900CF0D9D /* SRDelegateController.m in Sources */,
 				E8CF9FD41F0F8EA400EF0F46 /* WOTBookStationCell.m in Sources */,
 				E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */,
 				2AF78CEE1F0A39E800F7B56D /* WOTGETServiceViewController.m in Sources */,
@@ -2318,26 +2614,33 @@
 				2AF18A3B1F1360EC004681CE /* WOTOrderForServiceInfoCell.m in Sources */,
 				E85032D11F0B476900E79257 /* WOTworkSpaceLIstVC.m in Sources */,
 				E8605CDA1F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m in Sources */,
+				E86B81F11F3844A7002AAC63 /* WOTHttp.m in Sources */,
 				E8693ADE1F049C6300772BC1 /* UItableView+Extension.m in Sources */,
 				E8190DCA1F0F69660000B07C /* PGIndexBannerSubiew.m in Sources */,
 				2AF18A241F131898004681CE /* WOTPickerView.m in Sources */,
+				E86B81E81F38422B002AAC63 /* WOTWXApiManager.m in Sources */,
 				E8693B1A1F05100800772BC1 /* WOTSocialcontactNaviController.m in Sources */,
 				E8190DC11F0F69660000B07C /* WOTServiceProvidersApplyCell.m in Sources */,
 				E8190DC21F0F69660000B07C /* WOTServiceProvidersCategoryCell.m in Sources */,
+				E86245771F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m in Sources */,
 				E8747AE61F26E1E400125CEB /* WOTAirconditioningCell.m in Sources */,
 				E8190DB21F0F69660000B07C /* WOTMyOrderCell.m in Sources */,
 				E8588CE91F0B27F900951105 /* NSString+Category.m in Sources */,
+				E86B81F41F3847B7002AAC63 /* WOTMD5.m in Sources */,
 				E8190DC71F0F69660000B07C /* WOTFilterTypeModel.m in Sources */,
 				E8190DB41F0F69660000B07C /* WOTMyuserCell.m in Sources */,
+				E86B81F71F38480C002AAC63 /* JSONKit.m in Sources */,
 				E8370F171F0DD8BF0070C077 /* WOTActivitiesLIstVC.m in Sources */,
 				E85A85891F0201F30016FCA1 /* main.m in Sources */,
 				E8605CA51F132221005C09F4 /* WOTEnterpriseHeaderView.m in Sources */,
 				2A5B230E1F0F7DBE00466BEF /* WOTEnterTextVC.m in Sources */,
 				2A3B600B1F2EF9D000AC9C8D /* WOTLocationModel.m in Sources */,
+				E862456D1F3D4F4900CF0D9D /* SRRandom.m in Sources */,
 				E8190DBF1F0F69660000B07C /* WOTRegisterServiceProvidersCell.m in Sources */,
 				2A42144E1F146A1A0010B003 /* YYShareView.m in Sources */,
 				2A99FB761F25F2C000869732 /* WOTAppointmentModel.m in Sources */,
 				E8190DCE1F0F69660000B07C /* XXPageTabView.m in Sources */,
+				E862456F1F3D4F4900CF0D9D /* SRURLUtilities.m in Sources */,
 				2AD2BE191F26DC4F00D4C3BC /* WOTBusinessModel.m in Sources */,
 				2AD2BE281F271BE400D4C3BC /* WOTLightCell.m in Sources */,
 				E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */,
@@ -2355,13 +2658,18 @@
 				E8BA0D8A1F0CFA1F00B81C3D /* WOTMyRepairdListVC.m in Sources */,
 				E82D5FB51F07DECE003EF0AE /* UIImage+Extension.m in Sources */,
 				E85A85F61F0202460016FCA1 /* MBProgressHUD.m in Sources */,
+				E85E63431F3B0B650050ABB6 /* WOTBueToothManager.m in Sources */,
 				E8190DA81F0F69660000B07C /* WOTFeedBackLIstCell.m in Sources */,
 				2A99FB671F258A4000869732 /* WOTVisitorsModel.m in Sources */,
 				E8605CD71F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
 				E8747AE21F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m in Sources */,
+				E86245711F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m in Sources */,
+				E86245651F3D4F4900CF0D9D /* SRRunLoopThread.m in Sources */,
 				2AF18A351F136034004681CE /* WOTOrderForBookStationCell.m in Sources */,
+				E86245691F3D4F4900CF0D9D /* SRHash.m in Sources */,
 				E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */,
 				E8370F201F0E04850070C077 /* WOTInformationListVC.m in Sources */,
+				E86245661F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2452,7 +2760,7 @@
 		};
 		2A99FB821F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */;
+			baseConfigurationReference = D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing WOT Technology Development Co.,Ltd. (5EY377SJTX)";
@@ -2476,6 +2784,7 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2489,7 +2798,7 @@
 		};
 		2A99FB831F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 157AADE7023AC29418E68C7A /* Pods-WOTWorkSpaceTests.release.xcconfig */;
+			baseConfigurationReference = B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BA8M5YS8VM;
@@ -2503,7 +2812,7 @@
 		};
 		2A99FB841F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB0D65BEE3DC0196385560AF /* Pods-WOTWorkSpaceUITests.release.xcconfig */;
+			baseConfigurationReference = 36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = BA8M5YS8VM;
 				INFOPLIST_FILE = WOTWorkSpaceUITests/Info.plist;
@@ -2632,6 +2941,7 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2669,6 +2979,7 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

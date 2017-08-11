@@ -88,12 +88,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-zy-2JE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-zy-2JE">
                                 <rect key="frame" x="230" y="78.5" width="70" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="AFT-mh-Hlw"/>
                                     <constraint firstAttribute="height" constant="30" id="juK-QL-bMX"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="提醒我">
                                     <color key="titleColor" red="1" green="0.59548141750000005" blue="0.067882865850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>

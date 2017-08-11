@@ -92,7 +92,11 @@
             return  15;
         }
     } else {
-        return 0;
+        if (section == 0 || section == 2) {
+            return 0;
+        }else {
+            return 15;
+        }
     }
     
   
@@ -146,9 +150,10 @@
     return settingcell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
+    
     if (indexPath.section == 2) {
         [[WOTConfigThemeUitls shared] showRemindingAlert:self message:@"确定退出当前帐号?" okBlock:^{
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
             [self.navigationController popViewControllerAnimated:YES];
            [self.tabBarController setSelectedIndex:0];
            

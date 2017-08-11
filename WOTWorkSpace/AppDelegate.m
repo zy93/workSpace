@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 #import <UMSocialCore/UMSocialCore.h>
-
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import "WXApi.h"
+#import "WOTWXApiManager.h"
+#define MAP_API_KEY @"47411f2c349b36c1fbdee073cd648149"
 @interface AppDelegate ()
 
 @end
@@ -27,6 +30,11 @@
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"59642cfcc62dca6c850020c0"];
     [self ConfigUSharePlatforms];
     
+    //配置高德地图key
+    [AMapServices sharedServices].apiKey =  MAP_API_KEY;
+    
+    
+    [WXApi registerApp:APPID];
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -125,6 +133,96 @@
     /* 设置新浪的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"958434094"  appSecret:@"c8126f4af61b6287bd2ce86a54360e7f" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
+
+
+//支付宝支付
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+       
+    }else{
+        
+        
+        [WXApi handleOpenURL:url delegate:[WOTWXApiManager sharedManager]];
+        
+    }
+    return YES;
+    
+    
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+      
+    }else{
+        return [WXApi handleOpenURL:url delegate:[WOTWXApiManager sharedManager]];
+    }
+    return YES;
+    
+}
+
+
+#pragma mark - 微信支付回调方法
+- (void)onResp:(BaseResp*)resp
+{
+    
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    NSString *strTitle;
+    
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    
+    if([resp isKindOfClass:[PayResp class]])
+    {
+        // 支付返回结果，实际支付结果需要去微信服务器端查询
+        strTitle = [NSString stringWithFormat:@"支付结果"];
+        
+        switch (resp.errCode) {
+            case WXSuccess:
+            {
+                strMsg = @"支付结果：成功！";
+                //                [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                
+                //                NSNotification *notification = [NSNotification notificationWithName:ORDER_PAY_NOTIFICATION object:@"success"];
+                //                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                //                NSNotification *rechargeNoti = [NSNotification notificationWithName:RECHARGE_PAY_NOTIFICATION object:@"recharge_success"];
+                //                [[NSNotificationCenter defaultCenter] postNotification:rechargeNoti];
+                //
+                
+                break;
+            }
+                
+            default:
+            {
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                //                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr]];
+                //
+                //                NSNotification *notification = [NSNotification notificationWithName:ORDER_PAY_NOTIFICATION object:@"fail"];
+                //                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                //                NSNotification *rechargeNoti = [NSNotification notificationWithName:RECHARGE_PAY_NOTIFICATION object:@"fail"];
+                //                [[NSNotificationCenter defaultCenter] postNotification:rechargeNoti];
+                
+                break;
+            }
+        }
+    }
+    
+    //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    //    [alert show];
+}
+
+
+
 //
 //-(void)registerPush{
 //   

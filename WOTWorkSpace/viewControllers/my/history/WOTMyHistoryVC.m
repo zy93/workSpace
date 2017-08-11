@@ -48,14 +48,15 @@
 -(void)rightItemAction{
     //TODO:显示提醒列表
     _remindPopvc = [[UIStoryboard storyboardWithName:@"My" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTAppointmentRemindPopViewID"];
-    _remindPopvc.modalPresentationStyle = UIModalPresentationPopover;
-    _remindPopvc.popoverPresentationController.delegate = self;
-    _remindPopvc.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
-    _remindPopvc.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
-    _remindPopvc.popoverPresentationController.backgroundColor = CLEARCOLOR;
-    _remindPopvc.preferredContentSize = CGSizeMake(200, 300);
-  
-    [self presentViewController:_remindPopvc animated:YES completion:nil];
+//    _remindPopvc.modalPresentationStyle = UIModalPresentationPopover;
+//    _remindPopvc.popoverPresentationController.delegate = self;
+//    _remindPopvc.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
+//    _remindPopvc.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+//    _remindPopvc.popoverPresentationController.backgroundColor = CLEARCOLOR;
+//    _remindPopvc.preferredContentSize = CGSizeMake(200, 300);
+//  
+//    [self presentViewController:_remindPopvc animated:YES completion:nil];
+    [self.navigationController pushViewController:_remindPopvc animated:YES];
 }
 
 

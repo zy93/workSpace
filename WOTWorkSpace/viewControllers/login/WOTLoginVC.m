@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.loginBtn.layer.cornerRadius = 8;
     self.registerBtn.layer.cornerRadius = 8;

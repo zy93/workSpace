@@ -11,17 +11,22 @@
 #import "WOTInteligenceDeviceCommonCell.h"
 #import "WOTCurtainCell.h"
 #import "WOTLightCell.h"
-@interface WOTIntelligenceDeviceListVC ()<UITableViewDelegate,UITableViewDataSource,WOTAirconditioningDelegate,WOTLightCellDelegate,WOTCurtainCellDelegate>{
+#import "WOTDeviceListRequestTool.h"
+
+@interface WOTIntelligenceDeviceListVC ()<UITableViewDelegate,UITableViewDataSource,WOTAirconditioningDelegate,WOTLightCellDelegate,WOTCurtainCellDelegate,SRWebSocketDelegate>{
     BOOL airConditionOpen;
     BOOL curtainsOpen;
     BOOL lightOpen;
     NSInteger lightcellindex;
     NSMutableArray *lightSelectedindex;
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
-
+@property(nonatomic,strong)WOTDeviceListRequestTool *deviceListTool;
+@property(nonatomic,strong) NSArray<WOTDeviceInfoModel *> *deviceArray;
+@property(nonatomic,strong)WOTDeviceInfoModel *currentdeviceInfo;
+@property(nonatomic,strong)NSString *currentdeviceUrl;
+@property(nonatomic,strong)NSNumber *groupId;
 @end
 
 @implementation WOTIntelligenceDeviceListVC
@@ -189,6 +194,117 @@
         [lightSelectedindex removeObject:[NSString stringWithFormat:@"%ld",index]];
     }
     [_tableView reloadData];
+}
+
+
+
+//MARK: device net connect
+
+
+-(void)sendRequest{
+    __weak typeof(self) weakself = self;
+    self.deviceListTool = [WOTDeviceListRequestTool new];
+    [self.deviceListTool sendRequestToGetAllDeviceWithGroupId:self.groupId Response:^(NSArray *arr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (arr) {
+                
+                weakself.deviceArray = arr;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakself.tableView reloadData];
+                });
+            }
+            
+        });
+    }];
+    
+}
+
+
+#pragma mark SRWebSocekt
+
+-(void)webSocketDidOpen:(SRWebSocket *)webSocket{
+    [MBProgressHUDUtil showMessage:@"设备连接成功" toView:self.view];
+    
+    
+}
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string{
+    NSLog(@"%@",string);
+    if ([string containsString:@"thing not online"]) {
+        [MBProgressHUDUtil showMessage:@"设备不在线" toView:self.view];
+    }
+}
+-(void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data{
+    NSLog(@"%@",data);
+}
+-(void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error{
+    NSLog(@"%@",error.userInfo);
+   [MBProgressHUDUtil showMessage:@"网络连接错误" toView:self.view];
+}
+
+-(void)confitWebSocketUrl{
+    
+    //配置websocket
+    if (self.currentdeviceInfo) {
+        self.currentdeviceUrl = self.currentdeviceInfo.harborIp;
+    }
+    //截取ip
+    NSRange range = [self.currentdeviceUrl rangeOfString:@":"];
+    if (range.length>0) {
+        self.currentdeviceUrl = [self.currentdeviceUrl substringWithRange:NSMakeRange(0, range.location)];
+    }
+    //加前缀
+    if(![self.currentdeviceUrl containsString:@"ws://"]){
+        self.currentdeviceUrl = [@"ws://" stringByAppendingString:self.currentdeviceUrl];
+    }
+    NSLog(@"%@",self.currentdeviceUrl);
+    //加后缀
+    self.currentdeviceUrl = [self.currentdeviceUrl stringByAppendingString:@":8999/IotHarborWebsocket"];
+    self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:self.currentdeviceUrl]];
+    self.webSocket.delegate = self;
+    [self.webSocket open];
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.webSocket close];
+}
+
+/**字典转json*/
+-(NSString*)dictionaryToJson:(NSDictionary *)dic
+
+{
+    
+    NSError *parseError = nil;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+}
+-(void)sendWebSocketStringWithParam:(NSDictionary*)param{
+    
+    NSString *sendStr = [self dictionaryToJson:param];
+    NSError *error = [NSError new];
+    NSLog(@"%@",sendStr);
+    [self.webSocket sendString:sendStr error:&error];
+    if (error.userInfo.allKeys.count>0) {
+        NSLog(@"%@",error.userInfo);
+        [MBProgressHUDUtil showMessage:@"发送错误" toView:self.view];
+        
+    }
+}
+
+-(NSString *)imageAddExStr:(NSString *)imageStr{
+    NSString *exStr = [imageStr pathExtension];
+    NSString *temp = [imageStr stringByDeletingPathExtension];
+    temp = [temp stringByAppendingString:@"1"];
+    temp = [temp stringByAppendingPathComponent:exStr];
+    if (![temp containsString:@"http://"]&&[temp containsString:@"http:/"]) {
+        temp = [temp stringByReplacingOccurrencesOfString:@"http:/" withString:@"http://"];
+    }
+    return temp;
 }
 
 #pragma mark - Navigation
