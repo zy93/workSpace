@@ -34,7 +34,7 @@
     [AMapServices sharedServices].apiKey =  MAP_API_KEY;
     
     
-    [WXApi registerApp:APPID];
+    [WXApi registerApp:APPID enableMTA:YES];
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

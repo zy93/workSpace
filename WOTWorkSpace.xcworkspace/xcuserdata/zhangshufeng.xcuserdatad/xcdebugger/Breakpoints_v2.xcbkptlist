@@ -16,8 +16,8 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "icu::ScriptSet::test(UScriptCode, UErrorCode&amp;) const"
-                  moduleName = "libicucore.A.dylib"
+                  symbolName = "std::__1::bitset&lt;32768ul&gt;::test(unsigned long) const"
+                  moduleName = "CFNetwork"
                   usesParentBreakpointCondition = "Yes"
                   offsetFromSymbolStart = "0">
                </Location>
@@ -25,8 +25,8 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "std::__1::bitset&lt;32768ul&gt;::test(unsigned long) const"
-                  moduleName = "CFNetwork"
+                  symbolName = "icu::ScriptSet::test(UScriptCode, UErrorCode&amp;) const"
+                  moduleName = "libicucore.A.dylib"
                   usesParentBreakpointCondition = "Yes"
                   offsetFromSymbolStart = "0">
                </Location>
@@ -90,7 +90,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "524131736.069653"
+                  timestampString = "524474677.25163"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -105,7 +105,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMaintenanceApplyVC.m"
-                  timestampString = "524131736.07346"
+                  timestampString = "524474677.254996"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -138,7 +138,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "524131736.086646"
+                  timestampString = "524474677.261466"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
@@ -153,7 +153,7 @@
                   moduleName = "WOTWorkSpace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/viewControllers/service/WOTMainAppleRepairVC.m"
-                  timestampString = "524131736.089865"
+                  timestampString = "524474677.264163"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "63"
@@ -259,54 +259,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WOTWorkSpace/librarys/WXPay/WOTWXApiRequestHandler.m"
-            timestampString = "524129583.613532"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "+sendWXpay"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[WOTWXApiRequestHandler sendWXpay]"
-                  moduleName = "WOTWorkSpace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/librarys/WXPay/WOTWXApiRequestHandler.m"
-                  timestampString = "524131736.132342"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "503">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35+[WOTWXApiRequestHandler sendWXpay]_block_invoke"
-                  moduleName = "WOTWorkSpace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/librarys/WXPay/WOTWXApiRequestHandler.m"
-                  timestampString = "524131736.134016"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "63">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WOTWorkSpace/librarys/WXPay/WOTHttp.m"
             timestampString = "524131670.327827"
             startingColumnNumber = "9223372036854775807"
@@ -315,53 +267,6 @@
             endingLineNumber = "88"
             landmarkName = "+doRequestWithParameters:useUrl:complete:andBlock:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[WOTHttp doRequestWithParameters:useUrl:complete:andBlock:]"
-                  moduleName = "WOTWorkSpace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/librarys/WXPay/WOTHttp.m"
-                  timestampString = "524131736.138107"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "1179">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__60+[WOTHttp doRequestWithParameters:useUrl:complete:andBlock:]_block_invoke"
-                  moduleName = "WOTWorkSpace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/librarys/WXPay/WOTHttp.m"
-                  timestampString = "524131736.14047"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "73">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__60+[WOTHttp doRequestWithParameters:useUrl:complete:andBlock:]_block_invoke_2"
-                  moduleName = "WOTWorkSpace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshufeng/Desktop/WOTWorkSpace/WOTWorkSpace/librarys/WXPay/WOTHttp.m"
-                  timestampString = "524131736.14297"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "129">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -403,28 +308,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WOTWorkSpace/librarys/WXPay/WOTWXApiRequestHandler.m"
-            timestampString = "524130404.791758"
+            timestampString = "524467534.771515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "+sendWXpay"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WOTWorkSpace/librarys/WXPay/WOTHttp.m"
-            timestampString = "524131670.327827"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "+parseParams:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

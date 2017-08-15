@@ -22,6 +22,7 @@
 -(void)touchViewHiddenKeyboard:(UIView *)view;
 
 -(void)showRemindingAlert:(UIViewController *)vc message:(NSString *)message okBlock:(void(^)())okBlock cancel:(void(^)())cancelBlock;
+- (NSString *)getIPAddress;
 @property(nonatomic,copy)void (^hiddenKeyboardBlcok)();
 
 @end

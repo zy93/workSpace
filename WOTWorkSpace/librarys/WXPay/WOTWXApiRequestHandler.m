@@ -27,13 +27,15 @@
 //  调用微信支付
 +(void)sendWXpay{
     //获的后台接口
-    NSNumber *money = [[NSNumber alloc]initWithInt:1];
+    NSString *money = @"1";
+    NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
     NSDictionary *paramdic = @{
                             @"facilitator":@"0000",
-                            @"carrieroperator":@"0000",@"body":@"易创客",
-                               @"total_fee":money,
-                            @"spbill_create_ip":@"172.23.67.3",
-                               @"trade_type":@"APP"
+                            @"carrieroperator":@"0000",
+                            @"body":@"易创客",
+                            @"total_fee":money,
+                            @"spbill_create_ip":deviceip,
+                            @"trade_type":@"APP"
                                };
     
     [WOTHttp doRequestWithParameters:paramdic useUrl:PaySERVER_URL complete:^JSONModel *(id responseobj) {
@@ -46,11 +48,11 @@
         payRequest.prepayId = paymodel.msg.prepay_id;//预支付订单编号
         payRequest.package = paymodel.msg.package;//商家根据财付通文档填写的数据和签名
         payRequest.nonceStr = paymodel.msg.nonce_str;//随机串，防重发
-        payRequest.timeStamp = (UInt32)paymodel.msg.timeStamp;//时间戳，防重发
+        payRequest.timeStamp = paymodel.msg.timeStamp;//时间戳，防重发
         payRequest.sign = paymodel.msg.sign;//商家根据微信开放平台文档对数据做的签名
         
         [WXApi sendReq:payRequest];
-        
+      
         return paymodel;
     } andBlock:^(id responseObject, NSError *error) {
         
@@ -63,7 +65,7 @@
 }
 
 #pragma mark - 模拟后台，所有请求全部前端完成
-+(void) :(NSString *)money{
++(void)sendWXpayWithServerWithMoney:(NSString *)money{
     
     //调用微信统一下单接口
     NSString *url = [NSString stringWithFormat:@"https://api.mch.weixin.qq.com/pay/unifiedorder"];

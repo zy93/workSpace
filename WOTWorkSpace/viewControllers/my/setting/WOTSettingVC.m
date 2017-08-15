@@ -14,6 +14,7 @@
 #import "WOTLoginVC.h"
 
 #import "WOTLoginNaviController.h"
+#import "WOTPersionalInformation.h"
 @interface WOTSettingVC ()
 
 @end
@@ -117,7 +118,7 @@
         
         if (indexPath.row == 0) {
             [settingcell.valueLabel setHidden:NO];
-            settingcell.valueLabel.text = @"400-8911-891";
+            settingcell.valueLabel.text = @"010-8646-7632";
         } else {
             [settingcell.valueLabel setHidden:YES];
  
@@ -161,8 +162,60 @@
             
         }];
         
+    } else if (indexPath.section == 0){
+        
+        switch (indexPath.row) {
+            case 0:
+                if ([WOTSingtleton shared].isuserLogin) {
+                    [self pushVCByVCName:@"WOTPersionalInformationID" storyboard:@"My"];
+                } else {
+                   [[WOTConfigThemeUitls shared] showLoginVC:self];
+                }
+                
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+        
+    }  else {
+        switch (indexPath.row) {
+            case 0:
+                [self makePhoneToSpace];
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 }
+
+
+-(void)pushVCByVCName:(NSString *)vcname storyboard:(NSString *)storyboardName{
+    UIViewController *vc = [[UIStoryboard storyboardWithName:storyboardName bundle:nil] instantiateViewControllerWithIdentifier:vcname];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+//打电话 联系我们
+-(void)makePhoneToSpace{
+    
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"010-8646-7632"];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

@@ -74,8 +74,9 @@
 
 
 //微信支付
+
 #define APPID @"wxa41b37164b2030d6"
-#define APPSECRET @"d4624c36b6795d1d99dcf0547af5443d"
+//#define APPSECRET @"04e9bd9923b67ea9bf687ad1c8d91051"
 #define BASE_URL @"http://192.168.6.219:8080"
 #define PaySERVER_URL [NSString stringWithFormat:@"%@/payment/Payment/placeAnOrder", BASE_URL]
 #define NOTIFY_URL [NSString stringWithFormat:@"%@/rmb/third_pay/weixin", BASE_URL]

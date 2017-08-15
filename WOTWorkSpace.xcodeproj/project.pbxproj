@@ -241,6 +241,16 @@
 		E86245811F3D59F100CF0D9D /* WOTDeviceListRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */; };
 		E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245821F3D7E8400CF0D9D /* libicucore.tbd */; };
 		E86245861F3D893900CF0D9D /* WOTWXPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245851F3D893900CF0D9D /* WOTWXPayModel.m */; };
+		E862458D1F3DACED00CF0D9D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E862458C1F3DACED00CF0D9D /* libc++.tbd */; };
+		E862458F1F3DACF900CF0D9D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E862458E1F3DACF900CF0D9D /* libz.tbd */; };
+		E86245911F3DAD1200CF0D9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */; };
+		E86245931F3DAD1D00CF0D9D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */; };
+		E86245951F3DAD2400CF0D9D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245941F3DAD2400CF0D9D /* QuartzCore.framework */; };
+		E86245971F3DAD2E00CF0D9D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245961F3DAD2E00CF0D9D /* CoreText.framework */; };
+		E86245991F3DAD3D00CF0D9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245981F3DAD3D00CF0D9D /* UIKit.framework */; };
+		E862459B1F3DAD4B00CF0D9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459A1F3DAD4B00CF0D9D /* Foundation.framework */; };
+		E862459D1F3DAD5100CF0D9D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */; };
+		E862459F1F3DAD5800CF0D9D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */; };
 		E86592B91F346C170055ABC8 /* WOTServiceCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */; };
 		E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E865947F1F21C9260093B796 /* WOTSocialContactCell.m */; };
 		E86594821F21C9260093B796 /* WOTSocialContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86594801F21C9260093B796 /* WOTSocialContactCell.xib */; };
@@ -282,6 +292,7 @@
 		E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */; };
 		E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */; };
 		E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */; };
+		E8774BB81F41710F00168033 /* WOTOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8774BB71F41710F00168033 /* WOTOrderModel.m */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
 		E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */; };
@@ -757,6 +768,16 @@
 		E86245821F3D7E8400CF0D9D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		E86245841F3D893900CF0D9D /* WOTWXPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXPayModel.h; sourceTree = "<group>"; };
 		E86245851F3D893900CF0D9D /* WOTWXPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXPayModel.m; sourceTree = "<group>"; };
+		E862458C1F3DACED00CF0D9D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E862458E1F3DACF900CF0D9D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E86245941F3DAD2400CF0D9D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E86245961F3DAD2E00CF0D9D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		E86245981F3DAD3D00CF0D9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E862459A1F3DAD4B00CF0D9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		E86592B71F346C170055ABC8 /* WOTServiceCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTServiceCategoryModel.h; sourceTree = "<group>"; };
 		E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTServiceCategoryModel.m; sourceTree = "<group>"; };
 		E865947E1F21C9260093B796 /* WOTSocialContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSocialContactCell.h; sourceTree = "<group>"; };
@@ -837,6 +858,8 @@
 		E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTInteligenceDeviceCommonCell.h; sourceTree = "<group>"; };
 		E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTInteligenceDeviceCommonCell.m; sourceTree = "<group>"; };
 		E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTInteligenceDeviceCommonCell.xib; sourceTree = "<group>"; };
+		E8774BB61F41710F00168033 /* WOTOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTOrderModel.h; sourceTree = "<group>"; };
+		E8774BB71F41710F00168033 /* WOTOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTOrderModel.m; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		E88A54441F039D4500AD3F57 /* WOTConfigThemeUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTConfigThemeUitls.h; sourceTree = "<group>"; };
@@ -911,11 +934,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E862459F1F3DAD5800CF0D9D /* CoreMotion.framework in Frameworks */,
+				E862459D1F3DAD5100CF0D9D /* CFNetwork.framework in Frameworks */,
+				E862459B1F3DAD4B00CF0D9D /* Foundation.framework in Frameworks */,
+				E86245991F3DAD3D00CF0D9D /* UIKit.framework in Frameworks */,
+				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
+				E86245971F3DAD2E00CF0D9D /* CoreText.framework in Frameworks */,
+				E86245951F3DAD2400CF0D9D /* QuartzCore.framework in Frameworks */,
+				E86245931F3DAD1D00CF0D9D /* CoreTelephony.framework in Frameworks */,
+				E86245911F3DAD1200CF0D9D /* SystemConfiguration.framework in Frameworks */,
+				E862458F1F3DACF900CF0D9D /* libz.tbd in Frameworks */,
+				E862458D1F3DACED00CF0D9D /* libc++.tbd in Frameworks */,
 				E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */,
 				E85E63401F3AF0C80050ABB6 /* CoreBluetooth.framework in Frameworks */,
 				2A3B60101F2F0A9700AC9C8D /* CoreLocation.framework in Frameworks */,
 				E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */,
-				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
 				2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */,
 				E86B81E51F3841D8002AAC63 /* libWeChatSDK.a in Frameworks */,
 				2A4214451F14699B0010B003 /* UMSocialCore.framework in Frameworks */,
@@ -1114,6 +1147,8 @@
 				E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */,
 				E86245841F3D893900CF0D9D /* WOTWXPayModel.h */,
 				E86245851F3D893900CF0D9D /* WOTWXPayModel.m */,
+				E8774BB61F41710F00168033 /* WOTOrderModel.h */,
+				E8774BB71F41710F00168033 /* WOTOrderModel.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1146,6 +1181,16 @@
 		9809956DAB35897C197FBC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */,
+				E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */,
+				E862459A1F3DAD4B00CF0D9D /* Foundation.framework */,
+				E86245981F3DAD3D00CF0D9D /* UIKit.framework */,
+				E86245961F3DAD2E00CF0D9D /* CoreText.framework */,
+				E86245941F3DAD2400CF0D9D /* QuartzCore.framework */,
+				E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */,
+				E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */,
+				E862458E1F3DACF900CF0D9D /* libz.tbd */,
+				E862458C1F3DACED00CF0D9D /* libc++.tbd */,
 				E86245821F3D7E8400CF0D9D /* libicucore.tbd */,
 				E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */,
 				2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */,
@@ -2488,6 +2533,7 @@
 				E8190DA61F0F69660000B07C /* WOTCerateEnterpriseCell.m in Sources */,
 				2A3B600E1F2EFF4600AC9C8D /* WOTLocationManager.m in Sources */,
 				2AF18A271F131BEE004681CE /* WOTReservationsMeetingVC.m in Sources */,
+				E8774BB81F41710F00168033 /* WOTOrderModel.m in Sources */,
 				E85A85F81F0202460016FCA1 /* MBProgressHUDUtil.m in Sources */,
 				E866156B1F1F2F56005E182A /* WOTQRCodeUtils.m in Sources */,
 				E8190DD11F0F69660000B07C /* WOTSpaceCityScrollView.m in Sources */,
@@ -2771,6 +2817,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2785,8 +2832,9 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2928,6 +2976,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2942,8 +2991,9 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2966,6 +3016,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2980,8 +3031,9 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
