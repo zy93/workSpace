@@ -72,5 +72,20 @@
 //#define HTTPBaseURL @"http://192.168.6.166/workSpace"
 #define HTTPBaseURL @"http://219.143.170.98:10011/workSpace"
 
+
+//微信支付
+
+#define APPID @"wxa41b37164b2030d6"
+
+//#define APPSECRET @"04e9bd9923b67ea9bf687ad1c8d91051"
+#define BASE_URL @"http://192.168.6.219:8080"
+#define PaySERVER_URL [NSString stringWithFormat:@"%@/payment/Payment/placeAnOrder", BASE_URL]
+#define NOTIFY_URL [NSString stringWithFormat:@"%@/rmb/third_pay/weixin", HTTPBaseURL]
+#define PartnerId @"1288580901"
+#define Partner_Sign_Key @"sczJpiMw6V3YO1lPOSL9VsrueXwrIEiK"
+
+
+
+//NSUserDefault 
 #define LOGIN_STATE_USERDEFAULT @"islogin"
 #endif /* WOTConstants_h */

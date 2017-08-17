@@ -170,7 +170,14 @@
         
 //        NSDictionary *dic = [WOTFileUitls readPlistFileForFileName:@"ServiceCategory"];
         
-        NSDictionary *dic = [[NSDictionary alloc]init];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        for (WOTServiceCategoryModel_mm *mm in category.msg) {
+            NSMutableArray * mmarray = [[NSMutableArray alloc]init];
+            for (WOTServiceCategoryModel *dd in mm.classifySubclass) {
+                [mmarray addObject:dd.classifySubclass];
+            }
+            [dic setObject:mmarray forKey:mm.labelClassify];
+        }
         
         selectServiceCategoryList = [[NSMutableArray alloc] init];
         table1Dict = dic;

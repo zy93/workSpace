@@ -11,6 +11,8 @@
 #import "WOTPhotosBaseUtils.h"
 #import <Photos/Photos.h>
 #import "ZSImagePickerController.h"
+#import "WOTMapManager.h"
+
 #define TextViewPlaceholder @"想你所想，写你想讲..."
 @interface WOTPublishSocialTrendsVC ()<UITextViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZSImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -47,6 +49,26 @@
     [_collectionView setScrollEnabled:NO];
     [_collectionView registerNib:[UINib nibWithNibName:@"WOTImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"WOTImageCollectionViewCellID"];
     [self.photosArray addObject:[self createAddImage]];
+    
+    [[WOTMapManager shared].mapmanager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        if (error)
+        {
+            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            
+            if (error.code == AMapLocationErrorLocateFailed)
+            {
+                return;
+            }
+        }
+        
+        NSLog(@"location:%@", location);
+        NSLog(@"纬度:%f,经度:%f",location.coordinate.latitude,location.coordinate.longitude);
+        if (regeocode)
+        {
+            NSLog(@"reGeocode:%@", regeocode);
+            self.locationLabel.text = [NSString stringWithFormat:@"%@%@",regeocode.street,regeocode.POIName];
+        }
+      }];
     // Do any additional setup after loading the view.
 }
 

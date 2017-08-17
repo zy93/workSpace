@@ -32,7 +32,6 @@
     return manager;
 }
 
-
 -(instancetype)init
 {
     self = [super init];

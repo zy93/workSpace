@@ -210,16 +210,68 @@
 		E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A85FF1F0202F40016FCA1 /* WOTMyVC.m */; };
 		E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A86091F022D6C0016FCA1 /* WOTMyNaviController.m */; };
 		E85A861B1F0252F20016FCA1 /* WOTBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85A861A1F0252F20016FCA1 /* WOTBaseNavigationController.m */; };
+		E85E63401F3AF0C80050ABB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */; };
+		E85E63431F3B0B650050ABB6 /* WOTBueToothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */; };
 		E8605CA51F132221005C09F4 /* WOTEnterpriseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CA31F132221005C09F4 /* WOTEnterpriseHeaderView.m */; };
 		E8605CA61F132221005C09F4 /* WOTEnterpriseHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8605CA41F132221005C09F4 /* WOTEnterpriseHeaderView.xib */; };
 		E8605CD71F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CD61F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m */; };
 		E8605CDA1F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8605CD91F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m */; };
+		E86245611F3D4F4900CF0D9D /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245321F3D4F4900CF0D9D /* SRDelegateController.m */; };
+		E86245621F3D4F4900CF0D9D /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */; };
+		E86245631F3D4F4900CF0D9D /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */; };
+		E86245641F3D4F4900CF0D9D /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */; };
+		E86245651F3D4F4900CF0D9D /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */; };
+		E86245661F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */; };
+		E86245671F3D4F4900CF0D9D /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245441F3D4F4900CF0D9D /* SRConstants.m */; };
+		E86245681F3D4F4900CF0D9D /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245471F3D4F4900CF0D9D /* SRError.m */; };
+		E86245691F3D4F4900CF0D9D /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245491F3D4F4900CF0D9D /* SRHash.m */; };
+		E862456A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */; };
+		E862456B1F3D4F4900CF0D9D /* SRLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454D1F3D4F4900CF0D9D /* SRLog.m */; };
+		E862456C1F3D4F4900CF0D9D /* SRMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = E862454F1F3D4F4900CF0D9D /* SRMutex.m */; };
+		E862456D1F3D4F4900CF0D9D /* SRRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245511F3D4F4900CF0D9D /* SRRandom.m */; };
+		E862456E1F3D4F4900CF0D9D /* SRSIMDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */; };
+		E862456F1F3D4F4900CF0D9D /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */; };
+		E86245701F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */; };
+		E86245711F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */; };
+		E86245721F3D4F4900CF0D9D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E862455B1F3D4F4900CF0D9D /* Info.plist */; };
+		E86245731F3D4F4900CF0D9D /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */; };
+		E86245741F3D4F4900CF0D9D /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245601F3D4F4900CF0D9D /* SRWebSocket.m */; };
+		E86245771F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */; };
+		E862457E1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */; };
+		E86245811F3D59F100CF0D9D /* WOTDeviceListRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */; };
+		E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245821F3D7E8400CF0D9D /* libicucore.tbd */; };
+		E86245861F3D893900CF0D9D /* WOTWXPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86245851F3D893900CF0D9D /* WOTWXPayModel.m */; };
+		E862458D1F3DACED00CF0D9D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E862458C1F3DACED00CF0D9D /* libc++.tbd */; };
+		E862458F1F3DACF900CF0D9D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E862458E1F3DACF900CF0D9D /* libz.tbd */; };
+		E86245911F3DAD1200CF0D9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */; };
+		E86245931F3DAD1D00CF0D9D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */; };
+		E86245951F3DAD2400CF0D9D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245941F3DAD2400CF0D9D /* QuartzCore.framework */; };
+		E86245971F3DAD2E00CF0D9D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245961F3DAD2E00CF0D9D /* CoreText.framework */; };
+		E86245991F3DAD3D00CF0D9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86245981F3DAD3D00CF0D9D /* UIKit.framework */; };
+		E862459B1F3DAD4B00CF0D9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459A1F3DAD4B00CF0D9D /* Foundation.framework */; };
+		E862459D1F3DAD5100CF0D9D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */; };
+		E862459F1F3DAD5800CF0D9D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */; };
 		E86592B91F346C170055ABC8 /* WOTServiceCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */; };
 		E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E865947F1F21C9260093B796 /* WOTSocialContactCell.m */; };
 		E86594821F21C9260093B796 /* WOTSocialContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86594801F21C9260093B796 /* WOTSocialContactCell.xib */; };
 		E86594881F21CFF00093B796 /* WOTNearCirclesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86594871F21CFF00093B796 /* WOTNearCirclesVC.m */; };
 		E86615681F1F2E12005E182A /* WOTOpenLockScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E86615671F1F2E12005E182A /* WOTOpenLockScanVC.m */; };
 		E866156B1F1F2F56005E182A /* WOTQRCodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E866156A1F1F2F56005E182A /* WOTQRCodeUtils.m */; };
+		E868E0DE1F42E8C700573B66 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E868E0781F42E8C700573B66 /* AlipaySDK.bundle */; };
+		E868E0DF1F42E8C700573B66 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E868E0791F42E8C700573B66 /* AlipaySDK.framework */; };
+		E868E0E01F42E8C700573B66 /* APAuthV2Info.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E07B1F42E8C700573B66 /* APAuthV2Info.m */; };
+		E868E0E11F42E8C700573B66 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E868E07C1F42E8C700573B66 /* libcrypto.a */; };
+		E868E0E21F42E8C700573B66 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E868E07D1F42E8C700573B66 /* libssl.a */; };
+		E868E0E31F42E8C700573B66 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0CC1F42E8C700573B66 /* base64.m */; };
+		E868E0E41F42E8C700573B66 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0CF1F42E8C700573B66 /* DataSigner.m */; };
+		E868E0E51F42E8C700573B66 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0D11F42E8C700573B66 /* DataVerifier.m */; };
+		E868E0E61F42E8C700573B66 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0D31F42E8C700573B66 /* MD5DataSigner.m */; };
+		E868E0E71F42E8C700573B66 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0D51F42E8C700573B66 /* NSDataEx.m */; };
+		E868E0E81F42E8C700573B66 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0D71F42E8C700573B66 /* openssl_wrapper.m */; };
+		E868E0E91F42E8C700573B66 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0D91F42E8C700573B66 /* RSADataSigner.m */; };
+		E868E0EA1F42E8C700573B66 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0DB1F42E8C700573B66 /* RSADataVerifier.m */; };
+		E868E0EB1F42E8C700573B66 /* WOTAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E868E0DD1F42E8C700573B66 /* WOTAlipayManager.m */; };
+		E868E0F01F42F10D00573B66 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E868E0EC1F42F10D00573B66 /* libWeChatSDK.a */; };
 		E8693ADB1F049A6B00772BC1 /* WOTSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693ADA1F049A6B00772BC1 /* WOTSearchVC.m */; };
 		E8693ADE1F049C6300772BC1 /* UItableView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693ADD1F049C6300772BC1 /* UItableView+Extension.m */; };
 		E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E8693AE41F04AEB900772BC1 /* WORTMyEnterpriseVC.m */; };
@@ -233,6 +285,13 @@
 		E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E8391F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m */; };
 		E869E83D1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */; };
 		E869E8401F1E15CA00DBDBB9 /* WOTPostImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */; };
+		E86B81DF1F383134002AAC63 /* WOTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81DE1F383134002AAC63 /* WOTMapManager.m */; };
+		E86B81E81F38422B002AAC63 /* WOTWXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */; };
+		E86B81EB1F38431B002AAC63 /* WOTWXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */; };
+		E86B81EE1F38446C002AAC63 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81ED1F38446C002AAC63 /* XMLReader.m */; };
+		E86B81F11F3844A7002AAC63 /* WOTHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F01F3844A7002AAC63 /* WOTHttp.m */; };
+		E86B81F41F3847B7002AAC63 /* WOTMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F31F3847B7002AAC63 /* WOTMD5.m */; };
+		E86B81F71F38480C002AAC63 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B81F61F38480C002AAC63 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */; };
 		E86C05B71F2B17C2000ABDBF /* spaceMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */; };
 		E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E86FD1E81F2056F6009BE16A /* libZSIMagePickerSDK.a */; };
@@ -247,6 +306,7 @@
 		E8747AE71F26E1E400125CEB /* WOTAirconditioningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AE51F26E1E400125CEB /* WOTAirconditioningCell.xib */; };
 		E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */; };
 		E8747AEC1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */; };
+		E8774BB81F41710F00168033 /* WOTOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8774BB71F41710F00168033 /* WOTOrderModel.m */; };
 		E889CD641F146E32000CC8BD /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E889CD631F146E32000CC8BD /* DatePickerView.m */; };
 		E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54451F039D4500AD3F57 /* WOTConfigThemeUitls.m */; };
 		E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A54481F03A64B00AD3F57 /* WOTAllOrderListVC.m */; };
@@ -448,11 +508,14 @@
 		2AF83EE71F05FB92000AE733 /* Service.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Service.storyboard; sourceTree = "<group>"; };
 		2AFAC8921F0FB796001BAB14 /* WOTRadioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTRadioView.h; sourceTree = "<group>"; };
 		2AFAC8931F0FB796001BAB14 /* WOTRadioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTRadioView.m; sourceTree = "<group>"; };
+		36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceUITests/Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		3704D94D4A02A54BFD2A96B0 /* Pods-WOTWorkSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceUITests/Pods-WOTWorkSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3AD4D44235E619477B1F5D13 /* Pods-WOTWorkSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.debug.xcconfig"; sourceTree = "<group>"; };
 		61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpaceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD7419E0440D789E522F1B2 /* Pods-WOTWorkSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.release.xcconfig"; sourceTree = "<group>"; };
+		D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80F4C0D1F0F24AA008BF066 /* WOTUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUitls.h; sourceTree = "<group>"; };
 		E80F4C0E1F0F24AA008BF066 /* WOTUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTUitls.m; sourceTree = "<group>"; };
@@ -658,6 +721,9 @@
 		E85A86091F022D6C0016FCA1 /* WOTMyNaviController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMyNaviController.m; sourceTree = "<group>"; };
 		E85A86191F0252F20016FCA1 /* WOTBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBaseNavigationController.h; sourceTree = "<group>"; };
 		E85A861A1F0252F20016FCA1 /* WOTBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBaseNavigationController.m; sourceTree = "<group>"; };
+		E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E85E63411F3B0B650050ABB6 /* WOTBueToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBueToothManager.h; sourceTree = "<group>"; };
+		E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBueToothManager.m; sourceTree = "<group>"; };
 		E8605CA21F132221005C09F4 /* WOTEnterpriseHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseHeaderView.h; sourceTree = "<group>"; };
 		E8605CA31F132221005C09F4 /* WOTEnterpriseHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseHeaderView.m; sourceTree = "<group>"; };
 		E8605CA41F132221005C09F4 /* WOTEnterpriseHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTEnterpriseHeaderView.xib; sourceTree = "<group>"; };
@@ -665,6 +731,67 @@
 		E8605CD61F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+JCSearchBarPlaceholder.m"; sourceTree = "<group>"; };
 		E8605CD81F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnterpriseConnectsInfoVC.h; sourceTree = "<group>"; };
 		E8605CD91F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnterpriseConnectsInfoVC.m; sourceTree = "<group>"; };
+		E86245311F3D4F4900CF0D9D /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
+		E86245321F3D4F4900CF0D9D /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
+		E86245341F3D4F4900CF0D9D /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
+		E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
+		E86245361F3D4F4900CF0D9D /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
+		E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
+		E86245381F3D4F4900CF0D9D /* NSRunLoop+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		E86245391F3D4F4900CF0D9D /* NSURLRequest+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		E862453B1F3D4F4900CF0D9D /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
+		E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
+		E862453E1F3D4F4900CF0D9D /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
+		E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
+		E86245411F3D4F4900CF0D9D /* SRPinningSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPinningSecurityPolicy.h; sourceTree = "<group>"; };
+		E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPinningSecurityPolicy.m; sourceTree = "<group>"; };
+		E86245431F3D4F4900CF0D9D /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
+		E86245441F3D4F4900CF0D9D /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
+		E86245461F3D4F4900CF0D9D /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
+		E86245471F3D4F4900CF0D9D /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
+		E86245481F3D4F4900CF0D9D /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
+		E86245491F3D4F4900CF0D9D /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
+		E862454A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHTTPConnectMessage.h; sourceTree = "<group>"; };
+		E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHTTPConnectMessage.m; sourceTree = "<group>"; };
+		E862454C1F3D4F4900CF0D9D /* SRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLog.h; sourceTree = "<group>"; };
+		E862454D1F3D4F4900CF0D9D /* SRLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLog.m; sourceTree = "<group>"; };
+		E862454E1F3D4F4900CF0D9D /* SRMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMutex.h; sourceTree = "<group>"; };
+		E862454F1F3D4F4900CF0D9D /* SRMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMutex.m; sourceTree = "<group>"; };
+		E86245501F3D4F4900CF0D9D /* SRRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRandom.h; sourceTree = "<group>"; };
+		E86245511F3D4F4900CF0D9D /* SRRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRandom.m; sourceTree = "<group>"; };
+		E86245521F3D4F4900CF0D9D /* SRSIMDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSIMDHelpers.h; sourceTree = "<group>"; };
+		E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSIMDHelpers.m; sourceTree = "<group>"; };
+		E86245541F3D4F4900CF0D9D /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
+		E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
+		E86245561F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
+		E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
+		E86245581F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
+		E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
+		E862455B1F3D4F4900CF0D9D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E862455C1F3D4F4900CF0D9D /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		E862455D1F3D4F4900CF0D9D /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
+		E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
+		E862455F1F3D4F4900CF0D9D /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		E86245601F3D4F4900CF0D9D /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		E86245751F3D4FAB00CF0D9D /* WOTDeviceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceInfoModel.h; sourceTree = "<group>"; };
+		E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceInfoModel.m; sourceTree = "<group>"; };
+		E862457C1F3D59DB00CF0D9D /* WOTDeviceRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceRequestTool.h; sourceTree = "<group>"; };
+		E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceRequestTool.m; sourceTree = "<group>"; };
+		E862457F1F3D59F100CF0D9D /* WOTDeviceListRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDeviceListRequestTool.h; sourceTree = "<group>"; };
+		E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDeviceListRequestTool.m; sourceTree = "<group>"; };
+		E86245821F3D7E8400CF0D9D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		E86245841F3D893900CF0D9D /* WOTWXPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXPayModel.h; sourceTree = "<group>"; };
+		E86245851F3D893900CF0D9D /* WOTWXPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXPayModel.m; sourceTree = "<group>"; };
+		E862458C1F3DACED00CF0D9D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E862458E1F3DACF900CF0D9D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E86245941F3DAD2400CF0D9D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E86245961F3DAD2E00CF0D9D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		E86245981F3DAD3D00CF0D9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E862459A1F3DAD4B00CF0D9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		E86592B71F346C170055ABC8 /* WOTServiceCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTServiceCategoryModel.h; sourceTree = "<group>"; };
 		E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTServiceCategoryModel.m; sourceTree = "<group>"; };
 		E865947E1F21C9260093B796 /* WOTSocialContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSocialContactCell.h; sourceTree = "<group>"; };
@@ -676,6 +803,110 @@
 		E86615671F1F2E12005E182A /* WOTOpenLockScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTOpenLockScanVC.m; sourceTree = "<group>"; };
 		E86615691F1F2F56005E182A /* WOTQRCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTQRCodeUtils.h; sourceTree = "<group>"; };
 		E866156A1F1F2F56005E182A /* WOTQRCodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTQRCodeUtils.m; sourceTree = "<group>"; };
+		E868E0781F42E8C700573B66 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		E868E0791F42E8C700573B66 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		E868E07A1F42E8C700573B66 /* APAuthV2Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthV2Info.h; sourceTree = "<group>"; };
+		E868E07B1F42E8C700573B66 /* APAuthV2Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAuthV2Info.m; sourceTree = "<group>"; };
+		E868E07C1F42E8C700573B66 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		E868E07D1F42E8C700573B66 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		E868E07F1F42E8C700573B66 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		E868E0801F42E8C700573B66 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
+		E868E0811F42E8C700573B66 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
+		E868E0821F42E8C700573B66 /* asn1t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1t.h; sourceTree = "<group>"; };
+		E868E0831F42E8C700573B66 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bio.h; sourceTree = "<group>"; };
+		E868E0841F42E8C700573B66 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blowfish.h; sourceTree = "<group>"; };
+		E868E0851F42E8C700573B66 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bn.h; sourceTree = "<group>"; };
+		E868E0861F42E8C700573B66 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		E868E0871F42E8C700573B66 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
+		E868E0881F42E8C700573B66 /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cast.h; sourceTree = "<group>"; };
+		E868E0891F42E8C700573B66 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmac.h; sourceTree = "<group>"; };
+		E868E08A1F42E8C700573B66 /* cms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cms.h; sourceTree = "<group>"; };
+		E868E08B1F42E8C700573B66 /* comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comp.h; sourceTree = "<group>"; };
+		E868E08C1F42E8C700573B66 /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf.h; sourceTree = "<group>"; };
+		E868E08D1F42E8C700573B66 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf_api.h; sourceTree = "<group>"; };
+		E868E08E1F42E8C700573B66 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		E868E08F1F42E8C700573B66 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
+		E868E0901F42E8C700573B66 /* des_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des_old.h; sourceTree = "<group>"; };
+		E868E0911F42E8C700573B66 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
+		E868E0921F42E8C700573B66 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
+		E868E0931F42E8C700573B66 /* dso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dso.h; sourceTree = "<group>"; };
+		E868E0941F42E8C700573B66 /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtls1.h; sourceTree = "<group>"; };
+		E868E0951F42E8C700573B66 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = e_os2.h; sourceTree = "<group>"; };
+		E868E0961F42E8C700573B66 /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ebcdic.h; sourceTree = "<group>"; };
+		E868E0971F42E8C700573B66 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ec.h; sourceTree = "<group>"; };
+		E868E0981F42E8C700573B66 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdh.h; sourceTree = "<group>"; };
+		E868E0991F42E8C700573B66 /* ecdsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdsa.h; sourceTree = "<group>"; };
+		E868E09A1F42E8C700573B66 /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine.h; sourceTree = "<group>"; };
+		E868E09B1F42E8C700573B66 /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
+		E868E09C1F42E8C700573B66 /* evp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evp.h; sourceTree = "<group>"; };
+		E868E09D1F42E8C700573B66 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		E868E09E1F42E8C700573B66 /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
+		E868E09F1F42E8C700573B66 /* krb5_asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = krb5_asn.h; sourceTree = "<group>"; };
+		E868E0A01F42E8C700573B66 /* kssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kssl.h; sourceTree = "<group>"; };
+		E868E0A11F42E8C700573B66 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
+		E868E0A21F42E8C700573B66 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md4.h; sourceTree = "<group>"; };
+		E868E0A31F42E8C700573B66 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		E868E0A41F42E8C700573B66 /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdc2.h; sourceTree = "<group>"; };
+		E868E0A51F42E8C700573B66 /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modes.h; sourceTree = "<group>"; };
+		E868E0A61F42E8C700573B66 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_mac.h; sourceTree = "<group>"; };
+		E868E0A71F42E8C700573B66 /* objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objects.h; sourceTree = "<group>"; };
+		E868E0A81F42E8C700573B66 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocsp.h; sourceTree = "<group>"; };
+		E868E0A91F42E8C700573B66 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslconf.h; sourceTree = "<group>"; };
+		E868E0AA1F42E8C700573B66 /* opensslv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslv.h; sourceTree = "<group>"; };
+		E868E0AB1F42E8C700573B66 /* ossl_typ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ossl_typ.h; sourceTree = "<group>"; };
+		E868E0AC1F42E8C700573B66 /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem.h; sourceTree = "<group>"; };
+		E868E0AD1F42E8C700573B66 /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
+		E868E0AE1F42E8C700573B66 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs12.h; sourceTree = "<group>"; };
+		E868E0AF1F42E8C700573B66 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs7.h; sourceTree = "<group>"; };
+		E868E0B01F42E8C700573B66 /* pqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueue.h; sourceTree = "<group>"; };
+		E868E0B11F42E8C700573B66 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rand.h; sourceTree = "<group>"; };
+		E868E0B21F42E8C700573B66 /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc2.h; sourceTree = "<group>"; };
+		E868E0B31F42E8C700573B66 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc4.h; sourceTree = "<group>"; };
+		E868E0B41F42E8C700573B66 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
+		E868E0B51F42E8C700573B66 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
+		E868E0B61F42E8C700573B66 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = safestack.h; sourceTree = "<group>"; };
+		E868E0B71F42E8C700573B66 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
+		E868E0B81F42E8C700573B66 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
+		E868E0B91F42E8C700573B66 /* srp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srp.h; sourceTree = "<group>"; };
+		E868E0BA1F42E8C700573B66 /* srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srtp.h; sourceTree = "<group>"; };
+		E868E0BB1F42E8C700573B66 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
+		E868E0BC1F42E8C700573B66 /* ssl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl2.h; sourceTree = "<group>"; };
+		E868E0BD1F42E8C700573B66 /* ssl23.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl23.h; sourceTree = "<group>"; };
+		E868E0BE1F42E8C700573B66 /* ssl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl3.h; sourceTree = "<group>"; };
+		E868E0BF1F42E8C700573B66 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		E868E0C01F42E8C700573B66 /* symhacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symhacks.h; sourceTree = "<group>"; };
+		E868E0C11F42E8C700573B66 /* tls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tls1.h; sourceTree = "<group>"; };
+		E868E0C21F42E8C700573B66 /* ts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ts.h; sourceTree = "<group>"; };
+		E868E0C31F42E8C700573B66 /* txt_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = txt_db.h; sourceTree = "<group>"; };
+		E868E0C41F42E8C700573B66 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
+		E868E0C51F42E8C700573B66 /* ui_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_compat.h; sourceTree = "<group>"; };
+		E868E0C61F42E8C700573B66 /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whrlpool.h; sourceTree = "<group>"; };
+		E868E0C71F42E8C700573B66 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509.h; sourceTree = "<group>"; };
+		E868E0C81F42E8C700573B66 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
+		E868E0C91F42E8C700573B66 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
+		E868E0CB1F42E8C700573B66 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		E868E0CC1F42E8C700573B66 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		E868E0CD1F42E8C700573B66 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		E868E0CE1F42E8C700573B66 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		E868E0CF1F42E8C700573B66 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
+		E868E0D01F42E8C700573B66 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		E868E0D11F42E8C700573B66 /* DataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataVerifier.m; sourceTree = "<group>"; };
+		E868E0D21F42E8C700573B66 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
+		E868E0D31F42E8C700573B66 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
+		E868E0D41F42E8C700573B66 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
+		E868E0D51F42E8C700573B66 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
+		E868E0D61F42E8C700573B66 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		E868E0D71F42E8C700573B66 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		E868E0D81F42E8C700573B66 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
+		E868E0D91F42E8C700573B66 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
+		E868E0DA1F42E8C700573B66 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
+		E868E0DB1F42E8C700573B66 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		E868E0DC1F42E8C700573B66 /* WOTAlipayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTAlipayManager.h; sourceTree = "<group>"; };
+		E868E0DD1F42E8C700573B66 /* WOTAlipayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTAlipayManager.m; sourceTree = "<group>"; };
+		E868E0EC1F42F10D00573B66 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		E868E0ED1F42F10D00573B66 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		E868E0EE1F42F10D00573B66 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		E868E0EF1F42F10D00573B66 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		E8693AD91F049A6B00772BC1 /* WOTSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSearchVC.h; sourceTree = "<group>"; };
 		E8693ADA1F049A6B00772BC1 /* WOTSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSearchVC.m; sourceTree = "<group>"; };
 		E8693ADC1F049C6300772BC1 /* UItableView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UItableView+Extension.h"; sourceTree = "<group>"; };
@@ -702,6 +933,20 @@
 		E869E83C1F1DE1DF00DBDBB9 /* WOTPhotosBaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPhotosBaseUtils.m; sourceTree = "<group>"; };
 		E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPostImage.h; sourceTree = "<group>"; };
 		E869E83F1F1E15CA00DBDBB9 /* WOTPostImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPostImage.m; sourceTree = "<group>"; };
+		E86B81DD1F383134002AAC63 /* WOTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMapManager.h; sourceTree = "<group>"; };
+		E86B81DE1F383134002AAC63 /* WOTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMapManager.m; sourceTree = "<group>"; };
+		E86B81E61F38422B002AAC63 /* WOTWXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXApiManager.h; sourceTree = "<group>"; };
+		E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXApiManager.m; sourceTree = "<group>"; };
+		E86B81E91F38431B002AAC63 /* WOTWXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWXApiRequestHandler.h; sourceTree = "<group>"; };
+		E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWXApiRequestHandler.m; sourceTree = "<group>"; };
+		E86B81EC1F38446C002AAC63 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		E86B81ED1F38446C002AAC63 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		E86B81EF1F3844A7002AAC63 /* WOTHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHttp.h; sourceTree = "<group>"; };
+		E86B81F01F3844A7002AAC63 /* WOTHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTHttp.m; sourceTree = "<group>"; };
+		E86B81F21F3847B7002AAC63 /* WOTMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMD5.h; sourceTree = "<group>"; };
+		E86B81F31F3847B7002AAC63 /* WOTMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMD5.m; sourceTree = "<group>"; };
+		E86B81F51F38480C002AAC63 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		E86B81F61F38480C002AAC63 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		E86C05B31F2B105D000ABDBF /* WOTCityTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTCityTileView.h; sourceTree = "<group>"; };
 		E86C05B41F2B105D000ABDBF /* WOTCityTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTCityTileView.m; sourceTree = "<group>"; };
 		E86C05B61F2B17C2000ABDBF /* spaceMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = spaceMain.storyboard; sourceTree = "<group>"; };
@@ -727,6 +972,8 @@
 		E8747AE81F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTInteligenceDeviceCommonCell.h; sourceTree = "<group>"; };
 		E8747AE91F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTInteligenceDeviceCommonCell.m; sourceTree = "<group>"; };
 		E8747AEA1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTInteligenceDeviceCommonCell.xib; sourceTree = "<group>"; };
+		E8774BB61F41710F00168033 /* WOTOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTOrderModel.h; sourceTree = "<group>"; };
+		E8774BB71F41710F00168033 /* WOTOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTOrderModel.m; sourceTree = "<group>"; };
 		E889CD621F146E32000CC8BD /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		E889CD631F146E32000CC8BD /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		E88A54441F039D4500AD3F57 /* WOTConfigThemeUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTConfigThemeUitls.h; sourceTree = "<group>"; };
@@ -801,9 +1048,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E862459F1F3DAD5800CF0D9D /* CoreMotion.framework in Frameworks */,
+				E862459D1F3DAD5100CF0D9D /* CFNetwork.framework in Frameworks */,
+				E862459B1F3DAD4B00CF0D9D /* Foundation.framework in Frameworks */,
+				E86245991F3DAD3D00CF0D9D /* UIKit.framework in Frameworks */,
+				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
+				E86245971F3DAD2E00CF0D9D /* CoreText.framework in Frameworks */,
+				E86245951F3DAD2400CF0D9D /* QuartzCore.framework in Frameworks */,
+				E86245931F3DAD1D00CF0D9D /* CoreTelephony.framework in Frameworks */,
+				E868E0E11F42E8C700573B66 /* libcrypto.a in Frameworks */,
+				E86245911F3DAD1200CF0D9D /* SystemConfiguration.framework in Frameworks */,
+				E862458F1F3DACF900CF0D9D /* libz.tbd in Frameworks */,
+				E862458D1F3DACED00CF0D9D /* libc++.tbd in Frameworks */,
+				E86245831F3D7E8400CF0D9D /* libicucore.tbd in Frameworks */,
+				E85E63401F3AF0C80050ABB6 /* CoreBluetooth.framework in Frameworks */,
+				E868E0F01F42F10D00573B66 /* libWeChatSDK.a in Frameworks */,
 				2A3B60101F2F0A9700AC9C8D /* CoreLocation.framework in Frameworks */,
 				E86FD1EE1F2056F6009BE16A /* libZSIMagePickerSDK.a in Frameworks */,
-				2A4214831F149ED80010B003 /* CoreGraphics.framework in Frameworks */,
+				E868E0E21F42E8C700573B66 /* libssl.a in Frameworks */,
 				2A4214811F149ECA0010B003 /* libsqlite3.tbd in Frameworks */,
 				2A4214451F14699B0010B003 /* UMSocialCore.framework in Frameworks */,
 				2A4214421F14699B0010B003 /* libSocialQQ.a in Frameworks */,
@@ -811,6 +1073,7 @@
 				59BB1AF86E21AC99D91DDCE6 /* libPods-WOTWorkSpace.a in Frameworks */,
 				2A42144A1F14699B0010B003 /* UShareUI.framework in Frameworks */,
 				2A4214481F14699B0010B003 /* libUMSocialLog.a in Frameworks */,
+				E868E0DF1F42E8C700573B66 /* AlipaySDK.framework in Frameworks */,
 				2A4214441F14699B0010B003 /* libSocialWeChat.a in Frameworks */,
 				2A4214431F14699B0010B003 /* libSocialSina.a in Frameworks */,
 			);
@@ -838,6 +1101,7 @@
 		2A3042B01F0B7DE0007C4DED /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E862457B1F3D59DB00CF0D9D /* DeviceNet */,
 				2A3042B11F0B7E4E007C4DED /* WOTHTTPNetwork.h */,
 				2A3042B21F0B7E4E007C4DED /* WOTHTTPNetwork.m */,
 				E869E83E1F1E15CA00DBDBB9 /* WOTPostImage.h */,
@@ -996,6 +1260,12 @@
 				2A99FB661F258A4000869732 /* WOTVisitorsModel.m */,
 				E86592B71F346C170055ABC8 /* WOTServiceCategoryModel.h */,
 				E86592B81F346C170055ABC8 /* WOTServiceCategoryModel.m */,
+				E86245751F3D4FAB00CF0D9D /* WOTDeviceInfoModel.h */,
+				E86245761F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m */,
+				E86245841F3D893900CF0D9D /* WOTWXPayModel.h */,
+				E86245851F3D893900CF0D9D /* WOTWXPayModel.m */,
+				E8774BB61F41710F00168033 /* WOTOrderModel.h */,
+				E8774BB71F41710F00168033 /* WOTOrderModel.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1018,6 +1288,9 @@
 				157AADE7023AC29418E68C7A /* Pods-WOTWorkSpaceTests.release.xcconfig */,
 				3704D94D4A02A54BFD2A96B0 /* Pods-WOTWorkSpaceUITests.debug.xcconfig */,
 				FB0D65BEE3DC0196385560AF /* Pods-WOTWorkSpaceUITests.release.xcconfig */,
+				D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */,
+				B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */,
+				36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1025,6 +1298,18 @@
 		9809956DAB35897C197FBC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E862459E1F3DAD5800CF0D9D /* CoreMotion.framework */,
+				E862459C1F3DAD5100CF0D9D /* CFNetwork.framework */,
+				E862459A1F3DAD4B00CF0D9D /* Foundation.framework */,
+				E86245981F3DAD3D00CF0D9D /* UIKit.framework */,
+				E86245961F3DAD2E00CF0D9D /* CoreText.framework */,
+				E86245941F3DAD2400CF0D9D /* QuartzCore.framework */,
+				E86245921F3DAD1D00CF0D9D /* CoreTelephony.framework */,
+				E86245901F3DAD1200CF0D9D /* SystemConfiguration.framework */,
+				E862458E1F3DACF900CF0D9D /* libz.tbd */,
+				E862458C1F3DACED00CF0D9D /* libc++.tbd */,
+				E86245821F3D7E8400CF0D9D /* libicucore.tbd */,
+				E85E633F1F3AF0C80050ABB6 /* CoreBluetooth.framework */,
 				2A3B600F1F2F0A9700AC9C8D /* CoreLocation.framework */,
 				2A4214821F149ED80010B003 /* CoreGraphics.framework */,
 				2A4214801F149ECA0010B003 /* libsqlite3.tbd */,
@@ -1408,6 +1693,9 @@
 		E85A85BF1F0202450016FCA1 /* librarys */ = {
 			isa = PBXGroup;
 			children = (
+				E868E0771F42E8C700573B66 /* Alipay */,
+				E862452E1F3D4F4900CF0D9D /* SocketRocket */,
+				E86B81E01F3841D8002AAC63 /* WXPay */,
 				E86FD1E71F2056F6009BE16A /* WOTImagePicker */,
 				2A42142E1F14699B0010B003 /* UMSocial */,
 				E85A85C01F0202450016FCA1 /* Masonry */,
@@ -1648,8 +1936,259 @@
 				2A022E581F1DBC36001AE9E9 /* NSDate+Uitls.m */,
 				E8DAE7481F3025D800830A2F /* WOTRefreshControlUitls.h */,
 				E8DAE7491F3025D800830A2F /* WOTRefreshControlUitls.m */,
+				E86B81DD1F383134002AAC63 /* WOTMapManager.h */,
+				E86B81DE1F383134002AAC63 /* WOTMapManager.m */,
+				E85E63411F3B0B650050ABB6 /* WOTBueToothManager.h */,
+				E85E63421F3B0B650050ABB6 /* WOTBueToothManager.m */,
 			);
 			path = Uitls;
+			sourceTree = "<group>";
+		};
+		E862452E1F3D4F4900CF0D9D /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				E862452F1F3D4F4900CF0D9D /* Internal */,
+				E86245561F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.h */,
+				E86245571F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m */,
+				E86245581F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.h */,
+				E86245591F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m */,
+				E862455A1F3D4F4900CF0D9D /* Resources */,
+				E862455C1F3D4F4900CF0D9D /* SocketRocket.h */,
+				E862455D1F3D4F4900CF0D9D /* SRSecurityPolicy.h */,
+				E862455E1F3D4F4900CF0D9D /* SRSecurityPolicy.m */,
+				E862455F1F3D4F4900CF0D9D /* SRWebSocket.h */,
+				E86245601F3D4F4900CF0D9D /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		E862452F1F3D4F4900CF0D9D /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E86245301F3D4F4900CF0D9D /* Delegate */,
+				E86245331F3D4F4900CF0D9D /* IOConsumer */,
+				E86245381F3D4F4900CF0D9D /* NSRunLoop+SRWebSocketPrivate.h */,
+				E86245391F3D4F4900CF0D9D /* NSURLRequest+SRWebSocketPrivate.h */,
+				E862453A1F3D4F4900CF0D9D /* Proxy */,
+				E862453D1F3D4F4900CF0D9D /* RunLoop */,
+				E86245401F3D4F4900CF0D9D /* Security */,
+				E86245431F3D4F4900CF0D9D /* SRConstants.h */,
+				E86245441F3D4F4900CF0D9D /* SRConstants.m */,
+				E86245451F3D4F4900CF0D9D /* Utilities */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		E86245301F3D4F4900CF0D9D /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				E86245311F3D4F4900CF0D9D /* SRDelegateController.h */,
+				E86245321F3D4F4900CF0D9D /* SRDelegateController.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		E86245331F3D4F4900CF0D9D /* IOConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				E86245341F3D4F4900CF0D9D /* SRIOConsumer.h */,
+				E86245351F3D4F4900CF0D9D /* SRIOConsumer.m */,
+				E86245361F3D4F4900CF0D9D /* SRIOConsumerPool.h */,
+				E86245371F3D4F4900CF0D9D /* SRIOConsumerPool.m */,
+			);
+			path = IOConsumer;
+			sourceTree = "<group>";
+		};
+		E862453A1F3D4F4900CF0D9D /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				E862453B1F3D4F4900CF0D9D /* SRProxyConnect.h */,
+				E862453C1F3D4F4900CF0D9D /* SRProxyConnect.m */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		E862453D1F3D4F4900CF0D9D /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				E862453E1F3D4F4900CF0D9D /* SRRunLoopThread.h */,
+				E862453F1F3D4F4900CF0D9D /* SRRunLoopThread.m */,
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		E86245401F3D4F4900CF0D9D /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				E86245411F3D4F4900CF0D9D /* SRPinningSecurityPolicy.h */,
+				E86245421F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		E86245451F3D4F4900CF0D9D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E86245461F3D4F4900CF0D9D /* SRError.h */,
+				E86245471F3D4F4900CF0D9D /* SRError.m */,
+				E86245481F3D4F4900CF0D9D /* SRHash.h */,
+				E86245491F3D4F4900CF0D9D /* SRHash.m */,
+				E862454A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.h */,
+				E862454B1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m */,
+				E862454C1F3D4F4900CF0D9D /* SRLog.h */,
+				E862454D1F3D4F4900CF0D9D /* SRLog.m */,
+				E862454E1F3D4F4900CF0D9D /* SRMutex.h */,
+				E862454F1F3D4F4900CF0D9D /* SRMutex.m */,
+				E86245501F3D4F4900CF0D9D /* SRRandom.h */,
+				E86245511F3D4F4900CF0D9D /* SRRandom.m */,
+				E86245521F3D4F4900CF0D9D /* SRSIMDHelpers.h */,
+				E86245531F3D4F4900CF0D9D /* SRSIMDHelpers.m */,
+				E86245541F3D4F4900CF0D9D /* SRURLUtilities.h */,
+				E86245551F3D4F4900CF0D9D /* SRURLUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E862455A1F3D4F4900CF0D9D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E862455B1F3D4F4900CF0D9D /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E862457B1F3D59DB00CF0D9D /* DeviceNet */ = {
+			isa = PBXGroup;
+			children = (
+				E862457C1F3D59DB00CF0D9D /* WOTDeviceRequestTool.h */,
+				E862457D1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m */,
+				E862457F1F3D59F100CF0D9D /* WOTDeviceListRequestTool.h */,
+				E86245801F3D59F100CF0D9D /* WOTDeviceListRequestTool.m */,
+			);
+			path = DeviceNet;
+			sourceTree = "<group>";
+		};
+		E868E0771F42E8C700573B66 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				E868E0781F42E8C700573B66 /* AlipaySDK.bundle */,
+				E868E0791F42E8C700573B66 /* AlipaySDK.framework */,
+				E868E07A1F42E8C700573B66 /* APAuthV2Info.h */,
+				E868E07B1F42E8C700573B66 /* APAuthV2Info.m */,
+				E868E07C1F42E8C700573B66 /* libcrypto.a */,
+				E868E07D1F42E8C700573B66 /* libssl.a */,
+				E868E07E1F42E8C700573B66 /* openssl */,
+				E868E0CA1F42E8C700573B66 /* Util */,
+				E868E0DC1F42E8C700573B66 /* WOTAlipayManager.h */,
+				E868E0DD1F42E8C700573B66 /* WOTAlipayManager.m */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		E868E07E1F42E8C700573B66 /* openssl */ = {
+			isa = PBXGroup;
+			children = (
+				E868E07F1F42E8C700573B66 /* aes.h */,
+				E868E0801F42E8C700573B66 /* asn1.h */,
+				E868E0811F42E8C700573B66 /* asn1_mac.h */,
+				E868E0821F42E8C700573B66 /* asn1t.h */,
+				E868E0831F42E8C700573B66 /* bio.h */,
+				E868E0841F42E8C700573B66 /* blowfish.h */,
+				E868E0851F42E8C700573B66 /* bn.h */,
+				E868E0861F42E8C700573B66 /* buffer.h */,
+				E868E0871F42E8C700573B66 /* camellia.h */,
+				E868E0881F42E8C700573B66 /* cast.h */,
+				E868E0891F42E8C700573B66 /* cmac.h */,
+				E868E08A1F42E8C700573B66 /* cms.h */,
+				E868E08B1F42E8C700573B66 /* comp.h */,
+				E868E08C1F42E8C700573B66 /* conf.h */,
+				E868E08D1F42E8C700573B66 /* conf_api.h */,
+				E868E08E1F42E8C700573B66 /* crypto.h */,
+				E868E08F1F42E8C700573B66 /* des.h */,
+				E868E0901F42E8C700573B66 /* des_old.h */,
+				E868E0911F42E8C700573B66 /* dh.h */,
+				E868E0921F42E8C700573B66 /* dsa.h */,
+				E868E0931F42E8C700573B66 /* dso.h */,
+				E868E0941F42E8C700573B66 /* dtls1.h */,
+				E868E0951F42E8C700573B66 /* e_os2.h */,
+				E868E0961F42E8C700573B66 /* ebcdic.h */,
+				E868E0971F42E8C700573B66 /* ec.h */,
+				E868E0981F42E8C700573B66 /* ecdh.h */,
+				E868E0991F42E8C700573B66 /* ecdsa.h */,
+				E868E09A1F42E8C700573B66 /* engine.h */,
+				E868E09B1F42E8C700573B66 /* err.h */,
+				E868E09C1F42E8C700573B66 /* evp.h */,
+				E868E09D1F42E8C700573B66 /* hmac.h */,
+				E868E09E1F42E8C700573B66 /* idea.h */,
+				E868E09F1F42E8C700573B66 /* krb5_asn.h */,
+				E868E0A01F42E8C700573B66 /* kssl.h */,
+				E868E0A11F42E8C700573B66 /* lhash.h */,
+				E868E0A21F42E8C700573B66 /* md4.h */,
+				E868E0A31F42E8C700573B66 /* md5.h */,
+				E868E0A41F42E8C700573B66 /* mdc2.h */,
+				E868E0A51F42E8C700573B66 /* modes.h */,
+				E868E0A61F42E8C700573B66 /* obj_mac.h */,
+				E868E0A71F42E8C700573B66 /* objects.h */,
+				E868E0A81F42E8C700573B66 /* ocsp.h */,
+				E868E0A91F42E8C700573B66 /* opensslconf.h */,
+				E868E0AA1F42E8C700573B66 /* opensslv.h */,
+				E868E0AB1F42E8C700573B66 /* ossl_typ.h */,
+				E868E0AC1F42E8C700573B66 /* pem.h */,
+				E868E0AD1F42E8C700573B66 /* pem2.h */,
+				E868E0AE1F42E8C700573B66 /* pkcs12.h */,
+				E868E0AF1F42E8C700573B66 /* pkcs7.h */,
+				E868E0B01F42E8C700573B66 /* pqueue.h */,
+				E868E0B11F42E8C700573B66 /* rand.h */,
+				E868E0B21F42E8C700573B66 /* rc2.h */,
+				E868E0B31F42E8C700573B66 /* rc4.h */,
+				E868E0B41F42E8C700573B66 /* ripemd.h */,
+				E868E0B51F42E8C700573B66 /* rsa.h */,
+				E868E0B61F42E8C700573B66 /* safestack.h */,
+				E868E0B71F42E8C700573B66 /* seed.h */,
+				E868E0B81F42E8C700573B66 /* sha.h */,
+				E868E0B91F42E8C700573B66 /* srp.h */,
+				E868E0BA1F42E8C700573B66 /* srtp.h */,
+				E868E0BB1F42E8C700573B66 /* ssl.h */,
+				E868E0BC1F42E8C700573B66 /* ssl2.h */,
+				E868E0BD1F42E8C700573B66 /* ssl23.h */,
+				E868E0BE1F42E8C700573B66 /* ssl3.h */,
+				E868E0BF1F42E8C700573B66 /* stack.h */,
+				E868E0C01F42E8C700573B66 /* symhacks.h */,
+				E868E0C11F42E8C700573B66 /* tls1.h */,
+				E868E0C21F42E8C700573B66 /* ts.h */,
+				E868E0C31F42E8C700573B66 /* txt_db.h */,
+				E868E0C41F42E8C700573B66 /* ui.h */,
+				E868E0C51F42E8C700573B66 /* ui_compat.h */,
+				E868E0C61F42E8C700573B66 /* whrlpool.h */,
+				E868E0C71F42E8C700573B66 /* x509.h */,
+				E868E0C81F42E8C700573B66 /* x509_vfy.h */,
+				E868E0C91F42E8C700573B66 /* x509v3.h */,
+			);
+			path = openssl;
+			sourceTree = "<group>";
+		};
+		E868E0CA1F42E8C700573B66 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E868E0CB1F42E8C700573B66 /* base64.h */,
+				E868E0CC1F42E8C700573B66 /* base64.m */,
+				E868E0CD1F42E8C700573B66 /* config.h */,
+				E868E0CE1F42E8C700573B66 /* DataSigner.h */,
+				E868E0CF1F42E8C700573B66 /* DataSigner.m */,
+				E868E0D01F42E8C700573B66 /* DataVerifier.h */,
+				E868E0D11F42E8C700573B66 /* DataVerifier.m */,
+				E868E0D21F42E8C700573B66 /* MD5DataSigner.h */,
+				E868E0D31F42E8C700573B66 /* MD5DataSigner.m */,
+				E868E0D41F42E8C700573B66 /* NSDataEx.h */,
+				E868E0D51F42E8C700573B66 /* NSDataEx.m */,
+				E868E0D61F42E8C700573B66 /* openssl_wrapper.h */,
+				E868E0D71F42E8C700573B66 /* openssl_wrapper.m */,
+				E868E0D81F42E8C700573B66 /* RSADataSigner.h */,
+				E868E0D91F42E8C700573B66 /* RSADataSigner.m */,
+				E868E0DA1F42E8C700573B66 /* RSADataVerifier.h */,
+				E868E0DB1F42E8C700573B66 /* RSADataVerifier.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		E8693AE21F04AE9200772BC1 /* enterprise */ = {
@@ -1682,6 +2221,29 @@
 				E8F42AC21F2F21EA0011C595 /* WOTPublishSocialTrendsVC.m */,
 			);
 			path = socialcontact;
+			sourceTree = "<group>";
+		};
+		E86B81E01F3841D8002AAC63 /* WXPay */ = {
+			isa = PBXGroup;
+			children = (
+				E868E0EC1F42F10D00573B66 /* libWeChatSDK.a */,
+				E868E0ED1F42F10D00573B66 /* WechatAuthSDK.h */,
+				E868E0EE1F42F10D00573B66 /* WXApi.h */,
+				E868E0EF1F42F10D00573B66 /* WXApiObject.h */,
+				E86B81F51F38480C002AAC63 /* JSONKit.h */,
+				E86B81F61F38480C002AAC63 /* JSONKit.m */,
+				E86B81E61F38422B002AAC63 /* WOTWXApiManager.h */,
+				E86B81E71F38422B002AAC63 /* WOTWXApiManager.m */,
+				E86B81E91F38431B002AAC63 /* WOTWXApiRequestHandler.h */,
+				E86B81EA1F38431B002AAC63 /* WOTWXApiRequestHandler.m */,
+				E86B81EF1F3844A7002AAC63 /* WOTHttp.h */,
+				E86B81F01F3844A7002AAC63 /* WOTHttp.m */,
+				E86B81F21F3847B7002AAC63 /* WOTMD5.h */,
+				E86B81F31F3847B7002AAC63 /* WOTMD5.m */,
+				E86B81EC1F38446C002AAC63 /* XMLReader.h */,
+				E86B81ED1F38446C002AAC63 /* XMLReader.m */,
+			);
+			path = WXPay;
 			sourceTree = "<group>";
 		};
 		E86FD1E71F2056F6009BE16A /* WOTImagePicker */ = {
@@ -1949,6 +2511,7 @@
 				E8C7203E1F14785800DED44C /* WOTDatePickerView.xib in Resources */,
 				E85A85971F0201F30016FCA1 /* Assets.xcassets in Resources */,
 				2A42147B1F146A700010B003 /* share_sina_select@3x.png in Resources */,
+				E868E0DE1F42E8C700573B66 /* AlipaySDK.bundle in Resources */,
 				E8190DD21F0F69660000B07C /* WOTSpaceCityScrollView.xib in Resources */,
 				2A42147E1F146A700010B003 /* share_weixin_select@2x.png in Resources */,
 				2A4214791F146A700010B003 /* share_sina@3x.png in Resources */,
@@ -1965,6 +2528,7 @@
 				E8693B0C1F04F47700772BC1 /* My.storyboard in Resources */,
 				E8190DBB1F0F69660000B07C /* WOTPersionalInformationTagCell.xib in Resources */,
 				E8190DA51F0F69660000B07C /* WOTworkSpaceSearchCell.xib in Resources */,
+				E86245721F3D4F4900CF0D9D /* Info.plist in Resources */,
 				E8190DB91F0F69660000B07C /* WOTPersionalInformationCommonCell.xib in Resources */,
 				2AD2BE291F271BE400D4C3BC /* WOTLightCell.xib in Resources */,
 				2A42147F1F146A700010B003 /* share_weixin_select@3x.png in Resources */,
@@ -2188,6 +2752,7 @@
 				E8370F351F0E2A750070C077 /* WOTJoiningEnterpriseVC.m in Sources */,
 				E8190D941F0F69660000B07C /* WOTActivitiesListCell.m in Sources */,
 				E8C7203C1F14783900DED44C /* WOTDatePickerView.m in Sources */,
+				E86245731F3D4F4900CF0D9D /* SRSecurityPolicy.m in Sources */,
 				2A550D911F33302B0049C9D6 /* WOTSiteReservationsModel.m in Sources */,
 				E8190DBA1F0F69660000B07C /* WOTPersionalInformationTagCell.m in Sources */,
 				E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */,
@@ -2210,6 +2775,7 @@
 				E8190DA61F0F69660000B07C /* WOTCerateEnterpriseCell.m in Sources */,
 				2A3B600E1F2EFF4600AC9C8D /* WOTLocationManager.m in Sources */,
 				2AF18A271F131BEE004681CE /* WOTReservationsMeetingVC.m in Sources */,
+				E8774BB81F41710F00168033 /* WOTOrderModel.m in Sources */,
 				E85A85F81F0202460016FCA1 /* MBProgressHUDUtil.m in Sources */,
 				E866156B1F1F2F56005E182A /* WOTQRCodeUtils.m in Sources */,
 				E8190DD11F0F69660000B07C /* WOTSpaceCityScrollView.m in Sources */,
@@ -2227,11 +2793,15 @@
 				2AF78CEB1F0A0E6B00F7B56D /* WOTServiceProvidersCategoryVC.m in Sources */,
 				2A1624ED1F0E21CB00F216F9 /* WOTSelectCityCodeVC.m in Sources */,
 				2AD2BE2C1F274CB700D4C3BC /* WOTShortcutMenuView.m in Sources */,
+				E868E0E61F42E8C700573B66 /* MD5DataSigner.m in Sources */,
 				E85032D41F0B477F00E79257 /* WOTSingtleton.m in Sources */,
 				E8BA0D8D1F0CFAAB00B81C3D /* WOTMyPublishDemandsLIstVC.m in Sources */,
+				E86245701F3D4F4900CF0D9D /* NSRunLoop+SRWebSocket.m in Sources */,
 				E8BA0D7C1F0CEBB200B81C3D /* WOTMyHistoryVC.m in Sources */,
 				E8190DA31F0F69660000B07C /* WOTworkSpaceScrollVIewCell.m in Sources */,
 				2AF78CF41F0A3DCB00F7B56D /* WOTMaintenanceApplyVC.m in Sources */,
+				E868E0E01F42E8C700573B66 /* APAuthV2Info.m in Sources */,
+				E868E0E51F42E8C700573B66 /* DataVerifier.m in Sources */,
 				E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */,
 				2AF18A3E1F13610E004681CE /* WOTOrderForSelectCell.m in Sources */,
 				E8BA0D901F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m in Sources */,
@@ -2239,13 +2809,17 @@
 				E85A858C1F0201F30016FCA1 /* AppDelegate.m in Sources */,
 				E8588CEA1F0B27F900951105 /* NSString+URL.m in Sources */,
 				2A1624F01F0E231E00F216F9 /* WOTFileUitls.m in Sources */,
+				E862457E1F3D59DB00CF0D9D /* WOTDeviceRequestTool.m in Sources */,
 				E86592B91F346C170055ABC8 /* WOTServiceCategoryModel.m in Sources */,
+				E868E0E81F42E8C700573B66 /* openssl_wrapper.m in Sources */,
 				2AF18A381F136074004681CE /* WOTOrderForSiteCell.m in Sources */,
 				E8EACF921F035A990015535D /* WOTOrderLIstVC.m in Sources */,
 				E8190DC81F0F69660000B07C /* WOTMenuView.m in Sources */,
 				E850330B1F0B922000E79257 /* WOTEnumUtils.m in Sources */,
 				2A99FB641F258A0F00869732 /* WOTMeetingReservationsModel.m in Sources */,
 				E8190DA41F0F69660000B07C /* WOTworkSpaceSearchCell.m in Sources */,
+				E86245641F3D4F4900CF0D9D /* SRProxyConnect.m in Sources */,
+				E86245811F3D59F100CF0D9D /* WOTDeviceListRequestTool.m in Sources */,
 				E85A861B1F0252F20016FCA1 /* WOTBaseNavigationController.m in Sources */,
 				E847E0981F1621DC003BAF6C /* WOTUserSingleton.m in Sources */,
 				E85A85FD1F0202B10016FCA1 /* WOTTabBarVCViewController.m in Sources */,
@@ -2254,8 +2828,11 @@
 				E85A85EE1F0202460016FCA1 /* MASConstraint.m in Sources */,
 				E8747AEB1F270E6F00125CEB /* WOTInteligenceDeviceCommonCell.m in Sources */,
 				2AF18A2F1F135AE2004681CE /* WOTOrderVC.m in Sources */,
+				E86B81EB1F38431B002AAC63 /* WOTWXApiRequestHandler.m in Sources */,
 				E8190DB61F0F69660000B07C /* WOTOrderCell.m in Sources */,
+				E86245741F3D4F4900CF0D9D /* SRWebSocket.m in Sources */,
 				E86FD1EF1F2056F6009BE16A /* UIScrollView+Touch.m in Sources */,
+				E862456B1F3D4F4900CF0D9D /* SRLog.m in Sources */,
 				E8693B0A1F04C45100772BC1 /* WOTCreateEnterpriseVC.m in Sources */,
 				E8190D9E1F0F69660000B07C /* WOTTEnterpriseListCell.m in Sources */,
 				E8A200151F1C8266003C8A86 /* WOTLoginModel.m in Sources */,
@@ -2271,73 +2848,96 @@
 				E8190DCD1F0F69660000B07C /* XXPageTabItemLable.m in Sources */,
 				E8190DC31F0F69660000B07C /* WOTServiceProvidersCell.m in Sources */,
 				2AD2BE201F2711BD00D4C3BC /* WOTCurtainCell.m in Sources */,
+				E86245861F3D893900CF0D9D /* WOTWXPayModel.m in Sources */,
 				E8190DBE1F0F69660000B07C /* WOTGETServiceCell.m in Sources */,
 				E8190DC61F0F69660000B07C /* WOTVisitTypeCell.m in Sources */,
 				E8EACF961F035ABA0015535D /* WOTOrderLIstBaseVC.m in Sources */,
+				E86245681F3D4F4900CF0D9D /* SRError.m in Sources */,
 				E85A85F21F0202460016FCA1 /* MASViewConstraint.m in Sources */,
 				E8190DC01F0F69660000B07C /* WOTServiceCell.m in Sources */,
 				E8BA0D871F0CF9F800B81C3D /* WOTMyAppointmentListVC.m in Sources */,
 				E8EACF731F033D3E0015535D /* UIViewController+Extension.m in Sources */,
 				E8693B1D1F05143800772BC1 /* WOTServiceNaviController.m in Sources */,
 				E86C05B51F2B105D000ABDBF /* WOTCityTileView.m in Sources */,
+				E86245631F3D4F4900CF0D9D /* SRIOConsumerPool.m in Sources */,
 				2A99FB621F258A0F00869732 /* WOTBookStationListModel.m in Sources */,
 				E8190DC51F0F69660000B07C /* WOTVisitorsAppointmentCell.m in Sources */,
+				E86B81EE1F38446C002AAC63 /* XMLReader.m in Sources */,
 				E85A86001F0202F40016FCA1 /* WOTMyVC.m in Sources */,
 				E85A85F71F0202460016FCA1 /* MBProgressHUD+Add.m in Sources */,
 				E8693B0F1F04F90E00772BC1 /* WOTMainVC.m in Sources */,
 				2A3042B31F0B7E4E007C4DED /* WOTHTTPNetwork.m in Sources */,
 				2A99FB7C1F26033B00869732 /* WOTRegisterModel.m in Sources */,
+				E862456A1F3D4F4900CF0D9D /* SRHTTPConnectMessage.m in Sources */,
 				2A1624F31F0E24DA00F216F9 /* WOTLoginNaviController.m in Sources */,
 				E85A85F11F0202460016FCA1 /* MASViewAttribute.m in Sources */,
 				E8693B141F05061500772BC1 /* WOTServiceVC.m in Sources */,
 				2AF18A411F136567004681CE /* WOTOrderForAmountCell.m in Sources */,
+				E868E0E91F42E8C700573B66 /* RSADataSigner.m in Sources */,
 				2A336A861F0CF2B600F5B0AF /* WOTLoginVC.m in Sources */,
 				E85032D71F0B5A5900E79257 /* WOTPersionalInformation.m in Sources */,
 				E8A2001B1F1C8266003C8A86 /* WOTSpaceModel.m in Sources */,
 				E85032CF1F0B476900E79257 /* WOTMainNavigationController.m in Sources */,
+				E862456C1F3D4F4900CF0D9D /* SRMutex.m in Sources */,
 				E86594881F21CFF00093B796 /* WOTNearCirclesVC.m in Sources */,
+				E86B81DF1F383134002AAC63 /* WOTMapManager.m in Sources */,
 				2A1624F61F0E3F4B00F216F9 /* WOTUserRegisterVC.m in Sources */,
 				E8190D971F0F69660000B07C /* WOTInformationLIstCell.m in Sources */,
 				E8DDCCD21F11D151007D001C /* WOTEnterpriseTypeVC.m in Sources */,
 				E85A85F51F0202460016FCA1 /* View+MASAdditions.m in Sources */,
 				E85A860A1F022D6C0016FCA1 /* WOTMyNaviController.m in Sources */,
+				E86245621F3D4F4900CF0D9D /* SRIOConsumer.m in Sources */,
 				E86594811F21C9260093B796 /* WOTSocialContactCell.m in Sources */,
 				E8190D991F0F69660000B07C /* WOTSpaceCityCollectionCell.m in Sources */,
+				E868E0EB1F42E8C700573B66 /* WOTAlipayManager.m in Sources */,
+				E862456E1F3D4F4900CF0D9D /* SRSIMDHelpers.m in Sources */,
 				E88A54491F03A64B00AD3F57 /* WOTAllOrderListVC.m in Sources */,
 				E8190DCB1F0F69660000B07C /* PFGoldenSectionSpiral.m in Sources */,
 				E8DDCCD61F11D542007D001C /* WOTEnterpriseTypeCell.m in Sources */,
 				2AF18A441F136F6D004681CE /* WOTOrderForPaymentCell.m in Sources */,
+				E86245671F3D4F4900CF0D9D /* SRConstants.m in Sources */,
 				2A99FB791F26021000869732 /* WOTGetVerifyModel.m in Sources */,
 				2AE57C441F2ECB0600A1F149 /* WOTH5VC.m in Sources */,
+				E86245611F3D4F4900CF0D9D /* SRDelegateController.m in Sources */,
 				E8CF9FD41F0F8EA400EF0F46 /* WOTBookStationCell.m in Sources */,
 				E85A85951F0201F30016FCA1 /* WOTWorkSpace.xcdatamodeld in Sources */,
 				2AF78CEE1F0A39E800F7B56D /* WOTGETServiceViewController.m in Sources */,
 				2AF18A321F136016004681CE /* WOTOrderForInfoCell.m in Sources */,
 				2AF18A2B1F131DEA004681CE /* WOTReservationsMeetingCell.m in Sources */,
+				E868E0EA1F42E8C700573B66 /* RSADataVerifier.m in Sources */,
 				E82D5FB21F07DDCA003EF0AE /* UIView+Extension.m in Sources */,
 				2AF18A3B1F1360EC004681CE /* WOTOrderForServiceInfoCell.m in Sources */,
 				E85032D11F0B476900E79257 /* WOTworkSpaceLIstVC.m in Sources */,
 				E8605CDA1F137827005C09F4 /* WOTEnterpriseConnectsInfoVC.m in Sources */,
+				E86B81F11F3844A7002AAC63 /* WOTHttp.m in Sources */,
 				E8693ADE1F049C6300772BC1 /* UItableView+Extension.m in Sources */,
 				E8190DCA1F0F69660000B07C /* PGIndexBannerSubiew.m in Sources */,
 				2AF18A241F131898004681CE /* WOTPickerView.m in Sources */,
+				E86B81E81F38422B002AAC63 /* WOTWXApiManager.m in Sources */,
 				E8693B1A1F05100800772BC1 /* WOTSocialcontactNaviController.m in Sources */,
+				E868E0E71F42E8C700573B66 /* NSDataEx.m in Sources */,
 				E8190DC11F0F69660000B07C /* WOTServiceProvidersApplyCell.m in Sources */,
 				E8190DC21F0F69660000B07C /* WOTServiceProvidersCategoryCell.m in Sources */,
+				E86245771F3D4FAB00CF0D9D /* WOTDeviceInfoModel.m in Sources */,
 				E8747AE61F26E1E400125CEB /* WOTAirconditioningCell.m in Sources */,
 				E8190DB21F0F69660000B07C /* WOTMyOrderCell.m in Sources */,
 				E8588CE91F0B27F900951105 /* NSString+Category.m in Sources */,
+				E868E0E31F42E8C700573B66 /* base64.m in Sources */,
+				E86B81F41F3847B7002AAC63 /* WOTMD5.m in Sources */,
 				E8190DC71F0F69660000B07C /* WOTFilterTypeModel.m in Sources */,
 				E8190DB41F0F69660000B07C /* WOTMyuserCell.m in Sources */,
+				E86B81F71F38480C002AAC63 /* JSONKit.m in Sources */,
 				E8370F171F0DD8BF0070C077 /* WOTActivitiesLIstVC.m in Sources */,
 				E85A85891F0201F30016FCA1 /* main.m in Sources */,
 				E8605CA51F132221005C09F4 /* WOTEnterpriseHeaderView.m in Sources */,
 				2A5B230E1F0F7DBE00466BEF /* WOTEnterTextVC.m in Sources */,
 				2A3B600B1F2EF9D000AC9C8D /* WOTLocationModel.m in Sources */,
+				E862456D1F3D4F4900CF0D9D /* SRRandom.m in Sources */,
 				E8190DBF1F0F69660000B07C /* WOTRegisterServiceProvidersCell.m in Sources */,
 				2A42144E1F146A1A0010B003 /* YYShareView.m in Sources */,
 				2A99FB761F25F2C000869732 /* WOTAppointmentModel.m in Sources */,
 				E8190DCE1F0F69660000B07C /* XXPageTabView.m in Sources */,
+				E862456F1F3D4F4900CF0D9D /* SRURLUtilities.m in Sources */,
 				2AD2BE191F26DC4F00D4C3BC /* WOTBusinessModel.m in Sources */,
 				2AD2BE281F271BE400D4C3BC /* WOTLightCell.m in Sources */,
 				E85A85ED1F0202460016FCA1 /* MASCompositeConstraint.m in Sources */,
@@ -2355,13 +2955,19 @@
 				E8BA0D8A1F0CFA1F00B81C3D /* WOTMyRepairdListVC.m in Sources */,
 				E82D5FB51F07DECE003EF0AE /* UIImage+Extension.m in Sources */,
 				E85A85F61F0202460016FCA1 /* MBProgressHUD.m in Sources */,
+				E85E63431F3B0B650050ABB6 /* WOTBueToothManager.m in Sources */,
 				E8190DA81F0F69660000B07C /* WOTFeedBackLIstCell.m in Sources */,
 				2A99FB671F258A4000869732 /* WOTVisitorsModel.m in Sources */,
 				E8605CD71F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
 				E8747AE21F26DF8D00125CEB /* WOTIntelligenceDeviceListVC.m in Sources */,
+				E86245711F3D4F4900CF0D9D /* NSURLRequest+SRWebSocket.m in Sources */,
+				E868E0E41F42E8C700573B66 /* DataSigner.m in Sources */,
+				E86245651F3D4F4900CF0D9D /* SRRunLoopThread.m in Sources */,
 				2AF18A351F136034004681CE /* WOTOrderForBookStationCell.m in Sources */,
+				E86245691F3D4F4900CF0D9D /* SRHash.m in Sources */,
 				E8693AE51F04AEB900772BC1 /* WORTMyEnterpriseVC.m in Sources */,
 				E8370F201F0E04850070C077 /* WOTInformationListVC.m in Sources */,
+				E86245661F3D4F4900CF0D9D /* SRPinningSecurityPolicy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2452,8 +3058,9 @@
 		};
 		2A99FB821F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */;
+			baseConfigurationReference = D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing WOT Technology Development Co.,Ltd. (5EY377SJTX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2463,6 +3070,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2476,20 +3084,22 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WOTWorkSpace/librarys/Alipay/openssl/include/asn1.h";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = "ad hoc distrbution";
 		};
 		2A99FB831F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 157AADE7023AC29418E68C7A /* Pods-WOTWorkSpaceTests.release.xcconfig */;
+			baseConfigurationReference = B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BA8M5YS8VM;
@@ -2503,7 +3113,7 @@
 		};
 		2A99FB841F261FDB00869732 /* ad hoc distrbution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB0D65BEE3DC0196385560AF /* Pods-WOTWorkSpaceUITests.release.xcconfig */;
+			baseConfigurationReference = 36897602B9679FEC0CC67F05 /* Pods-WOTWorkSpaceUITests.ad hoc distrbution.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = BA8M5YS8VM;
 				INFOPLIST_FILE = WOTWorkSpaceUITests/Info.plist;
@@ -2610,6 +3220,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AD4D44235E619477B1F5D13 /* Pods-WOTWorkSpace.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing WOT Technology Development Co.,Ltd. (5EY377SJTX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2620,6 +3231,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2633,13 +3245,15 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WOTWorkSpace/librarys/Alipay/openssl/include/asn1.h";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -2648,6 +3262,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing WOT Technology Development Co.,Ltd. (5EY377SJTX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2657,6 +3272,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WOTWorkSpace/common/WOTWorkSpace_Prefix.pch";
@@ -2670,13 +3286,15 @@
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WOTImagePicker",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/WXPay",
+					"$(PROJECT_DIR)/WOTWorkSpace/librarys/Alipay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.WOTWorkSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}\n${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WOTWorkSpace/librarys/Alipay/openssl/include/asn1.h";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

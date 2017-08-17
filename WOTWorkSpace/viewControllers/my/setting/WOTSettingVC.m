@@ -14,6 +14,8 @@
 #import "WOTLoginVC.h"
 
 #import "WOTLoginNaviController.h"
+#import "WOTPersionalInformation.h"
+#import "WOTWXApiRequestHandler.h"
 @interface WOTSettingVC ()
 
 @end
@@ -92,7 +94,11 @@
             return  15;
         }
     } else {
-        return 0;
+        if (section == 0 || section == 2) {
+            return 0;
+        }else {
+            return 15;
+        }
     }
     
   
@@ -113,7 +119,7 @@
         
         if (indexPath.row == 0) {
             [settingcell.valueLabel setHidden:NO];
-            settingcell.valueLabel.text = @"400-8911-891";
+            settingcell.valueLabel.text = @"010-8646-7632";
         } else {
             [settingcell.valueLabel setHidden:YES];
  
@@ -146,9 +152,10 @@
     return settingcell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
+    
     if (indexPath.section == 2) {
         [[WOTConfigThemeUitls shared] showRemindingAlert:self message:@"确定退出当前帐号?" okBlock:^{
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
             [self.navigationController popViewControllerAnimated:YES];
            [self.tabBarController setSelectedIndex:0];
            
@@ -156,8 +163,61 @@
             
         }];
         
+    } else if (indexPath.section == 0){
+        
+        switch (indexPath.row) {
+            case 0:
+                if ([WOTSingtleton shared].isuserLogin) {
+                    [self pushVCByVCName:@"WOTPersionalInformationID" storyboard:@"My"];
+                } else {
+                   [[WOTConfigThemeUitls shared] showLoginVC:self];
+                }
+                
+                break;
+            case 1:
+                 [WOTWXApiRequestHandler sendWXpay];
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+        
+    }  else {
+        switch (indexPath.row) {
+            case 0:
+                [self makePhoneToSpace];
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 }
+
+
+-(void)pushVCByVCName:(NSString *)vcname storyboard:(NSString *)storyboardName{
+    UIViewController *vc = [[UIStoryboard storyboardWithName:storyboardName bundle:nil] instantiateViewControllerWithIdentifier:vcname];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+//打电话 联系我们
+-(void)makePhoneToSpace{
+    
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"010-8646-7632"];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

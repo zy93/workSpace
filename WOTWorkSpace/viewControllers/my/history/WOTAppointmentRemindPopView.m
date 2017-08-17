@@ -17,10 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configNav];
       [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyAppointmentCell" bundle:nil] forCellReuseIdentifier:@"WOTMyAppointmentCellID"];
     // Do any additional setup after loading the view.
 }
-
+-(void)configNav{
+    self.navigationItem.title = @"我的提醒";
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

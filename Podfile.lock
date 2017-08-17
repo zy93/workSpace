@@ -14,6 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AMap2DMap (4.6.0):
+    - AMapFoundation (~> 1.3)
+  - AMapFoundation (1.4.0)
+  - AMapLocation (2.4.0):
+    - AMapFoundation (~> 1.4)
+  - AMapSearch (5.1.0):
+    - AMapFoundation (~> 1.2)
   - JSONModel (1.2.0)
   - SDCycleScrollView (1.66):
     - SDWebImage (~> 4.0.0)
@@ -24,17 +31,24 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AMap2DMap
+  - AMapLocation
+  - AMapSearch
   - JSONModel (~> 1.2.0)
   - SDCycleScrollView (~> 1.64)
   - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMap2DMap: 003fa70526983a1469ae6fc3323a6ee8b5ccf53c
+  AMapFoundation: 458974f46a39df8407fd818ab83d2630d494c726
+  AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
+  AMapSearch: d4c924b929f433968669721a07b4bd57736f5f2a
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   SDCycleScrollView: e3ade90e9b3159bec04330b208fbfd81c3f3b671
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: b2ac6e769ad8937822448c097691dcb4e36ff82b
+PODFILE CHECKSUM: a0d58645a2f6b716c006f65d6f9cc1a6d5d1e934
 
 COCOAPODS: 1.2.1

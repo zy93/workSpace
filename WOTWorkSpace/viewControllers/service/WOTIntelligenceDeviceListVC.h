@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WOTDeviceInfoModel.h"
+#import "SRWebSocket.h"
 @interface WOTIntelligenceDeviceListVC : UIViewController
-
+@property(nonatomic,strong)WOTDeviceInfoModel *device;
+@property(nonatomic,strong) SRWebSocket *webSocket;
+-(void)sendWebSocketStringWithParam:(NSDictionary*)param;
+-(NSString*)imageAddExStr:(NSString*)imageStr;
 @end
