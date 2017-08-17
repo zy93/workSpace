@@ -75,7 +75,7 @@
     _activityImage.image = [UIImage imageNamed:@"placeholder"];
    
     [self getAllData];
-    [WOTWXApiRequestHandler sendWXpay];
+   
      // Do any additional setup after loading the view.
     
 }

@@ -15,6 +15,7 @@
 
 #import "WOTLoginNaviController.h"
 #import "WOTPersionalInformation.h"
+#import "WOTWXApiRequestHandler.h"
 @interface WOTSettingVC ()
 
 @end
@@ -174,6 +175,7 @@
                 
                 break;
             case 1:
+                 [WOTWXApiRequestHandler sendWXpay];
                 break;
             case 2:
                 break;

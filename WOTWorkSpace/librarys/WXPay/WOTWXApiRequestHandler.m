@@ -38,6 +38,15 @@
                             @"trade_type":@"APP"
                                };
     
+//    PayReq *request = [[PayReq alloc] init];
+//    request.partnerId = @"10000100";
+//    request.prepayId= @"1101000000140415649af9fc314aa427";
+//    request.package = @"Sign=WXPay";
+//    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
+//    request.timeStamp= @"1397527777";
+//    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
+//    [WXApi sendReq:request];
+    
     [WOTHttp doRequestWithParameters:paramdic useUrl:PaySERVER_URL complete:^JSONModel *(id responseobj) {
        
         WOTWXPayModel_msg *paymodel = [[WOTWXPayModel_msg alloc]initWithDictionary:responseobj error:nil];
@@ -57,7 +66,7 @@
     } andBlock:^(id responseObject, NSError *error) {
         
     }];
-  
+//
   
     
     
