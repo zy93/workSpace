@@ -88,6 +88,10 @@
     NSArray *endTimes =[openTimes.lastObject componentsSeparatedByString:@":"];
 //    NSLog(@"---%@\n%@",beginTimes,endTimes);
     CGFloat begT = 0.f;
+    if (beginTimes.count <2 || endTimes.count <2  ) {
+        return @[@(9), @(23)];
+    }
+    
     if ([beginTimes[1] integerValue]>=30) {
         begT = [beginTimes.firstObject integerValue]+0.5;
     }
