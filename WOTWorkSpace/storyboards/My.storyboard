@@ -124,7 +124,7 @@
         <!--My EnterpriseVC-->
         <scene sceneID="1P7-KT-i0v">
             <objects>
-                <viewController storyboardIdentifier="WORTMyEnterpriseVCID" id="jm1-ru-KQV" customClass="WORTMyEnterpriseVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WORTMyEnterpriseVCID" hidesBottomBarWhenPushed="YES" id="jm1-ru-KQV" customClass="WORTMyEnterpriseVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lbu-in-jRd"/>
                         <viewControllerLayoutGuide type="bottom" id="0HK-FG-7qt"/>
@@ -485,6 +485,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jra-9I-5Nb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="574" y="525"/>
+        </scene>
+        <!--SettingVC-->
+        <scene sceneID="ZYj-1u-mX2">
+            <objects>
+                <viewController storyboardIdentifier="WOTSettingVC" hidesBottomBarWhenPushed="YES" id="Je5-2V-MhT" customClass="WOTSettingVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e9g-NC-8od"/>
+                        <viewControllerLayoutGuide type="bottom" id="BEr-yY-1Ep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bja-d3-41T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jej-kz-KXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1393" y="525"/>
         </scene>
     </scenes>
     <resources>

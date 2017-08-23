@@ -28,6 +28,12 @@
    
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTSettingCell" bundle:nil] forCellReuseIdentifier:@"settingCellID"];
     self.navigationItem.title = @"设置";
+    
+    //解决布局空白问题
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -36,13 +42,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
    
         return 3;
-  
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

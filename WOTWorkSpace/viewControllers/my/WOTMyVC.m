@@ -90,7 +90,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
-            return 240;
+            return 270;
             break;
         case 1:
             return 125;
@@ -225,7 +225,7 @@
 }
 
 -(void)showSettingVC{
-    _settingvc = [[WOTSettingVC alloc]init];
+    _settingvc =[[UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"WOTSettingVC"];// [[WOTSettingVC alloc]init];
     
     [self.navigationController pushViewController:_settingvc animated:YES];
 }

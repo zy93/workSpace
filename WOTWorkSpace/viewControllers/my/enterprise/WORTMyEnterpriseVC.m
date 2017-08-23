@@ -39,7 +39,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setHidden:NO];
-    [self.tabBarController.tabBar setHidden:YES];
+//    [self.tabBarController.tabBar setHidden:YES];
 }
 -(void)configNavi{
     [self configNaviBackItem];
