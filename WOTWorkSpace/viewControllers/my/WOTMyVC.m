@@ -46,8 +46,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.tabBarController.tabBar setHidden:NO];
-     self.tabBarController.tabBar.translucent = YES;
+     self.tabBarController.tabBar.translucent = NO;
     [self.navigationController.navigationBar setHidden:YES];
+    
     [self.tableView reloadData];
     
 }
@@ -189,7 +190,8 @@
 /**订单celldelegate*/
 -(void)showAllOrderList{
     if ([WOTSingtleton shared].isuserLogin) {
-        WOTAllOrderListVC *station_ordervc = [[WOTAllOrderListVC alloc]init];
+        WOTAllOrderListVC *station_ordervc = [[UIStoryboard storyboardWithName:@"My" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTAllOrderListVC"];
+ // [[WOTAllOrderListVC alloc]init];
         [self.navigationController pushViewController:station_ordervc animated:YES];
     } else {
         [[WOTConfigThemeUitls shared] showLoginVC:self];

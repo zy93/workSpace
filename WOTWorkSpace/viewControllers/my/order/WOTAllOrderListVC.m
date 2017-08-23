@@ -59,7 +59,10 @@
     [self configNaviBackItem];
     self.navigationItem.title = @"我的订单";
     [self configNaviRightItemWithImage:[UIImage imageNamed:@"search_icon"]];
-    
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
 }
 
 

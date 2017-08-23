@@ -37,7 +37,11 @@
 
 - (UIViewController *)makeVC {
     UIViewController *basevc = [[UIViewController alloc]init];
-
+    //解决布局空白问题
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
     
     return basevc;
 }
@@ -51,7 +55,7 @@
     self.pageTabView.bottomOffLine = YES;
     [self.pageTabView addIndicatorViewWithStyle];
     [self.pageTabView layoutSubviews];
-    self.pageTabView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
+    self.pageTabView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.pageTabView.delegate = self;
     //    self.pageTabView.bodyBounces = NO;
     //    self.pageTabView.tabSize = CGSizeMake(self.view.frame.size.width, 40);
