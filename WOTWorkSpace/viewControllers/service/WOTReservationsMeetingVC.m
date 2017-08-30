@@ -204,9 +204,11 @@
     vc.spaceId = self.spaceId;
     if([WOTSingtleton shared].orderType == ORDER_TYPE_MEETING){
         vc.conferenceOrSiteId = cell.meetingModel.conferenceId;
+        vc.costNumber = (self.endTime - self.beginTime) * cell.meetingModel.conferencePrice.floatValue;
     }
     else {
         vc.conferenceOrSiteId = cell.siteModel.siteId;
+        vc.costNumber = (self.endTime - self.beginTime) * cell.siteModel.sitePrice.floatValue;
     }
     [self.navigationController pushViewController:vc animated:YES];    
 }

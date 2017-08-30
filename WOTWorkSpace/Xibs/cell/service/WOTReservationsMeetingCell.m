@@ -51,7 +51,7 @@
     _meetingModel = meetingModel;
     [self.meetingNameLab setText:_meetingModel.conferenceName];
     [self.meetingInfoLab setText:_meetingModel.conferenceDescribe];
-    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%d元/小时",[_meetingModel.conferencePrice intValue]]];
+    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_meetingModel.conferencePrice floatValue]]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_meetingModel.openTime];
     [self loadMeetingReservationsInfo];
@@ -62,7 +62,7 @@
     _siteModel = siteModel;
     [self.meetingNameLab setText:_siteModel.siteName];
     [self.meetingInfoLab setText:_siteModel.siteDescribe];
-    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%d元/小时",[_meetingModel.conferencePrice intValue]]];
+    [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_siteModel.sitePrice floatValue]]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_siteModel.openTime];
     [self loadSiteReservationsInfo];

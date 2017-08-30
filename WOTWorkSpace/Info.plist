@@ -78,7 +78,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.6</string>
+	<string>1.8</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqqOpensdkSSoLogin</string>
@@ -145,6 +145,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>使用蓝牙进行设备控制</string>
 	<key>NSCameraUsageDescription</key>
 	<string>应用请求访问您的相机</string>
 	<key>NSLocationUsageDescription</key>

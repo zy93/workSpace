@@ -18,7 +18,7 @@
     [self.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationItem setLeftBarButtonItem:backitem];
-    [self.tabBarController.tabBar setHidden:YES];
+//    [self.tabBarController.tabBar setHidden:YES];
  
 }
 
@@ -59,7 +59,7 @@
 -(void)configNaviRightItemWithImage:(UIImage *)image{
     UIButton *rightbtn = [[UIButton alloc]init];
     [rightbtn setFrame:CGRectMake(0,0,25,25)];
-    [rightbtn setBackgroundImage:image forState:UIControlStateNormal];
+    [rightbtn setImage:image forState:UIControlStateNormal];
     [rightbtn addTarget:self action:@selector(rightItemAction) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
     
@@ -70,6 +70,8 @@
     UIButton *rightbtn = [[UIButton alloc]init];
     [rightbtn setFrame:CGRectMake(0,0,50,30)];
     [rightbtn setTitle:title forState:UIControlStateNormal];
+    [rightbtn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+    [rightbtn.titleLabel setTextAlignment:NSTextAlignmentRight];
     [rightbtn setTitleColor:textColor forState:UIControlStateNormal];
     [rightbtn addTarget:self action:@selector(rightItemAction) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightbtn];

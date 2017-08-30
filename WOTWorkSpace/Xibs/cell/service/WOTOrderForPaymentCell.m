@@ -29,9 +29,11 @@
     _alipay = alipay;
     if (_alipay) {
         [self.iconImg setImage:[UIImage imageNamed:@"alipay_icon"]];
+        [self.titleLab setText:@"支付宝支付"];
     }
     else {
         [self.iconImg setImage:[UIImage imageNamed:@"wechat_icon"]];
+        [self.titleLab setText:@"微信支付"];
     }
 }
 

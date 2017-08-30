@@ -16,6 +16,4 @@
 @property (nonatomic,assign) CGFloat beginTime;
 @property (nonatomic,assign) CGFloat endTime;
 
-//@property (nonatomic, assign) BOOL isMeeting; //会议室
-
 @end

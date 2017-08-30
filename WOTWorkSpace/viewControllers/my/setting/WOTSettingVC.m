@@ -45,7 +45,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -164,9 +163,7 @@
     if (indexPath.section == 2) {
         [[WOTConfigThemeUitls shared] showRemindingAlert:self message:@"确定退出当前帐号?" okBlock:^{
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:LOGIN_STATE_USERDEFAULT];
-            [self.navigationController popViewControllerAnimated:YES];
-           [self.tabBarController setSelectedIndex:0];
-           
+            [self.navigationController popViewControllerAnimated:YES];           
         } cancel:^{
             
         }];

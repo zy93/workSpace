@@ -21,4 +21,6 @@
 @property (nonatomic, strong) WOTBookStationListModel1 *model;
 
 
+@property (nonatomic, assign) CGFloat costNumber;
+
 @end

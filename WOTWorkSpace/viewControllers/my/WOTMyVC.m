@@ -225,7 +225,7 @@
 }
 
 -(void)showSettingVC{
-    _settingvc =[[UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"WOTSettingVC"];// [[WOTSettingVC alloc]init];
+    _settingvc =[[UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"WOTSettingVC"];
     
     [self.navigationController pushViewController:_settingvc animated:YES];
 }

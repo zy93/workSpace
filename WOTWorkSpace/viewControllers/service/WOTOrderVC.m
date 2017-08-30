@@ -35,6 +35,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UILabel *costLabel;
 
 @end
 
@@ -46,6 +47,7 @@
 //    self.table.separatorStyle = UITableViewCellSelectionStyleNone;
     [self configNav];
     [self loadData];
+    [self loadCost];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +57,12 @@
 
 -(void)configNav{
     self.navigationItem.title = @"确认订单";
-    
+    self.navigationController.navigationBar.translucent = NO;
+    //解决布局空白问题
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
 }
 
 
@@ -84,6 +91,12 @@
     NSArray *list2 = @[uitableCell,paymentCell,paymentCell];
     tableList = @[list1, list2];
 }
+
+-(void)loadCost
+{
+    [_costLabel setText:[NSString stringWithFormat:@"实付：￥%.2f",self.costNumber]];
+}
+
 
 #pragma mark - action
 - (IBAction)clickSubmitBtn:(id)sender {
@@ -162,20 +175,12 @@
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section==0) {
-        return 0;
-    }
-    return 0;
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 0;
-    }
-    return 20;
+//    if (section==0) {
+//        return 15;
+//    }
+    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

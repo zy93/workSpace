@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, ORDER_TYPE) {
 
 //会议室页面跳转记录，因涉及页面较多，在此记录当前操作。
 @property (nonatomic, assign) ORDER_TYPE orderType;
-
+//距离最近的空间
 @property (nonatomic, strong) WOTLocationModel *nearbySpace;
 
 @end

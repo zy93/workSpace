@@ -36,7 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.translucent = YES;
+    self.tabBarController.tabBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeBottom;
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setHidden:NO];

@@ -246,7 +246,7 @@
         <!--Persional Information-->
         <scene sceneID="aGT-Ci-B5N">
             <objects>
-                <viewController storyboardIdentifier="WOTPersionalInformationID" id="4uu-9u-jkM" customClass="WOTPersionalInformation" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WOTPersionalInformationID" hidesBottomBarWhenPushed="YES" id="4uu-9u-jkM" customClass="WOTPersionalInformation" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Fh-Jf-geO"/>
                         <viewControllerLayoutGuide type="bottom" id="HxG-hM-7GH"/>
@@ -471,7 +471,7 @@
         <!--All Order ListVC-->
         <scene sceneID="cdU-ln-Nio">
             <objects>
-                <viewController restorationIdentifier="WOTAllOrderListVC" storyboardIdentifier="WOTAllOrderListVC" id="pxs-eu-qau" customClass="WOTAllOrderListVC" sceneMemberID="viewController">
+                <viewController restorationIdentifier="WOTAllOrderListVC" storyboardIdentifier="WOTAllOrderListVC" hidesBottomBarWhenPushed="YES" id="pxs-eu-qau" customClass="WOTAllOrderListVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Acv-WA-TW1"/>
                         <viewControllerLayoutGuide type="bottom" id="93Q-s8-dDc"/>
