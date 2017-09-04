@@ -81,9 +81,9 @@
 
 
 -(void)getActivityDataSourceFromWeb:(NSString *)state{
-    [[WOTUserSingleton currentUser]setValues];
+    [[WOTUserSingleton shareUser]setValues];
     
-    [WOTHTTPNetwork getUserActivitiseWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] state:state response:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getUserActivitiseWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton shareUser].userId intValue]] state:state response:^(id bean, NSError *error) {
         if ([_vctype isEqualToString:@"0"]) {
             WOTMyActivityModel_msg *dd = (WOTMyActivityModel_msg *)bean;
             dataSource0 = dd.msg;

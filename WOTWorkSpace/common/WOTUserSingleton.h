@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *realName;
-@property (nonatomic,strong) NSString *companyId;
+@property (nonatomic, strong) NSString *companyId;
 @property (nonatomic, strong) NSString *sex;
 @property (nonatomic, strong) NSString *headPortrait;
 @property (nonatomic, strong) NSString *constellation;
@@ -25,8 +25,7 @@
 @property (nonatomic, strong) NSString *industry;
 @property (nonatomic, strong) NSString *spared1;
 
-+(instancetype)currentUser;
-//-(void)initWithUserName:(NSString *)userName password:(NSString *)password realName:(NSString *)realName sex:(NSString *)sex headPortrait:(NSString *)headPortrait userType:(NSString *)userType site:(NSString *)site skill:(NSString *)skill interest:(NSString *)interest interest:(NSString *)interests industry:(NSString *)industry spared1:(NSString *)spared1 ;
++(instancetype)shareUser;
 -(void)saveUserInfoToPlist:(NSDictionary *)userinfo;
 -(void)setValues;
 @end

@@ -19,11 +19,11 @@
 
 -(void)sendRequestToGetAllDeviceWithGroupId:(NSNumber *)groupId Response:(WOTDeviceBlock)deviceBlock{
    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-       [[WOTUserSingleton currentUser]setValues];
+       [[WOTUserSingleton shareUser]setValues];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.deviceBlock = deviceBlock;
             self.allDeviceRequest = [WOTDeviceRequestTool new];
-            [self.allDeviceRequest sendGetRequestWithExStr:@"Service_Platform/group/deviceList.do" andParam:@{@"userId":[WOTUserSingleton currentUser].userId,@"groupId":groupId}];
+            [self.allDeviceRequest sendGetRequestWithExStr:@"Service_Platform/group/deviceList.do" andParam:@{@"userId":[WOTUserSingleton shareUser].userId,@"groupId":groupId}];
             self.allDeviceRequest.delegate = self;
         });
    });

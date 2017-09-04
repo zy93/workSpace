@@ -61,8 +61,8 @@
 }
 
 -(void)getHistoryDemandsFromWeb{
-    [[WOTUserSingleton currentUser]setValues];
-    [WOTHTTPNetwork getDemandsWithUserId:[NSNumber numberWithInt:[[WOTUserSingleton currentUser].userId intValue]] response:^(id bean, NSError *error) {
+    [[WOTUserSingleton shareUser]setValues];
+    [WOTHTTPNetwork getDemandsWithUserId:[NSNumber numberWithInt:[[WOTUserSingleton shareUser].userId intValue]] response:^(id bean, NSError *error) {
         WOTMyHistoryDemandsModel_msg *dd = (WOTMyHistoryDemandsModel_msg *)bean;
         dataSource = dd.msg;
         [self.tableView reloadData];

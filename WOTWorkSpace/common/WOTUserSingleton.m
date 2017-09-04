@@ -18,15 +18,14 @@
 }
 
 
-+(instancetype)currentUser{
-    static WOTUserSingleton *currentUser;
++(instancetype)shareUser{
+    static WOTUserSingleton *shareUser;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        currentUser = [[self alloc]init];
-     
+        shareUser = [[self alloc] initSingleton];
     });
     
-    return currentUser;
+    return shareUser;
 }
 
 -(void)setValues{
@@ -58,7 +57,7 @@
     NSLog(@"fileName:%@",filename);
     [userinfo writeToFile:filename atomically:YES];
 
-   
+    [self setValues];
     
 }
 -(NSDictionary *)readUserInfoFromPlist{

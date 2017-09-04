@@ -8,7 +8,7 @@
 
 #import "WOTMeetingListModel.h"
 
-@implementation WOTMeetingListModel1
+@implementation WOTMeetingListModel
 +(BOOL)propertyIsOptional:(NSString *)propertyName
 {
     return YES;
@@ -16,7 +16,7 @@
 @end
 
 
-@implementation WOTMeetingListModel_msg1
+@implementation WOTMeetingListModel_msg
 
 +(BOOL)propertyIsOptional:(NSString *)propertyName
 {

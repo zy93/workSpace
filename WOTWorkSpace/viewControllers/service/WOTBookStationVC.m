@@ -168,7 +168,7 @@
     vc.endTime = inquireTime;//arr.lastObject;
     vc.spaceId = self.spaceId;
 //    vc.conferenceId = cell.model.conferenceId;
-    [WOTSingtleton shared].orderType == ORDER_TYPE_BOOKSTATION;
+    [WOTSingtleton shared].orderType = ORDER_TYPE_BOOKSTATION;
     vc.model = cell.model;
     [self.navigationController pushViewController:vc animated:YES];
 }

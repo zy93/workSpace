@@ -27,7 +27,7 @@
 //  调用微信支付
 +(void)sendWXpay{
     //获的后台接口
-    NSString *money = @"1";
+    NSNumber *money = @1;
     NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
     NSDictionary *paramdic = @{
                             @"facilitator":@"0000",
@@ -36,18 +36,14 @@
                             @"total_fee":money,
                             @"spbill_create_ip":deviceip,
                             @"trade_type":@"APP"
+                            
+                            
+                            
+                            
+                            
                                };
-    
-//    PayReq *request = [[PayReq alloc] init];
-//    request.partnerId = @"10000100";
-//    request.prepayId= @"1101000000140415649af9fc314aa427";
-//    request.package = @"Sign=WXPay";
-//    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
-//    request.timeStamp= @"1397527777";
-//    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
-//    [WXApi sendReq:request];
-    
-    [WOTHttp doRequestWithParameters:paramdic useUrl:PaySERVER_URL complete:^JSONModel *(id responseobj) {
+    NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
+    [WOTHttp doRequestWithParameters:paramdic useUrl:url complete:^JSONModel *(id responseobj) {
        
         WOTWXPayModel_msg *paymodel = [[WOTWXPayModel_msg alloc]initWithDictionary:responseobj error:nil];
         //调用支付接口
@@ -57,7 +53,7 @@
         payRequest.prepayId = paymodel.msg.prepay_id;//预支付订单编号
         payRequest.package = paymodel.msg.package;//商家根据财付通文档填写的数据和签名
         payRequest.nonceStr = paymodel.msg.nonce_str;//随机串，防重发
-        payRequest.timeStamp = paymodel.msg.timeStamp;//时间戳，防重发
+        payRequest.timeStamp = (UInt32)paymodel.msg.timeStamp.integerValue;//时间戳，防重发
         payRequest.sign = paymodel.msg.sign;//商家根据微信开放平台文档对数据做的签名
         
         [WXApi sendReq:payRequest];
@@ -66,19 +62,16 @@
     } andBlock:^(id responseObject, NSError *error) {
         
     }];
-//
-  
-    
-    
     
 }
 
+/*
 #pragma mark - 模拟后台，所有请求全部前端完成
 +(void)sendWXpayWithServerWithMoney:(NSString *)money{
     
     //调用微信统一下单接口
     NSString *url = [NSString stringWithFormat:@"https://api.mch.weixin.qq.com/pay/unifiedorder"];
-    /*微信统一下单接口 参见官网  https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_1*/
+    //微信统一下单接口 参见官网  https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_1
     
     // 拼接详细的订单数据
     NSDictionary *postDict = [self getProductArgsWithMoney:money];
@@ -142,22 +135,20 @@
     
 }
 
-/**
- *  获取32位内的随机串, 防重发
- *
- *  注意：商户系统内部的订单号,32个字符内、可包含字母,确保在商户系统唯一
- */
+// *  获取32位内的随机串, 防重发
+// *
+// *  注意：商户系统内部的订单号,32个字符内、可包含字母,确保在商户系统唯一
+
 +(NSString *)genNonceStr
 {
     return [WOTMD5 md5:[NSString stringWithFormat:@"%d", arc4random() % 10000]];
 }
 
-/**
- *  获取商家对用户的唯一标识
- *
- *  traceId 由开发者自定义，可用于订单的查询与跟踪，建议根据支付用户信息生成此id
- *  建议 traceid 字段包含用户信息及订单信息，方便后续对订单状态的查询和跟踪
- */
+
+// *  获取商家对用户的唯一标识
+// *
+// *  traceId 由开发者自定义，可用于订单的查询与跟踪，建议根据支付用户信息生成此id
+// *  建议 traceid 字段包含用户信息及订单信息，方便后续对订单状态的查询和跟踪
 +(NSString *)genTraceId
 {
     
@@ -252,5 +243,5 @@
         NSLog(@"支付失败");
     }
 }
-
+*/
 @end

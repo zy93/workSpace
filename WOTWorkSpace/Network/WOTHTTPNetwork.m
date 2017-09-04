@@ -29,8 +29,11 @@
 #import "WOTLocationModel.h"
 #import "WOTSiteModel.h"
 #import "WOTSiteReservationsModel.h"
-
 #import "WOTServiceCategoryModel.h"
+
+#import "WXApi.h"
+#import "WOTWXPayModel.h"
+
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
 
@@ -547,7 +550,7 @@
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conference/findBySpaceId"];
     NSDictionary *dic = @{@"spaceId":spaceid};
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
-        WOTMeetingListModel_msg1 *model = [[WOTMeetingListModel_msg1 alloc]initWithDictionary:responseobj error:nil];
+        WOTMeetingListModel_msg *model = [[WOTMeetingListModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {
@@ -812,6 +815,53 @@
     [self doFileRequestWithParameters:parameters useUrl:applyurl image:file complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
         
+        return  model;
+    } andBlock:^(id responseObject, NSError *error) {
+        if (response) {
+            response(responseObject,error);
+        }
+    }];
+}
+
+
+
+
++(void)generateOrderWithSpaceId:(NSNumber *)spaceId commodityNum:(NSNumber *)commNum commodityKind:(NSNumber *)commKind productNum:(NSNumber *)productNum startTime:(NSString *)startTime endTime:(NSString *)endTime money:(CGFloat)money dealMode:(NSString *)dealMode payType:(NSNumber *)payType payObject:(NSString *)payObject payMode:(NSNumber *)payMode contractMode:(NSNumber *)contractMode response:(response)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
+    NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
+    NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userId,
+                                 @"facilitator":@(00001),
+                                 @"carrieroperator":@(00002),
+                                 @"body":@"易创客",
+                                 @"total_fee":@(money*100),
+                                 @"spbill_create_ip":deviceip,
+                                 @"trade_type":@"APP",
+                                 @"spaceId":spaceId,
+                                 @"commodityNum":commNum,
+                                 @"commodityKind":commKind,
+                                 @"productNum":productNum,
+                                 @"starTime":startTime,
+                                 @"endTime":endTime,
+                                 @"money":@(money),
+                                 @"dealMode":dealMode,
+                                 @"payType":payType,
+                                 @"payObject":payObject,
+                                 @"payMode":payMode,
+                                 @"contractMode":contractMode,
+                                 };
+    
+    [self doRequestWithParameters:parameters useUrl:url  complete:^JSONModel *(id responseobj) {
+        WOTWXPayModel_msg *model = [[WOTWXPayModel_msg alloc]initWithDictionary:responseobj error:nil];
+        //调用支付接口
+        PayReq *payRequest = [[PayReq alloc]init];
+        payRequest.partnerId = model.msg.mch_id;//商户id
+        payRequest.prepayId = model.msg.prepay_id;//预支付订单编号
+        payRequest.package = model.msg.package;//商家根据财付通文档填写的数据和签名
+        payRequest.nonceStr = model.msg.nonce_str;//随机串，防重发
+        payRequest.timeStamp = (UInt32)model.msg.timeStamp.integerValue;//时间戳，防重发
+        payRequest.sign = model.msg.sign;//商家根据微信开放平台文档对数据做的签名
+        [WXApi sendReq:payRequest];
         return  model;
     } andBlock:^(id responseObject, NSError *error) {
         if (response) {

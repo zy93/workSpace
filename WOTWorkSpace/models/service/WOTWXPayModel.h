@@ -13,7 +13,6 @@
 @property(nonatomic,strong)NSString *sign;
 @property(nonatomic,strong)NSString *mch_id;
 @property(nonatomic,strong)NSString *timeStamp;
-
 @property(nonatomic,strong)NSString *prepay_id;
 @property(nonatomic,strong)NSString *return_msg;
 @property(nonatomic,strong)NSString *package;

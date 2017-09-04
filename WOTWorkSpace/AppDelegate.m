@@ -33,7 +33,6 @@
     //配置高德地图key
     [AMapServices sharedServices].apiKey =  MAP_API_KEY;
     
-    
     [WXApi registerApp:APPID enableMTA:YES];
     return YES;
 }

@@ -51,8 +51,8 @@
 
 
 -(void)getDataSourceFromWeb{
-    [[WOTUserSingleton currentUser]setValues];
-   [WOTHTTPNetwork getMyAppointmentWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] response:^(id bean, NSError *error) {
+    [[WOTUserSingleton shareUser]setValues];
+   [WOTHTTPNetwork getMyAppointmentWithUserId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton shareUser].userId intValue]] response:^(id bean, NSError *error) {
        if (bean) {
            WOTAppointmentModel_msg *dd = (WOTAppointmentModel_msg *)bean;
            _appintmentDataSource = dd.msg;

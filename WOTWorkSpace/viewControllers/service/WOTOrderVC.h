@@ -10,6 +10,8 @@
 #import "WOTBookStationListModel.h"
 #import "WOTMeetingReservationsModel.h"
 #import "WOTBookStationListModel.h"
+#import "WOTMeetingListModel.h"
+#import "WOTSiteModel.h"
 //#import ""
 
 @interface WOTOrderVC : UIViewController
@@ -18,8 +20,9 @@
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSString *endTime;
 
-@property (nonatomic, strong) WOTBookStationListModel1 *model;
-
+@property (nonatomic, strong) WOTBookStationListModel *model;
+@property (nonatomic, strong) WOTMeetingListModel *meetingModel;
+@property (nonatomic, strong) WOTSiteModel *siteModel;
 
 @property (nonatomic, assign) CGFloat costNumber;
 

@@ -192,7 +192,7 @@
         
     }
     else {
-            [self registerService:[WOTUserSingleton currentUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
+            [self registerService:[WOTUserSingleton shareUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
                               tel:tableInputDatadic[@"tel"]
                   facilitatorType:tableInputDatadic[@"facilitatorType"]
                  facilitatorState:tableInputDatadic[@"facilitatorState"]
@@ -277,7 +277,7 @@
     
     NSArray<UIImage *> *aa = @[firmLogo];
     
-    [[WOTUserSingleton currentUser]setValues];
+    [[WOTUserSingleton shareUser]setValues];
     [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         
     [WOTHTTPNetwork registerServiceBusiness:userId firmName:firmName businessScope:businessScope contatcts:contatcts tel:tel facilitatorType:facilitatorType facilitatorState:facilitatorState firmLogo:aa response:^(id bean, NSError *error) {

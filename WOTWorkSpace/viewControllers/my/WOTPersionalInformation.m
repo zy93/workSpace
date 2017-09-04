@@ -93,16 +93,16 @@
     if (indexPath.section == 0) {
         WOTPersionalInformationCommonCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationCommonCellID" forIndexPath:indexPath];
         NSArray *titleArray = @[@"头像",@"姓名",@"性别",@"星座",@"收获地址"];
-        [[WOTUserSingleton currentUser]setValues];
-        NSArray *valueArray = @[[WOTUserSingleton currentUser].headPortrait,[WOTUserSingleton currentUser].userName,[WOTUserSingleton currentUser].sex,[WOTUserSingleton currentUser].constellation,[WOTUserSingleton currentUser].site];
+        [[WOTUserSingleton shareUser]setValues];
+        NSArray *valueArray = @[[WOTUserSingleton shareUser].headPortrait,[WOTUserSingleton shareUser].userName,[WOTUserSingleton shareUser].sex,[WOTUserSingleton shareUser].constellation,[WOTUserSingleton shareUser].site];
         cell.titleLabel.text = titleArray[indexPath.row];
         cell.valueLabel.text = valueArray[indexPath.row];
         if (indexPath.row == 0){
             
-            [cell.valueImage sd_setImageWithURL:[[WOTUserSingleton currentUser].headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
+            [cell.valueImage sd_setImageWithURL:[[WOTUserSingleton shareUser].headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
         } else if (indexPath.row == 2) {
             
-            [cell.valueImage sd_setImageWithURL:[@"" ToUrl] placeholderImage:[[WOTUserSingleton currentUser].sex isEqualToString:@"man"] ? [UIImage imageNamed:@"boy_blue"]:[UIImage imageNamed:@"girl_blue"]];
+            [cell.valueImage sd_setImageWithURL:[@"" ToUrl] placeholderImage:[[WOTUserSingleton shareUser].sex isEqualToString:@"man"] ? [UIImage imageNamed:@"boy_blue"]:[UIImage imageNamed:@"girl_blue"]];
         }
         
         cell.imageWidth.constant = indexPath.row==0 ? 50:60;
@@ -123,7 +123,7 @@
         commoncell = cell;
     } else if (indexPath.section == 1){
         NSArray *titleArray = @[@"技    能",@"兴    趣",@"行业",@"个性签名"];
-        NSArray *valueArray = @[@"",@"",[WOTUserSingleton currentUser].industry,[WOTUserSingleton currentUser].spared1];
+        NSArray *valueArray = @[@"",@"",[WOTUserSingleton shareUser].industry,[WOTUserSingleton shareUser].spared1];
         if (indexPath.row == 0|| indexPath.row == 1) {
             
             WOTPersionalInformationTagCell *tagcell = [tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationTagCellID" forIndexPath:indexPath];

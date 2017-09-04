@@ -55,11 +55,11 @@
 }
 
 - (IBAction)sunmitAction:(id)sender {
-    [[WOTUserSingleton currentUser]setValues];
+    [[WOTUserSingleton shareUser]setValues];
     [selectedPhotoArray removeObjectAtIndex:0];
     NSLog(@"%@",selectedPhotoArray[0]);
     [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-       [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton currentUser].userId type:repariType info:repairInfo appointmentTime:repairTime address:repairLocation file:selectedPhotoArray alias:@"1" response:^(id bean, NSError *error) {
+       [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton shareUser].userId type:repariType info:repairInfo appointmentTime:repairTime address:repairLocation file:selectedPhotoArray alias:@"1" response:^(id bean, NSError *error) {
            [hud setHidden:YES];
            if (bean) {
                [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];

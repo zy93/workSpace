@@ -55,8 +55,8 @@
 -(void)getDataFromWeb{
 
     
-    [[WOTUserSingleton currentUser] setValues];
-    [WOTHTTPNetwork getMyHistoryFeedBackData:[[NSNumber alloc]initWithInt:[[WOTUserSingleton currentUser].userId intValue]] response:^(id bean, NSError *error) {
+    [[WOTUserSingleton shareUser] setValues];
+    [WOTHTTPNetwork getMyHistoryFeedBackData:[[NSNumber alloc]initWithInt:[[WOTUserSingleton shareUser].userId intValue]] response:^(id bean, NSError *error) {
         
         WOTMyFeedBackModel_msg *dd = (WOTMyFeedBackModel_msg *)bean;
         _dataSource = dd.msg;

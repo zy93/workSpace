@@ -67,8 +67,8 @@
     [self.supervc.navigationController pushViewController:detailvc animated:YES];
 }
 -(void)getMyEnterpriseDataSourceFromWeb{
-    [[WOTUserSingleton currentUser]setValues];
-    [WOTHTTPNetwork getUserEnterpriseWithCompanyId:[WOTUserSingleton currentUser].companyId response:^(id bean, NSError *error) {
+    [[WOTUserSingleton shareUser]setValues];
+    [WOTHTTPNetwork getUserEnterpriseWithCompanyId:[WOTUserSingleton shareUser].companyId response:^(id bean, NSError *error) {
         WOTEnterpriseModel_msg *dd = (WOTEnterpriseModel_msg*)bean;
         endataSource = dd.msg;
         [self.tableView reloadData];

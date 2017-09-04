@@ -121,12 +121,12 @@
     if (indexPath.section == 0) {
         WOTMyuserCell *mycell = [tableView dequeueReusableCellWithIdentifier:@"WOTMyuserCellID" forIndexPath:indexPath];
         if ([WOTSingtleton shared].isuserLogin) {
-            [[WOTUserSingleton currentUser] setValues];
-            mycell.userName.text = [WOTUserSingleton currentUser].userName;
-            mycell.constellation.text = [WOTUserSingleton currentUser].constellation;
-            mycell.signature.text = [WOTUserSingleton currentUser].spared1;
-            mycell.sexImage.image = [[WOTUserSingleton currentUser].sex isEqualToString:@"man"]? [UIImage imageNamed:@"boy"]:[UIImage imageNamed:@"girl"];
-            [mycell.headerImage sd_setImageWithURL:[[WOTUserSingleton currentUser].headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
+            [[WOTUserSingleton shareUser] setValues];
+            mycell.userName.text = [WOTUserSingleton shareUser].userName;
+            mycell.constellation.text = [WOTUserSingleton shareUser].constellation;
+            mycell.signature.text = [WOTUserSingleton shareUser].spared1;
+            mycell.sexImage.image = [[WOTUserSingleton shareUser].sex isEqualToString:@"man"]? [UIImage imageNamed:@"boy"]:[UIImage imageNamed:@"girl"];
+            [mycell.headerImage sd_setImageWithURL:[[WOTUserSingleton shareUser].headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
             
         } else {
             mycell.userName.text = @"登录／注册";

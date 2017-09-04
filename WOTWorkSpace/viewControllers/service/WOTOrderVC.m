@@ -15,6 +15,7 @@
 #import "WOTOrderForSelectCell.h"
 #import "WOTOrderForPaymentCell.h"
 #import "WOTOrderForAmountCell.h"
+#import "WOTWXApiRequestHandler.h"
 
 #define infoCell @"infoCell"
 #define bookStationCell @"bookStationCell"
@@ -88,7 +89,7 @@
             break;
     }
     
-    NSArray *list2 = @[uitableCell,paymentCell,paymentCell];
+    NSArray *list2 = @[uitableCell,paymentCell];
     tableList = @[list1, list2];
 }
 
@@ -100,6 +101,16 @@
 
 #pragma mark - action
 - (IBAction)clickSubmitBtn:(id)sender {
+    //判断用户是否登录
+    if (strIsEmpty([WOTUserSingleton shareUser].userId)) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登录" message:@"请先登录用户" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     
     switch ([WOTSingtleton shared].orderType) {
         case ORDER_TYPE_BOOKSTATION:
@@ -116,8 +127,36 @@
             break;
         case ORDER_TYPE_SITE:
         {
-            [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId siteId:self.conferenceOrSiteId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
-                NSLog(@"---%@", bean);
+//            [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId siteId:self.conferenceOrSiteId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
+//                NSLog(@"---%@", bean);
+//            }];
+            NSNumber *commNum = @(0);
+            NSNumber *commKind = @(0);
+            NSString *dealMode = @"微信支付";
+            switch ([WOTSingtleton shared].orderType) {
+                case ORDER_TYPE_BOOKSTATION:
+                {
+                    commNum = @(10000);;
+                    commKind = @(0);
+                }
+                    break;
+                case ORDER_TYPE_MEETING:
+                {
+                    commNum = self.meetingModel.conferenceId;
+                    commKind = @(1);
+                }
+                    break;
+                case ORDER_TYPE_SITE:
+                {
+                    commNum = self.siteModel.siteId;
+                    commKind = @(2);
+                }
+                    break;
+                default:
+                    break;
+            }
+            [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceId commodityNum:commNum commodityKind:commKind productNum:@(1) startTime:self.startTime endTime:self.endTime money:self.costNumber dealMode:dealMode payType:@(1) payObject:[WOTUserSingleton shareUser].userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
+                
             }];
         }
             break;
@@ -265,16 +304,16 @@
             cell = [[WOTOrderForPaymentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForPaymentCell"];
         }
         if (indexPath.row == 1) {
-            cell.alipay = YES;
+            cell.alipay = NO;
         }
         else {
-            cell.alipay = NO;
+            cell.alipay = YES;
         }
         if (indexPath.row == paymentIndex.row) {
             cell.select = YES;
         }
         else {
-            cell.select = NO;
+            cell.select = YES;
         }
             
         return cell;
