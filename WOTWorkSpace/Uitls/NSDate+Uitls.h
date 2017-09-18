@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (Uitls)
-
-
 //获取今天零点时间
 +(NSString *)getNewTimeZero;
 //获取明天零点时间
 +(NSString *)getTomorrowTimeZero;
 //获取时间
 //+(NSString *)getTomorrowTimeZero;
+
+//计算传入时间与当前时间差 //2017/08/25 17:06:37
++(NSString *)timeDifference:(NSString *)dateStr;
+
 @end

@@ -8,7 +8,8 @@ pod 'UITableView+FDTemplateLayoutCell', '~> 1.5.beta'
 
 pod 'AMap2DMap' #2D地图SDK
 pod 'AMapSearch' #搜索功能
-pod 'AMapLocation' 
+pod 'AMapLocation'
+pod 'ZLPhotoBrowser'
 
 target 'WOTWorkSpace' do
 

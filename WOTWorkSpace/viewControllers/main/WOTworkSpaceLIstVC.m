@@ -12,8 +12,8 @@
 #import "WOTworkSpacenearCell.h"
 #import "WOTworkSpaceCommonCell.h"
 #import "WOTSpaceCityScrollView.h"
-
 #import "WOTH5VC.h"
+#import "MJRefresh.h"
 
 #import "WOTRefreshControlUitls.h"
 @interface WOTworkSpaceLIstVC ()<UITableViewDelegate,UITableViewDataSource,WOTWorkSpaceMoreCityDelegate,UITextFieldDelegate>{
@@ -21,7 +21,7 @@
 }
 
 @property(nonatomic,strong)WOTSpaceCityScrollView *headerView;
-@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
+//@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @end
 
 @implementation WOTworkSpaceLIstVC
@@ -43,16 +43,17 @@
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTworkSpaceCommonCell" bundle:nil] forCellReuseIdentifier:@"WOTworkSpaceCommonCellID"];
     [_tableVIew registerNib:[UINib nibWithNibName:@"WOTSpaceCityScrollView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"WOTSpaceCityScrollViewID"];
     [[WOTConfigThemeUitls shared] touchViewHiddenKeyboard:self.view];
-    
-    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.tableVIew];
-    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
+    [self AddRefreshHeader];
+    //废弃
+//    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.tableVIew];
+//    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
     
     
     // Do any additional setup after loading the view.
 }
 -(void)downLoadRefresh{
     [self getDataSourceFromWebFWithCity:nil complete:^{
-        [_refreshControl stop];
+//        [_refreshControl stop];
     }];
 }
 - (void)didReceiveMemoryWarning {
@@ -77,7 +78,37 @@
    
 }
 
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UITableView *pTableView = _tableVIew;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
 
+- (void)StartRefresh
+{
+    if (_tableVIew.mj_footer != nil && [_tableVIew.mj_footer isRefreshing])
+    {
+        [_tableVIew.mj_footer endRefreshing];
+    }
+    //    [(YYYiHomePageController *)[self GetSubordinateControllerForSelf] RefreshData];
+}
+
+- (void)StopRefresh
+{
+    if (_tableVIew.mj_header != nil && [_tableVIew.mj_header isRefreshing])
+    {
+        [_tableVIew.mj_header endRefreshing];
+    }
+}
+
+
+#pragma mark - table dataSource & delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }

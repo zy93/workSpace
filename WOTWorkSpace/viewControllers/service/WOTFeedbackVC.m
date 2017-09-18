@@ -69,9 +69,9 @@
     if ([_textView.text isEqualToString:@""]){
         [MBProgressHUDUtil showMessage:UnInputFeedbackContentReminding toView:self.view ];
     } else{
-        [[WOTUserSingleton shareUser]setValues];
+//        [[WOTUserSingleton shareUser]setValues];
         
-         [WOTHTTPNetwork postFeedBackInfoWithContent:self.textView.text spaceId:[[NSNumber alloc]initWithInt:57] userId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton shareUser].userId intValue]] userName:[WOTUserSingleton shareUser].userName tel:self.phoneText.text  response:^(id bean, NSError *error) {
+         [WOTHTTPNetwork postFeedBackInfoWithContent:self.textView.text spaceId:[[NSNumber alloc]initWithInt:57] userId:[[NSNumber alloc]initWithInt:[[WOTUserSingleton shareUser].userInfo.userId intValue]] userName:[WOTUserSingleton shareUser].userInfo.userName tel:self.phoneText.text  response:^(id bean, NSError *error) {
              if (bean) {
                  [MBProgressHUDUtil showMessage:((WOTBaseModel *)bean).result toView:self.view];
              }

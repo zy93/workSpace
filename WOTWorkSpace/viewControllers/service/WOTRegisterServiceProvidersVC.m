@@ -192,7 +192,7 @@
         
     }
     else {
-            [self registerService:[WOTUserSingleton shareUser].userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
+            [self registerService:[WOTUserSingleton shareUser].userInfo.userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
                               tel:tableInputDatadic[@"tel"]
                   facilitatorType:tableInputDatadic[@"facilitatorType"]
                  facilitatorState:tableInputDatadic[@"facilitatorState"]
@@ -273,11 +273,11 @@
     }
 }
 
--(void)registerService:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(UIImage *)firmLogo{
+-(void)registerService:(NSNumber *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(UIImage *)firmLogo{
     
     NSArray<UIImage *> *aa = @[firmLogo];
     
-    [[WOTUserSingleton shareUser]setValues];
+    //[[WOTUserSingleton shareUser]setValues];
     [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
         
     [WOTHTTPNetwork registerServiceBusiness:userId firmName:firmName businessScope:businessScope contatcts:contatcts tel:tel facilitatorType:facilitatorType facilitatorState:facilitatorState firmLogo:aa response:^(id bean, NSError *error) {

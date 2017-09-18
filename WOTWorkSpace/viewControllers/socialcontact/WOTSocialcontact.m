@@ -10,6 +10,7 @@
 #import "WOTNearCirclesVC.h"
 #import "WOTEnterpriseLIstVC.h"
 #import "WOTPublishSocialTrendsVC.h"
+#import "MJRefresh.h"
 @interface WOTSocialcontact ()
 
 @end
@@ -31,8 +32,6 @@
 
 
 -(void)setpageMenu{
-    
-  
     NSArray<__kindof UIViewController *> *controllers = [self createViewControllers];
     self.pageTabView = [[XXPageTabView alloc] initWithChildControllers:controllers childTitles:[self createTitles]];
     self.pageTabView.cutOffLine = YES;
@@ -74,6 +73,7 @@
     [self configNaviRightItemWithImage:[UIImage imageNamed:@"publishSocial"]];
 }
 
+#pragma mark - action
 -(void)rightItemAction{
     WOTPublishSocialTrendsVC *publishvc = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"WOTPublishSocialTrendsVCID"];
     [self.navigationController pushViewController:publishvc animated:YES];

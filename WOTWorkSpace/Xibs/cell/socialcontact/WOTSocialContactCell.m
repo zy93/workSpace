@@ -31,11 +31,6 @@
 
     // Configure the view for the selected state
 }
--(void)setCellBean:(WOTSocialContactsBean *)cellBean{
-    _contactName.text = cellBean.contactname;
-    _time.text = cellBean.time;
-    _content.text = cellBean.time;
-}
 
 
 -(NSMutableArray *)photosArray{
@@ -44,6 +39,19 @@
         
     }
     return _photosArray;
+}
+
+-(void)setData:(WOTFriendsMessageModel *)data
+{
+    _data = data;
+//    NSURL *url = ;
+    [self.headerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,data.picture]] placeholderImage:nil];
+    [self.contactName setText:data.userName];
+    [self.content setText:data.textWord];
+    [self.time setText:[NSDate timeDifference:data.creationTime]];
+    NSArray *arr = [data.sharePicture componentsSeparatedByString:@","];
+    _photosArray = [arr copy];
+    [self.collectionview reloadData];
 }
 
 #pragma mark -CollectionView datasource
@@ -64,8 +72,9 @@
 {
     //重用cell
     WOTImageCollectionViewCell *cell = [_collectionview dequeueReusableCellWithReuseIdentifier:@"WOTImageCollectionViewCellID" forIndexPath:indexPath];
-    
-    cell.cityImage.image = _photosArray[indexPath.row];
+     ;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_photosArray[indexPath.row]]];
+    [cell.cityImage sd_setImageWithURL:url placeholderImage:nil];
     return cell;
     
 }

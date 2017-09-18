@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTPublishSocialTrendsVC : UIViewController
-@property (nonatomic,strong)NSMutableArray *photosArray;
+@property (nonatomic, strong)NSMutableArray *photosArray;
 @end

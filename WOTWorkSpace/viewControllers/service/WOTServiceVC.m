@@ -17,7 +17,7 @@
 #import "WOTOpenLockScanVC.h"
 #import "WOTSliderModel.h"
 #import "WOTH5VC.h"
-
+#import "MJRefresh.h"
 
 #define visitors @"访客预约"
 #define maintenance @"问题报修"
@@ -32,7 +32,7 @@
     NSMutableArray *tableIconList;
 
 }
-@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
+//@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -54,13 +54,12 @@
     [self configNav];
     [self loadAutoScrollView];
     [self addData];
-    [self getSliderDataSource:^{
-        [self loadAutoScrollView];
-    }];
+    [self AddRefreshHeader];
+    [self StartRefresh];
  
-    
-   _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.table];
-    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
+//废弃
+//   _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.table];
+//    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
     
     // Do any additional setup after loading the view.
 }
@@ -69,14 +68,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)downLoadRefresh{
 
-    [self getSliderDataSource:^{
-        [self loadAutoScrollView];
-        [self.refreshControl stop];
-    }];
-
-}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -99,6 +91,37 @@
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
 }
+
+
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UITableView *pTableView = _table;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
+
+- (void)StartRefresh
+{
+    if (_table.mj_footer != nil && [_table.mj_footer isRefreshing])
+    {
+        [_table.mj_footer endRefreshing];
+    }
+    [self loadData];
+}
+
+- (void)StopRefresh
+{
+    if (_table.mj_header != nil && [_table.mj_header isRefreshing])
+    {
+        [_table.mj_header endRefreshing];
+    }
+}
+
 
 - (NSMutableArray *)imageUrlStrings {
     if (_imageUrlStrings == nil) {
@@ -129,8 +152,15 @@
 //    NSArray *section3 = @[@"可操控设备"];
 
     tableList = [@[section1, section2] mutableCopy];
-    
     [self.table reloadData];
+}
+
+-(void)loadData
+{
+    [self getSliderDataSource:^{
+        [self loadAutoScrollView];
+        [self StopRefresh];
+    }];
 }
 
 #pragma mark - setup View

@@ -83,18 +83,18 @@
     if ([_describeText.text isEqualToString:@""] || self.selectServiceList.count == 0) {
         [MBProgressHUDUtil showMessage:UnInputServiceContentReminding toView:self.view];
     } else {
-        [[WOTUserSingleton shareUser] setValues];
+//        [[WOTUserSingleton shareUser] setValues];
         NSString *dd = @"";
         for (NSString *text in _selectServiceList) {
             dd = [NSString stringWithFormat:@"%@%@%@",dd,text,@","];
         }
 
         
-//        [WOTHTTPNetwork postServiceRequestWithDescribe:[self.describeText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] spaceId:[@"55" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] userId:[[WOTUserSingleton shareUser].userId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorType:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorLabel:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] response:^(id bean, NSError *error) {
+//        [WOTHTTPNetwork postServiceRequestWithDescribe:[self.describeText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] spaceId:[@"55" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] userId:[[WOTUserSingleton shareUser].userInfo.userId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorType:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] facilitatorLabel:[dd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] response:^(id bean, NSError *error) {
 //            
 //        }];
         
-                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"  userId:[WOTUserSingleton shareUser].userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
+                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"  userId:[WOTUserSingleton shareUser].userInfo.userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
         
                 }];
         

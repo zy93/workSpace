@@ -22,9 +22,9 @@
 #import "WOTEnterpriseModel.h"
 #import "WOTSliderModel.h"
 #import "WOTLocationManager.h"
+#import "MJRefresh.h"
 
 #import "WOTRefreshControlUitls.h"
-#import "WOTWXApiRequestHandler.h"
 @interface WOTMainVC ()<UIScrollViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource,SDCycleScrollViewDelegate,WOTShortcutMenuViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)ZYQSphereView *sphereView;
 @property(nonatomic,strong)NewPagedFlowView *pageFlowView;
@@ -44,7 +44,7 @@
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
 @property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *infodataSource;
 @property(nonatomic,strong)NSString *activityImageUrl;
-@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
+//@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @end
 
 @implementation WOTMainVC
@@ -54,8 +54,6 @@
     //    [self load3DBallView];
     
     [self loadAutoScrollView];
-    
-    
     [self configScrollView];
    
     
@@ -75,58 +73,9 @@
     _activityImage.image = [UIImage imageNamed:@"placeholder"];
    
     [self getAllData];
-   
+    [self AddRefreshHeader];
      // Do any additional setup after loading the view.
     
-}
--(void)getAllData{
-    
-    dispatch_queue_t queue = dispatch_queue_create("com.workspacek.gcd.group", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_group_t group = dispatch_group_create();
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        dispatch_group_enter(group);
-        [self getEnterpriseListDataFromWeb:^{
-            
-        }];
-        dispatch_group_leave(group);
-        dispatch_group_enter(group);
-        [self getActivityDataFromWeb:^{
-           
-        }];
-         dispatch_group_leave(group);
-        dispatch_group_enter(group);
-        [self getInfoDataFromWeb:^{
-            
-        }];
-        dispatch_group_leave(group);
-        dispatch_group_enter(group);
-        [self getSliderDataSource:^{
-            [self loadAutoScrollView];
-           
-        }];
-         dispatch_group_leave(group);
-        dispatch_group_enter(group);
-        [self loadSpaceView];
-        dispatch_group_leave(group);
-        
-        
-        dispatch_group_notify(group, queue, ^{
-           
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"回到主线程，刷新UI");
-                [hud setHidden:YES];
-              
-              
-            });
-        });
-        
-    }];
-    
-}
-//下拉刷新
--(void)downLoadRefresh{
-   
-    [self getAllData];
 }
 
 
@@ -142,9 +91,9 @@
     [self.tabBarController.tabBar setHidden:NO];
 }
 int a = 0;
-//必须在页面出现以后，重新设置scrollview 的contengsize
+
 -(void)viewDidAppear:(BOOL)animated{
-    
+    //必须在页面出现以后，重新设置scrollview 的contengsize
     if (a++<=0) {
         [self loadLocation];
     }
@@ -152,8 +101,59 @@ int a = 0;
     [super viewDidAppear:animated];
     
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
-    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.scrollVIew];//在viewdidload 中添加，由于scrollview的contentSize不正确，不能下啦
-    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
+    //废弃
+    //    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.scrollVIew];//在viewdidload 中添加，由于scrollview的contentSize不正确，不能下啦
+    //    [_refreshControl addTarget:self action:@selector(downLoadRefresh) forControlEvents:UIControlEventAllEvents];
+    
+}
+
+#pragma mark - setup view
+
+-(void)getAllData{
+    
+    dispatch_queue_t queue = dispatch_queue_create("com.workspacek.gcd.group", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_group_t group = dispatch_group_create();
+    
+//    dispatch_group_enter(group);
+//    [self getEnterpriseListDataFromWeb:^{
+//        
+//    }];
+//    dispatch_group_leave(group);
+//    dispatch_group_enter(group);
+//    [self getActivityDataFromWeb:^{
+//        
+//    }];
+//    dispatch_group_leave(group);
+//    dispatch_group_enter(group);
+//    [self getInfoDataFromWeb:^{
+//        
+//    }];
+//    dispatch_group_leave(group);
+//    dispatch_group_enter(group);
+//    [self getSliderDataSource:^{
+//        [self loadAutoScrollView];
+//        
+//    }];
+//    dispatch_group_leave(group);
+//    dispatch_group_enter(group);
+//    [self loadSpaceView];
+//    dispatch_group_leave(group);
+    
+    
+    [self getEnterpriseListDataFromWeb:^{
+        [self StopRefresh];
+    }];
+    [self getActivityDataFromWeb:^{
+    }];
+    [self getInfoDataFromWeb:^{
+    }];
+    [self getSliderDataSource:^{
+    [self loadAutoScrollView];
+    }];
+    [self getDataSourceFromWebFWithCity:nil complete:^{
+    } loadVIews:^{
+        [self setupUI];
+    }];
     
 }
 
@@ -163,16 +163,6 @@ int a = 0;
     self.scrollVIew.showsVerticalScrollIndicator = NO;
     self.scrollVIew.backgroundColor = MainColor;
 }
-
--(void)loadLocation
-{
-    [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon) {
-        [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
-            [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
-        }];
-    }];
-}
-
 
 #pragma mark --懒加载
 - (NSMutableArray *)spacePageViewDataSource {
@@ -226,6 +216,17 @@ int a = 0;
 {
     
 }
+
+
+-(void)loadLocation
+{
+    [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon) {
+        [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
+            [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
+        }];
+    }];
+}
+
 
 /*
 -(void)load3DBallView{
@@ -376,23 +377,36 @@ int a = 0;
         }];
     }
 
-  
-    
     [self.navigationController pushViewController:stationvc animated:YES];
 }
 
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UIScrollView *pTableView = _scrollVIew;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
 
--(void)loadSpaceView{
-    
-    [MBProgressHUDUtil showLoadingWithMessage:@"数据加载中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-        
-        [self getDataSourceFromWebFWithCity:nil complete:^{
-            [hud setHidden: YES];
-        } loadVIews:^{
-            [self setupUI];
-        }];
-    }];
- 
+- (void)StartRefresh
+{
+    if (_scrollVIew.mj_footer != nil && [_scrollVIew.mj_footer isRefreshing])
+    {
+        [_scrollVIew.mj_footer endRefreshing];
+    }
+    [self getAllData];
+}
+
+- (void)StopRefresh
+{
+    if (_scrollVIew.mj_header != nil && [_scrollVIew.mj_header isRefreshing])
+    {
+        [_scrollVIew.mj_header endRefreshing];
+    }
 }
 
 
@@ -404,8 +418,6 @@ int a = 0;
 
 //page view UI
 - (void)setupUI {
-    
-    
     _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, self.spaceView.frame.size.height-20)];
     _pageFlowView.delegate = self;
     _pageFlowView.dataSource = self;
@@ -418,13 +430,10 @@ int a = 0;
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 32, SCREEN_WIDTH, 8)];
     _pageFlowView.pageControl = pageControl;
     [_pageFlowView addSubview:pageControl];
-    
    
     [self.spaceView addSubview:_pageFlowView];
     
     [_pageFlowView reloadData];
-    
-
     
 }
 

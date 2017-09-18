@@ -100,14 +100,9 @@
             
             if (bean) {
                 
-                WOTLoginModel *dd = (WOTLoginModel *)bean;
-                
-                NSLog(@"当前用户名字：%@",dd.userName);
-               
+                WOTLoginModel *model = (WOTLoginModel *)bean;
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                    NSDictionary * userdic = @{@"userId":dd.userId,@"userName":dd.userName,@"password":dd.password,@"realName":dd.realName,@"sex":dd.sex,@"headPortrait":dd.headPortrait,@"userType":dd.userType,@"site":dd.site,@"skill":dd.skill,@"interest":dd.interest,@"industry":dd.industry,@"spared1":dd.spared1,@"constellation":dd.constellation,@"companyId":dd.companyId};
-                    [[WOTUserSingleton shareUser] saveUserInfoToPlist:userdic];
-                    
+                    [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model];
                     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
                 });
                 dispatch_async(dispatch_get_main_queue(), ^{

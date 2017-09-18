@@ -97,7 +97,7 @@ typedef void(^response)(id bean,NSError *error);
  
  */
 
-+(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response;
++(void)registerServiceBusiness:(NSNumber *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response;
 
 /**
  *提交意见反馈
@@ -236,4 +236,9 @@ typedef void(^response)(id bean,NSError *error);
  */
 +(void)generateOrderWithSpaceId:(NSNumber *)spaceId commodityNum:(NSNumber *)commNum commodityKind:(NSNumber *)commKind productNum:(NSNumber *)productNum startTime:(NSString *)startTime endTime:(NSString *)endTime money:(CGFloat)money dealMode:(NSString *)dealMode  payType:(NSNumber *)payType payObject:(NSString *)payObject payMode:(NSNumber *)payMode contractMode:(NSNumber *)contractMode response:(response)response;
 
+
+#pragma mark - 社交
+
++(void)sendMessageToSapceWithSpaceId:(NSNumber *)spaceId text:(NSString *)text images:(NSArray *)images response:(response)response;
++(void)getMessageBySapceIdWithSpaceId:(NSNumber *)spaceId response:(response)response;
 @end

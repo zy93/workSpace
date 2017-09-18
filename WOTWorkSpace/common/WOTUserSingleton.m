@@ -7,6 +7,7 @@
 //
 
 #import "WOTUserSingleton.h"
+#import <objc/runtime.h>
 
 @implementation WOTUserSingleton
 
@@ -30,32 +31,21 @@
 
 -(void)setValues{
     NSDictionary *dic = [self readUserInfoFromPlist];
-    self.userId = dic[@"userId"];
-    self.userName = dic[@"userName"];
-    self.password = dic[@"password"];
-    self.realName = dic[@"realName"];
-    self.sex = dic[@"sex"];
-    self.headPortrait = dic[@"headPortrait"];
-    self.userType = dic[@"userType"];
-    self.site = dic[@"site"];
-    self.skill = dic[@"skill"];
-    self.interests = dic[@"interest"];
-    self.industry = dic[@"industry"];
-    self.spared1 = dic[@"spared1"];
-    self.constellation = dic[@"constellation"];
-     self.companyId = dic[@"companyId"];
+    NSError *error;
+    _userInfo = [[WOTLoginModel alloc] initWithDictionary:dic error:&error];
 }
 
--(void)saveUserInfoToPlist:(NSDictionary *)userinfo{
-    
+-(void)saveUserInfoToPlistWithModel:(WOTLoginModel *)model
+{
+    NSDictionary *dic = [self buildDictionayByModel:model];
     //获取应用程序沙盒的Documents目录
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *plistPath1 = [paths objectAtIndex:0];
 
-    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"userInfo.plist"];
     //输入写入
     NSLog(@"fileName:%@",filename);
-    [userinfo writeToFile:filename atomically:YES];
+    [dic writeToFile:filename atomically:YES];
 
     [self setValues];
     
@@ -63,11 +53,33 @@
 -(NSDictionary *)readUserInfoFromPlist{
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *plistPath1 = [paths objectAtIndex:0];
-       NSString *filename=[plistPath1 stringByAppendingPathComponent:@"userinfo.plist"];
+       NSString *filename=[plistPath1 stringByAppendingPathComponent:@"userInfo.plist"];
     NSMutableDictionary *user = [[NSMutableDictionary alloc] initWithContentsOfFile:filename];
     
     NSLog(@"%@", user);
     return user;
+}
+
+-(NSDictionary *)buildDictionayByModel:(WOTLoginModel *)model
+{
+    NSMutableDictionary *dic = [NSMutableDictionary new];
+    unsigned int outCount = 0;
+    Class cl = [model class];
+    objc_objectptr_t *properties = class_copyPropertyList(cl, &outCount);
+    
+    for (int i = 0; i<outCount; i++) {
+        SEL selector;
+        objc_objectptr_t property = properties[i];
+        NSString *propertyName = [[NSString alloc] initWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
+        selector = NSSelectorFromString(propertyName);
+        id propertyValue;
+        if (![model respondsToSelector:selector]) {
+            continue;
+        }
+        propertyValue = [model performSelector:selector];
+        [dic setValue:propertyValue forKey:propertyName];
+    }
+    return [dic copy];
 }
 
 @end

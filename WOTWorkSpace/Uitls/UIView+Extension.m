@@ -156,17 +156,17 @@
     self.layer.borderWidth = 1;
 }
 
-
--(UIImage *)toImage{
-    UIGraphicsBeginImageContext(CGSizeMake(self.bounds.size.width, self.bounds.size.height));
-    CGContextRef currentContex = UIGraphicsGetCurrentContext();
-    [self.layer renderInContext:currentContex];
-    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [self cutImage:result size:self.bounds.size];
-    return result;
-    
-}
+//
+//-(UIImage *)toImage{
+//    UIGraphicsBeginImageContext(CGSizeMake(self.bounds.size.width, self.bounds.size.height));
+//    CGContextRef currentContex = UIGraphicsGetCurrentContext();
+//    [self.layer renderInContext:currentContex];
+//    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    [self cutImage:result size:self.bounds.size];
+//    return result;
+//    
+//}
 
 
 

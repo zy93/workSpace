@@ -10,7 +10,7 @@
 #define ZSDefineFile_h
 
 // photoList
-static const CGFloat   minPhotoListWidth = 80;
+static const CGFloat   minPhotoListWidth = 70;
 
 // AlnumsMaxSelectedNumber
 static const NSInteger maxSelectedPhotoCount = 9;

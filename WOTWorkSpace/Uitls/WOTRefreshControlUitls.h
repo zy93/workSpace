@@ -13,10 +13,10 @@
 
 
 @interface WOTRefreshControlUitls : NSObject
-@property(nonatomic,strong) WOTConciseRefreshControl *commonRefresh;
+@property(nonatomic,strong) WOTConciseRefreshControl * _Nullable commonRefresh;
 
 
--(instancetype)initWithScroll:(UIScrollView *)scroll;
+-(instancetype _Nullable )initWithScroll:(UIScrollView *_Nullable)scroll;
 -(void)stop;
 
 -(void)addTarget:(nullable id)target action:(SEL _Nullable )action forControlEvents:(UIControlEvents)controlEvents;

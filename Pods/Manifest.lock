@@ -28,6 +28,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - ZLPhotoBrowser (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - JSONModel (~> 1.2.0)
   - SDCycleScrollView (~> 1.64)
   - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
+  - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -48,7 +50,8 @@ SPEC CHECKSUMS:
   SDCycleScrollView: e3ade90e9b3159bec04330b208fbfd81c3f3b671
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  ZLPhotoBrowser: e3b90e4ab9ec5d19ba2ed2ef7c9ded654e1b1c8e
 
-PODFILE CHECKSUM: a0d58645a2f6b716c006f65d6f9cc1a6d5d1e934
+PODFILE CHECKSUM: 27817ae24683127d640fb8089453810ce2b7ffb4
 
 COCOAPODS: 1.2.1

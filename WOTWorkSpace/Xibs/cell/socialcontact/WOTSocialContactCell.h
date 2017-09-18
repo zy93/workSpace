@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTSocialContactsBean.h"
+#import "WOTFriendsMessageListModel.h"
 @interface WOTSocialContactCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headerImage;
 @property (weak, nonatomic) IBOutlet UILabel *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionview;
 @property (weak, nonatomic) IBOutlet UILabel *content;
-@property(nonatomic,strong) WOTSocialContactsBean *cellBean;
+//@property(nonatomic,strong) WOTSocialContactsBean *cellBean;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (nonatomic,strong)NSMutableArray *photosArray;
+
+@property (nonatomic, strong) WOTFriendsMessageModel *data;
+
 @end

@@ -30,6 +30,8 @@
 #import "WOTSiteModel.h"
 #import "WOTSiteReservationsModel.h"
 #import "WOTServiceCategoryModel.h"
+#import "WOTSendFriendsModel.h"
+#import "WOTFriendsMessageListModel.h"
 
 #import "WXApi.h"
 #import "WOTWXPayModel.h"
@@ -49,12 +51,14 @@
     return self;
 }
 //网络请求
-+(void)doRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
++(void)doRequestWithParameters:(NSDictionary *)parameters
+                        useUrl:(NSString *)Url
+                      complete:(JSONModel *(^)(id responseobj))complete
+                      response:(response)response
+{
    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
-    
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
                          @"text/html",
                          @"image/jpeg",
@@ -65,11 +69,9 @@
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
-  
-
+    
     [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"request URL:%@",task.originalRequest.URL.absoluteString);
         NSString *responseStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -80,47 +82,22 @@
         
         NSInteger statusCode = [responseDic[@"code"] integerValue];
         if (statusCode == 200) {
-
-            
-            if (complete(responseDic) == nil) {
-                NSError *error = [NSError errorWithDomain:@"JSONModel" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"json convert to response failed!"}];
-                block(nil,error);
-            } else {
-                if (block) {
-                    block(complete(responseDic),nil);
-                }
+            if (response) {
+                response(complete(responseDic),nil);
             }
-            
-        } else if (statusCode == 202)
-        {
-            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:202 userInfo:@{NSLocalizedDescriptionKey:@"暂无数据"}];
-            block(nil,error);
-        } else if (statusCode == 500){
-            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:500 userInfo:@{NSLocalizedDescriptionKey:@"请求失败，请重试"}];
-            block(nil,error);
         }
-        else{
-            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:503 userInfo:@{NSLocalizedDescriptionKey:@"请求超时，请重试"}];
-            block(nil,error);
-            NSLog(@"----error:%@",error);
-         
-        }
-        
-        if (error) {
-            NSLog(@"----error:%@",error);
-            block(nil,error);
-            return ;
+        else {
+            if (response) {
+                response(nil, error);
+            }
         }
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"request URL: %@",task.originalRequest.URL.absoluteString);
-        
-       
-                NSError *err = [NSError errorWithDomain:@"WOTWorkSpace" code:error.code userInfo:@{NSLocalizedDescriptionKey:@"网络异常，请重试"}];
-                block(nil,err);
-
+        NSLog(@"request URL: %@-----error:%@",task.originalRequest.URL.absoluteString,error.userInfo[NSLocalizedDescriptionKey]);
+        if (response) {
+            response(nil, error);
+        }
     }];
 }
 
@@ -135,21 +112,18 @@
 }
 
 //上传文件网络请求
-+(void)doFileRequestWithParameters:(NSDictionary *)parameters useUrl:(NSString *)Url image:(NSArray<UIImage *> *)images complete:(JSONModel *(^)(id responseobj))complete andBlock:(void(^)(id responseObject,NSError *error))block {
++(void)doFileRequestWithParameters:(NSDictionary *)parameters
+                            useUrl:(NSString *)Url image:(NSArray<UIImage *> *)images
+                          complete:(JSONModel *(^)(id responseobj))complete
+                          response:(response)response {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"image/jpeg",@"image/png",@"application/octet-stream",@"text/json",nil];
-    
     manager.requestSerializer= [AFHTTPRequestSerializer serializer];
-    
     manager.responseSerializer= [AFHTTPResponseSerializer serializer];
-    
     [manager POST:Url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        
 //        
 //        NSData *data = UIImagePNGRepresentation(images[0]);
 //        
@@ -185,8 +159,6 @@
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
-        
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSLog(@"request URL:%@",task.originalRequest.URL.absoluteString);
@@ -198,49 +170,21 @@
         
         NSInteger statusCode = [responseDic[@"code"] integerValue];
         if (statusCode == 200) {
-     
-            if (complete(responseDic) == nil) {
-                NSError *error = [NSError errorWithDomain:@"JSONModel" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"json convert to response failed!"}];
-                block(nil,error);
-            } else {
-                if (block) {
-                    block(complete(responseDic),nil);
-                }
+            if (response) {
+                response(complete(responseDic),nil);
             }
-            
-        } else if (statusCode == 202)
-        {
-            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:202 userInfo:@{NSLocalizedDescriptionKey:@"暂无数据"}];
-            block(nil,error);
-        } else if (statusCode == 500){
-            NSError *error = [NSError errorWithDomain:@"WOTWorkSpace" code:500 userInfo:@{NSLocalizedDescriptionKey:@"请求失败，请重试"}];
-            block(nil,error);
         }
         else {
-            NSLog(@"----error:%@",error);
-            block(nil,error);
+            if (response) {
+                response(nil, error);
+            }
         }
-        
-        if (error) {
-            NSLog(@"----error:%@",error);
-            block(nil,error);
-            return ;
-        }
-        
-        
-        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"上传失败%@",error);
-        NSLog(@"request URL: %@",task.originalRequest.URL.absoluteString);
-        
-        
-        NSError *err = [NSError errorWithDomain:@"WOTWorkSpace" code:error.code userInfo:@{NSLocalizedDescriptionKey:@"网络异常，请重试"}];
-        block(nil,err);
-
-        
-        
+        NSLog(@"request URL: %@-----error:%@",task.originalRequest.URL.absoluteString,error.userInfo[NSLocalizedDescriptionKey]);
+        if (response) {
+            response(nil, error);
+        }
     }];
   
 }
@@ -255,11 +199,7 @@
     [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
         WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseobj[@"msg"] error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
     
 }
 
@@ -271,11 +211,7 @@
     [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
         WOTGetVerifyModel *model = [[WOTGetVerifyModel alloc] initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response
@@ -286,11 +222,7 @@
     [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
         WOTRegisterModel *model = [[WOTRegisterModel alloc] initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response{
@@ -307,11 +239,7 @@
         return  spacemodel;
         
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 /**
@@ -327,11 +255,7 @@
         return  spacemodel;
         
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response
@@ -345,11 +269,7 @@
         WOTLocationModel_Msg * activitymodel = [[WOTLocationModel_Msg alloc]initWithDictionary:responseobj error:nil];
         
         return  activitymodel;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    }response:response];
 }
 
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState  response:(response)response{
@@ -363,11 +283,7 @@
          return  activitymodel;
          
          
-     } andBlock:^(id responseObject, NSError *error) {
-         if (response) {
-             response(responseObject,error);
-         }
-     }];
+     } response:response];
 }
 
 
@@ -382,11 +298,7 @@
         return  enterprisemodel;
         
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    }response:response];
 }
 
 +(void)getAllNewInformation:(response)response{
@@ -394,11 +306,7 @@
     [self doRequestWithParameters:nil useUrl:infourl complete:^JSONModel *(id responseobj) {
         WOTNewInformationModel_msg *infomodel = [[WOTNewInformationModel_msg alloc]initWithDictionary:responseobj error:nil];
         return infomodel;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)getHomeSliderSouceInfo:(response)response{
@@ -406,11 +314,7 @@
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTSliderModel_msg *model = [[WOTSliderModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -420,11 +324,7 @@
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTSliderModel_msg *model = [[WOTSliderModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    }response:response];
 }
 
 
@@ -436,17 +336,13 @@
     [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTMyFeedBackModel_msg *model = [[WOTMyFeedBackModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
 
 
-+(void)registerServiceBusiness:(NSString *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response{
++(void)registerServiceBusiness:(NSNumber *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(NSArray<UIImage *> *)firmLogo     response:(response)response{
     
     
     NSString *registerurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorInfo/addInfo"];
@@ -460,11 +356,7 @@
     [self doFileRequestWithParameters:parameters useUrl:registerurl image:firmLogo complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
   
 }
 
@@ -501,9 +393,7 @@
             response(model, nil);
         }
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        response(nil, nil);
-    }];
+    } response:response];
     
 }
 
@@ -533,9 +423,7 @@
             response(model,nil);
         }
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        response(nil, error);
-    }];
+    } response:response];
 }
 
 
@@ -552,11 +440,7 @@
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTMeetingListModel_msg *model = [[WOTMeetingListModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
     
 
 }
@@ -572,13 +456,10 @@
     [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
     
-    }
+}
+
 +(void)getMeetingReservationsTimeWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)strTime response:(response)response
 {
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/findByIdAndTime"];
@@ -588,12 +469,8 @@
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTMeetingReservationsModel_msg *model = [[WOTMeetingReservationsModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
-   }
+    } response:response];
+}
 
 
 
@@ -608,11 +485,7 @@
     [self doRequestWithParameters:parameters useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 +(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
 {
@@ -626,11 +499,7 @@
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 #pragma mark - Site
@@ -640,11 +509,7 @@
     [self doRequestWithParameters:nil useUrl:url complete:^JSONModel *(id responseobj) {
          WOTSiteModel_Msg *model = [[WOTSiteModel_Msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)getSiteListWithSpaceId:(NSNumber *)spaceid response:(response)response
@@ -656,11 +521,7 @@
     [self doRequestWithParameters:dic useUrl:url complete:^JSONModel *(id responseobj) {
         WOTSiteModel_Msg *model = [[WOTSiteModel_Msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)getSiteReservationsTimeWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)strTime response:(response)response
@@ -675,11 +536,7 @@
     [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTSiteReservationsModel_Msg *model = [[WOTSiteReservationsModel_Msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 +(void)siteReservationsWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
@@ -695,11 +552,7 @@
     [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTSiteReservationsRsponseModel_Msg *model = [[WOTSiteReservationsRsponseModel_Msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -710,11 +563,7 @@
     [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTServiceCategoryModel_msg *model = [[WOTServiceCategoryModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 +(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
 {
@@ -722,11 +571,7 @@
     [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    }response:response];
 }
 
 
@@ -745,11 +590,7 @@
             return  activitymodel;
         }
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -763,11 +604,7 @@
             return  activitymodel;
       
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -784,11 +621,7 @@
         return  activitymodel;
         
         
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -800,11 +633,7 @@
         WOTAppointmentModel_msg *model = [[WOTAppointmentModel_msg alloc]initWithDictionary:responseobj error:nil];
         
         return  model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
@@ -814,23 +643,18 @@
     NSDictionary *parameters = @{@"userId":userId,@"alias":alias,@"type":type,@"info":info,@"appointmentTime":appointmentTime,@"address":address};
     [self doFileRequestWithParameters:parameters useUrl:applyurl image:file complete:^JSONModel *(id responseobj) {
         WOTBaseModel *model = [[WOTBaseModel alloc]initWithDictionary:responseobj error:nil];
-        
         return  model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
 
 
-
+#pragma mark - 订单
 +(void)generateOrderWithSpaceId:(NSNumber *)spaceId commodityNum:(NSNumber *)commNum commodityKind:(NSNumber *)commKind productNum:(NSNumber *)productNum startTime:(NSString *)startTime endTime:(NSString *)endTime money:(CGFloat)money dealMode:(NSString *)dealMode payType:(NSNumber *)payType payObject:(NSString *)payObject payMode:(NSNumber *)payMode contractMode:(NSNumber *)contractMode response:(response)response
 {
     NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
     NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
-    NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userId,
+    NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userInfo.userId,
                                  @"facilitator":@(00001),
                                  @"carrieroperator":@(00002),
                                  @"body":@"易创客",
@@ -863,12 +687,37 @@
         payRequest.sign = model.msg.sign;//商家根据微信开放平台文档对数据做的签名
         [WXApi sendReq:payRequest];
         return  model;
-    } andBlock:^(id responseObject, NSError *error) {
-        if (response) {
-            response(responseObject,error);
-        }
-    }];
+    } response:response];
 }
 
+#pragma mark - 社交
+
++(void)sendMessageToSapceWithSpaceId:(NSNumber *)spaceId text:(NSString *)text images:(NSArray *)images response:(response)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@/Share/addShare",HTTPBaseURL];
+    NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userInfo.userId,
+                                 @"spaceId":spaceId,
+                                 @"textWord":text,
+                                 };
+    
+    [WOTHTTPNetwork doFileRequestWithParameters:parameters useUrl:url image:images complete:^JSONModel *(id responseobj) {
+        WOTSendFriendsModel_msg *model = [[WOTSendFriendsModel_msg alloc] initWithDictionary:responseobj error:nil];
+        return model;
+    } response:response];
+}
+
++(void)getMessageBySapceIdWithSpaceId:(NSNumber *)spaceId response:(response)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@/Share/findBySpaceId",HTTPBaseURL];
+    NSDictionary *parameters = @{
+                                 @"spaceId":spaceId,
+                                 };
+    
+    [WOTHTTPNetwork doRequestWithParameters:parameters useUrl:url complete:^JSONModel *(id responseobj) {
+        WOTFriendsMessageListModel_msg *model12 = [[WOTFriendsMessageListModel_msg alloc] initWithDictionary:responseobj error:nil];
+        return model12;
+    } response:response];
+    
+}
 
 @end
