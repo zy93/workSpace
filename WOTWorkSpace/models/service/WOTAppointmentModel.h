@@ -36,6 +36,7 @@
 @property(nonatomic,strong)NSString *visitorTel;
 
 @end
+
 @interface WOTAppointmentModel_msg : JSONModel
 
 @property(nonatomic,strong)NSString *code;

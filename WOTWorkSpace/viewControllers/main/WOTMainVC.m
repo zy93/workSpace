@@ -225,6 +225,7 @@ int a = 0;
             [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
         }];
     }];
+    NSLog(@"Main最近空间%@",[WOTSingtleton shared].nearbySpace);
 }
 
 
@@ -281,13 +282,16 @@ int a = 0;
     
 
     self.autoScrollView.imageURLStringsGroup = _imageUrlStrings;
-    self.autoScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+//    self.autoScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;//dong删除默认居中
+    
 //    self.autoScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFit;  //设置图片填充格式
     self.autoScrollView.delegate = self;
-    self.autoScrollView.titlesGroup = _imageTitles;
-    self.autoScrollView.currentPageDotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
-   
-    self.autoScrollView.placeholderImage = [UIImage imageNamed:@"placeholder"];
+    //self.autoScrollView.titlesGroup = _imageTitles;
+    //self.autoScrollView.currentPageDotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
+    self.autoScrollView.pageDotColor = [[UIColor alloc] initWithRed:13.0/255.0f green:13.0/255.0f blue:13.0/255.0f alpha:0.2];
+    //self.autoScrollView.currentPageDotColor = [UIColor blueColor];//dong
+    //pageDotColor
+    //self.autoScrollView.placeholderImage = [UIImage imageNamed:@"placeholder"];
     
 }
 

@@ -230,7 +230,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-E0-SQz">
-                                                <rect key="frame" x="0.0" y="150" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="51" width="375" height="129"/>
                                                 <connections>
                                                     <action selector="showActivityDetail:" destination="ReM-5A-Olt" eventType="touchUpInside" id="dL9-Ml-41C"/>
                                                 </connections>
@@ -239,6 +239,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Z3D-t0-le7" secondAttribute="trailing" id="33P-GE-Ogl"/>
+                                            <constraint firstItem="xDP-E0-SQz" firstAttribute="top" secondItem="Z3D-t0-le7" secondAttribute="top" id="5EF-oe-mew"/>
                                             <constraint firstItem="Z3D-t0-le7" firstAttribute="top" secondItem="sc3-fb-g2q" secondAttribute="bottom" constant="5" id="7hi-Ny-abV"/>
                                             <constraint firstItem="sc3-fb-g2q" firstAttribute="top" secondItem="heX-LE-hiG" secondAttribute="top" id="DDm-aN-LKM"/>
                                             <constraint firstAttribute="bottom" secondItem="xDP-E0-SQz" secondAttribute="bottom" id="Dvo-qk-fJa"/>

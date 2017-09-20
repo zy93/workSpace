@@ -15,6 +15,7 @@
 #import "WOTOrderVC.h"
 #import "WOTSpaceModel.h"
 #import "WOTBookStationListModel.h"
+
 @interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource, WOTBookStationCellDelegate>
 {
     NSArray *allModelList; //所有的
@@ -69,9 +70,19 @@
 
 -(void)configNavi{
     self.navigationItem.title = @"订工位";
+    ///需要更改的地方spaceName
+    //WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
+   // NSLog(@"最近空间%@",model.spaceName);
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
     [self.navigationItem setRightBarButtonItem:doneItem];
-//    
+//
+    //解决布局空白问题--dong
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
+    self.navigationController.navigationBar.translucent = NO; //有个万恶的黑色
+
 }
 
 -(void)setupView

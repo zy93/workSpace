@@ -53,8 +53,8 @@
 
 -(void)commonInit
 {
-    self.backgroundColor = UIColorFromRGB(0x8fc5f3);
-    
+    //self.backgroundColor = UIColorFromRGB(0x8fc5f3);
+    self.backgroundColor = [UIColor whiteColor];
     sbNameList = @[@"Service",@"Service",@"Service",@"Service",@"Service",
                    @"spaceMain",@"",@"spaceMain",];
     
@@ -107,7 +107,8 @@
     
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imgV.frame)+10, buttonWidth, 20)];
     lab.text = title;
-    lab.textColor = UIColorFromRGB(0xffffff);
+    //lab.textColor = UIColorFromRGB(0xffffff);
+    lab.textColor = RGBA(72,134,236,1);
     lab.textAlignment = NSTextAlignmentCenter;
     lab.font = [UIFont systemFontOfSize:15.f];
     

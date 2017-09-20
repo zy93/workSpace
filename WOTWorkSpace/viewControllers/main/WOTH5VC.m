@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self congigNav];
+    self.web.opaque = NO;//dong
+    self.web.backgroundColor = [UIColor clearColor];//dong
     [self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
