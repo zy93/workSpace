@@ -28,10 +28,12 @@ typedef void(^response)(id bean,NSError *error);
 +(void)userGetVerifyWitTel:(NSString *)tel response:(response)response;
 /**
  * 注册接口
+ @param code 验证码
  @param tel  手机号注册
+ @param pass 用户密码
  @param response    回调数据到上层
  */
-+(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response;
++(void)userRegisterWitVerifyCode:(NSString *)code tel:(NSString *)tel password:(NSString *)pass response:(response)response;
 
 /**
  * 注册接口

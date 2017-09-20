@@ -10,6 +10,7 @@
 #import "WOTSelectCityCodeVC.h"
 #import "WOTRegisterModel.h"
 #import "WOTGetVerifyModel.h"
+#import "MBProgressHUD+Extension.h"
 
 @interface WOTUserRegisterVC ()<UITextFieldDelegate>
 
@@ -106,7 +107,7 @@
                             [MBProgressHUDUtil showMessage:@"发送成功" toView:self.view];
                         }
                         else {
-                            [MBProgressHUDUtil showMessage:@"发送失败，请稍后再试!" toView:self.view];
+                            [MBProgressHUDUtil showMessage:model.result toView:self.view];
                         }
                     }];
                     
@@ -121,12 +122,24 @@
 - (IBAction)clickRegisterBtn:(id)sender {
     if (strIsEmpty(self.verificationCodeText.text)) {
         [MBProgressHUDUtil showMessage:@"请填写正确的验证码" toView:self.view];
-    } else {
-        
-        [WOTHTTPNetwork userRegisterWitUserNick:@"Tom" tel:self.phoneText.text password:self.passwordText.text response:^(id bean, NSError *error) {
-            WOTRegisterModel *model = bean;
-        }];
-        
+    }
+    else if (![self.passwordText.text isEqualToString:self.verificationPasswordText.text]) {
+        [MBProgressHUDUtil showMessage:@"两次密码不一致！" toView:self.view];
+    }
+    else {
+        {
+            
+            [WOTHTTPNetwork userRegisterWitVerifyCode:self.verificationCodeText.text tel:self.phoneText.text password:self.passwordText.text response:^(id bean, NSError *error) {
+                WOTRegisterModel *model = bean;
+                if ([model.code isEqualToString:@"200"]) {
+                    [MBProgressHUDUtil showMessage:@"注册成功" toView:self.view];
+                }
+                else {
+                    [MBProgressHUDUtil showMessage:model.result toView:self.view];
+                }
+            }];
+            
+        }
     }
     
 }
