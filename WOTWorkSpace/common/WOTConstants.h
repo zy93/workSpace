@@ -69,8 +69,13 @@
 #define UIColor_green_37 UIColorFromRGB(0x37c922)
 //#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
 //#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
-//#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
-#define HTTPBaseURL @"http://219.143.170.98:10011/workSpace"
+#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
+//#define HTTPBaseURL @"http://219.143.170.98:10011/workSpace"
+
+//集团的appid
+#define YLGTEST_APPID @"c4ca4238a0b923820dcc509a6f75849b"//易联港测试
+#define HHGROUP_APPID @"c81e728d9d4c2f636f067f89cc14862c"//海航集团
+#define QTWORK_APPID  @"eccbc87e4b5ce2fe28308fd9f2a7baf3"//青藤办公
 
 
 //微信支付

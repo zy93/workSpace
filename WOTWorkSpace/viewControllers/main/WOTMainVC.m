@@ -97,7 +97,7 @@ int a = 0;
     if (a++<=0) {
         [self loadLocation];
     }
-    
+    NSLog(@"Main最近空间%@",[WOTSingtleton shared].nearbySpace);
     [super viewDidAppear:animated];
     
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
@@ -225,7 +225,7 @@ int a = 0;
             [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
         }];
     }];
-    NSLog(@"Main最近空间%@",[WOTSingtleton shared].nearbySpace);
+    
 }
 
 
@@ -479,6 +479,7 @@ int a = 0;
     
     if ([_spacePageViewDataSource[index].spacePicture separatedWithString:@","].count!=0) {
         [bannerView.mainImageView sd_setImageWithURL:[[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+        
         NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0]]);
     }
     
@@ -514,9 +515,6 @@ int a = 0;
     _spacevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTworkSpaceLIstVCID"];
     [_spacevc setDataSource:_spacedataSource];
     [self.navigationController pushViewController:_spacevc animated:YES];
-    
-    
-    
 }
 
 

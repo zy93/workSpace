@@ -6,13 +6,13 @@
 //  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTWorkspaceListVC.h"
+#import "WOTWorkspaceListVC.h"//1
 #import "WOTReservationsMeetingVC.h"
 #import "WOTServiceNaviController.h"
 #import "WOTSpaceModel.h"
 
 
-@interface WOTWorkspaceListVC () <UITableViewDelegate, UITableViewDataSource>
+@interface WOTWorkspaceListVC () <UITableViewDelegate, UITableViewDataSource>//1
 {
 //    NSArray *tableList;
     NSDictionary *tableDic;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation WOTWorkspaceListVC
+@implementation WOTWorkspaceListVC//1
 
 - (void)viewDidLoad {
     [super viewDidLoad];

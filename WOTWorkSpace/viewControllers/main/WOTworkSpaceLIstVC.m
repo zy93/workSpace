@@ -275,12 +275,9 @@
     [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
          complete();
         if (bean != nil) {
-            
            
             WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
             _dataSource = dd.msg;
-           
-   
         }
         if (error) {
             [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];

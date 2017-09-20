@@ -11,7 +11,7 @@
 #import "XXPageTabItemLable.h"
 #import "WOTBookStationCell.h"
 #import "WOTDatePickerView.h"
-#import "WOTWorkspaceListVC.h"
+#import "WOTWorkspaceListVC.h"//1
 #import "WOTOrderVC.h"
 #import "WOTSpaceModel.h"
 #import "WOTBookStationListModel.h"
@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectedBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableIView;
 @property(nonatomic,strong)WOTDatePickerView *datepickerview;
+//@property (nonatomic,strong) NSString *spaceNme;
 
 @end
 
@@ -48,11 +49,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configNavi];
+    
     [self setupView];
     _spaceId = @(56);
     inquireTime = [NSDate getNewTimeZero];
     cityName = @"北京";
+    
+    WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
+    NSLog(@"最近空间%@",model.spaceName);
+    if (model.spaceName) {
+        self.spaceName = model.spaceName;
+    }
+    else
+    {
+        self.spaceName = @"未定位";
+    }
 
 }
 
@@ -65,15 +76,16 @@
     [self.navigationController.navigationBar setHidden:NO];
 //    [self configNaviBackItem];
     [self createRequest];
+    [self configNavi];
     
 }
 
 -(void)configNavi{
     self.navigationItem.title = @"订工位";
     ///需要更改的地方spaceName
-    //WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
-   // NSLog(@"最近空间%@",model.spaceName);
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+    
+    
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
     [self.navigationItem setRightBarButtonItem:doneItem];
 //
     //解决布局空白问题--dong
@@ -116,9 +128,11 @@
     [WOTHTTPNetwork getSpaceSitationBlock:^(id bean, NSError *error) {
         WOTBookStationListModel_msg *msg = bean;
         allModelList = msg.msg;
+        //self.spaceName = allModelList
         for (WOTBookStationListModel_msg_List *model in allModelList) {
             if ([model.cityName isEqualToString:cityName]) {
                 tableList = model.cityList;
+                
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -154,7 +168,7 @@
 
 -(void)selectSpace:(UIButton *)sender
 {
-    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];//1
     __weak typeof(self) weakSelf = self;
     vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
         weakSelf.spaceId = spaceId;

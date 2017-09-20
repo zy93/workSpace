@@ -34,7 +34,7 @@ typedef void(^response)(id bean,NSError *error);
 +(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response;
 
 /**
- * 注册接口
+ * 根据城市获取所有空间接口
  @param city  城市名称 传入城市名称根据城市筛选，不传查询全部
  @param response    回调数据到上层
  */
@@ -45,12 +45,18 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getSpaceSitationBlock:(response)response;
 
 /**
+ *根据集团获取所有空间接口
+ *
+ */
++(void)getSapaceFromGroupBlock:(response)response;
+
+/**
  获取定位最近的空间
 
  @param lat 纬度
  @param lon 经度
  */
-+(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;;
++(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;
 
 
 //+(void)getSpaceWith

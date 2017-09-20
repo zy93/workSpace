@@ -227,10 +227,10 @@
 
 +(void)getAllSpaceWithCity:(NSString *)city block:(response)response{
     
-     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
     NSDictionary *parameters;
     if (city != nil) {
-        parameters = @{@"city":city};
+        parameters = @{@"city":city};//原来
     }
 
     [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
@@ -258,15 +258,28 @@
     } response:response];
 }
 
++(void)getSapaceFromGroupBlock:(response)response
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findByAppId"];
+    NSDictionary *parameters = @{@"appid":YLGTEST_APPID};
+    
+    [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
+        WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return  spacemodel;
+    } response:response];
+}
+
 +(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response
 {
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findNearSpace"];
     NSDictionary * parameters = @{@"lng":@(lon),
-                                  @"lat":@(lat)};
+                                  @"lat":@(lat),
+                                  @"appId":YLGTEST_APPID};
+    
     [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
         
         WOTLocationModel_Msg * activitymodel = [[WOTLocationModel_Msg alloc]initWithDictionary:responseobj error:nil];
-        
+        NSLog(@"测试%@",activitymodel.msg);
         return  activitymodel;
     }response:response];
 }
@@ -424,10 +437,6 @@
         return model;
     } response:response];
 }
-
-
-
-
 
 
 /****************           Service        ****************************/
