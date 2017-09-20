@@ -101,6 +101,7 @@
             if (bean) {
                 
                 WOTLoginModel *model = (WOTLoginModel *)bean;
+                NSLog(@"登陆%@",model);
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
                     [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model];
                     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];

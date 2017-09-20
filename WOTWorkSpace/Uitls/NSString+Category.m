@@ -57,6 +57,7 @@
     NSDate *date = [formatter dateFromString:self];
     return date;
 }
+
 -(NSURL *)ToUrl{
     NSString *base = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,self];
     return [NSURL URLWithString:base];

@@ -55,6 +55,7 @@
             return ;
         }
         WOTSpaceModel_msg *list = bean;
+        NSLog(@"测试%@",list.msg);
 //        tableList = list.msg;
         tableDic = [self sortByCity:list.msg];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -63,7 +64,7 @@
     }];
 }
 
-
+//将返回的数据，按照城市从新组合
 -(NSDictionary *)sortByCity:(NSArray *)array
 {
     //先看有哪些城市
@@ -72,7 +73,9 @@
     for (WOTSpaceModel *model in array) {
         //
         BOOL isHaveCity = NO;
-        for (NSString *city in array) {
+        for (NSString *city in cityList) {
+            NSLog(@"测试1%@",city);
+            NSLog(@"测试2%@",model.city);
             if ([model.city isEqualToString:city]) {
                 isHaveCity = YES;
                 break;
@@ -81,6 +84,7 @@
         if (!isHaveCity) {
             [cityList addObject:model.city];
         }
+        [cityList addObject:model.city];
     }
     
     NSMutableDictionary *resultDic = [NSMutableDictionary new];
@@ -93,7 +97,7 @@
         [arr addObject:model];
         [resultDic setObject:arr forKey:model.city];
     }
-    
+    NSLog(@"测试3%@",resultDic);
     return resultDic;
 }
 

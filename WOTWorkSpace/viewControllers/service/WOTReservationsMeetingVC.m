@@ -73,7 +73,7 @@
     else {
         self.navigationItem.title = @"预定场地";
     }
-    
+    ///需要更改的地方
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
     [self.navigationItem setRightBarButtonItem:doneItem];
     //解决布局空白问题

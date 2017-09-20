@@ -76,7 +76,6 @@
 #pragma mark CLLocationManagerDelegate
 
 //定位后的返回结果
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     //locations数组中存储的是CLLocation
     CLLocation *location =[locations firstObject];

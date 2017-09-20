@@ -263,7 +263,6 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findNearSpace"];
     NSDictionary * parameters = @{@"lng":@(lon),
                                   @"lat":@(lat)};
-    
     [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
         
         WOTLocationModel_Msg * activitymodel = [[WOTLocationModel_Msg alloc]initWithDictionary:responseobj error:nil];
