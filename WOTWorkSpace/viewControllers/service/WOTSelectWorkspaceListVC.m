@@ -6,13 +6,13 @@
 //  Copyright © 2017年 北京物联港科技发展有限公司. All rights reserved.
 //
 
-#import "WOTWorkspaceListVC.h"//1
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTReservationsMeetingVC.h"
 #import "WOTServiceNaviController.h"
 #import "WOTSpaceModel.h"
 
 
-@interface WOTWorkspaceListVC () <UITableViewDelegate, UITableViewDataSource>//1
+@interface WOTSelectWorkspaceListVC () <UITableViewDelegate, UITableViewDataSource>//1
 {
 //    NSArray *tableList;
     NSDictionary *tableDic;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation WOTWorkspaceListVC//1
+@implementation WOTSelectWorkspaceListVC//1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,12 +44,12 @@
     }
 }
 
-
 #pragma mark - request
 -(void)createRequest
 {
     __weak typeof(self) weakSelf = self;
-    [WOTHTTPNetwork getAllSpaceWithCity:nil block:^(id bean, NSError *error) {
+   // [WOTHTTPNetwork getAllSpaceWithCity:nil block:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getSapaceFromGroupBlock:^(id bean, NSError *error) {
         if (error) {
             NSLog(@"error:%@",error);
             return ;

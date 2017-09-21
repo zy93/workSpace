@@ -9,7 +9,7 @@
 #import "WOTReservationsMeetingVC.h"
 #import "WOTReservationsMeetingCell.h"
 #import "WOTOrderVC.h"
-#import "WOTWorkspaceListVC.h"//1
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTDatePickerView.h"
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
@@ -192,7 +192,7 @@
 
 -(void)selectSpace:(UIButton *)sender
 {
-    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];//1
+    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
     __weak typeof(self) weakSelf = self;
     vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
         weakSelf.spaceId = spaceId;
@@ -200,8 +200,6 @@
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 
 #pragma mark - cell delegate

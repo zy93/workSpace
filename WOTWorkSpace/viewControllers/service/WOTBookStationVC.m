@@ -11,7 +11,7 @@
 #import "XXPageTabItemLable.h"
 #import "WOTBookStationCell.h"
 #import "WOTDatePickerView.h"
-#import "WOTWorkspaceListVC.h"//1
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTOrderVC.h"
 #import "WOTSpaceModel.h"
 #import "WOTBookStationListModel.h"
@@ -125,6 +125,7 @@
 #pragma mark - request
 -(void)createRequest
 {
+    //待讨论
     [WOTHTTPNetwork getSpaceSitationBlock:^(id bean, NSError *error) {
         WOTBookStationListModel_msg *msg = bean;
         allModelList = msg.msg;
@@ -132,7 +133,7 @@
         for (WOTBookStationListModel_msg_List *model in allModelList) {
             if ([model.cityName isEqualToString:cityName]) {
                 tableList = model.cityList;
-                
+            
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -168,7 +169,7 @@
 
 -(void)selectSpace:(UIButton *)sender
 {
-    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];//1
+    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
     __weak typeof(self) weakSelf = self;
     vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
         weakSelf.spaceId = spaceId;

@@ -10,7 +10,7 @@
 #import "WOTVisitorsAppointmentCell.h"
 #import "WOTVisitTypeCell.h"
 #import "WOTPhotosBaseUtils.h"
-#import "WOTWorkspaceListVC.h"//1
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTVisitorsAppointmentSubmitCell.h"
 #import "WOTRadioView.h"
 #import "WOTDatePickerView.h"
@@ -304,7 +304,7 @@
         [photo showSelectedPhotoSheet];
     }
     else  if ([str isEqualToString:@"访问社区"]) {
-        WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];//1
+        WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
         __weak typeof(self) weakSelf = self;
         vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
             weakSelf.spaceId = spaceId;

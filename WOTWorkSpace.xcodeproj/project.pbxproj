@@ -95,7 +95,7 @@
 		2AAC7A3F1F5D2FDE00F08359 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC7A2A1F5D2FDD00F08359 /* UIScrollView+MJExtension.m */; };
 		2AAC7A401F5D2FDE00F08359 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC7A2C1F5D2FDE00F08359 /* UIScrollView+MJRefresh.m */; };
 		2AAC7A411F5D2FDE00F08359 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC7A2E1F5D2FDE00F08359 /* UIView+MJExtension.m */; };
-		2AB255021F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255011F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m */; };
+		2AB255021F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255011F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.m */; };
 		2AD2BE191F26DC4F00D4C3BC /* WOTBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD2BE181F26DC4F00D4C3BC /* WOTBusinessModel.m */; };
 		2AD2BE201F2711BD00D4C3BC /* WOTCurtainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD2BE1E1F2711BD00D4C3BC /* WOTCurtainCell.m */; };
 		2AD2BE211F2711BD00D4C3BC /* WOTCurtainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD2BE1F1F2711BD00D4C3BC /* WOTCurtainCell.xib */; };
@@ -518,8 +518,8 @@
 		2AAC7A2C1F5D2FDE00F08359 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2AAC7A2D1F5D2FDE00F08359 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2AAC7A2E1F5D2FDE00F08359 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		2AB255001F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkspaceListVC.h; sourceTree = "<group>"; };
-		2AB255011F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWorkspaceListVC.m; sourceTree = "<group>"; };
+		2AB255001F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSelectWorkspaceListVC.h; sourceTree = "<group>"; };
+		2AB255011F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSelectWorkspaceListVC.m; sourceTree = "<group>"; };
 		2AD2BE171F26DC4F00D4C3BC /* WOTBusinessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBusinessModel.h; sourceTree = "<group>"; };
 		2AD2BE181F26DC4F00D4C3BC /* WOTBusinessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBusinessModel.m; sourceTree = "<group>"; };
 		2AD2BE1D1F2711BD00D4C3BC /* WOTCurtainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTCurtainCell.h; sourceTree = "<group>"; };
@@ -2038,8 +2038,8 @@
 				2AF78CF61F0A3EFA00F7B56D /* WOTFeedbackVC.m */,
 				2AF18A251F131BEE004681CE /* WOTReservationsMeetingVC.h */,
 				2AF18A261F131BEE004681CE /* WOTReservationsMeetingVC.m */,
-				2AB255001F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.h */,
-				2AB255011F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m */,
+				2AB255001F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.h */,
+				2AB255011F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.m */,
 				2AF18A2D1F135AE2004681CE /* WOTOrderVC.h */,
 				2AF18A2E1F135AE2004681CE /* WOTOrderVC.m */,
 				E8693B1B1F05143800772BC1 /* WOTServiceNaviController.h */,
@@ -3120,7 +3120,7 @@
 				E8190DB01F0F69660000B07C /* WOTMyEnterPriseCell.m in Sources */,
 				E8EACF7E1F0344EC0015535D /* WOTPageMenuParentVC.m in Sources */,
 				2AAC7A351F5D2FDE00F08359 /* MJRefreshAutoNormalFooter.m in Sources */,
-				2AB255021F1C8E0E00FCE6E7 /* WOTWorkspaceListVC.m in Sources */,
+				2AB255021F1C8E0E00FCE6E7 /* WOTSelectWorkspaceListVC.m in Sources */,
 				E85A85F41F0202460016FCA1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				E8BA0D8A1F0CFA1F00B81C3D /* WOTMyRepairdListVC.m in Sources */,
 				E82D5FB51F07DECE003EF0AE /* UIImage+Extension.m in Sources */,

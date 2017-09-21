@@ -8,7 +8,7 @@
 
 #import "WOTRegisterServiceProvidersVC.h"
 #import "WOTServiceProvidersCategoryVC.h"
-#import "WOTWorkspaceListVC.h"//1
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTRegisterServiceProvidersCell.h"
 #import "WOTSubmitRegisterServiceCell.h"
 #import "WOTPhotosBaseUtils.h"
@@ -77,9 +77,9 @@
         };
         
     }
-    else if ([vcName isEqualToString:@"WOTWorkspaceListVC"]){//1
+    else if ([vcName isEqualToString:@"WOTSelectWorkspaceListVC"]){//1
         __weak typeof(self) weakSelf = self;
-        WOTWorkspaceListVC *lc = (WOTWorkspaceListVC*)vc;//1
+        WOTSelectWorkspaceListVC *lc = (WOTSelectWorkspaceListVC*)vc;//1
         lc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
             weakSelf.spaceId = spaceId;
             weakSelf.spaceName = spaceName;
@@ -186,7 +186,7 @@
             [self pushVCByVCName:@"WOTServiceProvidersCategoryVC"];
         }
         else if (indexPath.row == 6) {
-            [self pushVCByVCName:@"WOTWorkspaceListVC"];//1
+            [self pushVCByVCName:@"WOTSelectWorkspaceListVC"];//1
         }
         
         

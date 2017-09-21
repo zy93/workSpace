@@ -272,7 +272,8 @@
 //从网络获取数据
 -(void)getDataSourceFromWebFWithCity:( NSString * __nullable )city complete:(void(^)())complete{
     
-    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+   // [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getSapaceFromGroupBlock:^(id bean, NSError *error) {
          complete();
         if (bean != nil) {
            
@@ -291,19 +292,15 @@
 
 //MARK:根据城市进行筛选空间列表
 -(void)selectSpaceWithCity:(NSInteger)cityindex othersBlock:(void(^)())othersBlock{
-    
     if (cityindex == 0) {
         [self getDataSourceFromWebFWithCity:nil complete:^{
             othersBlock();
-            
         }];
     } else {
         [self getDataSourceFromWebFWithCity:[WOTSingtleton shared].spaceCityArray[cityindex] complete:^{
             othersBlock();
-            
         }];
     }
-    
 }
 
 /*

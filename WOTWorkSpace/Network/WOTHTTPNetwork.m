@@ -573,14 +573,15 @@
         return model;
     } response:response];
 }
-+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
-{
-    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/findAllStation"];
-    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
-        WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
-        return model;
-    }response:response];
-}
+
+//+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response
+//{
+//    NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/findAllStation"];
+//    [self doRequestWithParameters:nil useUrl:sliderurl complete:^JSONModel *(id responseobj) {
+//        WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];//1
+//        return model;
+//    }response:response];
+//}
 
 
 +(void)getUserActivitiseWithUserId:(NSNumber *)userId state:(NSString *)state response:(response)response{

@@ -180,7 +180,8 @@ typedef void(^response)(id bean,NSError *error);
  @param spaceid 空间id
  @param response 回调
  */
-+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;
+//+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;//2017 废弃
+//+(void)getBook
 /**
  *我的--我的活动
  */
