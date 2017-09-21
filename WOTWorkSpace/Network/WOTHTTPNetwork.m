@@ -88,7 +88,7 @@
         }
         else {
             if (response) {
-                response(nil, error);
+                response(complete(responseDic), error);
             }
         }
         
@@ -214,9 +214,11 @@
     } response:response];
 }
 
-+(void)userRegisterWitUserNick:(NSString *)nick tel:(NSString *)tel password:(NSString *)pass response:(response)response
++(void)userRegisterWitVerifyCode:(NSString *)code tel:(NSString *)tel password:(NSString *)pass response:(response)response
 {
-    NSDictionary *dic = @{@"tel" :tel, @"nick": nick, @"password":[WOTUitls md5HexDigestByString:pass]};
+    NSDictionary *dic = @{@"tel" :tel,
+                          @"verifyNumPro": code,
+                          @"password":[WOTUitls md5HexDigestByString:pass]};
     NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Login/register"];
     
     [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
