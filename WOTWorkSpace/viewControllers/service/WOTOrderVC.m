@@ -101,7 +101,7 @@
 #pragma mark - action
 - (IBAction)clickSubmitBtn:(id)sender {
     //判断用户是否登录
-    if ([WOTUserSingleton shareUser].userInfo.userId) {
+    if (![WOTUserSingleton shareUser].userInfo.userId) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登录" message:@"请先登录用户" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
