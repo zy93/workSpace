@@ -672,7 +672,7 @@
                                  @"facilitator":@(00001),
                                  @"carrieroperator":@(00002),
                                  @"body":@"易创客",
-                                 @"total_fee":@(money*100),
+                                 @"total_fee":@(1),
                                  @"spbill_create_ip":deviceip,
                                  @"trade_type":@"APP",
                                  @"spaceId":spaceId,
