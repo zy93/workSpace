@@ -79,16 +79,19 @@
         NSError *error = nil;
         NSData *jsonData = [responseStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-        
+        NSLog(@"测试：%@",responseDic);
         NSInteger statusCode = [responseDic[@"code"] integerValue];
         if (statusCode == 200) {
             if (response) {
                 response(complete(responseDic),nil);
+                NSLog(@"测试12121313131131：%@",complete(responseDic));
             }
         }
         else {
             if (response) {
+                
                 response(complete(responseDic), error);
+                NSLog(@"测试：%@",complete(responseDic));
             }
         }
         
@@ -197,10 +200,10 @@
     NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Login/Login"];
     
     [self doRequestWithParameters:dic useUrl:string complete:^JSONModel *(id responseobj) {
-        WOTLoginModel *model = [[WOTLoginModel alloc] initWithDictionary:responseobj[@"msg"] error:nil];
+        WOTLoginModel_msg *model = [[WOTLoginModel_msg alloc] initWithDictionary:responseobj error:nil];
         return model;
     } response:response];
-    
+    NSLog(@"测试：%@",response);
 }
 
 +(void)userGetVerifyWitTel:(NSString *)tel response:(response)response
@@ -263,7 +266,7 @@
 +(void)getSapaceFromGroupBlock:(response)response
 {
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findByAppId"];
-    NSDictionary *parameters = @{@"appid":YLGTEST_APPID};
+    NSDictionary *parameters = @{@"appId":YLGTEST_APPID};
     
     [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
         WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];

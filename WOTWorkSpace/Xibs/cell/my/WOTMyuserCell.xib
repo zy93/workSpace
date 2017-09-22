@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +66,11 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-Ch-7As">
-                        <rect key="frame" x="0.0" y="53" width="434" height="216.5"/>
+                        <rect key="frame" x="182" y="65" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="VOU-td-vll"/>
+                            <constraint firstAttribute="width" constant="70" id="lLH-HY-fjf"/>
+                        </constraints>
                         <connections>
                             <action selector="goToPersionalInformationVC:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AAd-8Y-yZz"/>
                         </connections>
@@ -76,16 +80,14 @@
                     <constraint firstItem="k1k-Rh-2hu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="0VV-Vd-N3I"/>
                     <constraint firstAttribute="trailingMargin" secondItem="y66-8c-YCX" secondAttribute="trailing" constant="60" id="6MD-Oi-2EN"/>
                     <constraint firstAttribute="bottom" secondItem="y66-8c-YCX" secondAttribute="bottom" constant="25" id="9jm-ki-XpB"/>
-                    <constraint firstAttribute="bottom" secondItem="ogY-Ch-7As" secondAttribute="bottom" id="F6R-gd-Zav"/>
+                    <constraint firstItem="ogY-Ch-7As" firstAttribute="top" secondItem="CU5-w4-RND" secondAttribute="top" id="E7J-VV-EOa"/>
                     <constraint firstItem="Ivb-Z9-PCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Fyp-EP-4jI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="k1k-Rh-2hu" secondAttribute="trailing" constant="10" id="Hme-pd-YrP"/>
-                    <constraint firstAttribute="trailing" secondItem="ogY-Ch-7As" secondAttribute="trailing" id="IIK-qi-N94"/>
-                    <constraint firstItem="ogY-Ch-7As" firstAttribute="top" secondItem="k1k-Rh-2hu" secondAttribute="bottom" id="NA8-Js-amd"/>
-                    <constraint firstItem="ogY-Ch-7As" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ngu-I6-XPL"/>
                     <constraint firstItem="CU5-w4-RND" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qo9-0I-Rpc"/>
                     <constraint firstItem="hC7-wQ-kfb" firstAttribute="centerY" secondItem="5jx-6D-PkN" secondAttribute="centerY" id="Qt5-ou-Nn2"/>
                     <constraint firstItem="5jx-6D-PkN" firstAttribute="leading" secondItem="hC7-wQ-kfb" secondAttribute="trailing" constant="20" id="SHQ-de-l1c"/>
                     <constraint firstItem="5jx-6D-PkN" firstAttribute="top" secondItem="qhR-Ud-Bdy" secondAttribute="bottom" constant="10" id="T2d-ab-1a5"/>
+                    <constraint firstItem="ogY-Ch-7As" firstAttribute="leading" secondItem="CU5-w4-RND" secondAttribute="leading" id="T3X-Me-55o"/>
                     <constraint firstItem="qhR-Ud-Bdy" firstAttribute="top" secondItem="CU5-w4-RND" secondAttribute="bottom" constant="15" id="YK1-gA-6mZ"/>
                     <constraint firstItem="Ivb-Z9-PCm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aXi-Wi-Exc"/>
                     <constraint firstItem="qhR-Ud-Bdy" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cMP-fH-8he"/>

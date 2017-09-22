@@ -27,11 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 //    [self.tableView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50)];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
+    
     [self.tableView registerClass:[WOTMycommonCell class] forCellReuseIdentifier:@"mycommonCellID"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyOrderCell" bundle:nil] forCellReuseIdentifier:@"myorderCellID"];
     
@@ -45,6 +44,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self.tableView registerNib:[UINib nibWithNibName:@"WOTMyuserCell" bundle:nil] forCellReuseIdentifier:@"WOTMyuserCellID"];
     [self.tabBarController.tabBar setHidden:NO];
      self.tabBarController.tabBar.translucent = NO;
     [self.navigationController.navigationBar setHidden:YES];

@@ -8,6 +8,11 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol WOTLoginModel
+
+@end
+
+
 @interface WOTLoginModel : JSONModel
 
 @property (nonatomic, strong) NSNumber *userId;
@@ -37,3 +42,19 @@
 @property (nonatomic, strong) NSString *spared3;
 
 @end
+
+
+@interface WOTLoginModel_msg : JSONModel
+
+@property(nonatomic,strong)NSString *code;
+@property(nonatomic,strong)NSString *result;
+@property(nonatomic,strong)WOTLoginModel<WOTLoginModel> *msg;
+
+
+@end
+
+
+
+
+
+

@@ -17,3 +17,11 @@
 }
 
 @end
+
+@implementation WOTLoginModel_msg
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+@end
+

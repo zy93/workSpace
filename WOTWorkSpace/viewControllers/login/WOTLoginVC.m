@@ -12,7 +12,8 @@
 #import "WOTUserRegisterVC.h"
 #import "WOTLoginModel.h"
 
-@interface WOTLoginVC ()
+@interface WOTLoginVC ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UITextField *accountText;
@@ -31,6 +32,8 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    _accountText.delegate = self;
+    _passwordText.delegate = self;
     self.loginBtn.layer.cornerRadius = 8;
     self.registerBtn.layer.cornerRadius = 8;
     self.registerBtn.layer.borderColor = UIColorFromRGB(0x4088ef).CGColor;
@@ -90,35 +93,48 @@
 }
 
 - (IBAction)clickLoginBtn:(id)sender {
-    [MBProgressHUDUtil showLoadingWithMessage:@"登录中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+    if (strIsEmpty(self.accountText.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入完整的电话号码" toView:self.view];
         
-       
-        
-        [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
-            
-             [hud setHidden:YES];
-            
-            if (bean) {
+    } else {
+        if (strIsEmpty(self.passwordText.text)) {
+            [MBProgressHUDUtil showMessage:@"请输入密码" toView:self.view];
+        } else {
+            [MBProgressHUDUtil showLoadingWithMessage:@"登录中..." toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
                 
-                WOTLoginModel *model = (WOTLoginModel *)bean;
-                NSLog(@"登陆%@",model);
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                    [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model];
-                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
-                });
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"是否登陆：%d",[WOTSingtleton shared].isuserLogin);
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                });
+                [WOTHTTPNetwork userLoginWithTelOrEmail:self.accountText.text password:self.passwordText.text response:^(id bean,NSError *error) {
+                    [hud setHidden:YES];
+                    NSLog(@"");
+                    if (bean) {
+                        WOTLoginModel_msg *model = (WOTLoginModel_msg *)bean;
+                        NSLog(@"登陆%@",model.msg);
+                        if ([model.code isEqualToString:@"200"]) {
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+                                [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model];
+                                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
+                            });
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                NSLog(@"是否登陆：%d",[WOTSingtleton shared].isuserLogin);
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            });
+                        }
+                        else {
+                            [MBProgressHUDUtil showMessage:model.result toView:self.view];
+                        }
+                        
+                    }
+                    //else{
+                    if (error) {
+                        [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
+                    }
+                    
+                }];
                 
-            }
-          
-            if (error) {
-                [MBProgressHUDUtil showMessage:error.localizedDescription toView:self.view];
-            }
-        }];
+            }];
         
-    }];
+        }
+    }
+    
    
     
 }
@@ -130,6 +146,14 @@
 
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self hiddleKeyboard];
+    return YES;
+}
+-(void)hiddleKeyboard{
+    [_passwordText resignFirstResponder];
+    [_accountText resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 

@@ -143,7 +143,12 @@
             WOTMeetingListModel_msg *model = bean;
             tableList = model.msg;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.table reloadData];
+                if (!tableList) {
+                    [self.table reloadData];
+                } else {
+                   //
+                }
+                
             });
         }];
     }

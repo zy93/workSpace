@@ -42,4 +42,7 @@
 +(NSArray*)getReservationsTimesWithDate:(NSString*)date StartTime:(CGFloat)startTime endTime:(CGFloat)endTime;
 //数字时间转文字时间  input:9.5  output:9:30
 +(NSString*)floatTimeConvertStringTime:(CGFloat)time;
+
+
+
 @end

@@ -91,19 +91,17 @@
         [MBProgressHUDUtil showMessage:@"请输入完整的电话号码" toView:self.view];
        
     } else {
-        
         if (strIsEmpty(self.passwordText.text)) {
             [MBProgressHUDUtil showMessage:@"请设置密码" toView:self.view];
         } else {
             if (strIsEmpty(self.verificationPasswordText.text)) {
                 [MBProgressHUDUtil showMessage:@"请填写确认密码" toView:self.view];
-                
             } else {
-               
-                    
                     [WOTHTTPNetwork userGetVerifyWitTel:self.phoneText.text response:^(id bean, NSError *error) {
+                        
                         WOTGetVerifyModel *model = bean;
                         if (model.code.intValue == 200) {
+                            [self openCountdown];
                             [MBProgressHUDUtil showMessage:@"发送成功" toView:self.view];
                         }
                         else {
@@ -133,6 +131,8 @@
                 WOTRegisterModel *model = bean;
                 if ([model.code isEqualToString:@"200"]) {
                     [MBProgressHUDUtil showMessage:@"注册成功" toView:self.view];
+                    //跳转登陆界面
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                 else {
                     [MBProgressHUDUtil showMessage:model.result toView:self.view];
@@ -161,6 +161,47 @@
     [_verificationCodeText resignFirstResponder];
     [_verificationPasswordText resignFirstResponder];
 }
+
+//开启倒计时结果
+-(void)openCountdown{
+    
+    __block NSInteger time = 59; //倒计时时间
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [self.getVerificationCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+//                [self.authCodeBtn setTitleColor:[UIColor colorFromHexCode:@"FB8557"] forState:UIControlStateNormal];
+                self.getVerificationCodeBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [self.getVerificationCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%.2d)", seconds] forState:UIControlStateNormal];
+//                [self.authCodeBtn setTitleColor:[UIColor colorFromHexCode:@"979797"] forState:UIControlStateNormal];
+                self.getVerificationCodeBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+
+
 /*
 #pragma mark - Navigation
 
