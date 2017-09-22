@@ -40,6 +40,7 @@
 @protocol WOTBookStationListModel_msg_List <NSObject>
 
 @end
+
 @protocol WOTBookStationListModel_msg_dic <NSObject>
 
 @end

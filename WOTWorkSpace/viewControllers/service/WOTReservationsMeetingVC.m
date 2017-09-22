@@ -9,7 +9,7 @@
 #import "WOTReservationsMeetingVC.h"
 #import "WOTReservationsMeetingCell.h"
 #import "WOTOrderVC.h"
-#import "WOTWorkspaceListVC.h"
+#import "WOTSelectWorkspaceListVC.h"//1
 #import "WOTDatePickerView.h"
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
@@ -41,12 +41,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self configNavi];
+    
     [self setupView];
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
     
     _spaceId = [WOTSingtleton shared].nearbySpace.spaceId ;
     inquireTime = [NSDate getNewTimeZero];
+    
+    WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
+    NSLog(@"最近空间%@",model.spaceName);
+    if (model.spaceName) {
+        self.spaceName = model.spaceName;
+    }
+    else
+    {
+        self.spaceName = @"未定位";
+    }
 
 }
 
@@ -61,7 +71,9 @@
     
     [self.navigationController.navigationBar setHidden:NO];
     selectIndex = nil;
+    NSLog(@"%@",self.spaceId);
     [self createRequest];
+    [self configNavi];
 
 }
 
@@ -74,7 +86,8 @@
         self.navigationItem.title = @"预定场地";
     }
     ///需要更改的地方
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+    
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
     [self.navigationItem setRightBarButtonItem:doneItem];
     //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
@@ -179,7 +192,7 @@
 
 -(void)selectSpace:(UIButton *)sender
 {
-    WOTWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTWorkspaceListVC"];
+    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
     __weak typeof(self) weakSelf = self;
     vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
         weakSelf.spaceId = spaceId;
@@ -187,8 +200,6 @@
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 
 #pragma mark - cell delegate

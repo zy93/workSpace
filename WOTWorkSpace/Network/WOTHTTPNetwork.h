@@ -36,7 +36,7 @@ typedef void(^response)(id bean,NSError *error);
 +(void)userRegisterWitVerifyCode:(NSString *)code tel:(NSString *)tel password:(NSString *)pass response:(response)response;
 
 /**
- * 注册接口
+ * 根据城市获取所有空间接口
  @param city  城市名称 传入城市名称根据城市筛选，不传查询全部
  @param response    回调数据到上层
  */
@@ -47,12 +47,18 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getSpaceSitationBlock:(response)response;
 
 /**
+ *根据集团获取所有空间接口
+ *
+ */
++(void)getSapaceFromGroupBlock:(response)response;
+
+/**
  获取定位最近的空间
 
  @param lat 纬度
  @param lon 经度
  */
-+(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;;
++(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;
 
 
 //+(void)getSpaceWith
@@ -176,7 +182,8 @@ typedef void(^response)(id bean,NSError *error);
  @param spaceid 空间id
  @param response 回调
  */
-+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;
+//+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;//2017 废弃
+//+(void)getBook
 /**
  *我的--我的活动
  */

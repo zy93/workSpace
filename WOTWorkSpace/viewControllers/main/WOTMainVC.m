@@ -56,9 +56,6 @@
     [self loadAutoScrollView];
     [self configScrollView];
    
-    
- 
-    
     _tableView.dataSource = self;
     _tableView.delegate = self;
     self.ballView.delegate = self;
@@ -68,7 +65,7 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
-    
+
     _infoImage.image = [UIImage imageNamed:@"placeholder"];
     _activityImage.image = [UIImage imageNamed:@"placeholder"];
    
@@ -97,7 +94,6 @@ int a = 0;
     if (a++<=0) {
         [self loadLocation];
     }
-    
     [super viewDidAppear:animated];
     
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
@@ -225,7 +221,7 @@ int a = 0;
             [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
         }];
     }];
-    NSLog(@"Main最近空间%@",[WOTSingtleton shared].nearbySpace);
+    
 }
 
 
@@ -479,6 +475,7 @@ int a = 0;
     
     if ([_spacePageViewDataSource[index].spacePicture separatedWithString:@","].count!=0) {
         [bannerView.mainImageView sd_setImageWithURL:[[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+        
         NSLog(@"图片地址：%@",[NSString stringWithFormat:@"%@%@",HTTPBaseURL,[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0]]);
     }
     
@@ -514,9 +511,6 @@ int a = 0;
     _spacevc = [storyboard instantiateViewControllerWithIdentifier:@"WOTworkSpaceLIstVCID"];
     [_spacevc setDataSource:_spacedataSource];
     [self.navigationController pushViewController:_spacevc animated:YES];
-    
-    
-    
 }
 
 
@@ -592,7 +586,6 @@ int a = 0;
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return  0.01;
 }
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -674,12 +667,10 @@ int a = 0;
 
 //从网络获取空间数据
 -(void)getDataSourceFromWebFWithCity:( NSString * __nullable )city complete:(void(^)())complete loadVIews:(void(^)())loadViews{
-    
-    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+//    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+    [WOTHTTPNetwork getSapaceFromGroupBlock:^(id bean, NSError *error) {
         complete();
         if (bean != nil) {
-            
-            
             WOTSpaceModel_msg *dd = (WOTSpaceModel_msg *)bean;
             _spacedataSource = dd.msg;
             

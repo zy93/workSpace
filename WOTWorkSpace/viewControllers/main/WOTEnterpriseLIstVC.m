@@ -61,15 +61,12 @@ bool istags =  NO;
     
 }
 
-
 -(void)configNav{
     
         [self configNaviBackItem];
         [self configNaviView:@"输入企业名或标签" block:^{
             
         }];
-   
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
