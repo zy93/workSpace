@@ -234,7 +234,7 @@
 {
     [super layoutSubviews];
     
-    CGRect btnRect = CGRectMake(0, 30, ButtonWith, ButtonHeight);
+    CGRect btnRect = CGRectMake(10, 30, ButtonWith, ButtonHeight);
     for (int i = 0 ; i<buttonArr.count ; i++) {
         WOTScrollButton *btn = buttonArr[i];
 //        NSLog(@"---Btn:%ld",btn.isEnabled);
@@ -244,7 +244,9 @@
         btnRect = CGRectMake(CGRectGetMaxX(btn.frame)-1, 30, ButtonWith, ButtonHeight);
         if (i%2==0) {
             UILabel *lab = [titleArr objectAtIndex:i];
-            [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
+            //lab.backgroundColor = [UIColor blueColor];
+           // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
+            [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
         }
         for (NSArray *times in invalidList) {
             CGFloat beginTime = [times.firstObject floatValue];
@@ -261,6 +263,7 @@
     }
     
     
+    //self.contentSize = CGSizeMake(btnRect.origin.x, 80);
     self.contentSize = CGSizeMake(btnRect.origin.x, 80);
     [topLine setFrame:CGRectMake(0, 0, btnRect.origin.x, 1)];
 }

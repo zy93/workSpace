@@ -39,12 +39,13 @@
         _dayarr1 = [NSArray arrayWithObjects:@"31",@"28",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
         _dayarr2 = [NSArray arrayWithObjects:@"31",@"29",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31", nil];
          _montharr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
+        /*
         _hourarr = [NSArray arrayWithObjects:@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",nil];
         _minarr = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",nil];
-     
+     */
         _yeararr = [[NSMutableArray alloc] initWithCapacity:0];
-         _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr,_hourarr,_minarr, nil];
-        
+//         _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr,_hourarr,_minarr, nil];
+        _dataarr = [NSArray arrayWithObjects:_dayarr1,_dayarr2,_yeararr, nil];
         NSDate * date = [NSDate date];
 //        NSDate *date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date1];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -54,12 +55,13 @@
         month = [[formatter stringFromDate:date] intValue];
         [formatter setDateFormat:@"dd"];
         day = [[formatter stringFromDate:date] intValue];
+        /*
         [formatter setDateFormat:@"HH"];
         hour = [[formatter stringFromDate:date] intValue];
         [formatter setDateFormat:@"mm"];
         min = [[formatter stringFromDate:date] intValue];
-        
-        for (int i = year-16; i<=year; i++) {
+        */
+        for (int i = year-16; i<=year+1; i++) {
             NSString *str = [NSString stringWithFormat:@"%d",i];
 //            NSLog(@"%@",str);
             [_yeararr addObject:str];
@@ -68,8 +70,10 @@
         [picker selectRow:16 inComponent:0 animated:YES];
         [picker selectRow:month-1 inComponent:1 animated:YES];
         [picker selectRow:day-1 inComponent:2 animated:YES];
+        /*
         [picker selectRow:hour inComponent:3 animated:YES];
         [picker selectRow:min inComponent:4 animated:YES];
+         */
     }
     return self;
 }
@@ -81,17 +85,21 @@
     _selectedrow_year = 16;
     _selectedrow_month = selectedmonth;
     _selectedrow_day = selectedday-1;
+    
+    /*
     _selectedrow_hour = selectedhour;
     _selectedrow_min = selectedmin;
+     */
     [picker selectRow:_selectedrow_year inComponent:0 animated:YES];
 
     [picker selectRow:_selectedrow_month-1 inComponent:1 animated:YES];
     
     [picker selectRow:_selectedrow_day-1 inComponent:2 animated:YES];
+    /*
     [picker selectRow:_selectedrow_hour inComponent:3 animated:YES];
     [picker selectRow:_selectedrow_min inComponent:4 animated:YES];
  
-    
+    */
     
 }
 
@@ -140,12 +148,12 @@
         }
         
         
-    } else if (component == 3){
+    }
+    else if (component == 3){
         return _hourarr.count;
     } else  {
         return _minarr.count;
     }
-    
 }
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
@@ -165,7 +173,7 @@
             mycom1.textColor = _otherTextcolor;
         }
         mycom1.text = [NSString stringWithFormat:@"%@年",[_yeararr objectAtIndex:row]];
-        
+        NSLog(@"测试：%@",mycom1.text);
     }
     else if(component == 1){
         if (row+1 == _selectedrow_month || row+1 == month){
@@ -188,7 +196,9 @@
 //        }
         
         
-    } else if (component == 3){
+    }
+    /*
+    else if (component == 3){
         
         if (row == _selectedrow_hour || row == hour){
             mycom1.textColor = [UIColor colorWithRed:0.41 green:0.62 blue:0.79 alpha:1];
@@ -207,6 +217,7 @@
         mycom1.text = [NSString stringWithFormat:@"%02ld分",row];
         
     }
+     */
     return mycom1;
 }
 
@@ -228,8 +239,10 @@
     int rowy;
     int rowm;
     int rowd;
+    /*
     int rowh;
     int rowmm;
+     */
     if (_yeararr.count != 0) {
         rowy = (int)[picker selectedRowInComponent:0];
         year = [[_yeararr objectAtIndex:rowy] intValue];
@@ -246,7 +259,7 @@
        day = (int)rowd+1;
         _selectedrow_day = rowd+1;
     }
-    
+    /*
     if (_hourarr.count!=0){
         rowh = (int)[picker selectedRowInComponent:3];
         hour = (int)rowh+1;
@@ -257,7 +270,7 @@
         min = (int)rowmm+1;
         _selectedrow_min = rowmm+1;
     }
-    
+    */
     [picker reloadAllComponents];
 }
 

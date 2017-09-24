@@ -70,10 +70,10 @@
     
     
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        time = [NSString stringWithFormat:@"%02d/%02d/%02d %2d:%2d",(int)year, (int)month, (int)day,(int)hour,(int)min];
+        time = [NSString stringWithFormat:@"%02d/%02d/%02d ",(int)year, (int)month, (int)day];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.table reloadData];
         });

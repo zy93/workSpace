@@ -263,6 +263,16 @@
     } response:response];
 }
 
++(void)getBookStationWithSpaceId:(NSNumber *)spaceId response:(response)response
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findStationBySpaceId"];
+    NSDictionary * parameters =@{@"":spaceId};
+    [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
+        WOTBookStationListModel_msg * spacemodel = [[WOTBookStationListModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return  spacemodel;
+    } response:response];
+}
+
 +(void)getSapaceFromGroupBlock:(response)response
 {
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findByAppId"];

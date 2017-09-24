@@ -9,6 +9,7 @@
 #import "WOTH5VC.h"
 #import "YYShareView.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "MBProgressHUD+Extension.h"
 
 
 @interface WOTH5VC () <YYShareViewDelegate>
@@ -108,9 +109,16 @@
     pMessageObject.webpageUrl = [NSString stringWithFormat:@"%@",@"www.baidu.com"];
     messageObject.shareObject = pMessageObject;
     
-    [[UMSocialManager defaultManager] shareToPlatform:socialPlatformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-        NSLog(@"%@error",error);
-    }];
+    if ([[UMSocialManager defaultManager] isInstall:socialPlatformType]) {
+        [[UMSocialManager defaultManager] shareToPlatform:socialPlatformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            NSLog(@"%@error",error);
+        }];
+    }else
+    {
+        [MBProgressHUDUtil showMessage:@"未安装应用，请安装后分享！" toView:self.view];
+
+    }
+    
     
 }
 

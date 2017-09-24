@@ -248,10 +248,11 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
         weakSelf.datepickerview.hidden = YES;
-        NSLog(@"%ld年%ld月%ld日%ld时%ld分",year,month,day,hour,min);
-        repairTime = [NSString stringWithFormat:@"%ld/%ld/%ld %ld:%ld:00",year,month,day,hour,min];
+       // NSLog(@"%ld年%ld月%ld日%ld时%ld分",year,month,day,hour,min);
+//        repairTime = [NSString stringWithFormat:@"%ld/%ld/%ld %ld:%ld:00",year,month,day,hour,min];
+        repairTime = [NSString stringWithFormat:@"%ld/%ld/%ld",year,month,day];
         WOTAppleRepairCommonCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         cell.cellValue.text = repairTime;
     };

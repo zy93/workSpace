@@ -39,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectedBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableIView;
 @property(nonatomic,strong)WOTDatePickerView *datepickerview;
+@property (weak, nonatomic) IBOutlet UIImageView *notInformationImageView;
+@property (weak, nonatomic) IBOutlet UILabel *notBookStationInformationLabel;
+
 //@property (nonatomic,strong) NSString *spaceNme;
 
 @end
@@ -51,12 +54,13 @@
     
     
     [self setupView];
-    _spaceId = @(56);
+    //_spaceId = @(56);原来
     inquireTime = [NSDate getNewTimeZero];
-    cityName = @"北京";
+    //cityName = @"北京";原来
     
     WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
     NSLog(@"最近空间%@",model.spaceName);
+    _spaceId = model.spaceId;
     if (model.spaceName) {
         self.spaceName = model.spaceName;
     }
@@ -84,9 +88,30 @@
     self.navigationItem.title = @"订工位";
     ///需要更改的地方spaceName
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(selectSpace:) forControlEvents:UIControlEventTouchDown];
+    [button setTitle:self.spaceName forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
-    [self.navigationItem setRightBarButtonItem:doneItem];
+    UIImage *imageForButton = [UIImage imageNamed:@"Triangular"];
+    
+    [button setImage:imageForButton forState:UIControlStateNormal];
+    CGSize buttonTitleLabelSize = [self.spaceName sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}]; //文本尺寸
+    CGSize buttonImageSize = imageForButton.size;   //图片尺寸
+    button.frame = CGRectMake(0,0,
+                              buttonImageSize.width + buttonTitleLabelSize.width,
+                              buttonImageSize.height);
+    button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width - button.frame.size.width + button.titleLabel.intrinsicContentSize.width, 0, 0);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -button.titleLabel.frame.size.width - button.frame.size.width + button.imageView.frame.size.width);
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButton;
+    
+    //原来
+//    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+//    [self.navigationItem setRightBarButtonItem:doneItem];
+    
+    
 //
     //解决布局空白问题--dong
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
@@ -112,10 +137,10 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d",(int)year, (int)month, (int)day];
     };
     
     [self.view addSubview:_datepickerview];
@@ -125,7 +150,8 @@
 #pragma mark - request
 -(void)createRequest
 {
-    //待讨论
+    //待讨论根据sapceid获取所有的工位
+    /*
     [WOTHTTPNetwork getSpaceSitationBlock:^(id bean, NSError *error) {
         WOTBookStationListModel_msg *msg = bean;
         allModelList = msg.msg;
@@ -133,12 +159,38 @@
         for (WOTBookStationListModel_msg_List *model in allModelList) {
             if ([model.cityName isEqualToString:cityName]) {
                 tableList = model.cityList;
-            
+                
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableIView reloadData];
+            
+            if (tableList) {
+                [self.tableIView reloadData];
+            } else {
+                NSLog(@"没有数据");
+            }
         });
+    }];
+     */
+    [WOTHTTPNetwork getBookStationWithSpaceId:_spaceId response:^(id bean, NSError *error) {
+        if (error) {
+            NSLog(@"error:%@",error);
+            return ;
+        }
+        WOTBookStationListModel_msg *msg = bean;
+        tableList = msg.msg;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (tableList.count) {
+                self.notInformationImageView.hidden = YES;
+                self.notBookStationInformationLabel.hidden = YES;
+                [self.tableIView  reloadData];
+            } else {
+                self.notInformationImageView.hidden = NO;
+                self.notBookStationInformationLabel.hidden = NO;
+                NSLog(@"没有数据");
+            }
+        });
+        
     }];
 }
 
@@ -223,15 +275,20 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTBookStationCell *bookcell = [tableView dequeueReusableCellWithIdentifier:@"WOTBookStationCellID" forIndexPath:indexPath];
-    
-    WOTBookStationListModel *model = tableList[indexPath.row];
-    
-    bookcell.spaceName.text =model.spaceName;// @"方圆大厦-众创空间";
-    bookcell.spaceLocation.text = model.spaceSite;// @"中关村南大街甲56号" ;
-    bookcell.stationNum.text  = [NSString stringWithFormat:@"%ld工位可以预定",model.longRent.integerValue+model.shortRent.integerValue]; //@"23个工位可以预定";
-    bookcell.stationPrice.text = [NSString stringWithFormat:@"￥%ld/天",model.spacePicture.integerValue];//@"¥123元／天";
-    bookcell.delegate = self;
-    bookcell.model = model;
+    if (tableList) {
+        WOTBookStationListModel *model = tableList[indexPath.row];
+        //待开发
+//        bookcell.spaceName.text =model.spaceName;// @"方圆大厦-众创空间";
+//        bookcell.spaceLocation.text = model.spaceSite;// @"中关村南大街甲56号" ;
+//        bookcell.stationNum.text  = [NSString stringWithFormat:@"%ld工位可以预定",model.longRent.integerValue+model.shortRent.integerValue]; //@"23个工位可以预定";
+//        bookcell.stationPrice.text = [NSString stringWithFormat:@"￥%ld/天",model.spacePicture.integerValue];//@"¥123元／天";
+        bookcell.delegate = self;
+        bookcell.model = model;
+    } else {
+        NSLog(@"测试：没有数据！");
+        
+    }
+   
     return bookcell;
 }
 

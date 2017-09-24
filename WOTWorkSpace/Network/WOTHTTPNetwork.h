@@ -60,6 +60,14 @@ typedef void(^response)(id bean,NSError *error);
  */
 +(void)getSpaceWithLocation:(CGFloat)lat lon:(CGFloat)lon response:(response)response;
 
+/**
+ 通过空间id获取所有工位
+
+ @param spaceID spaceId
+ @param response
+ */
++(void)getBookStationWithSpaceId:(NSNumber *)spaceId response:(response)response;
+
 
 //+(void)getSpaceWith
 

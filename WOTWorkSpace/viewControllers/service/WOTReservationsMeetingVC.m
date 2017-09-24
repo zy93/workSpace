@@ -14,6 +14,8 @@
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
 #import "WOTSiteModel.h"
+#import "MBProgressHUD+Extension.h"
+
 
 
 @interface WOTReservationsMeetingVC () <UITableViewDelegate, UITableViewDataSource, WOTReservationsMeetingCellDelegate>
@@ -31,8 +33,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *todayBtn;
 @property (weak, nonatomic) IBOutlet UIButton *selectTimeBtn;
 @property (nonatomic,strong) WOTDatePickerView *datepickerview;
-
-
+@property (weak, nonatomic) IBOutlet UIImageView *notInformationImageView;
+@property (weak, nonatomic) IBOutlet UILabel *notInformationLabel;
+@property (nonatomic, assign) BOOL isValidTime;
+@property (nonatomic, assign) int year;
+@property (nonatomic, assign) int month;
+@property (nonatomic, assign) int day;
 
 @end
 
@@ -86,9 +92,27 @@
         self.navigationItem.title = @"预定场地";
     }
     ///需要更改的地方
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(selectSpace:) forControlEvents:UIControlEventTouchDown];
+    [button setTitle:self.spaceName forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
-    [self.navigationItem setRightBarButtonItem:doneItem];
+    UIImage *imageForButton = [UIImage imageNamed:@"Triangular"];
+    
+    [button setImage:imageForButton forState:UIControlStateNormal];
+    CGSize buttonTitleLabelSize = [self.spaceName sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}]; //文本尺寸
+    CGSize buttonImageSize = imageForButton.size;   //图片尺寸
+    button.frame = CGRectMake(0,0,
+                              buttonImageSize.width + buttonTitleLabelSize.width,
+                              buttonImageSize.height);
+    button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width - button.frame.size.width + button.titleLabel.intrinsicContentSize.width, 0, 0);
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -button.titleLabel.frame.size.width - button.frame.size.width + button.imageView.frame.size.width);
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButton;
+    
+//    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
+//    [self.navigationItem setRightBarButtonItem:doneItem];
     //解决布局空白问题
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
@@ -105,6 +129,7 @@
 
 -(void)setupView
 {
+    //_datepickerview.hidden  = YES;
     __weak typeof(self) weakSelf = self;
     _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
     [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - [WOTUitls GetLengthAdaptRate]*300, self.view.frame.size.width, 300)];
@@ -112,16 +137,54 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",(int)year, (int)month, (int)day];
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d",(int)year, (int)month, (int)day];
+        [self judgementTimeWithYear:year month:month day:day];
+        if (_isValidTime) {
+            [self.selectTimeBtn setTitle:inquireTime forState:UIControlStateNormal];
+        }
         [weakSelf reloadView];
     };
     
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden  = YES;
 }
+
+-(void)judgementTimeWithYear:(NSInteger) year month:(NSInteger)month day:(NSInteger)day
+{
+    NSDate * date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    _year = [[formatter stringFromDate:date] intValue];
+    [formatter setDateFormat:@"MM"];
+    _month = [[formatter stringFromDate:date] intValue];
+    [formatter setDateFormat:@"dd"];
+    _day = [[formatter stringFromDate:date] intValue];
+    
+    if (_year > year) {
+        [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
+        _datepickerview.hidden  = NO;
+        _isValidTime = NO;
+        return;
+    }
+    if (_month > month) {
+        [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
+        _datepickerview.hidden  = NO;
+        _isValidTime = NO;
+        return;
+    }
+    if (_day > day) {
+        [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
+        _datepickerview.hidden  = NO;
+        _isValidTime = NO;
+        return;
+    }
+    _isValidTime = YES;
+    _datepickerview.hidden  = YES;
+}
+
 
 -(void)reloadView
 {
@@ -143,10 +206,15 @@
             WOTMeetingListModel_msg *model = bean;
             tableList = model.msg;
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (!tableList) {
+                if (tableList.count) {
+                    self.notInformationImageView.hidden = YES;
+                    self.notInformationLabel.hidden = YES;
                     [self.table reloadData];
                 } else {
-                   //
+                    self.notInformationImageView.hidden = NO;
+                    self.notInformationLabel.hidden = NO;
+                    self.notInformationLabel.text = @"亲，暂时没有会议室哦！";
+                    NSLog(@"没有数据");
                 }
                 
             });
@@ -160,8 +228,20 @@
             }
             WOTSiteModel_Msg *model = bean;
             tableList = model.msg;
+            NSLog(@"测试：%@",tableList);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.table reloadData];
+                NSLog(@"测试：%@",tableList);
+                if (tableList.count) {
+                    self.notInformationImageView.hidden = YES;
+                    self.notInformationLabel.hidden = YES;
+                    [self.table reloadData];
+                } else {
+                    self.notInformationImageView.hidden = NO;
+                    self.notInformationLabel.hidden = NO;
+                    self.notInformationLabel.text = @"亲，暂时没有场地哦！";
+                    NSLog(@"没有数据");
+                }
+               // [self.table reloadData];
             });
         }];
     }
@@ -274,7 +354,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (selectIndex && selectIndex.row == indexPath.row) {
-        return 390;
+        return 410;
     }
     return 240;
 }
@@ -293,27 +373,32 @@
     [cell setupView];
     cell.delegate = self;
     
-    id model = tableList[indexPath.row];
-    [cell setInquireTime:inquireTime];
-    
-    if ([WOTSingtleton shared].orderType == ORDER_TYPE_MEETING) {
-        [cell setMeetingModel:model];
+    if (tableList) {
+        id model = tableList[indexPath.row];
+        [cell setInquireTime:inquireTime];
+        
+        if ([WOTSingtleton shared].orderType == ORDER_TYPE_MEETING) {
+            [cell setMeetingModel:model];
+        }
+        else {
+            [cell setSiteModel:model];
+        }
+        
+        if (selectIndex && selectIndex.row == indexPath.row) {
+            [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
+            [cell.selectTimeScroll setScrollOffsetX:ofoset.x];
+        }
+        else {
+            [cell.selectTimeScroll setBeginTime:0 endTime:0];
+            [cell.selectTimeScroll setScrollOffsetX:0];
+        }
+        
+        cell.index = indexPath;
+    } else {
+        NSLog(@"测试：没有数据");
     }
-    else {
-        [cell setSiteModel:model];
-    }
-    
-    if (selectIndex && selectIndex.row == indexPath.row) {
-        [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
-        [cell.selectTimeScroll setScrollOffsetX:ofoset.x];
-    }
-    else {
-        [cell.selectTimeScroll setBeginTime:0 endTime:0];
-        [cell.selectTimeScroll setScrollOffsetX:0];
-    }
     
     
-    cell.index = indexPath;
     
     return cell;
 

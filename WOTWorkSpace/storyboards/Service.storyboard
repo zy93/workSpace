@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1569,6 +1569,19 @@
                                     <outlet property="delegate" destination="dib-fw-Ass" id="cfr-Aq-WaC"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NotInformation" translatesAutoresizingMaskIntoConstraints="NO" id="yOB-1O-aSk">
+                                <rect key="frame" x="152.5" y="298" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="alQ-YK-ROi"/>
+                                    <constraint firstAttribute="width" constant="70" id="hFL-wk-vvD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亲，暂时没有工位哦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vC-wD-Bhi">
+                                <rect key="frame" x="101" y="368" width="173.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1581,11 +1594,15 @@
                             <constraint firstItem="KmJ-Vn-R5Z" firstAttribute="leading" secondItem="PYx-7c-onz" secondAttribute="leading" id="HYM-kh-YkD"/>
                             <constraint firstItem="KmJ-Vn-R5Z" firstAttribute="height" secondItem="ePX-Rt-KCK" secondAttribute="height" id="O6Q-W0-2fX"/>
                             <constraint firstItem="qMV-iC-Uep" firstAttribute="centerY" secondItem="ePX-Rt-KCK" secondAttribute="centerY" id="Om4-rb-fLv"/>
+                            <constraint firstItem="yOB-1O-aSk" firstAttribute="centerX" secondItem="PYx-7c-onz" secondAttribute="centerX" id="SDD-8I-kIe"/>
+                            <constraint firstItem="2vC-wD-Bhi" firstAttribute="centerX" secondItem="PYx-7c-onz" secondAttribute="centerX" id="UX3-o9-RjT"/>
                             <constraint firstItem="d6J-Wn-2lr" firstAttribute="top" secondItem="NX2-Dq-3hK" secondAttribute="bottom" id="ZgK-Yl-6kA"/>
                             <constraint firstAttribute="trailing" secondItem="NX2-Dq-3hK" secondAttribute="trailing" id="aHz-G6-0lW"/>
                             <constraint firstAttribute="trailing" secondItem="qMV-iC-Uep" secondAttribute="trailing" id="d5M-jd-0jz"/>
+                            <constraint firstItem="2vC-wD-Bhi" firstAttribute="top" secondItem="yOB-1O-aSk" secondAttribute="bottom" id="hcf-vi-Gzy"/>
                             <constraint firstItem="qMV-iC-Uep" firstAttribute="height" secondItem="ePX-Rt-KCK" secondAttribute="height" id="kCb-at-Z7d"/>
                             <constraint firstItem="KmJ-Vn-R5Z" firstAttribute="centerY" secondItem="ePX-Rt-KCK" secondAttribute="centerY" id="lgl-Dz-Jay"/>
+                            <constraint firstItem="yOB-1O-aSk" firstAttribute="centerY" secondItem="PYx-7c-onz" secondAttribute="centerY" id="nGR-IP-3aq"/>
                             <constraint firstItem="qMV-iC-Uep" firstAttribute="leading" secondItem="ePX-Rt-KCK" secondAttribute="trailing" id="rS7-Hl-OVy"/>
                             <constraint firstItem="ePX-Rt-KCK" firstAttribute="leading" secondItem="KmJ-Vn-R5Z" secondAttribute="trailing" id="scy-RL-UAp"/>
                         </constraints>
@@ -1593,6 +1610,8 @@
                     <connections>
                         <outlet property="indicatorVIewCenter" destination="4qG-t1-Eop" id="QoA-N0-gBQ"/>
                         <outlet property="indicatorView" destination="Rkc-C1-AzL" id="X8S-hY-jO6"/>
+                        <outlet property="notBookStationInformationLabel" destination="2vC-wD-Bhi" id="YcY-sV-aAc"/>
+                        <outlet property="notInformationImageView" destination="yOB-1O-aSk" id="Gsu-wU-kh2"/>
                         <outlet property="selectDateView" destination="qMV-iC-Uep" id="ucu-we-JQz"/>
                         <outlet property="selectedBtn" destination="ctF-r5-2zy" id="mtD-NX-ALZ"/>
                         <outlet property="selectedTimeLabel" destination="JF3-rP-poh" id="EqW-Rx-fJu"/>
@@ -2271,12 +2290,31 @@
                                     <constraint firstAttribute="height" constant="1" id="aTv-T7-Tuf"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="NotInformation" text="亲，暂时没有场地哦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeX-9v-OzY">
+                                <rect key="frame" x="98.5" y="378" width="178" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="138-JA-t1y"/>
+                                    <constraint firstAttribute="height" constant="21" id="vJt-6T-bjh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NotInformation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfi-aq-tV1">
+                                <rect key="frame" x="152.5" y="298" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="J3U-WY-oVr"/>
+                                    <constraint firstAttribute="height" constant="70" id="wcd-j0-LPb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yfi-aq-tV1" firstAttribute="centerX" secondItem="25e-Xb-waZ" secondAttribute="centerX" id="0wE-cw-bLD"/>
                             <constraint firstItem="hOm-A4-nEN" firstAttribute="centerY" secondItem="YMy-Al-jfN" secondAttribute="centerY" id="67B-c3-ZM3"/>
                             <constraint firstItem="8zQ-z3-qgy" firstAttribute="top" secondItem="Ywm-xD-dxA" secondAttribute="bottom" id="8da-HR-dpn"/>
                             <constraint firstItem="YMy-Al-jfN" firstAttribute="top" secondItem="ksv-7i-jPQ" secondAttribute="bottom" id="A5p-6x-EzR"/>
+                            <constraint firstItem="CeX-9v-OzY" firstAttribute="top" secondItem="Yfi-aq-tV1" secondAttribute="bottom" constant="10" id="KxP-iu-bhz"/>
                             <constraint firstItem="8zQ-z3-qgy" firstAttribute="leading" secondItem="25e-Xb-waZ" secondAttribute="leading" id="L5g-3o-dc3"/>
                             <constraint firstItem="Jef-eg-rAg" firstAttribute="top" secondItem="A7B-us-yXJ" secondAttribute="bottom" id="MiC-01-TWS"/>
                             <constraint firstAttribute="trailing" secondItem="A7B-us-yXJ" secondAttribute="trailing" id="Mle-ba-fyc"/>
@@ -2291,8 +2329,10 @@
                             <constraint firstItem="A7B-us-yXJ" firstAttribute="leading" secondItem="25e-Xb-waZ" secondAttribute="leading" id="cZW-Xs-kBh"/>
                             <constraint firstItem="hOm-A4-nEN" firstAttribute="width" secondItem="YMy-Al-jfN" secondAttribute="width" id="czQ-3y-Yag"/>
                             <constraint firstAttribute="trailing" secondItem="8zQ-z3-qgy" secondAttribute="trailing" id="gfn-87-Jrs"/>
+                            <constraint firstItem="Yfi-aq-tV1" firstAttribute="centerY" secondItem="25e-Xb-waZ" secondAttribute="centerY" id="gpb-dj-ZxB"/>
                             <constraint firstItem="MUp-RW-E7b" firstAttribute="leading" secondItem="hOm-A4-nEN" secondAttribute="trailing" id="qx0-tA-BAp"/>
                             <constraint firstItem="Ywm-xD-dxA" firstAttribute="centerX" secondItem="YMy-Al-jfN" secondAttribute="centerX" id="tzu-6k-Y3o"/>
+                            <constraint firstItem="CeX-9v-OzY" firstAttribute="centerX" secondItem="25e-Xb-waZ" secondAttribute="centerX" id="uhb-bv-sOW"/>
                             <constraint firstItem="Xxu-HK-VjV" firstAttribute="leading" secondItem="25e-Xb-waZ" secondAttribute="leading" id="vus-VQ-Ju7"/>
                             <constraint firstItem="hOm-A4-nEN" firstAttribute="centerX" secondItem="25e-Xb-waZ" secondAttribute="centerX" id="w2s-lo-mXg"/>
                             <constraint firstItem="hOm-A4-nEN" firstAttribute="leading" secondItem="YMy-Al-jfN" secondAttribute="trailing" id="xAW-Xs-ui9"/>
@@ -2300,6 +2340,8 @@
                     </view>
                     <connections>
                         <outlet property="indicatorViewCenter" destination="tzu-6k-Y3o" id="Gw2-M7-jBH"/>
+                        <outlet property="notInformationImageView" destination="Yfi-aq-tV1" id="b2G-SU-ewr"/>
+                        <outlet property="notInformationLabel" destination="CeX-9v-OzY" id="h5n-6T-iDo"/>
                         <outlet property="selectTimeBtn" destination="MUp-RW-E7b" id="lnf-5h-5zV"/>
                         <outlet property="table" destination="A7B-us-yXJ" id="AaZ-h8-hPd"/>
                         <outlet property="todayBtn" destination="YMy-Al-jfN" id="GEJ-Xc-XyC"/>
@@ -2442,6 +2484,7 @@
     <resources>
         <image name="HR_icon" width="36" height="45"/>
         <image name="IT_icon" width="43" height="31"/>
+        <image name="NotInformation" width="139" height="134"/>
         <image name="arrows_down" width="12" height="12"/>
         <image name="backAcssory" width="7" height="13"/>
         <image name="bookStation" width="335" height="190"/>

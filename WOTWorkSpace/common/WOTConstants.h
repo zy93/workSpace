@@ -69,7 +69,6 @@
 #define UIColor_green_37 UIColorFromRGB(0x37c922)
 //#define HTTPBaseURL @"http://www.yiliangang.net:8012/workSpace"
 //#define HTTPBaseURL @"http://192.168.1.216:8080/workSpace"
-
 //#define HTTPBaseURL @"http://192.168.6.219:8080/workSpace"
 #define HTTPBaseURL @"http://219.143.170.98:10011/workSpace"
 
