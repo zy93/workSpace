@@ -34,8 +34,9 @@
     {
         self.hidden = YES;
         self.backgroundColor = [UIColor clearColor];
-        m_arrTitle = [NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间",@"新浪微博", nil];
-        m_arrIcon = [NSMutableArray arrayWithObjects:@"share_weixin.png",@"share_pengyouquan.png",@"share_qq.png",@"share_qqkongjian.png", @"share_sina.png",nil];
+//        m_arrTitle = [NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间",@"新浪微博", nil];
+        m_arrTitle = [NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"QQ好友",@"新浪微博", nil];
+        m_arrIcon = [NSMutableArray arrayWithObjects:@"share_weixin.png",@"share_pengyouquan.png",@"share_qq.png", @"share_sina.png",nil];
         m_arrSelectIcon = [NSMutableArray arrayWithObjects:@"share_weixin_select.png",@"share_pengyouquan_select.png",@"share_qq_select.png",@"share_qqkongjian_select.png",@"share_sina_select.png", nil];
         [self CreateSubViews];
     }
@@ -64,10 +65,11 @@
     UIImage *pIconImg = [UIImage imageNamed:m_arrIcon[0]];
     CGFloat fIconSizeW = pIconImg.size.width *[WOTUitls GetLengthAdaptRate];
     CGFloat fBackViewX = 20*[WOTUitls GetLengthAdaptRate];
-    CGFloat fBackViewInterval = 18*[WOTUitls GetLengthAdaptRate];
+    CGFloat fBackViewInterval = 40*[WOTUitls GetLengthAdaptRate];
+    NSLog(@"测试：%f",fBackViewInterval);
     for (NSInteger i = 0; i<m_arrIcon.count; i++)
     {
-        UIButton *pButton = [[UIButton alloc] initWithFrame:CGRectMake(fBackViewX + (i * (fIconSizeW+fBackViewInterval)), 35*[WOTUitls GetLengthAdaptRate], fIconSizeW, fIconSizeW)];
+        UIButton *pButton = [[UIButton alloc] initWithFrame:CGRectMake(fBackViewX + (i * (fIconSizeW+fBackViewInterval)), 40*[WOTUitls GetLengthAdaptRate], fIconSizeW, fIconSizeW)];
         [pButton setBackgroundImage:[UIImage imageNamed:m_arrIcon[i]] forState:UIControlStateNormal];
         [pButton setBackgroundImage:[UIImage imageNamed:m_arrSelectIcon[i]] forState:UIControlStateHighlighted];
         pButton.tag = SHAREBTNTAG + i;

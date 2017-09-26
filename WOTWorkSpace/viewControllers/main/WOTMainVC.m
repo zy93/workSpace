@@ -44,6 +44,7 @@
 @property (strong,nonatomic)NSArray<WOTActivityModel *> *activitydataSource;
 @property(nonatomic,strong)NSMutableArray<NSArray<WOTNewInformationModel *> *> *infodataSource;
 @property(nonatomic,strong)NSString *activityImageUrl;
+@property(nonatomic,copy)NSString *cityName;
 //@property(nonatomic,strong)WOTRefreshControlUitls *refreshControl;
 @end
 
@@ -216,9 +217,11 @@ int a = 0;
 
 -(void)loadLocation
 {
-    [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon) {
+    [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon,NSString* cityName) {
+        [WOTSingtleton shared].cityName = cityName;
         [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
             [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
+            
         }];
     }];
     

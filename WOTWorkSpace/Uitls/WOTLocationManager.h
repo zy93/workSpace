@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-typedef void(^LocationBlock)(CGFloat lat, CGFloat lon);
+typedef void(^LocationBlock)(CGFloat lat, CGFloat lon, NSString *cityName);
 
 //定位管理
 
@@ -18,6 +18,6 @@ typedef void(^LocationBlock)(CGFloat lat, CGFloat lon);
 +(WOTLocationManager *)shareLocation;
 
 -(void)getLocationWithBlock:(LocationBlock)block;
-
-
+//根据经纬度获取城市名称
+-(NSString *)getCityNameWithLat:(CGFloat)lat Lon:(CGFloat)lon;
 @end

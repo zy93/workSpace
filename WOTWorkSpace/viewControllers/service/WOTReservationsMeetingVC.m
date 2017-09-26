@@ -15,6 +15,7 @@
 #import "WOTMeetingReservationsModel.h"
 #import "WOTSiteModel.h"
 #import "MBProgressHUD+Extension.h"
+#import "JudgmentTime.h"
 
 
 
@@ -35,7 +36,9 @@
 @property (nonatomic,strong) WOTDatePickerView *datepickerview;
 @property (weak, nonatomic) IBOutlet UIImageView *notInformationImageView;
 @property (weak, nonatomic) IBOutlet UILabel *notInformationLabel;
+@property (nonatomic, strong) JudgmentTime *judgmentTime;
 @property (nonatomic, assign) BOOL isValidTime;
+
 @property (nonatomic, assign) int year;
 @property (nonatomic, assign) int month;
 @property (nonatomic, assign) int day;
@@ -47,7 +50,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self setupView];
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
     
@@ -74,7 +76,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.judgmentTime = [[JudgmentTime alloc] init];
     [self.navigationController.navigationBar setHidden:NO];
     selectIndex = nil;
     NSLog(@"%@",self.spaceId);
@@ -91,6 +93,7 @@
     else {
         self.navigationItem.title = @"预定场地";
     }
+    
     ///需要更改的地方
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(selectSpace:) forControlEvents:UIControlEventTouchDown];
@@ -107,6 +110,7 @@
                               buttonImageSize.width + buttonTitleLabelSize.width,
                               buttonImageSize.height);
     button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width - button.frame.size.width + button.titleLabel.intrinsicContentSize.width, 0, 0);
+    
     button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -button.titleLabel.frame.size.width - button.frame.size.width + button.imageView.frame.size.width);
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barButton;
@@ -137,13 +141,22 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
-        NSLog(@"%ld年%ld月%ld日",year,month,day);
-        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d",(int)year, (int)month, (int)day];
-        [self judgementTimeWithYear:year month:month day:day];
-        if (_isValidTime) {
-            [self.selectTimeBtn setTitle:inquireTime forState:UIControlStateNormal];
+       // NSLog(@"%ld年%ld月%ld日",year,month,day);
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",year, month, day];
+        NSLog(@"测试：%@",inquireTime);
+        //问题有可能出现在这里
+        self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
+        //self.isValidTime = YES;
+        //[self judgementTimeWithYear:year month:month day:day];
+        if (self.isValidTime) {
+            _datepickerview.hidden  = YES;
+            [self.selectTimeBtn setTitle:[NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day] forState:UIControlStateNormal];
+        }else
+        {
+            [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
+            _datepickerview.hidden  = NO;
         }
         [weakSelf reloadView];
     };
@@ -151,7 +164,7 @@
     [self.view addSubview:_datepickerview];
     _datepickerview.hidden  = YES;
 }
-
+/*
 -(void)judgementTimeWithYear:(NSInteger) year month:(NSInteger)month day:(NSInteger)day
 {
     NSDate * date = [NSDate date];
@@ -184,7 +197,7 @@
     _isValidTime = YES;
     _datepickerview.hidden  = YES;
 }
-
+*/
 
 -(void)reloadView
 {
@@ -228,9 +241,7 @@
             }
             WOTSiteModel_Msg *model = bean;
             tableList = model.msg;
-            NSLog(@"测试：%@",tableList);
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"测试：%@",tableList);
                 if (tableList.count) {
                     self.notInformationImageView.hidden = YES;
                     self.notInformationLabel.hidden = YES;
@@ -239,7 +250,7 @@
                     self.notInformationImageView.hidden = NO;
                     self.notInformationLabel.hidden = NO;
                     self.notInformationLabel.text = @"亲，暂时没有场地哦！";
-                    NSLog(@"没有数据");
+                    NSLog(@"测试：没有数据");
                 }
                // [self.table reloadData];
             });
@@ -273,6 +284,7 @@
     self.tomorrowBtn.selected = NO;
     self.selectTimeBtn.selected = YES;
     _datepickerview.hidden = NO;
+    
 }
 
 -(void)selectSpace:(UIButton *)sender
@@ -383,7 +395,6 @@
         else {
             [cell setSiteModel:model];
         }
-        
         if (selectIndex && selectIndex.row == indexPath.row) {
             [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
             [cell.selectTimeScroll setScrollOffsetX:ofoset.x];

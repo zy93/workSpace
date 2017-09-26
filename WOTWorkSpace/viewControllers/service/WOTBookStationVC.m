@@ -15,6 +15,7 @@
 #import "WOTOrderVC.h"
 #import "WOTSpaceModel.h"
 #import "WOTBookStationListModel.h"
+#import "WOTMenuView.h"
 
 @interface WOTBookStationVC ()<UITableViewDelegate,UITableViewDataSource, WOTBookStationCellDelegate>
 {
@@ -41,6 +42,12 @@
 @property(nonatomic,strong)WOTDatePickerView *datepickerview;
 @property (weak, nonatomic) IBOutlet UIImageView *notInformationImageView;
 @property (weak, nonatomic) IBOutlet UILabel *notBookStationInformationLabel;
+@property (nonatomic, strong)WOTMenuView *menuView;
+@property (nonatomic, strong) NSMutableArray *menuArray;
+@property (nonatomic, strong)UIBarButtonItem *barButton;
+@property (nonatomic, assign)CGFloat y;
+@property (nonatomic, assign)CGFloat height;
+
 
 //@property (nonatomic,strong) NSString *spaceNme;
 
@@ -56,17 +63,13 @@
     [self setupView];
     //_spaceId = @(56);原来
     inquireTime = [NSDate getNewTimeZero];
-    //cityName = @"北京";原来
+    cityName = [WOTSingtleton shared].cityName;
     
-    WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
-    NSLog(@"最近空间%@",model.spaceName);
-    _spaceId = model.spaceId;
-    if (model.spaceName) {
-        self.spaceName = model.spaceName;
-    }
-    else
-    {
-        self.spaceName = @"未定位";
+//    WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
+//    NSLog(@"最近空间%@",model.spaceName);
+//    _spaceId = model.spaceId;
+    if (!cityName) {
+        cityName = @"未定位";
     }
 
 }
@@ -79,7 +82,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
 //    [self configNaviBackItem];
-    [self createRequest];
+    //[self createRequest];
+    self.menuArray = [[NSMutableArray alloc] init];
     [self configNavi];
     
 }
@@ -90,29 +94,26 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(selectSpace:) forControlEvents:UIControlEventTouchDown];
-    [button setTitle:self.spaceName forState:UIControlStateNormal];
+    [button setTitle:cityName forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     UIImage *imageForButton = [UIImage imageNamed:@"Triangular"];
-    
     [button setImage:imageForButton forState:UIControlStateNormal];
-    CGSize buttonTitleLabelSize = [self.spaceName sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}]; //文本尺寸
+    CGSize buttonTitleLabelSize = [cityName sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}]; //文本尺寸
     CGSize buttonImageSize = imageForButton.size;   //图片尺寸
     button.frame = CGRectMake(0,0,
                               buttonImageSize.width + buttonTitleLabelSize.width,
                               buttonImageSize.height);
     button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width - button.frame.size.width + button.titleLabel.intrinsicContentSize.width, 0, 0);
+
     button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -button.titleLabel.frame.size.width - button.frame.size.width + button.imageView.frame.size.width);
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = barButton;
-    
-    //原来
-//    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:self.spaceName style:UIBarButtonItemStylePlain target:self action:@selector(selectSpace:)];
-//    [self.navigationItem setRightBarButtonItem:doneItem];
-    
-    
-//
+
+    self.barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = self.barButton;
+    CGRect frameInNaviView = [self.navigationController.view convertRect:button.frame fromView:button.superview];
+    self.y = frameInNaviView.origin.y;
+    self.height = frameInNaviView.size.height;
     //解决布局空白问题--dong
     BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
     if (is7Version) {
@@ -137,10 +138,10 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d",(int)year, (int)month, (int)day];
+        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d %02d:%02d",(int)year, (int)month, (int)day,(int)hour,(int)min];
     };
     
     [self.view addSubview:_datepickerview];
@@ -172,25 +173,39 @@
         });
     }];
      */
-    [WOTHTTPNetwork getBookStationWithSpaceId:_spaceId response:^(id bean, NSError *error) {
+//    [WOTHTTPNetwork getBookStationWithSpaceId:_spaceId response:^(id bean, NSError *error) {
+//        if (error) {
+//            NSLog(@"error:%@",error);
+//            return ;
+//        }
+//        WOTBookStationListModel_msg *msg = bean;
+//        tableList = msg.msg;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (tableList.count) {
+//                self.notInformationImageView.hidden = YES;
+//                self.notBookStationInformationLabel.hidden = YES;
+//                [self.tableIView  reloadData];
+//            } else {
+//                self.notInformationImageView.hidden = NO;
+//                self.notBookStationInformationLabel.hidden = NO;
+//                NSLog(@"没有数据");
+//            }
+//        });
+//
+//    }];
+    [WOTHTTPNetwork getAllSpaceWithCity:cityName block:^(id bean, NSError *error) {
         if (error) {
             NSLog(@"error:%@",error);
             return ;
         }
-        WOTBookStationListModel_msg *msg = bean;
-        tableList = msg.msg;
+        WOTSpaceModel_msg *list = bean;
+        NSLog(@"测试%@",list.msg);
+        //        tableList = list.msg;
+        //tableDic = [self sortByCity:list.msg];
+        tableList = list.msg;
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (tableList.count) {
-                self.notInformationImageView.hidden = YES;
-                self.notBookStationInformationLabel.hidden = YES;
-                [self.tableIView  reloadData];
-            } else {
-                self.notInformationImageView.hidden = NO;
-                self.notBookStationInformationLabel.hidden = NO;
-                NSLog(@"没有数据");
-            }
+            [self.tableIView  reloadData];
         });
-        
     }];
 }
 
@@ -215,19 +230,93 @@
     self.indicatorVIewCenter.constant = self.selectDateView.frame.origin.x;
     [self setTextColor:[UIColor blackColor] tomorrowcolor:[UIColor blackColor] timecolor:UIColorFromRGB(0x5484e7)];
     _datepickerview.hidden = NO;
-    
 }
 
 
 -(void)selectSpace:(UIButton *)sender
 {
-    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
-    __weak typeof(self) weakSelf = self;
-    vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
-        weakSelf.spaceId = spaceId;
-        weakSelf.spaceName = spaceName;
-    };
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.menuView menuTappedWithSuperView:self.barButton];
+    [self.menuView reloadData];
+//    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
+//    __weak typeof(self) weakSelf = self;
+//    vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
+//        weakSelf.spaceId = spaceId;
+//        weakSelf.spaceName = spaceName;
+//    };
+//    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (WOTMenuView *)menuView {
+    if (!_menuView && [self.menuArray count] > 0) {
+        
+//        _menuView = [[WOTMenuView alloc] initWithOrigin:CGPointMake(0, self.barButton.frame.origin.y + self.barButton.frame.size.height)];
+        //_menuView.transformImageView = self.tagsArrowImage;
+         //_menuView = [[WOTMenuView alloc] initWithOrigin:CGPointMake(0, self.y + self.height)];
+        _menuView = [[WOTMenuView alloc] initWithOrigin:CGPointMake(0, 200)];
+        _menuView.titleLabel = cityName;
+        
+        _menuView.dataSource = self;
+        _menuView.delegate = self;
+    }
+    return _menuView;
+}
+
+-(NSMutableArray *)menuArray {
+    if (!_menuArray) {
+        
+        _menuArray = [NSMutableArray array];
+        WOTFilterTypeModel *model = [[WOTFilterTypeModel alloc]initWithName:@"全部" andId:@"one"];
+        WOTFilterTypeModel *model2 = [[WOTFilterTypeModel alloc]initWithName:@"软件服务商" andId:@"two"];
+        WOTFilterTypeModel *model3 = [[WOTFilterTypeModel alloc]initWithName:@"法律" andId:@"three"];
+        WOTFilterTypeModel *model4 = [[WOTFilterTypeModel alloc]initWithName:@"硬件服务商" andId:@"four"];
+        WOTFilterTypeModel *model5 = [[WOTFilterTypeModel alloc]initWithName:@"其他" andId:@"five"];
+        [_menuArray addObject:model];
+        [_menuArray addObject:model2];
+        [_menuArray addObject:model3];
+        [_menuArray addObject:model4];
+        [_menuArray addObject:model5];
+        
+    }
+    
+    return _menuArray;
+    
+//    __weak typeof(self) weakSelf = self;
+//    NSMutableArray *cityList = [NSMutableArray new];
+//
+//    [WOTHTTPNetwork getSapaceFromGroupBlock:^(id bean, NSError *error) {
+//        if (error) {
+//            NSLog(@"error:%@",error);
+//            return ;
+//        }
+//        WOTSpaceModel_msg *list = bean;
+//
+//
+//    }];
+//    return cityList;
+}
+
+
+-(void)createRequestCityList:(NSArray *)array
+{
+    NSMutableArray *cityList = [NSMutableArray new];
+    
+    for (WOTSpaceModel *model in array) {
+        //
+        BOOL isHaveCity = NO;
+        for (NSString *city in cityList) {
+            NSLog(@"测试1%@",city);
+            NSLog(@"测试2%@",model.city);
+            if ([model.city isEqualToString:city]) {
+                isHaveCity = YES;
+                break;
+            }
+        }
+        if (!isHaveCity) {
+            [cityList addObject:model.city];
+        }
+        [cityList addObject:model.city];
+    }
+    
 }
 
 #pragma mark -

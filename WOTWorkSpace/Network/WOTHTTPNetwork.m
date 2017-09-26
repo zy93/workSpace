@@ -84,14 +84,12 @@
         if (statusCode == 200) {
             if (response) {
                 response(complete(responseDic),nil);
-                NSLog(@"测试12121313131131：%@",complete(responseDic));
             }
         }
         else {
             if (response) {
                 
                 response(complete(responseDic), error);
-                NSLog(@"测试：%@",complete(responseDic));
             }
         }
         
@@ -203,7 +201,6 @@
         WOTLoginModel_msg *model = [[WOTLoginModel_msg alloc] initWithDictionary:responseobj error:nil];
         return model;
     } response:response];
-    NSLog(@"测试：%@",response);
 }
 
 +(void)userGetVerifyWitTel:(NSString *)tel response:(response)response

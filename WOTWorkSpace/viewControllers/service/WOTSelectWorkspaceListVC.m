@@ -67,7 +67,7 @@
 //将返回的数据，按照城市从新组合
 -(NSDictionary *)sortByCity:(NSArray *)array
 {
-    //先看有哪些城市
+    //先看有哪些
     NSMutableArray *cityList = [NSMutableArray new];
     
     for (WOTSpaceModel *model in array) {

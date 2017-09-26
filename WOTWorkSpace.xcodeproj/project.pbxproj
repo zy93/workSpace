@@ -126,6 +126,7 @@
 		2AFAC8951F0FB796001BAB14 /* WOTRadioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFAC8931F0FB796001BAB14 /* WOTRadioView.m */; };
 		59BB1AF86E21AC99D91DDCE6 /* libPods-WOTWorkSpace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */; };
 		97D06A114DB42F1134696656 /* libPods-WOTWorkSpaceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC264D6C897C120A10B700D /* libPods-WOTWorkSpaceUITests.a */; };
+		C7901EC51F789CF500692F02 /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C7901EC31F789CF400692F02 /* JudgmentTime.m */; };
 		E80F4C0F1F0F24AA008BF066 /* WOTUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F4C0E1F0F24AA008BF066 /* WOTUitls.m */; };
 		E8190D941F0F69660000B07C /* WOTActivitiesListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8190D1C1F0F69660000B07C /* WOTActivitiesListCell.m */; };
 		E8190D951F0F69660000B07C /* WOTImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8190D1E1F0F69660000B07C /* WOTImageCollectionViewCell.m */; };
@@ -577,6 +578,8 @@
 		61996A58C52879228CF28B28 /* libPods-WOTWorkSpaceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpaceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD7419E0440D789E522F1B2 /* Pods-WOTWorkSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
+		C7901EC31F789CF400692F02 /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
+		C7901EC41F789CF400692F02 /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
 		D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.release.xcconfig"; sourceTree = "<group>"; };
 		D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2051,6 +2054,8 @@
 		E85A860B1F0233270016FCA1 /* Uitls */ = {
 			isa = PBXGroup;
 			children = (
+				C7901EC41F789CF400692F02 /* JudgmentTime.h */,
+				C7901EC31F789CF400692F02 /* JudgmentTime.m */,
 				E8605CD51F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.h */,
 				E8605CD61F1356BF005C09F4 /* UISearchBar+JCSearchBarPlaceholder.m */,
 				E8588CE51F0B27F900951105 /* NSString+Category.h */,
@@ -2933,6 +2938,7 @@
 				E8190DBA1F0F69660000B07C /* WOTPersionalInformationTagCell.m in Sources */,
 				E869E83A1F1DBE4C00DBDBB9 /* WOTMyFeedBackModel.m in Sources */,
 				E8190D9B1F0F69660000B07C /* WOTSpaceDetailCell.m in Sources */,
+				C7901EC51F789CF500692F02 /* JudgmentTime.m in Sources */,
 				E8190DBC1F0F69660000B07C /* WOTSettingCell.m in Sources */,
 				2A4214D11F14EE730010B003 /* WOTSelectScrollView.m in Sources */,
 				2A022E591F1DBC36001AE9E9 /* NSDate+Uitls.m in Sources */,

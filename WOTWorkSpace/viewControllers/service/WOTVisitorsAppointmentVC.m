@@ -16,6 +16,7 @@
 #import "WOTDatePickerView.h"
 #import "WOTVisitorsModel.h"
 #import "WOTConstants.h"
+#import "JudgmentTime.h"
 
 @interface WOTVisitorsAppointmentVC () <UITableViewDelegate, UITableViewDataSource, WOTVisitorsAppointmentSubmitCellDelegate, WOTVisitorsAppointmentCellDelegate, WOTVisitTypeCellDelegate>
 {
@@ -27,6 +28,8 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, strong) WOTDatePickerView *datepickerview;
+@property (nonatomic, strong) JudgmentTime *judgmentTime;
+@property (nonatomic, assign) BOOL isValidTime;
 
 @end
 
@@ -46,9 +49,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
+    self.judgmentTime = [[JudgmentTime alloc] init];
     [self.table reloadData];
 }
-
 
 -(void)configNav{
     self.navigationItem.title = @"访客预约";
@@ -67,14 +70,21 @@
     _datepickerview.cancelBlokc = ^(){
         weakSelf.datepickerview.hidden = YES;
     };
-    
-    
-    
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
         NSLog(@"%ld年%ld月%ld日",year,month,day);
-        time = [NSString stringWithFormat:@"%02d/%02d/%02d ",(int)year, (int)month, (int)day];
+        self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.isValidTime) {
+                time = [NSString stringWithFormat:@"%02d/%02d/%02d ",(int)year, (int)month, (int)day];
+
+                _datepickerview.hidden  = YES;
+            }else
+            {
+                [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
+                time = @"";
+                _datepickerview.hidden  = NO;
+            }
             [weakSelf.table reloadData];
         });
     };
@@ -92,7 +102,7 @@
     }
     [contentList replaceObjectAtIndex:2 withObject:@"男"];
     [contentList replaceObjectAtIndex:5 withObject:@(2)];
-    tableSubtitleList = @[@"", @"必填", @"MAN", @"必填", @"请选择", @"", @"请输入", @"请输入", @"必填", @"请选择"];
+    tableSubtitleList = @[@"", @"必填", @"MAN", @"必填", @"请选择", @"", @"必填", @"必填", @"必填", @"请选择"];
     [self.table reloadData];
 }
 
@@ -145,7 +155,12 @@
     }else if (strIsEmpty(tel)) {
         [MBProgressHUDUtil showMessage:@"电话不能为空" toView:self.view];
         return;
+        
     }else if (spaceId.integerValue<=0) {
+        if (![NSString valiMobile:tel]) {
+            [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
+            return;
+        }
         [MBProgressHUDUtil showMessage:@"请选择访问社区" toView:self.view];
         return;
     }else if (strIsEmpty(userName)) {
@@ -314,9 +329,15 @@
     }
     else if ([str isEqualToString:@"到访日期"]) {
         _datepickerview.hidden  = NO;
+        CGFloat offset = -100;
+        CGRect frame = self.table.frame;
+        frame.origin.y = offset;
+        self.table.frame = frame;
+        
         [tableView becomeFirstResponder];
     }
 }
+
 
 
 //-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

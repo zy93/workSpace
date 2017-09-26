@@ -62,4 +62,12 @@
     return _nearbySpace;
 }
 
+-(NSString *)cityName
+{
+    if (!_cityName) {
+        _cityName = [[NSString alloc] init];
+    }
+    return _cityName;
+}
+
 @end

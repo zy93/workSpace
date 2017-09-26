@@ -35,6 +35,7 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    NSLog(@"测试：%@",textField.text);
     if ([_delegate respondsToSelector:@selector(textFiledEndEnter:text:)]) {
         [_delegate textFiledEndEnter:self text:textField.text];
     }
@@ -58,4 +59,24 @@
         [_delegate textFiledEndEnter:self text:@"wom"];
     }
 }
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self hiddleKeyboard];
+    return YES;
+}
+
+
+-(void)hiddleKeyboard{
+    [self.contentText resignFirstResponder];
+}
+
+
+
+
+
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    [self.contentText resignFirstResponder];
+//
+//}
+
 @end

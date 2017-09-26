@@ -89,8 +89,12 @@
 - (IBAction)clickGetVerificationCodeBtn:(id)sender {
     if (strIsEmpty(self.phoneText.text)) {
         [MBProgressHUDUtil showMessage:@"请输入完整的电话号码" toView:self.view];
-       
+        
     } else {
+        if (![NSString valiMobile:self.phoneText.text]) {
+            [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
+            return;
+        }
         if (strIsEmpty(self.passwordText.text)) {
             [MBProgressHUDUtil showMessage:@"请设置密码" toView:self.view];
         } else {
@@ -118,11 +122,34 @@
 }
 
 - (IBAction)clickRegisterBtn:(id)sender {
+    if (strIsEmpty(self.phoneText.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入完整的电话号码" toView:self.view];
+        return;
+    }else
+    {
+        if (![NSString valiMobile:self.phoneText.text]) {
+            [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
+            return;
+        }
+    }
+    
+    if (strIsEmpty(self.passwordText.text)) {
+        [MBProgressHUDUtil showMessage:@"请设置密码" toView:self.view];
+        return;
+    } else {
+        if (strIsEmpty(self.verificationPasswordText.text)) {
+            
+            [MBProgressHUDUtil showMessage:@"请填写确认密码" toView:self.view];
+            return;
+        }
+    }
     if (strIsEmpty(self.verificationCodeText.text)) {
+        return;
         [MBProgressHUDUtil showMessage:@"请填写正确的验证码" toView:self.view];
     }
     else if (![self.passwordText.text isEqualToString:self.verificationPasswordText.text]) {
         [MBProgressHUDUtil showMessage:@"两次密码不一致！" toView:self.view];
+        return;
     }
     else {
         {
@@ -156,6 +183,14 @@
 
 
 -(void)hiddleKeyboard{
+    [_phoneText resignFirstResponder];
+    [_passwordText resignFirstResponder];
+    [_verificationCodeText resignFirstResponder];
+    [_verificationPasswordText resignFirstResponder];
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     [_phoneText resignFirstResponder];
     [_passwordText resignFirstResponder];
     [_verificationCodeText resignFirstResponder];

@@ -248,7 +248,7 @@
         weakSelf.datepickerview.hidden = YES;
     };
     
-    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day){
+    _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour, NSInteger min){
         weakSelf.datepickerview.hidden = YES;
        // NSLog(@"%ld年%ld月%ld日%ld时%ld分",year,month,day,hour,min);
 //        repairTime = [NSString stringWithFormat:@"%ld/%ld/%ld %ld:%ld:00",year,month,day,hour,min];

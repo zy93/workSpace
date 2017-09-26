@@ -43,6 +43,9 @@
 //数字时间转文字时间  input:9.5  output:9:30
 +(NSString*)floatTimeConvertStringTime:(CGFloat)time;
 
+//判断电话格式
++ (BOOL)valiMobile:(NSString*)mobile;
+
 
 
 @end
