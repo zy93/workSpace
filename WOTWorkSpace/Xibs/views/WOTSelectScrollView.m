@@ -188,7 +188,22 @@
     }
     [topLine setBackgroundColor:[UIColor grayColor]];
     [self addSubview:topLine];
+    NSLog(@"测试：%f,%f",openStartTime,openEndTime);
     
+    for (float i = openStartTime; i<openEndTime; i+=0.5) {
+        WOTScrollButton *btn = [self createButtonWithTitle:nil];
+        btn.time = i;
+        [buttonArr addObject:btn];
+        [self addSubview:btn];
+    }
+    
+    for (float i = openStartTime; i<=openEndTime; i++) {
+        NSString *tit =  [NSString stringWithFormat:@"%d时",(int)i];
+        UILabel *lab = [self createLabelWithTitle:tit];
+        [titleArr addObject:lab];
+        [self addSubview:lab];
+    }
+     /*
     for (float i = openStartTime; i<openEndTime; i+=0.5) {
         BOOL isInteger = i-((int)i)==0;
         NSString *tit = nil;
@@ -203,7 +218,9 @@
         [self addSubview:btn];
         [self addSubview:lab];
     }
-    
+      */
+    NSLog(@"测试：%d",buttonArr.count);
+    NSLog(@"测试：%d",titleArr.count);
     [self setNeedsLayout];
 }
 
@@ -233,7 +250,8 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    NSLog(@"测试：%d",buttonArr.count);
+    NSLog(@"测试：%d",titleArr.count);
     CGRect btnRect = CGRectMake(10, 30, ButtonWith, ButtonHeight);
     for (int i = 0 ; i<buttonArr.count ; i++) {
         WOTScrollButton *btn = buttonArr[i];
@@ -242,11 +260,21 @@
         btn.selected = NO;
         [btn setFrame:btnRect];
         btnRect = CGRectMake(CGRectGetMaxX(btn.frame)-1, 30, ButtonWith, ButtonHeight);
+       
         if (i%2==0) {
-            UILabel *lab = [titleArr objectAtIndex:i];
+            UILabel *lab = [titleArr objectAtIndex:i/2];
             //lab.backgroundColor = [UIColor blueColor];
            // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
             [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
+        }
+        
+        if (i==buttonArr.count-1) {
+            NSLog(@"测试%d",(i+1)/2);
+            UILabel *lab = [titleArr objectAtIndex:(i+1)/2];
+            //lab.backgroundColor = [UIColor blueColor];
+            // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
+           // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
+            [lab setFrame:CGRectMake(CGRectGetMaxX(btn.frame)-10, 15, 30, 13)];
         }
         for (NSArray *times in invalidList) {
             CGFloat beginTime = [times.firstObject floatValue];
@@ -261,11 +289,12 @@
         }
         
     }
+
     
     
     //self.contentSize = CGSizeMake(btnRect.origin.x, 80);
-    self.contentSize = CGSizeMake(btnRect.origin.x, 80);
-    [topLine setFrame:CGRectMake(0, 0, btnRect.origin.x, 1)];
+    self.contentSize = CGSizeMake(btnRect.origin.x+20, 80);
+    [topLine setFrame:CGRectMake(0, 0, btnRect.origin.x+20, 1)];
 }
 
 -(void)selectButton:(WOTScrollButton *)sender

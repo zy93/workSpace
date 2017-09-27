@@ -93,12 +93,15 @@
     if (indexPath.section == 0) {
         WOTPersionalInformationCommonCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"WOTPersionalInformationCommonCellID" forIndexPath:indexPath];
         NSArray *titleArray = @[@"头像",@"姓名",@"性别",@"星座",@"收获地址"];
-//        [[WOTUserSingleton shareUser]setValues];
+        //[[WOTUserSingleton shareUser] setValues];
+        //崩溃
+        NSLog(@"测试：%@",[WOTUserSingleton shareUser].userInfo);
         NSArray *valueArray = @[[WOTUserSingleton shareUser].userInfo.headPortrait,
                                 [WOTUserSingleton shareUser].userInfo.userName,
                                 [WOTUserSingleton shareUser].userInfo.sex,
                                 [WOTUserSingleton shareUser].userInfo.constellation,
                                 [WOTUserSingleton shareUser].userInfo.site];
+        NSLog(@"测试：%@",valueArray);
         cell.titleLabel.text = titleArray[indexPath.row];
         cell.valueLabel.text = valueArray[indexPath.row];
         if (indexPath.row == 0){

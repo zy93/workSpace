@@ -111,6 +111,35 @@
         return;
     }
     
+    NSNumber *commNum = @(0);
+    NSNumber *commKind = @(0);
+    NSString *dealMode = @"微信支付";
+    switch ([WOTSingtleton shared].orderType) {
+        case ORDER_TYPE_BOOKSTATION:
+        {
+            commNum = @(10000);;
+            commKind = @(0);
+        }
+            break;
+        case ORDER_TYPE_MEETING:
+        {
+            commNum = self.meetingModel.conferenceId;
+            commKind = @(1);
+        }
+            break;
+        case ORDER_TYPE_SITE:
+        {
+            commNum = self.siteModel.siteId;
+            commKind = @(2);
+        }
+            break;
+        default:
+            break;
+    }
+    [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceId commodityNum:commNum commodityKind:commKind productNum:@(1) startTime:self.startTime endTime:self.endTime money:self.costNumber dealMode:dealMode payType:@(1) payObject:[WOTUserSingleton shareUser].userInfo.userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
+        
+    }];
+    /*
     switch ([WOTSingtleton shared].orderType) {
         case ORDER_TYPE_BOOKSTATION:
         {
@@ -126,9 +155,11 @@
             break;
         case ORDER_TYPE_SITE:
         {
+            
 //            [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId siteId:self.conferenceOrSiteId startTime:self.startTime endTime:self.endTime response:^(id bean, NSError *error) {
 //                NSLog(@"---%@", bean);
 //            }];
+            
             NSNumber *commNum = @(0);
             NSNumber *commKind = @(0);
             NSString *dealMode = @"微信支付";
@@ -158,10 +189,13 @@
                 
             }];
         }
+            
             break;
         default:
             break;
     }
+     */
+             
 }
 
 #pragma mark - table delegate & dataSource
@@ -231,6 +265,29 @@
         WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
         if (cell == nil) {
             cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
+            switch ([WOTSingtleton shared].orderType) {
+                case ORDER_TYPE_BOOKSTATION:
+                {
+                    [cell.infoImg  sd_setImageWithURL:[_spaceModel.spacePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                    cell.infoTitle.text = _spaceModel.spaceName;
+                }
+                    break;
+                case ORDER_TYPE_MEETING:
+                {
+                    [cell.infoImg  sd_setImageWithURL:[_meetingModel.conferencePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                    cell.infoTitle.text = _meetingModel.conferenceName;
+                }
+                    break;
+                case ORDER_TYPE_SITE:
+                {
+                    [cell.infoImg  sd_setImageWithURL:[_siteModel.sitePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                    cell.infoTitle.text = _siteModel.siteName;
+                }
+                    break;
+                default:
+                    break;
+            }
+            
         }
         return cell;
     }
@@ -238,6 +295,7 @@
         WOTOrderForBookStationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForBookStationCell"];
         if (cell == nil) {
             cell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
+            
         }
         return cell;
     }

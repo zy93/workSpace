@@ -229,7 +229,7 @@
                     self.notInformationLabel.text = @"亲，暂时没有会议室哦！";
                     NSLog(@"没有数据");
                 }
-                
+                [self.table reloadData];
             });
         }];
     }
@@ -252,7 +252,7 @@
                     self.notInformationLabel.text = @"亲，暂时没有场地哦！";
                     NSLog(@"测试：没有数据");
                 }
-               // [self.table reloadData];
+                [self.table reloadData];
             });
         }];
     }

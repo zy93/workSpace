@@ -126,6 +126,7 @@
             mycell.constellation.text = [WOTUserSingleton shareUser].userInfo.constellation;
             mycell.signature.text = [WOTUserSingleton shareUser].userInfo.spared1;
             mycell.sexImage.image = [[WOTUserSingleton shareUser].userInfo.sex isEqualToString:@"man"]? [UIImage imageNamed:@"boy"]:[UIImage imageNamed:@"girl"];
+            NSLog(@"测试：%@",[WOTUserSingleton shareUser].userInfo.headPortrait);
             [mycell.headerImage sd_setImageWithURL:[[WOTUserSingleton shareUser].userInfo.headPortrait ToUrl] placeholderImage:[UIImage imageNamed:@"defaultHeaderVIew"]];
             
         } else {

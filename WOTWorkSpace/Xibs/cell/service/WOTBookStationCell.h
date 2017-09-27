@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTBookStationListModel.h"
+#import "WOTSpaceModel.h"
 @class WOTBookStationCell;
 
 @protocol WOTBookStationCellDelegate <NSObject>
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *spaceImage;
 
 @property (nonatomic, weak) id <WOTBookStationCellDelegate> delegate;
-@property (nonatomic, strong) WOTBookStationListModel *model;
+//@property (nonatomic, strong) WOTBookStationListModel *model;
+@property (nonatomic, strong) WOTSpaceModel *model;
 
 @end

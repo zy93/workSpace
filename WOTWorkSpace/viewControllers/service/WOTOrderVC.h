@@ -12,6 +12,7 @@
 #import "WOTBookStationListModel.h"
 #import "WOTMeetingListModel.h"
 #import "WOTSiteModel.h"
+#import "WOTSpaceModel.h"
 //#import ""
 
 @interface WOTOrderVC : UIViewController
@@ -23,6 +24,9 @@
 @property (nonatomic, strong) WOTBookStationListModel *model;
 @property (nonatomic, strong) WOTMeetingListModel *meetingModel;
 @property (nonatomic, strong) WOTSiteModel *siteModel;
+
+//2017-9-26
+@property (nonatomic, strong) WOTSpaceModel *spaceModel;
 
 @property (nonatomic, assign) CGFloat costNumber;
 

@@ -53,6 +53,7 @@
     _meetingModel = meetingModel;
     [self.meetingNameLab setText:_meetingModel.conferenceName];
     [self.meetingInfoLab setText:_meetingModel.conferenceDescribe];
+    [self.meetingImg sd_setImageWithURL:[_meetingModel.conferencePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
     [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_meetingModel.conferencePrice floatValue]]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_meetingModel.openTime];
@@ -62,8 +63,10 @@
 -(void)setSiteModel:(WOTSiteModel *)siteModel
 {
     _siteModel = siteModel;
+    NSLog(@"测试：%@",siteModel);
     [self.meetingNameLab setText:_siteModel.siteName];
     [self.meetingInfoLab setText:_siteModel.siteDescribe];
+    [self.meetingImg sd_setImageWithURL:[_siteModel.sitePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
     [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_siteModel.sitePrice floatValue]]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_siteModel.openTime];
@@ -117,12 +120,11 @@
             NSLog(@"-------");
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"测试：%@",reserList);
             [self.selectTimeScroll setInvalidBtnTimeList:reserList];
         });
     }];
 }
-
-
 
 #pragma mark - touches
 

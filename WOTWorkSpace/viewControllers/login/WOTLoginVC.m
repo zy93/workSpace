@@ -110,7 +110,7 @@
                         NSLog(@"登陆%@",model.msg);
                         if ([model.code isEqualToString:@"200"]) {
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                                [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model];
+                                [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model.msg];
                                 [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
                             });
                             dispatch_async(dispatch_get_main_queue(), ^{

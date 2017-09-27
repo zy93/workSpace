@@ -127,6 +127,9 @@
 		59BB1AF86E21AC99D91DDCE6 /* libPods-WOTWorkSpace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */; };
 		97D06A114DB42F1134696656 /* libPods-WOTWorkSpaceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC264D6C897C120A10B700D /* libPods-WOTWorkSpaceUITests.a */; };
 		C7901EC51F789CF500692F02 /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C7901EC31F789CF400692F02 /* JudgmentTime.m */; };
+		C7B4DD2C1F7A793C00009011 /* JXPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD291F7A793C00009011 /* JXPopoverView.m */; };
+		C7B4DD2D1F7A793C00009011 /* JXPopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD2A1F7A793C00009011 /* JXPopoverViewCell.m */; };
+		C7B4DD2E1F7A793C00009011 /* JXPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD2B1F7A793C00009011 /* JXPopoverAction.m */; };
 		E80F4C0F1F0F24AA008BF066 /* WOTUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F4C0E1F0F24AA008BF066 /* WOTUitls.m */; };
 		E8190D941F0F69660000B07C /* WOTActivitiesListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8190D1C1F0F69660000B07C /* WOTActivitiesListCell.m */; };
 		E8190D951F0F69660000B07C /* WOTImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8190D1E1F0F69660000B07C /* WOTImageCollectionViewCell.m */; };
@@ -580,6 +583,12 @@
 		B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		C7901EC31F789CF400692F02 /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
 		C7901EC41F789CF400692F02 /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
+		C7B4DD261F7A793C00009011 /* JXPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverView.h; sourceTree = "<group>"; };
+		C7B4DD271F7A793C00009011 /* JXPopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverViewCell.h; sourceTree = "<group>"; };
+		C7B4DD281F7A793C00009011 /* JXPopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverAction.h; sourceTree = "<group>"; };
+		C7B4DD291F7A793C00009011 /* JXPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverView.m; sourceTree = "<group>"; };
+		C7B4DD2A1F7A793C00009011 /* JXPopoverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverViewCell.m; sourceTree = "<group>"; };
+		C7B4DD2B1F7A793C00009011 /* JXPopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverAction.m; sourceTree = "<group>"; };
 		D0639BAED3DA088A5423E46F /* Pods-WOTWorkSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.release.xcconfig"; sourceTree = "<group>"; };
 		D57DB087D20DB51936241A91 /* Pods-WOTWorkSpace.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpace/Pods-WOTWorkSpace.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WOTWorkSpace.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1477,6 +1486,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C7B4DD251F7A793C00009011 /* JXPopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				C7B4DD261F7A793C00009011 /* JXPopoverView.h */,
+				C7B4DD271F7A793C00009011 /* JXPopoverViewCell.h */,
+				C7B4DD281F7A793C00009011 /* JXPopoverAction.h */,
+				C7B4DD291F7A793C00009011 /* JXPopoverView.m */,
+				C7B4DD2A1F7A793C00009011 /* JXPopoverViewCell.m */,
+				C7B4DD2B1F7A793C00009011 /* JXPopoverAction.m */,
+			);
+			path = JXPopoverView;
+			sourceTree = "<group>";
+		};
 		E8190D181F0F69660000B07C /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1842,6 +1864,7 @@
 		E85A85BF1F0202450016FCA1 /* librarys */ = {
 			isa = PBXGroup;
 			children = (
+				C7B4DD251F7A793C00009011 /* JXPopoverView */,
 				2AAC7A021F5D2FDD00F08359 /* MJRefresh */,
 				E868E0771F42E8C700573B66 /* Alipay */,
 				E862452E1F3D4F4900CF0D9D /* SocketRocket */,
@@ -2988,6 +3011,7 @@
 				E8190DA31F0F69660000B07C /* WOTworkSpaceScrollVIewCell.m in Sources */,
 				2AF78CF41F0A3DCB00F7B56D /* WOTMaintenanceApplyVC.m in Sources */,
 				E868E0E01F42E8C700573B66 /* APAuthV2Info.m in Sources */,
+				C7B4DD2E1F7A793C00009011 /* JXPopoverAction.m in Sources */,
 				E868E0E51F42E8C700573B66 /* DataVerifier.m in Sources */,
 				E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */,
 				2AF18A3E1F13610E004681CE /* WOTOrderForSelectCell.m in Sources */,
@@ -3132,7 +3156,9 @@
 				2A3B600B1F2EF9D000AC9C8D /* WOTLocationModel.m in Sources */,
 				E862456D1F3D4F4900CF0D9D /* SRRandom.m in Sources */,
 				E8190DBF1F0F69660000B07C /* WOTRegisterServiceProvidersCell.m in Sources */,
+				C7B4DD2D1F7A793C00009011 /* JXPopoverViewCell.m in Sources */,
 				2A42144E1F146A1A0010B003 /* YYShareView.m in Sources */,
+				C7B4DD2C1F7A793C00009011 /* JXPopoverView.m in Sources */,
 				2A99FB761F25F2C000869732 /* WOTAppointmentModel.m in Sources */,
 				E8190DCE1F0F69660000B07C /* XXPageTabView.m in Sources */,
 				E862456F1F3D4F4900CF0D9D /* SRURLUtilities.m in Sources */,

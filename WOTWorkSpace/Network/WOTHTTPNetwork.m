@@ -483,9 +483,14 @@
 +(void)getMeetingReservationsTimeWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)strTime response:(response)response
 {
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/findByIdAndTime"];
+    /*真实
     NSDictionary *dic = @{@"spaceId":spaceid,
                           @"conferenceId":confid,
                           @"startTime":strTime};
+    */
+    NSDictionary *dic = @{@"spaceId":@69,
+                          @"conferenceId":@17,
+                          @"startTime":@"2017/08/04"};
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTMeetingReservationsModel_msg *model = [[WOTMeetingReservationsModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
@@ -547,12 +552,16 @@
 +(void)getSiteReservationsTimeWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)strTime response:(response)response
 {
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/SiteOrder/findByIdAndTime"];
-    
+    /*
     NSDictionary *dic = @{
                           @"spaceId":spaceid,
                           @"siteId":siteid,
                           @"startTime":strTime};
-    
+    */
+    NSDictionary *dic = @{
+                          @"spaceId":spaceid,
+                          @"siteId":siteid,
+                          @"startTime":strTime};
     [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTSiteReservationsModel_Msg *model = [[WOTSiteReservationsModel_Msg alloc]initWithDictionary:responseobj error:nil];
         return model;
