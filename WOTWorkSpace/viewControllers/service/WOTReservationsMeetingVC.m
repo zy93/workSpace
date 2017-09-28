@@ -476,7 +476,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
+    /*
+    self.beginTime = 0;
+    self.endTime = 0;
+    */
     WOTReservationsMeetingCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CGPoint offset = cell.selectTimeScroll.contentOffset;
     NSLog(@"----------%f", offset.x);

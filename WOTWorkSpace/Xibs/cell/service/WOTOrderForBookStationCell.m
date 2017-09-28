@@ -8,10 +8,13 @@
 
 #import "WOTOrderForBookStationCell.h"
 #import "MBProgressHUD+Extension.h"
+//#import ""
+
 @interface WOTOrderForBookStationCell()
 
 @property (nonatomic, assign)int orderNumberInt;
 //@property (nonatomic, assign)int
+
 
 @end
 
@@ -33,22 +36,38 @@
 }
 
 - (IBAction)selectStartTime:(id)sender {
-    
+    self.isHiddenDataPickerView = NO;
+    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
+        [_delegate showDataPickerView:self];
+    }
 }
 
 - (IBAction)selectEndTime:(id)sender {
-    
+    self.isHiddenDataPickerView = NO;
+    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
+        [_delegate showDataPickerView:self];
+    }
 }
 
 - (IBAction)subButton:(id)sender {
-    
+    _orderNumberInt = [self.orderNumber.text intValue];
+    _orderNumberInt +=1;
+    if (_orderNumberInt <0) {
+        [MBProgressHUDUtil showMessage:@"已经最小数量" toView:self.superview];
+    }else
+    {
+        self.orderNumber.text =  [NSString stringWithFormat:@"%d",_orderNumberInt];
+    }
 }
 
 - (IBAction)addButton:(id)sender {
     _orderNumberInt = [self.orderNumber.text intValue];
     _orderNumberInt +=1;
     if (_orderNumberInt > [self.spaceModel.alreadyTakenNum intValue]) {
-//       [MBProgressHUDUtil showMessage:@"数量超过剩余最大工位数量" toView:self.view];
+        [MBProgressHUDUtil showMessage:@"数量超过剩余最大工位数量" toView:self.superview];
+    }else
+    {
+        self.orderNumber.text =  [NSString stringWithFormat:@"%d",_orderNumberInt];
     }
     
 }

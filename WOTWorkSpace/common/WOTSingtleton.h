@@ -18,7 +18,10 @@ typedef NS_ENUM(NSInteger, ORDER_TYPE) {
     ORDER_TYPE_SITE,
 };
 
-
+typedef NS_ENUM(NSInteger, BUTTON_TYPE) {
+    BUTTON_TYPE_STARTTIME,
+    BUTTON_TYPE_ENDTIME,
+};
 
 @interface WOTSingtleton : NSObject
 +(instancetype)shared;
@@ -30,6 +33,8 @@ typedef NS_ENUM(NSInteger, ORDER_TYPE) {
 
 //会议室页面跳转记录，因涉及页面较多，在此记录当前操作。
 @property (nonatomic, assign) ORDER_TYPE orderType;
+
+@property (nonatomic, assign) BUTTON_TYPE buttonType;
 //距离最近的空间
 @property (nonatomic, strong) WOTLocationModel *nearbySpace;
 

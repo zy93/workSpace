@@ -72,7 +72,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGo-0d-bQt">
-                                                            <rect key="frame" x="90.5" y="15" width="69.5" height="75"/>
+                                                            <rect key="frame" x="90.5" y="15" width="70" height="75"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="-35" minY="50" maxX="0.0" maxY="0.0"/>
@@ -85,7 +85,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oto-ye-4yK">
-                                                            <rect key="frame" x="160" y="15" width="70" height="75"/>
+                                                            <rect key="frame" x="160.5" y="15" width="70" height="75"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -99,7 +99,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88Q-nM-hD2">
-                                                            <rect key="frame" x="230" y="15" width="70" height="75"/>
+                                                            <rect key="frame" x="230.5" y="15" width="69.5" height="75"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1740,8 +1740,10 @@
                                         <connections>
                                             <outlet property="addBtn" destination="GM0-TY-Rk0" id="pFd-cF-kOb"/>
                                             <outlet property="beginTimeBtn" destination="n4y-7h-zgI" id="lyE-lK-rhf"/>
+                                            <outlet property="endDataLabel" destination="0ve-De-yIu" id="4Kw-WR-8xB"/>
                                             <outlet property="endTimeBtn" destination="jZU-or-u9e" id="n0H-Td-kVb"/>
                                             <outlet property="orderNumber" destination="StH-sa-cfu" id="l4s-V2-pf5"/>
+                                            <outlet property="startDataLable" destination="hrI-1x-Ijh" id="469-3L-7s3"/>
                                             <outlet property="subBtn" destination="Ztf-yy-b45" id="w0z-HH-pJ1"/>
                                             <outlet property="surplusLab" destination="qp3-l6-uVA" id="fFw-Q4-e1A"/>
                                             <outlet property="timeExplanationLab" destination="Zm9-77-MsI" id="tyC-Hf-owL"/>
