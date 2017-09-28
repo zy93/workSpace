@@ -12,7 +12,9 @@
 @class WOTOrderForBookStationCell;
 
 @protocol WOTOrderForBookStationCellDelegate <NSObject>
+
 -(void)showDataPickerView:(WOTOrderForBookStationCell *)cell;
+
 @end
 
 @interface WOTOrderForBookStationCell : UITableViewCell
