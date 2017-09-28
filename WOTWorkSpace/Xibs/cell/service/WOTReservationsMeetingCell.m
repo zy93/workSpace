@@ -50,11 +50,14 @@
 
 -(void)setMeetingModel:(WOTMeetingListModel *)meetingModel
 {
+   // NSLog(@"测试：%@",meetingModel);
     _meetingModel = meetingModel;
     [self.meetingNameLab setText:_meetingModel.conferenceName];
     [self.meetingInfoLab setText:_meetingModel.conferenceDescribe];
     [self.meetingImg sd_setImageWithURL:[_meetingModel.conferencePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
     [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_meetingModel.conferencePrice floatValue]]];
+    //[self.meetingOpenTime setText:_meetingModel.openTime];
+    [self.meetingOpenTimeLab setText:[NSString stringWithFormat:@"会议室开放时间：%@",_meetingModel.openTime]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_meetingModel.openTime];
     [self loadMeetingReservationsInfo];
@@ -63,11 +66,13 @@
 -(void)setSiteModel:(WOTSiteModel *)siteModel
 {
     _siteModel = siteModel;
-    NSLog(@"测试：%@",siteModel);
+    //NSLog(@"测试：%@",siteModel);
     [self.meetingNameLab setText:_siteModel.siteName];
     [self.meetingInfoLab setText:_siteModel.siteDescribe];
     [self.meetingImg sd_setImageWithURL:[_siteModel.sitePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
     [self.meetingPriceLab setText:[NSString stringWithFormat:@"%.2f元/小时",[_siteModel.sitePrice floatValue]]];
+    //[self.meetingOpenTime setText:_siteModel.openTime];
+    [self.meetingOpenTimeLab setText:[NSString stringWithFormat:@"场地开放时间：%@",_siteModel.openTime]];
     [self.selectTimeScroll setupView];
     [self.selectTimeScroll setOpenTime:_siteModel.openTime];
     [self loadSiteReservationsInfo];
@@ -93,7 +98,7 @@
     //    @"2017/07/13 00:00:00"
     [WOTHTTPNetwork getMeetingReservationsTimeWithSpaceId:_meetingModel.spaceId conferenceId:_meetingModel.conferenceId startTime:_inquireTime response:^(id bean, NSError *error) {
         
-        WOTMeetingReservationsModel_msg *mod = bean;
+        WOTMeetingReservationsModel_msg *mod =(WOTMeetingReservationsModel_msg *) bean;
         NSMutableArray *reserList = [NSMutableArray new];
         for (WOTMeetingReservationsModel * model in  mod.msg) {
             NSArray *arr = [NSString getReservationsTimesWithStartTime:model.startTime endTime:model.endTime];
@@ -120,7 +125,7 @@
             NSLog(@"-------");
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"测试：%@",reserList);
+           // NSLog(@"测试：%@",reserList);
             [self.selectTimeScroll setInvalidBtnTimeList:reserList];
         });
     }];

@@ -136,7 +136,17 @@
         default:
             break;
     }
-    [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceId commodityNum:commNum commodityKind:commKind productNum:@(1) startTime:self.startTime endTime:self.endTime money:self.costNumber dealMode:dealMode payType:@(1) payObject:[WOTUserSingleton shareUser].userInfo.userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
+    
+    [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceId
+                                commodityNum:commNum
+                               commodityKind:commKind
+                                  productNum:@(1)
+                                   startTime:self.startTime
+                                     endTime:self.endTime
+                                       money:self.costNumber
+                                    dealMode:dealMode
+                                     payType:@(1)
+                                   payObject:[WOTUserSingleton shareUser].userInfo.userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
         
     }];
     /*
@@ -263,32 +273,34 @@
     
     if ([cellType isEqualToString:infoCell]) {
         WOTOrderForInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WOTOrderForInfoCell"];
+        
         if (cell == nil) {
             cell = [[WOTOrderForInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForInfoCell"];
-            switch ([WOTSingtleton shared].orderType) {
-                case ORDER_TYPE_BOOKSTATION:
-                {
-                    [cell.infoImg  sd_setImageWithURL:[_spaceModel.spacePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
-                    cell.infoTitle.text = _spaceModel.spaceName;
-                }
-                    break;
-                case ORDER_TYPE_MEETING:
-                {
-                    [cell.infoImg  sd_setImageWithURL:[_meetingModel.conferencePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
-                    cell.infoTitle.text = _meetingModel.conferenceName;
-                }
-                    break;
-                case ORDER_TYPE_SITE:
-                {
-                    [cell.infoImg  sd_setImageWithURL:[_siteModel.sitePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
-                    cell.infoTitle.text = _siteModel.siteName;
-                }
-                    break;
-                default:
-                    break;
-            }
-            
         }
+        switch ([WOTSingtleton shared].orderType) {
+            case ORDER_TYPE_BOOKSTATION:
+            {
+                [cell.infoImg  sd_setImageWithURL:[_spaceModel.spacePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                cell.infoTitle.text = _spaceModel.spaceName;
+            }
+                break;
+            case ORDER_TYPE_MEETING:
+            {
+                [cell.infoImg  sd_setImageWithURL:[_meetingModel.conferencePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                cell.infoTitle.text = _meetingModel.conferenceName;
+            }
+                break;
+            case ORDER_TYPE_SITE:
+            {
+                [cell.infoImg  sd_setImageWithURL:[_siteModel.sitePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+                cell.infoTitle.text = _siteModel.siteName;
+            }
+                break;
+            default:
+                break;
+        }
+            
+        
         return cell;
     }
     else if ([cellType isEqualToString:bookStationCell]) {

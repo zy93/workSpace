@@ -159,6 +159,7 @@
 
 -(void)setInvalidBtnTimeList:(NSArray *)tagList
 {
+    NSLog(@"失效时间：%@",tagList);
     invalidList = tagList;
     [self setNeedsLayout];
 }
@@ -188,7 +189,7 @@
     }
     [topLine setBackgroundColor:[UIColor grayColor]];
     [self addSubview:topLine];
-    NSLog(@"测试：%f,%f",openStartTime,openEndTime);
+    //NSLog(@"测试：%f,%f",openStartTime,openEndTime);
     
     for (float i = openStartTime; i<openEndTime; i+=0.5) {
         WOTScrollButton *btn = [self createButtonWithTitle:nil];
@@ -219,8 +220,8 @@
         [self addSubview:lab];
     }
       */
-    NSLog(@"测试：%d",buttonArr.count);
-    NSLog(@"测试：%d",titleArr.count);
+    //NSLog(@"测试：%d",buttonArr.count);
+    //NSLog(@"测试：%d",titleArr.count);
     [self setNeedsLayout];
 }
 
@@ -250,8 +251,8 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    NSLog(@"测试：%d",buttonArr.count);
-    NSLog(@"测试：%d",titleArr.count);
+    //NSLog(@"测试：%d",buttonArr.count);
+    //NSLog(@"测试：%d",titleArr.count);
     CGRect btnRect = CGRectMake(10, 30, ButtonWith, ButtonHeight);
     for (int i = 0 ; i<buttonArr.count ; i++) {
         WOTScrollButton *btn = buttonArr[i];
@@ -269,7 +270,6 @@
         }
         
         if (i==buttonArr.count-1) {
-            NSLog(@"测试%d",(i+1)/2);
             UILabel *lab = [titleArr objectAtIndex:(i+1)/2];
             //lab.backgroundColor = [UIColor blueColor];
             // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
@@ -289,7 +289,6 @@
         }
         
     }
-
     
     
     //self.contentSize = CGSizeMake(btnRect.origin.x, 80);

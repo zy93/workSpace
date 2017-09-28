@@ -21,7 +21,7 @@
 @interface WOTReservationsResponseModel_msg : JSONModel
 @property(nonatomic,strong)NSString *code;
 @property(nonatomic,strong)NSString *result;
-@property(nonatomic,strong)NSArray<WOTReservationsResponseModel> *msg;
+@property(nonatomic,strong)WOTReservationsResponseModel<WOTReservationsResponseModel> *msg;
 @end
 
 

@@ -66,7 +66,7 @@
     CGFloat fIconSizeW = pIconImg.size.width *[WOTUitls GetLengthAdaptRate];
     CGFloat fBackViewX = 20*[WOTUitls GetLengthAdaptRate];
     CGFloat fBackViewInterval = 40*[WOTUitls GetLengthAdaptRate];
-    NSLog(@"测试：%f",fBackViewInterval);
+    //NSLog(@"测试：%f",fBackViewInterval);
     for (NSInteger i = 0; i<m_arrIcon.count; i++)
     {
         UIButton *pButton = [[UIButton alloc] initWithFrame:CGRectMake(fBackViewX + (i * (fIconSizeW+fBackViewInterval)), 40*[WOTUitls GetLengthAdaptRate], fIconSizeW, fIconSizeW)];

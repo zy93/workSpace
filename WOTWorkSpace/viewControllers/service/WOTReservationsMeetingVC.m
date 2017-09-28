@@ -14,6 +14,7 @@
 #import "WOTMeetingListModel.h"
 #import "WOTMeetingReservationsModel.h"
 #import "WOTSiteModel.h"
+#import "WOTSiteReservationsModel.h"
 #import "MBProgressHUD+Extension.h"
 #import "JudgmentTime.h"
 
@@ -50,7 +51,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupView];
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
     
     _spaceId = [WOTSingtleton shared].nearbySpace.spaceId ;
@@ -76,13 +76,23 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupView];
     self.judgmentTime = [[JudgmentTime alloc] init];
     [self.navigationController.navigationBar setHidden:NO];
     selectIndex = nil;
-    NSLog(@"%@",self.spaceId);
+    self.beginTime = 0;
+    self.endTime = 0;
+    //NSLog(@"%@",self.spaceId);
     [self createRequest];
     [self configNavi];
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.translucent = YES;
+    _datepickerview.hidden = YES;
 }
 
 -(void)configNavi
@@ -125,9 +135,7 @@
     
     self.navigationController.navigationBar.translucent = NO; //有个万恶的黑色
 }
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.translucent = YES;
-}
+
 
 #pragma mark - update view
 
@@ -145,7 +153,7 @@
         weakSelf.datepickerview.hidden = YES;
        // NSLog(@"%ld年%ld月%ld日",year,month,day);
         inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",year, month, day];
-        NSLog(@"测试：%@",inquireTime);
+      //  NSLog(@"测试：%@",inquireTime);
         //问题有可能出现在这里
         self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
         //self.isValidTime = YES;
@@ -245,21 +253,23 @@
                 if (tableList.count) {
                     self.notInformationImageView.hidden = YES;
                     self.notInformationLabel.hidden = YES;
-                    [self.table reloadData];
+                   [self.table reloadData];
                 } else {
                     self.notInformationImageView.hidden = NO;
                     self.notInformationLabel.hidden = NO;
                     self.notInformationLabel.text = @"亲，暂时没有场地哦！";
-                    NSLog(@"测试：没有数据");
+                    //NSLog(@"测试：没有数据");
                 }
                 [self.table reloadData];
             });
         }];
     }
+   // [self.table reloadData];
 }
 
 
 #pragma mark - action
+//选择时间
 - (IBAction)today:(id)sender {
     self.indicatorViewCenter.constant = 0;
     self.todayBtn.selected = YES;
@@ -300,8 +310,10 @@
 
 
 #pragma mark - cell delegate
+//确认预约按钮
 -(void)submitReservationsCell:(WOTReservationsMeetingCell *)cell
 {
+    
     WOTOrderVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTOrderVC"];
     if (self.endTime == 0) {
         return;
@@ -311,15 +323,61 @@
     vc.endTime = arr.lastObject;
     vc.spaceId = self.spaceId;
     if([WOTSingtleton shared].orderType == ORDER_TYPE_MEETING){
+        //会议室
+//        [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId
+//                                          conferenceId:cell.meetingModel.conferenceId startTime:arr.firstObject
+//                                               endTime:arr.lastObject
+//                                              response:^(id bean, NSError *error) {
+        [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId
+                                          conferenceId:cell.meetingModel.conferenceId startTime:arr.firstObject
+                                               endTime:arr.lastObject
+                                             spaceName:self.spaceName
+                                           meetingName:cell.meetingModel.conferenceName
+                                              response:^(id bean, NSError *error) {
+                                                  
+                                              WOTReservationsResponseModel_msg *model = (WOTReservationsResponseModel_msg *)bean;
+                                              if ([model.code isEqualToString: @"200"]) {
+                                                  vc.meetingModel = cell.meetingModel;
+                                                  vc.costNumber = (self.endTime - self.beginTime) * cell.meetingModel.conferencePrice.floatValue;
+                                                  [self.navigationController pushViewController:vc animated:YES];
+                                              }else{
+                                                 // [MBProgressHUDUtil ];
+                                                  [MBProgressHUDUtil showMessage:@"选择的时间已经被预约！" toView:self.view];
+                                              }
+                                          
+                                              
+                                          }];
         
-        vc.meetingModel = cell.meetingModel;
-        vc.costNumber = (self.endTime - self.beginTime) * cell.meetingModel.conferencePrice.floatValue;
     }
     else {
-        vc.siteModel = cell.siteModel;
-        vc.costNumber = (self.endTime - self.beginTime) * cell.siteModel.sitePrice.floatValue;
+        //场地
+        /*
+         [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId
+         siteId:cell.siteModel.siteId
+         startTime:arr.firstObject
+         endTime:arr.lastObject
+         response:^(id bean, NSError *error) {
+         */
+        [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId
+                                             siteId:cell.siteModel.siteId
+                                          startTime:arr.firstObject
+                                            endTime:arr.lastObject
+                                          spaceName:self.spaceName
+                                           siteName:cell.siteModel.siteName
+                                           response:^(id bean, NSError *error) {
+                                               WOTSiteReservationsRsponseModel_Msg *model = (WOTSiteReservationsRsponseModel_Msg *)bean;
+                                               if ([model.code isEqualToString:@"200"]) {
+                                                   vc.siteModel = cell.siteModel;
+                                                   vc.costNumber = (self.endTime - self.beginTime) * cell.siteModel.sitePrice.floatValue;
+                                                   [self.navigationController pushViewController:vc animated:YES];
+                                               }else
+                                               {
+                                                  [MBProgressHUDUtil showMessage:@"选择的时间已经被预约！" toView:self.view];
+                                               }
+                                           }];
+        
     }
-    [self.navigationController pushViewController:vc animated:YES];    
+    
 }
 
 -(void)selectTimeWithCell:(WOTReservationsMeetingCell *)cell Time:(CGFloat)time
@@ -384,7 +442,7 @@
     }
     [cell setupView];
     cell.delegate = self;
-    
+  //  NSLog(@"测试：%@",tableList);
     if (tableList) {
         id model = tableList[indexPath.row];
         [cell setInquireTime:inquireTime];
@@ -406,7 +464,7 @@
         
         cell.index = indexPath;
     } else {
-        NSLog(@"测试：没有数据");
+        //NSLog(@"测试：没有数据");
     }
     
     

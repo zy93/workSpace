@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 @property (weak, nonatomic) IBOutlet UIView *meetingImgBGView;
 @property (weak, nonatomic) IBOutlet UIView *selectIndicationView;
+//@property (weak, nonatomic) IBOutlet UILabel *meetingOpenTime;
+
 @property (weak, nonatomic) id <WOTReservationsMeetingCellDelegate> delegate;
 
 //设置数据

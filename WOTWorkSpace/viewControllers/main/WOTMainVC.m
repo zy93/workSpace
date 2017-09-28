@@ -145,7 +145,7 @@ int a = 0;
     [self getInfoDataFromWeb:^{
     }];
     [self getSliderDataSource:^{
-    [self loadAutoScrollView];
+        [self loadAutoScrollView];
     }];
     [self getDataSourceFromWebFWithCity:nil complete:^{
     } loadVIews:^{
@@ -219,6 +219,7 @@ int a = 0;
 {
     [[WOTLocationManager shareLocation] getLocationWithBlock:^(CGFloat lat, CGFloat lon,NSString* cityName) {
         [WOTSingtleton shared].cityName = cityName;
+        NSLog(@"lat:%f,lon:%f",lat,lon);
         [WOTHTTPNetwork getSpaceWithLocation:lat lon:lon response:^(id bean, NSError *error) {
             [WOTSingtleton shared].nearbySpace = ((WOTLocationModel_Msg*)bean).msg;
             
@@ -397,6 +398,9 @@ int a = 0;
 
 - (void)StartRefresh
 {
+    //[self.scrollVIew removeFromSuperview];
+    //[self.spaceView removeFromSuperview];
+    [_pageFlowView removeFromSuperview];
     if (_scrollVIew.mj_footer != nil && [_scrollVIew.mj_footer isRefreshing])
     {
         [_scrollVIew.mj_footer endRefreshing];
@@ -421,18 +425,20 @@ int a = 0;
 
 //page view UI
 - (void)setupUI {
-    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, self.spaceView.frame.size.height-20)];
-    _pageFlowView.delegate = self;
-    _pageFlowView.dataSource = self;
-    _pageFlowView.minimumPageAlpha = 0.1;
-    _pageFlowView.isCarousel = NO;
-    _pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
-    _pageFlowView.isOpenAutoScroll = YES;
-    
-    //初始化pageControl
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 32, SCREEN_WIDTH, 8)];
-    _pageFlowView.pageControl = pageControl;
-    [_pageFlowView addSubview:pageControl];
+    if (!_pageFlowView) {
+        _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, self.spaceView.frame.size.height-20)];
+        _pageFlowView.delegate = self;
+        _pageFlowView.dataSource = self;
+        _pageFlowView.minimumPageAlpha = 0.1;
+        _pageFlowView.isCarousel = NO;
+        _pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
+        _pageFlowView.isOpenAutoScroll = YES;
+        
+        //初始化pageControl
+        UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 32, SCREEN_WIDTH, 8)];
+        _pageFlowView.pageControl = pageControl;
+        [_pageFlowView addSubview:pageControl];
+    }
    
     [self.spaceView addSubview:_pageFlowView];
     
@@ -475,6 +481,7 @@ int a = 0;
     //从网络加载图片用
     
       [bannerView.mainImageView sd_setImageWithURL:[[NSString stringWithFormat:@"%@%@",HTTPBaseURL,_spacedataSource[index].spacePicture] ToUrl]placeholderImage:[UIImage imageNamed:@"spacedefault"]];
+    
     
     if ([_spacePageViewDataSource[index].spacePicture separatedWithString:@","].count!=0) {
         [bannerView.mainImageView sd_setImageWithURL:[[_spacePageViewDataSource[index].spacePicture separatedWithString:@","][0] ToUrl] placeholderImage:[UIImage imageNamed:@"spacedefault"]];
@@ -671,6 +678,7 @@ int a = 0;
 //从网络获取空间数据
 -(void)getDataSourceFromWebFWithCity:( NSString * __nullable )city complete:(void(^)())complete loadVIews:(void(^)())loadViews{
 //    [WOTHTTPNetwork getAllSpaceWithCity:city block:^(id bean, NSError *error) {
+    [self.spacePageViewDataSource removeAllObjects];
     [WOTHTTPNetwork getSapaceFromGroupBlock:^(id bean, NSError *error) {
         complete();
         if (bean != nil) {

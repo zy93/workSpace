@@ -231,13 +231,15 @@
     
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/Space/findAllSpace"];
     NSDictionary *parameters;
+    //在原来的基础上添加集团id
     if (city != nil) {
-        parameters = @{@"city":city};//原来
+        parameters = @{@"city":city,
+                       @"appId":YLGTEST_APPID
+                       };//原来
     }
 
     [self doRequestWithParameters:parameters useUrl:urlstring complete:^JSONModel *(id responseobj) {
         WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseobj error:nil];
-        
         return  spacemodel;
         
         
@@ -291,7 +293,6 @@
     [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
         
         WOTLocationModel_Msg * activitymodel = [[WOTLocationModel_Msg alloc]initWithDictionary:responseobj error:nil];
-        NSLog(@"测试%@",activitymodel.msg);
         return  activitymodel;
     }response:response];
 }
@@ -483,14 +484,14 @@
 +(void)getMeetingReservationsTimeWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)strTime response:(response)response
 {
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/findByIdAndTime"];
-    /*真实
+    
     NSDictionary *dic = @{@"spaceId":spaceid,
                           @"conferenceId":confid,
                           @"startTime":strTime};
-    */
-    NSDictionary *dic = @{@"spaceId":@69,
-                          @"conferenceId":@17,
-                          @"startTime":@"2017/08/04"};
+    
+//    NSDictionary *dic = @{@"spaceId":@69,
+//                          @"conferenceId":@17,
+//                          @"startTime":@"2017/08/04"};
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTMeetingReservationsModel_msg *model = [[WOTMeetingReservationsModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
@@ -512,7 +513,14 @@
         return model;
     } response:response];
 }
-+(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
+//+(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
++(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid
+                         conferenceId:(NSNumber *)confid
+                            startTime:(NSString *)startTime
+                              endTime:(NSString *)endTime
+                            spaceName:(NSString *)spaceName
+                          meetingName:(NSString *) meetingName
+                             response:(response)response
 {
     
     NSString *sliderurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Conferencedetails/subscribyTime"];
@@ -520,7 +528,11 @@
                           @"spaceId":spaceid,
                           @"conferenceId":confid,
                           @"startTime":startTime,
-                          @"endTime":endTime};
+                          @"endTime":endTime,
+                          @"spaceName":spaceName,
+                          @"company":meetingName,
+                          @"appId":YLGTEST_APPID
+                          };
     [self doRequestWithParameters:dic useUrl:sliderurl complete:^JSONModel *(id responseobj) {
         WOTReservationsResponseModel_msg *model = [[WOTReservationsResponseModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
@@ -568,15 +580,24 @@
     } response:response];
 }
 
-+(void)siteReservationsWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response
++(void)siteReservationsWithSpaceId:(NSNumber *)spaceid
+                            siteId:(NSNumber *)siteid
+                         startTime:(NSString *)startTime
+                           endTime:(NSString *)endTime
+                         spaceName:(NSString *)spaceName
+                          siteName:(NSString *)siteName
+                          response:(response)response
 {
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/SiteOrder/findByTime"];
-    
+    //添加的参数字段待修改
     NSDictionary *dic = @{
                           @"spaceId":spaceid,
                           @"siteId":siteid,
                           @"startTime":startTime,
-                          @"endTime":endTime};
+                          @"endTime":endTime,
+                          @"spaceName":spaceName,
+                          @"siteName":siteName
+                          };
     
     [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
         WOTSiteReservationsRsponseModel_Msg *model = [[WOTSiteReservationsRsponseModel_Msg alloc]initWithDictionary:responseobj error:nil];
@@ -685,6 +706,8 @@
     NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
     NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
     NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userInfo.userId,
+                                 @"userName":[WOTUserSingleton shareUser].userInfo.userName,
+                                 @"userTel":[WOTUserSingleton shareUser].userInfo.tel,
                                  @"facilitator":@(00001),
                                  @"carrieroperator":@(00002),
                                  @"body":@"易创客",

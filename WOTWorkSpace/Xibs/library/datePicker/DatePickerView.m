@@ -173,7 +173,7 @@
             mycom1.textColor = _otherTextcolor;
         }
         mycom1.text = [NSString stringWithFormat:@"%@年",[_yeararr objectAtIndex:row]];
-        NSLog(@"测试：%@",mycom1.text);
+       // NSLog(@"测试：%@",mycom1.text);
     }
     else if(component == 1){
         if (row+1 == _selectedrow_month || row+1 == month){

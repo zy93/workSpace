@@ -31,6 +31,10 @@
 @property(nonatomic,strong)NSString *spared1;
 @property(nonatomic,strong)NSString *spared2;
 @property(nonatomic,strong)NSString *spared3;
+//新添加的接口
+@property(nonatomic,strong)NSNumber *stationNum;
+@property(nonatomic,strong)NSNumber *alreadyTakenNum;
+@property(nonatomic,strong)NSNumber *stationPrice;
 -(instancetype)initWithSpaceId:(NSNumber *)spaceId spaceName:(NSString *)spaceName spaceDescribe:(NSString *)spaceDescribe  city:(NSString *)city spaceSite:(NSString *)spaceSite fixPhone:(NSString *)fixPhone relationTel:(NSString *)relationTel spaceState:(NSNumber *)spaceState creationTime:(NSString *)creationTime spacePicture:(NSString *)spacePicture;
 @end
 

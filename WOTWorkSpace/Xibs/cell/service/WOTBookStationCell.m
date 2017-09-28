@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.spaceName.textColor = HighTextColor;
-    [[WOTConfigThemeUitls shared]setLabelColorss:[NSArray arrayWithObjects:self.spaceLocation,self.stationPrice,self.stationNum, nil] withColor:MiddleTextColor];
+    [[WOTConfigThemeUitls shared]setLabelColorss:[NSArray arrayWithObjects:self.stationPrice,self.stationNum, nil] withColor:MiddleTextColor];
     // Initialization code
 }
 
@@ -22,6 +22,7 @@
 
     // Configure the view for the selected state
 }
+
 - (IBAction)goTobookStation:(id)sender {
     
     if ([_delegate respondsToSelector:@selector(gotoOrderVC:)]) {
@@ -29,5 +30,7 @@
     }
     
 }
+
+
 
 @end

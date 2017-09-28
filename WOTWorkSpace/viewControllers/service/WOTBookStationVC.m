@@ -60,7 +60,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.navigationItem.title = @"订工位";
     [self setupView];
     //_spaceId = @(56);原来
     self.cityList = [NSMutableArray new];
@@ -70,7 +70,7 @@
 //    WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
 //    NSLog(@"最近空间%@",model.spaceName);
 //    _spaceId = model.spaceId;
-    if (!cityName) {
+    if ((!cityName) || [cityName isEqualToString:@""]) {
         cityName = @"未定位";
     }
 
@@ -84,6 +84,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
 //    [self configNaviBackItem];
+    [self createRequestCity];
     [self createRequest];
     self.menuArray = [[NSMutableArray alloc] init];
     [self configNavi];
@@ -91,7 +92,7 @@
 }
 
 -(void)configNavi{
-    self.navigationItem.title = @"订工位";
+    
     ///需要更改的地方spaceName
     
     self.cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -151,72 +152,42 @@
 #pragma mark - request
 -(void)createRequest
 {
-    //待讨论根据sapceid获取所有的工位
-    /*
-    [WOTHTTPNetwork getSpaceSitationBlock:^(id bean, NSError *error) {
-        WOTBookStationListModel_msg *msg = bean;
-        allModelList = msg.msg;
-        //self.spaceName = allModelList
-        for (WOTBookStationListModel_msg_List *model in allModelList) {
-            if ([model.cityName isEqualToString:cityName]) {
-                tableList = model.cityList;
-                
+   
+    if ([cityName isEqualToString:@""]) {
+        self.notInformationImageView.hidden = NO;
+        self.notBookStationInformationLabel.hidden = NO;
+        self.notBookStationInformationLabel.text = @"亲，暂时没有会议室哦！";
+        [self.tableIView  reloadData];
+        //return;
+    }else
+    {
+        [WOTHTTPNetwork getAllSpaceWithCity:cityName block:^(id bean, NSError *error) {
+            if (error) {
+                NSLog(@"error:%@",error);
+                return ;
             }
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (tableList) {
-                [self.tableIView reloadData];
-            } else {
-                NSLog(@"没有数据");
-            }
-        });
-    }];
-     */
-//    [WOTHTTPNetwork getBookStationWithSpaceId:_spaceId response:^(id bean, NSError *error) {
-//        if (error) {
-//            NSLog(@"error:%@",error);
-//            return ;
-//        }
-//        WOTBookStationListModel_msg *msg = bean;
-//        tableList = msg.msg;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (tableList.count) {
-//                self.notInformationImageView.hidden = YES;
-//                self.notBookStationInformationLabel.hidden = YES;
-//                [self.tableIView  reloadData];
-//            } else {
-//                self.notInformationImageView.hidden = NO;
-//                self.notBookStationInformationLabel.hidden = NO;
-//                NSLog(@"没有数据");
-//            }
-//        });
-//
-//    }];
-    [WOTHTTPNetwork getAllSpaceWithCity:cityName block:^(id bean, NSError *error) {
-        if (error) {
-            NSLog(@"error:%@",error);
-            return ;
-        }
-        WOTSpaceModel_msg *list = bean;
-        NSLog(@"测试%@",list.msg);
-        //        tableList = list.msg;
-        //tableDic = [self sortByCity:list.msg];
-        tableList = list.msg;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (tableList.count) {
-                self.notInformationImageView.hidden = YES;
-                self.notBookStationInformationLabel.hidden = YES;
-            } else {
-                self.notInformationImageView.hidden = NO;
-                self.notBookStationInformationLabel.hidden = NO;
-                self.notBookStationInformationLabel.text = @"亲，暂时没有会议室哦！";
-                NSLog(@"没有数据");
-            }
-            //[self.table reloadData];
-            [self.tableIView  reloadData];
-        });
-    }];
+            WOTSpaceModel_msg *list = bean;
+            //        tableList = list.msg;
+            //tableDic = [self sortByCity:list.msg];
+            tableList = list.msg;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (tableList.count) {
+                    self.notInformationImageView.hidden = YES;
+                    self.notBookStationInformationLabel.hidden = YES;
+                } else {
+                    self.notInformationImageView.hidden = NO;
+                    self.notBookStationInformationLabel.hidden = NO;
+                    self.notBookStationInformationLabel.text = @"亲，暂时没有会议室哦！";
+                    NSLog(@"没有数据");
+                }
+                //[self.table reloadData];
+                [self.tableIView  reloadData];
+            });
+        }];
+    
+    }
+    
+    
 }
 
 
@@ -244,26 +215,23 @@
 
 -(void)selectSpace:(UIButton *)sender
 {
-    JXPopoverView *popoverView = [JXPopoverView popoverView];
-    //NSArray *cityName = @[@"北京市",@"上海市",@"深圳市"];
-    NSMutableArray *JXPopoverActionArray = [[NSMutableArray alloc] init];
-    for (NSString *name in self.cityList) {
-        JXPopoverAction *action1 = [JXPopoverAction actionWithTitle:name handler:^(JXPopoverAction *action) {
-            
-            NSLog(@"测试：%@",name);
-            
-        }];
-        [JXPopoverActionArray addObject:action1];
-    }
     
-    [popoverView showToView:sender withActions:JXPopoverActionArray];
-//    WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
-//    __weak typeof(self) weakSelf = self;
-//    vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
-//        weakSelf.spaceId = spaceId;
-//        weakSelf.spaceName = spaceName;
-//    };
-//    [self.navigationController pushViewController:vc animated:YES];
+    if (self.cityList.count) {
+        JXPopoverView *popoverView = [JXPopoverView popoverView];
+        NSMutableArray *JXPopoverActionArray = [[NSMutableArray alloc] init];
+        for (NSString *name in self.cityList) {
+            JXPopoverAction *action1 = [JXPopoverAction actionWithTitle:name handler:^(JXPopoverAction *action) {
+                cityName = name;
+                [self configNavi];
+                //[self.cityButton setTitle:cityName forState:UIControlStateNormal];
+                [self createRequest];
+                //NSLog(@"测试：%@",name);
+                
+            }];
+            [JXPopoverActionArray addObject:action1];
+        }
+        [popoverView showToView:sender withActions:JXPopoverActionArray];
+    }
 }
 -(void)createRequestCity
 {
@@ -274,7 +242,6 @@
             return ;
         }
         WOTSpaceModel_msg *list = bean;
-        NSLog(@"测试%@",list.msg);
         //        tableList = list.msg;
       [self createRequestCityList:list.msg];
     }];
@@ -283,13 +250,10 @@
 -(void)createRequestCityList:(NSArray *)array
 {
     //NSMutableArray *cityList = [NSMutableArray new];
-    
     for (WOTSpaceModel *model in array) {
         //
         BOOL isHaveCity = NO;
         for (NSString *city in self.cityList) {
-            NSLog(@"测试1%@",city);
-            NSLog(@"测试2%@",model.city);
             if ([model.city isEqualToString:city]) {
                 isHaveCity = YES;
                 break;
@@ -298,7 +262,7 @@
         if (!isHaveCity) {
             [self.cityList addObject:model.city];
         }
-        [self.cityList addObject:model.city];
+        //[self.cityList addObject:model.city];
     }
     
 }
@@ -320,7 +284,7 @@
     vc.spaceId = self.spaceId;
 //    vc.conferenceId = cell.model.conferenceId;
     [WOTSingtleton shared].orderType = ORDER_TYPE_BOOKSTATION;
-    vc.model = cell.model;
+    vc.spaceModel = cell.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -350,17 +314,17 @@
     WOTBookStationCell *bookcell = [tableView dequeueReusableCellWithIdentifier:@"WOTBookStationCellID" forIndexPath:indexPath];
     if (tableList) {
         WOTSpaceModel *model = tableList[indexPath.row];
-        NSLog(@"测试：%@",model);
+        bookcell.model = model;
+        //NSLog(@"测试：%@",model);
         //待开发
         bookcell.spaceName.text =model.spaceName;// @"方圆大厦-众创空间";
-//        bookcell.stationNum.text = [NSString stringWithFormat:@"%ld工位可以预定",model];
-//        bookcell.spaceLocation.text = model.spaceSite;// @"中关村南大街甲56号" ;
-//        bookcell.stationNum.text  = [NSString stringWithFormat:@"%ld工位可以预定",model.longRent.integerValue+model.shortRent.integerValue]; //@"23个工位可以预定";
-        bookcell.stationPrice.text = [NSString stringWithFormat:@"￥%ld/天",model.spacePicture.integerValue];//@"¥123元／天";
+        [bookcell.spaceImage sd_setImageWithURL:[model.spacePicture ToUrl] placeholderImage:[UIImage imageNamed:@"bookStation"]];
+        bookcell.stationNum.text  = [NSString stringWithFormat:@"%ld工位可以预定",model.alreadyTakenNum.integerValue]; //@"23个工位可以预定";
+        bookcell.stationPrice.text = [NSString stringWithFormat:@"￥%ld/天",model.stationPrice.integerValue];//@"¥123元／天";
         bookcell.delegate = self;
         bookcell.model = model;
     } else {
-        NSLog(@"测试：没有数据！");
+       // NSLog(@"测试：没有数据！");
         
     }
    

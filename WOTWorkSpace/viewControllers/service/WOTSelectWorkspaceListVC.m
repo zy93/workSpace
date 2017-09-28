@@ -55,7 +55,6 @@
             return ;
         }
         WOTSpaceModel_msg *list = bean;
-        NSLog(@"测试%@",list.msg);
 //        tableList = list.msg;
         tableDic = [self sortByCity:list.msg];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -74,8 +73,6 @@
         //
         BOOL isHaveCity = NO;
         for (NSString *city in cityList) {
-            NSLog(@"测试1%@",city);
-            NSLog(@"测试2%@",model.city);
             if ([model.city isEqualToString:city]) {
                 isHaveCity = YES;
                 break;
@@ -97,7 +94,6 @@
         [arr addObject:model];
         [resultDic setObject:arr forKey:model.city];
     }
-    NSLog(@"测试3%@",resultDic);
     return resultDic;
 }
 

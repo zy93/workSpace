@@ -35,7 +35,7 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"测试：%@",textField.text);
+   // NSLog(@"测试：%@",textField.text);
     if ([_delegate respondsToSelector:@selector(textFiledEndEnter:text:)]) {
         [_delegate textFiledEndEnter:self text:textField.text];
     }

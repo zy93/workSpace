@@ -174,13 +174,25 @@ typedef void(^response)(id bean,NSError *error);
  @param endTime 结束时间
  @param response 回调
  */
-+(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
-
+//+(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid conferenceId:(NSNumber *)confid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
++(void)meetingReservationsWithSpaceId:(NSNumber *)spaceid
+                         conferenceId:(NSNumber *)confid
+                            startTime:(NSString *)startTime
+                              endTime:(NSString *)endTime
+                            spaceName:(NSString *)spaceName
+                          meetingName:(NSString *) meetingName
+                             response:(response)response;
 //TODO: 场地
 +(void)getAllSiteResponse:(response)response;
 +(void)getSiteListWithSpaceId:(NSNumber *)spaceid response:(response)response;
 +(void)getSiteReservationsTimeWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)strTime response:(response)response;
-+(void)siteReservationsWithSpaceId:(NSNumber *)spaceid siteId:(NSNumber *)siteid startTime:(NSString *)startTime endTime:(NSString *)endTime response:(response)response;
++(void)siteReservationsWithSpaceId:(NSNumber *)spaceid
+                            siteId:(NSNumber *)siteid
+                         startTime:(NSString *)startTime
+                           endTime:(NSString *)endTime
+                         spaceName:(NSString *)sapceName
+                          siteName:(NSString *)siteName
+                          response:(response)response;
 
 //TODO: 工位
 

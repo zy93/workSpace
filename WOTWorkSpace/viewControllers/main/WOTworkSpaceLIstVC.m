@@ -82,6 +82,7 @@
 /**
  *  添加下拉刷新事件
  */
+
 - (void)AddRefreshHeader
 {
     __weak UITableView *pTableView = _tableVIew;
@@ -90,6 +91,7 @@
     pTableView.mj_header.automaticallyChangeAlpha = YES;
 }
 
+#pragma mark - 开发刷新
 - (void)StartRefresh
 {
     if (_tableVIew.mj_footer != nil && [_tableVIew.mj_footer isRefreshing])

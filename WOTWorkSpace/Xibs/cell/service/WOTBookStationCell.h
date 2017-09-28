@@ -20,7 +20,6 @@
 
 @interface WOTBookStationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *spaceName;
-@property (weak, nonatomic) IBOutlet UILabel *spaceLocation;
 @property (weak, nonatomic) IBOutlet UILabel *stationNum;
 @property (weak, nonatomic) IBOutlet UILabel *stationPrice;
 @property (weak, nonatomic) IBOutlet UIButton *bookBtn;

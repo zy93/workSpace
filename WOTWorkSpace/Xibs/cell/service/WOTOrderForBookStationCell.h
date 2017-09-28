@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WOTSpaceModel.h"
 
 @interface WOTOrderForBookStationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *beginTimeBtn;
@@ -15,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UILabel *surplusLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeExplanationLab;
+@property (weak, nonatomic) IBOutlet UILabel *orderNumber;
+
+@property (nonatomic, strong)WOTSpaceModel *spaceModel;
 
 @end
