@@ -191,7 +191,7 @@
     [self addSubview:topLine];
     //NSLog(@"测试：%f,%f",openStartTime,openEndTime);
     
-    for (float i = openStartTime; i<openEndTime; i+=0.5) {
+    for (float i = openStartTime; i< openEndTime; i+=0.5) {
         WOTScrollButton *btn = [self createButtonWithTitle:nil];
         btn.time = i;
         [buttonArr addObject:btn];
@@ -199,7 +199,7 @@
     }
     
     for (float i = openStartTime; i<=openEndTime; i++) {
-        NSString *tit =  [NSString stringWithFormat:@"%d时",(int)i];
+        NSString *tit =  [NSString stringWithFormat:@"%d时",(int)(i+0.5)];
         UILabel *lab = [self createLabelWithTitle:tit];
         [titleArr addObject:lab];
         [self addSubview:lab];
@@ -262,19 +262,23 @@
         [btn setFrame:btnRect];
         btnRect = CGRectMake(CGRectGetMaxX(btn.frame)-1, 30, ButtonWith, ButtonHeight);
        
-        if (i%2==0) {
+        //整点
+        if ((int)(btn.time+0.5)==(int)btn.time) {
             UILabel *lab = [titleArr objectAtIndex:i/2];
             //lab.backgroundColor = [UIColor blueColor];
            // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
             [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
         }
-        
-        if (i==buttonArr.count-1 && buttonArr.count%2==0) {
-            UILabel *lab = [titleArr objectAtIndex:(i+1)/2];
-            //lab.backgroundColor = [UIColor blueColor];
-            // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
-           // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
-            [lab setFrame:CGRectMake(CGRectGetMaxX(btn.frame)-10, 15, 30, 13)];
+        //最后一个是否需要显示，以及位置
+        if (i==buttonArr.count-1) {
+            if ((int)(btn.time+0.5)-(int)btn.time!=0) {
+                UILabel *lab = [titleArr objectAtIndex:(i+1)/2];
+                //lab.backgroundColor = [UIColor blueColor];
+                // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];
+                // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
+                [lab setFrame:CGRectMake(CGRectGetMaxX(btn.frame)-10, 15, 30, 13)];
+            }
+            
         }
         for (NSArray *times in invalidList) {
             CGFloat beginTime = [times.firstObject floatValue];
