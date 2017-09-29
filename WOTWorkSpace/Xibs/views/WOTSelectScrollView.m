@@ -269,7 +269,7 @@
             [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame)-10, 15, 30, 13)];
         }
         
-        if (i==buttonArr.count-1) {
+        if (i==buttonArr.count-1 && buttonArr.count%2==0) {
             UILabel *lab = [titleArr objectAtIndex:(i+1)/2];
             //lab.backgroundColor = [UIColor blueColor];
             // [lab setFrame:CGRectMake(CGRectGetMinX(btn.frame), 15, 30, 13)];

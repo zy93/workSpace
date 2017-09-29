@@ -152,19 +152,19 @@
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
        // NSLog(@"%ld年%ld月%ld日",year,month,day);
-        inquireTime = [NSString stringWithFormat:@"%02d/%02d/%02d 00:00:00",year, month, day];
+        inquireTime = [NSString stringWithFormat:@"%02ld/%02ld/%02ld 00:00:00",year, month, day];
       //  NSLog(@"测试：%@",inquireTime);
         //问题有可能出现在这里
-        self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
+        weakSelf.isValidTime = [weakSelf.judgmentTime judgementTimeWithYear:year month:month day:day];
         //self.isValidTime = YES;
         //[self judgementTimeWithYear:year month:month day:day];
-        if (self.isValidTime) {
-            _datepickerview.hidden  = YES;
-            [self.selectTimeBtn setTitle:[NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day] forState:UIControlStateNormal];
+        if (weakSelf.isValidTime) {
+            weakSelf.datepickerview.hidden  = YES;
+            [weakSelf.selectTimeBtn setTitle:[NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day] forState:UIControlStateNormal];
         }else
         {
-            [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
-            _datepickerview.hidden  = NO;
+            [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:weakSelf.view];
+            weakSelf.datepickerview.hidden  = NO;
         }
         [weakSelf reloadView];
     };
@@ -480,9 +480,16 @@
     self.beginTime = 0;
     self.endTime = 0;
     */
+    //清空之前cell的状态
+    if (selectIndex && selectIndex.row != indexPath.row) {
+        WOTReservationsMeetingCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
+//        self.beginTime = 0;
+//        self.endTime = 0;
+    }
+    //展开新cell
     WOTReservationsMeetingCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CGPoint offset = cell.selectTimeScroll.contentOffset;
-    NSLog(@"----------%f", offset.x);
     ofoset = offset;
     NSIndexPath *index = selectIndex;
     selectIndex = indexPath;
