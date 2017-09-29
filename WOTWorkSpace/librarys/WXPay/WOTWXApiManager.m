@@ -94,12 +94,41 @@
                 NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
                 break;
         }
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         
+        /*
+        UIAlertController *alertController;
+        alertController = [UIAlertController alertControllerWithTitle:strTitle message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //TODO:
+        }];
+        [alertController addAction:cancelAction];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            //TODO:
+        }];
+        [alertController addAction:confirmAction];
+      
+//        [self presentViewController:alertController animated:YES completion:^{
+//            // TODO
+//        }];
+        */
     }
     
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"clickButtonAtIndex:%d",(int)buttonIndex);
+    //index为-1则是取消，
+    NSLog(@"点击了");
+    NSNotification *LoseResponse = [NSNotification notificationWithName:@"buttonLoseResponse" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:LoseResponse];
+
+}
+
 
 - (void)onReq:(BaseReq *)req {
     if ([req isKindOfClass:[GetMessageFromWXReq class]]) {

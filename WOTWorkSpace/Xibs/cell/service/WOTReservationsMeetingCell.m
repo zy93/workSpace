@@ -87,8 +87,8 @@
 {
     [super layoutSubviews];
     WOTReservationsMeetingVC *vc = (WOTReservationsMeetingVC *)[self GetSubordinateControllerForSelf];
-    CGFloat time = vc.endTime - vc.beginTime;
-    NSString *str =[NSString stringWithFormat:@"共%.1f小时",time];
+    self.allTime = vc.endTime - vc.beginTime;
+    NSString *str =[NSString stringWithFormat:@"共%.1f小时",self.allTime];
     self.TimeStatisticLab.text = str;
     self.timeStatisticsLab.text = [NSString stringWithFormat:@"%@-%@",[NSString floatTimeConvertStringTime:vc.beginTime],[NSString floatTimeConvertStringTime:vc.endTime]];
 }

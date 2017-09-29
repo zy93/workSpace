@@ -43,6 +43,8 @@
 @property (nonatomic, strong) JudgmentTime *judgmentTime;
 @property (nonatomic, strong)WOTOrderForBookStationCell *orderBookStationCell;
 @property (nonatomic, assign)NSInteger dayNumber;
+@property (nonatomic, assign)NSNumber *productNum;
+@property (nonatomic, assign)float orderNumber;
 
 @end
 
@@ -52,6 +54,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.table.separatorStyle = UITableViewCellSelectionStyleNone;
+   // NSNotification *LoseResponse = [NSNotification notificationWithName:@"buttonLoseResponse" object:nil];
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(backMainView:)
+                                                name:@"buttonLoseResponse" object:nil];
     [self configNav];
     [self loadData];
     [self loadCost];
@@ -64,6 +70,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.productNum = [[NSNumber alloc] init];
     [super viewWillAppear:animated];
     self.judgmentTime = [[JudgmentTime alloc] init];
     [self creatDataPickerView];
@@ -97,7 +104,7 @@
     
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
-        NSString *selecTime = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
+        NSString *selecTime = [NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day];
         weakSelf.isValidTime = [weakSelf.judgmentTime judgementTimeWithYear:year month:month day:day];
         
         if (weakSelf.isValidTime) {
@@ -162,24 +169,35 @@
         return;
     }
     
+    if (self.costNumber == 0.0) {
+        [MBProgressHUDUtil showMessage:@"订单金额为0无法支付" toView:self.view];
+        return;
+    }
+    
     NSNumber *commNum = @(0);
     NSNumber *commKind = @(0);
     NSString *dealMode = @"微信支付";
     switch ([WOTSingtleton shared].orderType) {
         case ORDER_TYPE_BOOKSTATION:
         {
-            commNum = @(10000);;
+            [self verifyBookStation];
+            self.productNum = @([self.orderBookStationCell.orderNumber.text integerValue]);
+            commNum = @(0);;
             commKind = @(0);
         }
             break;
         case ORDER_TYPE_MEETING:
         {
+            [self verifyMeeting];
+            self.productNum = @(1);
             commNum = self.meetingModel.conferenceId;
             commKind = @(1);
         }
             break;
         case ORDER_TYPE_SITE:
         {
+            [self verifySite];
+            self.productNum = @(1);
             commNum = self.siteModel.siteId;
             commKind = @(2);
         }
@@ -187,19 +205,24 @@
         default:
             break;
     }
+    [MBProgressHUDUtil showLoadingWithMessage:@"支付中，请稍后...."
+                                       toView:self.view
+                           whileExcusingBlock:^(MBProgressHUD *hud) {
+                               [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceModel.spaceId
+                                                           commodityNum:commNum
+                                                          commodityKind:commKind
+                                                             productNum:self.productNum
+                                                              startTime:self.startTime
+                                                                endTime:self.endTime
+                                                                  money:self.costNumber
+                                                               dealMode:dealMode
+                                                                payType:@(1)
+                                                              payObject:[WOTUserSingleton shareUser].userInfo.userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
+                                                                  //[hud h];
+                                                                  [hud setHidden:YES];
+                                                              }];
+                           }];
     
-    [WOTHTTPNetwork generateOrderWithSpaceId:self.spaceId
-                                commodityNum:commNum
-                               commodityKind:commKind
-                                  productNum:@(1)
-                                   startTime:self.startTime
-                                     endTime:self.endTime
-                                       money:self.costNumber
-                                    dealMode:dealMode
-                                     payType:@(1)
-                                   payObject:[WOTUserSingleton shareUser].userInfo.userName payMode:@(1) contractMode:@(1) response:^(id bean, NSError *error) {
-        
-    }];
     /*
     switch ([WOTSingtleton shared].orderType) {
         case ORDER_TYPE_BOOKSTATION:
@@ -398,14 +421,14 @@
             case ORDER_TYPE_MEETING:
             {
                 cell.addressLabel.text = [self.spaceModel.spaceSite stringByAppendingString:self.meetingModel.location];
-                cell.openTimeLabel.text = self.meetingModel.openTime;
+                cell.openTimeLabel.text = [self.meetingModel.openTime stringByAppendingString:@"开放"];
                 cell.deviceInfoLabel.text = self.meetingModel.facility;
             }
                 break;
             case ORDER_TYPE_SITE:
             {
                 cell.addressLabel.text =[self.spaceModel.spaceSite stringByAppendingString:self.siteModel.location];
-                cell.openTimeLabel.text = self.siteModel.openTime;
+                cell.openTimeLabel.text = [self.siteModel.openTime stringByAppendingString:@"开放"];
                 cell.deviceInfoLabel.text = self.siteModel.facility;
             }
                 break;
@@ -508,6 +531,7 @@
 #pragma mark - 计算价格
 -(void)imputedPriceAndLoadCost
 {
+    //self.orderNumber = [self.orderBookStationCell.orderNumber.text floatValue];
     self.costNumber = self.dayNumber*[self.orderBookStationCell.orderNumber.text floatValue]*[self.spaceModel.stationPrice floatValue];
     [self loadCost];
 }
@@ -571,6 +595,58 @@
 }
 
 
+#pragma mark - 验证会议室
+-(void)verifyMeeting
+{
+    [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceModel.spaceId
+                                      conferenceId:self.meetingModel.conferenceId
+                                         startTime:self.startTime
+                                           endTime:self.endTime
+                                         spaceName:self.spaceModel.spaceName
+                                       meetingName:self.meetingModel.conferenceName
+                                          response:^(id bean, NSError *error) {
+                                              
+                                          }];
+}
+
+#pragma mark - 验证场地
+-(void)verifySite
+{
+    [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceModel.spaceId
+                                         siteId:self.siteModel.siteId
+                                      startTime:self.startTime
+                                        endTime:self.endTime
+                                      spaceName:self.spaceModel.spaceName
+                                       siteName:self.siteModel.siteName
+                                       response:^(id bean, NSError *error) {
+                                           
+                                       }];
+}
+
+#pragma mark - 验证工位
+-(void)verifyBookStation
+{
+   // NSLog(@"测试：%@",self.productNum);
+    [WOTHTTPNetwork bookStationReservationsWithSpaceId:self.spaceModel.spaceId
+                                                 count:@([self.orderBookStationCell.orderNumber.text integerValue])
+                                             startTime:self.orderBookStationCell.startDataLable.text
+                                               endTime:self.orderBookStationCell.endDataLabel.text
+                                              response:^(id bean, NSError *error) {
+                                                  
+                                              }];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)backMainView:(NSNotification *)noti
+
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 //-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];

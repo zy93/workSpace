@@ -32,6 +32,7 @@
 #import "WOTServiceCategoryModel.h"
 #import "WOTSendFriendsModel.h"
 #import "WOTFriendsMessageListModel.h"
+#import "WOTBookStationReservationsModel.h"
 
 #import "WXApi.h"
 #import "WOTWXPayModel.h"
@@ -619,11 +620,35 @@
 }
 
 
++(void)bookStationReservationsWithSpaceId:(NSNumber *)spaceId
+                                    count:(NSNumber *)count
+                                startTime:(NSString *)startTime
+                                  endTime:(NSString *)endTime
+                                 response:(response)response
+{
+    NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Station/updateMoneyStation"];
+    //添加的参数字段待修改
+    NSDictionary *dic = @{
+                          @"spaceId":spaceId,
+                          @"count":count,
+                          @"rentType":@(2),
+                          @"startTime":startTime,
+                          @"endTime":endTime
+                          };
+    
+    [self doRequestWithParameters:dic useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+        
+        WOTBookStationReservationsModel_msg *model = [[WOTBookStationReservationsModel_msg alloc]initWithDictionary:responseobj error:nil];
+        return model;
+    } response:response];
+}
+
 +(void)getAllServiceTypes:(response)response{
     
     NSString *feedbackurl = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/FacilitatorLabel/findAll"];
     
     [self doRequestWithParameters:nil useUrl:feedbackurl complete:^JSONModel *(id responseobj) {
+       
         WOTServiceCategoryModel_msg *model = [[WOTServiceCategoryModel_msg alloc]initWithDictionary:responseobj error:nil];
         return model;
     } response:response];

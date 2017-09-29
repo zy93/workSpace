@@ -332,6 +332,7 @@
     
     WOTOrderVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTOrderVC"];
     if (self.endTime == 0) {
+        [MBProgressHUDUtil showMessage:@"请选择时间！" toView:self.view];
         return;
     }
     NSArray *arr = [NSString getReservationsTimesWithDate:inquireTime StartTime:self.beginTime  endTime:self.endTime];

@@ -48,6 +48,7 @@
 //@property (nonatomic, assign)CGFloat height;
 @property (nonatomic, strong)NSMutableArray *cityList;
 @property (nonatomic, strong)UIButton *cityButton;
+@property (nonatomic, strong)WOTSpaceModel *spaceModel;
 
 
 //@property (nonatomic,strong) NSString *spaceNme;
@@ -59,9 +60,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"订工位";
     [self setupView];
+
+    self.navigationItem.title = @"订工位";
+    
     //_spaceId = @(56);原来
     self.cityList = [NSMutableArray new];
     inquireTime = [NSDate getNewTimeZero];
@@ -84,11 +86,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:NO];
 //    [self configNaviBackItem];
+    NSLog(@"%@",cityName);
     [self createRequestCity];
     [self createRequest];
     self.menuArray = [[NSMutableArray alloc] init];
     [self configNavi];
-    
 }
 
 -(void)configNavi{
@@ -314,6 +316,7 @@
     WOTBookStationCell *bookcell = [tableView dequeueReusableCellWithIdentifier:@"WOTBookStationCellID" forIndexPath:indexPath];
     if (tableList) {
         WOTSpaceModel *model = tableList[indexPath.row];
+        self.spaceModel = model;
         bookcell.model = model;
         //NSLog(@"测试：%@",model);
         //待开发

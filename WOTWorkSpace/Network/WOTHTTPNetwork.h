@@ -210,6 +210,11 @@ typedef void(^response)(id bean,NSError *error);
  @param spaceid 空间id
  @param response 回调
  */
++(void)bookStationReservationsWithSpaceId:(NSNumber *)spaceId
+                                    count:(NSNumber *)count
+                                startTime:(NSString *)startTime
+                                  endTime:(NSString *)endTime
+                                 response:(response)response;
 //+(void)getBookStationInfoWithSpaceId:(NSNumber *)spaceid response:(response)response;//2017 废弃
 //+(void)getBook
 /**

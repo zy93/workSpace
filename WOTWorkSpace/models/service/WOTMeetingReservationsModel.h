@@ -29,7 +29,6 @@
 //TODO:会议室预定情况model
 @protocol WOTMeetingReservationsModel <NSObject>
 
-
 @end
 
 @interface WOTMeetingReservationsModel : JSONModel

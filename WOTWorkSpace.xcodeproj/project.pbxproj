@@ -127,6 +127,7 @@
 		59BB1AF86E21AC99D91DDCE6 /* libPods-WOTWorkSpace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D773A878FA3518662358C7A0 /* libPods-WOTWorkSpace.a */; };
 		97D06A114DB42F1134696656 /* libPods-WOTWorkSpaceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC264D6C897C120A10B700D /* libPods-WOTWorkSpaceUITests.a */; };
 		C7901EC51F789CF500692F02 /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C7901EC31F789CF400692F02 /* JudgmentTime.m */; };
+		C79C2D3A1F7E36870052DF23 /* WOTBookStationReservationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C79C2D391F7E36870052DF23 /* WOTBookStationReservationsModel.m */; };
 		C7B4DD2C1F7A793C00009011 /* JXPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD291F7A793C00009011 /* JXPopoverView.m */; };
 		C7B4DD2D1F7A793C00009011 /* JXPopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD2A1F7A793C00009011 /* JXPopoverViewCell.m */; };
 		C7B4DD2E1F7A793C00009011 /* JXPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4DD2B1F7A793C00009011 /* JXPopoverAction.m */; };
@@ -583,6 +584,8 @@
 		B06E1E0FEBF126912B787519 /* Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; path = "Pods/Target Support Files/Pods-WOTWorkSpaceTests/Pods-WOTWorkSpaceTests.ad hoc distrbution.xcconfig"; sourceTree = "<group>"; };
 		C7901EC31F789CF400692F02 /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
 		C7901EC41F789CF400692F02 /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
+		C79C2D381F7E36870052DF23 /* WOTBookStationReservationsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOTBookStationReservationsModel.h; sourceTree = "<group>"; };
+		C79C2D391F7E36870052DF23 /* WOTBookStationReservationsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WOTBookStationReservationsModel.m; sourceTree = "<group>"; };
 		C7B4DD261F7A793C00009011 /* JXPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverView.h; sourceTree = "<group>"; };
 		C7B4DD271F7A793C00009011 /* JXPopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverViewCell.h; sourceTree = "<group>"; };
 		C7B4DD281F7A793C00009011 /* JXPopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverAction.h; sourceTree = "<group>"; };
@@ -1317,6 +1320,8 @@
 				2A99FB751F25F2C000869732 /* WOTAppointmentModel.m */,
 				2A99FB5B1F258A0F00869732 /* WOTBookStationListModel.h */,
 				2A99FB5C1F258A0F00869732 /* WOTBookStationListModel.m */,
+				C79C2D381F7E36870052DF23 /* WOTBookStationReservationsModel.h */,
+				C79C2D391F7E36870052DF23 /* WOTBookStationReservationsModel.m */,
 				2A99FB5D1F258A0F00869732 /* WOTMeetingListModel.h */,
 				2A99FB5E1F258A0F00869732 /* WOTMeetingListModel.m */,
 				2A99FB5F1F258A0F00869732 /* WOTMeetingReservationsModel.h */,
@@ -3014,6 +3019,7 @@
 				C7B4DD2E1F7A793C00009011 /* JXPopoverAction.m in Sources */,
 				E868E0E51F42E8C700573B66 /* DataVerifier.m in Sources */,
 				E88A54461F039D4500AD3F57 /* WOTConfigThemeUitls.m in Sources */,
+				C79C2D3A1F7E36870052DF23 /* WOTBookStationReservationsModel.m in Sources */,
 				2AF18A3E1F13610E004681CE /* WOTOrderForSelectCell.m in Sources */,
 				E8BA0D901F0CFAC600B81C3D /* WOTMyFeedbackLIstVC.m in Sources */,
 				E86615681F1F2E12005E182A /* WOTOpenLockScanVC.m in Sources */,

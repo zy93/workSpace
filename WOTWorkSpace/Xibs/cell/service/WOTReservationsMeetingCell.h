@@ -46,6 +46,8 @@
 @property (nonatomic, strong) NSString *inquireTime;//查询日期;
 @property (nonatomic, strong) NSIndexPath *index;
 
+@property (nonatomic, assign)CGFloat allTime ;
+
 -(void)setupView;
 
 @end
