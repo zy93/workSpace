@@ -64,6 +64,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.judgmentTime = [[JudgmentTime alloc] init];
     [self creatDataPickerView];
 }
 
@@ -87,22 +88,24 @@
 {
     __weak typeof(self) weakSelf = self;
     _datepickerview = [[NSBundle mainBundle]loadNibNamed:@"WOTDatePickerView" owner:nil options:nil].lastObject;
-    [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - [WOTUitls GetLengthAdaptRate]*300, self.view.frame.size.width, 300)];
+    //[_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height - [WOTUitls GetLengthAdaptRate]*300, self.view.frame.size.width, 300)];
+     [_datepickerview setFrame:CGRectMake(0, self.view.frame.size.height-300, self.view.frame.size.width, 300)];
     _datepickerview.cancelBlokc = ^(){
         weakSelf.datepickerview.hidden = YES;
     };
     
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
-
+        NSLog(@"%@",self.orderBookStationCell.endDataLabel.text);
         self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
+        
         if (self.isValidTime) {
             _datepickerview.hidden  = YES;
             if ([WOTSingtleton shared].buttonType == BUTTON_TYPE_STARTTIME) {
-                self.orderBookStationCell.startDataLable.text = [NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day];
+                self.orderBookStationCell.startDataLable.text = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
             }else
             {
-                self.orderBookStationCell.endDataLabel.text = [NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day];
+                self.orderBookStationCell.endDataLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
             }
             
 //            [self.selectTimeBtn setTitle:[NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day] forState:UIControlStateNormal];
@@ -363,6 +366,8 @@
             self.orderBookStationCell = [[WOTOrderForBookStationCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForBookStationCell"];
             
         }
+        self.orderBookStationCell.delegate = self;
+        self.orderBookStationCell.spaceModel = self.spaceModel;
         return self.orderBookStationCell;
     }
     else if ([cellType isEqualToString:siteCell]) {
@@ -471,10 +476,11 @@
 }
 
 #pragma mark - 显示时间选择器
+#pragma mark -WOTOrderForBookStationCell delegate
 -(void)showDataPickerView:(WOTOrderForBookStationCell *)cell
 {
     _datepickerview.hidden = cell.isHiddenDataPickerView;
-    
+    [self.view setNeedsLayout];
 }
 
 //-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

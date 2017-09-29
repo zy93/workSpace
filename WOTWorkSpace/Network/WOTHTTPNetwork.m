@@ -698,19 +698,21 @@
     } response:response];
 }
 
-
-
 #pragma mark - 订单
 +(void)generateOrderWithSpaceId:(NSNumber *)spaceId commodityNum:(NSNumber *)commNum commodityKind:(NSNumber *)commKind productNum:(NSNumber *)productNum startTime:(NSString *)startTime endTime:(NSString *)endTime money:(CGFloat)money dealMode:(NSString *)dealMode payType:(NSNumber *)payType payObject:(NSString *)payObject payMode:(NSNumber *)payMode contractMode:(NSNumber *)contractMode response:(response)response
 {
     NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
     NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
+    NSString *chineseBody = @"易创客";
+                         //[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *body= [chineseBody UrlEncodedString];
+    NSLog(@"测试：%@",body);
     NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userInfo.userId,
                                  @"userName":[WOTUserSingleton shareUser].userInfo.userName,
                                  @"userTel":[WOTUserSingleton shareUser].userInfo.tel,
                                  @"facilitator":@(00001),
                                  @"carrieroperator":@(00002),
-                                 @"body":@"易创客",
+                                 @"body":body,
                                  @"total_fee":@(1),
                                  @"spbill_create_ip":deviceip,
                                  @"trade_type":@"APP",

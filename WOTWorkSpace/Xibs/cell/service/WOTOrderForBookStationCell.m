@@ -8,6 +8,7 @@
 
 #import "WOTOrderForBookStationCell.h"
 #import "MBProgressHUD+Extension.h"
+#import "WOTSingtleton.h"
 //#import ""
 
 @interface WOTOrderForBookStationCell()
@@ -37,13 +38,17 @@
 
 - (IBAction)selectStartTime:(id)sender {
     self.isHiddenDataPickerView = NO;
-    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
-        [_delegate showDataPickerView:self];
-    }
+    [WOTSingtleton shared].buttonType = BUTTON_TYPE_STARTTIME;
+//    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
+//        [_delegate showDataPickerView:self];
+//    }
+    [_delegate showDataPickerView:self];
+
 }
 
 - (IBAction)selectEndTime:(id)sender {
     self.isHiddenDataPickerView = NO;
+    [WOTSingtleton shared].buttonType = BUTTON_TYPE_ENDTIME;
     if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
         [_delegate showDataPickerView:self];
     }
@@ -51,7 +56,7 @@
 
 - (IBAction)subButton:(id)sender {
     _orderNumberInt = [self.orderNumber.text intValue];
-    _orderNumberInt +=1;
+    _orderNumberInt -=1;
     if (_orderNumberInt <0) {
         [MBProgressHUDUtil showMessage:@"已经最小数量" toView:self.superview];
     }else
