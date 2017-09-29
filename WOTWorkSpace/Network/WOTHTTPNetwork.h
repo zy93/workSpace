@@ -53,6 +53,14 @@ typedef void(^response)(id bean,NSError *error);
 +(void)getSapaceFromGroupBlock:(response)response;
 
 /**
+ 根据空间id获取空间
+
+ @param spaceId 空间id
+ @param response spaceModel
+ */
++(void)getSpaceFromSpaceID:(NSNumber *)spaceId bolock:(response)response;
+
+/**
  获取定位最近的空间
 
  @param lat 纬度

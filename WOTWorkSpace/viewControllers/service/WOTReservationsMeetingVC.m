@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *notInformationLabel;
 @property (nonatomic, strong) JudgmentTime *judgmentTime;
 @property (nonatomic, assign) BOOL isValidTime;
+@property (nonatomic, strong) WOTSpaceModel *spaceModel;
 
 @property (nonatomic, assign) int year;
 @property (nonatomic, assign) int month;
@@ -54,6 +55,8 @@
     [self.table registerNib:[UINib nibWithNibName:@"WOTReservationsMeetingCell" bundle:nil] forCellReuseIdentifier:@"WOTReservationsMeetingCell"];
     
     _spaceId = [WOTSingtleton shared].nearbySpace.spaceId ;
+   // _spaceSite = [WOTSingtleton shared].nearbySpace.spaceSite;
+    [self creatSpace];
     inquireTime = [NSDate getNewTimeZero];
     
     WOTLocationModel *model = [WOTSingtleton shared].nearbySpace;
@@ -214,6 +217,17 @@
     [self createRequest];
 }
 
+#pragma mark - 通过spaceID请求space
+-(void)creatSpace
+{
+    [WOTHTTPNetwork getSpaceFromSpaceID:self.spaceId bolock:^(id bean, NSError *error) {
+        if (error) {
+            return ;
+        }
+        WOTSpaceModel *model = (WOTSpaceModel *)bean;
+        self.spaceModel = model;
+    }];
+}
 
 #pragma mark - request
 -(void)createRequest
@@ -301,9 +315,11 @@
 {
     WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
     __weak typeof(self) weakSelf = self;
-    vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
-        weakSelf.spaceId = spaceId;
-        weakSelf.spaceName = spaceName;
+    vc.selectSpaceBlock = ^(WOTSpaceModel *model){
+        self.spaceModel = model;
+        weakSelf.spaceId = model.spaceId;
+        weakSelf.spaceName = model.spaceName;
+        
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -322,12 +338,18 @@
     vc.startTime = arr.firstObject;
     vc.endTime = arr.lastObject;
     vc.spaceId = self.spaceId;
+    //vc.spaceSite = self.spaceSite;
+    vc.spaceModel = self.spaceModel;
     if([WOTSingtleton shared].orderType == ORDER_TYPE_MEETING){
+        vc.meetingModel = cell.meetingModel;
+        vc.costNumber = (self.endTime - self.beginTime) * cell.meetingModel.conferencePrice.floatValue;
+        [self.navigationController pushViewController:vc animated:YES];
         //会议室
 //        [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId
 //                                          conferenceId:cell.meetingModel.conferenceId startTime:arr.firstObject
 //                                               endTime:arr.lastObject
 //                                              response:^(id bean, NSError *error) {
+        /*
         [WOTHTTPNetwork meetingReservationsWithSpaceId:self.spaceId
                                           conferenceId:cell.meetingModel.conferenceId startTime:arr.firstObject
                                                endTime:arr.lastObject
@@ -347,9 +369,13 @@
                                           
                                               
                                           }];
+         */
         
     }
     else {
+        vc.siteModel = cell.siteModel;
+        vc.costNumber = (self.endTime - self.beginTime) * cell.siteModel.sitePrice.floatValue;
+        [self.navigationController pushViewController:vc animated:YES];
         //场地
         /*
          [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId
@@ -357,7 +383,7 @@
          startTime:arr.firstObject
          endTime:arr.lastObject
          response:^(id bean, NSError *error) {
-         */
+         
         [WOTHTTPNetwork siteReservationsWithSpaceId:self.spaceId
                                              siteId:cell.siteModel.siteId
                                           startTime:arr.firstObject
@@ -365,7 +391,7 @@
                                           spaceName:self.spaceName
                                            siteName:cell.siteModel.siteName
                                            response:^(id bean, NSError *error) {
-                                               WOTSiteReservationsRsponseModel_Msg *model = (WOTSiteReservationsRsponseModel_Msg *)bean;
+                                           WOTSiteReservationsRsponseModel_Msg *model = (WOTSiteReservationsRsponseModel_Msg *)bean;
                                                if ([model.code isEqualToString:@"200"]) {
                                                    vc.siteModel = cell.siteModel;
                                                    vc.costNumber = (self.endTime - self.beginTime) * cell.siteModel.sitePrice.floatValue;
@@ -375,6 +401,7 @@
                                                   [MBProgressHUDUtil showMessage:@"选择的时间已经被预约！" toView:self.view];
                                                }
                                            }];
+         */
         
     }
     
@@ -482,10 +509,11 @@
     */
     //清空之前cell的状态
     if (selectIndex && selectIndex.row != indexPath.row) {
+        self.beginTime = 0;
+        self.endTime = 0;
         WOTReservationsMeetingCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [cell.selectTimeScroll setBeginTime:self.beginTime endTime:self.endTime];
-//        self.beginTime = 0;
-//        self.endTime = 0;
+        
     }
     //展开新cell
     WOTReservationsMeetingCell *cell = [tableView cellForRowAtIndexPath:indexPath];

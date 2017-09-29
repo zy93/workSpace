@@ -16,6 +16,7 @@
 //#import ""
 
 @interface WOTOrderVC : UIViewController
+
 @property (nonatomic, strong) NSNumber *spaceId;
 @property (nonatomic, strong) NSNumber *conferenceOrSiteId;
 @property (nonatomic, strong) NSString *startTime;

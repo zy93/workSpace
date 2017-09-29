@@ -80,9 +80,9 @@
     else if ([vcName isEqualToString:@"WOTSelectWorkspaceListVC"]){//1
         __weak typeof(self) weakSelf = self;
         WOTSelectWorkspaceListVC *lc = (WOTSelectWorkspaceListVC*)vc;//1
-        lc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
-            weakSelf.spaceId = spaceId;
-            weakSelf.spaceName = spaceName;
+        lc.selectSpaceBlock = ^(WOTSpaceModel *model){
+            weakSelf.spaceId = model.spaceId;
+            weakSelf.spaceName = model.spaceName;
             [weakSelf.table reloadData];
         };
     }

@@ -42,6 +42,7 @@
 @property (nonatomic, assign)BOOL isValidTime;
 @property (nonatomic, strong) JudgmentTime *judgmentTime;
 @property (nonatomic, strong)WOTOrderForBookStationCell *orderBookStationCell;
+@property (nonatomic, assign)NSInteger dayNumber;
 
 @end
 
@@ -96,24 +97,17 @@
     
     _datepickerview.okBlock = ^(NSInteger year,NSInteger month,NSInteger day,NSInteger hour,NSInteger min){
         weakSelf.datepickerview.hidden = YES;
-        NSLog(@"%@",self.orderBookStationCell.endDataLabel.text);
-        self.isValidTime = [self.judgmentTime judgementTimeWithYear:year month:month day:day];
+        NSString *selecTime = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
+        weakSelf.isValidTime = [weakSelf.judgmentTime judgementTimeWithYear:year month:month day:day];
         
-        if (self.isValidTime) {
-            _datepickerview.hidden  = YES;
-            if ([WOTSingtleton shared].buttonType == BUTTON_TYPE_STARTTIME) {
-                self.orderBookStationCell.startDataLable.text = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
-            }else
-            {
-                self.orderBookStationCell.endDataLabel.text = [NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day];
-            }
-            
-//            [self.selectTimeBtn setTitle:[NSString stringWithFormat:@"%ld/%ld/%ld",year, month, day] forState:UIControlStateNormal];
+        if (weakSelf.isValidTime) {
+            weakSelf.datepickerview.hidden  = YES;
+                [weakSelf Timedisplay:selecTime];
             
         }else
         {
-            [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:self.view];
-            _datepickerview.hidden  = NO;
+            [MBProgressHUDUtil showMessage:@"请选择有效时间！" toView:weakSelf.view];
+            weakSelf.datepickerview.hidden  = NO;
         }
        // [weakSelf reloadView];
     };
@@ -155,7 +149,7 @@
 }
 
 
-#pragma mark - action
+#pragma mark - action-- 支付按钮
 - (IBAction)clickSubmitBtn:(id)sender {
     //判断用户是否登录
     if (![WOTUserSingleton shareUser].userInfo.userId) {
@@ -382,7 +376,6 @@
                          [self.endTime   substringWithRange:NSMakeRange(11, 5)]];
         
         [cell.reservationsTimeLab setText:str];
-
         
         return cell;
     }
@@ -391,6 +384,35 @@
         if (cell == nil) {
             cell = [[WOTOrderForServiceInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"WOTOrderForServiceInfoCell"];
         }
+//        switch ([WOTSingtleton shared].orderType) {
+//            case ORDER_TYPE_BOOKSTATION:
+        
+        switch ([WOTSingtleton shared].orderType) {
+            case ORDER_TYPE_BOOKSTATION:
+            {
+                cell.addressLabel.text = self.spaceModel.spaceSite ;
+                cell.openTimeLabel.text =@"全天";
+                cell.deviceInfoLabel.text =@"无" ;
+            }
+                break;
+            case ORDER_TYPE_MEETING:
+            {
+                cell.addressLabel.text = [self.spaceModel.spaceSite stringByAppendingString:self.meetingModel.location];
+                cell.openTimeLabel.text = self.meetingModel.openTime;
+                cell.deviceInfoLabel.text = self.meetingModel.facility;
+            }
+                break;
+            case ORDER_TYPE_SITE:
+            {
+                cell.addressLabel.text =[self.spaceModel.spaceSite stringByAppendingString:self.siteModel.location];
+                cell.openTimeLabel.text = self.siteModel.openTime;
+                cell.deviceInfoLabel.text = self.siteModel.facility;
+            }
+                break;
+            default:
+                break;
+        }
+         
         return cell;
     }
     else if ([cellType isEqualToString:payTypeCell]) {
@@ -482,6 +504,72 @@
     _datepickerview.hidden = cell.isHiddenDataPickerView;
     [self.view setNeedsLayout];
 }
+
+#pragma mark - 计算价格
+-(void)imputedPriceAndLoadCost
+{
+    self.costNumber = self.dayNumber*[self.orderBookStationCell.orderNumber.text floatValue]*[self.spaceModel.stationPrice floatValue];
+    [self loadCost];
+}
+
+#pragma mark - 判断时间选择是否合理
+-(void)Timedisplay:(NSString *)selectTime
+{
+    BOOL isStartTime = [self.orderBookStationCell.startDataLable.text isEqualToString:@"请选择"];
+    BOOL isEndTime = [self.orderBookStationCell.startDataLable.text isEqualToString:@"请选择"];
+//    BOOL isEqualToStartTimeWithEndTime =[self.orderBookStationCell.startDataLable.text isEqualToString:selectTime];
+    switch ([WOTSingtleton shared].buttonType) {
+        case BUTTON_TYPE_STARTTIME:
+        {
+            if (isEndTime) {
+                self.orderBookStationCell.startDataLable.text = selectTime;
+            }else
+            {
+                if ([self.judgmentTime compareDate:selectTime withDate:self.orderBookStationCell.endDataLabel.text]) {
+                    self.dayNumber = [self.judgmentTime numberOfDaysWithFromDate:selectTime toDate:self.orderBookStationCell.endDataLabel.text];
+                    [self imputedPriceAndLoadCost];
+                    self.orderBookStationCell.startDataLable.text = selectTime;
+                }else
+                {
+                    [MBProgressHUDUtil showMessage:@"请选择小于等于结束时间的时间！" toView:self.view];
+                    _datepickerview.hidden  = NO;
+                }
+            }
+        }
+            break;
+        case BUTTON_TYPE_ENDTIME:
+        {
+            if (isStartTime) {
+                self.orderBookStationCell.endDataLabel.text = selectTime;
+            }else
+            {
+                if ([self.judgmentTime compareDate:self.orderBookStationCell.startDataLable.text withDate:selectTime]) {
+                    self.dayNumber = [self.judgmentTime numberOfDaysWithFromDate:self.orderBookStationCell.startDataLable.text toDate:selectTime];
+                    [self imputedPriceAndLoadCost];
+                    self.orderBookStationCell.endDataLabel.text = selectTime;
+                } else {
+                    [MBProgressHUDUtil showMessage:@"请选择大写等于开始时间的时间！" toView:self.view];
+                    _datepickerview.hidden  = NO;
+                }
+            }
+        }
+            
+        default:
+            break;
+    }
+    
+}
+
+#pragma mark - 数量变化
+-(void)changeValue:(WOTOrderForBookStationCell *)cell
+{
+    BOOL isStartTime = [cell.startDataLable.text isEqualToString:@"请选择"];
+    BOOL isEndTime = [cell.startDataLable.text isEqualToString:@"请选择"];
+    if ((!isStartTime) && (!isEndTime)) {
+        [self imputedPriceAndLoadCost];
+    }
+}
+
 
 //-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{

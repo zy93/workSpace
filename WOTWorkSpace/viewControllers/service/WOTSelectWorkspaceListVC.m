@@ -157,7 +157,7 @@
     
     WOTSpaceModel *model = modelList[indexPath.row];
     if (self.selectSpaceBlock) {
-        self.selectSpaceBlock(model.spaceId, model.spaceName);
+        self.selectSpaceBlock(model);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -297,6 +297,19 @@
     }response:response];
 }
 
++(void)getSpaceFromSpaceID:(NSNumber *)spaceId bolock:(response)response
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Space/findBySpaceId"];
+    NSDictionary * parameters = @{@"spaceId":spaceId};
+    
+    [self doRequestWithParameters:parameters useUrl:urlString complete:^JSONModel *(id responseobj) {
+        
+        WOTSpaceModel * model = [[WOTSpaceModel alloc]initWithDictionary:responseobj[@"msg"] error:nil];
+        return  model;
+    }response:response];
+    
+}
+
 +(void)getActivitiesWithSpaceId:(NSNumber *)spaceid spaceState:(NSNumber *)spaceState  response:(response)response{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",HTTPBaseURL,@"/Activity/findByState"];
     NSDictionary * parameters = @{@"activityState":spaceState};
@@ -704,15 +717,12 @@
     NSString *url = [NSString stringWithFormat:@"%@/Order/addOrderOrUpdate",HTTPBaseURL];
     NSString *deviceip = [[WOTConfigThemeUitls shared] getIPAddress];
     NSString *chineseBody = @"易创客";
-                         //[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *body= [chineseBody UrlEncodedString];
-    NSLog(@"测试：%@",body);
     NSDictionary *parameters = @{@"userId":[WOTUserSingleton shareUser].userInfo.userId,
                                  @"userName":[WOTUserSingleton shareUser].userInfo.userName,
                                  @"userTel":[WOTUserSingleton shareUser].userInfo.tel,
                                  @"facilitator":@(00001),
                                  @"carrieroperator":@(00002),
-                                 @"body":body,
+                                 @"body":chineseBody,
                                  @"total_fee":@(1),
                                  @"spbill_create_ip":deviceip,
                                  @"trade_type":@"APP",

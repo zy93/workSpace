@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTOrderForServiceInfoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *openTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deviceInfoLabel;
 
 @end

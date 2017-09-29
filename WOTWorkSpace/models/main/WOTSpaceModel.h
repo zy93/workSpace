@@ -16,7 +16,7 @@
 @property(nonatomic,strong)NSString *spaceName;
 @property(nonatomic,strong)NSString *spaceDescribe;
 @property(nonatomic,strong)NSString *city;
-@property(nonatomic,strong)NSString *spaceSite;
+@property(nonatomic,strong)NSString *spaceSite;//位置
 @property(nonatomic,strong)NSString *fixPhone;
 @property(nonatomic,strong)NSString *relationTel;
 @property(nonatomic,assign)NSNumber *spaceState;

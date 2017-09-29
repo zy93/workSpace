@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, ORDER_TYPE) {
 typedef NS_ENUM(NSInteger, BUTTON_TYPE) {
     BUTTON_TYPE_STARTTIME,
     BUTTON_TYPE_ENDTIME,
+    BUTTON_TYPE_ADDBUTTON,
+    BUTTON_TYPE_SUBBUTTON,
 };
 
 @interface WOTSingtleton : NSObject

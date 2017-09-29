@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WOTSelectWorkspaceListVC : UIViewController//1
-@property (nonatomic, copy) void(^selectSpaceBlock)(NSNumber *spaceId, NSString *spaceName);
+@property (nonatomic, copy) void(^selectSpaceBlock)(WOTSpaceModel *model);
 @end

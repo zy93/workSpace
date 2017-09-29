@@ -29,6 +29,8 @@
 @property(nonatomic,strong)NSString *spared1;
 @property(nonatomic,strong)NSString *spared2;
 @property(nonatomic,strong)NSString *spared3;
+//新添加字段
+@property(nonatomic,strong)NSString *facility;//设备
 
 @end
 

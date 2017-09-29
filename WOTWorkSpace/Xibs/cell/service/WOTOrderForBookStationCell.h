@@ -15,6 +15,8 @@
 
 -(void)showDataPickerView:(WOTOrderForBookStationCell *)cell;
 
+-(void)changeValue:(WOTOrderForBookStationCell *)cell;
+
 @end
 
 @interface WOTOrderForBookStationCell : UITableViewCell

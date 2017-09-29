@@ -48,7 +48,6 @@
         } else {
             return NO;
         }
-     
     }
     return _isuserLogin;
 }

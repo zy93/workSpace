@@ -321,9 +321,9 @@
     else  if ([str isEqualToString:@"访问社区"]) {
         WOTSelectWorkspaceListVC *vc = [[UIStoryboard storyboardWithName:@"Service" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTSelectWorkspaceListVC"];//1
         __weak typeof(self) weakSelf = self;
-        vc.selectSpaceBlock = ^(NSNumber *spaceId, NSString *spaceName){
-            weakSelf.spaceId = spaceId;
-            weakSelf.spaceName = spaceName;
+        vc.selectSpaceBlock = ^(WOTSpaceModel *model){
+            weakSelf.spaceId = model.spaceId;
+            weakSelf.spaceName = model.spaceName;
         };
         [self.navigationController pushViewController:vc animated:YES];
     }

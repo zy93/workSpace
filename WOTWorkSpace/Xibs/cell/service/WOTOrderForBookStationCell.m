@@ -39,10 +39,9 @@
 - (IBAction)selectStartTime:(id)sender {
     self.isHiddenDataPickerView = NO;
     [WOTSingtleton shared].buttonType = BUTTON_TYPE_STARTTIME;
-//    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
-//        [_delegate showDataPickerView:self];
-//    }
-    [_delegate showDataPickerView:self];
+    if ([_delegate respondsToSelector:@selector(showDataPickerView:)]) {
+        [_delegate showDataPickerView:self];
+    }
 
 }
 
@@ -61,7 +60,11 @@
         [MBProgressHUDUtil showMessage:@"已经最小数量" toView:self.superview];
     }else
     {
+         [WOTSingtleton shared].buttonType = BUTTON_TYPE_SUBBUTTON;
         self.orderNumber.text =  [NSString stringWithFormat:@"%d",_orderNumberInt];
+        if ([_delegate respondsToSelector:@selector(changeValue:)]) {
+            [_delegate changeValue:self];
+        }
     }
 }
 
@@ -72,7 +75,11 @@
         [MBProgressHUDUtil showMessage:@"数量超过剩余最大工位数量" toView:self.superview];
     }else
     {
+         [WOTSingtleton shared].buttonType = BUTTON_TYPE_ADDBUTTON;
         self.orderNumber.text =  [NSString stringWithFormat:@"%d",_orderNumberInt];
+        if ([_delegate respondsToSelector:@selector(changeValue:)]) {
+            [_delegate changeValue:self];
+        }
     }
     
 }
