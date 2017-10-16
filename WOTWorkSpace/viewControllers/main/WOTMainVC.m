@@ -96,7 +96,7 @@ int a = 0;
         [self loadLocation];
     }
     [super viewDidAppear:animated];
-    
+    NSLog(@"高度：%f",self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
     self.scrollVIew.contentSize = CGSizeMake(self.view.frame.size.width,self.autoScrollView.frame.size.height+self.ballView.frame.size.height+self.workspaceView.frame.size.height+self.activityView.frame.size.height+self.informationView.frame.size.height+self.enterpriseView.frame.size.height+70);
     //废弃
     //    _refreshControl = [[WOTRefreshControlUitls alloc]initWithScroll:self.scrollVIew];//在viewdidload 中添加，由于scrollview的contentSize不正确，不能下啦
@@ -459,7 +459,7 @@ int a = 0;
     
     NSLog(@"点击了第%ld张图",(long)subIndex + 1);
     WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_spacePageViewDataSource[subIndex].spared3];
+    //detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_spacePageViewDataSource[subIndex].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
 }
 
@@ -547,7 +547,7 @@ int a = 0;
 - (IBAction)showActivityDetail:(id)sender {
     
     WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_activitydataSource[0].spared3];
+    //detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_activitydataSource[0].spared3];
     [self.navigationController pushViewController:detailvc animated:YES];
     
     
@@ -610,7 +610,7 @@ int a = 0;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-    detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_enterpriseListdata[indexPath.row].spared2];
+    //detailvc.url = [NSString stringWithFormat:@"%@%@",@"http://",_enterpriseListdata[indexPath.row].spared2];
     [self.navigationController pushViewController:detailvc animated:YES];
 }
 -(void)showNewInfoVC{

@@ -103,13 +103,14 @@
     
 }
 
-
+#pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     
     return _dataarr.count;
 }
 
+#pragma mark - UIPickerViewDataSource
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     
@@ -155,6 +156,8 @@
         return _minarr.count;
     }
 }
+
+#pragma mark - UIPickerViewDelegate
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
     UILabel *mycom1 = [[UILabel alloc] init];
@@ -195,7 +198,6 @@
             mycom1.text = [NSString stringWithFormat:@"%02ld日",row+1];
 //        }
         
-        
     }
     /*
     else if (component == 3){
@@ -221,21 +223,23 @@
     return mycom1;
 }
 
+#pragma mark - UIPickerViewDelegate
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     
     return self.frame.size.width/5.0;
 }
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
-//    if(component == 0||component == 1)
-//    {
-//        //当第一个滚轮发生变化时,刷新第二个滚轮的数据                              
-//        [picker reloadComponent:2];
-//        //让刷新后的第二个滚轮重新回到第一行
-//        [picker selectRow:0 inComponent:2 animated:YES];
-//    }
+    if(component == 1)
+    {
+        //当第一个滚轮发生变化时,刷新第二个滚轮的数据
+        [picker reloadComponent:2];
+        //让刷新后的第二个滚轮重新回到第一行
+        //[picker selectRow:0 inComponent:2 animated:YES];
+    }
     int rowy;
     int rowm;
     int rowd;

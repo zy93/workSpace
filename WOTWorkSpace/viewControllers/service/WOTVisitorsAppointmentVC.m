@@ -334,11 +334,23 @@
         frame.origin.y = offset;
         self.table.frame = frame;
         
-        [tableView becomeFirstResponder];
+        //[tableView becomeFirstResponder];
     }
 }
 
-
+//#pragma mark - 处理键盘遮挡问题
+//- (UITableView *)table {
+//    if (!_table) {
+//        UITableViewController* tvc=[[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+//        [self addChildViewController:tvc];
+//        [tvc.view setFrame:self.view.frame];
+//        _table=tvc.tableView;
+//        _table.delegate = self;
+//        _table.dataSource = self;
+//        _table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    }
+//    return _table;
+//}
 
 //-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 //{

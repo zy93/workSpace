@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = MainColor;
-   
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTSettingCell" bundle:nil] forCellReuseIdentifier:@"settingCellID"];
     self.navigationItem.title = @"设置";
     
@@ -48,23 +49,34 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
    
-        return 3;
+        //return 3;
+    return 2;
+
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return 4;
-            break;
-        case 1:
-            return 3;
-            break;
-        case 2:
-            return 1;
-            break;
-        default:
-            break;
-    }
+//    switch (section) {
+//        case 0:
+//            return 4;
+//            break;
+//        case 1:
+//            return 3;
+//            break;
+//        case 2:
+//            return 1;
+//            break;
+//        default:
+//            break;
+//    }
+        switch (section) {
+            case 0:
+                return 1;
+                break;
+            case 1:
+                return 1;
+                break;
+            
+        }
     return 0;
 }
 
@@ -113,22 +125,23 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WOTSettingCell *settingcell = [tableView dequeueReusableCellWithIdentifier:@"settingCellID" forIndexPath:indexPath];
+    /*
     if (indexPath.section == 0) {
-    
-            [settingcell.valueLabel setHidden:YES];
+        
+        [settingcell.valueLabel setHidden:YES];
  
         NSArray *nameArray = [[NSArray alloc]initWithObjects:@"个人资料",@"通知设置",@"修改密码",@"设置手势密码",nil];
         settingcell.loginOut.hidden = YES;
         settingcell.nameLabel.text = nameArray[indexPath.row];
-
-    } else if (indexPath.section == 1){
+         
         
+        
+    } else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             [settingcell.valueLabel setHidden:NO];
             settingcell.valueLabel.text = @"010-8646-7632";
         } else {
             [settingcell.valueLabel setHidden:YES];
- 
         }
         if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section]-1) {
             [settingcell.lineVIew setHidden:YES];
@@ -136,6 +149,7 @@
          [settingcell.loginOut setHidden:YES];
         NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",nil];
         settingcell.nameLabel.text = nameArray1[indexPath.row];
+     
     }else {
         if ([WOTSingtleton shared].isuserLogin) {
             [settingcell.valueLabel setHidden:YES];
@@ -150,11 +164,46 @@
             [settingcell.loginOut setHidden:YES];
             [settingcell.lineVIew setHidden:YES];
         }
+    }
+    */
+    
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {
+            [settingcell.valueLabel setHidden:NO];
+            settingcell.valueLabel.text = @"010-8646-7632";
+        } else {
+            [settingcell.valueLabel setHidden:YES];
+        }
+        if (indexPath.row == [self.tableView numberOfRowsInSection:indexPath.section]-1) {
+            [settingcell.lineVIew setHidden:YES];
+        }
+        [settingcell.loginOut setHidden:YES];
+        // NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",@"关于众创空间",@"分享APP",nil];
+        NSArray *nameArray1 = [[NSArray alloc]initWithObjects:@"联系我们",nil];
+        
+        //settingcell.nameLabel.text = nameArray1[indexPath.row];
+        settingcell.nameLabel.text = nameArray1[0];
         
         
+        
+    } else if (indexPath.section == 1){
+        if ([WOTSingtleton shared].isuserLogin) {
+            [settingcell.valueLabel setHidden:YES];
+            [settingcell.nameLabel setHidden:YES];
+            [settingcell.nextImage setHidden:YES];
+            [settingcell.loginOut setHidden:NO];
+            [settingcell.lineVIew setHidden:YES];
+        } else {
+            [settingcell.valueLabel setHidden:YES];
+            [settingcell.nameLabel setHidden:YES];
+            [settingcell.nextImage setHidden:YES];
+            [settingcell.loginOut setHidden:YES];
+            [settingcell.lineVIew setHidden:YES];
+        }
+    }else {
         
     }
-    
     return settingcell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

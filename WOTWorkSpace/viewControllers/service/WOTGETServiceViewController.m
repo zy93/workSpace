@@ -79,6 +79,11 @@
 }
 
 - (IBAction)clickSubmitBtn:(id)sender {
+    BOOL isLogin = [WOTUserSingleton shareUser].userInfo.userId == nil;
+    if (isLogin) {
+        [MBProgressHUDUtil showMessage:@"请先登录！" toView:self.view];
+        return;
+    }
     
     if ([_describeText.text isEqualToString:@""] || self.selectServiceList.count == 0) {
         [MBProgressHUDUtil showMessage:UnInputServiceContentReminding toView:self.view];
@@ -94,8 +99,11 @@
 //            
 //        }];
         
-                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"  userId:[WOTUserSingleton shareUser].userInfo.userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
-        
+                [WOTHTTPNetwork postServiceRequestWithDescribe:self.describeText.text spaceId:@"55"
+                                                        userId:[WOTUserSingleton shareUser].userInfo.userId facilitatorType:dd  facilitatorLabel:dd response:^(id bean, NSError *error) {
+                                                           [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view]; dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                                [self.navigationController popViewControllerAnimated:YES];
+                                                            });
                 }];
         
     }

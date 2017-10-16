@@ -230,8 +230,10 @@
     
     [self.navigationController pushViewController:_settingvc animated:YES];
 }
+
 -(void)showPersonalInformationVC
 {
+    /*
     if ([WOTSingtleton shared].isuserLogin) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"My" bundle:[NSBundle mainBundle]];
         
@@ -246,7 +248,7 @@
 //        }];
         [[WOTConfigThemeUitls shared] showLoginVC:self];
     }
-   
+   */
 }
 
 /*

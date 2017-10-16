@@ -192,7 +192,32 @@
         
     }
     else {
-            [self registerService:[WOTUserSingleton shareUser].userInfo.userId firmName:tableInputDatadic[@"firmName"] businessScope:tableInputDatadic[@"businessScope"] contatcts:tableInputDatadic[@"contatcts"]
+            //
+        NSLog(@"测试%@",tableInputDatadic);
+       
+        BOOL isLogin = [WOTUserSingleton shareUser].userInfo.userId == nil;
+        if (isLogin) {
+            [MBProgressHUDUtil showMessage:@"请登录后再申请！" toView:self.view];
+            return;
+        }
+        BOOL isFirmLogo = enterpriseLogo == nil;
+        if (isFirmLogo) {
+            [MBProgressHUDUtil showMessage:@"请上传企业logo" toView:self.view];
+            return;
+        }
+        BOOL isFirName = tableInputDatadic[@"firmName"] == nil;
+        BOOL isBusinessScope = tableInputDatadic[@"businessScope"] == nil;
+        BOOL isContatcts =tableInputDatadic[@"contatcts"] == nil;
+        BOOL isTel =tableInputDatadic[@"tel"] == nil;
+        BOOL isFacilitatorType = tableInputDatadic[@"facilitatorType"] == nil;
+        BOOL isFacilitatorState = tableInputDatadic[@"facilitatorState"] == nil;
+        if (isFirName || isBusinessScope ||isContatcts ||isTel || isFacilitatorType|| isFacilitatorState) {
+            [MBProgressHUDUtil showMessage:@"请将信息填写完整后再提交" toView:self.view];
+            return;
+        }
+            [self registerService:[WOTUserSingleton shareUser].userInfo.userId firmName:tableInputDatadic[@"firmName"]
+                    businessScope:tableInputDatadic[@"businessScope"]
+                        contatcts:tableInputDatadic[@"contatcts"]
                               tel:tableInputDatadic[@"tel"]
                   facilitatorType:tableInputDatadic[@"facilitatorType"]
                  facilitatorState:tableInputDatadic[@"facilitatorState"]
@@ -232,7 +257,6 @@
 //进入拍摄页面点击取消按钮
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-
 {
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -247,7 +271,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     switch (textField.tag) {
         case 0:
-            
             break;
         case 1:
             tableInputDatadic[@"firmName"] = textField.text;
@@ -273,7 +296,14 @@
     }
 }
 
--(void)registerService:(NSNumber *)userId firmName:(NSString *)firmName businessScope:(NSString *)businessScope contatcts:(NSString *)contatcts tel:(NSString *)tel facilitatorType:(NSString *)facilitatorType facilitatorState:(NSNumber *)facilitatorState firmLogo:(UIImage *)firmLogo{
+-(void)registerService:(NSNumber *)userId
+              firmName:(NSString *)firmName
+         businessScope:(NSString *)businessScope
+             contatcts:(NSString *)contatcts
+                   tel:(NSString *)tel
+       facilitatorType:(NSString *)facilitatorType
+      facilitatorState:(NSNumber *)facilitatorState
+              firmLogo:(UIImage *)firmLogo{
     
     NSArray<UIImage *> *aa = @[firmLogo];
     

@@ -17,6 +17,7 @@
 #import "WOTOrderForAmountCell.h"
 #import "WOTDatePickerView.h"
 #import "JudgmentTime.h"
+#import "WOTLoginVC.h"
 
 #define infoCell @"infoCell"
 #define bookStationCell @"bookStationCell"
@@ -162,7 +163,10 @@
     if (![WOTUserSingleton shareUser].userInfo.userId) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登录" message:@"请先登录用户" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+            NSLog(@"跳转到");
+            [[WOTConfigThemeUitls shared] showLoginVC:self];
+//            WOTLoginVC *loginVC = [[WOTLoginVC alloc] init];
+//            [self.navigationController pushViewController:loginVC animated:YES];
         }];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];

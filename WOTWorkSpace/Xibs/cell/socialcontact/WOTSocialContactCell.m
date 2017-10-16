@@ -8,6 +8,7 @@
 
 #import "WOTSocialContactCell.h"
 #import "WOTImageCollectionViewCell.h"
+#import "MBProgressHUD+Extension.h"
 @interface WOTSocialContactCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
@@ -109,4 +110,10 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
 }
+
+- (IBAction)reportButton:(id)sender {
+    [MBProgressHUDUtil showMessage:@"举报已经提交！" toView:self.superview];
+    NSLog(@"被举报了！");
+}
+
 @end

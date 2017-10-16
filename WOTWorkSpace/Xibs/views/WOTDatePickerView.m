@@ -24,10 +24,6 @@
     [self.pickerView addSubview:_dataPicker];
 }
 
-
-
-
-
 - (IBAction)cancelAction:(id)sender {
     
     if (_cancelBlokc) {

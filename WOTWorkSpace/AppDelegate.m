@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-#import "WXApi.h"
 #import "WOTWXApiManager.h"
 #define MAP_API_KEY @"47411f2c349b36c1fbdee073cd648149"
 @interface AppDelegate ()

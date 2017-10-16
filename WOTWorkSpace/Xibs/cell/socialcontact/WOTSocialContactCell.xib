@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,11 +55,24 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihl-WL-mOM">
-                        <rect key="frame" x="20" y="60" width="290" height="17"/>
+                        <rect key="frame" x="20" y="60" width="242" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHA-Fy-xcQ">
+                        <rect key="frame" x="262" y="55" width="43" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="43" id="fsj-TX-FDq"/>
+                            <constraint firstAttribute="height" constant="22" id="zK3-xz-Gfr"/>
+                        </constraints>
+                        <state key="normal" title="举报">
+                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="reportButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wvo-mt-20s"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="08E-sg-K8W" firstAttribute="centerY" secondItem="tCS-9v-e08" secondAttribute="centerY" id="1sG-Kr-vtL"/>
@@ -67,7 +80,10 @@
                     <constraint firstAttribute="trailing" secondItem="kKO-Pe-1VE" secondAttribute="trailing" id="7bb-Wg-EPV"/>
                     <constraint firstItem="tCS-9v-e08" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8Sv-ok-zJE"/>
                     <constraint firstAttribute="trailing" secondItem="08E-sg-K8W" secondAttribute="trailing" constant="20" id="Az7-yx-KjN"/>
+                    <constraint firstAttribute="trailing" secondItem="iHA-Fy-xcQ" secondAttribute="trailing" constant="15" id="BKz-L9-ggg"/>
                     <constraint firstItem="TBp-L7-YDK" firstAttribute="top" secondItem="Ihl-WL-mOM" secondAttribute="bottom" constant="10" id="HM6-8I-ofA"/>
+                    <constraint firstItem="iHA-Fy-xcQ" firstAttribute="top" secondItem="08E-sg-K8W" secondAttribute="bottom" constant="12" id="V4b-1T-7Ia"/>
+                    <constraint firstItem="Ihl-WL-mOM" firstAttribute="trailing" secondItem="iHA-Fy-xcQ" secondAttribute="leading" id="Ygy-Jj-CPw"/>
                     <constraint firstItem="Ihl-WL-mOM" firstAttribute="top" secondItem="tCS-9v-e08" secondAttribute="bottom" constant="5" id="aw1-2x-dAl"/>
                     <constraint firstAttribute="bottom" secondItem="kKO-Pe-1VE" secondAttribute="bottom" id="ayh-jM-402"/>
                     <constraint firstAttribute="trailing" secondItem="TBp-L7-YDK" secondAttribute="trailing" constant="15" id="cEl-1T-RRR"/>
@@ -77,7 +93,6 @@
                     <constraint firstItem="Ihl-WL-mOM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pcw-V0-TfU"/>
                     <constraint firstItem="tCS-9v-e08" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="tBN-yN-Eoh"/>
                     <constraint firstItem="kKO-Pe-1VE" firstAttribute="top" secondItem="TBp-L7-YDK" secondAttribute="bottom" id="tSA-Qf-LaI"/>
-                    <constraint firstAttribute="trailing" secondItem="Ihl-WL-mOM" secondAttribute="trailing" constant="10" id="yzE-S6-XIs"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

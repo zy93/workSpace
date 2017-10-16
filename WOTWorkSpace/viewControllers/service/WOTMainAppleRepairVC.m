@@ -28,12 +28,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 @property(nonatomic,strong)WOTDatePickerView *datepickerview;
+@property (nonatomic,strong)ZSImagePickerController *zsImagePicker;
 @end
 
 @implementation WOTMainAppleRepairVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.zsImagePicker.zs_delegate = self;
     self.view.backgroundColor = MainColor;
     self.tableView.backgroundColor = CLEARCOLOR;
     [self setupView];
@@ -51,15 +53,48 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+   // [selectedPhotoArray addObject:[UIImage imageNamed:@"addPhoto"]];
+    //[self.tableView reloadData];
+    
     [self.navigationController.navigationBar setHidden:NO];
 }
 
 - (IBAction)sunmitAction:(id)sender {
 //    [[WOTUserSingleton shareUser]setValues];
-    [selectedPhotoArray removeObjectAtIndex:0];
-    NSLog(@"%@",selectedPhotoArray[0]);
+    if (selectedPhotoArray.count == 1) {
+        [selectedPhotoArray removeAllObjects];
+    }
+    
+    //NSLog(@"%@",selectedPhotoArray[0]);
+    BOOL isLogin = [WOTUserSingleton shareUser].userInfo.userId == nil;
+    if (isLogin) {
+        [MBProgressHUDUtil showMessage:@"请登录后，再提交！" toView:self.view];
+        return;
+    }
+    BOOL isType = repariType == nil;
+    BOOL isInfo = repairInfo == nil;
+    BOOL isAppointmentTime = repairTime == nil;
+    BOOL isAddress = repairLocation == nil;
+    BOOL isFile = selectedPhotoArray == nil;
+    
+    if (isType || isInfo ||isAppointmentTime ||isAddress) {
+        [MBProgressHUDUtil showMessage:@"请填写完整信息！" toView:self.view];
+        return;
+    }
+    
+    if (isFile) {
+        [MBProgressHUDUtil showMessage:@"请上传报修图片！" toView:self.view];
+        return;
+    }
     [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-       [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton shareUser].userInfo.userId type:repariType info:repairInfo appointmentTime:repairTime address:repairLocation file:selectedPhotoArray alias:@"1" response:^(id bean, NSError *error) {
+       [WOTHTTPNetwork postRepairApplyWithUserId:[WOTUserSingleton shareUser].userInfo.userId
+                                            type:repariType
+                                            info:repairInfo
+                                 appointmentTime:repairTime
+                                         address:repairLocation
+                                            file:selectedPhotoArray
+                                           alias:@"1"
+                                        response:^(id bean, NSError *error) {
            [hud setHidden:YES];
            if (bean) {
                [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
@@ -116,9 +151,9 @@
             
             if (index == 0) {
                 [selectedPhotoArray removeAllObjects];
-                  [selectedPhotoArray addObject:[UIImage imageNamed:@"addPhoto"]];
+                [selectedPhotoArray addObject:[UIImage imageNamed:@"addPhoto"]];
                 WOTPhotosBaseUtils *photo = [[WOTPhotosBaseUtils alloc]init];
-                photo.onlyOne = NO;
+                photo.onlyOne = YES;
                 photo.vc = self;
                 
                 [photo showSelectedPhotoSheet];
@@ -212,6 +247,7 @@
 }
 
 - (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingMediaWithInfo:(nullable NSDictionary<NSString *,NSArray *> *)info{
+   
     NSLog(@"%@",info);
 }
 
@@ -235,6 +271,7 @@
         
         [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
     }
+   //  [self dismissViewControllerAnimated:YES completion:nil];//新添加
 }
 
 -(void)setupView
@@ -261,6 +298,37 @@
     _datepickerview.hidden  = YES;
 }
 
+
+
+#pragma mark - UIImagePickerControllerDelegate
+// 拍照完成回调
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+{
+    
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        
+    {
+        
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        
+    }
+    
+    
+    [selectedPhotoArray addObject:image];
+
+     NSLog(@"测试：%@",selectedPhotoArray);
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//进入拍摄页面点击取消按钮
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

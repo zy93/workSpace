@@ -27,6 +27,10 @@
     [self congigNav];
     self.web.opaque = NO;//dong
     self.web.backgroundColor = [UIColor clearColor];//dong
+    if (self.url == nil) {
+        self.url = @"http://www.yiliangang.net:8012/makerSpace/news1.html";
+    }
+
     [self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
@@ -118,8 +122,6 @@
         [MBProgressHUDUtil showMessage:@"未安装应用，请安装后分享！" toView:self.view];
 
     }
-    
-    
 }
 
 

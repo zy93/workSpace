@@ -16,6 +16,7 @@
 - (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingMediaWithInfo:(nullable NSDictionary<NSString *,NSArray *> *)info;
 - (void)zs_imagePickerControllerDidCancel:(nullable ZSImagePickerController *)picker;
 - (void)zs_imagePickerController:(nullable ZSImagePickerController *)picker didFinishPickingImage:(nullable NSDictionary<NSString *,id> *)info;
+
 @end
 
 @interface ZSImagePickerController : UIImagePickerController
