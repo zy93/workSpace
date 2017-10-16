@@ -34,8 +34,11 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
 //    dataSource = @[@"明确指出：到2020年，人工智能总体技术和应用与世界先进水平同步；到2025年，人工智能基础理论实现重大突破，部分技术与应用达到世界领先水平；到2030年，人工智能理论、技术与应用总体达到世界领先水平，成为世界主要人工智能创新中心",@"明确指出：到2020年，人工智能总体技术和应用与世界先进水平同步；到2025年，人工智能基础理论实现重大突破，部分技术与应用达到世界领先水平；到2030年，人工智能理论、技术与应用总体达到世界领先水平，成为世界主要人工智能创新中心",@"技术与应用总体达到世界领先水平，成为世界主要人工智能创新中心",@"明确指出：到2020年，人工智能总体技术和应用与世界先进水平同步；到2025年，人工智能基础理论实现重大突破，部分技术与应用达到世界领先水平；到2030年，人工智能理论、技术与应用总体达到世界领先水平，成为世界主要人工智能创新中心",@"明确指出：到2020年，人工智能总体技术和应用与世界先进水平同步；"];
 //    photoArray = [[NSMutableArray alloc]initWithObjects:   [UIImage imageNamed:@"Yosemite00"],
 //                     [UIImage imageNamed:@"Yosemite01"],[UIImage imageNamed:@"Yosemite02"],[UIImage imageNamed:@"Yosemite03"],[UIImage imageNamed:@"Yosemite04"],nil];
-    [_tableView registerNib:[UINib nibWithNibName:@"WOTSocialContactCell" bundle:nil] forCellReuseIdentifier:@"WOTSocialContactCellID"];
+    
+    [self configNavi];
     [self AddRefreshHeader];
+    [_tableView registerNib:[UINib nibWithNibName:@"WOTSocialContactCell" bundle:nil] forCellReuseIdentifier:@"WOTSocialContactCellID"];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -49,6 +52,13 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
     [super viewDidAppear:animated];
 }
 
+-(void)configNavi{
+    //解决布局空白问题
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
+}
 
 -(void)createRequest
 {
@@ -87,6 +97,9 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
         [_tableView.mj_footer endRefreshing];
     }
     [self createRequest];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self StopRefresh];
+    });
 }
 
 - (void)StopRefresh
@@ -96,7 +109,6 @@ typedef NS_ENUM(NSInteger, FDSimulatedCacheMode) {
         [_tableView.mj_header endRefreshing];
     }
 }
-
 
 
 #pragma mark - UITableViewDataSource

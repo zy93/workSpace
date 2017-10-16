@@ -92,7 +92,6 @@
     
     
     [self addChildViewController:circle1];
-    
     UIViewController *circle2 = [[UIViewController alloc]init];
     circle2.view.backgroundColor = White;
     [MBProgressHUDUtil showMessage:@"敬请期待" toView:circle2.view];

@@ -56,16 +56,14 @@
     
     [self loadAutoScrollView];
     [self configScrollView];
+    [self configNavi];
    
     _tableView.dataSource = self;
     _tableView.delegate = self;
     self.ballView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"WOTTEnterpriseListCell" bundle:nil] forCellReuseIdentifier:@"WOTTEnterpriseListCellID"];
     _tableView.scrollEnabled = NO;
-    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
-    if (is7Version) {
-        self.edgesForExtendedLayout=UIRectEdgeNone;
-    }
+    
 
     _infoImage.image = [UIImage imageNamed:@"placeholder"];
     _activityImage.image = [UIImage imageNamed:@"placeholder"];
@@ -73,7 +71,15 @@
     [self getAllData];
     [self AddRefreshHeader];
      // Do any additional setup after loading the view.
-    
+    //ios7 以上布局空白问题
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        self.edgesForExtendedLayout=UIRectEdgeNone;
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    //ios11 scrollView 偏移20像素问题
+    if (@available(iOS 11.0, *)) {
+        self.scrollVIew.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 }
 
 
@@ -152,6 +158,14 @@ int a = 0;
         [self setupUI];
     }];
     
+}
+
+-(void)configNavi{
+    //解决布局空白问题
+    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
+    if (is7Version) {
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+    }
 }
 
 -(void)configScrollView{
@@ -406,6 +420,9 @@ int a = 0;
         [_scrollVIew.mj_footer endRefreshing];
     }
     [self getAllData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self StopRefresh];
+    });
 }
 
 - (void)StopRefresh
